@@ -21,7 +21,7 @@ class Continuous(Integration):
         const analyst=s.crew[2];analyst.room='B01';analyst.route=[];analyst.energy=90;analyst.stress=0;analyst.researchAssignment='EX-ACTIVE';analyst.taskMinutes=999;
         s.specimenCustody={items:[{id:'SPEC-A',name:'synthetic boundary sample',origin:'asteroid',status:'stored',integrity:90,contamination:0,volatile:false}],history:[]};
         s.remoteCore.director.science={cases:[{id:'CASE-A',specimenId:'SPEC-A',location:'asteroid',item:'synthetic boundary sample',classification:'geological material',status:'complete',progress:100}],programs:[{id:'RES-A',group:'asteroid|geological material',location:'asteroid',subject:'geological material',caseIds:['CASE-A'],hypotheses:[],status:'running'}],experiments:[{id:'EX-ACTIVE',programId:'RES-A',caseId:'CASE-A',specimenId:'SPEC-A',method:'noninvasive_screen',cost:2,analyst:analyst.name,started:9590,duration:60,progress:10,status:'running'}],nextCase:2,lastTick:9599};
-        const patient=s.crew[3];patient.room='A08';patient.route=[];patient.vitals.health=40;patient.vitals.treatmentPaid=true;patient.taskMinutes=999;
+        const patient=s.crew[3];patient.room='A08';patient.route=[];patient.vitals.health=40;patient.energy=5;patient.vitals.treatmentPaid=true;patient.survivalIncapacitated=true;patient.medicalTreatment=9;patient.tissueProgress=7;patient.taskMinutes=999;
         for(const q of s.crew.filter(p=>p.job==='Medic')){q.room='A08';q.route=[];q.taskMinutes=999;}
         s.tissueRepair.cartridges=11;s.tissueRepair.activePatient=patient.name;s.economy.initial.medical=11;s.economy.initial.food+=2;s.economy.initial.water+=4;s.economy.initial.oxygen+=4;
         s.equipment.C07.condition=20;s.physicalWorld.rooms.C07.atmosphere={pressure:70,oxygen:18,temperature:90,smoke:20,fire:true,breach:false};
@@ -32,6 +32,7 @@ class Continuous(Integration):
         self.assertGreaterEqual(snap['director']['science']['experiments'][0]['progress'],10)
         self.assertLess(snap['world']['equipment']['C07']['condition'],21);self.assertTrue(snap['world']['physicalWorld']['rooms']['C07']['atmosphere']['fire'])
         self.assertGreaterEqual(next(p for p in snap['crew'] if p['name']=='Derek Cole')['vitals']['health'],40)
+        patient=next(q for q in snap['crew'] if q['name']=='Derek Cole');self.assertEqual(patient['medicalTreatment'],10);self.assertEqual(patient['tissueProgress'],8);self.assertTrue(any(e['status']=='active' for e in snap['world']['emergencies'].values()))
         self.assertEqual(snap['world']['tissueRepair']['cartridges'],11+(snap['economy']['produced'].get('medical',0))-(snap['economy']['consumed'].get('medical',0)));self.assertEqual(snap['resourceAudit'],[])
         self.assertTrue(p.evaluate('window.__icarusSoak.save()'));p.reload();self.assertEqual(snap,self.snap(p))
     def test_legacy_clock_migration_preserves_remaining_cooldown_and_is_idempotent(self):
@@ -82,6 +83,16 @@ class Continuous(Integration):
         self.advance(p,1);snap=self.snap(p);e=snap['director']['science']['experiments'][0]
         self.assertTrue(e.get('containmentIncident'),e);self.assertEqual(next(q for q in snap['crew'] if q['name']=='Dr. Voss')['vitals']['health'],92);self.assertEqual(snap['specimenCustody']['items'][0]['contamination'],5)
         self.assertTrue(any('Containment exposure' in e['message'] for e in snap['events']));self.assertEqual(snap['resourceAudit'],[])
+    def test_resource_failure_injures_real_crew_and_suspends_optional_operations(self):
+        p=self.page();self.configure(p,"""
+        s.minute=509;s.tick=29;s.clock.elapsed=29;s.remoteCore.autonomyEnabled=false;
+        s.economy.stock.oxygen=0;s.economy.initial.oxygen=0;s.economy.feedstock.co2=0;s.equipment.C09.condition=0;
+        """)
+        self.advance(p,1);snap=self.snap(p);self.assertEqual(snap['economy']['mode'],'survival');self.assertFalse(snap['economy']['allowResearch']);self.assertFalse(snap['economy']['allowLaunch']);self.assertTrue(all(q['vitals']['health']<100 for q in snap['crew']));self.assertEqual(snap['resourceAudit'],[])
+    def test_explicit_new_voyage_initializes_new_systems_and_saves_without_stock_duplication(self):
+        p=self.page();self.advance(p,240);p.on('dialog',lambda d:d.accept());p.locator('#reset').click();snap=self.snap(p)
+        self.assertEqual(snap['tick'],0);self.assertEqual(snap['clock']['elapsed'],0);self.assertEqual(len(snap['crew']),20);self.assertEqual(snap['resourceAudit'],[]);self.assertEqual(snap['teamLog']['suits'],6)
+        self.assertTrue(p.evaluate('window.__icarusSoak.save()'));p.reload();self.assertEqual(snap,self.snap(p))
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--report',default='continuity_report.json');args=parser.parse_args()
     result=unittest.TextTestRunner(verbosity=2,resultclass=RecordedResult).run(unittest.defaultTestLoader.loadTestsFromTestCase(Continuous))

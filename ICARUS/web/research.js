@@ -82,7 +82,7 @@ function tick(sc,items,env){
    active.interruptions=active.interruptions||[];if(active.interruptions.at(-1)?.reason!=='analyst')active.interruptions.push({at:env.now,reason:'analyst',progress:active.progress});active.interruptions=active.interruptions.slice(-20);
    active.blocker='analyst';p.status='blocked';p.blocker='analyst';
    active.analystMissingTicks=(active.analystMissingTicks||0)+1;
-   if(active.analystMissingTicks>=60&&env.analysts.length){active.reassignments=active.reassignments||[];active.reassignments.push({from:active.analyst,to:env.analysts[0].name,at:env.now});active.analyst=env.analysts[0].name;delete active.analystMissingTicks;}
+   if(active.analystMissingTicks>=60&&env.analysts.length){active.reassignments=active.reassignments||[];active.reassignments.push({from:active.analyst,to:env.analysts[0].name,at:env.now});active.analyst=env.analysts[0].name;delete active.analystMissingTicks;if(env.assign)env.assign(active);}
    return;
   }
   delete active.analystMissingTicks;
