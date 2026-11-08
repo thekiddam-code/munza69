@@ -17,10 +17,11 @@ ROOT=Path(__file__).resolve().parent
 def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('--days',type=int,default=7)
+    parser.add_argument('--seed-science',action='store_true',help='Use explicitly synthetic recovered evidence')
     parser.add_argument('--report',default='soak_report.json')
     args=parser.parse_args()
     report_path=Path(args.report).resolve()
-    report={'version':'0.94.8-shipboard-science','requested_days':args.days,'status':'starting','passed':False,'checkpoints':[],'errors':[],'started_at':datetime.now(timezone.utc).isoformat()}
+    report={'version':'0.94.9-scientific-reasoning','requested_days':args.days,'status':'starting','passed':False,'checkpoints':[],'errors':[],'started_at':datetime.now(timezone.utc).isoformat()}
     def write(): report_path.write_text(json.dumps(report,indent=2,default=str),encoding='utf-8')
     write()
     class Quiet(http.server.SimpleHTTPRequestHandler):
@@ -29,14 +30,34 @@ def main():
     threading.Thread(target=server.serve_forever,daemon=True).start()
     try:
         with sync_playwright() as pw:
-            browser=pw.chromium.launch(headless=True)
+            browser=pw.chromium.launch(headless=True, executable_path=__import__("os").environ.get("ICARUS_CHROMIUM") or None)
             context=browser.new_context()
             page=context.new_page()
             js_errors=[]
             page.on('pageerror',lambda error:js_errors.append({'message':str(error),'stack':getattr(error,'stack',None)}))
             page.goto(f'http://127.0.0.1:{server.server_port}/icarus.html?icarus_soak=1',wait_until='load',timeout=30000)
             page.wait_for_function('typeof window.__icarusSoak === "object"',timeout=15000)
+            report['synthetic_science_fixture']=args.seed_science
+            if args.seed_science:
+                page.evaluate('window.__icarusSoak.save()')
+                page.add_init_script('''(() => {
+                    if(sessionStorage.getItem('fixture-seeded'))return;
+                    sessionStorage.setItem('fixture-seeded','1');
+                    const s=JSON.parse(localStorage.getItem('icarus-v02'));
+                    s.specimenCustody={items:[],history:[],nextId:10};
+                    s.remoteCore.director.science={cases:[],nextCase:10,lastTick:-1};
+                    for(let i=0;i<3;i++){
+                      s.specimenCustody.items.push({id:'TEST-S'+i,name:'mineral fixture '+i,origin:'asteroid',status:'stored',location:'B10',integrity:i===2?10:100,contamination:i===1?10:0,volatile:false,biological:false,concealed:false,age:0});
+                      s.remoteCore.director.science.cases.push({id:'SCI-TEST'+i,key:'fixture'+i,location:'asteroid',item:'mineral fixture '+i,specimenId:'TEST-S'+i,status:'queued',progress:0});
+                    }
+                    localStorage.setItem('icarus-v02',JSON.stringify(s));
+                })();''')
+                page.reload(wait_until='load')
+                page.wait_for_function('typeof window.__icarusSoak === "object"')
             initial=page.evaluate('window.__icarusSoak.snapshot()')
+            page.wait_for_timeout(1100)
+            report['paused_clock_check']=page.evaluate('window.__icarusSoak.snapshot()')==initial
+            if not report['paused_clock_check']:report['errors'].append('Clock advanced while diagnostic timer paused')
             report['start']={k:initial[k] for k in ('minute','tick','episode')}
             report['status']='running';write()
             last=initial
@@ -45,6 +66,16 @@ def main():
                 for _ in range(12):
                     result=page.evaluate('window.__icarusSoak.advance(120)')
                     elapsed+=120
+                    if args.seed_science and elapsed==120:
+                        pending=page.evaluate('window.__icarusSoak.snapshot()')
+                        history_so_far=page.evaluate('window.__icarusSoak.missionHistory')
+                        page.evaluate('window.__icarusSoak.save()')
+                        page.reload(wait_until='load')
+                        page.wait_for_function('typeof window.__icarusSoak === "object"')
+                        report['early_persistence_check']=pending==page.evaluate('window.__icarusSoak.snapshot()')
+                        report['early_experiment_states']=[e['status'] for e in pending['director']['science'].get('experiments',[])]
+                        if not report['early_persistence_check']:report['errors'].append('Early science save/reload mismatch')
+                        page.evaluate('(history)=>window.__icarusSoak.missionHistory=history',history_so_far)
                     if result['episode']<last['episode'] or result['episode']>last['episode']+1:
                         report['errors'].append('Unexpected episode transition')
                     if result['episode']==last['episode'] and result['tick']<last['tick']:
@@ -65,6 +96,20 @@ def main():
             report['mission_intelligence']=director.get('intelligence',{})
             science=director.get('science',{}).get('cases',[])
             report['science_cases']=[{k:c.get(k) for k in ('id','location','item','mission','status','progress','classification','hazard','analyst','assessment')} for c in science]
+            report['research_programs']=director.get('science',{}).get('programs',[])
+            report['specimen_custody']=page.evaluate('window.__icarusSoak.snapshot().specimenCustody')
+            report['research_experiments']=director.get('science',{}).get('experiments',[])
+            case_ids={c['id'] for c in science}
+            for p in report['research_programs']:
+                if any(cid not in case_ids for cid in p['caseIds']):report['errors'].append('Research program evidence reference missing')
+                for h in p['hypotheses']:
+                    if not h['unknowns'] or h['confidence']>0.45:report['errors'].append('Research uncertainty lost')
+                    if any(e['caseId'] not in case_ids for e in h['evidenceFor']+h['evidenceAgainst']):report['errors'].append('Hypothesis provenance missing')
+            if args.seed_science:
+                if len((report['specimen_custody'] or {}).get('items',[]))<3:report['errors'].append('Weekly custody continuity lost')
+                outcomes={e['status'] for e in report['research_experiments']}
+                if not {'complete','failed','no_result'}<=outcomes:report['errors'].append('Seeded experiment outcomes missing')
+                if not any(len(p['caseIds'])==3 for p in report['research_programs']):report['errors'].append('Related cases not grouped')
             report['science_summary']={'intake':len(science),'completed':sum(c.get('status')=='complete' for c in science),'held':sum(c.get('status')=='held' for c in science),'pending':sum(c.get('status') not in ('complete','held') for c in science)}
             if len({c.get('id') for c in science})!=len(science):report['errors'].append('Duplicate science case IDs')
             if any(c.get('status')=='complete' and not c.get('classification') for c in science):report['errors'].append('Completed science case missing classification')
