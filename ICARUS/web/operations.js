@@ -4,7 +4,7 @@ function init(s){if(!s.operations)s.operations={reserve:{food:12000,lab:6000,too
 function transfer(s,key,requested,now){const o=init(s),n=Math.max(0,Math.min(requested,o.reserve[key]||0));o.reserve[key]-=n;if(n)o.transfers.push({key,amount:n,at:now});o.transfers=o.transfers.slice(-80);return n;}
 function maintenancePriority(order,s){const lifeSupport=['C07','C08','C09'].includes(order.room)?40:0;return lifeSupport+(order.priority==='urgent'?100:0)+(100-(s.equipment[order.room]?.condition||0));}
 function assessment(p,job,s,life){const peers=s.crew.filter(q=>q!==p&&!q.expeditionAway&&(q.job==='Comms'||q.job==='Scientist'||q.job==='Command'));
- const risk=life.risk(p,peers);return {at:(s.episode||1)*10080+s.minute,risk,health:p.vitals?.health??100,fatigue:p.vitals?.fatigue??0,morale:p.vitals?.morale??60,experience:p.vitals?.missions??0,support:peers.map(q=>q.name),objective:job.objective,safety:'Recall for health <60, fatigue >85, low energy or stress threshold',workRate:Math.max(.5,Math.min(1.2,1-risk+(p.vitals?.missions||0)*.01))};}
+ const risk=life.risk(p,peers);return {at:s.clock?.elapsed??s.tick??0,risk,health:p.vitals?.health??100,fatigue:p.vitals?.fatigue??0,morale:p.vitals?.morale??60,experience:p.vitals?.missions??0,support:peers.map(q=>q.name),objective:job.objective,safety:'Recall for health <60, fatigue >85, low energy or stress threshold',workRate:Math.max(.5,Math.min(1.2,1-risk+(p.vitals?.missions||0)*.01))};}
 function field(s,m,job,p,env){
  if(!p)return;
  const v=p.vitals;

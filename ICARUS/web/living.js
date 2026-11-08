@@ -15,7 +15,7 @@ function hurt(s,p,amount,cause,emit){
  init(s);if(amount<=0)return;
  const v=p.vitals,before=v.health;v.health=clamp(v.health-amount);
  if(!v.injuries.some(x=>x.cause===cause&&x.active)){
-  const injury={cause,at:(s.episode||1)*10080+s.minute,active:true};v.injuries.push(injury);v.injuries=v.injuries.slice(-20);
+  const injury={cause,at:s.clock?.elapsed??s.tick??0,active:true};v.injuries.push(injury);v.injuries=v.injuries.slice(-20);
   emit('injury',p.name+' injured: '+cause,[p.name],{cause,damage:amount});
  }
  if(before>=60&&v.health<60)emit('medical',p.name+' requires medical recovery',[p.name],{health:v.health});
