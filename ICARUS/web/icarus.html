@@ -2431,7 +2431,8 @@ function lazarusTick(){
  const s=l.subjects.find(x=>x.id===job.subjectId);if(!s){l.active=null;return;}
  const risk=lazarusRisk(s),roll=simRandom()*100;
  let outcome='successful reconstruction';
- if(roll<Math.max(2,risk*.16)&&s.foreign>=30)outcome='biological convergence';
+ if(roll>Math.max(25,85-risk*.35))outcome='incomplete reconstruction';
+ else if(roll<Math.max(2,risk*.16)&&s.foreign>=30)outcome='biological convergence';
  else if(roll<Math.max(3,risk*.24)&&s.foreign>=45)outcome='foreign organism extracted and contained';
  else if(roll<risk*.43&&s.temporal>=25)outcome='temporal reconstruction error';
  else if(roll<risk*.57&&l.condition<80)outcome='structural integration with chamber';
@@ -2596,6 +2597,10 @@ function step(){state.minute+=1;state.tick++;dockingTick();
  atmosphereTick();
  autonomousAtmosphereResponse();
  livingTick();
+ if(!state.crew.length){
+  if(state.minute>=10080){state.archived=state.archived||[];state.archived.push(makeEpisodeArchive(state,'No surviving crew'));state.archived=state.archived.slice(-100);state.episode++;state.minute=480;state.tick=0;}
+  return;
+ }
  crewSurvivalTick();
  medicalRecoveryTick();
  tissueTreatmentTick();
@@ -3637,6 +3642,7 @@ function missionDirectorPanel(loc){
  const director=remote.director,items=missionLog().filter(x=>x.location===loc).slice(-5).reverse();
  let html='<div class="remote-card"><h2>AUTONOMOUS MISSION DIRECTOR</h2><p class="remote-muted">Authority: CAPTAIN / SOL. You may intervene; missions require an objective and a valid opportunity.</p>';
  for(const x of items){html+='<div class="remote-metric"><span>'+esc(x.id+' · '+x.title)+'</span><b>'+esc(x.status.toUpperCase())+'</b></div><p class="remote-muted">'+esc(x.objective)+' · '+esc(x.reason)+(x.outcome?' · Outcome: '+esc(x.outcome):'')+'</p>';
+ if(x.riskAssessment)html+='<p class="remote-muted">'+esc('Dispatch risk index '+Math.round(x.riskAssessment.risk*100)+'/100 · Health '+Math.round(x.riskAssessment.health)+' · Fatigue '+Math.round(x.riskAssessment.fatigue)+(x.debrief?' · Return health '+Math.round(x.debrief.health)+' · Experience '+x.debrief.experience:''))+'</p>';
  if(['approved','active','direct','recall'].includes(x.status))html+='<div class="remote-actions">'+remoteButton('Request SOL assessment','missionexplain:'+x.id)+remoteButton('Order recall','missionrecall:'+x.id)+remoteButton('Abort objective','missionabort:'+x.id)+remoteButton('Take command','missioncommand:'+x.id)+'</div>';
  if(x.status==='direct')html+='<div class="remote-actions">'+remoteButton('Return authority to captain','missionrelease:'+x.id)+'</div>';
  }
@@ -3682,7 +3688,7 @@ function scienceTick(){
 function renderLivingRecap(){
  const r=ICARUSStory.recap(state),j=ICARUSStory.init(state);
  const entries=xs=>xs.map(e=>'<p>'+esc(e.id+' · '+e.message)+'</p>').join('')||'<p class="muted">No qualifying events recorded.</p>';
- $('recap').innerHTML='<p>EPISODE '+r.episode+'</p><p class="muted">'+esc(r.label)+'</p><label><input id="recap-anthology" type="checkbox" '+(j.options.anthology?'checked':'')+'> Anthology ending</label> <label><input id="recap-killcam" type="checkbox" '+(j.options.killCam?'checked':'')+'> Legendary encounter selection</label><h4>Major events, discoveries and failures</h4>'+entries(r.major)+'<h4>Character highlights</h4>'+r.highlights.map(h=>'<p><b>'+esc(h.name)+'</b> · '+h.events+' recorded events</p>'+entries(h.sources)).join('')+'<h4>Relationships</h4>'+entries(r.relationships)+'<h4>Legendary Kill Cam</h4>'+entries(r.legendary)+(r.legendary.length?'<p class="muted">Selection references stored incident records; any playback is a reconstruction.</p>':'<p class="muted">No extraordinary lethal encounter with a matching incident recording qualifies. Environmental deaths do not qualify.</p>')+(r.ending?'<h4>Anthology ending</h4><p>'+esc(r.ending)+'</p>':'');
+ $('recap').innerHTML='<p>EPISODE '+r.episode+'</p><p class="muted">'+esc(r.label)+'</p><label><input id="recap-anthology" type="checkbox" '+(j.options.anthology?'checked':'')+'> Anthology ending</label> <label><input id="recap-killcam" type="checkbox" '+(j.options.killCam?'checked':'')+'> Legendary encounter selection</label><h4>Major events, discoveries and failures</h4>'+entries(r.major)+'<h4>Character highlights</h4>'+r.highlights.map(h=>'<p><b>'+esc(h.name)+'</b> · '+h.events+' recorded events</p>'+entries(h.sources)).join('')+'<h4>Relationships</h4>'+entries(r.relationships)+'<h4>Memorial registry</h4>'+((state.living?.deceased||[]).map(d=>'<p>'+esc(d.name+' · '+d.cause)+'</p>').join('')||'<p class="muted">No recorded crew deaths.</p>')+'<h4>Legendary Kill Cam</h4>'+entries(r.legendary)+(r.legendary.length?'<p class="muted">Selection references stored incident records; any playback is a reconstruction.</p>':'<p class="muted">No extraordinary lethal encounter with a matching incident recording qualifies. Environmental deaths do not qualify.</p>')+(r.ending?'<h4>Anthology ending</h4><p>'+esc(r.ending)+'</p>':'');
  $('recap-anthology').onchange=e=>{j.options.anthology=e.target.checked;save();renderLivingRecap()};
  $('recap-killcam').onchange=e=>{j.options.killCam=e.target.checked;save();renderLivingRecap()};
 }
@@ -3703,6 +3709,7 @@ function sciencePanel(loc){
  for(const c of cases)html+='<div class="remote-metric"><span>'+esc(c.id+' · '+c.item)+'</span><b>'+esc(c.status.toUpperCase())+'</b></div><p class="remote-muted">'+esc((c.classification||'Unclassified')+' · '+c.hazard+' · '+(c.assessment||'Analysis pending'))+'</p>';
  for(const p of (remote.director.science.programs||[]).filter(p=>p.location===loc)){
   html+='<h2>'+esc(p.id+' · '+p.subject)+'</h2><p>'+esc(p.status+(p.blocker?' · Waiting: '+p.blocker:''))+'</p>';
+  for(const d of p.disagreements||[])html+='<p class="remote-muted">'+esc('Scientific review: '+d.reviewers.join(' / ')+' · '+d.issue+' · '+d.resolution)+'</p>';
   for(const h of p.hypotheses)html+='<p>'+esc(h.claim+' · '+h.status+' · Confidence '+Math.round(h.confidence*100)+'%')+'</p><p class="remote-muted">'+esc('Support: '+h.evidenceFor.map(e=>e.caseId+': '+e.observation).join('; ')+' · Against / confounders: '+h.evidenceAgainst.map(e=>e.observation).join('; ')+' · Unknown: '+h.unknowns.join(', '))+'</p>';
   for(const e of (remote.director.science.experiments||[]).filter(e=>e.programId===p.id))html+='<p class="remote-muted">'+esc(e.id+' · '+e.method+' · '+e.status+' · '+e.progress+'/'+e.duration+' min · '+(e.result||e.blocker||'In progress'))+'</p>';
  }

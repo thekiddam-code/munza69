@@ -17,11 +17,12 @@ ROOT=Path(__file__).resolve().parent
 def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('--days',type=int,default=7)
+    parser.add_argument('--seed',type=int,default=1001)
     parser.add_argument('--seed-science',action='store_true',help='Use explicitly synthetic recovered evidence')
     parser.add_argument('--report',default='soak_report.json')
     args=parser.parse_args()
     report_path=Path(args.report).resolve()
-    report={'version':'0.94.9-scientific-reasoning','requested_days':args.days,'status':'starting','passed':False,'checkpoints':[],'errors':[],'started_at':datetime.now(timezone.utc).isoformat()}
+    report={'version':'1.0-living-simulation','requested_days':args.days,'status':'starting','passed':False,'checkpoints':[],'errors':[],'started_at':datetime.now(timezone.utc).isoformat()}
     def write(): report_path.write_text(json.dumps(report,indent=2,default=str),encoding='utf-8')
     write()
     class Quiet(http.server.SimpleHTTPRequestHandler):
@@ -32,6 +33,8 @@ def main():
         with sync_playwright() as pw:
             browser=pw.chromium.launch(headless=True, executable_path=__import__("os").environ.get("ICARUS_CHROMIUM") or None)
             context=browser.new_context()
+            context.add_init_script('window.__icarusSeed='+str(args.seed))
+            report['seed']=args.seed
             page=context.new_page()
             js_errors=[]
             page.on('pageerror',lambda error:js_errors.append({'message':str(error),'stack':getattr(error,'stack',None)}))
@@ -62,6 +65,7 @@ def main():
             report['status']='running';write()
             last=initial
             elapsed=0
+            last_checkpoint=initial
             for day in range(args.days):
                 for _ in range(12):
                     result=page.evaluate('window.__icarusSoak.advance(120)')
@@ -83,9 +87,20 @@ def main():
                     last=result
                 snap=page.evaluate('window.__icarusSoak.snapshot()')
                 issues=[]
-                if len(snap['crew'])!=20: issues.append('Crew count not 20')
+                deceased=(snap.get('living') or {}).get('deceased',[])
+                if len(snap['crew'])+len(deceased)!=20: issues.append('Crew census (survivors plus recorded deceased) not 20')
+                identities=[p['name'] for p in snap['crew']]+[p['name'] for p in deceased]
+                if len(set(identities))!=20:issues.append('Crew identity duplication or resurrection')
+                for p in snap['crew']:
+                    for field in ('health','fatigue','morale'):
+                        if not 0<=p.get('vitals',{}).get(field,-1)<=100:issues.append('Invalid crew '+field)
+                old_science=last_checkpoint.get('director',{}).get('science',{})
+                new_science=snap.get('director',{}).get('science',{})
+                if not {c['id'] for c in old_science.get('cases',[])}<={c['id'] for c in new_science.get('cases',[])}:issues.append('Science case lost across checkpoint')
+                if not {e['id'] for e in old_science.get('experiments',[])}<={e['id'] for e in new_science.get('experiments',[])}:issues.append('Experiment history lost across checkpoint')
+                last_checkpoint=snap
                 if any(not isinstance(p.get('energy'),(int,float)) or not 0<=p['energy']<=100 for p in snap['crew']): issues.append('Invalid crew energy')
-                report['checkpoints'].append({'day':day+1,'elapsed_minutes':elapsed,'episode':snap['episode'],'minute':snap['minute'],'tick':snap['tick'],'archives':len(snap['archived']),'events':len(snap['events']),'issues':issues,'missions':{k:(v or {}).get('phase') for k,v in (snap.get('missions') or {}).items()}})
+                report['checkpoints'].append({'day':day+1,'elapsed_minutes':elapsed,'episode':snap['episode'],'minute':snap['minute'],'tick':snap['tick'],'archives':len(snap['archived']),'events':len(snap['events']),'issues':issues,'surviving_crew':len(snap['crew']),'recorded_deaths':len(deceased),'missions':{k:(v or {}).get('phase') for k,v in (snap.get('missions') or {}).items()}})
                 report['errors'].extend('Day '+str(day+1)+': '+x for x in issues)
                 write()
             history=page.evaluate('window.__icarusSoak.missionHistory')
@@ -138,6 +153,18 @@ def main():
             report['crew_differences']=crew_changes[:30]
             report['persistence']={'saved':saved,'mismatched_fields':differences,'before':{k:before[k] for k in ('episode','minute','tick')},'after':{k:after[k] for k in ('episode','minute','tick')}}
             if differences: report['errors'].append('Save/reload mismatched: '+', '.join(differences))
+            total=initial['minute']-480+elapsed
+            rollover_count=total//9600
+            expected_episode=initial['episode']+rollover_count
+            expected_minute=480+total%9600
+            expected_tick=initial['tick']+elapsed if rollover_count==0 else total%9600
+            report['long_duration_clock']={'expected_episode':expected_episode,'actual_episode':before['episode'],'expected_minute':expected_minute,'actual_minute':before['minute'],'expected_tick':expected_tick,'actual_tick':before['tick']}
+            if (before['episode'],before['minute'],before['tick'])!=(expected_episode,expected_minute,expected_tick):report['errors'].append('Long-duration simulation clock mismatch')
+            if len(before['archived'])!=len(initial['archived'])+rollover_count:report['errors'].append('Archive count mismatch')
+            report['crew_continuity']={'survivors':before['crew'],'deceased':(before.get('living') or {}).get('deceased',[])}
+            report['research_lazarus']=director.get('science',{}).get('lazarusProgram')
+            report['operations']=before.get('operations')
+            report['weekly_recaps']=[a.get('recap') for a in before['archived']]
             # Every 9,600 elapsed minutes from an 08:00 starting clock crosses the weekly boundary.
             if args.days==7 and initial['minute']==480:
                 if before['episode']!=initial['episode']+1:report['errors'].append('Expected weekly episode rollover missing')

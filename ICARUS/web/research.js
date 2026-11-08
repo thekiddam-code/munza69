@@ -61,9 +61,21 @@ function tick(sc,items,env){
  if(active){
   const c=byCase(active.caseId),item=byItem(c),block=gate(c,item,env);
   const p=sc.programs.find(p=>p.id===active.programId);
-  if(block){active.blocker=block;p.status='blocked';p.blocker=block;return;}
+  if(block){
+   active.blocker=block;p.status='blocked';p.blocker=block;
+   active.blockedTicks=(active.blockedTicks||0)+1;
+   if(active.blockedTicks>=240){active.status='failed';active.completed=env.now;active.result='Experiment safely terminated after prolonged '+block+' block; spent supplies are not recovered';p.status='queued';}
+   return;
+  }
+  delete active.blockedTicks;
   const analyst=env.analysts.find(x=>x.name===active.analyst);
-  if(!analyst){active.blocker='analyst';p.status='blocked';p.blocker='analyst';return;}
+  if(!analyst){
+   active.blocker='analyst';p.status='blocked';p.blocker='analyst';
+   active.analystMissingTicks=(active.analystMissingTicks||0)+1;
+   if(active.analystMissingTicks>=60&&env.analysts.length){active.reassignments=active.reassignments||[];active.reassignments.push({from:active.analyst,to:env.analysts[0].name,at:env.now});active.analyst=env.analysts[0].name;delete active.analystMissingTicks;}
+   return;
+  }
+  delete active.analystMissingTicks;
   active.blocker=null;p.blocker=null;p.status='running';active.progress++;
   if(active.progress<active.duration)return;
   active.completed=env.now;
