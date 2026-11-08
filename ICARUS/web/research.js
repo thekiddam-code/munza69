@@ -36,13 +36,23 @@ function sync(sc,items){
 }
 function gate(c,item,env){
  if(!admissible(c,item))return 'custody';
- if(item.volatile||item.contamination>=30)return 'containment';
+ if((item.volatile||item.contamination>=30)&&!(item.status==='quarantined'&&env.containment>=80))return 'containment';
  if(env.lab<55)return 'lab';
  if(!env.analysts.length)return 'analyst';
  return null;
 }
 function tick(sc,items,env){
  sync(sc,items);
+ for(const p of sc.programs){
+  if(!p.disagreements)p.disagreements=[];
+  const cautious=env.analysts.find(a=>(a.caution||0)>15),bold=env.analysts.find(a=>(a.caution||0)<5);
+  if(cautious&&bold&&cautious!==bold&&!p.disagreements.length)p.disagreements.push({caseIds:[...p.caseIds],at:env.now,reviewers:[cautious.name,bold.name],issue:'Interpretation is provisional; reviewers disagree on whether current uncertainty warrants further handling',resolution:'Use conservative containment gates; require independent evidence'});
+ }
+ const bio=sc.programs.filter(p=>p.subject==='biological specimen');
+ if(bio.length){
+  const assays=sc.experiments.filter(e=>e.method==='viability_assay');
+  sc.lazarusProgram={id:'LAZARUS-LONGITUDINAL',caseIds:[...new Set(bio.flatMap(p=>p.caseIds))],stage:assays.some(e=>e.status==='complete'&&e.observations?.recordedActivity>0)?'replication_required':'evidence_collection',unknowns:['Independent viability replication','Identity continuity','Safe reconstruction'],breakthrough:false};
+ }
  if(sc.researchLastTick===env.now)return;
  sc.researchLastTick=env.now;
  const byCase=id=>sc.cases.find(c=>c.id===id);
@@ -58,17 +68,31 @@ function tick(sc,items,env){
   if(active.progress<active.duration)return;
   active.completed=env.now;
   active.observations={caseId:c.id,specimenId:item.id,recordedAt:env.now,integrity:item.integrity,contamination:item.contamination,volatile:Boolean(item.volatile)};
+  const roll=env.random?env.random():0.99;
+  active.uncertaintyRoll=roll;
   // Outcomes are bounded measurements of existing state, never invented discoveries.
   if(!Number.isFinite(item.integrity)||item.integrity<40){active.status='failed';active.result='Sample integrity inadequate; no reliable interpretation';}
+  else if(env.random&&roll<0.18){active.status='no_result';active.result='Instrument noise prevents a reliable result; independent replication required';}
+  else if(active.method==='viability_assay'){
+   const recorded=Number.isFinite(item.recordedActivity)?item.recordedActivity:null;
+   active.status=recorded===null?'no_result':'complete';
+   active.result=recorded===null?'No independent activity measurement exists; viability unresolved':'Recorded activity assay: '+recorded+'; identity and safe reconstruction remain unverified';
+   active.observations.recordedActivity=recorded;
+  }
   else if(active.method==='noninvasive_screen'&&item.contamination>0){active.status='no_result';active.result='Contamination confounds screening; composition remains unresolved';}
   else {active.status='complete';active.result=active.method==='custody_review'?'Recorded specimen identity and custody cross-checked; origin unverified':'Non-invasive screen: no recorded contamination; composition and viability unverified';}
+  if(item.biological&&env.containment<90&&roll<0.08){
+   active.containmentIncident=true;
+   if(env.incident)env.incident(item,active);
+  }
   p.status='queued';sync(sc,items);return;
  }
  for(const p of sc.programs){
   let selected=null,block=null;
   for(const id of p.caseIds){
    const c=byCase(id),item=byItem(c);
-   const pending=methods.find(m=>!sc.experiments.some(x=>x.caseId===id&&x.method===m.id));
+   const availableMethods=items.find(x=>x.id===c?.specimenId)?.biological?[...methods,{id:'viability_assay',minutes:180,cost:5}]:methods;
+   const pending=availableMethods.find(m=>!sc.experiments.some(x=>x.caseId===id&&x.method===m.id));
    if(!pending)continue;
    const reason=gate(c,item,env);
    if(reason){block=reason;continue;}
