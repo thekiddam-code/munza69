@@ -1,0 +1,93 @@
+{
+  "quick": {
+    "Nice shot!": [
+      "2",
+      "1"
+    ],
+    "Great pass!": [
+      "2",
+      "2"
+    ],
+    "Thanks!": [
+      "2",
+      "3"
+    ],
+    "What a save!": [
+      "2",
+      "4"
+    ]
+  },
+  "macros": {
+    "Test Ctrl+A": [
+      "ctrl",
+      "a"
+    ],
+    "Copy": [
+      "ctrl",
+      "c"
+    ],
+    "Paste": [
+      "ctrl",
+      "v"
+    ],
+    "Screenshot": [
+      "win",
+      "shift",
+      "s"
+    ]
+  },
+  "text_chat_open": "t",
+  "team_text_chat_open": "y",
+  "custom_messages": [
+    {
+      "label": "Nice teamwork!",
+      "text": "Nice teamwork!",
+      "channel": "team"
+    },
+    {
+      "label": "One more game?",
+      "text": "One more game?",
+      "channel": "team"
+    },
+    {
+      "label": "GG Boys!",
+      "text": "GG Boys!",
+      "channel": "match"
+    },
+    {
+      "label": "GG team long",
+      "text": "Well boys, twas my Honor to play amongst ye. May the lord bless you gentlest of men.",
+      "channel": "team"
+    },
+    {
+      "label": "LOL!",
+      "text": "LOL!",
+      "channel": "match"
+    },
+    {
+      "label": "LMAO!",
+      "text": "LMAO!",
+      "channel": "match"
+    },
+    {
+      "label": "beep",
+      "text": "beep",
+      "channel": "match"
+    },
+    {
+      "label": "beep beep",
+      "text": "beep beep",
+      "channel": "match"
+    },
+    {
+      "label": "BEEP!",
+      "text": "BEEP!",
+      "channel": "match"
+    },
+    {
+      "label": "BEEP BEEP!!",
+      "text": "BEEP BEEP!!",
+      "channel": "match"
+    }
+  ]
+}

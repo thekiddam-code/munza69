@@ -1,0 +1,1 @@
+ICARUS v0.94.3 weekly continuity test. Run python soak_test.py --days 7 from remote_deck. Test runs its own local HTTP server and writes soak_report.json. Browser test is isolated in a fresh context and does not modify your normal saved episode. Requires Playwright and Chromium. The weekly transition intentionally starts a fresh episode and archives the previous one.

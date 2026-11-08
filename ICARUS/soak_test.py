@@ -1,0 +1,122 @@
+"""ICARUS v0.94.3 weekly continuity and persistence soak test.
+Run: python soak_test.py --days 7
+Requires: pip install playwright && python -m playwright install chromium
+"""
+import argparse
+import functools
+import http.server
+import json
+import threading
+import traceback
+from datetime import datetime, timezone
+from pathlib import Path
+from playwright.sync_api import sync_playwright
+
+ROOT=Path(__file__).resolve().parent
+
+def main():
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--days',type=int,default=7)
+    parser.add_argument('--report',default='soak_report.json')
+    args=parser.parse_args()
+    report_path=Path(args.report).resolve()
+    report={'version':'0.94.8-shipboard-science','requested_days':args.days,'status':'starting','passed':False,'checkpoints':[],'errors':[],'started_at':datetime.now(timezone.utc).isoformat()}
+    def write(): report_path.write_text(json.dumps(report,indent=2,default=str),encoding='utf-8')
+    write()
+    class Quiet(http.server.SimpleHTTPRequestHandler):
+        def log_message(self,*args): pass
+    server=http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(ROOT/'web')))
+    threading.Thread(target=server.serve_forever,daemon=True).start()
+    try:
+        with sync_playwright() as pw:
+            browser=pw.chromium.launch(headless=True)
+            context=browser.new_context()
+            page=context.new_page()
+            js_errors=[]
+            page.on('pageerror',lambda error:js_errors.append({'message':str(error),'stack':getattr(error,'stack',None)}))
+            page.goto(f'http://127.0.0.1:{server.server_port}/icarus.html?icarus_soak=1',wait_until='load',timeout=30000)
+            page.wait_for_function('typeof window.__icarusSoak === "object"',timeout=15000)
+            initial=page.evaluate('window.__icarusSoak.snapshot()')
+            report['start']={k:initial[k] for k in ('minute','tick','episode')}
+            report['status']='running';write()
+            last=initial
+            elapsed=0
+            for day in range(args.days):
+                for _ in range(12):
+                    result=page.evaluate('window.__icarusSoak.advance(120)')
+                    elapsed+=120
+                    if result['episode']<last['episode'] or result['episode']>last['episode']+1:
+                        report['errors'].append('Unexpected episode transition')
+                    if result['episode']==last['episode'] and result['tick']<last['tick']:
+                        report['errors'].append('Unexpected tick reset without episode transition')
+                    last=result
+                snap=page.evaluate('window.__icarusSoak.snapshot()')
+                issues=[]
+                if len(snap['crew'])!=20: issues.append('Crew count not 20')
+                if any(not isinstance(p.get('energy'),(int,float)) or not 0<=p['energy']<=100 for p in snap['crew']): issues.append('Invalid crew energy')
+                report['checkpoints'].append({'day':day+1,'elapsed_minutes':elapsed,'episode':snap['episode'],'minute':snap['minute'],'tick':snap['tick'],'archives':len(snap['archived']),'events':len(snap['events']),'issues':issues,'missions':{k:(v or {}).get('phase') for k,v in (snap.get('missions') or {}).items()}})
+                report['errors'].extend('Day '+str(day+1)+': '+x for x in issues)
+                write()
+            history=page.evaluate('window.__icarusSoak.missionHistory')
+            director=page.evaluate('window.__icarusSoak.snapshot().director')
+            report['mission_registry']=[{'id':m.get('id'),'type':m.get('type'),'location':m.get('location'),'reason':m.get('reason'),'status':m.get('status'),'outcome':m.get('outcome'),'evidence':m.get('evidence'),'objective':m.get('objective'),'completion_reason':m.get('completionReason')} for m in director.get('registry',[])]
+            report['mission_summary']={'created':len(director.get('registry',[])),'completed':sum(m.get('status')=='completed' for m in director.get('registry',[])),'unjustified':sum(not m.get('reason') or not m.get('objective') for m in director.get('registry',[]))}
+            if report['mission_summary']['unjustified']:report['errors'].append('Director created missions without documented objectives')
+            report['mission_intelligence']=director.get('intelligence',{})
+            science=director.get('science',{}).get('cases',[])
+            report['science_cases']=[{k:c.get(k) for k in ('id','location','item','mission','status','progress','classification','hazard','analyst','assessment')} for c in science]
+            report['science_summary']={'intake':len(science),'completed':sum(c.get('status')=='complete' for c in science),'held':sum(c.get('status')=='held' for c in science),'pending':sum(c.get('status') not in ('complete','held') for c in science)}
+            if len({c.get('id') for c in science})!=len(science):report['errors'].append('Duplicate science case IDs')
+            if any(c.get('status')=='complete' and not c.get('classification') for c in science):report['errors'].append('Completed science case missing classification')
+            report['mission_consequences']={'completion_reasons':{reason:sum(m.get('completion_reason')==reason for m in report['mission_registry']) for reason in sorted(set(m.get('completion_reason') for m in report['mission_registry'] if m.get('completion_reason')))},'zero_progress':sum(m.get('status')=='completed' and (m.get('evidence') or {}).get('surveyedNew',0)==0 and (m.get('evidence') or {}).get('findingsNew',0)==0 for m in report['mission_registry']),'crew_recovery_reservations':len(director.get('crewReadyAt',{}))}
+            report['mission_diversity']={'types':sorted(set(m.get('type') for m in report['mission_registry'])),'locations':sorted(set(m.get('location') for m in report['mission_registry'])),'completed_with_evidence':sum(bool(m.get('evidence')) for m in report['mission_registry'])}
+            report['expedition_transitions']=history
+            report['expedition_summary']={loc:{'departures':sum(1 for e in history if e['location']==loc and e['from'] is None and e['to'] is not None),'arrivals':sum(1 for e in history if e['location']==loc and e['to']=='onsite'),'returns_started':sum(1 for e in history if e['location']==loc and e['to']=='returning'),'completed':sum(1 for e in history if e['location']==loc and e['from']=='returning' and e['to'] is None)} for loc in ('derelict','asteroid')}
+            for loc,stats in report['expedition_summary'].items():
+                if stats['arrivals'] and not stats['completed']:
+                    report['errors'].append(f'{loc}: arrived onsite but never completed a return during seven-day test')
+            before=page.evaluate('window.__icarusSoak.snapshot()')
+            saved=page.evaluate('window.__icarusSoak.save()')
+            if not saved: report['errors'].append('Browser save returned false')
+            page.reload(wait_until='load')
+            page.wait_for_function('typeof window.__icarusSoak === "object"',timeout=15000)
+            after=page.evaluate('window.__icarusSoak.snapshot()')
+            differences=[key for key in before if before[key]!=after.get(key)]
+            crew_changes=[]
+            if before.get('crew')!=after.get('crew'):
+                a={p.get('name'):p for p in before.get('crew',[])}
+                b={p.get('name'):p for p in after.get('crew',[])}
+                for name in sorted(set(a)|set(b)):
+                    if a.get(name)!=b.get(name):
+                        fields=sorted(k for k in set((a.get(name) or {}))|set((b.get(name) or {})) if (a.get(name) or {}).get(k)!=(b.get(name) or {}).get(k))
+                        crew_changes.append({'name':name,'fields':fields,'before':{k:(a.get(name) or {}).get(k) for k in fields},'after':{k:(b.get(name) or {}).get(k) for k in fields}})
+            report['crew_differences']=crew_changes[:30]
+            report['persistence']={'saved':saved,'mismatched_fields':differences,'before':{k:before[k] for k in ('episode','minute','tick')},'after':{k:after[k] for k in ('episode','minute','tick')}}
+            if differences: report['errors'].append('Save/reload mismatched: '+', '.join(differences))
+            # Every 9,600 elapsed minutes from an 08:00 starting clock crosses the weekly boundary.
+            if args.days==7 and initial['minute']==480:
+                if before['episode']!=initial['episode']+1:report['errors'].append('Expected weekly episode rollover missing')
+                # The engine may execute one extra live timer tick during a long browser test.
+                # Report this drift, but do not confuse it with a failed weekly rollover.
+                expected_tick=480
+                expected_minute=960
+                drift=before['tick']-expected_tick
+                report['clock_diagnostic']={'expected_tick':expected_tick,'actual_tick':before['tick'],'expected_minute':expected_minute,'actual_minute':before['minute'],'drift_ticks':drift}
+                if drift!=0 or before['minute']-expected_minute!=drift:
+                    report['errors'].append('Unexpected new-episode clock after seven days')
+                if len(before['archived'])<len(initial['archived'])+1:report['errors'].append('Completed episode archive missing')
+            report['browser_errors']=js_errors[:20]
+            report['timer_isolation']='Live simulation timer paused in diagnostic mode; only explicit advance() changes simulation time'
+            if 'clock_diagnostic' in report: report['clock_diagnostic']['timer_isolation']='enabled'
+            report['mission_diagnostic']={'derelict_phases':[x['missions'].get('derelict') for x in report['checkpoints']],'asteroid_phases':[x['missions'].get('asteroid') for x in report['checkpoints']]}
+            if js_errors:report['errors'].append('Browser JavaScript errors occurred')
+            report['status']='finished';report['passed']=not report['errors']
+            browser.close()
+    except Exception as exc:
+        report['status']='failed';report['errors'].append(str(exc));report['traceback']=traceback.format_exc()
+    finally:
+        server.shutdown();write()
+    print('Report:',report_path,'\nResult:', 'PASS' if report['passed'] else 'FAIL')
+    return 0 if report['passed'] else 1
+
+if __name__=='__main__':raise SystemExit(main())

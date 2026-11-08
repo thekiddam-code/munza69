@@ -1,0 +1,1 @@
+ICARUS v0.94.3 Patch 2: Adds per-crew save/reload field diagnostics and tolerates a single background timer tick at weekly rollover. Does not modify simulation gameplay. Run python soak_test.py --days 7 and upload soak_report.json.

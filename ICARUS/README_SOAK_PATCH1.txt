@@ -1,0 +1,1 @@
+ICARUS v0.94.3 Patch 1: Moves test-only diagnostics into the simulation closure. Run python soak_test.py --days 7. The runner starts its own server and writes soak_report.json. No gameplay logic was changed.
