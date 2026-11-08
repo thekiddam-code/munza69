@@ -1,9 +1,9 @@
-# v1.1 progress record
+# v1.1 progress record — acceptance verified
 
-Base: v1.0 commit b97e31a. Current branch: codex/v1.1-continuous-voyage.
+Completed all five integrated milestones from v1.0 commit b97e31a. Runtime source was frozen at 48d37c39a8383812f1c10bd780dcf1553fb13a88.
 
-Implemented: continuous clock and one-time legacy deadline migration; archive-only weekly transitions; natural seeded field sampling and nearest-unvisited routing; uncertain composition/replication assays and evidence revision; two-person expedition manifests, suits, carried supplies, condition/rescue/debrief records; finite production inputs, metabolism, recycling and conservation accounting.
+Verified: 51 unit tests, 19 real-browser adverse/integration cases, syntax checks, and completed seven-, thirty- and ninety-day natural-discovery simulations. All resource audits and save/reload checks passed. The ninety-day run retained 20 crew identities and world state through 12 weekly archives, with no late mission growth. See packaged reports/validation_summary.json and raw reports for actual evidence.
 
-Milestone tests: baseline v1.0 33 unit tests and seven-day browser run passed; current unit suite passed; first integrated seven-day and ninety-day runs passed. A mixed-state browser test crosses a weekly boundary during a mission, experiment, treatment and emergency. Deterministic replay, legacy migration, casualty loss, zero-crew state, resource exhaustion and interrupted research scenarios are covered.
+One earlier ninety-day process was interrupted by an environment reconnection and was not used as a pass; a fresh complete final run replaced it. No acceptance tests remain pending. Physical Windows/tablet/TV integrations and exhaustive visual testing were not run; see KNOWN_LIMITATIONS_v1.1.md.
 
-Final validation in progress: refreshed 7/30/90-day reports against the final integrated mechanics; final adverse/browser suite; syntax checks, source commits and downloadable package. Reports are in work/v11_reports in the execution workspace. Do not assert final acceptance from the earlier development report alone.
+Next batch recommendations, architecture, migration behavior, economy abstractions and remaining scope are documented in ENGINEERING_v1.1.md and KNOWN_LIMITATIONS_v1.1.md.
