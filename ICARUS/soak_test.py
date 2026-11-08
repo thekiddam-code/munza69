@@ -22,7 +22,7 @@ def main():
     parser.add_argument('--report',default='soak_report.json')
     args=parser.parse_args()
     report_path=Path(args.report).resolve()
-    report={'version':'1.0-living-simulation','requested_days':args.days,'status':'starting','passed':False,'checkpoints':[],'errors':[],'started_at':datetime.now(timezone.utc).isoformat()}
+    report={'version':'1.1-continuous-voyage','requested_days':args.days,'status':'starting','passed':False,'checkpoints':[],'errors':[],'started_at':datetime.now(timezone.utc).isoformat()}
     def write(): report_path.write_text(json.dumps(report,indent=2,default=str),encoding='utf-8')
     write()
     class Quiet(http.server.SimpleHTTPRequestHandler):
@@ -94,18 +94,27 @@ def main():
                 for p in snap['crew']:
                     for field in ('health','fatigue','morale'):
                         if not 0<=p.get('vitals',{}).get(field,-1)<=100:issues.append('Invalid crew '+field)
+                audit=page.evaluate('window.__icarusSoak.snapshot().resourceAudit')
+                if audit:issues.append('Resource conservation violation: '+str(audit))
+                if snap['tick']!=initial['tick']+elapsed:issues.append('Monotonic tick mismatch')
+                for loc,m in snap['missions'].items():
+                    if not m:continue
+                    if snap['tick']-m.get('launched',snap['tick'])>2000:issues.append('Expedition deadlock '+loc)
+                    members=m.get('members',[m['crew']])
+                    if len(set(members))!=len(members):issues.append('Duplicate expedition members')
+                    if any(n not in identities for n in members):issues.append('Disappearing expedition crew')
                 old_science=last_checkpoint.get('director',{}).get('science',{})
                 new_science=snap.get('director',{}).get('science',{})
                 if not {c['id'] for c in old_science.get('cases',[])}<={c['id'] for c in new_science.get('cases',[])}:issues.append('Science case lost across checkpoint')
                 if not {e['id'] for e in old_science.get('experiments',[])}<={e['id'] for e in new_science.get('experiments',[])}:issues.append('Experiment history lost across checkpoint')
                 last_checkpoint=snap
                 if any(not isinstance(p.get('energy'),(int,float)) or not 0<=p['energy']<=100 for p in snap['crew']): issues.append('Invalid crew energy')
-                report['checkpoints'].append({'day':day+1,'elapsed_minutes':elapsed,'episode':snap['episode'],'minute':snap['minute'],'tick':snap['tick'],'archives':len(snap['archived']),'events':len(snap['events']),'issues':issues,'surviving_crew':len(snap['crew']),'recorded_deaths':len(deceased),'missions':{k:(v or {}).get('phase') for k,v in (snap.get('missions') or {}).items()}})
+                report['checkpoints'].append({'day':day+1,'elapsed_minutes':elapsed,'episode':snap['episode'],'minute':snap['minute'],'tick':snap['tick'],'archives':len(snap['archived']),'events':len(snap['events']),'issues':issues,'surviving_crew':len(snap['crew']),'recorded_deaths':len(deceased),'stores':page.evaluate('window.__icarusSoak.snapshot().resourceTotals'),'feedstock':snap['economy']['feedstock'],'conservation_errors':audit,'science_cases':len(snap['director']['science']['cases']),'experiments':len(snap['director']['science'].get('experiments',[])),'mission_count':len(snap['director']['registry']),'state_bytes':len(json.dumps(snap)),'missions':{k:(v or {}).get('phase') for k,v in (snap.get('missions') or {}).items()}})
                 report['errors'].extend('Day '+str(day+1)+': '+x for x in issues)
                 write()
             history=page.evaluate('window.__icarusSoak.missionHistory')
             director=page.evaluate('window.__icarusSoak.snapshot().director')
-            report['mission_registry']=[{'id':m.get('id'),'type':m.get('type'),'location':m.get('location'),'reason':m.get('reason'),'status':m.get('status'),'outcome':m.get('outcome'),'evidence':m.get('evidence'),'objective':m.get('objective'),'completion_reason':m.get('completionReason')} for m in director.get('registry',[])]
+            report['mission_registry']=[{'id':m.get('id'),'type':m.get('type'),'location':m.get('location'),'reason':m.get('reason'),'status':m.get('status'),'outcome':m.get('outcome'),'evidence':m.get('evidence'),'objective':m.get('objective'),'completion_reason':m.get('completionReason'),'members':m.get('members'),'team_debrief':m.get('teamDebrief'),'risk_assessment':m.get('riskAssessment')} for m in director.get('registry',[])]
             report['mission_summary']={'created':len(director.get('registry',[])),'completed':sum(m.get('status')=='completed' for m in director.get('registry',[])),'unjustified':sum(not m.get('reason') or not m.get('objective') for m in director.get('registry',[]))}
             if report['mission_summary']['unjustified']:report['errors'].append('Director created missions without documented objectives')
             report['mission_intelligence']=director.get('intelligence',{})
@@ -153,30 +162,32 @@ def main():
             report['crew_differences']=crew_changes[:30]
             report['persistence']={'saved':saved,'mismatched_fields':differences,'before':{k:before[k] for k in ('episode','minute','tick')},'after':{k:after[k] for k in ('episode','minute','tick')}}
             if differences: report['errors'].append('Save/reload mismatched: '+', '.join(differences))
-            total=initial['minute']-480+elapsed
-            rollover_count=total//9600
+            final_minute=initial['minute']+elapsed
+            boundary=initial['clock']['nextEpisodeAt']
+            rollover_count=0 if final_minute<boundary else 1+(final_minute-boundary)//10080
             expected_episode=initial['episode']+rollover_count
-            expected_minute=480+total%9600
-            expected_tick=initial['tick']+elapsed if rollover_count==0 else total%9600
-            report['long_duration_clock']={'expected_episode':expected_episode,'actual_episode':before['episode'],'expected_minute':expected_minute,'actual_minute':before['minute'],'expected_tick':expected_tick,'actual_tick':before['tick']}
-            if (before['episode'],before['minute'],before['tick'])!=(expected_episode,expected_minute,expected_tick):report['errors'].append('Long-duration simulation clock mismatch')
+            report['long_duration_clock']={'expected_episode':expected_episode,'actual_episode':before['episode'],'expected_minute':final_minute,'actual_minute':before['minute'],'expected_tick':initial['tick']+elapsed,'actual_tick':before['tick']}
+            report['clock_diagnostic']=report['long_duration_clock'].copy()
+            if (before['episode'],before['minute'],before['tick'])!=(expected_episode,final_minute,initial['tick']+elapsed):report['errors'].append('Continuous simulation clock mismatch')
             if len(before['archived'])!=len(initial['archived'])+rollover_count:report['errors'].append('Archive count mismatch')
             report['crew_continuity']={'survivors':before['crew'],'deceased':(before.get('living') or {}).get('deceased',[])}
             report['research_lazarus']=director.get('science',{}).get('lazarusProgram')
             report['operations']=before.get('operations')
+            report['economy']=before['economy']
+            report['resource_audit']=page.evaluate('window.__icarusSoak.snapshot().resourceAudit')
+            if report['resource_audit']:report['errors'].append('Final resource conservation failure')
+            report['scientific_conclusions']=director.get('science',{}).get('conclusions',[])
+            report['discovery_statistics']={'programs':len(report['research_programs']),'experiment_outcomes':{status:sum(e['status']==status for e in report['research_experiments']) for status in ('complete','no_result','failed','running')},'confirmed_conclusions':sum(c.get('status')=='confirmed' for c in report['scientific_conclusions']),'contested_conclusions':sum(c.get('status')=='contested' for c in report['scientific_conclusions']),'sampled_cells':sum(bool(room.get('scientificSurvey')) for key in ('remoteExploration','asteroidExploration') for room in (before['world'].get(key) or {}).get('rooms',[]))}
+            report['team_statistics']={'launches':(before.get('teamLog') or {}).get('launches',0),'suits':(before.get('teamLog') or {}).get('suits',0),'lost_suits':(before.get('teamLog') or {}).get('lostSuits',0),'failed_missions':sum(j.get('status')=='failed' for j in report['mission_registry']),'team_sizes':[len(j.get('members') or []) for j in report['mission_registry']]}
+            report['natural_discovery_count']=sum(bool(i.get('source')) for i in (before.get('specimenCustody') or {}).get('items',[]))
+            if args.days>=7 and not args.seed_science and report['natural_discovery_count']==0:report['errors'].append('No natural specimen discovery demonstrated')
             report['weekly_recaps']=[a.get('recap') for a in before['archived']]
-            # Every 9,600 elapsed minutes from an 08:00 starting clock crosses the weekly boundary.
-            if args.days==7 and initial['minute']==480:
-                if before['episode']!=initial['episode']+1:report['errors'].append('Expected weekly episode rollover missing')
-                # The engine may execute one extra live timer tick during a long browser test.
-                # Report this drift, but do not confuse it with a failed weekly rollover.
-                expected_tick=480
-                expected_minute=960
-                drift=before['tick']-expected_tick
-                report['clock_diagnostic']={'expected_tick':expected_tick,'actual_tick':before['tick'],'expected_minute':expected_minute,'actual_minute':before['minute'],'drift_ticks':drift}
-                if drift!=0 or before['minute']-expected_minute!=drift:
-                    report['errors'].append('Unexpected new-episode clock after seven days')
-                if len(before['archived'])<len(initial['archived'])+1:report['errors'].append('Completed episode archive missing')
+            report['bounds']={'cases':len(science),'experiments':len(report['research_experiments']),'missions':len(report['mission_registry']),'journal_records':len((before.get('chronicle') or {}).get('records',[])),'state_bytes':len(json.dumps(before))}
+            if report['bounds']['cases']>100 or report['bounds']['experiments']>600 or report['bounds']['missions']>100:report['errors'].append('Unbounded domain state growth')
+            if args.days>=30:
+                recent=[p['mission_count'] for p in report['checkpoints'][-7:]]
+                report['late_mission_growth']=max(recent)-min(recent)
+                if report['late_mission_growth']>4:report['errors'].append('Repetitive late-voyage mission growth')
             report['browser_errors']=js_errors[:20]
             report['timer_isolation']='Live simulation timer paused in diagnostic mode; only explicit advance() changes simulation time'
             if 'clock_diagnostic' in report: report['clock_diagnostic']['timer_isolation']='enabled'

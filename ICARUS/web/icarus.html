@@ -1038,7 +1038,7 @@ body .wy-camera-grid button.selected::after{
 </style></head><body><header><div><small>WEYLAND-YUTANI // AUTONOMOUS BRIDGE</small><h1>ICARUS</h1><small id="status">LIVING SHIP · INITIALIZING</small></div><div class="controls"><button id="pause">⏸ Pause</button><button id="speed">Speed 1×</button><button id="save">Save</button><button id="followoff">Clear Follow</button><button id="settingsopen" aria-haspopup="dialog">⚙ Settings</button><button id="credits">Sunday Credits</button><button id="reset">New Episode</button></div></header><nav class="location-nav" aria-label="Location selector"><button data-location="icarus" class="active">◈ ICARUS</button><button data-location="derelict">▤ WY DERELICT</button><button data-location="asteroid">◉ ASTEROID</button><span class="remote-muted" style="align-self:center">SOL / REMOTE OPERATIONS · SHARED SHIP CLOCK</span></nav><div id="remote-workspace" class="remote-workspace" aria-live="polite"></div><main class="layout" id="icarus-main"><div class="left"><section class="panel"><h2>LIVE VESSEL CUTAWAY / THREE DECKS</h2><div class="cutaway-toolbar"><label for="cutawaymode">CUTAWAY LAYOUT</label><select id="cutawaymode" aria-label="Cutaway layout"><option value="classic">Classic grid</option><option value="proportional">Proportional rooms</option><option value="hull">Proportional in ship hull</option><option value="deckplan">Two-sided proportional deck plan</option></select><span id="cutawayinfo" class="muted"></span></div><div class="stats"><div class="stat"><b id="clock">08:00</b><span>SHIP TIME</span></div><div class="stat"><b id="population">20</b><span>CREW</span></div><div class="stat"><b id="power">100%</b><span>POWER</span></div><div class="stat"><b id="coffee">BROKEN</b><span>COFFEE DISPENSER</span></div><div class="stat"><b id="air">100%</b><span>AIR QUALITY</span></div><div class="stat"><b id="alert">NORMAL</b><span>SHIP ALERT</span></div></div><p class="muted">Tap a character to follow their routine. Tap a room to inspect it. Crew now traverse each route segment in phases. At high simulation speed, follow the recorded route to inspect the journey.</p><div id="focusbar" aria-live="polite"></div><div id="liveincident" class="liveincident"></div><details class="panel" id="holo-panel" open><summary>◇ HOLOGRAPHIC SHIP MAP · 3D TACTICAL VIEW</summary><p class="muted">Offline interactive projection · drag to orbit · pinch to zoom · select rooms or crew</p><canvas id="holo-canvas" aria-label="Interactive three dimensional holographic ship map"></canvas><div class="controls holo-controls"><label>Deck separation <output id="holo-separation-value">130%</output> <input id="holo-explode" type="range" min="0" max="250" value="130"></label><label>Visible decks <select id="holo-deck"><option value="all">All decks</option><option value="A">Deck A</option><option value="B">Deck B</option><option value="C">Deck C</option></select></label><label><input type="checkbox" id="holo-detail" checked> Architectural detail</label><label><input type="checkbox" id="holo-crew" checked> Crew lights</label><label><input type="checkbox" id="holo-damage" checked> Damage lights</label><label><input type="checkbox" id="holo-atmosphere" checked> Atmosphere overlay</label><label><input type="checkbox" id="holo-routes" checked> Selected crew route</label><label><input type="checkbox" id="holo-access" checked> Access points</label><button id="holo-reset">Reset view</button></div><div id="holo-selection" class="muted" aria-live="polite">Drag to rotate · pinch to zoom · tap a marker to inspect</div><p class="muted">Cyan: crew · amber: maintenance · red: emergency or critical damage · dashed gold: selected crew route · red X: jammed hatch. When docked, the WY Derelict appears in amber with limited sensor coverage.</p></details><details class="panel compact-panel" id="bulkhead-panel"><summary>▣ BULKHEAD & HATCH CONTROL · SOL ACCESS NETWORK</summary><div id="bulkhead-controls" data-deck="A"></div></details><details class="panel compact-panel" id="atmosphere-panel"><summary>◉ ATMOSPHERIC CONTROL · PRESSURE / OXYGEN / HEAT</summary><div id="atmosphere-controls"></div></details><div class="viewport" id="viewport"></div><div class="legend"><span>■ Engineering</span><span>■ Security</span><span>■ Science</span><span>■ Medical</span><span>■ Other</span><span>◌ Traveling</span></div></section><section class="panel"><h2>BRIDGE / FORWARD VIEWPORT & DOCKING</h2><div id="bridge-docking"></div></section><section class="panel"><h2>SOL / SHIP OPERATIONS</h2><div id="soldirectives" class="detail"></div></section><details class="panel compact-panel system-dependencies"><summary>SYSTEM DEPENDENCIES</summary><div id="cascades" class="detail"></div></details><details class="panel compact-panel crew-impact"><summary>CREW IMPACT</summary><div id="crewimpact" class="detail"></div></details><section class="panel"><h2>BEHAVIORAL INDEPENDENCE / CREW PSYCHOLOGICAL CLIMATE</h2><div id="horrormonitor" class="detail"></div></section><details class="panel compact-panel supplies"><summary>SUPPLIES & WORKSTATIONS</summary><div id="interactions" class="detail"></div></details><details class="panel compact-panel disputes"><summary>INTERPERSONAL DYNAMICS</summary><div id="conflicts" class="detail"></div></details><details class="panel compact-panel audit" hidden><summary>INTERNAL SOL AUDIT</summary><div id="decisions" class="detail"></div></details><section class="panel"><h2>ROOM INSPECTOR</h2><div id="roomdetail" class="detail"></div></section><section class="panel"><h2>ACTIVE INCIDENT MONITOR · 7 FAULT TYPES</h2><div id="emergencies" class="detail"></div></section><details class="panel compact-panel replays"><summary>INCIDENT RECORDINGS</summary><div id="replays" class="detail"></div></details><details class="panel compact-panel world"><summary>OPERATIONAL ENVIRONMENT</summary><div id="world" class="detail"></div></details></div><div class="right"><section class="panel"><h2>PERSONNEL / OBSERVATION</h2><div id="detail" class="detail"></div></section><section class="panel"><h2>SECURITY CAMERA / LIVING ROOM VIEW</h2><div class="cam-toolbar"><button id="camfollow">Follow crew</button><button id="camroom">Lock room</button><button id="camreview">Review recorded</button><button id="camcycle" title="Switch cameras within this compartment">CAM A</button><button id="camscan" title="Pan across large rooms">SCAN ON</button><button id="camzoom" title="Magnify the room camera">🔎 Zoom: 1×</button></div><div id="camstatus" class="muted"></div><div id="camcoverage" class="muted" style="margin:5px 0;color:#e5ca8e"></div><div class="camera-scene" id="camera-scene"><div class="cam-world" id="cam-world"><div class="cam-back"><div class="cam-door left-door">◀ CORRIDOR</div><div class="cam-console">▥</div><div class="cam-door right-door">CORRIDOR ▶</div>'+cameraAtmosphere(room,Boolean(fault),Number(f.condition??100))+'<div class="cam-floor"></div><div id="campeople"></div><div class="cam-scan"></div></div></div><p class="muted" style="font-size:11px">Large rooms use multiple viewpoints. Follow mode shows corridor and ladder transitions for traveling crew. Movement uses per-crew route progress and doorway crossing. Corridors remain schematic rather than full ship coordinates. Camera coverage is not yet occlusion-aware. Procedural room scenery responds to simulated equipment condition and alerts. Crew work poses and handheld props reflect current tasks. Repair stages now follow actual incident progress; tool placement and exact footsteps remain illustrative.</p></section><details class="panel compact-panel movement"><summary>MOVEMENT RECORDINGS</summary><div id="observer" class="observer"></div></details><section class="panel"><h2>PERSONNEL / TAP TO FOLLOW</h2><div class="roster" id="crew"></div></section><section class="panel"><h2>AUTHENTIC EVENT JOURNAL</h2><div class="controls" style="margin-bottom:8px"><button id="filterall" class="active">All</button><button id="filterlittle">Little moments</button><button id="filtersocial">Social</button><button id="filtersystem">Systems</button><button id="filteremergency">Emergencies</button></div><div class="eventlog" id="log"></div></section></div></main><div class="footer">ICARUS v1.1 · NIGHTGRID / CLOSED OUTLINES · OFFLINE SIMULATION · LOCAL SAVES</div><div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Sunday recap"><div><button id="close" style="float:right">Close ✕</button><small>WEYLAND-YUTANI CORPORATION PRESENTS</small><h3>ICARUS · WEEKLY REVIEW</h3><div id="recap"></div></div></div><div class="modal" id="settingsmodal" role="dialog" aria-modal="true" aria-label="ICARUS settings"><div><button id="settingsclose" style="float:right">Close ✕</button><small>ICARUS / CONFIGURATION</small><h3>Settings · v0.87</h3><p class="muted">Settings, save management, and development notes. Your simulation state is preserved.</p><div class="settings-line"><label for="visualmode">51st State Mode</label><button id="visualmode" aria-pressed="false">🇨🇦 51st State: OFF</button></div><p class="muted">A hidden visual easter egg, available only from Settings. Applies to live cameras and incident replays.</p><details class="save-manager" id="savemanager"><summary>▣ SAVE MANAGEMENT / BACKUP & RESTORE</summary><p class="muted">Export a portable backup of your current episode, crew, history and expedition data. The file is saved to your device. Import replaces the current simulation only after confirmation.</p><div class="save-meta" id="savestatus">Checking save...</div><div class="controls" style="margin:12px 0;flex-wrap:wrap"><button id="exportbackup">⬇ Export JSON backup</button><button id="importbackup">⬆ Import JSON backup</button><input id="backupfile" type="file" accept=".json,application/json" style="display:none" aria-label="Choose ICARUS save backup"></div><div id="backupmessage" role="status" aria-live="polite" class="muted"></div><details><summary>Local recovery checkpoints</summary><p class="muted">Up to three local checkpoints are retained where browser storage permits. Download an exported JSON file for a safer backup.</p><div id="checkpointlist"></div><div class="controls"><button id="checkpointnow">Create checkpoint</button></div></details></details><details class="save-manager" id="episodearchives"><summary>▤ MISSION ARCHIVES / WEEKLY STORIES</summary><p class="muted">The current world is temporary. Episode highlights are preserved when a week completes or when you manually start a new episode. Archives are included in full JSON backups.</p><div id="archivecount" class="save-meta"></div><div class="controls" style="margin:10px 0"><button id="exportarchives">⬇ Export Archives JSON</button></div><div id="archivelist"></div></details><details class="idea-vault" id="ideavault"><summary>✎ IDEA VAULT / NOTES & SUNDAY CLIPS</summary><p class="muted">Private development notes and custom Sunday clip concepts. Notes stay separate from episode resets and are included in JSON backups. Clips are ideas only; this version does not automatically play them.</p><div class="idea-grid"><label>Title<input id="ideatitle" maxlength="120" placeholder="A new idea..." /></label><label>Category<select id="ideacategory"><option>Sunday clip</option><option>Worldbuilding</option><option>Mechanic</option><option>Character</option><option>Other</option></select></label></div><label>Note<textarea id="ideabody" maxlength="12000" placeholder="Write it down before it disappears..."></textarea></label><div class="idea-actions"><button id="ideasave">＋ Save idea</button><button id="ideacancel" style="display:none">Cancel edit</button><button id="exportideas">⬇ Export Notes</button><button id="importideas">⬆ Import Notes</button><input id="ideasfile" type="file" accept=".json,application/json" style="display:none"></div><div id="ideamessage" role="status" aria-live="polite" class="muted"></div><div id="idealist"></div></details></div></div><div class="modal" id="replaymodal" role="dialog" aria-modal="true" aria-label="Incident replay"><div><button id="replayclose" style="float:right">Close ✕</button><small>WY-NET / INCIDENT RECONSTRUCTION</small><h3 id="replaytitle">INCIDENT</h3><div id="replaystage" class="replay-stage"></div><p id="replaycaption" class="muted"></p><input type="range" id="replayseek" min="0" max="0" value="0" aria-label="Replay position"><div class="replay-actions"><button id="replayplay">▶ Play</button><button id="replayback">◀ Frame</button><button id="replayforward">Frame ▶</button><button id="replayspeed">Speed 1×</button></div><p class="muted">RECONSTRUCTION from recorded simulation states, not authentic camera footage. Live simulation continues independently.</p></div></div>
 
 <div id="rd-host"><b>◈ REMOTE DECK BRIDGE</b> <span id="rd-bridge-status">Offline</span><div id="rd-host-pair"><input id="rd-host-key" type="password" placeholder="PC host key"><button id="rd-connect">Connect</button></div><small>Open through PC host :8765. Key appears in PC server console.</small></div>
-<script src="voyage.js"></script><script src="story.js"></script><script src="living.js"></script><script src="operations.js"></script><script src="research.js"></script><script>
+<script src="voyage.js"></script><script src="story.js"></script><script src="living.js"></script><script src="economy.js"></script><script src="teams.js"></script><script src="operations.js"></script><script src="discovery.js"></script><script src="research.js"></script><script>
 (()=>{'use strict';
 let entropy={seed:(Date.now()>>>0)};
 try{const saved=JSON.parse(localStorage.getItem('icarus-v02'));if(saved?.entropy)entropy.seed=saved.entropy.seed;}catch{}
@@ -1707,8 +1707,8 @@ function interactionTick(){
  const occupied={};for(const p of state.crew){if(p.route.length||p.emergencyId||p.taskMinutes<=0)continue;if(p.interaction==='working'&&stationNeeded(p))occupied[p.room]=(occupied[p.room]||0)+1}
  for(const p of state.crew){
   if(p.rescuePatient||p.emergencyId||p.route.length||p.taskMinutes<=0){if(p.interaction==='working')p.interaction=null;continue}
-  if(p.interaction==='collecting'&&p.room==='C04'){const key=p.neededSupply;if(key&&i.supplies[key]>0){i.supplies[key]--;p.carrying=key;p.interaction='returning';p.route=path(p.room,p.workRoom);p.target=p.workRoom;p.task='Returning with '+key;interactionNotice(p.name+' collected '+key+' for '+roomName(p.workRoom)+'.',p.name)}else{p.interaction='waiting-supply';p.task='Waiting for '+key+' delivery';p.taskMinutes=Math.max(p.taskMinutes,20)}continue}
-  if(p.interaction==='waiting-supply'){if(i.supplies[p.neededSupply]>0){p.interaction='collecting';p.route=path(p.room,'C04');p.target='C04';p.task='Collecting '+p.neededSupply}else p.taskMinutes=Math.max(p.taskMinutes,15);continue}
+  if(p.interaction==='collecting'&&p.room==='C04'){const key=p.neededSupply;if(key&&i.supplies[key]>=1){i.supplies[key]--;ICARUSEconomy.externalConsumption(state,key,1,'workstation or meal');p.carrying=key;p.interaction='returning';p.route=path(p.room,p.workRoom);p.target=p.workRoom;p.task='Returning with '+key;interactionNotice(p.name+' collected '+key+' for '+roomName(p.workRoom)+'.',p.name)}else{p.interaction='waiting-supply';p.task='Waiting for '+key+' delivery';p.taskMinutes=Math.max(p.taskMinutes,20)}continue}
+  if(p.interaction==='waiting-supply'){if(i.supplies[p.neededSupply]>=1){p.interaction='collecting';p.route=path(p.room,'C04');p.target='C04';p.task='Collecting '+p.neededSupply}else p.taskMinutes=Math.max(p.taskMinutes,15);continue}
   if(p.interaction==='returning'&&p.room===p.workRoom){p.interaction='working';p.task=p.goal;p.target=p.workRoom;occupied[p.room]=(occupied[p.room]||0)+1;continue}
   if(p.interaction==='waiting-station'){const cap=stationCapacity[p.room]||3;if((occupied[p.room]||0)<cap){p.interaction='working';p.task=p.goal;occupied[p.room]=(occupied[p.room]||0)+1;interactionNotice(p.name+' took an available workstation in '+roomName(p.room)+'.',p.name)}else p.taskMinutes=Math.max(p.taskMinutes,12);continue}
   if(p.interaction==='working')continue;
@@ -1716,11 +1716,11 @@ function interactionTick(){
   const cap=stationCapacity[p.room]||3;
   if((occupied[p.room]||0)>=cap){p.interaction='waiting-station';p.task='Waiting for workstation';p.taskMinutes=Math.max(p.taskMinutes,12);if(!p.waitLogged){interactionNotice(p.name+' is waiting for a workstation in '+roomName(p.room)+'.',p.name);p.waitLogged=true}continue}
   const supply=taskSupply(p);
-  if(supply&&!p.carrying){p.neededSupply=supply;p.workRoom=p.room;p.waitLogged=false;if(i.supplies[supply]>0){p.interaction='collecting';p.route=path(p.room,'C04');p.target='C04';p.task='Collecting '+supply;interactionNotice(p.name+' interrupted '+p.goal.toLowerCase()+' to fetch '+supply+'.',p.name)}else{p.interaction='waiting-supply';p.task='Waiting for '+supply+' delivery';interactionNotice(p.name+' cannot begin work: '+supply+' supplies exhausted.',p.name)}continue}
+  if(supply&&!p.carrying){p.neededSupply=supply;p.workRoom=p.room;p.waitLogged=false;if(i.supplies[supply]>=1){p.interaction='collecting';p.route=path(p.room,'C04');p.target='C04';p.task='Collecting '+supply;interactionNotice(p.name+' interrupted '+p.goal.toLowerCase()+' to fetch '+supply+'.',p.name)}else{p.interaction='waiting-supply';p.task='Waiting for '+supply+' delivery';interactionNotice(p.name+' cannot begin work: '+supply+' supplies exhausted.',p.name)}continue}
   p.interaction='working';occupied[p.room]=(occupied[p.room]||0)+1;
  }
 }
-function renderInteractions(){const i=state.interactions;if(!i)return;const waiting=state.crew.filter(p=>p.interaction?.startsWith('waiting'));const collecting=state.crew.filter(p=>p.interaction==='collecting'||p.interaction==='returning');$('interactions').innerHTML='<div class="stats">'+Object.entries(i.supplies).map(([k,v])=>'<div class="stat"><b>'+v+' / '+i.max[k]+'</b><span>'+esc(k.toUpperCase())+'</span></div>').join('')+'</div><p class="muted">Quartermaster transfers finite cargo reserves every 45 simulated minutes. Workstations have limited capacity. Emergency responders retain priority over routine work.</p><b>Waiting: '+waiting.length+' · Fetching supplies: '+collecting.length+'</b><div class="history">'+(i.recent.slice(0,8).map(esc).join('<br>')||'No interruptions recorded yet.')+'</div>'}
+function renderInteractions(){const i=state.interactions;if(!i)return;const waiting=state.crew.filter(p=>p.interaction?.startsWith('waiting'));const collecting=state.crew.filter(p=>p.interaction==='collecting'||p.interaction==='returning');$('interactions').innerHTML='<div class="stats">'+Object.entries(i.supplies).map(([k,v])=>'<div class="stat"><b>'+Number(v).toFixed(1)+' / '+i.max[k]+'</b><span>'+esc(k.toUpperCase())+'</span></div>').join('')+'</div><p class="muted">Quartermaster transfers finite cargo reserves every 45 simulated minutes. Workstations have limited capacity. Emergency responders retain priority over routine work.</p><b>Waiting: '+waiting.length+' · Fetching supplies: '+collecting.length+'</b><div class="history">'+(i.recent.slice(0,8).map(esc).join('<br>')||'No interruptions recorded yet.')+'</div>'}
 function assignLazarusResearcher(p){
  if(!p.lazarusAssigned||p.job!=='Scientist'||p.expeditionAway||p.survivalIncapacitated)return false;
  const a=atmosphereRoom('B05');
@@ -2330,7 +2330,7 @@ function tissueTreatmentTick(){
  patient.energy=clamp(patient.energy+2.1,0,100);
  unit.condition=clamp(unit.condition-.07,0,100);
  if(patient.tissueProgress>=12){
-  patient.tissueProgress=0;unit.cartridges--;unit.cycles++;unit.activePatient=null;
+  patient.tissueProgress=0;unit.cartridges--;ICARUSEconomy.externalConsumption(state,'medical',1,'regenerative cycle');unit.cycles++;unit.activePatient=null;
   if(patient.survivalIncapacitated){patient.survivalIncapacitated=false;patient.medicalTreatment=0;patient.task='Recovering after regenerative treatment';patient.taskMinutes=40;}
   log('MEDICAL: '+patient.name+' completed regenerative tissue-repair cycle. Sterile cartridge consumed.','system',patient.name);
  }
@@ -2490,7 +2490,7 @@ function bindLazarusPanel(){
   l.subjects.push({id:l.nextId++,name,deceased:true,decay:Number($('lazarus-decay').value),foreign:Number($('lazarus-foreign').value),temporal:Number($('lazarus-temporal').value),origin:'Research intake'});
   log('LAZARUS: Deceased specimen '+name+' catalogued for restricted study.','system');render();lazarusFeedback('Specimen registered: '+name);
  };
- const service=$('lazarus-service');if(service)service.onclick=()=>{lazarusNeedsRefresh=true;const l=lazarus();l.condition=Math.min(100,l.condition+10);l.containment=Math.min(100,l.containment+8);l.biomass=Math.min(20,l.biomass+2);log('LAZARUS: Research apparatus serviced; two biomass units provisioned.','system');render();lazarusFeedback('Chamber serviced. Two biomass units added.')};
+ const service=$('lazarus-service');if(service)service.onclick=()=>{lazarusNeedsRefresh=true;const l=lazarus();if(ICARUSEconomy.totals(state).lab<2){lazarusFeedback('Service requires two laboratory material units.');return;}ICARUSEconomy.consume(state,'lab',2,'Lazarus service / biomass provision');l.condition=Math.min(100,l.condition+10);l.containment=Math.min(100,l.containment+8);l.biomass=Math.min(20,l.biomass+2);log('LAZARUS: Research apparatus serviced; two biomass units provisioned.','system');render();lazarusFeedback('Chamber serviced using carried supplies.')};
 }
 
 function medicalRecoveryTick(){
@@ -2596,6 +2596,7 @@ function step(){ICARUSVoyage.advance(state);dockingTick();
  environmentalTick();
  atmosphereTick();
  autonomousAtmosphereResponse();
+ economyTick();
  livingTick();
  if(!state.crew.length){
   voyageBoundary();
@@ -2615,8 +2616,8 @@ function step(){ICARUSVoyage.advance(state);dockingTick();
  solTick();
  crewPsychTick();
  socialFearTick();experienceTick();behavioralConsequencesTick();socialRecoveryTick();groupDynamicsTick();politicsTick();
- for(let p of state.crew){if(p.expeditionAway||p.survivalIncapacitated)continue;physicalCrewTick(p);if(p.route.length){advanceCrewTravel(p);continue}
-if(p.maintenanceRoom&&state.maintenance?.orders[p.maintenanceRoom]&&!p.emergencyId)p.taskMinutes=Math.max(p.taskMinutes,30);if(p.taskMinutes<=0){p.interaction=null;p.carrying=null;if(state.conflict?.active.some(d=>d.a===p.name||d.b===p.name)){p.taskMinutes=6;continue}if(p.emergencyId&&state.emergencies[p.emergencyId]?.status==='active'){p.taskMinutes=5;p.task='Emergency repair: '+state.emergencies[p.emergencyId].label;continue}assign(p);continue}if(p.interaction==='waiting-station'||p.interaction==='waiting-supply')continue;p.taskMinutes--;if(p.task==='Resting')p.energy=clamp(p.energy+1.2,0,100);else p.energy=clamp(p.energy-.12,0,100);if(p.task.includes('socializing')||p.task.includes('meal'))p.social=clamp(p.social+1,0,100);else p.social=clamp(p.social-.07,0,100);if(p.room===p.target&&!p.route.length){if(p.task==='Eating a meal'&&capability('galley')>=48)p.hunger=clamp(p.hunger-2.2,0,100);if(p.task==='Collecting emergency rations'&&p.room==='C04')p.hunger=clamp(p.hunger-1.3,0,100);if(p.task==='Relocating from poor air'&&p.room==='A08')p.stress=clamp(p.stress-.5,0,100)}
+ for(let p of state.crew){if(p.expeditionAway||p.survivalIncapacitated)continue;if(p.researchAssignment&&!p.emergencyId&&!p.survivalDestination&&!p.route.length&&(remote.director.science.experiments||[]).some(e=>e.id===p.researchAssignment&&e.status==='running')){p.energy=clamp(p.energy-.03,0,100);continue;}p.researchAssignment=null;physicalCrewTick(p);if(p.route.length){advanceCrewTravel(p);continue}
+if(p.maintenanceRoom&&state.maintenance?.orders[p.maintenanceRoom]&&!p.emergencyId)p.taskMinutes=Math.max(p.taskMinutes,30);if(p.taskMinutes<=0){p.interaction=null;p.carrying=null;if(state.conflict?.active.some(d=>d.a===p.name||d.b===p.name)){p.taskMinutes=6;continue}if(p.emergencyId&&state.emergencies[p.emergencyId]?.status==='active'){p.taskMinutes=5;p.task='Emergency repair: '+state.emergencies[p.emergencyId].label;continue}assign(p);continue}if(p.interaction==='waiting-station'||p.interaction==='waiting-supply')continue;p.taskMinutes--;if(p.task==='Resting')p.energy=clamp(p.energy+1.2,0,100);else p.energy=clamp(p.energy-.12,0,100);if(p.task.includes('socializing')||p.task.includes('meal'))p.social=clamp(p.social+1,0,100);else p.social=clamp(p.social-.07,0,100);if(p.room===p.target&&!p.route.length){if(p.task==='Eating a meal'&&capability('galley')>=48)p.hunger=clamp(p.hunger-2.2*(state.economy.rationFactor||1),0,100);if(p.task==='Collecting emergency rations'&&p.room==='C04')p.hunger=clamp(p.hunger-1.3,0,100);if(p.task==='Relocating from poor air'&&p.room==='A08')p.stress=clamp(p.stress-.5,0,100)}
 if(p.name==='Frank Morrow'&&p.task==='Repairing coffee dispenser'&&!state.coffee.working&&state.tick%5===0){state.coffee.progress+=1+rnd(3);if(state.coffee.progress>=100){state.coffee.working=true;state.coffee.condition=86;log('Frank repaired the coffee dispenser. For the first time, it produces real coffee.','little',p.name);p.mood=100;p.memories.push('Finally repaired the coffee machine');p.task='Enjoying a cup of coffee';p.taskMinutes=12}else if(state.tick%25===0)log('Frank tested the dispenser. It still produces only hot water.','routine',p.name)}
 // Equipment work requires being physically present, not merely holding an assignment.
 if(state.tick%5===0&&p.job==='Engineer'&&p.room===p.target&&!p.route.length){
@@ -3341,7 +3342,7 @@ function normalizeRemoteCore(raw){
   proposals:Array.isArray(r.proposals)?r.proposals:[],director:{...remoteDefaults.director,...(r.director||{}),registry:Array.isArray(r.director?.registry)?r.director.registry:[],lastLaunch:{...remoteDefaults.director.lastLaunch,...(r.director?.lastLaunch||{})},interventions:Array.isArray(r.director?.interventions)?r.director.interventions:[],science:{...remoteDefaults.director.science,...(r.director?.science||{}),cases:Array.isArray(r.director?.science?.cases)?r.director.science.cases:[]},intelligence:{...remoteDefaults.director.intelligence,...(r.director?.intelligence||{})}}};
 }
 const remote=normalizeRemoteCore(state.remoteCore);
-state.remoteCore=remote;ICARUSVoyage.migrate(state);
+state.remoteCore=remote;ICARUSVoyage.migrate(state);ICARUSEconomy.init(state);ICARUSTeams.migrate(state);
 if(coreRecovered){log('RECOVERY: Primary browser save invalid; previous verified snapshot restored. Export a JSON backup now.','system');save()}
 const remoteViews={derelict:['Deck Map','Recovered Cameras','Expedition','Power Grid','Discoveries'],asteroid:['Surface Map','Expedition','Sensors','Facilities','Anomalies']};
 const __icarusSoakMode=new URLSearchParams(location.search).get('icarus_soak')==='1';
@@ -3431,6 +3432,7 @@ function specimenAcquire(loc,finding,p){
  const item={id:'FIELD-'+c.nextId++,name:finding.item,origin:loc,foundBy:p.name,biological,volatile,
   status:'field secured',location:loc,integrity:100,contamination:volatile?Math.round(12+simRandom()*38):0,
   concealed:false,opened:false,age:0};
+ if(finding.source){item.source=finding.source;item.properties=finding.properties;item.biological=finding.biological;item.integrity=finding.integrity;item.contamination=finding.contamination;item.volatile=finding.biological;item.bulk=finding.bulk;}
  finding.custodyId=item.id;c.items.push(item);specimenRecord(item,'Secured at source',p.name);
 }
 function specimenReturn(loc,p){
@@ -3497,8 +3499,8 @@ function asteroidExploreDecision(){
  if(p.energy<23||p.stress>89||w.returnRequested||(signal==='LOST'&&p.energy<43&&learning.caution>12)){m.phase='returning';m.progress=0;w.returnRequested=false;report('return transit initiated');return}
  const choices=asteroidNeighbors(w.position).map(id=>w.rooms[id]).filter(r=>!r.blocked);
  choices.sort((a,b)=>Number(a.visited)-Number(b.visited)||a.id-b.id);
- const next=choices[0];if(!next)return;
- next.known=true;next.visited=true;w.position=next.id;
+ const nextId=ICARUSDiscovery.nextStep(w,asteroidNeighbors);const next=nextId===null?null:w.rooms[nextId];if(!next){m.phase='returning';m.progress=0;return;}
+ next.known=true;next.visited=true;w.position=next.id;naturalSurvey('asteroid',next,m,p,w);
  p.task='Surveying asteroid: '+next.name;
  if(next.hazard)report('hazard encountered: '+next.hazard,'emergency');else if(simRandom()<.25)report('entered '+next.name);
 }
@@ -3529,7 +3531,7 @@ function exploreDecision(){
  if(missionFieldAssessment('derelict',m))return;
  if(m.onsiteMinutes>=720||((m.onsiteMinutes>=180)&&state.crew.find(x=>x.name===m.crew)?.energy<35)){m.phase='returning';m.progress=0;explorationWorld().returnRequested=false;log(m.crew+' initiated return from derelict due to endurance or crew readiness.','system');return;}
  const w=explorationWorld(),p=state.crew.find(x=>x.name===m.crew);if(!p)return;
- w.step++;
+ w.step+=m.workRate||1;
  if(w.step<14)return;w.step=0;
  const here=w.rooms[w.position],traits=socialTraits(p),learning=livedExperience(p);
  if(here.hazard){p.stress=clamp((p.stress||0)+2,0,100);p.energy=clamp(p.energy-1,0,100);if(simRandom()<.2)learnFrom(p,'danger','derelict',1,'Encountered '+here.hazard+' aboard the derelict')}
@@ -3548,9 +3550,9 @@ function exploreDecision(){
  if(p.energy<23||p.stress>89||w.returnRequested){m.phase='returning';m.progress=0;w.returnRequested=false;log(m.crew+' began return '+(m.transfer==='collar'?'through the docking collar':'transit')+' from the derelict.','system');return}
  const choices=derelictNeighbors(w.position).map(id=>w.rooms[id]).filter(r=>!r.blocked);
  choices.sort((a,b)=>Number(a.visited)-Number(b.visited)||a.id-b.id);
- const target=choices[0];if(!target)return;
+ const nextId=ICARUSDiscovery.nextStep(w,derelictNeighbors);const target=nextId===null?null:w.rooms[nextId];if(!target){m.phase='returning';m.progress=0;return;}
  // An unknown adjacent bulkhead is revealed only when physically approached.
- target.known=true;target.visited=true;w.position=target.id;
+ target.known=true;target.visited=true;w.position=target.id;naturalSurvey('derelict',target,m,p,w);
  w.history.unshift({time:stamp(),room:target.name,event:'Entered compartment'});w.history=w.history.slice(0,90);
  p.task='Surveying derelict: '+target.name;
  if(target.hazard)log(m.crew+' encountered '+target.hazard+' in '+target.name+'.','emergency');
@@ -3614,8 +3616,8 @@ function remoteClock(){return stamp()}
 function expedition(loc){return remote.missions[loc]}
 function expeditionPanel(loc){let m=expedition(loc),available=state.crew.filter(p=>!p.expeditionAway);let html='<div class="remote-card"><h2>FIELD OPERATIONS / '+(loc==='asteroid'?'ASTEROID':'WY DERELICT')+'</h2>';html+='<p class="remote-muted">Crew may initiate expeditions independently. SOL evaluates requests against mission priorities and ship conditions.</p><div class="remote-actions">'+remoteButton('Autonomous command: '+(remote.autonomyEnabled?'ACTIVE':'SUSPENDED'),'toggleauto')+'</div>';
  html+=missionDirectorPanel(loc);html+=sciencePanel(loc);
- if(!m){html+='<p class="remote-muted">Assign one available crew member. Docked missions use the C02 docking collar; otherwise the shuttle provides transit.</p><label for="fieldcrew">Assigned specialist</label> <select id="fieldcrew" style="max-width:100%;background:#152b30;color:#d8ece5;padding:7px">'+available.map(p=>'<option value="'+esc(p.name)+'">'+esc(p.name)+' · '+esc(p.job)+'</option>').join('')+'</select><div class="remote-actions">'+remoteButton('Dispatch expedition','dispatch',!available.length)+'</div>'}
- else {let p=state.crew.find(x=>x.name===m.crew);html+='<div class="remote-metric"><span>Specialist</span><b>'+esc(m.crew)+'</b></div><div class="remote-metric"><span>Phase</span><b>'+esc(m.phase.toUpperCase())+'</b></div><div class="remote-metric"><span>Progress</span><b>'+Math.round(m.progress)+'%</b></div><div class="remote-metric"><span>Equipment</span><b>'+m.kit+' sensor kits carried</b></div><p class="remote-muted">'+(m.phase==='boarding'?'Crew navigating to C02 Airlock & EVA for collar transfer.':m.phase==='transit'?(m.transfer==='collar'?'Crew crossing the sealed docking collar.':'Shuttle transit in progress.'):m.phase==='onsite'?'Crew physically present at the field staging point. Sensors can be placed here.':m.phase==='returning'?(m.transfer==='collar'?'Crew returning through the docking collar.':'Crew returning to ICARUS.'):'Preparing for departure.')+'</p><div class="remote-actions">'+(m.phase==='onsite'?remoteButton('Begin return trip','return'):remoteButton('Return unavailable during transit','none',true))+'</div>';
+ if(!m){html+='<p class="remote-muted">Choose a preferred specialist; SOL selects a fit two-person team and checks suits and consumables. Docked missions use the C02 docking collar; otherwise the shuttle provides transit.</p><label for="fieldcrew">Assigned specialist</label> <select id="fieldcrew" style="max-width:100%;background:#152b30;color:#d8ece5;padding:7px">'+available.map(p=>'<option value="'+esc(p.name)+'">'+esc(p.name)+' · '+esc(p.job)+'</option>').join('')+'</select><div class="remote-actions">'+remoteButton('Dispatch expedition','dispatch',!available.length)+'</div>'}
+ else {let p=state.crew.find(x=>x.name===m.crew);html+='<div class="remote-metric"><span>Specialist</span><b>'+esc(ICARUSTeams.names(m).join(', '))+'</b></div><div class="remote-metric"><span>Phase</span><b>'+esc(m.phase.toUpperCase())+'</b></div><div class="remote-metric"><span>Progress</span><b>'+Math.round(m.progress)+'%</b></div><div class="remote-metric"><span>Equipment</span><b>'+m.kit+' sensor kits carried</b></div><p class="remote-muted">'+(m.phase==='boarding'?'Crew navigating to C02 Airlock & EVA for collar transfer.':m.phase==='transit'?(m.transfer==='collar'?'Crew crossing the sealed docking collar.':'Shuttle transit in progress.'):m.phase==='onsite'?'Crew physically present at the field staging point. Sensors can be placed here.':m.phase==='returning'?(m.transfer==='collar'?'Crew returning through the docking collar.':'Crew returning to ICARUS.'):'Preparing for departure.')+'</p><div class="remote-actions">'+(m.phase==='onsite'?remoteButton('Begin return trip','return'):remoteButton('Return unavailable during transit','none',true))+'</div>';
  if(loc==='asteroid'&&m.phase==='onsite')html+='<div class="remote-actions">'+remoteButton('Install carried camera / LiDAR','deploy',m.kit<=0)+'</div>';
  if(loc==='derelict'&&m.phase==='onsite')html+='<div class="remote-actions">'+remoteButton('Install portable scanner','dscan',m.kit<=0||remote.derelict.scan)+'</div>';
  }return html+'</div>'}
@@ -3669,7 +3671,7 @@ function scienceTick(){
   const item=specimenState().items.find(x=>x.id===c.specimenId);
   if(!item||item.status==='field secured'){c.status='awaiting_transfer';continue;}
   if(item.concealed){c.status='held';c.assessment='Chain of custody missing; laboratory cannot certify specimen.';log('SOL flagged custody exception for '+c.id+'.','system');continue;}
-  const candidates=state.crew.filter(p=>ICARUSLife.ready(p)&&!p.expeditionAway&&p.energy>=35&&p.stress<85&&/scient|research|biolog|medic|doctor|technician/i.test(p.job||''));
+  const candidates=state.crew.filter(p=>ICARUSLife.ready(p)&&!p.researchAssignment&&!p.expeditionId&&!p.expeditionAway&&p.energy>=35&&p.stress<85&&/scient|research|biolog|medic|doctor|technician/i.test(p.job||''));
   const analyst=candidates.sort((a,b)=>b.energy-a.energy)[0];
   if(!analyst){c.status='waiting_for_analyst';continue;}
   c.status='analyzing';c.analyst=analyst.name;c.progress=Math.min(100,c.progress+1);
@@ -3693,15 +3695,21 @@ function renderLivingRecap(){
  $('recap-killcam').onchange=e=>{j.options.killCam=e.target.checked;save();renderLivingRecap()};
 }
 function voyageBoundary(){ICARUSVoyage.rollover(state,s=>makeEpisodeArchive(s,'Continuous voyage weekly archive'),()=>log('Weekly episode archived. Voyage operations continue without interruption.','system'));}
+function economyTick(){ICARUSEconomy.tick(state,{emit:log,hurt:(p,n,cause)=>ICARUSLife.hurt(state,p,n,cause,(k,msg)=>log(msg,'emergency',p.name))});}
 function livingTick(){
  const before=state.crew.length;
- ICARUSLife.tick(state,{now:directorClock(),power:state.power,tissue:tissueSystem(),air:atmosphereRoom,emit:(kind,message,people,data)=>{log(message,kind==='death'||kind==='injury'?'emergency':'system',people[0],{...data,storyKind:kind});}});
+ ICARUSLife.tick(state,{now:directorClock(),power:state.power,tissue:tissueSystem(),consume:(key,n)=>ICARUSEconomy.externalConsumption(state,key,n,'clinical treatment'),lossMission:m=>ICARUSEconomy.loseCargo(state,m),air:atmosphereRoom,emit:(kind,message,people,data)=>{log(message,kind==='death'||kind==='injury'?'emergency':'system',people[0],{...data,storyKind:kind});}});
  if(before!==state.crew.length){follow=0;observation.frames=[];observation.view=false;observation.playing=false;}
 }
+function naturalSurvey(loc,room,m,p,w){
+ const f=ICARUSDiscovery.survey(state,loc,room,m,simRandom);if(!f)return;
+ w.findings.push(f);specimenAcquire(loc,f,p);log('Field observation '+f.id+': recovered '+f.item+' from a surveyed location.','system',p.name,{storyKind:'research',findingId:f.id,source:f.source});
+}
 function researchTick(){
- const analysts=state.crew.filter(p=>ICARUSLife.ready(p)&&!p.expeditionAway&&!p.emergencyId&&p.energy>=35&&p.stress<85&&/scient|research|biolog|medic|doctor|technician/i.test(p.job||'')).sort((a,b)=>b.energy-a.energy);
+ const analysts=state.crew.filter(p=>ICARUSLife.ready(p)&&!p.expeditionId&&['B01','B05','B06'].includes(p.room)&&!p.route.length&&!p.expeditionAway&&!p.emergencyId&&p.energy>=35&&p.stress<85&&/scient|research|biolog|medic|doctor|technician/i.test(p.job||'')).sort((a,b)=>b.energy-a.energy);
  const sc=remote.director.science,prior=(sc.experiments||[]).find(e=>e.status==='running');
- ICARUSResearch.tick(sc,specimenState().items,{now:directorClock(),analysts:analysts.map(p=>({...p,caution:livedExperience(p).caution})),random:simRandom,containment:lazarus().containment,incident:(item,e)=>{item.contamination=clamp(item.contamination+5,0,100);log("Containment exposure during "+e.id+" for "+item.name,"emergency");const p=state.crew.find(p=>p.name===e.analyst);if(p)ICARUSLife.hurt(state,p,8,"laboratory exposure",(k,m)=>log(m,"emergency",p.name));},lab:Math.min(state.localSystems?.research??100,state.cascade?.lab??100),supplies:state.interactions.supplies});
+ ICARUSResearch.tick(sc,specimenState().items,{now:directorClock(),confirm:ICARUSDiscovery.conclusions,assign:e=>{const p=state.crew.find(p=>p.name===e.analyst);if(p){p.researchAssignment=e.id;p.task='Research '+e.method;p.taskMinutes=e.duration+1;}},consume:(key,n)=>ICARUSEconomy.externalConsumption(state,key,n,'experiment'),analysts:analysts.map(p=>({...p,caution:livedExperience(p).caution})),random:simRandom,containment:lazarus().containment,incident:(item,e)=>{item.contamination=clamp(item.contamination+5,0,100);log("Containment exposure during "+e.id+" for "+item.name,"emergency");const p=state.crew.find(p=>p.name===e.analyst);if(p)ICARUSLife.hurt(state,p,8,"laboratory exposure",(k,m)=>log(m,"emergency",p.name));},lab:state.economy.allowResearch===false?0:Math.min(state.power,state.localSystems?.research??100,state.cascade?.lab??100),supplies:state.interactions.supplies});
+ if(sc.lastConclusionSignature!==sc.evidenceSignature){ICARUSDiscovery.conclusions(sc,state.tick);sc.lastConclusionSignature=sc.evidenceSignature;}
  if(prior&&prior.status!=='running')log('Research '+prior.id+' '+prior.status+': '+prior.result,'system',prior.analyst,{storyKind:'research',status:prior.status,caseId:prior.caseId,experimentId:prior.id});
 }
 function sciencePanel(loc){
@@ -3714,6 +3722,7 @@ function sciencePanel(loc){
   for(const h of p.hypotheses)html+='<p>'+esc(h.claim+' · '+h.status+' · Confidence '+Math.round(h.confidence*100)+'%')+'</p><p class="remote-muted">'+esc('Support: '+h.evidenceFor.map(e=>e.caseId+': '+e.observation).join('; ')+' · Against / confounders: '+h.evidenceAgainst.map(e=>e.observation).join('; ')+' · Unknown: '+h.unknowns.join(', '))+'</p>';
   for(const e of (remote.director.science.experiments||[]).filter(e=>e.programId===p.id))html+='<p class="remote-muted">'+esc(e.id+' · '+e.method+' · '+e.status+' · '+e.progress+'/'+e.duration+' min · '+(e.result||e.blocker||'In progress'))+'</p>';
  }
+ for(const c of remote.director.science.conclusions||[])html+='<p class="remote-muted">'+esc(c.id+' · '+c.kind+': '+c.composition+' · '+c.scope)+'</p>';
  if(remote.director.science.lazarusProgram)html+='<p class="remote-muted">'+esc('LAZARUS longitudinal program: '+remote.director.science.lazarusProgram.stage+' · No guaranteed breakthrough')+'</p>';
  return html+(cases.length?'':'<p class="remote-muted">No recovered evidence awaiting analysis.</p>')+'</div>';
 }
@@ -3725,7 +3734,7 @@ function missionFieldAssessment(loc,m){
  const newSectors=Math.max(0,world.rooms.filter(x=>x.visited).length-(job.baseline?.surveyed||0));
  const newFindings=Math.max(0,world.findings.length-(job.baseline?.findings||0));
  const p=state.crew.find(x=>x.name===m.crew);
- if(p)ICARUSOperations.field(state,m,job,p,{now:directorClock(),life:ICARUSLife,random:simRandom,emit:(k,msg,people)=>log(msg,'emergency',people[0])});
+ // Team field decisions and accidents were applied once in fieldTick.
  if(m.phase==='returning')return true;
  const safety=p&&(p.energy<35||p.stress>78||!ICARUSLife.ready(p));
  const objectiveMet=job.type==='research'?newFindings>0||newSectors>=4:
@@ -3747,6 +3756,19 @@ function reachableUnvisited(loc){
   seen.add(id);queue.push(id);
  }
  return [...seen].some(id=>!w.rooms[id].visited);
+}
+function launchTeamJob(job,preferred){
+ const now=directorClock(),loc=job.location;if(Object.values(remote.missions).some(Boolean))return false;
+ if(Object.values(state.emergencies||{}).some(e=>e.status==='active'&&e.severity==='critical')){job.blocker='critical emergency';return false;}
+ const candidates=state.crew.filter(p=>ICARUSLife.ready(p)&&!p.expeditionId&&!p.expeditionAway&&!p.emergencyId&&p.energy>=55&&p.stress<68&&(remote.director.crewReadyAt?.[p.name]||0)<=now);
+ const team=ICARUSTeams.select(state,job,candidates,ICARUSLife,preferred);if(team.length<2){job.blocker='team availability';return false;}
+ const result=ICARUSTeams.launch(state,job,team,ICARUSEconomy);if(!result.allowed){job.blocker=result.reason;return false;}
+ const collar=loc==='derelict'&&dockingState().docking==='docked',destination=collar?'C02':'C01';
+ job.riskAssessment=ICARUSOperations.assessment(team[0],job,state,ICARUSLife);job.members=team.map(p=>p.name);job.crew=team[0].name;job.status='active';job.approved=now;job.launched=now;job.blocker=null;
+ remote.missions[loc]={...result.manifest,id:job.id,phase:'boarding',progress:0,kit:loc==='asteroid'?Math.min(2,remote.asteroid.inventory):1,autonomous:true,authorization:'CAPTAIN / SOL',transfer:collar?'collar':'shuttle',onsiteMinutes:0};
+ for(const p of team){p.expeditionId=job.id;p.expeditionAway=false;p.target=destination;p.route=path(p.room,destination);p.task='Proceeding to expedition staging';p.goal='Expedition staging';p.taskMinutes=999;}
+ remote.director.lastLaunch[loc]=now;const w=loc==='derelict'?explorationWorld():asteroidWorld();job.baseline={surveyed:w.rooms.filter(x=>x.visited).length,findings:w.findings.length};
+ return true;
 }
 function missionDecisionTick(){
  const d=remote.director,now=directorClock();
@@ -3772,6 +3794,7 @@ function missionDecisionTick(){
   let reason=null,type=null,objective=null,priority=0;
   if(shortage&&((intel.attempts||0)===0||freshSurvey)){reason=lowSpares?'Engineering spare-parts shortage':'Laboratory material shortage';type='resource';objective='Locate recoverable materials and map unexamined deposits';priority=80;}
   else if(firstContact){reason=loc==='derelict'?'Unresolved derelict telemetry':'Unsurveyed asteroid contact';type='reconnaissance';objective='Establish an initial field survey and report observable evidence';priority=loc==='derelict'?65:55;}
+  else if(unexplored&&freshSurvey&&d.science.conclusions?.some(c=>c.status==='confirmed'&&c.caseIds.some(id=>d.science.cases.find(x=>x.id===id)?.location===loc))){reason='Independent composition measurements justify surveying remaining sectors';type='research';objective='Survey unvisited sectors for independent comparison samples';priority=70;}
   else if(unexplored&&freshSurvey){reason='Prior survey identified reachable, unvisited sectors';type='survey';objective='Map at least six additional accessible sectors or document a safety withdrawal';priority=50;}
   if(reason&&!activeOrder(loc)&&!missionLog().some(x=>x.location===loc&&x.status==='proposed')){
    registerOpportunity(type,loc,(loc==='derelict'?'Derelict':'Asteroid')+' '+type,reason,priority,objective);
@@ -3784,21 +3807,11 @@ function missionDecisionTick(){
   // One shared expedition transport and support team; do not double-launch.
   if(Object.values(remote.missions).some(Boolean)||state.crew.some(p=>p.expeditionAway))continue;
   const available=state.crew.filter(p=>ICARUSLife.ready(p)&&(d.crewReadyAt[p.name]||0)<=now&&!p.expeditionAway&&p.energy>=55&&p.stress<68&&!p.emergencyId);
-  const specialist=available.filter(p=>loc==='asteroid'?/scient|research|biolog|engineer|technician/i.test(p.job||''):/security|engineer|technician|scient|research/i.test(p.job||''))
-    .sort((a,b)=>(b.energy-b.stress*.3)-(a.energy-a.stress*.3))[0];
-  if(!specialist)continue;
-  // Reserve minimum recovery time for recently returned field personnel.
-  if((d.crewReadyAt?.[specialist.name]||0)>now)continue;
-  job.riskAssessment=ICARUSOperations.assessment(specialist,job,state,ICARUSLife);job.status='approved';job.crew=specialist.name;job.approved=now;
-  const collar=loc==='derelict'&&dockingState().docking==='docked';
-  specialist.expeditionAway=loc;specialist.task='Mission '+job.id+': '+job.objective;specialist.route=[];specialist.taskMinutes=0;specialist.room='C01';
-  remote.missions[loc]={id:job.id,crew:specialist.name,phase:collar?'boarding':'transit',progress:0,kit:loc==='asteroid'?2:1,autonomous:true,authorization:'CAPTAIN / SOL',transfer:collar?'collar':'shuttle',onsiteMinutes:0,workRate:job.riskAssessment.workRate};
-  if(collar){specialist.expeditionAway=false;specialist.route=path(specialist.room,'C02');specialist.target='C02';specialist.task='Proceeding to docking collar';specialist.taskMinutes=999;}
-  job.status='active';job.launched=now;d.lastLaunch[loc]=now;
+  if(!launchTeamJob(job))continue;
   if(job.type==='research')d.intelligence[loc].pendingLead=0;
   if(job.type==='survey'||job.type==='resource')d.intelligence[loc].pendingSurvey=false;
   const world=loc==='derelict'?explorationWorld():asteroidWorld();job.baseline={surveyed:world.rooms.filter(x=>x.visited).length,findings:world.findings.length};
-  log('Captain authorized '+job.id+': '+specialist.name+' dispatched to '+loc+'.','system');
+  log('Captain authorized '+job.id+': '+job.members.join(', ')+' dispatched to '+loc+'.','system');
   solAudit('Authorized mission '+job.id,job.reason,'Objective: '+job.objective);
  }
  if(missionLog().length>120) d.registry=missionLog().filter(x=>['active','approved','recall','direct','proposed'].includes(x.status)).concat(missionLog().filter(x=>!['active','approved','recall','direct','proposed'].includes(x.status)).slice(-90));
@@ -3814,14 +3827,18 @@ function missionIntervene(action,id){
   item.status='recall';item.outcome=action==='abort'?'Objective aborted by Remote Deck':'Recalled by Remote Deck';
   if(m.phase==='onsite'){m.phase='returning';m.progress=0}
   else if(m.phase==='transit'){m.phase='returning';m.progress=100-m.progress}
-  else if(m.phase==='boarding'){m.phase='returning';m.transfer='shuttle';m.progress=0}
+  else if(m.phase==='boarding'){
+   ICARUSEconomy.returnCargo(state,m);state.teamLog.suits+=m.suits||0;m.suits=0;
+   for(const name of ICARUSTeams.names(m)){const p=state.crew.find(p=>p.name===name);if(p){p.expeditionId=null;p.expeditionAway=false;p.route=[];p.taskMinutes=0;}}
+   item.status='aborted';item.completed=directorClock();const intel=remote.director.intelligence[item.location];intel.attempts++;intel.pendingSurvey=false;remote.missions[item.location]=null;
+  }
   log('Remote Deck '+(action==='abort'?'aborted':'recalled')+' mission '+id+'.','system');
  }
  remote.director.interventions.push({id,action,time:directorClock()});
 }
 function missionReturnComplete(loc,m){
  const job=m?.id&&missionLog().find(x=>x.id===m.id);if(!job)return;
- job.status=job.outcome?'aborted':'completed';job.completed=directorClock();
+ job.status=m.casualties?.length?'failed':job.outcome?'aborted':'completed';job.completed=directorClock();
  const world=loc==='derelict'?explorationWorld():asteroidWorld();
  const intel=remote.director.intelligence[loc]||(remote.director.intelligence[loc]={surveyed:0,findings:0,attempts:0});
  const surveyed=world.rooms.filter(x=>x.visited).length,findings=world.findings.length;
@@ -3829,28 +3846,53 @@ function missionReturnComplete(loc,m){
  const findingsDelta=Math.max(0,findings-(job.baseline?.findings||0));
  job.evidence={surveyedNew:surveyedDelta,findingsNew:findingsDelta,totalSurveyed:surveyed,totalFindings:findings};
  intel.surveyed=surveyed;intel.findings=findings;intel.attempts=(intel.attempts||0)+1;
- if(findingsDelta>0)scienceIntake(loc,job,world);
+ if(findingsDelta>0)scienceIntake(loc,job,world);for(const item of specimenState().items.filter(x=>x.origin===loc&&x.status!=='field secured'&&x.bulk&&!x.bulkRedeemed)){for(const [key,n] of Object.entries(item.bulk))ICARUSEconomy.creditFeed(state,key,n,'recovered bulk '+item.id);item.bulkRedeemed=true;}
  if(surveyedDelta>0&&reachableUnvisited(loc))intel.pendingSurvey=true;
  job.completionReason=job.completionReason||(surveyedDelta||findingsDelta?'field_window_ended':'no_progress');
  if(!surveyedDelta&&!findingsDelta){intel.pendingSurvey=false;intel.pendingLead=0;}
  job.outcome=job.outcome||('Field report: '+surveyedDelta+' new sectors, '+findingsDelta+' recovered findings; '+job.completionReason);
  remote.director.crewReadyAt=remote.director.crewReadyAt||{};
  remote.director.crewReadyAt[m.crew]=directorClock()+180;
- const p=state.crew.find(x=>x.name===m.crew);ICARUSOperations.debrief(job,p);if(p){p.energy=Math.max(0,p.energy-8);p.taskMinutes=20;}
+ const p=state.crew.find(x=>x.name===m.crew);if(!m.members)ICARUSOperations.debrief(job,p);if(p){p.energy=Math.max(0,p.energy-8);p.taskMinutes=20;}
  log('Mission '+job.id+' '+job.status+': '+job.outcome+'.','system');
 }
 function expeditionAutonomy(){missionDecisionTick()}
 
 function fieldTick(){
- const dm=expedition('derelict');
- if(dm?.phase==='boarding'){
-  const p=state.crew.find(x=>x.name===dm.crew);
-  if(!p){remote.missions.derelict=null}
-  else if(dockingState().docking!=='docked'){dm.phase='transit';dm.transfer='shuttle';p.expeditionAway='derelict';p.route=[];p.room='C01'}
-  else if(p.room==='C02'&&!p.route.length){dm.phase='transit';dm.progress=0;p.expeditionAway='derelict';p.task='Crossing sealed docking collar';log(p.name+' entered the docking collar connecting ICARUS and the WY derelict.','system')}
+ specimenTick();scienceTick();researchTick();expeditionAutonomy();
+ for(const loc of ['derelict','asteroid']){
+  const m=remote.missions[loc];if(!m)continue;
+  const job=missionLog().find(j=>j.id===m.id)||{id:m.id,location:loc};
+  if(m.phase==='boarding'){
+   const destination=m.transfer==='collar'?'C02':'C01',members=ICARUSTeams.names(m).map(n=>state.crew.find(p=>p.name===n)).filter(Boolean);
+   if(members.length&&members.every(p=>p.room===destination&&!p.route.length)){
+    for(const p of members){p.expeditionAway=loc;p.route=[];p.task='Expedition transit';}
+    m.phase='transit';m.progress=0;
+   }else if(state.tick-(m.launched??state.tick)>360){
+    ICARUSEconomy.returnCargo(state,m);state.teamLog.suits+=m.suits||0;m.suits=0;
+    for(const p of members){p.expeditionId=null;p.expeditionAway=false;p.taskMinutes=0;}
+    job.status='failed';job.outcome='Staging access unavailable';job.completionReason='staging_access';remote.director.intelligence[loc].attempts++;remote.director.intelligence[loc].pendingSurvey=false;remote.missions[loc]=null;log('Mission '+job.id+' safely aborted: staging access unavailable.','system');
+   }
+   continue;
+  }
+  ICARUSTeams.field(state,m,job,{economy:ICARUSEconomy,life:ICARUSLife,random:simRandom,emit:(k,msg,people,data)=>log(msg,'emergency',people[0],{...data,storyKind:k})});
  }
- specimenTick();scienceTick();researchTick();expeditionAutonomy();exploreDecision();asteroidExploreDecision();asteroidRelayTick();for(const loc of ['asteroid','derelict']){let m=remote.missions[loc];if(!m)continue;if(m.phase==='transit'||m.phase==='returning'){m.progress=Math.min(100,m.progress+(m.transfer==='collar'?5:2));if(m.progress>=100){if(m.phase==='transit'){m.phase='onsite';m.progress=100;if(loc==='derelict'){const w=explorationWorld();w.position=0;w.step=0}else{const w=asteroidWorld();w.position=0;w.step=0}log(m.crew+' arrived at the '+loc+' staging point.','system')}else{let p=state.crew.find(x=>x.name===m.crew);if(p){p.expeditionAway=false;p.taskMinutes=0;p.task='Returned from '+loc;p.route=[];p.room=m.transfer==='collar'?'C02':'C01';learnFrom(p,'success',loc,2,'Completed a '+loc+' expedition');specimenReturn(loc,p)}if(loc==='asteroid'){const w=asteroidWorld();asteroidFlushReports(w);w.transmissions=[]}log(m.crew+' returned from the '+loc+'.','system');missionReturnComplete(loc,m);remote.missions[loc]=null}}}}
- let a=remote.asteroid;for(const device of a.devices){device.battery=Math.max(0,device.battery-0.08);device.online=device.battery>0&&a.relayDeployed>0}if(remote.location!=='icarus')remoteRender()}
+ exploreDecision();asteroidExploreDecision();asteroidRelayTick();
+ for(const loc of ['asteroid','derelict']){const m=remote.missions[loc];if(!m||!['transit','returning'].includes(m.phase))continue;
+  m.progress=Math.min(100,m.progress+(m.transfer==='collar'?5:2));if(m.progress<100)continue;
+  if(m.phase==='transit'){m.phase='onsite';const w=loc==='derelict'?explorationWorld():asteroidWorld();w.position=0;w.step=0;log(ICARUSTeams.names(m).join(', ')+' arrived at '+loc+'.','system');}
+  else {
+   const job=missionLog().find(j=>j.id===m.id);remote.director.crewReadyAt=remote.director.crewReadyAt||{};
+   ICARUSTeams.returned(state,m,job,{economy:ICARUSEconomy});
+   for(const name of ICARUSTeams.names(m)){const p=state.crew.find(p=>p.name===name);if(p){p.expeditionId=null;learnFrom(p,'success',loc,2,'Completed a team expedition');}}
+   const leader=state.crew.find(p=>p.name===m.crew);if(leader)specimenReturn(loc,leader);
+   if(loc==='asteroid'){const w=asteroidWorld();asteroidFlushReports(w);w.transmissions=[];}
+   missionReturnComplete(loc,m);remote.missions[loc]=null;
+  }
+ }
+ const a=remote.asteroid;for(const device of a.devices){device.battery=Math.max(0,device.battery-.08);device.online=device.battery>0&&a.relayDeployed>0;}
+ if(remote.location!=='icarus')remoteRender();
+}
 // v0.94: fieldTick is called from the primary simulation interval, once per simulated minute.
 
 function remoteSvg(type,signal=true){let stars=Array.from({length:75},(_,i)=>{let x=(i*71+17)%500,y=(i*i*13+31)%245;return '<circle cx="'+x+'" cy="'+y+'" r="'+(i%4===0?1.8:.8)+'" fill="'+(type==='derelict'?'#c2bd84':'#70e4c8')+'" opacity="'+(signal?.15+(i%6)*.1:.08)+'"/>'}).join('');let lines=type==='derelict'?'<path d="M40 190 L120 125 L380 125 L470 190 M120 125 L135 55 L365 55 L380 125 M40 190 L470 190 M135 55 L365 55" fill="none" stroke="#737e59" stroke-width="2"/><path d="M210 125 V190 M290 125 V190" stroke="#5d6b4e"/>':'<path d="M0 180 Q70 130 125 167 T245 140 T380 164 T500 110 V245 H0Z" fill="#133037" stroke="#3c8d86"/><path d="M30 220 Q110 150 185 201 T340 174 T490 207" fill="none" stroke="#487e7a"/>';return '<svg viewBox="0 0 500 245" preserveAspectRatio="xMidYMid meet" aria-label="Schematic '+type+' sensor visualization">'+stars+lines+'</svg><div class="scanline"></div>'}
@@ -3879,8 +3921,7 @@ if(loc==='derelict'){
  document.querySelectorAll('[data-remote-tab]').forEach(b=>b.onclick=()=>{remote.tabs[remote.location]=b.dataset.remoteTab;remoteRender()});
  document.querySelectorAll('[data-wy-camera]').forEach(b=>b.onclick=()=>{dockingState().security.selected=Number(b.dataset.wyCamera);remoteRender()});
  document.querySelectorAll('[data-device]').forEach(b=>b.onclick=()=>{a.selected=b.dataset.device;remoteRender()});
- document.querySelectorAll('[data-remote-action]').forEach(b=>b.onclick=()=>{let act=b.dataset.remoteAction;if(act.startsWith('mission')){const pieces=act.split(':');missionIntervene(pieces[0].slice(7),pieces[1]);remoteRender();return}if(act==='toggleauto'){remote.autonomyEnabled=!remote.autonomyEnabled;remoteRender();return}if(act==='dispatch'){let name=document.getElementById('fieldcrew')?.value,p=state.crew.find(x=>x.name===name);if(p&&!p.expeditionAway){p.expeditionAway=loc;p.task='Expedition transit: '+loc;p.route=[];p.taskMinutes=0;p.room='C01';remote.missions[loc]={crew:name,phase:loc==='derelict'&&dockingState().docking==='docked'?'boarding':'transit',progress:0,kit:loc==='asteroid'?2:1,transfer:loc==='derelict'&&dockingState().docking==='docked'?'collar':'shuttle'};
- if(remote.missions[loc].transfer==='collar'){p.expeditionAway=false;p.route=path(p.room,'C02');p.target='C02';p.task='Proceeding to docking collar';p.taskMinutes=999;}log(name+' departed ICARUS for '+loc+'.','system')}remoteRender();return}if(act==='return'){let m=expedition(loc);if(m?.phase==='onsite'){m.phase='returning';m.progress=0;log(m.crew+' began return '+(m.transfer==='collar'?'through the docking collar':'transit')+' from '+loc+'.','system')}remoteRender();return}if(loc==='derelict'){if(act==='power')d.power=!d.power;if(act==='adapter'&&d.power)d.adapter=true;if(act==='dscan'&&expedition('derelict')?.phase==='onsite'&&expedition('derelict').kit>0){d.scan=true;expedition('derelict').kit--}}else{let sel=a.devices.find(x=>x.id===a.selected)||a.devices[0];if(act==='deploy'&&expedition('asteroid')?.phase==='onsite'&&expedition('asteroid').kit>0&&a.inventory>0){expedition('asteroid').kit--;let id='F'+String(a.devices.length+1).padStart(2,'0');a.devices.push({id,x:18+(a.devices.length*19)%68,y:38+(a.devices.length*13)%44,battery:100,mode:'lidar',online:true});a.selected=id;a.inventory--}if(act==='relay'&&a.relays>0&&expedition('asteroid')?.phase==='onsite'){a.relays--;let w=asteroidWorld();asteroidRelays(w).push({zone:w.rooms[w.position].zone,room:w.position,battery:100,integrity:100,boosted:false});a.relayDeployed=asteroidRelays(w).length;a.devices.forEach(x=>x.online=x.battery>0)};if(act.startsWith('mode-')&&sel)sel.mode=act.slice(5);if(act==='retrieve'&&sel&&expedition('asteroid')?.phase==='onsite'){a.devices=a.devices.filter(x=>x!==sel);a.inventory++;a.selected=a.devices[0]?.id||null}}remoteRender()});
+ document.querySelectorAll('[data-remote-action]').forEach(b=>b.onclick=()=>{let act=b.dataset.remoteAction;if(act.startsWith('mission')){const pieces=act.split(':');missionIntervene(pieces[0].slice(7),pieces[1]);remoteRender();return}if(act==='toggleauto'){remote.autonomyEnabled=!remote.autonomyEnabled;remoteRender();return}if(act==='dispatch'){const preferred=document.getElementById('fieldcrew')?.value;if(!remote.missions[loc]){registerOpportunity('direct',loc,'Captain field survey','Explicit captain intervention',90,'Survey reachable unvisited sectors and return safely');const job=missionLog().find(j=>j.location===loc&&j.status==='proposed');if(job)launchTeamJob(job,preferred);}remoteRender();return}if(act==='return'){let m=expedition(loc);if(m?.phase==='onsite'){m.phase='returning';m.progress=0;log(m.crew+' began return '+(m.transfer==='collar'?'through the docking collar':'transit')+' from '+loc+'.','system')}remoteRender();return}if(loc==='derelict'){if(act==='power')d.power=!d.power;if(act==='adapter'&&d.power)d.adapter=true;if(act==='dscan'&&expedition('derelict')?.phase==='onsite'&&expedition('derelict').kit>0){d.scan=true;expedition('derelict').kit--}}else{let sel=a.devices.find(x=>x.id===a.selected)||a.devices[0];if(act==='deploy'&&expedition('asteroid')?.phase==='onsite'&&expedition('asteroid').kit>0&&a.inventory>0){expedition('asteroid').kit--;let id='F'+String(a.devices.length+1).padStart(2,'0');a.devices.push({id,x:18+(a.devices.length*19)%68,y:38+(a.devices.length*13)%44,battery:100,mode:'lidar',online:true});a.selected=id;a.inventory--}if(act==='relay'&&a.relays>0&&expedition('asteroid')?.phase==='onsite'){a.relays--;let w=asteroidWorld();asteroidRelays(w).push({zone:w.rooms[w.position].zone,room:w.position,battery:100,integrity:100,boosted:false});a.relayDeployed=asteroidRelays(w).length;a.devices.forEach(x=>x.online=x.battery>0)};if(act.startsWith('mode-')&&sel)sel.mode=act.slice(5);if(act==='retrieve'&&sel&&expedition('asteroid')?.phase==='onsite'){a.devices=a.devices.filter(x=>x!==sel);a.inventory++;a.selected=a.devices[0]?.id||null}}remoteRender()});
 }
 function setLocation(loc){remote.location=loc;document.querySelectorAll('[data-location]').forEach(b=>b.classList.toggle('active',b.dataset.location===loc));$('icarus-main').style.display=loc==='icarus'?'':'none';$('remote-workspace').classList.toggle('open',loc!=='icarus');remoteRender()}
 document.querySelectorAll('[data-location]').forEach(b=>b.onclick=()=>setLocation(b.dataset.location));
@@ -3908,7 +3949,7 @@ const validSave=coreSaveValid;
 function readCheckpoints(){try{let data=JSON.parse(localStorage.getItem(BACKUP_KEY)||'[]');return Array.isArray(data)?data.filter(x=>x&&validSave(x.state)).slice(0,3):[]}catch{return []}}
 function updateSavePanel(){const kb=Math.round(new Blob([JSON.stringify(state)]).size/1024);$('savestatus').textContent='Live episode '+state.episode+' · '+stamp()+' · '+state.crew.length+' crew · approx. '+kb+' KB · local browser storage';let items=readCheckpoints();$('checkpointlist').innerHTML=items.length?items.map((x,i)=>'<div class="checkpoint-row"><span>Episode '+x.state.episode+' <small>'+esc(x.date||'Unknown date')+'</small></span><button data-restore="'+i+'">Restore</button></div>').join(''):'<p class="muted">No recovery checkpoints saved.</p>';document.querySelectorAll('[data-restore]').forEach(b=>b.onclick=()=>{let x=readCheckpoints()[Number(b.dataset.restore)];if(x)restoreBackup(x.state,'local checkpoint',x.ideas)})}
 function createCheckpoint(silent=false){try{const items=readCheckpoints();items.unshift({date:new Date().toLocaleString(),state:JSON.parse(JSON.stringify(state)),ideas:JSON.parse(JSON.stringify(ideas))});localStorage.setItem(BACKUP_KEY,JSON.stringify(items.slice(0,3)));if(!silent)backupMsg('Local recovery checkpoint created. Export a JSON file for a separate backup.');updateSavePanel();return true}catch(e){if(!silent)backupMsg('Local checkpoint could not be stored (browser storage may be full). Use Export JSON backup.',true);return false}}
-function restoreBackup(candidate,source,incomingIdeas){if(!validSave(candidate)){backupMsg('Invalid or unsupported ICARUS save. No data changed.',true);return}if(!confirm('RESTORE '+source+'? This will replace your current Episode '+state.episode+' with Episode '+candidate.episode+'. Export your current save first if you want to keep it.'))return;const before=JSON.stringify(state);try{if(Array.isArray(incomingIdeas)){ideas=incomingIdeas.filter(n=>n&&typeof n.title==='string'&&typeof n.body==='string').slice(0,250);persistIdeas();renderIdeas()}localStorage.setItem(CORE_SAVE_KEY,JSON.stringify(candidate));state=candidate;if(state.entropy)entropy.seed=state.entropy.seed;state.entropy=entropy;ICARUSLife.init(state);const restoredRemote=normalizeRemoteCore(candidate.remoteCore);for(const k of Object.keys(remote))delete remote[k];Object.assign(remote,restoredRemote);state.remoteCore=remote;ICARUSVoyage.migrate(state);paused=true;$('pause').textContent='▶ Resume';trackedEmergency=null;follow=0;selectedRoom='C05';observation={frames:[],index:0,playing:false,rate:1,view:false,clock:0};if(typeof remote!=='undefined'){remote.location='icarus';}render();if(typeof setLocation==='function')setLocation('icarus');backupMsg('Restored Episode '+state.episode+'. Simulation paused. Resume when ready.');updateSavePanel()}catch(e){try{localStorage.setItem('icarus-v02',before)}catch{}backupMsg('Restore failed. Existing save was not intentionally replaced.',true)}}
+function restoreBackup(candidate,source,incomingIdeas){if(!validSave(candidate)){backupMsg('Invalid or unsupported ICARUS save. No data changed.',true);return}if(!confirm('RESTORE '+source+'? This will replace your current Episode '+state.episode+' with Episode '+candidate.episode+'. Export your current save first if you want to keep it.'))return;const before=JSON.stringify(state);try{if(Array.isArray(incomingIdeas)){ideas=incomingIdeas.filter(n=>n&&typeof n.title==='string'&&typeof n.body==='string').slice(0,250);persistIdeas();renderIdeas()}localStorage.setItem(CORE_SAVE_KEY,JSON.stringify(candidate));state=candidate;if(state.entropy)entropy.seed=state.entropy.seed;state.entropy=entropy;ICARUSLife.init(state);const restoredRemote=normalizeRemoteCore(candidate.remoteCore);for(const k of Object.keys(remote))delete remote[k];Object.assign(remote,restoredRemote);state.remoteCore=remote;ICARUSVoyage.migrate(state);ICARUSEconomy.init(state);ICARUSTeams.migrate(state);paused=true;$('pause').textContent='▶ Resume';trackedEmergency=null;follow=0;selectedRoom='C05';observation={frames:[],index:0,playing:false,rate:1,view:false,clock:0};if(typeof remote!=='undefined'){remote.location='icarus';}render();if(typeof setLocation==='function')setLocation('icarus');backupMsg('Restored Episode '+state.episode+'. Simulation paused. Resume when ready.');updateSavePanel()}catch(e){try{localStorage.setItem('icarus-v02',before)}catch{}backupMsg('Restore failed. Existing save was not intentionally replaced.',true)}}
 $('settingsopen').addEventListener('click',updateSavePanel);
 $('savemanager').addEventListener('toggle',()=>{if($('savemanager').open)updateSavePanel()});
 $('exportbackup').onclick=()=>{try{save();const payload={format:'ICARUS_SAVE',formatVersion:1,exportedAt:new Date().toISOString(),appVersion:'0.94.1',state:state,ideas:ideas};const blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='icarus_episode_'+state.episode+'_backup_'+new Date().toISOString().slice(0,10)+'.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),30000);backupMsg('Backup download requested. Check Downloads for the JSON file.')}catch(e){backupMsg('Export failed: '+e.message,true)}};
@@ -4096,7 +4137,7 @@ showPage('home');
 // Disabled for normal Remote Deck sessions unless ?icarus_soak=1 is present.
 if(new URLSearchParams(location.search).get('icarus_soak')==='1'){
  window.__icarusSoak={
-  snapshot:()=>JSON.parse(JSON.stringify({minute:state.minute,tick:state.tick,clock:state.clock,episode:state.episode,crew:state.crew,archived:state.archived||[],events:state.events,specimenCustody:state.specimenCustody||null,living:state.living,entropy:state.entropy,chronicle:state.chronicle||null,operations:state.operations||null,remoteCore:state.remoteCore,missions:remote.missions,director:remote.director})),
+  snapshot:()=>JSON.parse(JSON.stringify({minute:state.minute,tick:state.tick,clock:state.clock,episode:state.episode,crew:state.crew,archived:state.archived||[],events:state.events,specimenCustody:state.specimenCustody||null,living:state.living,entropy:state.entropy,chronicle:state.chronicle||null,operations:state.operations||null,economy:state.economy,resourceTotals:ICARUSEconomy.totals(state),resourceAudit:ICARUSEconomy.audit(state),teamLog:state.teamLog||null,world:{equipment:state.equipment,emergencies:state.emergencies,physicalWorld:state.physicalWorld,maintenance:state.maintenance,tissueRepair:state.tissueRepair,interactions:state.interactions,remoteExploration:state.remoteExploration,asteroidExploration:state.asteroidExploration},remoteCore:state.remoteCore,missions:remote.missions,director:remote.director})),
   missionHistory:[],
   testOpportunity:(type)=>{if(type==='asteroid'){state.interactions.supplies.spares=5;return true}return false},
   advance:(count)=>{const n=Math.max(0,Math.min(120,Math.floor(Number(count)||0)));for(let i=0;i<n;i++){

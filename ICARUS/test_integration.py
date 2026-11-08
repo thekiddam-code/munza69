@@ -35,7 +35,7 @@ class Integration(unittest.TestCase):
         while n:p.evaluate('n=>window.__icarusSoak.advance(n)',min(120,n));n-=min(120,n)
     def configure(self,p,code):
         self.assertTrue(p.evaluate('window.__icarusSoak.save()'))
-        p.add_init_script("""(()=>{if(sessionStorage.getItem('fixture'))return;sessionStorage.setItem('fixture','1');const s=JSON.parse(localStorage.getItem('icarus-v02'));"""+code+";localStorage.setItem('icarus-v02',JSON.stringify(s));})();")
+        p.add_init_script("""(()=>{if(sessionStorage.getItem('fixture'))return;sessionStorage.setItem('fixture','1');const s=JSON.parse(localStorage.getItem('icarus-v02'));"""+code+";if(s.clock){s.clock.elapsed=s.minute-480;s.tick=s.clock.elapsed;}localStorage.setItem('icarus-v02',JSON.stringify(s));})();")
         p.reload();p.wait_for_function('!!window.__icarusSoak')
     def test_seeded_full_engine_reproduces(self):
         a=self.page();b=self.page();self.advance(a,360);self.advance(b,360);self.assertEqual(self.snap(a),self.snap(b))
@@ -52,7 +52,7 @@ class Integration(unittest.TestCase):
         p=self.page();self.configure(p,'s.minute=10079;s.tick=9599;for(const p of s.crew)p.vitals.health=0;');self.advance(p,3);snap=self.snap(p);self.assertEqual(len(snap['crew']),0);self.assertEqual(len(snap['living']['deceased']),20);self.assertEqual(snap['episode'],2)
         self.assertTrue(p.evaluate('window.__icarusSoak.save()'));p.reload();self.assertEqual(snap,self.snap(p))
     def test_legacy_save_migrates_without_losing_research(self):
-        p=self.page();self.configure(p,"delete s.living;delete s.entropy;delete s.chronicle;delete s.operations;for(const p of s.crew)delete p.vitals;s.remoteCore.director.science.cases=[];delete s.remoteCore.director.science.programs;delete s.remoteCore.director.science.experiments;")
+        p=self.page();self.configure(p,"delete s.clock;delete s.economy;delete s.teamLog;delete s.living;delete s.entropy;delete s.chronicle;delete s.operations;for(const p of s.crew)delete p.vitals;s.remoteCore.director.science.cases=[];delete s.remoteCore.director.science.programs;delete s.remoteCore.director.science.experiments;")
         self.advance(p,1);self.assertEqual(len(self.snap(p)['crew']),20);self.assertTrue(all(x['vitals']['health']==100 for x in self.snap(p)['crew']));self.assertTrue(p.evaluate('window.__icarusSoak.save()'))
     def test_recap_options_have_real_sources_and_survive_reload(self):
         p=self.page();self.advance(p,240);p.locator('#credits').click();p.locator('#recap-anthology').check();p.locator('#recap-killcam').check();text=p.locator('#recap').inner_text();self.assertIn('not recorded camera footage',text);self.assertIn('No extraordinary lethal encounter',text)
@@ -65,8 +65,8 @@ class Integration(unittest.TestCase):
         p=self.page();self.configure(p,"s.physicalWorld.rooms.C07.atmosphere={pressure:20,oxygen:7,temperature:90,smoke:90,fire:true,breach:true};")
         self.advance(p,1);snap=self.snap(p);self.assertTrue(all(m is None for m in snap['missions'].values()))
     def test_exhausted_reserves_cannot_fund_research(self):
-        p=self.page();self.configure(p,"""s.operations={reserve:{food:0,tools:0,spares:0,lab:0},transfers:[]};s.interactions.supplies.lab=0;s.specimenCustody={items:[{id:'FIXTURE',status:'stored',name:'synthetic mineral',origin:'asteroid',integrity:100,contamination:0,volatile:false}],history:[]};s.remoteCore.director.science={cases:[{id:'FIXTURE-CASE',specimenId:'FIXTURE',location:'asteroid',item:'synthetic mineral',status:'complete',classification:'geological material',progress:100}],nextCase:2,lastTick:-1};""")
-        self.advance(p,120);snap=self.snap(p);self.assertEqual(snap['director']['science']['experiments'],[]);self.assertEqual(snap['director']['science']['programs'][0]['blocker'],'supplies');self.assertEqual(snap['operations']['reserve']['lab'],0)
+        p=self.page();self.configure(p,"""s.operations={reserve:{food:0,tools:0,spares:0,lab:0},transfers:[]};s.economy.feedstock.ore=0;for(const k of Object.keys(s.interactions.supplies))s.interactions.supplies[k]=0;s.specimenCustody={items:[{id:'FIXTURE',status:'stored',name:'synthetic mineral',origin:'asteroid',integrity:100,contamination:0,volatile:false}],history:[]};s.remoteCore.director.science={cases:[{id:'FIXTURE-CASE',specimenId:'FIXTURE',location:'asteroid',item:'synthetic mineral',status:'complete',classification:'geological material',progress:100}],nextCase:2,lastTick:-1};""")
+        self.advance(p,120);snap=self.snap(p);self.assertEqual(snap['director']['science']['experiments'],[]);self.assertEqual(snap['director']['science']['programs'][0]['blocker'],'lab');self.assertEqual(snap['operations']['reserve']['lab'],0)
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--report',default='integration_report.json');args=parser.parse_args()

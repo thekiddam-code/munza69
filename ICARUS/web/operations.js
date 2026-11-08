@@ -1,6 +1,6 @@
 /* Autonomous policy helpers. Existing captain intervention remains authoritative. */
 (function(root){'use strict';
-function init(s){if(!s.operations)s.operations={reserve:{food:12000,lab:6000,tools:6000,spares:3000},transfers:[],lastDecision:null};return s.operations;}
+function init(s){if(!s.operations)s.operations={reserve:{food:120,lab:60,tools:60,spares:40},transfers:[],lastDecision:null};return s.operations;}
 function transfer(s,key,requested,now){const o=init(s),n=Math.max(0,Math.min(requested,o.reserve[key]||0));o.reserve[key]-=n;if(n)o.transfers.push({key,amount:n,at:now});o.transfers=o.transfers.slice(-80);return n;}
 function maintenancePriority(order,s){const lifeSupport=['C07','C08','C09'].includes(order.room)?40:0;return lifeSupport+(order.priority==='urgent'?100:0)+(100-(s.equipment[order.room]?.condition||0));}
 function assessment(p,job,s,life){const peers=s.crew.filter(q=>q!==p&&!q.expeditionAway&&(q.job==='Comms'||q.job==='Scientist'||q.job==='Command'));
