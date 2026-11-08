@@ -90,9 +90,19 @@ class Continuous(Integration):
         """)
         self.advance(p,1);snap=self.snap(p);self.assertEqual(snap['economy']['mode'],'survival');self.assertFalse(snap['economy']['allowResearch']);self.assertFalse(snap['economy']['allowLaunch']);self.assertTrue(all(q['vitals']['health']<100 for q in snap['crew']));self.assertEqual(snap['resourceAudit'],[])
     def test_explicit_new_voyage_initializes_new_systems_and_saves_without_stock_duplication(self):
-        p=self.page();self.advance(p,240);p.on('dialog',lambda d:d.accept());p.locator('#reset').click();snap=self.snap(p)
+        p=self.page();self.advance(p,240);p.on('dialog',lambda d:d.accept());
+        with p.expect_navigation(wait_until='load'):p.locator('#reset').click()
+        p.wait_for_function('!!window.__icarusSoak');snap=self.snap(p)
         self.assertEqual(snap['tick'],0);self.assertEqual(snap['clock']['elapsed'],0);self.assertEqual(len(snap['crew']),20);self.assertEqual(snap['resourceAudit'],[]);self.assertEqual(snap['teamLog']['suits'],6)
         self.assertTrue(p.evaluate('window.__icarusSoak.save()'));p.reload();self.assertEqual(snap,self.snap(p))
+    def test_clinical_hardware_can_be_repaired_through_actual_engineer_work(self):
+        p=self.page();self.configure(p,"""
+        s.tissueRepair.condition=40;s.equipment.A08.condition=40;
+        const engineer=s.crew[0];engineer.room='A08';engineer.target='A08';engineer.route=[];engineer.energy=90;engineer.task='Repairing clinical unit';engineer.goal=engineer.task;engineer.taskMinutes=180;engineer.carrying='spares';engineer.interaction='working';engineer.maintenanceRoom='A08';
+        s.interactions.supplies.spares-=1;s.economy.consumed.spares=1;
+        s.maintenance={orders:{A08:{room:'A08',name:'Clinical unit',assigned:engineer.name,priority:'urgent',created:0,progress:0,status:'repairing'}},history:[],lastScan:0};
+        """)
+        self.advance(p,180);snap=self.snap(p);self.assertGreaterEqual(snap['world']['tissueRepair']['condition'],85);self.assertGreaterEqual(snap['world']['equipment']['A08']['condition'],85);self.assertEqual(snap['resourceAudit'],[])
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('--report',default='continuity_report.json');args=parser.parse_args()
     result=unittest.TextTestRunner(verbosity=2,resultclass=RecordedResult).run(unittest.defaultTestLoader.loadTestsFromTestCase(Continuous))
