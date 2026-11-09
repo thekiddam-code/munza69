@@ -10,26 +10,26 @@ function migrate(s){
 }
 function names(m){return m.members||[m.crew];}
 function select(s,job,candidates,life,preferred){
- const chosen=[],roles=job.type==='resource'?['Engineer','Scientist']:job.location==='derelict'?['Scientist','Security']:['Scientist','Engineer'];
- const score=p=>(p.vitals?.health??100)+(p.vitals?.morale??60)*.2-(p.vitals?.fatigue??0)-p.stress*.3+(p.vitals?.missions||0)*2+chosen.reduce((n,q)=>n+(p.relationships?.[q.name]||0),0);
+ const count=Math.max(2,Math.min(4,job.teamSize||2)),chosen=[],roles=job.type==='resource'?['Engineer','Scientist']:job.location==='derelict'?['Scientist','Security']:['Scientist','Engineer'];
+ const score=p=>(p.vitals?.health??100)+(p.vitals?.morale??60)*.2-(p.vitals?.fatigue??0)-p.stress*.3+(p.vitals?.missions||0)*2+((p.career?.confidence||0)-(p.career?.caution||0))*2+chosen.reduce((n,q)=>n+(p.relationships?.[q.name]||0),0);
  const canSpare=p=>!['Medic','Engineer'].includes(p.job)||s.crew.filter(q=>q.job===p.job&&!q.expeditionAway&&!chosen.includes(q)&&life.ready(q)).length>1;
- const eligible=candidates.filter(p=>life.ready(p)&&!p.expeditionAway&&!p.emergencyId&&!p.researchAssignment&&!p.rescuePatient&&!p.rescueMedic);
+ const eligible=candidates.filter(p=>life.ready(p)&&!p.expeditionAway&&!p.expeditionId&&!p.responseAssignment&&!p.emergencyId&&!p.researchAssignment&&!p.rescuePatient&&!p.rescueMedic);
  if(preferred){const p=eligible.find(p=>p.name===preferred);if(p&&canSpare(p))chosen.push(p);}
- for(const role of roles){const list=eligible.filter(p=>!chosen.includes(p)&&p.job===role&&canSpare(p)).sort((a,b)=>score(b)-score(a)||a.name.localeCompare(b.name));if(chosen.length<2&&list.length)chosen.push(list[0]);}
- for(const p of eligible.sort((a,b)=>score(b)-score(a)||a.name.localeCompare(b.name)))if(chosen.length<2&&!chosen.includes(p)){
+ for(const role of roles){const list=eligible.filter(p=>!chosen.includes(p)&&p.job===role&&canSpare(p)).sort((a,b)=>score(b)-score(a)||a.name.localeCompare(b.name));if(chosen.length<count&&list.length)chosen.push(list[0]);}
+ for(const p of eligible.sort((a,b)=>score(b)-score(a)||a.name.localeCompare(b.name)))if(chosen.length<count&&!chosen.includes(p)){
   // Never remove the last available clinical or engineering specialist from the ship.
   if(['Medic','Engineer'].includes(p.job)&&s.crew.filter(q=>q.job===p.job&&!q.expeditionAway&&!chosen.includes(q)).length<=1)continue;chosen.push(p);
  }
- return chosen.length===2?chosen:[];
+ return chosen.length===count?chosen:[];
 }
 function launch(s,job,members,economy){
  const e=economy.init(s);s.teamLog=s.teamLog||{suits:6,lostSuits:0,launches:0,decisions:[]};
  if(!e.allowLaunch&&e.allowLaunch!==undefined)return {allowed:false,reason:'ship resource priority'};
  const need={food:members.length*.6,water:members.length*2,oxygen:members.length*1.2};
- const totals=economy.totals(s);if(s.teamLog.suits<members.length||totals.energy<8||Object.entries(need).some(([k,n])=>totals[k]<n))return {allowed:false,reason:'expedition equipment or supplies'};
+ const loadout=job.loadout||{},totals=economy.totals(s);if(Object.entries(loadout).some(([k,n])=>totals[k]<n))return {allowed:false,reason:'objective-specific field equipment'};if(s.teamLog.suits<members.length||totals.energy<8||Object.entries(need).some(([k,n])=>totals[k]<n))return {allowed:false,reason:'expedition equipment or supplies'};
  const m={members:members.map(p=>p.name),crew:members[0].name,cargo:{},suits:members.length,conditions:{},decisions:[],launched:s.tick,lastTick:-1};
  for(const [k,n] of Object.entries(need))economy.moveToCargo(s,m.cargo,k,n);
- economy.consume(s,'energy',8,'shuttle launch '+job.id);s.teamLog.suits-=members.length;s.teamLog.launches++;
+ economy.consume(s,'energy',8,'shuttle launch '+job.id);for(const [k,n] of Object.entries(loadout))economy.moveToCargo(s,m.cargo,k,n);s.teamLog.suits-=members.length;s.teamLog.launches++;
  m.averageExperience=members.reduce((n,p)=>n+(p.vitals?.missions||0),0)/members.length;
  const relationship=members[0].relationships?.[members[1].name]||0;
  m.cohesion=relationship;m.workRate=Math.max(.5,Math.min(1.3,1+relationship*.01+m.averageExperience*.015));

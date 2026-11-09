@@ -58,7 +58,7 @@ class FrontierIntegration(Continuous):
     def test_compressed_primary_corruption_recovers_the_verified_previous_snapshot(self):
         p=self.page();self.advance(p,240);p.evaluate('window.__icarusSoak.save()');checkpoint=p.evaluate("localStorage.getItem('icarus-v02')");self.advance(p,120);p.evaluate('window.__icarusSoak.save()')
         p.add_init_script(self.codec+";(()=>{if(sessionStorage.getItem('corrupt-once'))return;sessionStorage.setItem('corrupt-once','1');Storage.prototype.__icarusOriginalSet.call(localStorage,'icarus-core-recovery-v0941',ICARUSSaveStore.encode("+json.dumps(checkpoint)+"));Storage.prototype.__icarusOriginalSet.call(localStorage,'icarus-v02','ICARUS-LZ1:broken');})();")
-        p.reload();p.wait_for_function('!!window.__icarusSoak');snap=self.snap(p);self.assertEqual(snap['tick'],240);self.assertTrue(any('RECOVERY' in e['message'] for e in snap['events']))
+        p.reload();p.wait_for_function('!!window.__icarusSoak');snap=self.snap(p);self.assertEqual(snap['tick'],360);self.assertGreaterEqual(p.evaluate('ICARUSDurable.status.recoveries'),1)
 if __name__=='__main__':
     ap=argparse.ArgumentParser();ap.add_argument('--report',default='frontier_integration.json');args=ap.parse_args()
     result=unittest.TextTestRunner(verbosity=2,resultclass=RecordedResult).run(unittest.defaultTestLoader.loadTestsFromTestCase(FrontierIntegration))

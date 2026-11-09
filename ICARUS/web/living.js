@@ -36,16 +36,16 @@ function tick(s,env){
    v.morale=clamp(v.morale+(target-v.morale)*.1);
   }
   if(v.health<60&&v.health>0&&!p.expeditionAway){p.goal='Medical recovery';if(v.health<20)p.survivalIncapacitated=true;}
-  if(v.health<95&&p.room==='A08'&&!p.expeditionAway&&safe&&env.power>=35){
+  if(v.health<(v.prognosis?.ceiling||95)&&p.room==='A08'&&!p.expeditionAway&&safe&&env.power>=35){
    const medic=s.crew.find(q=>q!==p&&q.job==='Medic'&&q.room==='A08'&&!q.expeditionAway&&!q.survivalIncapacitated&&q.vitals.health>=40);
    const unit=env.tissue;
    if(medic&&unit.condition>=25&&(v.treatmentPaid||unit.cartridges>0)){
     if(!v.treatmentPaid){unit.cartridges--;if(env.consume)env.consume('medical',1);v.treatmentPaid=true;life.medical.push({patient:p.name,medic:medic.name,at:env.now});life.medical=life.medical.slice(-100);p.relationships[medic.name]=clamp((p.relationships[medic.name]||0)+3,-20,20);env.emit('medical',medic.name+' began injury treatment for '+p.name,[medic.name,p.name],{cartridge:1});}
-    v.health=clamp(v.health+.22);unit.condition=Math.max(0,unit.condition-.002);
+    v.health=clamp(v.health+(v.prognosis?.rate||.22),0,v.prognosis?.ceiling||100);unit.condition=Math.max(0,unit.condition-.002);
     if(v.health>=60)p.survivalIncapacitated=false;
-    if(v.health>=95){v.treatmentPaid=false;for(const injury of v.injuries)injury.active=false;env.emit('recovery',p.name+' completed injury recovery',[p.name],{health:v.health});}
+    if(v.health>=(v.prognosis?.ceiling||95)){v.treatmentPaid=false;for(const injury of v.injuries)injury.active=false;env.emit('recovery',p.name+' completed injury recovery',[p.name],{health:v.health});}
    }
-  }else if(safe&&resting&&v.health>=60&&v.health<95)v.health=clamp(v.health+.005);
+  }else if(safe&&resting&&v.health>=60&&v.health<(v.prognosis?.ceiling||95))v.health=clamp(v.health+.005,0,v.prognosis?.ceiling||95);
  }
  for(const p of [...s.crew].filter(p=>p.vitals.health<=0)){
   const record={name:p.name,job:p.job,at:env.now,cause:p.vitals.injuries.at(-1)?.cause||'critical injury',crew:p};
@@ -56,7 +56,7 @@ function tick(s,env){
    m.casualties=m.casualties||[];if(!m.casualties.includes(p.name))m.casualties.push(p.name);
    const survivors=(m.members||[m.crew]).map(n=>s.crew.find(q=>q.name===n)).filter(Boolean);
    const job=s.remoteCore.director.registry.find(j=>j.id===m.id);
-   if(survivors.length){m.crew=survivors[0].name;m.phase='returning';m.progress=0;if(job)job.completionReason='team_casualty';}
+   if(survivors.length){m.crew=survivors[0].name;m.phase=m.stranded?'stranded':'returning';m.progress=0;if(job)job.completionReason='team_casualty';}
    else{if(job){job.status='failed';job.outcome='Expedition crew lost';job.completed=env.now;}const intel=s.remoteCore.director.intelligence?.[loc];if(intel){intel.attempts=(intel.attempts||0)+1;intel.pendingSurvey=false;intel.pendingLead=0;}if(env.lossMission)env.lossMission(m);if(s.teamLog)s.teamLog.lostSuits+=(m.suits||0);s.remoteCore.missions[loc]=null;}
   }
  }

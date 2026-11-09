@@ -1,7 +1,7 @@
 /* Recaps select recorded events. They never manufacture footage or encounters. */
 (function(root){'use strict';
 function init(s){if(!s.chronicle)s.chronicle={nextId:1,records:[],options:{anthology:false,killCam:false}};return s.chronicle;}
-function record(s,kind,message,people=[],data={}){const j=init(s);if(kind==='routine')return null;const e={id:'CHR-'+s.episode+'-'+j.nextId++,episode:s.episode,minute:s.minute,kind,message,people:[...new Set(people.filter(Boolean))],data};j.records.push(e);j.records=j.records.slice(-4000);return e;}
+function record(s,kind,message,people=[],data={}){const j=init(s);if(kind==='routine')return null;const e={id:'CHR-'+s.episode+'-'+j.nextId++,episode:s.episode,minute:s.minute,kind,message,people:[...new Set(people.filter(Boolean))],data};j.records.push(e);j.records=j.records.slice(-4000);root.ICARUSChronicles?.record(s,e);root.ICARUSDurable?.record(e);return e;}
 function recap(s){const j=init(s),records=j.records.filter(e=>e.episode===s.episode),people={};for(const e of records)for(const name of e.people)people[name]=(people[name]||0)+1;
  const major=records.filter(e=>['emergency','death','injury','research','mission','medical','recovery'].includes(e.kind));
  const relationships=records.filter(e=>e.kind==='relationship'||e.kind==='social');

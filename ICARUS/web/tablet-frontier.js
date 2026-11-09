@@ -5,5 +5,6 @@ function render(host,t,send){if(!host||!t)return;const ds=t.contacts||[],points=
  const select=host.querySelector('select');if([...select.options].some(o=>o.value===remembered))select.value=remembered;select.onchange=()=>host.dataset.selected=select.value;host.querySelectorAll('[data-contact]').forEach(el=>el.onclick=()=>{select.value=el.dataset.contact;host.dataset.selected=select.value;});
  host.querySelectorAll('[data-tablet-nav]').forEach(b=>b.onclick=()=>send('nav:'+b.dataset.tabletNav+(b.dataset.tabletNav==='course'?':'+host.querySelector('select').value:'')));
 }
-root.ICARUSTabletFrontier={render};
+function living(host,t,send){if(!host)return;host.innerHTML='<h3>Persistent contacts</h3>'+t.entities.map(n=>'<p>'+esc(n.name+' · '+n.activity+' · reputation '+n.reputation+' · encounters '+n.interactions)+'</p>').join('')+'<h3>Emergency response</h3>'+t.emergencies.map(i=>'<p>'+esc(i.id+' · '+i.cause+' · '+(i.blocker||'assessing'))+' <button data-remote-rescue="'+esc(i.id)+'">Rescue</button><button data-remote-shelter="'+esc(i.id)+'">Shelter</button></p>').join('')+'<p>'+esc('Chronicle episodes '+t.weeks+' · save '+t.save)+'</p>'+t.memories.map(r=>'<p>'+esc(r.person+' · '+r.kind+' · '+r.sourceId)+'</p>').join('');host.querySelectorAll('[data-remote-rescue]').forEach(b=>b.onclick=()=>send('frontier:rescue:'+b.dataset.remoteRescue));host.querySelectorAll('[data-remote-shelter]').forEach(b=>b.onclick=()=>send('frontier:shelter:'+b.dataset.remoteShelter));}
+root.ICARUSTabletFrontier={render,living};
 })(globalThis);

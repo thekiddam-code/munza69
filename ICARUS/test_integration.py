@@ -31,7 +31,8 @@ class Integration(unittest.TestCase):
     def page(self):
         c=self.browser.new_context();self.contexts.append(c);c.add_init_script(self.codec+';window.__icarusSeed=10101;')
         p=c.new_page();p.on('pageerror',lambda e:self.errors.append(str(e)));p.goto(self.url);p.wait_for_function('!!window.__icarusSoak');return p
-    def snap(self,p):return p.evaluate('window.__icarusSoak.snapshot()')
+    def snap(self,p):
+        p.wait_for_function('!!window.__icarusSoak');return p.evaluate('window.__icarusSoak.snapshot()')
     def advance(self,p,n):
         while n:p.evaluate('n=>window.__icarusSoak.advance(n)',min(120,n));n-=min(120,n)
     def configure(self,p,code):
