@@ -9,6 +9,8 @@ def write_csv(p,rows):
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('directory',type=Path);args=ap.parse_args();r=args.directory;errors=[];rows=[];balances=[];graphs={};narrative={};science={};operations={};navigation={};cautions=[]
     for seed in (1001,2026,7331):
+        campaign=load(r/f'campaign_seed_{seed}.json')
+        if not campaign['passed'] or campaign['last_day']!=365 or campaign.get('browser_errors') or campaign['errors']:errors.append(str(seed)+' incomplete campaign or browser error')
         for day in (30,90,180,365):
             d=load(r/f'seed_{seed}_{day}day.json');e=d['resource_balances'];stats=d['repair_control']['stats'];label=f'{seed}/{day}'
             if not d['passed'] or d['errors'] or d['resource_audit'] or d['frontier_audit']:errors.append(label+' runtime audit failure')
@@ -19,6 +21,8 @@ def main():
             for pool,kind in [('produced','produce'),('consumed','consume'),('disposed','loss'),('feedstockUsed','feedstock_use'),('feedstockImported','recover')]:
                 for k,n in e[pool].items():
                     if abs(aggregate[(kind,k)]-n)>1e-5:errors.append(label+' ledger mismatch '+pool+'/'+k)
+            scrap=sum(x['amount'] for x in e['ledger'].values() if x['kind']=='recover' and x['source']=='recovered process scrap')
+            if scrap>sum(e['consumed'].get(k,0) for k in ['tools','spares','lab'])*.98+1e-5:errors.append(label+' process scrap exceeds actual consumed material yield')
             for k,n in e['feedstock'].items():
                 expected=e['feedstockInitial'].get(k,0)+e['feedstockImported'].get(k,0)-e['feedstockUsed'].get(k,0);balances.append({'seed':seed,'days':day,'resource':k,'initial':e['feedstockInitial'].get(k,0),'incoming':e['feedstockImported'].get(k,0),'consumed':e['feedstockUsed'].get(k,0),'remaining':n,'difference':expected-n})
                 if n<0 or abs(expected-n)>1e-5:errors.append(label+' finite feedstock balance '+k)
@@ -52,7 +56,8 @@ def main():
         navigation[str(seed)]={'arrivals':s['navigation']['arrivals'],'fuel_used':s['navigation']['fuelUsed'],'recent_routes':s['navigation']['history'],'last_decision':s['navigation'].get('lastDecision'),'objective_failures':dict(collections.Counter(j['destination']+'/'+j['type'] for j in s['frontier']['jobs'] if j['status']=='failed')),'transport':s['emergencyOps']['transport']}
         long_incidents={k:{'age':x.get('age'),'label':x['label']} for k,x in s['emergencies'].items() if x['status']=='active' and x.get('age',0)>1440}
         if long_incidents:cautions.append({'seed':seed,'review':'Long unresolved incidents require causal interpretation, not automatic success from survival','incidents':long_incidents})
-        operations[str(seed)]={'stats':s['repairControl']['stats'],'final_forecasts':s['repairControl']['forecast'],'recent_actual_decisions':s['repairControl']['decisions'],'last_native_incidents':{k:{'status':v['status'],'age':v['age'],'progress':v['progress'],'label':v['label']} for k,v in s['emergencies'].items()},'recorded_life_support_alarms':len(life_alarms),'recorded_survival_mode_entries':len(shortages),'unresolved_long_incidents':long_incidents,'deaths':s['living']['deceased'],'remaining_orders':s['maintenance']['orders']}
+        decision_sources=[h for h in history.values() if h.get('message','').startswith(('SOL: Measured','SOL: Released','SOL: Retained','SOL: Retired','SOL: Suspended','SOL: Removed','SOL: Emergency','SOL resource priority:')) or 'manually repairing distribution' in h.get('message','') or 'cleared ' in h.get('message','') and 'hatch after physical' in h.get('message','')]
+        operations[str(seed)]={'major_decision_source_count':len(decision_sources),'major_decision_examples':decision_sources[:12]+decision_sources[-12:] if len(decision_sources)>24 else decision_sources,'stats':s['repairControl']['stats'],'final_forecasts':s['repairControl']['forecast'],'recent_actual_decisions':s['repairControl']['decisions'],'last_native_incidents':{k:{'status':v['status'],'age':v['age'],'progress':v['progress'],'label':v['label']} for k,v in s['emergencies'].items()},'recorded_life_support_alarms':len(life_alarms),'recorded_survival_mode_entries':len(shortages),'unresolved_long_incidents':long_incidents,'source_accounting':{'frontier_credited':s['logistics']['credited'],'all_recovered_feedstock':s['economy']['feedstockImported'],'process_scrap_ore':sum(x['amount'] for x in s['economy']['ledger'].values() if x['kind']=='recover' and x['source']=='recovered process scrap')},'deaths':s['living']['deceased'],'remaining_orders':s['maintenance']['orders']}
         graphs[str(seed)]={'history_records':len(history),'errors':issues};errors.extend(str(seed)+': '+x for x in issues)
     old=load(r/'counterfactual_old.json');fixed=load(r/'counterfactual_repaired.json');counter={'same_input_state':old['input_state_sha256']==fixed['input_state_sha256'],'old_final_survivors':len(old['final']['crew']),'repaired_final_survivors':len(fixed['final']['crew']),'both_initial_inventory_verified':old['unchanged_initial_inventory_and_crew'] and fixed['unchanged_initial_inventory_and_crew'],'repaired_stats':fixed['final']['repairControl']['stats']}
     if not counter['same_input_state'] or not counter['both_initial_inventory_verified'] or counter['old_final_survivors']!=0 or counter['repaired_final_survivors']!=20 or not old['passed'] or not fixed['passed']:errors.append('Captured-state causal recovery not demonstrated')

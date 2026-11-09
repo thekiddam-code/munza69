@@ -6,6 +6,7 @@ Status vocabulary: **Complete and verified**, **Implemented but needing refineme
 
 | Milestone | Current status | Evidence / remaining release gate |
 | --- | --- | --- |
+| v1.4.1 galley-cascade investigation and targeted recovery | Complete and verified | Exact original-profile death reproduction, unchanged captured-world old/repaired comparison, 117 unit cases, 30 core/44 compatibility browser cases, four adverse scenarios and three 365-day campaigns; see VALIDATION_v1.4.1.md. This closes the identified access/reservation/material defects, not universal survival or all balance work. |
 | Core simulation completeness | Implemented but needing refinement | Continuous crew/ship/science/resource/mission loop and bounded local context exist. The original seed-1001 cascade is reproduced and isolated; targeted paid repair/access/reservation and queue corrections are covered by v1.4.1 regressions. See VALIDATION_v1.4.1.md for actual multi-seed campaigns and remaining causal/balance review. |
 | Anthology storytelling completeness | Partially implemented | Causal beginnings, development, pauses, overlapping threads, actual consequences and open endings work. The interaction vocabulary is deliberately small; deepen contextual specificity and evaluate long-session interest before adding scope. |
 | Crew autonomy and relationship depth | Implemented but needing refinement | Existing personality/physical autonomy plus source-backed shared experiences, trust, medical recovery and traditions. Numeric models need richer characterization and human review; avoid repetitive liaison/relationship framing. |
@@ -24,7 +25,7 @@ Status vocabulary: **Complete and verified**, **Implemented but needing refineme
 
 ## Next core milestones, in order
 
-1. Review the v1.4.1 compound-failure and long-duration evidence before extending recovery policy. Retain finite paid work, actual physical access, bounded engineer reservations and meaningful unrecoverable emergencies; widen seed and failure-combination coverage.
+1. Review the v1.4.1 compound-failure and long-duration evidence before extending recovery policy. Retain finite paid work, actual physical access, bounded engineer reservations and meaningful unrecoverable emergencies; widen seed and failure-combination coverage. Review small ore-harvest batching and expedition overhead using the recorded finite returns, without changing the core scope.
 2. Review actual v1.4 stories for specificity, repetition and believable crew participation; enrich existing categories and responses, without new map or economic systems.
 3. Consolidate Operations, crew, research and chronicle navigation; add accessible focus/keyboard behavior and test real tablet/Windows layouts.
 4. Improve source-grounded weekly selection and concise SOL interpretation; retain quiet episodes and unresolved threads.

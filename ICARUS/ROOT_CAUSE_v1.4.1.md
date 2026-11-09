@@ -46,7 +46,7 @@ All four still reserve A04; none is physically working there. This identifies an
 
 ## Captured-world intervention
 
-The identical day-339 saved state has SHA-256 `b87ee10fa58f1153e6c7f0217f8c169f482bc07cf89a9b6d941442eac62aa690`. Both replay variants verify exact initial crew and inventory. Over twelve days, old rules lose all twenty crew; the repaired variant retains twenty, clears two hatches through 200 applied paid work units, completes eight native incidents and 77 preventive jobs in the recorded intermediate repaired run. Final-runtime results are separately retained; no material or favorable crew state is added to the captured case.
+The identical day-339 saved state has SHA-256 `b87ee10fa58f1153e6c7f0217f8c169f482bc07cf89a9b6d941442eac62aa690`. Both replay variants verify exact initial crew and inventory. Over twelve days, old rules lose all twenty crew; the repaired variant retains twenty, clears two hatches through 200 applied paid work units, completes eight native incidents and 77 preventive jobs in the recorded intermediate repaired run. The final-runtime replay also retains twenty, clears the same two hatches, resolves the galley native incident and completes 82 preventive jobs; subsequent native cascades are prevented rather than staged to match the intermediate run. Exact counters and resource audits are in reports/counterfactual_repaired.json. No material or favorable crew state is added to the captured case.
 
 ## Intended behavior retained
 
