@@ -45,3 +45,5 @@ See VALIDATION_v1.4.md and packaged reports for actual final tests, diversity/ov
 ## Long-run medical regression repaired
 
 A pre-release seed-1001 run reached day 346, then crashed on an actual unreachable medical route: navPath legitimately returned null for sealed access and medicalRecoveryTick dereferenced .length. Availability now treats null as unreachable; sorting likewise tolerates a missing path. No casualty is teleported or labeled treated. A sealed-hatch incapacitated-patient browser regression verifies physical waiting without a crash. The failed campaign and interrupted peer remain diagnostics; acceptance uses fresh post-fix worlds.
+
+The adjacent atmospheric-response, evacuation and research-subject/security paths had the same null-route assumption. They now reject unreachable paths too, preserving the pathfinder's null semantics and avoiding teleportation. A second actual sealed-fire-compartment test covers physical evacuation and unreachable engineer dispatch. Accepted campaigns were restarted after this final runtime repair.

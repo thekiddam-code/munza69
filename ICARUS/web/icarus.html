@@ -2241,8 +2241,8 @@ function autonomousAtmosphereResponse(){
   if(dangerous&&state.tick%8===0&&!state.crew.some(p=>p.emergencyId===id)){
    const available=state.crew.filter(p=>p.job==='Engineer'&&!p.expeditionId&&!p.expeditionAway&&!p.responseAssignment&&ICARUSLife.ready(p)&&p.energy>=35&&!p.emergencyId);
    if(available.length){
-    const closest=available.sort((a,b)=>navPath(a.room,id).length-navPath(b.room,id).length)[0];
-    if(navPath(closest.room,id).length||closest.room===id)assignEmergency(closest,e);
+    const closest=available.sort((a,b)=>(navPath(a.room,id)?.length??Infinity)-(navPath(b.room,id)?.length??Infinity))[0];
+    if(navPath(closest.room,id)?.length||closest.room===id)assignEmergency(closest,e);
     else if(e.age%48===0)log('SOL: Access to '+roomName(id)+' is blocked. Response awaiting a safe route.','emergency');
    }
   }
@@ -2288,7 +2288,7 @@ function crewSurvivalTick(){
    const responder=!!p.emergencyId;
    if(responder&&lethal){delete p.emergencyId;p.taskMinutes=0;log(p.name+' withdrew from '+roomName(p.room)+' due to life-threatening atmospheric conditions.','emergency',p.name)}
    if(!responder||lethal){
-    const options=safeRooms.map(id=>({id,route:navPath(p.room,id)})).filter(x=>x.id===p.room||x.route.length>0).sort((a,b)=>a.route.length-b.route.length);
+    const options=safeRooms.map(id=>({id,route:navPath(p.room,id)})).filter(x=>x.id===p.room||(x.route?.length||0)>0).sort((a,b)=>(a.route?.length??Infinity)-(b.route?.length??Infinity));
     const destination=options[0]?.id;
     if(destination&&destination!==p.room&&p.survivalDestination!==destination){
      p.survivalDestination=destination;p.target=destination;p.route=path(p.room,destination);p.travelProgress=0;p.task='Evacuating hazardous atmosphere';p.taskMinutes=90;
@@ -2358,11 +2358,11 @@ function lazarusResearchTick(){
   if(e.kind==='integrated'){e.location='B05';continue;}
   if(e.status==='containment compromised'&&!e.escaped){e.escaped=true;e.location='B03';e.status='uncontained';e.lastEvent=stamp();log('BIOSECURITY: Containment breach confirmed in B03; specimen location under surveillance.','emergency');}
   if(e.status==='uncontained'){
-   const options=['B03','B04','B05','B09','B10','B02'].filter(id=>id!==e.location&&navPath(e.location,id).length>0);
+   const options=['B03','B04','B05','B09','B10','B02'].filter(id=>id!==e.location&&(navPath(e.location,id)?.length||0)>0);
    if(options.length&&simRandom()<.65){e.location=options[rnd(options.length)];e.lastEvent=stamp();}
    const witness=state.crew.find(p=>p.room===e.location&&!p.expeditionAway&&!p.survivalIncapacitated);
    if(witness&&simRandom()<.65){e.discovered=true;log('BIOSECURITY: '+witness.name+' reports an unidentified biological subject in '+roomName(e.location)+'.','emergency');witness.stress=clamp((witness.stress||0)+5,0,100);}
-   if(e.discovered){const security=state.crew.find(p=>p.job==='Security'&&!p.expeditionAway&&!p.survivalIncapacitated&&!p.route?.length);if(security&&security.room!==e.location&&simRandom()<.45){const route=navPath(security.room,e.location);if(route.length){security.route=route;security.target=e.location;security.task='Investigating biological containment alert';security.goal='Locate uncontained research subject';}}}
+   if(e.discovered){const security=state.crew.find(p=>p.job==='Security'&&!p.expeditionAway&&!p.survivalIncapacitated&&!p.route?.length);if(security&&security.room!==e.location&&simRandom()<.45){const route=navPath(security.room,e.location);if(route?.length){security.route=route;security.target=e.location;security.task='Investigating biological containment alert';security.goal='Locate uncontained research subject';}}}
    if(e.discovered&&l.containment>65&&state.crew.some(p=>p.job==='Security'&&p.room===e.location&&!p.route?.length)&&simRandom()<.35){e.status='isolated';e.escaped=false;e.location='B03';e.discovered=false;e.lastEvent=stamp();l.containment=Math.max(0,l.containment-8);log('BIOSECURITY: '+e.name+' recovered and transferred to B03 containment.','system');}
   }
  }

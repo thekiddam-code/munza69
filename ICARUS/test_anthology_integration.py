@@ -51,6 +51,8 @@ class CoreIntegration(Integration):
         self.assertEqual(p.evaluate("localStorage['icarus-v02']"),oldraw);self.advance(p,1500);self.assertEqual(len(self.snap(p)['universe']['systems']),len(new['universe']['systems']));self.assertEqual(self.snap(p)['frontierAudit'],[])
     def test_sealed_hatch_blocks_medical_retrieval_without_crash_or_teleportation(self):
         p=self.page();self.configure(p,"""s.remoteCore.autonomyEnabled=false;const p=s.crew[0];p.room='C04';p.target='C04';p.route=[];p.energy=0;p.vitals.health=40;p.survivalIncapacitated=true;p.taskMinutes=999;s.physicalWorld.rooms.C04.door='sealed';""");self.advance(p,6);s=self.snap(p);patient=s['crew'][0];self.assertEqual(patient['room'],'C04');self.assertTrue(patient['survivalIncapacitated']);self.assertFalse(patient.get('rescueMedic'));self.assertEqual(s['resourceAudit'],[])
+    def test_sealed_fire_compartment_does_not_crash_evacuation_or_dispatch_unreachable_engineers(self):
+        p=self.page();self.configure(p,"""s.remoteCore.autonomyEnabled=false;const p=s.crew[0];p.room='C04';p.target='C04';p.route=[];p.energy=90;p.taskMinutes=999;s.physicalWorld.rooms.C04.door='sealed';Object.assign(s.physicalWorld.rooms.C04.atmosphere,{fire:true,pressure:70,oxygen:18,temperature:60,smoke:10});""");self.advance(p,8);s=self.snap(p);self.assertEqual(s['crew'][0]['room'],'C04');self.assertFalse(any(q.get('emergencyId')=='C04' for q in s['crew'] if q['room']!='C04'));self.assertEqual(s['resourceAudit'],[])
     def test_actual_reserve_deficit_triggers_finite_local_extraction(self):
         p=self.page();self.configure(p,"""
         s.remoteCore.autonomyEnabled=false;
