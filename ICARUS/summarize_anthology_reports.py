@@ -56,12 +56,12 @@ def main():
         errors.extend(f'{seed}: '+x for x in arc_errors)
     tests={};unit=(r/'unit_results.txt').read_text();counts={key:int(re.search(r'ℹ '+key+r' (\d+)',unit).group(1)) for key in ('tests','pass','fail','skipped')};tests['unit']=counts
     if counts['fail'] or counts['skipped'] or counts['tests']!=counts['pass']:errors.append('Unit suite failure/skip')
-    for name in ['core_integration.json','compatibility_integration.json','bridge_results.json','syntax_checks.json']:
+    for name in ['core_integration.json','compatibility_integration.json','bridge_results.json','syntax_checks.json','backup_roundtrip.json']:
         d=load(r/name);tests[name]={'passed':d['passed'],'count':d.get('tests_run',d.get('tests'))}
         if not d['passed']:errors.append('Failed '+name)
     variants={}
     for name in ('quiet','busy'):
-        p=r/name/'seed_3303_30day.json';d=load(p);ext=[x for x in d['anthology']['arcs'] if 'signalHour'in x];variants[name]={'passed':d['passed'],'frequency':d['anthology']['config']['frequency'],'external':distribution(ext,43200),'crew_stories':len(d['anthology']['arcs'])-len(ext)}
+        p=r/name/'seed_3303_30day.json';d=load(p);ext=[x for x in d['anthology']['arcs'] if 'signalHour'in x];variants[name]={'passed':d['passed'],'frequency':d['anthology']['config']['frequency'],'external':distribution(ext,43200),'crew_stories':len(d['anthology']['arcs'])-len(ext),'operational_contacts':d['living_frontier']['entities']['stats']['contacts']}
         if not d['passed']:errors.append('Failed frequency variant '+name)
     if variants['quiet']['external']['count'] or variants['busy']['external']['count']<=variants['quiet']['external']['count']:errors.append('Frequency variation not demonstrated')
     for name,obj in [('story_diversity.json',diversity),('story_examples.json',examples),('resource_conservation.json',audits),('science_lazarus.json',science),('frequency_variants.json',variants)]:
