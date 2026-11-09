@@ -17,7 +17,7 @@ class Integration(unittest.TestCase):
     def setUpClass(cls):
         cls.server=http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(ROOT/'web')))
         threading.Thread(target=cls.server.serve_forever,daemon=True).start()
-        cls.codec=(ROOT/'web/vendor/lz-string.min.js').read_text()+';'+(ROOT/'web/save-store.js').read_text()
+        cls.codec='window.__icarusExtendedTest=true;'+(ROOT/'web/vendor/lz-string.min.js').read_text()+';'+(ROOT/'web/save-store.js').read_text()
         cls.pw=sync_playwright().start()
         cls.browser=cls.pw.chromium.launch(headless=True,executable_path=os.environ.get('ICARUS_CHROMIUM') or None)
         cls.url=f'http://127.0.0.1:{cls.server.server_port}/icarus.html?icarus_soak=1'

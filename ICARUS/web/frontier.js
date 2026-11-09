@@ -1,6 +1,6 @@
 /* Observed-opportunity controller. Dependencies/callbacks are explicit for testing. */
 (function(root){'use strict';
-function init(s,env){env.entities?.init(s);env.experiences?.init(s);env.emergencyOps?.init(s);env.chronicles?.init(s);env.universe.init(s);env.navigation.init(s);env.logistics.init(s);
+function init(s,env){env.entities?.init(s);env.experiences?.init(s);env.emergencyOps?.init(s);env.chronicles?.init(s);env.universe.init(s);env.navigation.init(s);env.logistics.init(s);env.anthology?.init(s);
  if(!s.frontier)s.frontier={version:1,enabled:true,selected:'HOME',nextJob:1,jobs:[],active:null,lastTick:-1,lastPlan:-999,lastWeatherDay:-1,stats:{departures:0,arrivals:0,completed:0,failed:0,samples:0,eventKinds:{}}};return s.frontier;
 }
 function emit(s,env,kind,message,data={}){const f=s.frontier;f.stats.eventKinds[kind]=(f.stats.eventKinds[kind]||0)+1;if(kind==='departure')f.stats.departures++;if(kind==='arrival')f.stats.arrivals++;if(env.emit)env.emit(kind,message,data);}
@@ -94,7 +94,7 @@ function command(s,action,id,env){init(s,env);if(action==='hold'){s.navigation.h
  if(action==='recall'){const m=s.remoteCore.missions.frontier;if(m){if(m.stranded)return {ok:false,reason:'Stranded transport requires feasible rescue or repair'};m.failed=true;if(m.phase==='boarding'){m.stagingCancelled=true;finish(s,s.frontier.jobs.find(j=>j.id===s.frontier.active),m,env);}else{m.phase='returning';m.progress=0;}return {ok:true};}return {ok:false,reason:'No frontier expedition'};}
  return {ok:false,reason:'Unknown navigation command'};
 }
-function audit(s,env){const f=init(s,env),errors=[...env.universe.audit(s),...env.navigation.audit(s,env.universe),...env.logistics.audit(s,env.universe)];
+function audit(s,env){const f=init(s,env),errors=[...(env.anthology?.audit(s)||[]),...env.universe.audit(s),...env.navigation.audit(s,env.universe),...env.logistics.audit(s,env.universe)];
  errors.push(...(env.entities?.audit(s)||[]),...(env.experiences?.audit(s)||[]),...(env.emergencyOps?.audit(s)||[]),...(env.chronicles?.audit(s)||[]));
  if(f.active&&!f.jobs.some(j=>j.id===f.active))errors.push('Lost frontier mission');if(f.jobs.some(j=>j.status==='active'&&s.tick-j.started>(s.remoteCore.missions.frontier?.incidentId?3600:1800)))errors.push('Stuck frontier operation');return errors;
 }

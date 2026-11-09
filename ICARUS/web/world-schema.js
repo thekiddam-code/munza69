@@ -3,6 +3,7 @@
 const object=x=>!!x&&typeof x==='object'&&!Array.isArray(x),array=Array.isArray,finiteMap=x=>object(x)&&Object.values(x).every(n=>Number.isFinite(n)&&n>=-1e-7);
 function valid(s,requireModern=false){
  if(!object(s)||!array(s.crew)||!Number.isFinite(s.tick)||s.tick<0||!Number.isInteger(s.episode)||s.episode<1)return false;
+ if(s.anthology!==undefined){const a=s.anthology;if(!object(a)||a.version!==1||!array(a.arcs)||!object(a.seen)||!array(a.traditions)||!object(a.config)||!Number.isFinite(a.config.frequency)||a.config.frequency<0||a.config.frequency>3||!finiteMap(a.config.weights)||a.arcs.some(r=>!object(r)||typeof r.id!=='string'||!array(r.sources)||!array(r.history)||!Number.isFinite(r.started)||!Number.isFinite(r.progress)))return false;}
  const domains=['entities','experiences','emergencyOps','chronicles'],modern=requireModern||domains.some(k=>s[k]!==undefined);
  if(!modern)return true;
  if(domains.some(k=>!object(s[k])||s[k].version!==1))return false;
