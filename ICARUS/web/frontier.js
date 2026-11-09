@@ -94,7 +94,7 @@ function command(s,action,id,env){init(s,env);if(action==='hold'){s.navigation.h
  if(action==='recall'){const m=s.remoteCore.missions.frontier;if(m){if(m.stranded)return {ok:false,reason:'Stranded transport requires feasible rescue or repair'};m.failed=true;if(m.phase==='boarding'){m.stagingCancelled=true;finish(s,s.frontier.jobs.find(j=>j.id===s.frontier.active),m,env);}else{m.phase='returning';m.progress=0;}return {ok:true};}return {ok:false,reason:'No frontier expedition'};}
  return {ok:false,reason:'Unknown navigation command'};
 }
-function audit(s,env){const f=init(s,env),errors=[...(env.anthology?.audit(s)||[]),...env.universe.audit(s),...env.navigation.audit(s,env.universe),...env.logistics.audit(s,env.universe)];
+function audit(s,env){const f=init(s,env),errors=[...(env.repair?.audit(s)||[]),...(env.anthology?.audit(s)||[]),...env.universe.audit(s),...env.navigation.audit(s,env.universe),...env.logistics.audit(s,env.universe)];
  errors.push(...(env.entities?.audit(s)||[]),...(env.experiences?.audit(s)||[]),...(env.emergencyOps?.audit(s)||[]),...(env.chronicles?.audit(s)||[]));
  if(f.active&&!f.jobs.some(j=>j.id===f.active))errors.push('Lost frontier mission');if(f.jobs.some(j=>j.status==='active'&&s.tick-j.started>(s.remoteCore.missions.frontier?.incidentId?3600:1800)))errors.push('Stuck frontier operation');return errors;
 }

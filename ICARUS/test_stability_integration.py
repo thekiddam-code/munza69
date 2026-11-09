@@ -32,6 +32,12 @@ class StabilityIntegration(CoreIntegration):
             self.advance(p,5);s=self.snap(p);e=s['world']['emergencies'].get('A04',{})
             if 0<e.get('hatchProgress',0)<100:found=True;break
         self.assertTrue(found);before=self.snap(p);p.evaluate('__icarusSoak.save()');p.reload();self.assertEqual(self.snap(p),before);self.advance(p,200);after=self.snap(p);self.assertEqual(after['world']['emergencies']['A04']['status'],'resolved');self.assertEqual(after['resourceAudit'],[])
+    def test_completed_machine_work_does_not_hide_a_still_jammed_hatch(self):
+        p=self.page();self.configure(p,"""
+        s.remoteCore.autonomyEnabled=false;s.frontier.enabled=false;s.navigation.hold=true;s.anthology.config.frequency=0;
+        const p=s.crew[0];p.room='A04';p.target='A04';p.route=[];p.emergencyId='A04';p.energy=80;p.vitals.fatigue=0;p.vitals.morale=80;
+        s.equipment.A04.condition=84;s.physicalWorld.rooms.A04.door='jammed';s.emergencies.A04={id:'A04',room:'A04',status:'active',label:'Explicit post-repair jam fixture',progress:100,age:5,severity:'warning',frames:[],hatchProgress:0};
+        """);self.advance(p,15);s=self.snap(p);self.assertEqual(s['world']['emergencies']['A04']['status'],'active');self.assertEqual(s['world']['physicalWorld']['rooms']['A04']['door'],'jammed');self.advance(p,40);s=self.snap(p);self.assertEqual(s['world']['physicalWorld']['rooms']['A04']['door'],'open');self.assertEqual(s['world']['emergencies']['A04']['status'],'resolved');self.assertEqual(s['resourceAudit'],[])
     def test_preventive_repair_is_paid_and_survives_an_interrupted_worker(self):
         p=self.page();self.configure(p,"""
         s.remoteCore.autonomyEnabled=false;s.frontier.enabled=false;s.navigation.hold=true;s.anthology.config.frequency=0;s.equipment.C07.condition=60;
