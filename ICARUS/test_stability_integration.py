@@ -38,6 +38,31 @@ class StabilityIntegration(CoreIntegration):
         const p=s.crew[0];p.room='A04';p.target='A04';p.route=[];p.emergencyId='A04';p.energy=80;p.vitals.fatigue=0;p.vitals.morale=80;
         s.equipment.A04.condition=84;s.physicalWorld.rooms.A04.door='jammed';s.emergencies.A04={id:'A04',room:'A04',status:'active',label:'Explicit post-repair jam fixture',progress:100,age:5,severity:'warning',frames:[],hatchProgress:0};
         """);self.advance(p,15);s=self.snap(p);self.assertEqual(s['world']['emergencies']['A04']['status'],'active');self.assertEqual(s['world']['physicalWorld']['rooms']['A04']['door'],'jammed');self.advance(p,40);s=self.snap(p);self.assertEqual(s['world']['physicalWorld']['rooms']['A04']['door'],'open');self.assertEqual(s['world']['emergencies']['A04']['status'],'resolved');self.assertEqual(s['resourceAudit'],[])
+    def test_queued_preventive_worker_acquires_parts_before_admitted_work(self):
+        p=self.page();self.configure(p,"""
+        s.remoteCore.autonomyEnabled=false;s.frontier.enabled=false;s.navigation.hold=true;s.anthology.config.frequency=0;
+        for(const q of s.crew){q.task='Standby';q.goal='Standby';q.taskMinutes=999;q.route=[];q.interaction=null;}
+        const q=s.crew[0];q.room='A04';q.target='A04';q.energy=80;q.goal='Repairing Galley unit';q.task='Waiting for workstation';q.interaction='waiting-station';q.maintenanceRoom='A04';q.carrying=null;s.equipment.A04.condition=60;s.maintenance={orders:{A04:{room:'A04',name:'Galley unit',assigned:q.name,status:'assigned',progress:0}},history:[],lastScan:0};
+        """);self.advance(p,1);q=self.snap(p)['crew'][0];self.assertEqual(q.get('neededSupply'),'spares');self.assertEqual(q['interaction'],'collecting')
+    def test_returning_paid_repair_worker_waits_for_real_station_capacity(self):
+        p=self.page();self.configure(p,"""
+        s.remoteCore.autonomyEnabled=false;s.frontier.enabled=false;s.navigation.hold=true;s.anthology.config.frequency=0;
+        for(const q of s.crew){q.task='Standby';q.goal='Standby';q.taskMinutes=999;q.route=[];q.interaction=null;}
+        for(const q of s.crew.slice(1,4)){q.room='A04';q.target='A04';q.activityKind='meal';q.goal='Eat a meal';q.task=q.goal;q.interaction='working';q.carrying='food';}s.interactions.supplies.food-=3;s.economy.consumed.food=3;
+        const q=s.crew[0];q.room='A04';q.target='A04';q.workRoom='A04';q.energy=80;q.goal='Repairing Galley unit';q.task='Returning with spares';q.interaction='returning';q.carrying='spares';q.maintenanceRoom='A04';s.interactions.supplies.spares--;s.economy.consumed.spares=1;s.equipment.A04.condition=60;s.maintenance={orders:{A04:{room:'A04',name:'Galley unit',assigned:q.name,status:'assigned',progress:0,sparePaid:true}},history:[],lastScan:0};
+        """);self.advance(p,1);q=self.snap(p)['crew'][0];self.assertEqual(q['interaction'],'waiting-station');self.assertEqual(q['carrying'],'spares');self.assertEqual(self.snap(p)['resourceAudit'],[])
+    def test_actual_paid_social_meal_satisfies_the_recovery_goal(self):
+        p=self.page();self.configure(p,"""
+        s.remoteCore.autonomyEnabled=false;s.frontier.enabled=false;s.navigation.hold=true;s.anthology.config.frequency=0;
+        const q=s.crew[1];q.room='A04';q.target='A04';q.route=[];q.task='Recover social needs';q.goal=q.task;q.taskMinutes=30;q.interaction='working';q.activityKind='meal';q.carrying='food';q.social=5;q.energy=80;s.interactions.supplies.food--;s.economy.consumed.food=1;
+        """);self.advance(p,5);self.assertGreater(self.snap(p)['crew'][1]['social'],5);self.assertEqual(self.snap(p)['resourceAudit'],[])
+    def test_queued_routine_equipment_work_cannot_bypass_empty_tools(self):
+        p=self.page();self.configure(p,"""
+        s.remoteCore.autonomyEnabled=false;s.frontier.enabled=false;s.navigation.hold=true;s.anthology.config.frequency=0;
+        for(const q of s.crew){q.task='Standby';q.goal='Standby';q.taskMinutes=999;q.route=[];q.interaction=null;}
+        const q=s.crew[0];q.room='A04';q.target='A04';q.route=[];q.energy=80;q.goal='Maintaining galley equipment';q.task='Waiting for workstation';q.interaction='waiting-station';q.carrying=null;q.maintenanceRoom=null;s.equipment.A04.condition=60;
+        const tools=s.operations.reserve.tools+s.interactions.supplies.tools;s.operations.reserve.tools=0;s.interactions.supplies.tools=0;s.economy.consumed.tools=tools;s.economy.feedstock.ore=0;s.economy.feedstockUsed.ore=s.economy.feedstockInitial.ore;
+        """);self.advance(p,10);s=self.snap(p);self.assertLessEqual(s['world']['equipment']['A04']['condition'],60);self.assertEqual(s['crew'][0]['interaction'],'waiting-supply');self.assertEqual(s['resourceAudit'],[])
     def test_preventive_repair_is_paid_and_survives_an_interrupted_worker(self):
         p=self.page();self.configure(p,"""
         s.remoteCore.autonomyEnabled=false;s.frontier.enabled=false;s.navigation.hold=true;s.anthology.config.frequency=0;s.equipment.C07.condition=60;

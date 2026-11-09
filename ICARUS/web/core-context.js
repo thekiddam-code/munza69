@@ -6,7 +6,23 @@ function install(U,N){const oldInit=U.init,oldChoose=N.choose,oldScan=U.scan,old
  return u;};
  U.scan=function(s,x,y){if(!root.ICARUSEdition?.core)return oldScan(s,x,y);U.init(s);s.universe.lastScan=s.tick;return [];};
  N.plan=function(s,id,env,override=false){if(root.ICARUSEdition?.core&&id!=='HOME'&&!id.startsWith('LOCAL-')){s.navigation.lastDecision={at:s.tick,reason:'Legacy destination retained as history; outside the core local operating context',requested:id};return {ok:false,reason:s.navigation.lastDecision.reason};}return oldPlan(s,id,env,override);};
- N.choose=function(s,env){if(!root.ICARUSEdition?.core)return oldChoose(s,env);const n=s.navigation,need=env.logistics.needs(s),fuel=s.economy.feedstock.fuel;return U.bodies(s).filter(d=>d.id.startsWith('LOCAL-')&&d.id!==n.current&&(!d.surveyed||Object.entries(need).some(([k,v])=>v>1&&(d.deposits[k]||0)>0))).filter(d=>N.distance(n.position,d)*5+8<=fuel).sort((a,b)=>{const value=d=>Object.entries(need).some(([k,v])=>v>1&&(d.deposits[k]||0)>0)?100:(!d.surveyed?10:0);return value(b)-value(a)||N.distance(n.position,a)-N.distance(n.position,b);})[0]||null;};
+ N.choose=function(s,env){
+  if(!root.ICARUSEdition?.core)return oldChoose(s,env);
+  const n=s.navigation,need=env.logistics.needs(s),fuel=s.economy.feedstock.fuel,transport=s.emergencyOps?.transport;
+  if(transport&&(transport.unrecovered||transport.condition<65)){n.lastDecision={at:s.tick,reason:'Hold: no return-capable transport for local field objectives'};return null;}
+  const jobs=s.frontier?.jobs||[],failed=(d,type)=>jobs.filter(j=>j.destination===d.id&&j.type===type&&j.status==='failed').length>=2;
+  const value=d=>{
+   const supply=Object.entries(need).some(([k,v])=>v>1&&(d.deposits[k]||0)>0&&!failed(d,'extract_'+k));
+   const recovery=Object.values(d.cache||{}).some(v=>v>0)&&!failed(d,'recovery');
+   const distress=d.distress&&!d.signalResolved&&!failed(d,'distress');
+   return supply?100:recovery?85:distress?75:!d.surveyed&&!failed(d,'survey')?10:0;
+  };
+  const target=U.bodies(s).filter(d=>d.id.startsWith('LOCAL-')&&d.id!==n.current&&value(d)>0)
+   .filter(d=>N.distance(n.position,d)*5+8<=fuel)
+   .sort((a,b)=>value(b)-value(a)||N.distance(n.position,a)-N.distance(n.position,b))[0]||null;
+  if(!target)n.lastDecision={at:s.tick,reason:'Hold: no feasible local objective within fuel reserve and recorded attempt limits'};
+  return target;
+ };
 }
 const api={install};if(typeof module==='object'&&module.exports)module.exports=api;else{root.ICARUSCoreContext=api;install(root.ICARUSUniverse,root.ICARUSNavigation);}
 })(globalThis);

@@ -42,3 +42,8 @@ Finite stocks, wear, hazardous access, limited labor, production dependencies, e
 ## Investigation boundaries
 
 The different uninterrupted and checkpointed histories require reproducibility analysis; a fixed initial seed must always be reported with the same external actions/checkpoint profile. Additional repair/forecast changes will be tested with independent adverse fixtures and complete fresh campaigns. No repair is considered verified merely because a different seed survives.
+
+
+Additional verified queue defects: station admission previously bypassed supply acquisition, returning workers could overbook capacity, routine queued maintenance could work without tools, and the actual `Recover social needs` meal goal was not recognized by social recovery. Four focused browser cases fail against unchanged 602b4a2 and pass the corrections; this strengthens the galley-prevention analysis without claiming every original queue event caused the decisive jam. Returning paid allocations now respect capacity, admitted workers share the existing supply path, and paid meal activity satisfies the existing social need.
+
+An intermediate full-year campaign revealed hundreds of alternating relay/hull trips after two recorded failures exhausted each extraction objective. Core route selection ignored the frontier controller's two-failure objective limit, burning finite fuel without actionable field work. The route selector now uses those same recorded limits and rejects field-only travel without return-capable transport. Captain course overrides remain available. These superseded runs are diagnostic evidence, not final acceptance; the complete campaigns are repeated after the fixes.
