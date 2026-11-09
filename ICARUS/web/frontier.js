@@ -80,6 +80,7 @@ function tick(s,env){const f=init(s,env);if(f.lastTick===s.tick)return;f.lastTic
  if(s.tick-f.lastPlan<60)return;f.lastPlan=s.tick;
  if(s.equipment.B01?.condition>=40&&s.power>=40){const d=env.universe.find(s,s.navigation.current);env.universe.scan(s,d.x,d.y);}
  const options=opportunities(s,env);if(options.length&&begin(s,options[0],env))return;
+ if(options.some(o=>o.resource))return; // a real reserve deficit takes precedence over more science travel
  if(options.length&&s.tick-(s.navigation.leg?.start||0)<2880)return; // allow actual staffing recovery, not an eternal blockade
  if(s.economy.mode==='survival'){s.navigation.lastDecision={at:s.tick,reason:'Hold: ship survival priorities'};return;}
  const target=env.navigation.choose(s,env);if(target)env.navigation.plan(s,target.id,navEnv);

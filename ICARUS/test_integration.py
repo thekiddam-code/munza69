@@ -17,6 +17,7 @@ class Integration(unittest.TestCase):
     def setUpClass(cls):
         cls.server=http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(ROOT/'web')))
         threading.Thread(target=cls.server.serve_forever,daemon=True).start()
+        cls.codec=(ROOT/'web/vendor/lz-string.min.js').read_text()+';'+(ROOT/'web/save-store.js').read_text()
         cls.pw=sync_playwright().start()
         cls.browser=cls.pw.chromium.launch(headless=True,executable_path=os.environ.get('ICARUS_CHROMIUM') or None)
         cls.url=f'http://127.0.0.1:{cls.server.server_port}/icarus.html?icarus_soak=1'
@@ -28,14 +29,14 @@ class Integration(unittest.TestCase):
         for c in self.contexts:c.close()
         self.assertEqual(self.errors,[])
     def page(self):
-        c=self.browser.new_context();self.contexts.append(c);c.add_init_script('window.__icarusSeed=10101;')
+        c=self.browser.new_context();self.contexts.append(c);c.add_init_script(self.codec+';window.__icarusSeed=10101;')
         p=c.new_page();p.on('pageerror',lambda e:self.errors.append(str(e)));p.goto(self.url);p.wait_for_function('!!window.__icarusSoak');return p
     def snap(self,p):return p.evaluate('window.__icarusSoak.snapshot()')
     def advance(self,p,n):
         while n:p.evaluate('n=>window.__icarusSoak.advance(n)',min(120,n));n-=min(120,n)
     def configure(self,p,code):
         self.assertTrue(p.evaluate('window.__icarusSoak.save()'))
-        p.add_init_script("""(()=>{if(sessionStorage.getItem('fixture'))return;sessionStorage.setItem('fixture','1');const s=JSON.parse(localStorage.getItem('icarus-v02'));"""+code+";if(s.clock){s.clock.elapsed=s.minute-480;s.tick=s.clock.elapsed;}localStorage.setItem('icarus-v02',JSON.stringify(s));})();")
+        p.add_init_script(self.codec+";"+"""(()=>{if(sessionStorage.getItem('fixture'))return;sessionStorage.setItem('fixture','1');const s=JSON.parse(localStorage.getItem('icarus-v02'));"""+code+";if(s.clock){s.clock.elapsed=s.minute-480;s.tick=s.clock.elapsed;}localStorage.setItem('icarus-v02',JSON.stringify(s));})();")
         p.reload();p.wait_for_function('!!window.__icarusSoak')
     def test_seeded_full_engine_reproduces(self):
         a=self.page();b=self.page();self.advance(a,360);self.advance(b,360);self.assertEqual(self.snap(a),self.snap(b))

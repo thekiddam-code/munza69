@@ -1,3 +1,4 @@
+import re
 import http.server, json, os, secrets, socket, threading, time, urllib.parse, hashlib, ipaddress, ssl, base64
 from pathlib import Path
 
@@ -215,6 +216,10 @@ def action(d):
    pg.hotkey(*seq); return 'Hotkey sent'
   raise ValueError('Unknown action')
 
+def valid_icarus_command(command):
+ if command in ('pause','resume','speed1','speed5','speed20','save','nav:hold','nav:resume','nav:recall'): return True
+ return isinstance(command,str) and len(command)<=100 and re.fullmatch(r'nav:course:(HOME|SYS:-?\d+:-?\d+/\d+)',command) is not None
+
 class Handler(http.server.SimpleHTTPRequestHandler):
  def __init__(self,*args,**kwargs): super().__init__(*args,directory=str(ROOT/'web'),**kwargs)
  def log_message(self,*args): pass
@@ -244,7 +249,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
  def do_POST(self):
   try:
    if self.headers.get('Content-Type','').split(';')[0]!='application/json': return self.respond(415,{'error':'JSON required'})
-   if int(self.headers.get('Content-Length','0'))>4096: return self.respond(413,{'error':'Too large'})
+   if int(self.headers.get('Content-Length','0'))>(16384 if self.path=='/api/icarus/telemetry' else 4096): return self.respond(413,{'error':'Too large'})
    origin=self.headers.get('Origin','')
    host=self.headers.get('Host','')
    if origin and origin not in ('http://'+host,'https://'+host): return self.respond(403,{'error':'Invalid origin'})
@@ -260,7 +265,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
    # Tablet endpoints below continue to require the paired-device bearer token.
    if self.path=='/api/icarus/telemetry':
     if not secrets.compare_digest(self.headers.get('X-Icarus-Key',''),ICARUS_KEY): return self.respond(403,{'error':'Invalid host key'})
-    if not isinstance(data,dict) or len(json.dumps(data))>3500: return self.respond(400,{'error':'Invalid telemetry'})
+    if not isinstance(data,dict) or len(json.dumps(data))>14000: return self.respond(400,{'error':'Invalid telemetry'})
     with LOCK:
      ICARUS_BRIDGE['telemetry']=data
      ICARUS_BRIDGE['updated']=time.time()
@@ -268,7 +273,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
    if not self.authorized(): return self.respond(401,{'error':'Pair first'})
    if self.path=='/api/icarus/command':
     command=data.get('command')
-    if command not in ('pause','resume','speed1','speed5','speed20','save'): return self.respond(400,{'error':'Unknown command'})
+    if not valid_icarus_command(command): return self.respond(400,{'error':'Unknown command'})
     with LOCK:
      if len(ICARUS_BRIDGE['commands'])>=25: return self.respond(429,{'error':'Command queue full; ICARUS offline?'})
      cid=ICARUS_BRIDGE['next_id']; ICARUS_BRIDGE['next_id']+=1

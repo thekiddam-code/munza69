@@ -56,7 +56,7 @@ function field(s,m,job,env){
  }
 }
 function returned(s,m,job,env){
- if(m.returnedAt!==undefined)return;m.returnedAt=s.tick;
+ if(m.returnedAt!==undefined)return;m.returnedAt=s.tick;s.remoteCore.director.crewReadyAt=s.remoteCore.director.crewReadyAt||{};
  env.economy.returnCargo(s,m);s.teamLog=s.teamLog||{suits:0,lostSuits:0,launches:0,decisions:[]};s.teamLog.suits+=m.suits||0;m.suits=0;
  const returns=[];
  for(const name of names(m)){const p=s.crew.find(p=>p.name===name);if(!p)continue;p.expeditionAway=false;p.room=m.transfer==='collar'?'C02':'C01';p.route=[];p.taskMinutes=20;p.task='Returned with expedition team';p.vitals.missions++;p.energy=Math.max(0,p.energy-5);returns.push({...m.conditions?.[name],name,health:p.vitals.health});if(job)s.remoteCore.director.crewReadyAt[name]=s.tick+180;}

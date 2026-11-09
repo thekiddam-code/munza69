@@ -32,7 +32,7 @@ function tick(s,env){
   }
   if(env.now%30===0){
    const ties=Object.values(p.relationships||{}),social=ties.reduce((a,b)=>a+b,0)/Math.max(1,ties.length);
-   const target=clamp((p.mood??60)-(p.stress||0)*.25+social*.5-(100-v.health)*.25);
+   const target=clamp((p.mood??60)*.35+(p.energy??60)*.25+(100-(p.stress||0))*.15+(100-(p.hunger??35))*.25+social*.5-(100-v.health)*.25-v.fatigue*.15);
    v.morale=clamp(v.morale+(target-v.morale)*.1);
   }
   if(v.health<60&&v.health>0&&!p.expeditionAway){p.goal='Medical recovery';if(v.health<20)p.survivalIncapacitated=true;}

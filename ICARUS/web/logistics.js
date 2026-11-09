@@ -2,7 +2,7 @@
 (function(root){'use strict';
 function init(s){if(!s.logistics)s.logistics={capacity:2600,receipts:[],credited:{},lost:{},extracted:{},nextReceipt:1};return s.logistics;}
 function cargoMass(s){const l=init(s),feed=s.economy.feedstock;return ['ore','fuel','nutrients','waterIce'].reduce((n,k)=>n+(feed[k]||0),0)+Object.values(s.remoteCore.missions||{}).reduce((n,m)=>n+Object.values(m?.extracted||{}).reduce((a,b)=>a+b,0),0);}
-function needs(s){const e=s.economy,water=e.stock.water;return {fuel:Math.max(0,65-e.feedstock.fuel),ore:Math.max(0,300-e.feedstock.ore),waterIce:water<100?Math.max(0,80-e.feedstock.waterIce):0,nutrients:Math.max(0,100-e.feedstock.nutrients)};}
+function needs(s){const e=s.economy,water=e.stock.water;return {fuel:Math.max(0,110-e.feedstock.fuel),ore:Math.max(0,300-e.feedstock.ore),waterIce:water<100?Math.max(0,80-e.feedstock.waterIce):0,nutrients:Math.max(0,100-e.feedstock.nutrients)};}
 function extract(s,d,m,key,amount){const l=init(s),available=d.deposits[key]||0,room=Math.max(0,l.capacity-cargoMass(s)),n=Math.max(0,Math.min(amount,available,room));if(!n)return 0;
  d.deposits[key]-=n;d.extracted[key]=(d.extracted[key]||0)+n;m.extracted=m.extracted||{};m.extracted[key]=(m.extracted[key]||0)+n;l.extracted[key]=(l.extracted[key]||0)+n;return n;}
 function recover(s,d,m,amount){const l=init(s);m.extracted=m.extracted||{};let room=Math.min(amount,Math.max(0,l.capacity-cargoMass(s))),got=0;

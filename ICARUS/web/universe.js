@@ -22,7 +22,7 @@ function sector(seed,x,y){
 function init(s){if(s.universe)return s.universe;
  const seed=hash(s.entropy?.seed||1,'icarus-universe');
  s.universe={version:1,seed,systems:{},scanned:{},lastScan:-1,events:[],visitedCount:1};
- const home=sector(seed,0,0);home.name='ICARUS origin';home.bodies.unshift({id:'HOME',systemId:'SYS:0:0',name:'Legacy derelict / asteroid staging',type:'home orbit',x:0,y:0,hazard:0,interest:0,deposits:{},initialDeposits:{},extracted:{},visited:true,surveyed:true,sampled:true,signalResolved:true});s.universe.systems[home.id]=home;return s.universe;
+ const home=sector(seed,0,0);home.name='ICARUS origin';home.bodies.unshift({id:'HOME',systemId:'SYS:0:0',name:'Legacy derelict / asteroid staging',type:'home orbit',x:0,y:0,hazard:0,interest:0,deposits:{},initialDeposits:{},extracted:{},visited:true,surveyed:true,sampled:true,signalResolved:true});s.universe.systems[home.id]=home;scan(s,0,0);return s.universe;
 }
 function bodies(s){return Object.values(init(s).systems).flatMap(x=>x.bodies);}
 function find(s,id){return bodies(s).find(x=>x.id===id);}

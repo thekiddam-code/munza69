@@ -22,7 +22,7 @@ def main():
     parser.add_argument('--report',default='soak_report.json')
     args=parser.parse_args()
     report_path=Path(args.report).resolve()
-    report={'version':'1.1-continuous-voyage','requested_days':args.days,'status':'starting','passed':False,'checkpoints':[],'errors':[],'started_at':datetime.now(timezone.utc).isoformat()}
+    report={'version':'1.2-expanding-frontier','requested_days':args.days,'status':'starting','passed':False,'checkpoints':[],'errors':[],'started_at':datetime.now(timezone.utc).isoformat()}
     def write(): report_path.write_text(json.dumps(report,indent=2,default=str),encoding='utf-8')
     write()
     class Quiet(http.server.SimpleHTTPRequestHandler):
@@ -33,7 +33,8 @@ def main():
         with sync_playwright() as pw:
             browser=pw.chromium.launch(headless=True, executable_path=__import__("os").environ.get("ICARUS_CHROMIUM") or None)
             context=browser.new_context()
-            context.add_init_script('window.__icarusSeed='+str(args.seed))
+            codec=(ROOT/'web/vendor/lz-string.min.js').read_text()+';'+(ROOT/'web/save-store.js').read_text()
+            context.add_init_script(codec+';window.__icarusSeed='+str(args.seed))
             report['seed']=args.seed
             page=context.new_page()
             js_errors=[]
@@ -43,7 +44,7 @@ def main():
             report['synthetic_science_fixture']=args.seed_science
             if args.seed_science:
                 page.evaluate('window.__icarusSoak.save()')
-                page.add_init_script('''(() => {
+                page.add_init_script(codec+';'+'''(() => {
                     if(sessionStorage.getItem('fixture-seeded'))return;
                     sessionStorage.setItem('fixture-seeded','1');
                     const s=JSON.parse(localStorage.getItem('icarus-v02'));

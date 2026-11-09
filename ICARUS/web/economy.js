@@ -8,18 +8,18 @@ function init(s){if(s.economy)return s.economy;
  s.operations=s.operations||{reserve:{food:120,lab:60,tools:60,spares:40},transfers:[]};s.interactions=s.interactions||{supplies:{food:30,lab:24,tools:20,spares:16}};s.tissueRepair=s.tissueRepair||{cartridges:12,condition:96,cycles:0,activePatient:null};
  const e=s.economy={version:1,stock:{water:150,oxygen:120,energy:120},feedstock:{fuel:150,ore:1200,nutrients:600,wasteWater:0,co2:0,organicWaste:0,waterIce:200},capacity:{water:200,oxygen:180,energy:180,food:160,medical:20,spares:70,tools:70,lab:80},produced:{},consumed:{},disposed:{},imports:{},history:[],decisions:[],lastTick:-1,mode:'normal',initial:null};
  e.initial=totals(s);e.feedstockInitial={...e.feedstock};e.feedstockUsed={};e.feedstockImported={};return e;}
-function note(s,kind,key,amount,source){const e=init(s);if(amount<=0)return;e.history.push({at:s.tick,kind,key,amount,source});e.history=e.history.slice(-200);}
+function note(s,kind,key,amount,source){const e=init(s);if(amount<=0)return;e.ledger=e.ledger||{};const id=JSON.stringify([kind,key,source]);const row=e.ledger[id]||(e.ledger[id]={kind,key,source,amount:0,count:0,first:s.tick,last:s.tick});row.amount+=amount;row.count++;row.last=s.tick;e.history.push({at:s.tick,kind,key,amount,source});e.history=e.history.slice(-200);}
 function remove(s,key,amount){let left=amount,e=init(s);for(const obj of [e.stock,s.operations?.reserve,s.interactions?.supplies]){if(!obj)continue;const n=Math.min(left,obj[key]||0);if(n>0){obj[key]-=n;left-=n;}if(left<1e-12)break;}
  if(key==='medical'&&left>0){const n=Math.min(left,s.tissueRepair.cartridges);s.tissueRepair.cartridges-=n;left-=n;}return amount-left;}
 function consume(s,key,amount,source){const e=init(s),got=remove(s,key,amount);e.consumed[key]=(e.consumed[key]||0)+got;note(s,'consume',key,got,source);return got;}
 function externalConsumption(s,key,amount,source){const e=init(s);e.consumed[key]=(e.consumed[key]||0)+amount;note(s,'consume',key,amount,source);if(key==='food')creditFeed(s,'organicWaste',amount,'recovered meal residue');if(key==='medical'){creditFeed(s,'wasteWater',amount,'recovered clinical rinse');creditFeed(s,'organicWaste',amount,'spent culture medium');}if(['tools','lab','spares'].includes(key))creditFeed(s,'ore',amount*.98,'recovered process scrap');}
-function feed(s,key,amount){const e=init(s),n=Math.min(amount,e.feedstock[key]||0);e.feedstock[key]-=n;e.feedstockUsed[key]=(e.feedstockUsed[key]||0)+n;return n;}
+function feed(s,key,amount,source="production conversion"){const e=init(s),n=Math.min(amount,e.feedstock[key]||0);e.feedstock[key]-=n;e.feedstockUsed[key]=(e.feedstockUsed[key]||0)+n;note(s,'feedstock_use',key,n,source);return n;}
 function produce(s,key,amount,source){const e=init(s),room=Math.max(0,e.capacity[key]-totals(s)[key]),n=Math.min(amount,room);if(n<=0)return 0;
  if(key==='medical')s.tissueRepair.cartridges+=n;else if(['food','lab','tools','spares'].includes(key))s.operations.reserve[key]=(s.operations.reserve[key]||0)+n;else e.stock[key]=(e.stock[key]||0)+n;
  e.productionSources=e.productionSources||{};e.productionSources[source]=(e.productionSources[source]||0)+n;e.produced[key]=(e.produced[key]||0)+n;note(s,'produce',key,n,source);return n;}
-function moveToCargo(s,cargo,key,amount){const e=init(s);if(totals(s)[key]+1e-9<amount)return false;const n=remove(s,key,amount);cargo[key]=(cargo[key]||0)+n;return Math.abs(n-amount)<1e-9;}
-function cargoUse(s,m,key,amount){const e=init(s),got=Math.min(m.cargo?.[key]||0,amount);m.cargo[key]-=got;e.consumed[key]=(e.consumed[key]||0)+got;return got;}
-function returnCargo(s,m){const e=init(s);for(const [k,n] of Object.entries(m.cargo||{})){if(['food','lab','tools','spares'].includes(k))s.operations.reserve[k]=(s.operations.reserve[k]||0)+n;else e.stock[k]=(e.stock[k]||0)+n;m.cargo[k]=0;}}
+function moveToCargo(s,cargo,key,amount){const e=init(s);if(totals(s)[key]+1e-9<amount)return false;const n=remove(s,key,amount);cargo[key]=(cargo[key]||0)+n;note(s,'transfer',key,n,'ship to expedition cargo');return Math.abs(n-amount)<1e-9;}
+function cargoUse(s,m,key,amount){const e=init(s),got=Math.min(m.cargo?.[key]||0,amount);m.cargo[key]-=got;e.consumed[key]=(e.consumed[key]||0)+got;note(s,'consume',key,got,'field metabolism '+m.id);return got;}
+function returnCargo(s,m){const e=init(s);for(const [k,n] of Object.entries(m.cargo||{})){if(['food','lab','tools','spares'].includes(k))s.operations.reserve[k]=(s.operations.reserve[k]||0)+n;else e.stock[k]=(e.stock[k]||0)+n;note(s,'transfer',k,n,'returned expedition '+m.id);m.cargo[k]=0;}}
 function loseCargo(s,m){const e=init(s);for(const [k,n] of Object.entries(m.cargo||{})){e.disposed[k]=(e.disposed[k]||0)+n;note(s,'loss',k,n,'lost expedition '+m.id);m.cargo[k]=0;}}
 function audit(s){const e=init(s),actual=totals(s),errors=[];for(const k of keys){const expected=(e.initial[k]||0)+(e.produced[k]||0)+(e.imports[k]||0)-(e.consumed[k]||0)-(e.disposed[k]||0);if(!Number.isFinite(actual[k])||actual[k]<-1e-7||Math.abs(expected-actual[k])>1e-6)errors.push({key:k,expected,actual:actual[k],difference:actual[k]-expected});}
  for(const pool of [e.stock,s.operations?.reserve,s.interactions?.supplies,{medical:s.tissueRepair?.cartridges},...Object.values(s.remoteCore?.missions||{}).map(m=>m?.cargo)])for(const [key,value] of Object.entries(pool||{}))if(!Number.isFinite(value)||value<-1e-7)errors.push({pool:'physical inventory',key,actual:value});
@@ -38,6 +38,12 @@ function tick(s,env){const e=init(s);if(e.lastTick===s.tick)return;e.lastTick=s.
  if(powered){
   const water=Math.min(.06*pump,e.capacity.water-totals(s).water,e.feedstock.wasteWater);if(water>0)produce(s,'water',feed(s,'wasteWater',water),'wastewater reclamation');
   const oxygen=Math.min(.05*pump,e.capacity.oxygen-totals(s).oxygen,e.feedstock.co2);if(oxygen>0)produce(s,'oxygen',feed(s,'co2',oxygen),'closed-cycle CO2 regeneration');
+  // Normalized mass units: 1 water -> .88 oxygen, .12 hydrogen vented.
+  // Replenish expedition/leak losses only with actual water and electrical work.
+  if(e.stock.oxygen<90&&e.stock.water>25&&pump>.4&&fabricator>.4){
+   const input=Math.min(.03*pump,e.stock.water-25,(90-e.stock.oxygen)/.88,e.stock.energy/.8);
+   if(input>0){const used=consume(s,'water',input,'oxygen electrolysis');consume(s,'energy',used*.8,'oxygen electrolysis');produce(s,'oxygen',used*.88,'water electrolysis; hydrogen vented');note(s,'byproduct_loss','hydrogen',used*.12,'water electrolysis');}
+  }
   for(const [key,rate,source,factor] of [['food',.5,'organicWaste',galley],['spares',.012,'ore',fabricator],['tools',.20,'ore',fabricator],['lab',.20,'ore',lab]]){
    const deficit=Math.max(0,e.capacity[key]-totals(s)[key]),want=Math.min(deficit,rate*factor,e.stock.energy/.06);let n=feed(s,source,want);
    if(key==='food'&&n<want)n+=feed(s,'nutrients',want-n);
@@ -59,5 +65,5 @@ function tick(s,env){const e=init(s);if(e.lastTick===s.tick)return;e.lastTick=s.
  if(deprived&&s.tick%30===0&&env.hurt)for(const p of s.crew.filter(p=>!p.expeditionAway))env.hurt(p,.7,'life-support resource shortage');
  if(!powered)s.power=0;
 }
-const api={keys,burnFeed:(s,k,n,source)=>{const got=feed(s,k,n);note(s,'feedstock_use',k,got,source);return got;},init,totals,consume,externalConsumption,produce,moveToCargo,cargoUse,returnCargo,loseCargo,audit,creditFeed,tick};if(typeof module==='object'&&module.exports)module.exports=api;else root.ICARUSEconomy=api;
+const api={keys,burnFeed:(s,k,n,source)=>feed(s,k,n,source),init,totals,consume,externalConsumption,produce,moveToCargo,cargoUse,returnCargo,loseCargo,audit,creditFeed,tick};if(typeof module==='object'&&module.exports)module.exports=api;else root.ICARUSEconomy=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

@@ -1,0 +1,3 @@
+const {test}=require('node:test'),a=require('node:assert/strict'),C=require('./web/save-store');
+test('large Unicode voyage state is losslessly compressed without altering JSON semantics',()=>{const raw=JSON.stringify({crew:Array.from({length:2000},(_,i)=>({name:'Crew '+i,story:'◈ ICARUS — observation 🔬',values:[1,.2,null,true]}))});let stored=C.encode(raw);a.ok(stored.length<raw.length/3);a.equal(C.decode(stored),raw);a.deepEqual(JSON.parse(C.decode(stored)),JSON.parse(raw));});
+test('legacy raw saves and absent recovery slots retain their read behavior',()=>{a.equal(C.decode('{"version":2}'),'{"version":2}');a.equal(C.decode(null),null);});
