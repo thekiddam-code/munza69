@@ -8,6 +8,8 @@ class LivingFrontierIntegration(FrontierIntegration):
         p=c.new_page();p.on('pageerror',lambda e:self.errors.append(str(e)));p.goto(self.url);p.wait_for_function('!!window.__icarusSoak');self.advance(p,1500)
         self.assertEqual(p.evaluate('ICARUSDurable.status.backend'),'local-fallback');self.assertIn('unavailable',p.evaluate('ICARUSDurable.status.warning'));self.assertFalse(p.evaluate('window.__icarusSoak.save()'))
         history=p.evaluate('ICARUSDurable.history()');ids={r['id'] for r in history};self.assertGreater(len(history),64);self.assertTrue(all(r['id'] in ids for r in self.snap(p)['chronicle']['records']))
+    def test_daily_metrics_match_full_world_audits_and_clock_without_mutation(self):
+        p=self.page();self.advance(p,2000);before=self.snap(p);daily=p.evaluate('window.__icarusSoak.daily()');self.assertEqual(daily['tick'],before['tick']);self.assertEqual(daily['resource_errors'],before['resourceAudit']);self.assertEqual(daily['frontier_errors'],before['frontierAudit']);self.assertEqual(daily['stores'],before['resourceTotals']);self.assertEqual(daily['case_ids'],[c['id'] for c in before['director']['science']['cases']]);self.assertEqual(self.snap(p),before)
     def test_indexeddb_primary_restores_world_when_cache_is_removed(self):
         p=self.page();self.advance(p,1440);self.assertTrue(p.evaluate('window.__icarusSoak.save()'));before=self.snap(p)
         p.add_init_script(self.codec+";localStorage.removeItem('icarus-v02');")

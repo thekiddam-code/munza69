@@ -10,19 +10,19 @@ def main():
     ap=argparse.ArgumentParser();ap.add_argument('--seed',type=int,default=1001);ap.add_argument('--days',type=int,default=365);ap.add_argument('--milestones',default='7,30,90,180,365');ap.add_argument('--output',default='frontier_reports');args=ap.parse_args()
     out=Path(args.output).resolve();out.mkdir(parents=True,exist_ok=True);milestones={int(x) for x in args.milestones.split(',') if int(x)<=args.days};milestones.add(args.days)
     report={'version':'1.3-living-frontier','seed':args.seed,'status':'starting','passed':False,'last_day':0,'checkpoints':[],'errors':[],'milestones':[]};started=time.monotonic()
-    def write(): (out/f'campaign_seed_{args.seed}.json').write_text(json.dumps(report,indent=2))
+    def write():
+        target=out/f'campaign_seed_{args.seed}.json';temp=target.with_suffix('.tmp');temp.write_text(json.dumps(report,indent=2));temp.replace(target)
     server=http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(ROOT/'web')));threading.Thread(target=server.serve_forever,daemon=True).start();write()
     try:
         with sync_playwright() as pw:
             browser=pw.chromium.launch(headless=True,executable_path=os.environ.get('ICARUS_CHROMIUM') or None)
             ctx=browser.new_context();ctx.add_init_script((ROOT/'web/vendor/lz-string.min.js').read_text()+';'+(ROOT/'web/save-store.js').read_text()+';window.__icarusSeed='+str(args.seed));page=ctx.new_page();page.set_default_timeout(120000);page.set_default_navigation_timeout(120000);errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
             page.goto(f'http://127.0.0.1:{server.server_port}/icarus.html?icarus_soak=1');page.wait_for_function('!!window.__icarusSoak')
-            initial=page.evaluate('window.__icarusSoak.snapshot()');previous_destinations=set();previous_cases=set();previous_jobs=set();report['status']='running'
+            initial=json.loads(page.evaluate('JSON.stringify(window.__icarusSoak.snapshot())'));previous_destinations=set();previous_cases=set();previous_jobs=set();report['status']='running'
             for day in range(1,args.days+1):
                 row=page.evaluate('''() => {
                   for(let i=0;i<12;i++)window.__icarusSoak.advance(120);
-                  const s=window.__icarusSoak.snapshot(),ds=Object.values(s.universe.systems).flatMap(x=>x.bodies);
-                  return {day:Math.floor(s.tick/1440),tick:s.tick,minute:s.minute,episode:s.episode,archives:s.archived.length,crew:s.crew.map(p=>({name:p.name,health:p.vitals.health,fatigue:p.vitals.fatigue,morale:p.vitals.morale,energy:p.energy})),dead:s.living.deceased.map(p=>p.name),resource_errors:s.resourceAudit,frontier_errors:s.frontierAudit,destination_ids:ds.map(d=>d.id),visited:ds.filter(d=>d.visited).length,systems:Object.keys(s.universe.systems).length,phase:s.navigation.phase,position:s.navigation.position,target:s.navigation.target,arrivals:s.navigation.arrivals,fuel:s.economy.feedstock.fuel,travel_fuel:s.navigation.fuelUsed,stores:s.resourceTotals,acquired:s.logistics.credited,frontier_jobs:s.frontier.jobs.map(j=>({id:j.id,type:j.type,status:j.status,started:j.started})),case_ids:s.director.science.cases.map(c=>c.id),samples:s.frontier.stats.samples,event_kinds:s.frontier.stats.eventKinds,entities:Object.keys(s.entities.registry).length,encounters:s.entities.stats,interaction_count:s.entities.encounters.length,emergencies:s.emergencyOps.stats,open_incidents:s.emergencyOps.incidents.filter(i=>i.status==='open').map(i=>({id:i.id,created:i.created})),memories:s.experiences.records.length,staged_jobs:s.frontier.jobs.filter(j=>j.stages).length,team_sizes:[...new Set(s.frontier.jobs.map(j=>j.members.length))],chronicle_errors:ICARUSChronicles.audit(s),durable_backend:ICARUSDurable.status.backend};
+                  return window.__icarusSoak.daily();
                 }''')
                 issues=[];ids=[p['name'] for p in row['crew']]+row['dead']
                 if len(ids)!=20 or len(set(ids))!=20:issues.append('Crew identity census failed')
@@ -43,8 +43,8 @@ def main():
                 report['checkpoints'].append(row);report['last_day']=day;report['errors'].extend('Day '+str(day)+': '+e for e in issues)
                 if errors:report['errors'].extend(errors);errors.clear()
                 if day in milestones:
-                    before=page.evaluate('window.__icarusSoak.snapshot()');saved=page.evaluate('window.__icarusSoak.save()');raw=page.evaluate("localStorage.getItem('icarus-v02')")
-                    reload_started=time.monotonic();page.reload();page.wait_for_function('!!window.__icarusSoak');reload_seconds=time.monotonic()-reload_started;after=page.evaluate('window.__icarusSoak.snapshot()')
+                    before=json.loads(page.evaluate('JSON.stringify(window.__icarusSoak.snapshot())'));saved=page.evaluate('window.__icarusSoak.save()');raw=page.evaluate("localStorage.getItem('icarus-v02')");history_json=page.evaluate('ICARUSDurable.history().then(rows=>JSON.stringify(rows))');(out/f'checkpoint_seed_{args.seed}_{day}.json').write_text('{"format":"ICARUS_SAVE","formatVersion":1,"appVersion":"1.3","state":'+raw+',"ideas":[],"history":'+history_json+'}')
+                    reload_started=time.monotonic();page.reload();page.wait_for_function('!!window.__icarusSoak');reload_seconds=time.monotonic()-reload_started;after=json.loads(page.evaluate('JSON.stringify(window.__icarusSoak.snapshot())'))
                     mismatches=[k for k in before if before[k]!=after.get(k)]
                     if not saved or mismatches:report['errors'].append('Day '+str(day)+': save/reload failed '+str(mismatches))
                     if day>=7 and before['navigation']['arrivals']==0:report['errors'].append('No actual ship travel demonstrated')
@@ -58,7 +58,8 @@ def main():
                     (out/f'seed_{args.seed}_{day}day.json').write_text(json.dumps(payload,indent=2))
                     report['milestones'].append({'day':day,'passed':payload['passed'],'arrivals':row['arrivals'],'visited':row['visited'],'jobs':len(jobs),'acquired':row['acquired'],'state_bytes':payload['persistence']['state_bytes']})
                     print('Seed',args.seed,'day',day,'PASS' if payload['passed'] else 'FAIL','arrivals',row['arrivals'],'jobs',len(jobs),'acquired',row['acquired'],flush=True)
-                    if day==args.days and saved:(out/f'voyage_seed_{args.seed}.json').write_text(json.dumps({'format':'ICARUS_SAVE','formatVersion':1,'appVersion':'1.3','state':json.loads(raw),'ideas':[],'history':page.evaluate('ICARUSDurable.history()')}))
+                    if day==args.days and saved:
+                        (out/f'voyage_seed_{args.seed}.json').write_text('{"format":"ICARUS_SAVE","formatVersion":1,"appVersion":"1.3","state":'+raw+',"ideas":[],"history":'+history_json+'}')
                 write()
                 if report['errors']:break
             report['browser_errors']=errors;report['status']='finished';report['passed']=not report['errors'] and report['last_day']==args.days;browser.close()
