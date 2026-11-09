@@ -22,7 +22,7 @@ def main():
     parser.add_argument('--report',default='soak_report.json')
     args=parser.parse_args()
     report_path=Path(args.report).resolve()
-    report={'version':'1.2-expanding-frontier','requested_days':args.days,'status':'starting','passed':False,'checkpoints':[],'errors':[],'started_at':datetime.now(timezone.utc).isoformat()}
+    report={'version':'1.3-living-frontier','requested_days':args.days,'status':'starting','passed':False,'checkpoints':[],'errors':[],'started_at':datetime.now(timezone.utc).isoformat()}
     def write(): report_path.write_text(json.dumps(report,indent=2,default=str),encoding='utf-8')
     write()
     class Quiet(http.server.SimpleHTTPRequestHandler):

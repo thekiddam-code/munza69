@@ -3,7 +3,7 @@
 (function(root){'use strict';
 const key='icarus-v02',metaKey='icarus-durable-cache',status={schema:1,ready:false,backend:'opening',revision:0,pending:0,warning:null,recoveries:0};let db,queue=Promise.resolve(),latestRaw=null,historyQueue=new Map(),archivePromise=Promise.resolve(),mirrorGet=Storage.prototype.getItem,mirrorSet=Storage.prototype.setItem;
 function hash(raw){let h=2166136261;for(let i=0;i<raw.length;i++){h^=raw.charCodeAt(i);h=Math.imul(h,16777619);}return (h>>>0).toString(16);}
-function valid(raw){try{const s=JSON.parse(raw);return !!s&&Array.isArray(s.crew)&&Number.isFinite(s.tick)&&s.tick>=0&&Number.isFinite(s.episode);}catch{return false;}}
+function valid(raw){try{const s=JSON.parse(raw);return !!s&&Array.isArray(s.crew)&&Number.isFinite(s.tick)&&s.tick>=0&&Number.isFinite(s.episode)&&s.crew.length+(s.living?.deceased?.length||0)===20&&root.ICARUSWorldSchema.valid(s);}catch{return false;}}
 function request(r){return new Promise((ok,no)=>{r.onsuccess=()=>ok(r.result);r.onerror=()=>no(r.error);});}
 function transaction(stores,mode,run){return new Promise((ok,no)=>{const tx=db.transaction(stores,mode);let value;try{value=run(tx);}catch(e){tx.abort();no(e);return;}tx.oncomplete=()=>ok(value);tx.onerror=()=>no(tx.error||Error('IndexedDB transaction failed'));tx.onabort=()=>no(tx.error||Error('Interrupted IndexedDB transaction'));});}
 function cache(raw,knownLocal){latestRaw=raw;try{if((knownLocal===undefined?mirrorGet.call(localStorage,key):knownLocal)!==raw)mirrorSet.call(localStorage,key,raw);mirrorSet.call(localStorage,metaKey,JSON.stringify({hash:hash(raw),revision:status.revision}));}catch(e){status.warning='Local cache constrained; IndexedDB remains authoritative. Export a backup.';}}
@@ -24,7 +24,7 @@ async function open(){try{
  for(const e of candidates){try{const raw=root.ICARUSSaveStore.decode(e.raw);if(valid(raw)&&hash(raw)===e.hash){good.push({...e,decoded:raw});break;}rejected++;}catch{rejected++;}}
  status.revision=committedHead?.revision||records.reduce((n,e)=>Math.max(n,e.revision||0),0);status.backend='indexeddb';
  const edited=valid(local)&&(!metadata||metadata.hash!==hash(local)&&metadata.pendingHash!==hash(local));
- if(good.length&&!edited){const chosen=good[0],raw=chosen.decoded;if(local!==raw||rejected>0){status.recoveries++;status.warning='Recovered verified IndexedDB revision '+chosen.revision+'; incomplete/corrupt cache or write ignored.';}cache(raw,local);}
+ if(good.length&&!edited){const chosen=good[0],raw=chosen.decoded;if(local!==raw||rejected>0){status.recoveries++;const oldLineage=await request(db.transaction('meta','readonly').objectStore('meta').get('recovery-lineage'));const lineage=(oldLineage?.value||0)+1;await transaction(['meta'],'readwrite',tx=>tx.objectStore('meta').put({key:'recovery-lineage',value:lineage}));status.nextEventNamespace='Q'+lineage;status.warning='Recovered verified IndexedDB revision '+chosen.revision+'; incomplete/corrupt cache or write ignored.';}cache(raw,local);}
  else if(valid(local)){if(records.length&&!good.length){status.recoveries++;status.warning='No verified database snapshot remained; recovering the well-formed compatibility cache.';}cache(local,local);await enqueue(local);}
  const migrated=latestRaw&&JSON.parse(latestRaw);if(migrated)collect(migrated);await scheduleArchive();status.ready=true;
  }catch(e){if(db){db.close();db=null;}status.ready=true;status.backend='local-fallback';status.warning='IndexedDB unavailable: '+e.message+'. Compatibility cache only; export a backup.';}
