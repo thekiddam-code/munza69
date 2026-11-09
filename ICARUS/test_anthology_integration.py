@@ -22,7 +22,7 @@ class CoreIntegration(Integration):
     def configure(self,p,code):
         self.assertTrue(p.evaluate('__icarusSoak.save()'));p.evaluate('ICARUSDurable.flush()')
         script=(ROOT/'web/vendor/lz-string.min.js').read_text()+";(()=>{if(sessionStorage.getItem('fixture'))return;sessionStorage.setItem('fixture','1');const raw=localStorage.getItem('icarus-anthology-v14');const s=JSON.parse(raw.startsWith('ICARUS-LZ1:')?LZString.decompressFromUTF16(raw.slice(11)):raw);"+code+";if(s.clock){s.clock.elapsed=s.minute-480;s.tick=s.clock.elapsed;}localStorage.setItem('icarus-anthology-v14',JSON.stringify(s));})();"
-        p.add_init_script(script);p.reload();p.wait_for_function('!!__icarusSoak')
+        p.add_init_script(script);p.reload();p.wait_for_function('!!window.__icarusSoak')
     def operations(self,p):p.locator('#icarus-menu button[data-page="operations"]').click()
     def test_core_replaces_stellar_dashboard_and_remains_tablet_usable(self):
         p=self.page();p.set_viewport_size({'width':768,'height':1024});self.operations(p);self.assertEqual(p.locator('#star-map').count(),0);self.assertIn('CONTINUOUS ANTHOLOGY',p.locator('#frontier-controls').inner_text());self.assertLessEqual(p.locator('#frontier-controls').bounding_box()['width'],768);self.assertEqual(p.locator('#frontier-target option').count(),6)
@@ -35,26 +35,28 @@ class CoreIntegration(Integration):
         p=self.page();self.advance(p,360);p.evaluate('__icarusSoak.save()');p.evaluate('ICARUSDurable.flush()');before=self.snap(p);p.evaluate('window.__icarusAbortAllWrites=true');self.advance(p,120);p.evaluate('__icarusSoak.save()');self.assertFalse(p.evaluate('ICARUSDurable.flush().then(()=>true).catch(()=>false)'));p.reload();self.assertEqual(self.snap(p),before)
     def test_full_backup_roundtrip_keeps_story_sources_memories_and_preferences(self):
         p=self.page();self.advance(p,3000);p.evaluate('__icarusSoak.save()');p.evaluate('ICARUSDurable.flush()');before=self.snap(p)
-        p.locator('#exportbackup').evaluate('(b)=>{for(let e=b.parentElement;e;e=e.parentElement)if(e.tagName==="DETAILS")e.open=true;}')
-        with p.expect_download() as dl:p.locator('#exportbackup').click()
+        self.operations(p)
+        with p.expect_download() as dl:p.locator('#durable-export').click()
         payload=Path(dl.value.path()).read_bytes();backup=json.loads(payload);self.assertEqual(backup['appVersion'],'1.4');self.assertTrue(backup['historyComplete']);history={r['id'] for r in backup['history']};self.assertTrue(all(set(a['sources'])<=history for a in before['anthology']['arcs']))
         q=self.page();q.on('dialog',lambda d:d.accept());q.locator('#backupfile').set_input_files({'name':'core.json','mimeType':'application/json','buffer':payload});q.wait_for_function("document.querySelector('#backupmessage').textContent.includes('Restored')");q.evaluate('ICARUSDurable.flush()');after=self.snap(q)
         for key in ['crew','anthology','economy','universe','navigation','director','experiences']:self.assertEqual(after[key],before[key],key)
         q.reload();self.assertEqual(self.snap(q),after)
     def test_true_v13_import_is_explicit_preserves_active_world_and_does_not_overwrite_extended_save(self):
         self.assertTrue((V13_WEB/'icarus.html').exists(),'Supply archived v1.3 for migration test')
-        p=self.page();p.goto(self.url.replace('/icarus.html?','/extended/icarus.html?'));p.wait_for_function('!!__icarusSoak');self.advance(p,720);p.evaluate('__icarusSoak.save()');p.evaluate('ICARUSDurable.flush()');old=self.snap(p);oldraw=p.evaluate("localStorage['icarus-v02']");payload=p.evaluate("JSON.stringify({format:'ICARUS_SAVE',formatVersion:1,appVersion:'1.3',state:JSON.parse(localStorage.getItem('icarus-v02')),ideas:[]})")
-        p.goto(self.url);p.wait_for_function('!!__icarusSoak');self.assertEqual(self.snap(p)['tick'],0);self.assertEqual(p.evaluate("localStorage['icarus-v02']"),oldraw)
+        p=self.page();p.goto(self.url.replace('/icarus.html?','/extended/icarus.html?'));p.wait_for_function('!!window.__icarusSoak');self.advance(p,720);p.evaluate('__icarusSoak.save()');p.evaluate('ICARUSDurable.flush()');old=self.snap(p);oldraw=p.evaluate("localStorage['icarus-v02']");payload=p.evaluate("JSON.stringify({format:'ICARUS_SAVE',formatVersion:1,appVersion:'1.3',state:JSON.parse(localStorage.getItem('icarus-v02')),ideas:[]})")
+        p.goto(self.url);p.wait_for_function('!!window.__icarusSoak');self.assertEqual(self.snap(p)['tick'],0);self.assertEqual(p.evaluate("localStorage['icarus-v02']"),oldraw)
         p.on('dialog',lambda d:d.accept());p.locator('#backupfile').set_input_files({'name':'v13.json','mimeType':'application/json','buffer':payload.encode()});p.wait_for_function("document.querySelector('#backupmessage').textContent.includes('Restored')");p.evaluate('ICARUSDurable.flush()');new=self.snap(p)
         for key in ['crew','navigation','economy','director','missions','experiences','emergencyOps']:self.assertEqual(new[key],old[key],key)
         for key,sys in old['universe']['systems'].items():self.assertEqual(new['universe']['systems'][key],sys)
         self.assertEqual(p.evaluate("localStorage['icarus-v02']"),oldraw);self.advance(p,1500);self.assertEqual(len(self.snap(p)['universe']['systems']),len(new['universe']['systems']));self.assertEqual(self.snap(p)['frontierAudit'],[])
+    def test_sealed_hatch_blocks_medical_retrieval_without_crash_or_teleportation(self):
+        p=self.page();self.configure(p,"""s.remoteCore.autonomyEnabled=false;const p=s.crew[0];p.room='C04';p.target='C04';p.route=[];p.energy=0;p.vitals.health=40;p.survivalIncapacitated=true;p.taskMinutes=999;s.physicalWorld.rooms.C04.door='sealed';""");self.advance(p,6);s=self.snap(p);patient=s['crew'][0];self.assertEqual(patient['room'],'C04');self.assertTrue(patient['survivalIncapacitated']);self.assertFalse(patient.get('rescueMedic'));self.assertEqual(s['resourceAudit'],[])
     def test_actual_reserve_deficit_triggers_finite_local_extraction(self):
         p=self.page();self.configure(p,"""
         s.remoteCore.autonomyEnabled=false;
         const d=Object.values(s.universe.systems).flatMap(x=>x.bodies).find(d=>d.id==='LOCAL-RELAY');d.visited=true;d.surveyed=true;d.observedHazard=.05;s.navigation.current=d.id;s.navigation.position={x:d.x,y:d.y};
         const used=s.economy.feedstock.fuel-20;s.economy.feedstock.fuel=20;s.economy.feedstockUsed.fuel=(s.economy.feedstockUsed.fuel||0)+used;
-        const source='explicit core adverse fuel depletion';s.economy.ledger[JSON.stringify(['feedstock_use','fuel',source])]={kind:'feedstock_use',key:'fuel',source,amount:used,count:1,first:s.tick,last:s.tick};
+        const source='explicit core adverse fuel depletion';s.economy.ledger=s.economy.ledger||{};s.economy.ledger[JSON.stringify(['feedstock_use','fuel',source])]={kind:'feedstock_use',key:'fuel',source,amount:used,count:1,first:s.tick,last:s.tick};
         """);before=self.snap(p);self.advance(p,2500);after=self.snap(p);self.assertGreater(after['logistics']['credited'].get('fuel',0),0);self.assertEqual(after['resourceAudit'],[]);self.assertEqual(after['frontierAudit'],[]);self.assertTrue(any(j.get('resource')=='fuel' and 'reserve deficit' in j['reason'] for j in after['frontier']['jobs']))
         dest=next(d for sys in after['universe']['systems'].values() for d in sys['bodies'] if d['id']=='LOCAL-RELAY');self.assertLess(dest['deposits']['fuel'],600)
     def test_nonmodal_chronicle_cards_include_recorded_story_sources(self):

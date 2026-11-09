@@ -1,3 +1,7 @@
+# Current handoff: ICARUS v1.4
+
+Read AGENTS.md, FINAL_DESIGN.md, FINAL_RELEASE_ROADMAP.md, ENGINEERING_v1.4.md, MIGRATION_v1.4.md, KNOWN_LIMITATIONS_v1.4.md and PROGRESS_v1.4.md. Default core must never grow procedural planetary systems or silently overwrite Extended Universe saves. Continue toward depth, cohesion and completion; tests alone cannot certify final design quality. Historical handoffs below do not supersede this direction.
+
 # Current handoff: ICARUS v1.3
 
 Read AGENTS.md, ENGINEERING_v1.3.md, KNOWN_LIMITATIONS_v1.3.md and PROGRESS_v1.3.md. This batch continues from v1.2 55aff16. Packaged reports/validation_summary.json is authoritative for final acceptance; pending/interrupted development reports are not passes. Preserve finite bilateral resources, actual event sources, transactional IndexedDB hydration, continuous voyage and optional captain intervention. Prior handoffs below are historical.

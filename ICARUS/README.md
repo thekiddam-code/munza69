@@ -1,3 +1,7 @@
+# Current core: ICARUS v1.4
+
+Read README_v1.4.md, FINAL_DESIGN.md and FINAL_RELEASE_ROADMAP.md. The core is an autonomous spaceship anthology; galaxy-scale v1.3 is independently preserved. Migration is explicit with separate saves. Historical releases below remain reference material.
+
 # ICARUS v1.3 — The Living Frontier
 
 Start with [README_v1.3.md](README_v1.3.md), [ENGINEERING_v1.3.md](ENGINEERING_v1.3.md) and [KNOWN_LIMITATIONS_v1.3.md](KNOWN_LIMITATIONS_v1.3.md). Historical release and device setup documentation follows.
