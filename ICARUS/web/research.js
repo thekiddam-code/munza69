@@ -115,6 +115,8 @@ function tick(sc,items,env){
   }
   p.status='queued';sync(sc,items);if(env.confirm)env.confirm(sc,env.now);return;
  }
+ if(env.now-(sc.lastSelection??-99)<15)return;sc.lastSelection=env.now;
+ const attempted=new Set(sc.experiments.map(e=>e.caseId+'|'+e.method));
  for(const p of sc.programs){
   let selected=null,block=null;
   for(const id of p.caseIds){
@@ -122,7 +124,7 @@ function tick(sc,items,env){
    const physical=items.find(x=>x.id===c?.specimenId);
    const baseMethods=physical?.properties?[...methods,{id:'composition_assay',minutes:90,cost:3},{id:'composition_replication',minutes:90,cost:3}]:methods;
    const availableMethods=items.find(x=>x.id===c?.specimenId)?.biological?[...baseMethods,{id:'viability_assay',minutes:180,cost:5}]:baseMethods;
-   const pending=availableMethods.find(m=>!sc.experiments.some(x=>x.caseId===id&&x.method===m.id));
+   const pending=availableMethods.find(m=>!attempted.has(id+'|'+m.id));
    if(!pending)continue;
    const reason=gate(c,item,env);
    if(reason){block=reason;continue;}

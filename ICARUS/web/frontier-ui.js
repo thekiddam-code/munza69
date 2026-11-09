@@ -1,0 +1,24 @@
+/* Touch-friendly, nonmodal map and operational explanation panel. */
+(function(root){'use strict';
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function render(host,s,env,onCommand){if(!host)return;const f=s.frontier,n=s.navigation,U=env.universe,L=env.logistics,all=U.bodies(s),selected=U.find(s,f.selected)||U.find(s,n.current)||all[0];
+ const systems=Object.values(s.universe.systems);const points=[...all,...systems,n.position],xs=points.map(p=>p.x),ys=points.map(p=>p.y),minX=Math.min(...xs)-.5,maxX=Math.max(...xs)+.5,minY=Math.min(...ys)-.5,maxY=Math.max(...ys)+.5;
+ const xy=p=>({x:15+(p.x-minX)/(maxX-minX)*570,y:15+(p.y-minY)/(maxY-minY)*270});
+ const ship=xy(n.position),target=n.target?U.find(s,n.target):null;
+ const markers=all.map(d=>{const p=xy(d);return '<g data-star="'+esc(d.id)+'" role="button" tabindex="0" aria-label="'+esc(d.name)+'" style="cursor:pointer"><circle cx="'+p.x+'" cy="'+p.y+'" r="'+(d.id===selected.id?6:3)+'" fill="'+(d.visited?'#8fe2c7':'#d6b56e')+'" stroke="#172c32"/><title>'+esc(d.name+' · '+d.type)+'</title></g>';}).join('');
+ const stars=systems.map(sys=>{const p=xy(sys);return '<circle cx="'+p.x+'" cy="'+p.y+'" r="'+(sys.empty?1:4)+'" fill="'+(sys.empty?'#53606b':'#f4db96')+'"><title>'+esc(sys.name||('Empty sector '+sys.id))+'</title></circle>';}).join('');
+ const route=target?'<line x1="'+ship.x+'" y1="'+ship.y+'" x2="'+xy(target).x+'" y2="'+xy(target).y+'" stroke="#e7bd71" stroke-dasharray="5 4"/>':'';
+ const job=f.jobs.find(j=>j.id===f.active),options=env.frontier.opportunities(s,env),receipts=(s.logistics.receipts||[]).slice(-6).reverse();
+ host.innerHTML='<h2>EXPANDING FRONTIER / STELLAR NAVIGATION</h2><svg id="star-map" viewBox="0 0 600 300" style="width:100%;background:#101f29;border:1px solid #42646a" aria-label="Discovered star map">'+stars+route+markers+'<path d="M'+ship.x+' '+(ship.y-7)+' l-5 12 10 0Z" fill="#eef9f4"/></svg><p class="muted">Tap a contact to inspect. Cyan: visited · gold: known · triangle: ship · dashed line: planned course. Undetected sectors are not displayed.</p>'+
+ '<label>Known destination <select id="frontier-target" style="max-width:100%;background:#14282f;color:#dbe9e6">'+all.map(d=>'<option value="'+esc(d.id)+'" '+(d.id===selected.id?'selected':'')+'>'+esc(d.name)+'</option>').join('')+'</select></label><p>'+esc(selected.type+' · '+selected.x.toFixed(2)+', '+selected.y.toFixed(2)+' · Hazard '+Math.round((selected.observedHazard??selected.hazard)*100)+'% · '+(selected.surveyed?'surveyed':'unverified contact'))+'</p><p class="muted">'+esc(selected.visited?'Recorded remaining deposits: '+JSON.stringify(selected.deposits):'Sensor resource hints: '+JSON.stringify(selected.resourceHints||{}))+'</p>'+
+ '<div class="controls"><button data-nav="course">Set captain course</button><button data-nav="hold">'+(n.phase==='transit'?'Hold after arrival':'Hold position')+'</button><button data-nav="resume">Release to SOL</button><button data-nav="recall">Recall expeditions</button></div>'+
+ '<p><b>'+esc(n.phase.toUpperCase())+'</b> · '+esc(n.current||('en route to '+n.target))+' · Fuel '+s.economy.feedstock.fuel.toFixed(2)+' · Cargo '+L.cargoMass(s).toFixed(1)+' / '+s.logistics.capacity+'</p><p class="muted">'+esc(n.lastDecision?.reason||'SOL evaluating observed contacts')+'</p>'+
+ (n.phase==='transit'?'<p>Travel '+n.leg.elapsed+' / '+n.leg.duration+' minutes · burned '+n.leg.burned.toFixed(2)+' / '+n.leg.cost.toFixed(2)+' fuel</p>':'')+
+ '<h3>Observed opportunities</h3>'+options.slice(0,5).map(o=>'<p>'+esc(o.type+' · '+o.reason+' · '+o.objective)+'</p>').join('')+(job?'<p><b>'+esc(job.id+' · '+job.type)+'</b> · '+esc(job.status)+' · '+Math.floor(job.progress)+' / '+job.duration+' productive minutes</p>':'<p class="muted">No frontier expedition active.</p>')+
+ '<h3>Resource provenance / recent offloads</h3>'+receipts.map(r=>'<p class="muted">'+esc(r.id+' · '+r.amount.toFixed(2)+' '+r.key+' · '+r.destination+' · '+r.mission)+'</p>').join('')+'<p class="muted">Known sectors '+Object.keys(s.universe.systems).length+' · Ship arrivals '+n.arrivals+' · Frontier jobs '+f.stats.completed+' complete / '+f.stats.failed+' failed</p>';
+ host.querySelector('#frontier-target').onchange=e=>{f.selected=e.target.value;render(host,s,env,onCommand);};
+ host.querySelectorAll('[data-star]').forEach(el=>{const choose=()=>{f.selected=el.dataset.star;render(host,s,env,onCommand);};el.onclick=choose;el.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();choose();}};});
+ host.querySelectorAll('[data-nav]').forEach(b=>b.onclick=()=>{onCommand(b.dataset.nav,f.selected);render(host,s,env,onCommand);});
+}
+const api={render};if(typeof module==='object'&&module.exports)module.exports=api;else root.ICARUSFrontierUI=api;
+})(typeof globalThis!=='undefined'?globalThis:this);

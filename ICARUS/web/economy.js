@@ -59,5 +59,5 @@ function tick(s,env){const e=init(s);if(e.lastTick===s.tick)return;e.lastTick=s.
  if(deprived&&s.tick%30===0&&env.hurt)for(const p of s.crew.filter(p=>!p.expeditionAway))env.hurt(p,.7,'life-support resource shortage');
  if(!powered)s.power=0;
 }
-const api={keys,init,totals,consume,externalConsumption,produce,moveToCargo,cargoUse,returnCargo,loseCargo,audit,creditFeed,tick};if(typeof module==='object'&&module.exports)module.exports=api;else root.ICARUSEconomy=api;
+const api={keys,burnFeed:(s,k,n,source)=>{const got=feed(s,k,n);note(s,'feedstock_use',k,got,source);return got;},init,totals,consume,externalConsumption,produce,moveToCargo,cargoUse,returnCargo,loseCargo,audit,creditFeed,tick};if(typeof module==='object'&&module.exports)module.exports=api;else root.ICARUSEconomy=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

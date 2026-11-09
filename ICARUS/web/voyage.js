@@ -28,7 +28,9 @@ function migrate(s){
 }
 function advance(s){migrate(s);s.clock.elapsed++;s.tick=s.clock.elapsed;s.minute=480+s.clock.elapsed;}
 function rollover(s,archive,onBoundary){migrate(s);let n=0;while(s.minute>=s.clock.nextEpisodeAt){
- s.archived=s.archived||[];s.archived.push(archive(s));s.archived=s.archived.slice(-100);s.episode++;s.clock.nextEpisodeAt+=10080;n++;if(onBoundary)onBoundary(s);
+ s.archived=s.archived||[];s.archived.push(archive(s));s.archived=s.archived.slice(-100);for(const a of s.archived.slice(0,-4))compact(a);s.episode++;s.clock.nextEpisodeAt+=10080;n++;if(onBoundary)onBoundary(s);
  }return n;}
+function compact(a){if(a.compacted)return;a.compacted=true;a.events=(a.events||[]).slice(0,6);a.crew=[];
+ if(a.recap){a.recap.major=(a.recap.major||[]).slice(-6);a.recap.relationships=(a.recap.relationships||[]).slice(-2);a.recap.highlights=(a.recap.highlights||[]).slice(0,2).map(h=>({...h,sources:(h.sources||[]).slice(-1)}));a.recap.sourceIds=[...new Set([...a.recap.major,...a.recap.relationships,...a.recap.highlights.flatMap(h=>h.sources)].map(e=>e.id))];}}
 const api={migrate,advance,rollover};if(typeof module==='object'&&module.exports)module.exports=api;else root.ICARUSVoyage=api;
 })(typeof globalThis!=='undefined'?globalThis:this);
