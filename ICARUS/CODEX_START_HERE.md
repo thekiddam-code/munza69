@@ -1,3 +1,7 @@
+# Current handoff: ICARUS v1.3
+
+Read AGENTS.md, ENGINEERING_v1.3.md, KNOWN_LIMITATIONS_v1.3.md and PROGRESS_v1.3.md. This batch continues from v1.2 55aff16. Packaged reports/validation_summary.json is authoritative for final acceptance; pending/interrupted development reports are not passes. Preserve finite bilateral resources, actual event sources, transactional IndexedDB hydration, continuous voyage and optional captain intervention. Prior handoffs below are historical.
+
 # Current handoff: ICARUS v1.2
 
 Read AGENTS.md, ENGINEERING_v1.2.md, KNOWN_LIMITATIONS_v1.2.md and PROGRESS_v1.2.md before continuing. The current implementation continues from v1.1 `e8c7069`; packaged reports/validation_summary.json is authoritative for acceptance. Runtime modules, tests, campaign runner and report summarizer are local. Preserve existing save/world continuity, source-backed economy and optional captain intervention. Historical initial setup notes follow; they do not supersede the current user assignment.

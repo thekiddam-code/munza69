@@ -1,3 +1,7 @@
+# ICARUS v1.3 — The Living Frontier
+
+Start with [README_v1.3.md](README_v1.3.md), [ENGINEERING_v1.3.md](ENGINEERING_v1.3.md) and [KNOWN_LIMITATIONS_v1.3.md](KNOWN_LIMITATIONS_v1.3.md). Historical release and device setup documentation follows.
+
 # ICARUS v1.2 — The Expanding Frontier
 
 Start with [README_v1.2.md](README_v1.2.md) for this release, [ENGINEERING_v1.2.md](ENGINEERING_v1.2.md) for architecture and verification, and [KNOWN_LIMITATIONS_v1.2.md](KNOWN_LIMITATIONS_v1.2.md) for remaining work. The original Remote Deck setup and device controls are retained below.
