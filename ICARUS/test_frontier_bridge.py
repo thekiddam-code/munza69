@@ -24,12 +24,12 @@ class FrontierBridge(unittest.TestCase):
     def test_authentication_command_validation_and_exactly_once_queue_drain(self):
         auth={'Authorization':'Bearer test-tablet'};host={'X-Icarus-Key':'test-host'}
         self.assertEqual(self.request('command',{'command':'nav:hold'})[0],401)
-        for command in ('nav:hold','nav:resume','nav:recall','nav:course:SYS:-3:2/1'):
+        for command in ('nav:hold','nav:resume','nav:recall','nav:course:SYS:-3:2/1','frontier:rescue:SOS-12','frontier:shelter:SOS-3'):
             self.assertEqual(self.request('command',{'command':command},auth)[0],200)
-        for command in ('nav:course:unknown','nav:course:SYS:1:2/0;alert(1)',[],None):
+        for command in ('frontier:rescue:garbage','nav:course:unknown','nav:course:SYS:1:2/0;alert(1)',[],None):
             self.assertEqual(self.request('command',{'command':command},auth)[0],400)
         self.assertEqual(self.request('commands',headers=auth)[0],403)
-        self.assertEqual(len(self.request('commands',headers=host)[1]['commands']),4)
+        self.assertEqual(len(self.request('commands',headers=host)[1]['commands']),6)
         self.assertEqual(self.request('commands',headers=host)[1]['commands'],[])
     def test_expanded_telemetry_requires_host_auth_and_stays_bounded(self):
         payload={'frontier':{'reason':'x'*5000}}

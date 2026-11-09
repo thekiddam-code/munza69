@@ -22,17 +22,17 @@ function opportunities(s,env){const n=s.navigation;if(n.phase!=='orbit'||n.curre
 }
 function begin(s,op,env){const f=s.frontier;if(Object.values(s.remoteCore.missions).some(Boolean)||s.economy.allowLaunch===false)return false;
  if(op.resource&&env.logistics.cargoMass(s)>=s.logistics.capacity-.01)return false;
- const available=s.crew.filter(p=>!p.expeditionId&&!p.expeditionAway&&!p.researchAssignment&&!p.maintenanceRoom&&!p.emergencyId&&p.energy>=55&&p.stress<68&&(s.remoteCore.director.crewReadyAt?.[p.name]||0)<=s.tick);
+ const available=s.crew.filter(p=>!p.expeditionId&&!p.expeditionAway&&!p.researchAssignment&&!p.maintenanceRoom&&!p.emergencyId&&p.energy>=55+(1-(env.experiences?.willingness(p)||1))*20&&p.stress<68&&(s.remoteCore.director.crewReadyAt?.[p.name]||0)<=s.tick);
  const profile=env.expeditions?.profile(op,env.universe.find(s,op.destination)),type=op.resource?'resource':'survey',members=env.teams.select(s,{type,location:op.destination,teamSize:profile?.teamSize},available,env.life);if(members.length<(profile?.teamSize||2))return false;
  const id='F-'+f.nextJob,result=env.teams.launch(s,{id,location:op.destination,loadout:profile?.loadout},members,env.economy);if(!result.allowed)return false;
- f.nextJob++;const job={...op,id,location:op.destination,status:'active',started:s.tick,members:members.map(p=>p.name),evidence:[],progress:0};
+ f.nextJob++;const job={...op,id,episode:s.episode??null,location:op.destination,status:'active',started:s.tick,members:members.map(p=>p.name),evidence:[],progress:0};
  f.jobs.push(job);const m={...result.manifest,id,phase:'boarding',progress:0,kit:1,extracted:{},fieldProgress:0,lastSample:0};
  if(profile)env.expeditions.attach(m,job,profile);s.remoteCore.missions.frontier=m;f.active=id;
  for(const p of members){p.expeditionId=id;p.task='Frontier mission staging';p.goal=p.task;p.target='C01';p.route=env.path?env.path(p.room,'C01'):[];p.taskMinutes=999;}
  emit(s,env,'mission_authorized','SOL authorized '+id+': '+job.objective+'. '+job.reason+'.',{missionId:id,destination:op.destination,members:job.members});return true;
 }
 function finish(s,job,m,env){const f=s.frontier,d=env.universe.find(s,job.destination),success=!m.failed;
- job.evidence.push({rawReturned:{...(m.extracted||{})},success});env.logistics.deposit(s,d,m,env.economy,success);if(m.stagingCancelled){env.economy.returnCargo(s,m);s.teamLog.suits+=m.suits||0;m.suits=0;for(const name of m.members){const p=s.crew.find(p=>p.name===name);if(p){p.expeditionId=null;p.expeditionAway=false;p.route=[];p.taskMinutes=0;}}}else env.teams.returned(s,m,job,{economy:env.economy});
+ if(m.plan){job.stageHistory=m.plan.history;job.equipmentDebrief={condition:m.plan.kitCondition,remainingLoadout:{...m.plan.loadout},exposure:m.plan.exposure};}job.evidence.push({rawReturned:{...(m.extracted||{})},success});env.logistics.deposit(s,d,m,env.economy,success);if(m.stagingCancelled){env.economy.returnCargo(s,m);s.teamLog.suits+=m.suits||0;m.suits=0;for(const name of m.members){const p=s.crew.find(p=>p.name===name);if(p){p.expeditionId=null;p.expeditionAway=false;p.route=[];p.taskMinutes=0;}}}else env.teams.returned(s,m,job,{economy:env.economy});
  for(const name of m.members){const p=s.crew.find(p=>p.name===name);if(p){p.expeditionId=null;if(env.learn)env.learn(p,success,job);}}
  env.experiences?.mission(s,job,success?'success':'failure');job.outcome=success?'complete':m.fieldProgress>30?'partial':'withdrawn';job.status=success?'completed':'failed';job.completed=s.tick;job.condition=m.conditions;job.result=success?'Objective completed with recorded field evidence':'Safety return; recovered material remains in the recorded field cache';
  if(success&&job.type==='distress'&&!d.signalResolved){const finding={id:'BEACON-'+d.id,room:d.name,item:'distress telemetry cartridge',status:'secured by expedition',source:{location:d.id,cell:'beacon',missionId:job.id,at:s.tick},properties:{composition:'manufactured alloy',activity:0},biological:false,integrity:80,contamination:0};d.findings=d.findings||[];d.findings.push(finding);job.evidence.push(finding.id);f.stats.samples++;if(env.acquire)env.acquire(d,job,m,finding);}
@@ -52,17 +52,17 @@ function activeTick(s,env){const f=s.frontier,job=f.jobs.find(j=>j.id===f.active
  env.teams.field(s,m,job,{economy:env.economy,life:env.life,random:env.random,emit:(kind,msg,people,data)=>emit(s,env,kind,msg,{...data,people})});
  if(m.phase==='returning'&&m.fieldProgress<job.duration)m.failed=true;
  if(m.phase==='transit'||m.phase==='returning'){
-  m.progress=Math.min(100,m.progress+2);if(m.progress>=100){if(m.phase==='transit'){m.phase='onsite';m.fieldProgress=0;}else finish(s,job,m,env);}return;
+  m.progress=Math.min(100,m.progress+100/(m.plan?Math.max(1,Math.ceil((m.plan.distance??25)/.5)):50));if(m.progress>=100){if(m.phase==='transit'){m.phase='onsite';m.fieldProgress=0;}else finish(s,job,m,env);}return;
  }
  if(m.phase!=='onsite')return;
  if(env.emergencyOps){env.emergencyOps.tick(s,env);if(m.stranded)return;}
  const condition=Math.min(s.equipment.C06?.condition||0,s.equipment.C07?.condition||0)/100;
  if(condition<.3||s.economy.stock.energy<3){m.failed=true;m.phase='returning';m.progress=0;return;}
- env.economy.consume(s,'energy',.025,'field operation '+job.id);m.fieldProgress+=Math.max(.35,condition)*(m.workRate||1);job.progress=m.fieldProgress;env.expeditions?.advance(s,m,job,d,env);
+ env.economy.consume(s,'energy',.025,'field operation '+job.id);m.fieldProgress+=Math.max(.35,condition)*(m.workRate||1)*(m.plan?.kitCondition!==undefined ? .5+.5*m.plan.kitCondition/100 : 1);job.progress=m.fieldProgress;env.expeditions?.advance(s,m,job,d,env);
  if(job.resource){const amount=env.logistics.extract(s,d,m,job.resource,Math.min(.2,job.requested-Object.values(m.extracted).reduce((a,b)=>a+b,0)));if(!amount&&m.fieldProgress>10){m.fieldProgress=job.duration;}}
  if(job.type==='recovery')env.logistics.recover(s,d,m,.2);
  if(job.type==='survey')while(m.lastSample<3&&m.fieldProgress>=(m.lastSample+1)*60){
-  const cell=m.lastSample++;d.fieldCells=d.fieldCells||{};const room=d.fieldCells[cell]||(d.fieldCells[cell]={id:cell,name:d.name+' / transect '+cell});
+  const cell=m.lastSample++;if(m.plan&&env.economy.cargoUse(s,m,'lab',.1,'field assay '+job.id)<.1-1e-9){emit(s,env,'sampling_blocked','Field assay withheld: no actual assay consumables remained.',{missionId:job.id});continue;}d.fieldCells=d.fieldCells||{};const room=d.fieldCells[cell]||(d.fieldCells[cell]={id:cell,name:d.name+' / transect '+cell});
   const finding=env.discovery.survey(s,d.id,room,m,env.random);if(finding){finding.properties.composition=d.composition;finding.source.missionId=job.id;d.findings=d.findings||[];d.findings.push(finding);job.evidence.push(finding.id);f.stats.samples++;if(env.acquire)env.acquire(d,job,m,finding);}
  }
  if(m.fieldProgress>=job.duration){

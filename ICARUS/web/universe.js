@@ -15,7 +15,7 @@ function sector(seed,x,y){
   if(type==='planet'||type==='moon'){deposits.waterIce=temperature<0?20+Math.floor(b('water')*90):0;deposits.ore=b('ore')<.4?30:0;deposits.nutrients=b('bio')<.15?30:0;}
   if(type==='derelict'||type==='rare installation'){deposits.ore=20+Math.floor(b('ore')*70);deposits.fuel=12+Math.floor(b('fuel')*45);deposits.nutrients=b('cargo')<.4?20:0;}
   const resourceHints={};for(const [key,n] of Object.entries(deposits))resourceHints[key]=n>0?b('hint-'+key)>.12:b('hint-'+key)<.04;
-  bodies.push({resourceHints,id:bid,systemId:id,name:type+' '+(i+1)+' / '+x+','+y,type,x:x+Math.cos(angle)*radius,y:y+Math.sin(angle)*radius,temperature,hazard,interest:b('interest'),distress:b('distress')<.045,biological:b('bio')<.2,composition:b('spectrum')<.5?'silicate':'carbonate',deposits,initialDeposits:{...deposits},extracted:{},surveyed:false,visited:false,sampled:false,signalResolved:false,conditionsRevision:0});
+  bodies.push({landingDistance:15+Math.floor(b('landingDistance')*21),resourceHints,id:bid,systemId:id,name:type+' '+(i+1)+' / '+x+','+y,type,x:x+Math.cos(angle)*radius,y:y+Math.sin(angle)*radius,temperature,hazard,interest:b('interest'),distress:b('distress')<.045,biological:b('bio')<.2,composition:b('spectrum')<.5?'silicate':'carbonate',deposits,initialDeposits:{...deposits},extracted:{},surveyed:false,visited:false,sampled:false,signalResolved:false,conditionsRevision:0});
  }
  return {id,x,y,empty:false,name:'Contact '+x+','+y,bodies};
 }

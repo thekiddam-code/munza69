@@ -6,6 +6,7 @@ function add(e,domain,key,n){e[domain]=e[domain]||{};e.compensation=e.compensati
 function totals(s){const e=s.economy||{},t={};for(const k of keys)t[k]=(e.stock?.[k]||0)+(s.operations?.reserve?.[k]||0)+(s.interactions?.supplies?.[k]||0)+(k==='medical'?(s.tissueRepair?.cartridges||0):0);
  for(const m of Object.values(s.remoteCore?.missions||{}))if(m)for(const k of keys)t[k]+=m.cargo?.[k]||0;
  return t;}
+function available(s){const t=totals(s);for(const m of Object.values(s.remoteCore?.missions||{}))if(m)for(const [k,n] of Object.entries(m.cargo||{}))t[k]=(t[k]||0)-n;return t;}
 function init(s){if(s.economy)return s.economy;
  s.operations=s.operations||{reserve:{food:120,lab:60,tools:60,spares:40},transfers:[]};s.interactions=s.interactions||{supplies:{food:30,lab:24,tools:20,spares:16}};s.tissueRepair=s.tissueRepair||{cartridges:12,condition:96,cycles:0,activePatient:null};
  const e=s.economy={version:1,stock:{water:150,oxygen:120,energy:120},feedstock:{fuel:150,ore:1200,nutrients:600,wasteWater:0,co2:0,organicWaste:0,waterIce:200},capacity:{water:200,oxygen:180,energy:180,food:160,medical:20,spares:70,tools:70,lab:80},produced:{},consumed:{},disposed:{},imports:{},history:[],decisions:[],lastTick:-1,mode:'normal',initial:null};
@@ -19,9 +20,9 @@ function feed(s,key,amount,source="production conversion"){const e=init(s),n=Mat
 function produce(s,key,amount,source){const e=init(s),room=Math.max(0,e.capacity[key]-totals(s)[key]),n=Math.min(amount,room);if(n<=0)return 0;
  if(key==='medical')s.tissueRepair.cartridges+=n;else if(['food','lab','tools','spares'].includes(key))s.operations.reserve[key]=(s.operations.reserve[key]||0)+n;else e.stock[key]=(e.stock[key]||0)+n;
  e.productionSources=e.productionSources||{};add(e,'productionSources',source,n);add(e,'produced',key,n);note(s,'produce',key,n,source);return n;}
-function moveToCargo(s,cargo,key,amount){const e=init(s);if(totals(s)[key]+1e-9<amount)return false;const n=remove(s,key,amount);cargo[key]=(cargo[key]||0)+n;note(s,'transfer',key,n,'ship to expedition cargo');return Math.abs(n-amount)<1e-9;}
+function moveToCargo(s,cargo,key,amount){const e=init(s);if(available(s)[key]+1e-9<amount)return false;const n=remove(s,key,amount);cargo[key]=(cargo[key]||0)+n;note(s,'transfer',key,n,'ship to expedition cargo');return Math.abs(n-amount)<1e-9;}
 function cargoUse(s,m,key,amount,source){const e=init(s),got=Math.min(m.cargo?.[key]||0,amount);m.cargo[key]-=got;add(e,'consumed',key,got);note(s,'consume',key,got,source||'field metabolism '+m.id);return got;}
-function returnCargo(s,m){const e=init(s);for(const [k,n] of Object.entries(m.cargo||{})){if(['food','lab','tools','spares'].includes(k))s.operations.reserve[k]=(s.operations.reserve[k]||0)+n;else e.stock[k]=(e.stock[k]||0)+n;note(s,'transfer',k,n,'returned expedition '+m.id);m.cargo[k]=0;}}
+function returnCargo(s,m){const e=init(s);for(const [k,n] of Object.entries(m.cargo||{})){if(['food','lab','tools','spares'].includes(k))s.operations.reserve[k]=(s.operations.reserve[k]||0)+n;else if(k==='medical')s.tissueRepair.cartridges+=n;else e.stock[k]=(e.stock[k]||0)+n;note(s,'transfer',k,n,'returned expedition '+m.id);m.cargo[k]=0;}}
 function loseCargo(s,m){const e=init(s);for(const [k,n] of Object.entries(m.cargo||{})){add(e,'disposed',k,n);note(s,'loss',k,n,'lost expedition '+m.id);m.cargo[k]=0;}}
 function audit(s){const e=init(s),actual=totals(s),errors=[];for(const k of keys){const expected=(e.initial[k]||0)+(e.produced[k]||0)+(e.imports[k]||0)-(e.consumed[k]||0)-(e.disposed[k]||0);if(!Number.isFinite(actual[k])||actual[k]<-1e-7||Math.abs(expected-actual[k])>1e-6)errors.push({key:k,expected,actual:actual[k],difference:actual[k]-expected});}
  for(const pool of [e.stock,s.operations?.reserve,s.interactions?.supplies,{medical:s.tissueRepair?.cartridges},...Object.values(s.remoteCore?.missions||{}).map(m=>m?.cargo)])for(const [key,value] of Object.entries(pool||{}))if(!Number.isFinite(value)||value<-1e-7)errors.push({pool:'physical inventory',key,actual:value});
@@ -67,5 +68,5 @@ function tick(s,env){const e=init(s);if(e.lastTick===s.tick)return;e.lastTick=s.
  if(deprived&&s.tick%30===0&&env.hurt)for(const p of s.crew.filter(p=>!p.expeditionAway))env.hurt(p,.7,'life-support resource shortage');
  if(!powered)s.power=0;
 }
-const api={keys,burnFeed:(s,k,n,source)=>feed(s,k,n,source),init,totals,consume,externalConsumption,produce,moveToCargo,cargoUse,returnCargo,loseCargo,audit,creditFeed,tick};if(typeof module==='object'&&module.exports)module.exports=api;else root.ICARUSEconomy=api;
+const api={keys,available,burnFeed:(s,k,n,source)=>feed(s,k,n,source),init,totals,consume,externalConsumption,produce,moveToCargo,cargoUse,returnCargo,loseCargo,audit,creditFeed,tick};if(typeof module==='object'&&module.exports)module.exports=api;else root.ICARUSEconomy=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

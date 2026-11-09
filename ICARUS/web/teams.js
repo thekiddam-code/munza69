@@ -26,7 +26,7 @@ function launch(s,job,members,economy){
  const e=economy.init(s);s.teamLog=s.teamLog||{suits:6,lostSuits:0,launches:0,decisions:[]};
  if(!e.allowLaunch&&e.allowLaunch!==undefined)return {allowed:false,reason:'ship resource priority'};
  const need={food:members.length*.6,water:members.length*2,oxygen:members.length*1.2};
- const loadout=job.loadout||{},totals=economy.totals(s);if(Object.entries(loadout).some(([k,n])=>totals[k]<n))return {allowed:false,reason:'objective-specific field equipment'};if(s.teamLog.suits<members.length||totals.energy<8||Object.entries(need).some(([k,n])=>totals[k]<n))return {allowed:false,reason:'expedition equipment or supplies'};
+ const loadout=job.loadout||{},totals=(economy.available||economy.totals)(s);if(Object.entries(loadout).some(([k,n])=>totals[k]<n))return {allowed:false,reason:'objective-specific field equipment'};if(s.teamLog.suits<members.length||totals.energy<8||Object.entries(need).some(([k,n])=>totals[k]<n))return {allowed:false,reason:'expedition equipment or supplies'};
  const m={members:members.map(p=>p.name),crew:members[0].name,cargo:{},suits:members.length,conditions:{},decisions:[],launched:s.tick,lastTick:-1};
  for(const [k,n] of Object.entries(need))economy.moveToCargo(s,m.cargo,k,n);
  economy.consume(s,'energy',8,'shuttle launch '+job.id);for(const [k,n] of Object.entries(loadout))economy.moveToCargo(s,m.cargo,k,n);s.teamLog.suits-=members.length;s.teamLog.launches++;
