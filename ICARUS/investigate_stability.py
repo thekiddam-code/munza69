@@ -2,13 +2,14 @@
 import argparse,functools,http.server,json,os,threading,time,traceback
 from pathlib import Path
 from playwright.sync_api import sync_playwright
+from replay_server import handler
 ROOT=Path(__file__).resolve().parent
 class Quiet(http.server.SimpleHTTPRequestHandler):
     def log_message(self,*a):pass
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--web-root',type=Path,default=ROOT/'web');ap.add_argument('--output',type=Path,required=True);ap.add_argument('--seed',type=int,default=1001);ap.add_argument('--original-checkpoints',action='store_true');ap.add_argument('--days',type=int,default=365);ap.add_argument('--detail-from',type=int,default=320);args=ap.parse_args();args.output.mkdir(parents=True,exist_ok=True)
-    server=http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(args.web_root)));threading.Thread(target=server.serve_forever,daemon=True).start();report={'seed':args.seed,'days':args.days,'status':'starting','completed':False,'errors':[],'daily':[]};started=time.monotonic()
+    server=http.server.ThreadingHTTPServer(('127.0.0.1',0),handler(args.web_root));threading.Thread(target=server.serve_forever,daemon=True).start();report={'seed':args.seed,'days':args.days,'status':'starting','completed':False,'errors':[],'daily':[]};started=time.monotonic()
     try:
         with sync_playwright() as w:
             b=w.chromium.launch(executable_path=os.environ.get('ICARUS_CHROMIUM') or None);ctx=b.new_context();ctx.add_init_script(((args.web_root/'vendor/lz-string.min.js').read_text()+';'+(args.web_root/'save-store.js').read_text()+';' if args.original_checkpoints else '')+'window.__icarusSeed='+str(args.seed));p=ctx.new_page();p.set_default_timeout(120000);p.on('pageerror',lambda e:report['errors'].append(str(e)));p.goto(f'http://127.0.0.1:{server.server_port}/icarus.html?icarus_soak=1');p.wait_for_function('!!window.__icarusSoak');report['status']='running'

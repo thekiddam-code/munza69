@@ -29,6 +29,12 @@ Exact source IDs, thirty-minute state transitions, assignments, inventory and de
 4. Maintenance reservations can outlive a changed goal or medical/rescue duty. The maintenance timer then prolongs an unrelated action. This is independently testable and a contributing scheduling risk, not a claim that every social interaction causes the cascade.
 5. Existing native emergency work increments condition/progress without consuming tools, spares or energy. That is independently a conservation/feasibility defect; initial scarcity did not cause this particular failure because stocks were available.
 
+6. The displayed rest task changes to its goal on arrival (`Recover energy`), but the former body loop replenished energy only for the literal `Resting` label. Arrival could therefore delay needed energy recovery until the next task assignment. The repair policy now recognizes the existing recovery goal; no extra recovery rate is granted. This is an independently tested scheduling defect, not a claim that it caused the initial galley jam.
+
+## Captured-world intervention
+
+The identical day-339 saved state has SHA-256 `b87ee10fa58f1153e6c7f0217f8c169f482bc07cf89a9b6d941442eac62aa690`. Both replay variants verify exact initial crew and inventory. Over twelve days, old rules lose all twenty crew; the repaired variant retains twenty, clears two hatches through 200 applied paid work units, completes eight native incidents and 77 preventive jobs in the recorded intermediate repaired run. Final-runtime results are separately retained; no material or favorable crew state is added to the captured case.
+
 ## Intended behavior retained
 
 Finite stocks, wear, hazardous access, limited labor, production dependencies, exhaustion, injuries and permanent death remain valid. Repair prioritization cannot create tools, make an absent person physically present, clear a captain seal, negate a fire or guarantee survival. A no-tools/unsafe-access catastrophe must remain possible and explicitly recorded.

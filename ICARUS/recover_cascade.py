@@ -2,13 +2,14 @@
 import argparse,functools,http.server,json,os,threading,time,traceback,hashlib
 from pathlib import Path
 from playwright.sync_api import sync_playwright
+from replay_server import handler
 ROOT=Path(__file__).resolve().parent
 class Quiet(http.server.SimpleHTTPRequestHandler):
     def log_message(self,*a):pass
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--web-root',type=Path,default=ROOT/'web');ap.add_argument('--state',type=Path,required=True);ap.add_argument('--history',type=Path,required=True);ap.add_argument('--days',type=int,default=12);ap.add_argument('--report',type=Path,required=True);args=ap.parse_args();args.report.parent.mkdir(parents=True,exist_ok=True);raw=args.state.read_text();state=json.loads(raw);history=[x for x in json.loads(args.history.read_text()) if x.get('minute',0)<=state['minute']];report={'classification':'Captured-world counterfactual: unchanged inventory, equipment and crew; no synthetic supplies','input_state_sha256':hashlib.sha256(raw.encode()).hexdigest(),'initial_tick':state['tick'],'initial_crew':len(state['crew']),'web_root':str(args.web_root),'passed':False,'errors':[],'daily':[]};start=time.monotonic()
-    server=http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(args.web_root)));threading.Thread(target=server.serve_forever,daemon=True).start()
+    server=http.server.ThreadingHTTPServer(('127.0.0.1',0),handler(args.web_root));threading.Thread(target=server.serve_forever,daemon=True).start()
     try:
         with sync_playwright() as w:
             b=w.chromium.launch(executable_path=os.environ.get('ICARUS_CHROMIUM') or None);c=b.new_context();p=c.new_page();p.set_default_timeout(120000);p.on('pageerror',lambda e:report['errors'].append(str(e)));p.goto(f'http://127.0.0.1:{server.server_port}/icarus.html?icarus_soak=1');p.wait_for_function('!!window.__icarusSoak');p.on('dialog',lambda d:d.accept());payload={'format':'ICARUS_SAVE','formatVersion':1,'appVersion':'1.4','state':state,'history':history,'ideas':[]};input_path=args.report.with_suffix('.input.json');input_path.write_text(json.dumps(payload,separators=(',',':')));p.locator('#backupfile').set_input_files(str(input_path.resolve()));p.wait_for_function('(tick)=>__icarusSoak.time()===tick',arg=state['tick']);p.evaluate('ICARUSDurable.flush()');p.reload();p.wait_for_function('!!window.__icarusSoak');before=json.loads(p.evaluate('()=>{const x=__icarusSoak.snapshot();return JSON.stringify({crew:x.crew,economy:x.economy})}'));assert before['crew']==state['crew'];assert before['economy']==state['economy'];report['unchanged_initial_inventory_and_crew']=True
