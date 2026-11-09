@@ -19,5 +19,10 @@ function field(s,m,job,p,env){
  if(v.health<60||v.fatigue>85){m.phase='returning';m.progress=0;job.completionReason='crew_health';env.emit('mission',job.id+' recalled for crew health',[p.name],{missionId:job.id,health:v.health});}
 }
 function debrief(job,p){if(!p?.vitals)return;p.vitals.missions++;job.debrief={crew:p.name,health:p.vitals.health,fatigue:p.vitals.fatigue,morale:p.vitals.morale,experience:p.vitals.missions,evidence:job.evidence,completionReason:job.completionReason};}
-const api={init,transfer,maintenancePriority,assessment,field,debrief};if(typeof module==='object'&&module.exports)module.exports=api;else root.ICARUSOperations=api;
+function criticalShip(s){return Object.values(s.emergencies||{}).some(e=>e.status==='active'&&(e.severity==='critical'||['C07','C08','C09'].includes(e.room)));}
+function reconcileAssignments(s,life){const released=[];for(const order of Object.values(s.maintenance?.orders||{})){if(!order.assigned)continue;const p=s.crew.find(p=>p.name===order.assigned);if(!p||p.expeditionId||p.expeditionAway||p.responseAssignment||p.emergencyId||p.maintenanceRoom!==order.room||!life.ready(p)){released.push({kind:'maintenance',person:order.assigned,room:order.room});order.assigned=null;order.status='open';if(p?.maintenanceRoom===order.room)p.maintenanceRoom=null;}}
+ for(const p of s.crew)if(p.emergencyId&&(p.expeditionId||p.expeditionAway||p.responseAssignment||p.energy<=10||!life.ready(p))){released.push({kind:'emergency',person:p.name,room:p.emergencyId});p.emergencyId=null;if(!p.expeditionAway&&!p.expeditionId)p.taskMinutes=0;}
+ return released;
+}
+const api={criticalShip,reconcileAssignments,init,transfer,maintenancePriority,assessment,field,debrief};if(typeof module==='object'&&module.exports)module.exports=api;else root.ICARUSOperations=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

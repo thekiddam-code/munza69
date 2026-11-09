@@ -3,6 +3,11 @@ import argparse,json,unittest
 from pathlib import Path
 from test_frontier_integration import FrontierIntegration,RecordedResult
 class LivingFrontierIntegration(FrontierIntegration):
+    def test_unavailable_database_warns_and_retains_uncommitted_history_for_export(self):
+        c=self.browser.new_context();self.contexts.append(c);c.add_init_script("Object.defineProperty(window,'indexedDB',{value:{open(){throw Error('Explicit unavailable-storage fixture')}}});window.__icarusSeed=10101;")
+        p=c.new_page();p.on('pageerror',lambda e:self.errors.append(str(e)));p.goto(self.url);p.wait_for_function('!!window.__icarusSoak');self.advance(p,1500)
+        self.assertEqual(p.evaluate('ICARUSDurable.status.backend'),'local-fallback');self.assertIn('unavailable',p.evaluate('ICARUSDurable.status.warning'));self.assertFalse(p.evaluate('window.__icarusSoak.save()'))
+        history=p.evaluate('ICARUSDurable.history()');ids={r['id'] for r in history};self.assertGreater(len(history),64);self.assertTrue(all(r['id'] in ids for r in self.snap(p)['chronicle']['records']))
     def test_indexeddb_primary_restores_world_when_cache_is_removed(self):
         p=self.page();self.advance(p,1440);self.assertTrue(p.evaluate('window.__icarusSoak.save()'));before=self.snap(p)
         p.add_init_script(self.codec+";localStorage.removeItem('icarus-v02');")
@@ -48,6 +53,14 @@ class LivingFrontierIntegration(FrontierIntegration):
         """)
         self.advance(p,1);snap=self.snap(p);self.assertEqual(snap['episode'],2);self.assertEqual(snap['missions']['rescue']['progress'],21);self.assertEqual(snap['missions']['frontier']['phase'],'stranded');self.assertEqual(snap['resourceAudit'],[]);self.assertTrue(p.evaluate('window.__icarusSoak.save()'));p.reload();self.assertEqual(self.snap(p),snap)
         self.advance(p,140);after=self.snap(p);self.assertEqual(after['resourceAudit'],[]);self.assertEqual(after['frontierAudit'],[]);self.assertTrue(after['emergencyOps']['incidents'][0]['decisions'])
+    def test_ship_repairs_never_use_an_off_ship_engineer_and_release_his_reservation(self):
+        p=self.page();self.configure(p,"""
+        s.remoteCore.autonomyEnabled=false;s.navigation.hold=true;const away=s.crew.find(p=>p.job==='Engineer');away.expeditionId='AWAY';away.expeditionAway='derelict';away.emergencyId='C07';away.room='C07';away.route=[];
+        s.remoteCore.missions.derelict={id:'AWAY',crew:away.name,members:[away.name],suits:1,phase:'transit',progress:0,kit:1,cargo:{food:.2,water:.3,oxygen:.3},conditions:{},decisions:[],launched:s.tick};s.teamLog.suits=5;
+        s.remoteCore.director.registry=[{id:'AWAY',status:'active',type:'survey',location:'derelict',members:[away.name],crew:away.name,created:s.tick,baseline:{surveyed:1,findings:0}}];s.economy.initial.food+=.2;s.economy.initial.water+=.3;s.economy.initial.oxygen+=.3;
+        s.equipment.C07.condition=35;s.emergencies.C07={id:'C07',room:'C07',label:'Explicit off-ship responder regression',status:'active',progress:0,age:1,responders:[],severity:'critical',frames:[],startedAt:'fixture'};
+        """)
+        self.advance(p,1);after=self.snap(p);away=next(q for q in after['crew'] if q['name']=='Frank Morrow');self.assertNotEqual(away.get('emergencyId'),'C07');self.assertEqual(after['world']['emergencies']['C07']['progress'],0);self.assertEqual(after['resourceAudit'],[])
     def test_chronicle_playback_is_skippable_nonmodal_and_source_grounded(self):
         p=self.page();self.advance(p,1500);self.open_map(p);p.locator('summary').filter(has_text='Sunday chronicle archive').click();before=self.snap(p)['tick'];p.locator('[data-chronicle="play"]').click();p.locator('[data-chronicle="next"]').click();self.assertIn('source CHR-',p.locator('#chronicle-card').inner_text());self.assertEqual(self.snap(p)['tick'],before);self.assertIn('NOT CAMERA FOOTAGE',p.locator('#living-frontier-controls').inner_text())
 if __name__=='__main__':

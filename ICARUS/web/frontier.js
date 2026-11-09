@@ -20,7 +20,7 @@ function opportunities(s,env){const n=s.navigation;if(n.phase!=='orbit'||n.curre
  if(d.visited)for(const [key,amount] of Object.entries(need))if(amount>1&&(d.deposits[key]||0)>0&&failed('extract_'+key)<2)options.push({...base,type:'extract_'+key,priority:90,resource:key,requested:Math.min(30,amount,d.deposits[key]),objective:'Extract up to '+Math.min(30,amount,d.deposits[key]).toFixed(1)+' '+key+' units and return the cargo',reason:'Projected operating reserve deficit: '+amount.toFixed(1)+' '+key,duration:180});
  return options.sort((a,b)=>b.priority-a.priority||a.type.localeCompare(b.type));
 }
-function begin(s,op,env){const f=s.frontier;if(Object.values(s.remoteCore.missions).some(Boolean)||s.economy.allowLaunch===false)return false;
+function begin(s,op,env){const f=s.frontier;if(env.operations?.criticalShip(s))return false;if(Object.values(s.remoteCore.missions).some(Boolean)||s.economy.allowLaunch===false)return false;
  if(op.resource&&env.logistics.cargoMass(s)>=s.logistics.capacity-.01)return false;
  const available=s.crew.filter(p=>!p.expeditionId&&!p.expeditionAway&&!p.researchAssignment&&!p.maintenanceRoom&&!p.emergencyId&&p.energy>=55+(1-(env.experiences?.willingness(p)||1))*20&&p.stress<68&&(s.remoteCore.director.crewReadyAt?.[p.name]||0)<=s.tick);
  const profile=env.expeditions?.profile(op,env.universe.find(s,op.destination)),type=op.resource?'resource':'survey',members=env.teams.select(s,{type,location:op.destination,teamSize:profile?.teamSize},available,env.life);if(members.length<(profile?.teamSize||2))return false;
@@ -44,6 +44,7 @@ function finish(s,job,m,env){const f=s.frontier,d=env.universe.find(s,job.destin
 function activeTick(s,env){const f=s.frontier,job=f.jobs.find(j=>j.id===f.active);if(!job)return;let m=s.remoteCore.missions.frontier;
  if(!m){job.status='failed';job.completed=s.tick;job.result='Field team lost';f.stats.failed++;f.active=null;emit(s,env,'mission_failed',job.id+' failed: field team lost.',{missionId:job.id});return;}
  if(m.stranded&&env.emergencyOps?.strandedTick(s,m,job,env))return;
+ if(!m.stranded&&env.operations?.criticalShip(s)&&['transit','onsite'].includes(m.phase)){m.failed=true;m.phase='returning';m.progress=0;emit(s,env,'safety_recall','SOL recalled '+job.id+' for a measured critical ship-system fault.',{missionId:job.id});}
  const d=env.universe.find(s,job.destination),members=m.members.map(n=>s.crew.find(p=>p.name===n)).filter(Boolean);
  if(m.phase==='boarding'){
   if(members.every(p=>p.room==='C01'&&!p.route.length)){m.phase='transit';m.progress=0;for(const p of members){p.expeditionAway=d.id;p.route=[];}}
@@ -79,7 +80,7 @@ function tick(s,env){const f=init(s,env);if(f.lastTick===s.tick)return;f.lastTic
  if(!f.enabled||s.navigation.phase!=='orbit'||s.navigation.hold||!s.crew.length)return;
  if(Object.values(s.remoteCore.missions).some(Boolean))return;
  if(s.navigation.current==='HOME'&&(!env.homeComplete||!env.homeComplete()))return;
- if(s.tick-f.lastPlan<60)return;f.lastPlan=s.tick;
+ if(s.tick-f.lastPlan<60)return;f.lastPlan=s.tick;if(env.operations?.criticalShip(s)){s.navigation.lastDecision={at:s.tick,reason:'Hold: measured critical ship fault; available engineers retained aboard'};return;}
  if(s.equipment.B01?.condition>=40&&s.power>=40){const d=env.universe.find(s,s.navigation.current);env.universe.scan(s,d.x,d.y);}
  const options=opportunities(s,env);if(options.length&&begin(s,options[0],env))return;
  if(options.some(o=>o.resource))return; // a real reserve deficit takes precedence over more science travel
