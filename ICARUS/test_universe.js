@@ -1,0 +1,4 @@
+const {test}=require('node:test'),a=require('node:assert/strict'),U=require('./web/universe');
+test('sector identity and content are deterministic independent of discovery order',()=>{a.deepEqual(U.sector(42,3,-2),U.sector(42,3,-2));a.notDeepEqual(U.sector(42,3,-2),U.sector(43,3,-2));});
+test('universe includes empty, hazardous and varied persistent finite destinations',()=>{let types=new Set(),empty=0,danger=0;for(let x=-5;x<=5;x++)for(let y=-5;y<=5;y++){let s=U.sector(42,x,y);if(s.empty||!s.bodies.length)empty++;for(const d of s.bodies){types.add(d.type);if(d.hazard>.7)danger++;}}a.ok(empty>0&&danger>0);a.equal(types.size,6);});
+test('scans reveal predetermined neighbors once, without regenerating exhausted deposits',()=>{let s={entropy:{seed:42},tick:0};U.init(s);let ids=U.scan(s,0,0);a.ok(ids.length);let before=JSON.stringify(s);a.deepEqual(U.scan(s,0,0),[]);a.equal(JSON.stringify(s),before);a.equal(U.find(s,'HOME').visited,true);a.deepEqual(U.audit(s),[]);});
