@@ -31,6 +31,19 @@ Exact source IDs, thirty-minute state transitions, assignments, inventory and de
 
 6. The displayed rest task changes to its goal on arrival (`Recover energy`), but the former body loop replenished energy only for the literal `Resting` label. Arrival could therefore delay needed energy recovery until the next task assignment. The repair policy now recognizes the existing recovery goal; no extra recovery rate is granted. This is an independently tested scheduling defect, not a claim that it caused the initial galley jam.
 
+## Physical feasibility at day 339
+
+The captured state has 70 tool units and 70 spare units across the existing supply/reserve pools, 179.89416 energy, 152.8548 water, 111.324 oxygen, 145.4157 fuel and 1024.3 ore. Initial repair scarcity is therefore ruled out for this case. Actual galley atmosphere is pressure 100, oxygen 21, temperature 21, smoke zero, no fire and no breach; the separate decaying legacy comfort-air meter is not the physical atmosphere.
+
+| Engineer | Health | Energy | Fatigue | Null-route wait (minutes) |
+| --- | ---: | ---: | ---: | ---: |
+| Frank Morrow | 93.78 | 46.80 | 11.48 | 632 |
+| Jules Mercer | 100 | 53.16 | 12.01 | 614 |
+| Tomas Vale | 100 | 54.00 | 20.12 | 398 |
+| Theo Moss | 100 | 50.20 | 15.30 | 542 |
+
+All four still reserve A04; none is physically working there. This identifies an access/dispatch deadlock before exhaustion or stock depletion, rather than attributing the original response failure to injured or unavailable engineers. The open preventive galley order was created at tick 485880 and has zero progress in this capture; the independently reproduced queue/material defects explain why queue admission also required correction, without proving a unique earlier queue history.
+
 ## Captured-world intervention
 
 The identical day-339 saved state has SHA-256 `b87ee10fa58f1153e6c7f0217f8c169f482bc07cf89a9b6d941442eac62aa690`. Both replay variants verify exact initial crew and inventory. Over twelve days, old rules lose all twenty crew; the repaired variant retains twenty, clears two hatches through 200 applied paid work units, completes eight native incidents and 77 preventive jobs in the recorded intermediate repaired run. Final-runtime results are separately retained; no material or favorable crew state is added to the captured case.

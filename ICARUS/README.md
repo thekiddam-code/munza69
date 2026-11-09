@@ -1,3 +1,7 @@
+# ICARUS v1.4.1 — Stability & Survival
+
+Start with [README_v1.4.1.md](README_v1.4.1.md) for launch, save compatibility, investigation and validation instructions. This is the focused core-anthology maintenance release; the existing launchers and Remote Deck remain in place. Full results and remaining work are documented in VALIDATION_v1.4.1.md and FINAL_RELEASE_ROADMAP.md.
+
 # Current core: ICARUS v1.4
 
 Read README_v1.4.md, FINAL_DESIGN.md and FINAL_RELEASE_ROADMAP.md. The core is an autonomous spaceship anthology; galaxy-scale v1.3 is independently preserved. Migration is explicit with separate saves. Historical releases below remain reference material.

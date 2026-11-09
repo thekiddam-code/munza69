@@ -1,3 +1,7 @@
+# Current maintenance handoff: ICARUS v1.4.1
+
+This focused Stability & Survival update continues v1.4 602b4a2. Read ROOT_CAUSE_v1.4.1.md, ENGINEERING_v1.4.1.md, VALIDATION_v1.4.1.md, KNOWN_LIMITATIONS_v1.4.1.md and the final-design documents. Retain paid physical repair, safe near-side hatch access, bounded reservations, real station/supply checks and exhausted-objective navigation limits. Replay seed plus external checkpoint profile; preserve deaths and captain seals. Packaged reports distinguish final evidence from superseded diagnostic attempts. Historical directions below remain context, not a request to expand scope.
+
 # Current direction: ICARUS v1.4 core anthology
 
 Official title: ICARUS. Genre: Autonomous Science-Fiction Anthology Simulation. Read FINAL_DESIGN.md and FINAL_RELEASE_ROADMAP.md before adding scope. Preserve v1.3 independently as the Extended Universe edition; core must not activate procedural planetary/galaxy expansion or territorial/economic management. Respect separate save namespaces and explicit migration. Depth, cohesion and completion take priority. Current baseline is v1.3 ea984a8; historical setup and milestone notes below do not override the current user assignment or final design.

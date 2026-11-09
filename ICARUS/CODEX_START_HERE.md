@@ -1,3 +1,7 @@
+# Current handoff: ICARUS v1.4.1 Stability & Survival
+
+Read AGENTS.md, ROOT_CAUSE_v1.4.1.md, ENGINEERING_v1.4.1.md, VALIDATION_v1.4.1.md, KNOWN_LIMITATIONS_v1.4.1.md, FINAL_DESIGN.md and FINAL_RELEASE_ROADMAP.md. The original seed-1001 failure was reproduced using its original day-30/day-90 reload profile. The captured pre-collapse state and source history are in reports/investigation; use recover_cascade.py to compare identical starting worlds. Preserve core/Extended Universe separation and captain intervention. Final reports describe verified behavior and unresolved issues; tests do not certify final-release quality. Historical handoffs follow.
+
 # Current handoff: ICARUS v1.4
 
 Read AGENTS.md, FINAL_DESIGN.md, FINAL_RELEASE_ROADMAP.md, ENGINEERING_v1.4.md, MIGRATION_v1.4.md, KNOWN_LIMITATIONS_v1.4.md and PROGRESS_v1.4.md. Default core must never grow procedural planetary systems or silently overwrite Extended Universe saves. Continue toward depth, cohesion and completion; tests alone cannot certify final design quality. Historical handoffs below do not supersede this direction.
