@@ -8,11 +8,18 @@ class LivingFrontierIntegration(FrontierIntegration):
         p=c.new_page();p.on('pageerror',lambda e:self.errors.append(str(e)));p.goto(self.url);p.wait_for_function('!!window.__icarusSoak');self.advance(p,1500)
         self.assertEqual(p.evaluate('ICARUSDurable.status.backend'),'local-fallback');self.assertIn('unavailable',p.evaluate('ICARUSDurable.status.warning'));self.assertFalse(p.evaluate('window.__icarusSoak.save()'))
         history=p.evaluate('ICARUSDurable.history()');ids={r['id'] for r in history};self.assertGreater(len(history),64);self.assertTrue(all(r['id'] in ids for r in self.snap(p)['chronicle']['records']))
+        exported=p.evaluate('ICARUSDurable.exportHistory(window.__icarusSoak.snapshot())');self.assertFalse(exported['durableCommit']);self.assertTrue(exported['complete'])
     def test_daily_metrics_match_full_world_audits_and_clock_without_mutation(self):
         p=self.page();self.advance(p,2000);before=self.snap(p);daily=p.evaluate('window.__icarusSoak.daily()');self.assertEqual(daily['tick'],before['tick']);self.assertEqual(daily['resource_errors'],before['resourceAudit']);self.assertEqual(daily['frontier_errors'],before['frontierAudit']);self.assertEqual(daily['stores'],before['resourceTotals']);self.assertEqual(daily['case_ids'],[c['id'] for c in before['director']['science']['cases']]);self.assertEqual(self.snap(p),before)
     def test_incomplete_modern_backup_is_rejected_before_replacing_world(self):
         p=self.page();self.advance(p,360);p.evaluate('window.__icarusSoak.save()');before=self.snap(p);payload=p.evaluate("({format:'ICARUS_SAVE',formatVersion:1,appVersion:'1.3',state:JSON.parse(localStorage.getItem('icarus-v02')),ideas:[]})");del payload['state']['entities'];dialogs=[];p.on('dialog',lambda d:(dialogs.append(d.message),d.dismiss()))
         p.locator('#backupfile').set_input_files({'name':'incomplete-modern.json','mimeType':'application/json','buffer':json.dumps(payload).encode()});p.wait_for_function("document.getElementById('backupmessage').textContent.includes('Unsupported or invalid')");self.assertEqual(self.snap(p),before);self.assertEqual(dialogs,[])
+    def test_failed_storage_writes_do_not_prevent_complete_off_device_backup(self):
+        p=self.page();self.advance(p,300);p.evaluate('window.__icarusSoak.save()');self.advance(p,120);expected=self.snap(p)
+        p.evaluate("""()=>{const original=IDBDatabase.prototype.transaction;IDBDatabase.prototype.transaction=function(stores,mode,...args){if(mode==='readwrite')throw new DOMException('Explicit quota failure fixture','QuotaExceededError');return original.call(this,stores,mode,...args);};}""")
+        self.assertFalse(p.evaluate('window.__icarusSoak.save()'))
+        with p.expect_download() as received:p.evaluate("document.getElementById('exportbackup').click()")
+        payload=json.loads(Path(received.value.path()).read_text());self.assertEqual(payload['state']['tick'],expected['tick']);self.assertTrue(payload['historyComplete']);self.assertFalse(payload['backupIntegrity']['durableCommit']);self.assertTrue(set(r['id'] for r in expected['chronicle']['records'])<=set(r['id'] for r in payload['history']))
     def test_indexeddb_primary_restores_world_when_cache_is_removed(self):
         p=self.page();self.advance(p,1440);self.assertTrue(p.evaluate('window.__icarusSoak.save()'));before=self.snap(p)
         p.add_init_script(self.codec+";localStorage.removeItem('icarus-v02');")

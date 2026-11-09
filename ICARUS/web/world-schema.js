@@ -7,7 +7,7 @@ function valid(s,requireModern=false){
  if(!modern)return true;
  if(domains.some(k=>!object(s[k])||s[k].version!==1))return false;
  const e=s.entities,m=s.experiences,o=s.emergencyOps,c=s.chronicles;
- if(!object(e.registry)||!array(e.encounters)||!array(e.organizations)||!object(e.stats)||!array(m.records)||!object(m.seen)||!object(m.assessments)||!array(o.incidents)||!object(o.transport)||!object(o.stats)||!object(c.weeks)||!object(c.seen))return false;
+ if(!object(e.registry)||!array(e.encounters)||!array(e.organizations)||!object(e.stats)||!array(m.records)||!object(m.seen)||!object(m.assessments)||!array(o.incidents)||!object(o.transport)||!Number.isFinite(o.transport.condition)||!object(o.stats)||!object(c.weeks)||!object(c.seen))return false;
  for(const [id,n] of Object.entries(e.registry))if(!object(n)||id!==n.id||typeof n.name!=='string'||typeof n.location!=='string'||!Number.isFinite(n.reputation)||!finiteMap(n.stock)||!finiteMap(n.initial)||!finiteMap(n.received)||!finiteMap(n.spent)||!array(n.crew)||!array(n.history))return false;
  for(const w of Object.values(c.weeks))if(!object(w)||!array(w.sourceIds)||!array(w.segments))return false;
  for(const r of m.records)if(!object(r)||typeof r.id!=='string'||typeof r.sourceId!=='string'||typeof r.person!=='string')return false;
