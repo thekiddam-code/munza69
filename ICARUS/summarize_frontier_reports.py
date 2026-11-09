@@ -36,12 +36,12 @@ def main():
         unit=unit_path.read_text();counts={k:int(re.search(r'ℹ '+k+r' (\d+)',unit).group(1)) for k in ('tests','pass','fail','skipped')};automated['unit']=counts
         if counts['fail'] or counts['skipped'] or counts['tests']!=counts['pass']:errors.append('Unit suite not fully passing')
     else:errors.append('Missing unit_results.txt')
-    for name in ('frontier_integration.json','bridge_results.json','legacy_runner_7day.json'):
+    for name in ('frontier_integration.json','bridge_results.json','legacy_runner_7day.json','v11_upgrade.json'):
         path=root/name
         if not path.exists():errors.append('Missing '+name);continue
         result=json.loads(path.read_text());automated[name]={'passed':result.get('passed'),'tests':result.get('tests_run',result.get('tests'))}
         if not result.get('passed'):errors.append('Failed '+name)
     source=Path(__file__).resolve().parent;runtime={str(p.relative_to(source)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted((source/'web').rglob('*')) if p.is_file()}
-    summary={'version':'1.2','source_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=source,text=True).strip(),'runtime_sha256':runtime,'campaign_seeds':seeds,'milestones':milestones,'acceptance_verified':not errors,'automated_tests':automated,'errors':errors,'test_reports':['unit_results.txt','frontier_integration.json','bridge_results.json','legacy_runner_7day.json'],'limitations':'See KNOWN_LIMITATIONS_v1.2.md. Test reports are authoritative for their individual results; physical devices and non-Chromium browsers were not tested.'}
+    summary={'version':'1.2','source_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=source,text=True).strip(),'runtime_sha256':runtime,'campaign_seeds':seeds,'milestones':milestones,'acceptance_verified':not errors,'automated_tests':automated,'errors':errors,'test_reports':['unit_results.txt','frontier_integration.json','bridge_results.json','legacy_runner_7day.json','v11_upgrade.json'],'limitations':'See KNOWN_LIMITATIONS_v1.2.md. Test reports are authoritative for their individual results; physical devices and non-Chromium browsers were not tested.'}
     (root/'validation_summary.json').write_text(json.dumps(summary,indent=2));print(json.dumps({'milestones':len(milestones),'passed':not errors,'errors':errors},indent=2));return bool(errors)
 if __name__=='__main__':raise SystemExit(main())
