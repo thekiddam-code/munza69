@@ -35,7 +35,7 @@ function tick(s,env){const t=init(s);if(t.lastTick===s.tick)return;t.lastTick=s.
   if(a.kind==='research'){const results=(s.remoteCore.director.science.experiments||[]).filter(e=>e.caseId===a.caseId&&e.id!==a.initialExperiment&&['complete','failed','no_result'].includes(e.status));if(results.length){a.followupResults=results.map(e=>({id:e.id,status:e.status}));close(s,a,'exchange_complete',env);continue;}a.stage='waiting';a.pauseReason='Awaiting recorded follow-up experimental results';if(s.tick-a.started>40320)close(s,a,'unresolved',env);continue;}
   const people=living(s).filter(p=>!reserved.has(p.name)&&(!p.anthologyDuty||p.anthologyDuty.story===a.id));
   if(!a.people.length&&a.required){a.people=people.sort((x,y)=>(y.social||0)-(x.social||0)||x.name.localeCompare(y.name)).slice(0,a.required).map(p=>p.name);if(a.people.length<a.required)a.people=[];}
-  const workers=people.filter(p=>a.people.includes(p.name));const safe=s.economy.mode==='normal'&&s.power>=35&&workers.length>=a.required;
+  const workers=people.filter(p=>a.people.includes(p.name));const safe=s.economy.mode==='normal'&&!s.repairControl?.critical&&s.power>=35&&workers.length>=a.required;
   if(!safe){if(a.stage!=='paused'){a.stage='paused';a.complications.push({at:s.tick,reason:'Actual staffing, ship condition or reserves unavailable'});record(s,a,'complication',a.id+' paused: available crew and safe ship operations take precedence.',env);}if(s.tick-a.started>20160)close(s,a,'declined',env);continue;}
   if(env.economy.available(s).energy<.03)continue;env.economy.consume(s,'energy',.03,'anthology communications '+a.id);a.progress+=15;a.lastWork=s.tick;
   for(const p of workers){reserved.add(p.name);p.anthologyDuty={story:a.id,until:s.tick+15};p.energy=Math.max(0,p.energy-.03);}
