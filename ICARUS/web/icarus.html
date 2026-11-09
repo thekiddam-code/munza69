@@ -2237,9 +2237,9 @@ function autonomousAtmosphereResponse(){
   if(!e||!e.atmospheric||e.status!=='active')continue;
   e.age++;
   e.severity=(air.pressure<50||air.temperature>65||air.smoke>45)?'critical':'warning';
-  const responders=state.crew.filter(p=>p.emergencyId===id&&p.room===id&&!p.route.length&&p.energy>10);
+  const responders=state.crew.filter(p=>p.emergencyId===id&&!p.expeditionId&&!p.expeditionAway&&!p.responseAssignment&&ICARUSLife.ready(p)&&p.room===id&&!p.route.length&&p.energy>10);
   if(dangerous&&state.tick%8===0&&!state.crew.some(p=>p.emergencyId===id)){
-   const available=state.crew.filter(p=>p.job==='Engineer'&&!p.expeditionAway&&p.energy>18&&!p.emergencyId);
+   const available=state.crew.filter(p=>p.job==='Engineer'&&!p.expeditionId&&!p.expeditionAway&&!p.responseAssignment&&ICARUSLife.ready(p)&&p.energy>=35&&!p.emergencyId);
    if(available.length){
     const closest=available.sort((a,b)=>navPath(a.room,id).length-navPath(b.room,id).length)[0];
     if(navPath(closest.room,id).length||closest.room===id)assignEmergency(closest,e);
