@@ -1,5 +1,7 @@
 # v1.4 limitations and next core work
 
+**Material long-run issue:** the deterministic seed-1001 normal voyage suffers a late ship-system/life-support cascade and all twenty crew die around day 347; seed 2026 sustains all twenty to day 365. Identity, resources, chronology and death persistence remain conserved, but robust long-term autonomous recovery/balance is not verified across seeds. This is an unresolved issue, not a successful healthy voyage or a fabricated cinematic ending. See actual reports and extinction_investigation.json.
+
 This is an anthology recalibration, not a finished commercial release. Read FINAL_DESIGN.md and FINAL_RELEASE_ROADMAP.md. Behavioral tests cannot establish whether every story is engaging, every interface polished or every crew response convincing.
 
 - The external interaction vocabulary is small and uses state-conditioned templates, not unrestricted dialogue or a narrative model. The same kind of signal can recur. Philosophical exchanges preserve questions rather than simulating genuine semantic debate. Deepen specificity/character responses and human review before adding more systems.

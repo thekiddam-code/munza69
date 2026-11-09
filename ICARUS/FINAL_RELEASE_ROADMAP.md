@@ -6,7 +6,7 @@ Status vocabulary: **Complete and verified**, **Implemented but needing refineme
 
 | Milestone | Current status | Evidence / remaining release gate |
 | --- | --- | --- |
-| Core simulation completeness | Implemented but needing refinement | Continuous crew/ship/science/resource/mission loop and bounded local context exist. Final v1.4 reports verify their tested seeds; more balance and compound-failure play review remain. |
+| Core simulation completeness | Implemented but needing refinement | Continuous crew/ship/science/resource/mission loop and bounded local context exist. Final v1.4 reports verify their tested seeds; seed 1001 has a late fatal system cascade, so recovery/root-cause balancing and compound-failure review remain. |
 | Anthology storytelling completeness | Partially implemented | Causal beginnings, development, pauses, overlapping threads, actual consequences and open endings work. The interaction vocabulary is deliberately small; deepen contextual specificity and evaluate long-session interest before adding scope. |
 | Crew autonomy and relationship depth | Implemented but needing refinement | Existing personality/physical autonomy plus source-backed shared experiences, trust, medical recovery and traditions. Numeric models need richer characterization and human review; avoid repetitive liaison/relationship framing. |
 | Scientific and Lazarus systems | Implemented but needing refinement | Existing custody/evidence/experiment/replication/resource rules retained; narrative questions follow actual results. Improve scientific explanation and pacing. No guaranteed Lazarus success or final story ending. |
@@ -24,10 +24,11 @@ Status vocabulary: **Complete and verified**, **Implemented but needing refineme
 
 ## Next core milestones, in order
 
-1. Review actual v1.4 stories for specificity, repetition and believable crew participation; enrich existing categories and responses, without new map or economic systems.
-2. Consolidate Operations, crew, research and chronicle navigation; add accessible focus/keyboard behavior and test real tablet/Windows layouts.
-3. Improve source-grounded weekly selection and concise SOL interpretation; retain quiet episodes and unresolved threads.
-4. Stream large backups/history, enforce single-writer ownership, improve recovery explanations and test actual target hardware.
-5. Run broader balance campaigns plus sustained human playtests; then define an audio/cinematic accessibility budget and a final-release candidate checklist.
+1. Investigate and repair the observed seed-1001 late ship-system recovery failure, with protected responder availability, safe access and meaningful adverse regressions; do not mask it with free resources or guaranteed survival.
+2. Review actual v1.4 stories for specificity, repetition and believable crew participation; enrich existing categories and responses, without new map or economic systems.
+3. Consolidate Operations, crew, research and chronicle navigation; add accessible focus/keyboard behavior and test real tablet/Windows layouts.
+4. Improve source-grounded weekly selection and concise SOL interpretation; retain quiet episodes and unresolved threads.
+5. Stream large backups/history, enforce single-writer ownership, improve recovery explanations and test actual target hardware.
+6. Run broader balance campaigns plus sustained human playtests; then define an audio/cinematic accessibility budget and a final-release candidate checklist.
 
 Each batch must update evidence, status and remaining gates. A completed test does not automatically change a partially implemented content or polish milestone to complete.

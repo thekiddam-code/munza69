@@ -1,3 +1,7 @@
+# Current direction: ICARUS v1.4 core anthology
+
+Official title: ICARUS. Genre: Autonomous Science-Fiction Anthology Simulation. Read FINAL_DESIGN.md and FINAL_RELEASE_ROADMAP.md before adding scope. Preserve v1.3 independently as the Extended Universe edition; core must not activate procedural planetary/galaxy expansion or territorial/economic management. Respect separate save namespaces and explicit migration. Depth, cohesion and completion take priority. Current baseline is v1.3 ea984a8; historical setup and milestone notes below do not override the current user assignment or final design.
+
 # ICARUS engineering instructions for Codex
 
 ## Product

@@ -2,6 +2,8 @@
 
 **Autonomous Science-Fiction Anthology Simulation.** One ship, persistent crew, SOL and an optional captain. Stories can be ordinary, joyful, humorous, uncertain or dangerous. Neither a disaster nor a scientific breakthrough is required every week.
 
+**Unresolved viability issue:** seed 1001 suffers total crew loss late in a normal year-long run; seed 2026 retains all twenty. Mechanical/persistence audits pass, but overall acceptance and final-release readiness are not verified. See VALIDATION_v1.4.md.
+
 Extract the entire project. On Windows, install the existing dependencies (`py -m pip install -r requirements.txt`) and run `Start_Remote_Deck.bat`; open the printed ICARUS PC URL. Use a stable browser origin/port. The paired Remote Deck tablet observes and commands the authoritative PC.
 
 v1.4 starts a **separate core save**. To continue v1.3, first export its complete JSON backup, then explicitly import it in core save management. Read MIGRATION_v1.4.md before replacing anything. The preserved v1.3 Extended Universe archive is independently runnable; old galaxies are retained as frozen history when imported into core.
