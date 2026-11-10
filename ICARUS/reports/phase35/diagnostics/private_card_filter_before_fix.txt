@@ -1,0 +1,51 @@
+✔ no awards for assignments or failed work, no invented science, quiet means no awards (1.257547ms)
+✔ actual completed rescue, paid service, experiment and accidental evidence yield optional sourced awards (0.4132ms)
+✔ asserted legendary scores alone cannot replace retained rarity and causal evidence (0.418098ms)
+✔ empty week is honestly short and compilation does not mutate state (1.156327ms)
+✔ only matching actual captured state is presented as recorded; absence is reconstruction (1.189265ms)
+✖ private source is excluded even if an old segment refers to it (0.950643ms)
+✔ later report cannot become invented footage of an earlier event (0.193386ms)
+✔ ordinary death and missing recordings never qualify; raw extraordinary fixture needs corroborated death (0.30483ms)
+✔ archived films retain their real frame after rolling buffer expiry and survive reload (1.44232ms)
+✔ sealed adult cannot sense, move or attack even with co-located prey (3.688916ms)
+✔ dormant quiet organism produces no invented signal, activity or encounters (0.963863ms)
+✔ inaccessible route prevents pursuit across a closed barrier (1.446666ms)
+✔ local pursuit follows one actual edge; distant prey does not supply omniscient target (0.548149ms)
+✔ attack has local source and injury causality; dead crew follows existing memorial path (0.963463ms)
+✔ seeded behavior roundtrips mid-pursuit and remains identical after reload (4.873765ms)
+✔ rest transfers finite metabolic energy, biomass can be consumed at most once (7.163787ms)
+✔ active organism suffers vacuum/fire and stops permanently at zero health (0.634066ms)
+✔ legacy ambiguous field location is preserved rather than teleporting onto a team (0.280424ms)
+✔ birth aboard transport stays physically contained until its actual vehicle arrives (0.271231ms)
+✔ starvation recovery requires and debits a real co-located body, never free rest energy (0.233164ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 19
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 206.676552
+
+✖ failing tests:
+
+test at test_chronicle_film.js:5:1
+✖ private source is excluded even if an old segment refers to it (0.950643ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (/workspace/work/munza69/ICARUS/test_chronicle_film.js:5:146)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

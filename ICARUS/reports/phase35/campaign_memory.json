@@ -1,0 +1,1124 @@
+{
+  "limits": "Sum of Linux RSS across each campaign process tree, shared pages can be counted more than once. Not JS retained-heap or target-hardware certification. Sampling starts after campaign initialization.",
+  "samples": [
+    {
+      "unix_time": 1794333223.7817848,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 11,
+          "sum_rss_kib": 945368,
+          "renderer_rss_kib": 401392
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 11,
+          "sum_rss_kib": 905804,
+          "renderer_rss_kib": 358516
+        },
+        "python unified_soak.py --seed 1001 --days 7 --scenario compound --output /workspace/work/phase35_reports/campaigns/compound_1001": {
+          "processes": 11,
+          "sum_rss_kib": 931456,
+          "renderer_rss_kib": 408508
+        }
+      }
+    },
+    {
+      "unix_time": 1794333238.9509614,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 11,
+          "sum_rss_kib": 917296,
+          "renderer_rss_kib": 371588
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 11,
+          "sum_rss_kib": 941736,
+          "renderer_rss_kib": 393744
+        },
+        "python unified_soak.py --seed 1001 --days 7 --scenario compound --output /workspace/work/phase35_reports/campaigns/compound_1001": {
+          "processes": 11,
+          "sum_rss_kib": 969232,
+          "renderer_rss_kib": 445760
+        }
+      }
+    },
+    {
+      "unix_time": 1794333254.103106,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 11,
+          "sum_rss_kib": 916560,
+          "renderer_rss_kib": 369760
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 11,
+          "sum_rss_kib": 983948,
+          "renderer_rss_kib": 435284
+        },
+        "python unified_soak.py --seed 1001 --days 7 --scenario compound --output /workspace/work/phase35_reports/campaigns/compound_1001": {
+          "processes": 11,
+          "sum_rss_kib": 993968,
+          "renderer_rss_kib": 469692
+        }
+      }
+    },
+    {
+      "unix_time": 1794333269.261138,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 11,
+          "sum_rss_kib": 963748,
+          "renderer_rss_kib": 416760
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 11,
+          "sum_rss_kib": 935148,
+          "renderer_rss_kib": 384580
+        },
+        "python unified_soak.py --seed 1001 --days 7 --scenario compound --output /workspace/work/phase35_reports/campaigns/compound_1001": {
+          "processes": 11,
+          "sum_rss_kib": 923808,
+          "renderer_rss_kib": 398060
+        }
+      }
+    },
+    {
+      "unix_time": 1794333284.3137615,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 11,
+          "sum_rss_kib": 930648,
+          "renderer_rss_kib": 382720
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 11,
+          "sum_rss_kib": 1082744,
+          "renderer_rss_kib": 464588
+        },
+        "python unified_soak.py --seed 1001 --days 7 --scenario compound --output /workspace/work/phase35_reports/campaigns/compound_1001": {
+          "processes": 11,
+          "sum_rss_kib": 919328,
+          "renderer_rss_kib": 392732
+        }
+      }
+    },
+    {
+      "unix_time": 1794333299.4704368,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1022724,
+          "renderer_rss_kib": 451800
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1121032,
+          "renderer_rss_kib": 401812
+        },
+        "python unified_soak.py --seed 1001 --days 7 --scenario compound --output /workspace/work/phase35_reports/campaigns/compound_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1051368,
+          "renderer_rss_kib": 501468
+        }
+      }
+    },
+    {
+      "unix_time": 1794333314.5528347,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1106180,
+          "renderer_rss_kib": 478856
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1112844,
+          "renderer_rss_kib": 426468
+        },
+        "python unified_soak.py --seed 1001 --days 7 --scenario compound --output /workspace/work/phase35_reports/campaigns/compound_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1182508,
+          "renderer_rss_kib": 584616
+        }
+      }
+    },
+    {
+      "unix_time": 1794333329.695565,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1136512,
+          "renderer_rss_kib": 450908
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1077968,
+          "renderer_rss_kib": 390648
+        },
+        "python unified_soak.py --seed 4807 --days 7 --scenario released_chamber --output /workspace/work/phase35_reports/campaigns/chamber_4807": {
+          "processes": 3,
+          "sum_rss_kib": 167648,
+          "renderer_rss_kib": 0
+        }
+      }
+    },
+    {
+      "unix_time": 1794333344.8589478,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1078480,
+          "renderer_rss_kib": 392552
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1152488,
+          "renderer_rss_kib": 463380
+        },
+        "python unified_soak.py --seed 4807 --days 7 --scenario released_chamber --output /workspace/work/phase35_reports/campaigns/chamber_4807": {
+          "processes": 11,
+          "sum_rss_kib": 862096,
+          "renderer_rss_kib": 314556
+        }
+      }
+    },
+    {
+      "unix_time": 1794333359.9787917,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1060600,
+          "renderer_rss_kib": 374600
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1082356,
+          "renderer_rss_kib": 392272
+        },
+        "python unified_soak.py --seed 4807 --days 7 --scenario released_chamber --output /workspace/work/phase35_reports/campaigns/chamber_4807": {
+          "processes": 11,
+          "sum_rss_kib": 924724,
+          "renderer_rss_kib": 375776
+        }
+      }
+    },
+    {
+      "unix_time": 1794333375.065718,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1097632,
+          "renderer_rss_kib": 412004
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1097216,
+          "renderer_rss_kib": 408684
+        },
+        "python unified_soak.py --seed 4807 --days 7 --scenario released_chamber --output /workspace/work/phase35_reports/campaigns/chamber_4807": {
+          "processes": 11,
+          "sum_rss_kib": 916632,
+          "renderer_rss_kib": 366664
+        }
+      }
+    },
+    {
+      "unix_time": 1794333390.249306,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1084572,
+          "renderer_rss_kib": 396592
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1117440,
+          "renderer_rss_kib": 426924
+        },
+        "python unified_soak.py --seed 4807 --days 7 --scenario released_chamber --output /workspace/work/phase35_reports/campaigns/chamber_4807": {
+          "processes": 11,
+          "sum_rss_kib": 913028,
+          "renderer_rss_kib": 362192
+        }
+      }
+    },
+    {
+      "unix_time": 1794333405.3604212,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1135100,
+          "renderer_rss_kib": 446076
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1168472,
+          "renderer_rss_kib": 476120
+        },
+        "python unified_soak.py --seed 4807 --days 7 --scenario released_chamber --output /workspace/work/phase35_reports/campaigns/chamber_4807": {
+          "processes": 11,
+          "sum_rss_kib": 933476,
+          "renderer_rss_kib": 381156
+        }
+      }
+    },
+    {
+      "unix_time": 1794333420.5568826,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1176348,
+          "renderer_rss_kib": 488456
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1086544,
+          "renderer_rss_kib": 449032
+        },
+        "python unified_soak.py --seed 4807 --days 7 --scenario released_chamber --output /workspace/work/phase35_reports/campaigns/chamber_4807": {
+          "processes": 11,
+          "sum_rss_kib": 945364,
+          "renderer_rss_kib": 391656
+        }
+      }
+    },
+    {
+      "unix_time": 1794333435.7033365,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1136480,
+          "renderer_rss_kib": 520176
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1040504,
+          "renderer_rss_kib": 402476
+        },
+        "python unified_soak.py --seed 4807 --days 7 --scenario released_chamber --output /workspace/work/phase35_reports/campaigns/chamber_4807": {
+          "processes": 11,
+          "sum_rss_kib": 928040,
+          "renderer_rss_kib": 407724
+        }
+      }
+    },
+    {
+      "unix_time": 1794333450.8719056,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1077204,
+          "renderer_rss_kib": 459612
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1086100,
+          "renderer_rss_kib": 448008
+        },
+        "python unified_soak.py --seed 4807 --days 7 --scenario released_chamber --output /workspace/work/phase35_reports/campaigns/chamber_4807": {
+          "processes": 11,
+          "sum_rss_kib": 898704,
+          "renderer_rss_kib": 376748
+        }
+      }
+    },
+    {
+      "unix_time": 1794333466.0859547,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1057440,
+          "renderer_rss_kib": 440720
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1045556,
+          "renderer_rss_kib": 405240
+        },
+        "python unified_soak.py --seed 4807 --days 7 --scenario released_chamber --output /workspace/work/phase35_reports/campaigns/chamber_4807": {
+          "processes": 11,
+          "sum_rss_kib": 936656,
+          "renderer_rss_kib": 413560
+        }
+      }
+    },
+    {
+      "unix_time": 1794333481.2054152,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1048584,
+          "renderer_rss_kib": 429404
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1031264,
+          "renderer_rss_kib": 389888
+        },
+        "python unified_soak.py --seed 4807 --days 7 --scenario released_chamber --output /workspace/work/phase35_reports/campaigns/chamber_4807": {
+          "processes": 11,
+          "sum_rss_kib": 997840,
+          "renderer_rss_kib": 474020
+        }
+      }
+    },
+    {
+      "unix_time": 1794333496.3488972,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1105408,
+          "renderer_rss_kib": 486432
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1041828,
+          "renderer_rss_kib": 402508
+        },
+        "python unified_soak.py --seed 4807 --days 7 --scenario released_chamber --output /workspace/work/phase35_reports/campaigns/chamber_4807": {
+          "processes": 11,
+          "sum_rss_kib": 998380,
+          "renderer_rss_kib": 474464
+        }
+      }
+    },
+    {
+      "unix_time": 1794333511.4659088,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1147436,
+          "renderer_rss_kib": 527436
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1117612,
+          "renderer_rss_kib": 476484
+        },
+        "python unified_soak.py --seed 4807 --days 7 --scenario released_chamber --output /workspace/work/phase35_reports/campaigns/chamber_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1061904,
+          "renderer_rss_kib": 515780
+        }
+      }
+    },
+    {
+      "unix_time": 1794333526.5800333,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1170956,
+          "renderer_rss_kib": 549624
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1097080,
+          "renderer_rss_kib": 456300
+        },
+        "python unified_soak.py --seed 4807 --days 7 --scenario released_chamber --output /workspace/work/phase35_reports/campaigns/chamber_4807": {
+          "processes": 12,
+          "sum_rss_kib": 962316,
+          "renderer_rss_kib": 414920
+        }
+      }
+    },
+    {
+      "unix_time": 1794333541.698825,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1245528,
+          "renderer_rss_kib": 625216
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1152448,
+          "renderer_rss_kib": 511272
+        },
+        "python unified_soak.py --seed 4807 --days 7 --scenario released_chamber --output /workspace/work/phase35_reports/campaigns/chamber_4807": {
+          "processes": 12,
+          "sum_rss_kib": 957904,
+          "renderer_rss_kib": 410836
+        }
+      }
+    },
+    {
+      "unix_time": 1794333556.890831,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1126364,
+          "renderer_rss_kib": 504868
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1043912,
+          "renderer_rss_kib": 399180
+        },
+        "python unified_soak.py --seed 4807 --days 7 --scenario released_chamber --output /workspace/work/phase35_reports/campaigns/chamber_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1003488,
+          "renderer_rss_kib": 456032
+        }
+      }
+    },
+    {
+      "unix_time": 1794333571.9971035,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1104496,
+          "renderer_rss_kib": 483356
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1080312,
+          "renderer_rss_kib": 436672
+        },
+        "python unified_soak.py --seed 4807 --days 7 --scenario released_chamber --output /workspace/work/phase35_reports/campaigns/chamber_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1043688,
+          "renderer_rss_kib": 448152
+        }
+      }
+    },
+    {
+      "unix_time": 1794333587.1015325,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1174448,
+          "renderer_rss_kib": 554048
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1110068,
+          "renderer_rss_kib": 464516
+        },
+        "python unified_soak.py --seed 4807 --days 7 --scenario released_chamber --output /workspace/work/phase35_reports/campaigns/chamber_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1081360,
+          "renderer_rss_kib": 486964
+        }
+      }
+    },
+    {
+      "unix_time": 1794333602.2031622,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1045256,
+          "renderer_rss_kib": 422144
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1163600,
+          "renderer_rss_kib": 519528
+        }
+      }
+    },
+    {
+      "unix_time": 1794333617.2892277,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1121448,
+          "renderer_rss_kib": 499596
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1205216,
+          "renderer_rss_kib": 558756
+        }
+      }
+    },
+    {
+      "unix_time": 1794333632.404757,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1088356,
+          "renderer_rss_kib": 463976
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1269924,
+          "renderer_rss_kib": 624188
+        }
+      }
+    },
+    {
+      "unix_time": 1794333647.5097752,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1103588,
+          "renderer_rss_kib": 479072
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1190296,
+          "renderer_rss_kib": 543180
+        }
+      }
+    },
+    {
+      "unix_time": 1794333662.6849031,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1184636,
+          "renderer_rss_kib": 559724
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1136604,
+          "renderer_rss_kib": 488840
+        }
+      }
+    },
+    {
+      "unix_time": 1794333677.768526,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1265940,
+          "renderer_rss_kib": 640124
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1207776,
+          "renderer_rss_kib": 561292
+        }
+      }
+    },
+    {
+      "unix_time": 1794333692.8869374,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1177840,
+          "renderer_rss_kib": 550820
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1246220,
+          "renderer_rss_kib": 597268
+        }
+      }
+    },
+    {
+      "unix_time": 1794333707.974834,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1122372,
+          "renderer_rss_kib": 495316
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1307396,
+          "renderer_rss_kib": 658884
+        }
+      }
+    },
+    {
+      "unix_time": 1794333723.0865571,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1239592,
+          "renderer_rss_kib": 611948
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1207584,
+          "renderer_rss_kib": 557576
+        }
+      }
+    },
+    {
+      "unix_time": 1794333738.1851861,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1239532,
+          "renderer_rss_kib": 611220
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1243920,
+          "renderer_rss_kib": 593916
+        }
+      }
+    },
+    {
+      "unix_time": 1794333753.305798,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1304988,
+          "renderer_rss_kib": 678176
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1290940,
+          "renderer_rss_kib": 638592
+        }
+      }
+    },
+    {
+      "unix_time": 1794333768.402464,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1171844,
+          "renderer_rss_kib": 545128
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1376148,
+          "renderer_rss_kib": 723800
+        }
+      }
+    },
+    {
+      "unix_time": 1794333783.5535781,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1152232,
+          "renderer_rss_kib": 522884
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1244644,
+          "renderer_rss_kib": 591376
+        }
+      }
+    },
+    {
+      "unix_time": 1794333798.6017737,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1193916,
+          "renderer_rss_kib": 565376
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1218200,
+          "renderer_rss_kib": 564388
+        }
+      }
+    },
+    {
+      "unix_time": 1794333813.6982625,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1261160,
+          "renderer_rss_kib": 629496
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1292968,
+          "renderer_rss_kib": 640272
+        }
+      }
+    },
+    {
+      "unix_time": 1794333828.9066036,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1322628,
+          "renderer_rss_kib": 692308
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1335108,
+          "renderer_rss_kib": 679756
+        }
+      }
+    },
+    {
+      "unix_time": 1794333844.076802,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1236752,
+          "renderer_rss_kib": 604936
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1402368,
+          "renderer_rss_kib": 747216
+        }
+      }
+    },
+    {
+      "unix_time": 1794333859.17048,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1176684,
+          "renderer_rss_kib": 544304
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1247408,
+          "renderer_rss_kib": 593252
+        }
+      }
+    },
+    {
+      "unix_time": 1794333874.2819414,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1218324,
+          "renderer_rss_kib": 586912
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1247156,
+          "renderer_rss_kib": 590124
+        }
+      }
+    },
+    {
+      "unix_time": 1794333889.4088044,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1321736,
+          "renderer_rss_kib": 688204
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1291048,
+          "renderer_rss_kib": 635096
+        }
+      }
+    },
+    {
+      "unix_time": 1794333904.5097113,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1283936,
+          "renderer_rss_kib": 648056
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1373244,
+          "renderer_rss_kib": 715156
+        }
+      }
+    },
+    {
+      "unix_time": 1794333919.6745505,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1342188,
+          "renderer_rss_kib": 707792
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1346624,
+          "renderer_rss_kib": 686876
+        }
+      }
+    },
+    {
+      "unix_time": 1794333934.7825847,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1403028,
+          "renderer_rss_kib": 768608
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1234008,
+          "renderer_rss_kib": 575164
+        }
+      }
+    },
+    {
+      "unix_time": 1794333949.9116113,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1191912,
+          "renderer_rss_kib": 554028
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1298048,
+          "renderer_rss_kib": 637300
+        }
+      }
+    },
+    {
+      "unix_time": 1794333965.008804,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1255012,
+          "renderer_rss_kib": 617560
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1270356,
+          "renderer_rss_kib": 609168
+        }
+      }
+    },
+    {
+      "unix_time": 1794333980.0909894,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1338568,
+          "renderer_rss_kib": 699128
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1350816,
+          "renderer_rss_kib": 690796
+        }
+      }
+    },
+    {
+      "unix_time": 1794333995.1858304,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1376732,
+          "renderer_rss_kib": 737648
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1361804,
+          "renderer_rss_kib": 699500
+        }
+      }
+    },
+    {
+      "unix_time": 1794334010.2888577,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1228620,
+          "renderer_rss_kib": 588056
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1422780,
+          "renderer_rss_kib": 760812
+        }
+      }
+    },
+    {
+      "unix_time": 1794334025.3802025,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1244212,
+          "renderer_rss_kib": 602576
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1285120,
+          "renderer_rss_kib": 623648
+        }
+      }
+    },
+    {
+      "unix_time": 1794334040.557645,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1330044,
+          "renderer_rss_kib": 690124
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1286924,
+          "renderer_rss_kib": 623168
+        }
+      }
+    },
+    {
+      "unix_time": 1794334055.6883368,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1340656,
+          "renderer_rss_kib": 699240
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1351456,
+          "renderer_rss_kib": 689400
+        }
+      }
+    },
+    {
+      "unix_time": 1794334070.7935617,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1342400,
+          "renderer_rss_kib": 700596
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1217864,
+          "renderer_rss_kib": 554472
+        }
+      }
+    },
+    {
+      "unix_time": 1794334085.8924222,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1424684,
+          "renderer_rss_kib": 784064
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1237840,
+          "renderer_rss_kib": 573480
+        }
+      }
+    },
+    {
+      "unix_time": 1794334100.9764707,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1255636,
+          "renderer_rss_kib": 613496
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1222004,
+          "renderer_rss_kib": 556980
+        }
+      }
+    },
+    {
+      "unix_time": 1794334116.065299,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1232144,
+          "renderer_rss_kib": 589064
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1191340,
+          "renderer_rss_kib": 525960
+        }
+      }
+    },
+    {
+      "unix_time": 1794334131.1656034,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1301792,
+          "renderer_rss_kib": 660300
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1235156,
+          "renderer_rss_kib": 504208
+        }
+      }
+    },
+    {
+      "unix_time": 1794334146.2594767,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1384044,
+          "renderer_rss_kib": 740440
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1287268,
+          "renderer_rss_kib": 557144
+        }
+      }
+    },
+    {
+      "unix_time": 1794334161.3095047,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1213372,
+          "renderer_rss_kib": 569464
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1263848,
+          "renderer_rss_kib": 534076
+        }
+      }
+    },
+    {
+      "unix_time": 1794334176.477387,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1209588,
+          "renderer_rss_kib": 565020
+        },
+        "python unified_soak.py --seed 1001 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_1001": {
+          "processes": 12,
+          "sum_rss_kib": 1434084,
+          "renderer_rss_kib": 648124
+        }
+      }
+    },
+    {
+      "unix_time": 1794334191.5507858,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1309440,
+          "renderer_rss_kib": 665552
+        }
+      }
+    },
+    {
+      "unix_time": 1794334206.6581626,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1560380,
+          "renderer_rss_kib": 824532
+        }
+      }
+    },
+    {
+      "unix_time": 1794334221.6958833,
+      "campaigns": {
+        "python unified_soak.py --seed 4807 --days 30 --output /workspace/work/phase35_reports/campaigns/normal_4807": {
+          "processes": 12,
+          "sum_rss_kib": 1330572,
+          "renderer_rss_kib": 594776
+        }
+      }
+    },
+    {
+      "unix_time": 1794334236.7169335,
+      "campaigns": {}
+    }
+  ]
+}

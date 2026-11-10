@@ -1,0 +1,27 @@
+{
+  "heap_before": {
+    "JSHeapUsedSize": 6076024,
+    "JSHeapTotalSize": 10280960
+  },
+  "samples": 1000,
+  "mean_ms": 0.6057999999970197,
+  "p95_ms": 1.2000000029802322,
+  "max_ms": 40.8999999910593,
+  "before": {
+    "renders": 2,
+    "actorRebuilds": 2,
+    "totalMs": 60.70000000298023
+  },
+  "after": {
+    "renders": 1003,
+    "actorRebuilds": 2,
+    "totalMs": 665.9000000059605
+  },
+  "observer_unchanged": true,
+  "heap_after": {
+    "JSHeapUsedSize": 15141676,
+    "JSHeapTotalSize": 20267008
+  },
+  "limits": "Headless Linux Chromium synchronous camera JS/DOM update timings, not GPU/compositor frame rate or native tablet certification. Heap sampling may include unreclaimed temporary allocations.",
+  "passed": true
+}

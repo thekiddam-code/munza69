@@ -1,0 +1,21 @@
+F
+======================================================================
+FAIL: test_cancel_during_source_verification_cannot_cross_atomic_commit (test_refinement_integration.RefinementIntegration.test_cancel_during_source_verification_cannot_cross_atomic_commit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/work/munza69/ICARUS/test_refinement_integration.py", line 47, in test_cancel_during_source_verification_cannot_cross_atomic_commit
+    p=self.page();self.advance(p,120);data=self.streamed(p);s=self.snap(p);result=p.evaluate("""async text=>{const c=new AbortController(),original=ICARUSDurable.containsStaged;let applied=false;ICARUSDurable.containsStaged=async(...args)=>{const ok=await original(...args);c.abort();return ok;};try{await ICARUSBackupTransfer.importFile(new File([text],'late-cancel.ndjson'),{signal:c.signal,validate:p=>!!p.state,confirm:()=>true,apply:()=>applied=true});return {cancelled:false,applied};}catch(e){return {cancelled:e.message.includes('Cancelled'),applied};}finally{ICARUSDurable.containsStaged=original;}}""",data.decode());self.assertEqual(result,{'cancelled':True,'applied':False});self.assertEqual(self.snap(p),s)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'cancelled': False, 'applied': True} != {'cancelled': True, 'applied': False}
+- {'applied': True, 'cancelled': False}
+?             ^^^                ^^^^
+
++ {'applied': False, 'cancelled': True}
+?             ^^^^                ^^^
+
+
+----------------------------------------------------------------------
+Ran 1 test in 7.848s
+
+FAILED (failures=1)
+sys:1: ResourceWarning: unclosed <socket.socket fd=3, family=2, type=1, proto=0, laddr=('127.0.0.1', 39343)>

@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "backup": "backup_1001_30.json",
+  "errors": [],
+  "limits": "Real Chromium IndexedDB and FileSystemWritable via OPFS handle substituted for native save picker. No physical Windows chooser or Android filesystem claim.",
+  "legacy_import_seconds": 206.86251325899502,
+  "history_records": 45515,
+  "export_seconds": 32.72502944601001,
+  "export_bytes": 22306975,
+  "stream_import_seconds": 110.49478621101298,
+  "exact_reload": true,
+  "getAll_history_forbidden": true,
+  "source_and_world_roundtrip": true,
+  "elapsed_seconds": 393.37651899899356,
+  "input_sha256": "a360cf0ae14c2a80f143876e15652cafd0465b9274b4f58ee5c128be6d9aa596",
+  "input_profile": "Actual pre-release Phase 3.5 day-30 checkpoint, used intentionally for backward-compatible streamed roundtrip",
+  "runtime_source": "9da612e810ea6706c3f1fa829bdf5b5d4e92a228"
+}

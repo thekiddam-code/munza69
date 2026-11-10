@@ -1,0 +1,7 @@
+test_actual_holiday_timer_is_one_times_and_ignores_old_speed_button (test_production_clock.ProductionClock.test_actual_holiday_timer_is_one_times_and_ignores_old_speed_button) ... ok
+test_actual_normal_timer_is_four_times_and_pause_drops_elapsed_time (test_production_clock.ProductionClock.test_actual_normal_timer_is_four_times_and_pause_drops_elapsed_time) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 19.108s
+
+OK

@@ -1,0 +1,15 @@
+{
+  "suite": "bridge",
+  "runtime_root": "/workspace/work/phase35_validation/tested/ICARUS_Cinematic_Refinement_Phase3_5_Lite",
+  "source_commit": "9da612e810ea6706c3f1fa829bdf5b5d4e92a228",
+  "harness": "Pinned source tests outside Lite; runtime ROOT rebound to independent ZIP extraction. No runtime source patches. Desktop input stubbed in bridge tests.",
+  "passed": true,
+  "tests_run": 3,
+  "passed_cases": [
+    "test_authentication_command_validation_and_exactly_once_queue_drain (test_frontier_bridge.FrontierBridge.test_authentication_command_validation_and_exactly_once_queue_drain)",
+    "test_expanded_telemetry_requires_host_auth_and_stays_bounded (test_frontier_bridge.FrontierBridge.test_expanded_telemetry_requires_host_auth_and_stays_bounded)",
+    "test_paired_tablet_map_sends_navigation_to_authoritative_pc (test_frontier_bridge.FrontierBridge.test_paired_tablet_map_sends_navigation_to_authoritative_pc)"
+  ],
+  "failures": [],
+  "errors": []
+}

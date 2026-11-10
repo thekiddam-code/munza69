@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "errors": [],
+  "backup": "backup_1001_30.json",
+  "stage": "finished",
+  "timeout_seconds": 600.0,
+  "transfer_progress": "Committing verified world and history atomically; cancellation closed",
+  "import_seconds": 204.5907607840054,
+  "migrated_archive_annotations": 0,
+  "mismatched_import_domains": [],
+  "imported_history_records": 48137,
+  "mismatched_reload_domains": [],
+  "reload_seconds": 49.28878655200242,
+  "imported_tick": 160920,
+  "resumed_tick": 161040,
+  "storage": {
+    "physical_bytes": 2757012,
+    "primary_bytes": 1378506,
+    "compressed": true
+  },
+  "elapsed_seconds": 295.37052775699703
+}
