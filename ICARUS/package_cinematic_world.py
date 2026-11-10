@@ -4,7 +4,7 @@ from pathlib import Path
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--output',type=Path,required=True);args=ap.parse_args();project=Path(__file__).resolve().parent;repo=Path(subprocess.check_output(['git','rev-parse','--show-toplevel'],cwd=project,text=True).strip());commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=repo,text=True).strip();rel=project.relative_to(repo);args.output.mkdir(parents=True,exist_ok=True)
-    docs=['README_PHASE3.md','PHASE3_ARCHITECTURE.md','PHASE3_LIMITATIONS.md','PHASE3_VALIDATION.md','SECURITY_PHASE3.md','LUNAR_MODEL.md','FINAL_DESIGN.md','FINAL_RELEASE_ROADMAP.md'];host=['server.py','requirements.txt','config.json','Start_Remote_Deck.bat'];root='ICARUS_Cinematic_Living_World_Phase3_Lite';out=args.output/(root+'.zip')
+    docs=['README_PHASE3.md','PHASE3_ARCHITECTURE.md','ENGINEERING_PHASE3.md','PHASE3_LIMITATIONS.md','PHASE3_VALIDATION.md','SECURITY_PHASE3.md','LUNAR_MODEL.md','FINAL_DESIGN.md','FINAL_RELEASE_ROADMAP.md'];host=['server.py','requirements.txt','config.json','Start_Remote_Deck.bat'];root='ICARUS_Cinematic_Living_World_Phase3_Lite';out=args.output/(root+'.zip')
     with tempfile.TemporaryDirectory(prefix='icarus-phase3-package-') as td:
         stage=Path(td)
         with tarfile.open(fileobj=io.BytesIO(subprocess.check_output(['git','archive',commit,str(rel)],cwd=repo))) as tar:tar.extractall(stage,filter='data')

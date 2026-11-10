@@ -1,3 +1,7 @@
+# Current handoff: Phase 3 Cinematic Living World
+
+Work on codex/cinematic-living-world-phase3 under Issue #2 and PHASE3_CINEMATIC_WORLD_PLAN.md. Read PHASE3_PROGRESS.md, PHASE3_ARCHITECTURE.md, PHASE3_VALIDATION.md and PHASE3_LIMITATIONS.md. Phase 2 modules remain authoritative. Routines and conversation memories are crew-life.js; observer-only direction/saved snapshots cinema.js/cinema-ui.js; source-backed templates sol-voice.js; pure compilation/physical-boundary archive chronicle-film.js; nonmodal player film-ui.js. No render-side state changes, fake footage, forced drama, new universe or changed calendar rules. Exceptional encounter auto-classification, final audiovisual production and native human/device gates remain incomplete; do not claim final release.
+
 # Current handoff: Phase 2 Living World
 
 Read PHASE2_LIVING_WORLD_PLAN.md, PHASE2_PROGRESS.md, PHASE2_ARCHITECTURE.md, PHASE2_VALIDATION.md, PHASE2_LIMITATIONS.md and FINAL_RELEASE_ROADMAP.md. Continue on codex/living-world-phase2; preserve Phase 1 Lite runtime compatibility and 4×/holiday 1× real-week calendar. Individual knowledge and communication channels are knowledge.js/knowledge-runtime.js; organism authority remains unifiedWorld.organisms with creatures.js; embodiment.js is read-only; lunar.js uses the pinned offline vendor. Do not restore omniscient field reports or fixed creature attacks. Older handoffs below are historical.
