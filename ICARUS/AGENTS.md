@@ -1,3 +1,7 @@
+# Current handoff: Phase 2 Living World
+
+Read PHASE2_LIVING_WORLD_PLAN.md, PHASE2_PROGRESS.md, PHASE2_ARCHITECTURE.md, PHASE2_VALIDATION.md, PHASE2_LIMITATIONS.md and FINAL_RELEASE_ROADMAP.md. Continue on codex/living-world-phase2; preserve Phase 1 Lite runtime compatibility and 4×/holiday 1× real-week calendar. Individual knowledge and communication channels are knowledge.js/knowledge-runtime.js; organism authority remains unifiedWorld.organisms with creatures.js; embodiment.js is read-only; lunar.js uses the pinned offline vendor. Do not restore omniscient field reports or fixed creature attacks. Older handoffs below are historical.
+
 # Current handoff: Unified World Phase 1
 
 Read UNIFIED_WORLD_SPEC.md, UNIFIED_ARCHITECTURE.md, UNIFIED_LIMITATIONS.md, UNIFIED_VALIDATION.md and the final-design documents. Baseline is v1.4.1 a363799. Real production pacing is 4×, official holiday pacing 1×, episodes real local Monday–Sunday; do not restore legacy minute-per-second production or accelerated weekly resets. Preserve physical route authority, paid repair, actual sources and captain controls. Military wreck state references existing asteroid rooms 21–24. Full uploaded scope is not complete: finish the documented art, creature, knowledge and calendar limits before expanding elsewhere.

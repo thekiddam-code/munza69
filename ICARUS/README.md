@@ -1,3 +1,7 @@
+# ICARUS — Phase 2 Living World
+
+Current development: [README_PHASE2.md](README_PHASE2.md), [PHASE2_ARCHITECTURE.md](PHASE2_ARCHITECTURE.md), [PHASE2_PROGRESS.md](PHASE2_PROGRESS.md), [PHASE2_LIMITATIONS.md](PHASE2_LIMITATIONS.md) and [PHASE2_VALIDATION.md](PHASE2_VALIDATION.md). Existing Windows/Android runtime and browser save origin are preserved. Historical versions below remain reference.
+
 # ICARUS — Unified World Phase 1
 
 Read [README_UNIFIED_PHASE1.md](README_UNIFIED_PHASE1.md) for the current build, launch and configuration. This is a tested implementation increment with documented unfinished scope, not a final version of the complete uploaded design. Existing launchers and Remote Deck bridge remain in place.
