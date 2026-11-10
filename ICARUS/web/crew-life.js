@@ -17,11 +17,11 @@ function talk(s,p,q,env){if(!available(p)||!available(q)||!env.coLocated(p,q)||(
  if(strained||!fact&&(p.social??100)>=60&&(q.social??100)>=60)return null;
  const shared=fact?env.share(p,q,fact):false;if(fact&&!shared)return null;
  const topic=shared?'report':(p.stress>45||q.stress>45)?'support':'company';
- const text=shared?p.name+' shared a '+Math.round(fact.confidence*100)+'%-confidence report with '+q.name+': '+fact.text.slice(0,180):topic==='support'?p.name+' and '+q.name+' took a brief supportive conversation in their shared room.':p.name+' and '+q.name+' shared a conversation during a pause in their routines.';
+ const text=root.ICARUSCrewEditorial.interaction(s,p,q,a,b,topic,shared?fact:null);
  const r=env.record('social',text,[p.name,q.name],{activity:'conversation',topic,quotedFactId:shared?fact.id:null,quotedSourceId:shared?fact.sourceId:null,confidence:shared?fact.confidence:null,location:env.position(p),publicAcknowledgment:topic==='company'&&a.sociability>.65&&b.sociability>.65},{disclosure:topic==='company'&&a.sociability>.65&&b.sociability>.65?'shareable':'private'});if(!r?.id)return null;
  for(const [person,m,peer] of [[p,a,q],[q,b,p]]){m.lastSocial=s.tick;m.peerAt[peer.name]=s.tick;m.memories.push({sourceId:r.id,at:s.tick,peer:peer.name,topic});m.memories=m.memories.slice(-24);person.social=clamp((person.social??50)+5);person.stress=clamp((person.stress??0)-(topic==='support'?2:.5));person.relationships=person.relationships||{};person.relationships[peer.name]=clamp((person.relationships[peer.name]||0)+.5,-20,20);}
  p.conversation={with:q.name,sourceId:r.id,until:s.tick+2};q.conversation={with:p.name,sourceId:r.id,until:s.tick+2};c.conversations++;return r;
 }
 function audit(s){const c=s.crewLife;if(!c)return [];const errors=[];for(const [name,p] of Object.entries(c.people)){if(p.recent.length>12||p.memories.length>24)errors.push('Unbounded crew routine '+name);if(p.memories.some(m=>!m.sourceId))errors.push('Unsourced interaction '+name);}return errors;}
-const api={init,available,choose,talk,audit};if(typeof module==='object'&&module.exports){root.ICARUSUniverse=require('./universe');module.exports=api;}else root.ICARUSCrewLife=api;
+const api={init,available,choose,talk,audit};if(typeof module==='object'&&module.exports){root.ICARUSCrewEditorial=require('./crew-editorial');root.ICARUSUniverse=require('./universe');module.exports=api;}else root.ICARUSCrewLife=api;
 })(globalThis);
