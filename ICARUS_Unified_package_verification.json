@@ -1,0 +1,9 @@
+{
+  "file": "ICARUS_Unified_World_Phase1.zip",
+  "bytes": 8283798,
+  "sha256": "ed77c8c9cddb3968ae979576f297d6a87c09699a638b70a3710d71f42910804e",
+  "verified_files": 202,
+  "source_commit": "c73c7da49e19fe82b2fb8028cbd6fc30915d2864",
+  "verified_implemented_scope": true,
+  "complete_uploaded_specification": false
+}
