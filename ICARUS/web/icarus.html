@@ -3182,7 +3182,7 @@ function cameraNetwork(room){
  const units=roomWidthUnits(room),count=cameraCount(room),now=Date.now();
  if(lastCameraRoom!==room){lastCameraRoom=room;cameraIndex=0;cameraPan=0}
  cameraIndex=Math.min(cameraIndex,count-1);
- const scanning=autoScan&&units>1;
+ const scanning=autoScan&&units>1&&!paused&&!observation.view&&!document.documentElement.classList.contains('reduce-motion');
  const base=count===1?0:cameraIndex/(count-1);
  const sweep=scanning?Math.sin(now/2600)*(.32/Math.max(1,count-1)):0;
  const focus=Math.max(0,Math.min(1,base+sweep));
@@ -3193,6 +3193,8 @@ $('camcycle').onclick=()=>{const n=cameraCount(cameraRoom());cameraIndex=(camera
 $('camscan').onclick=()=>{autoScan=!autoScan;renderCamera()};
 let cameraMode='follow',cameraLockedRoom='A01',cameraLastPositions={};
 function cameraRoom(){const obs=observation,frame=obs.view?obs.frames[Math.min(obs.index,obs.frames.length-1)]:null;return cameraMode==='room'?cameraLockedRoom:(frame?.crew.find(p=>p.name===state.crew[follow]?.name)?.room||frame?.crew[0]?.room||state.crew[follow]?.room||selectedRoom)}
+const cameraSceneryCache=new WeakMap();
+function cameraSceneHTML(el,selector,html){let cache=cameraSceneryCache.get(el);if(!cache){cache={};cameraSceneryCache.set(el,cache);}if(cache[selector]!==html||!el.querySelector(selector)){el.querySelectorAll(selector).forEach(n=>n.remove());el.insertAdjacentHTML('afterbegin',html);cache[selector]=html;}}
 const cameraMarkup=new WeakMap(),cameraPerf={renders:0,actorRebuilds:0,totalMs:0};
 function cameraHTML(el,html){if(cameraMarkup.get(el)!==html){el.innerHTML=html;cameraMarkup.set(el,html);cameraPerf.actorRebuilds++;}}
 function renderCamera(){document.documentElement.classList.toggle('motion-paused',paused||observation.view);const start=performance.now();try{return drawCamera();}finally{cameraPerf.renders++;cameraPerf.totalMs+=performance.now()-start;}}
@@ -3205,7 +3207,7 @@ function drawCamera(){
   $('cam-world').style.width='100%';$('cam-world').style.transform='none';cameraHTML($('campeople'),spatial.kind==='field'?'<p class="muted">No authenticated live field camera at this position.</p>':cameraActor(subject,20+spatial.fraction*60,true,spatial.next!==spatial.node));
   $('camera-scene').classList.add('transit-view');$('camfollow').onclick=()=>{cameraMode='follow';renderCamera()};$('camroom').onclick=()=>{cameraMode='room';cameraLockedRoom=subject.room;renderCamera()};return;
  }
- const room=cameraRoom(),obs=observation,frame=obs.view?obs.frames[Math.min(obs.index,obs.frames.length-1)]:null;
+ const room=cameraRoom(),obs=observation,frame=obs.view?obs.frames[Math.min(obs.index,obs.frames.length-1)]:null;if(!frame&&!ICARUSCinema.visible(state,room)){$('camstatus').textContent='TELEMETRY / ROOM VISIBILITY UNAVAILABLE';cameraHTML($('campeople'),'No authenticated visible occupants.');return;}
  const occupants=(frame?frame.crew:state.crew).map((p,i)=>({p:{...p,route:Array.isArray(p.route)?p.route:[]},i,room:p.room,task:p.task})).filter(x=>x.room===room&&!x.p.expeditionAway&&ICARUSSpatial.position(x.p).kind==='room');
  const tracked=state.crew[follow];
  const transit=!obs.view&&cameraMode==='follow'&&tracked.route?.length>0;
@@ -3219,12 +3221,12 @@ function drawCamera(){
  const world=$('cam-world');world.style.width=(net.units*100)+'%';world.style.transform='translateX(-'+net.offset+'%)';
  $('camcoverage').textContent=transit?'FOLLOW SUBJECT · '+(deckTransfer?'LADDER TRANSFER':'CORRIDOR TRANSIT')+' · '+room+' → '+upcoming:'CAM '+String.fromCharCode(65+cameraIndex)+' · '+(net.scanning?'SCANNING':'FIXED')+' · VIEW '+Math.round(net.focus*100)+'% · '+net.units+'× COMPARTMENT';
  applyVisualMode();$('camera-scene').classList.toggle('cam-zoomed',cameraZoom);$('camera-scene').classList.toggle('transit-view',Boolean(transit));
- const backdrop=$('camera-scene').querySelector('.cam-back');backdrop.querySelectorAll('.room-art,.cam-warning,.cam-equipment').forEach(el=>el.remove());backdrop.insertAdjacentHTML('afterbegin',roomScenery(room,frame?.equipment?.[room]?.condition,frame));
+ const backdrop=$('camera-scene').querySelector('.cam-back');backdrop.querySelectorAll('.cam-warning,.cam-equipment').forEach(el=>el.remove());cameraSceneHTML(backdrop,'.room-art',roomScenery(room,frame?.equipment?.[room]?.condition,frame));
  const equip=frame?frame.equipment?.[room]:equipmentFor(room),active=Object.values(frame?.emergencies||state.emergencies).some(e=>e.room===room&&e.status==='active');
  if(equip)backdrop.insertAdjacentHTML('beforeend','<span class="cam-equipment">'+esc(equip.name)+' · '+Math.round(equip.condition)+'%</span>');
  if(active)backdrop.insertAdjacentHTML('beforeend','<span class="cam-warning">⚠ EQUIPMENT FAULT</span>');
  backdrop.querySelectorAll('.cam-blind').forEach(el=>el.remove());if(net.units>=3)backdrop.insertAdjacentHTML('beforeend','<div class="cam-blind" style="left:42%" title="Cargo obscures this section"></div>');
- backdrop.querySelectorAll('.cam-atmosphere').forEach(el=>el.remove());backdrop.insertAdjacentHTML('beforeend',cameraAtmosphere(room,active,equip?.condition??100,frame));
+ cameraSceneHTML(backdrop,'.cam-atmosphere',cameraAtmosphere(room,active,equip?.condition??100,frame));
  backdrop.querySelectorAll('.cam-threshold,.cam-transit,.cam-deck-access').forEach(el=>el.remove());
  const anyLeaving=occupants.some(x=>!obs.view&&x.p.route?.length);
  backdrop.insertAdjacentHTML('beforeend','<div class="cam-threshold left '+(anyLeaving?'open':'')+'"></div><div class="cam-threshold right '+(anyLeaving?'open':'')+'"></div>');
@@ -3234,7 +3236,7 @@ function drawCamera(){
   if(deckTransfer)backdrop.insertAdjacentHTML('beforeend','<div class="cam-deck-access">⇵ DECK '+(Number(upcoming[0].charCodeAt(0))-64)+'</div>');
  }
 
- $('camera-scene').classList.toggle('cam-lightfail',state.power<65);$('camera-scene').classList.toggle('cam-offline',room==='B07'&&state.cascade?.security<25);
+ $('camera-scene').classList.toggle('cam-lightfail',(frame?.power??state.power)<65);$('camera-scene').classList.toggle('cam-offline',!frame&&room==='B07'&&state.cascade?.security<25);
  $('camfollow').classList.toggle('active',cameraMode==='follow');$('camroom').classList.toggle('active',cameraMode==='room');$('camreview').classList.toggle('active',obs.view);
  const activeWorkers=occupants.filter(x=>x.p.interaction==='working'&&!x.p.route.length).length;const free=Math.max(0,(stationCapacity[room]||3)-activeWorkers);const oldStation=$('camera-scene').querySelector('.cam-stations');if(oldStation)oldStation.remove();if(!obs.view)$('camera-scene').insertAdjacentHTML('beforeend','<span class="cam-stations">WORKSTATIONS '+activeWorkers+'/'+(stationCapacity[room]||3)+' · '+free+' FREE</span>');const phase=frame?(frame.emergencies?.[room]?.status==='active'&&frame.crew.some(p=>p.emergencyId===room&&!p.route?.length)?repairPhase(frame.emergencies[room].progress):null):interactionForRoom(room,null);const ws=backdrop.querySelector('.cam-workstation');if(ws)ws.remove();if(phase)backdrop.insertAdjacentHTML('beforeend',workstationMarkup(phase,equip?.condition));
  const holder=$('campeople');let html='';
@@ -3247,7 +3249,7 @@ function drawCamera(){
 // Previously the entire inspector was rebuilt each second, closing menus and
 // discarding taps or typed values before a user could complete an action.
 function phase3Escape(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function render(){if(ICARUSEdition.core&&$('sol-source-voice')){const v=state.solVoice?.entries?.slice(-4)||[];cameraHTML($('sol-source-voice'),v.length?v.map(e=>'<p>'+phase3Escape(e.text)+' <small>['+phase3Escape(e.sourceId)+' · '+Math.round(e.confidence*100)+'%]</small></p>').join(''):'Quiet watch. No new shared record selected.');}if(!state.crew.length){$('population').textContent='0';$('detail').textContent='No surviving crew. Operations suspended. Archives and saves remain available.';return;}follow=Math.min(follow,state.crew.length-1);
+function render(){if(ICARUSEdition.core&&$('sol-source-voice')){const v=state.solVoice?.entries?.slice(-4)||[];cameraHTML($('sol-source-voice'),v.length?v.map(e=>'<p>'+phase3Escape(e.text)+' <small>['+phase3Escape(e.sourceId)+' · '+Math.round(e.confidence*100)+'%]</small></p>').join(''):'Quiet watch. No new shared record selected.');}if(!state.crew.length){cameraHTML($('campeople'),'No living crew available.');$('camstatus').textContent='TELEMETRY / NO ACTIVE CREW';$('population').textContent='0';$('detail').textContent='No surviving crew. Operations suspended. Archives and saves remain available.';return;}follow=Math.min(follow,state.crew.length-1);
  const root=document.body;
  const expanded=[];
  const allDetails=Array.from(root.querySelectorAll('details'));
