@@ -19,13 +19,14 @@ SOL is a **single intelligence** with two control layers:
 
 ## IA and interaction architecture
 Implement a clear main navigation with seven distinct destinations, using concise labels and responsive layout (tablet scrollable or compact menu, not overlapping buttons):
-1. **Bridge** — the default landing view: ship status, active risks, current autonomous decisions, short event feed, one primary live camera, quick inspect, and pause/time status. No huge wall of cards.
-2. **Ship** — physical cutaway, rooms, systems, atmosphere, equipment, doors, repairs, camera/surveillance; secondary tabs for **Overview / Systems / Cameras**.
-3. **Crew** — roster, health/availability, locations, relationships, activity/memory inspector; secondary tabs **Roster / Activity / Medical / Social**.
-4. **Missions** — local destinations, actual expedition planning, docking, field operations, assignments and safe SOL directives; secondary tabs **Active / Destinations / Logistics**.
-5. **Research** — experiments, samples, source-backed knowledge, science archives, LAZARUS (with clear safety context); secondary tabs **Projects / Evidence / LAZARUS**.
-6. **Chronicles** — recent events, source-labeled replays, Sunday films, historical archives, personal/crew records and optional ideas backlog; secondary tabs **Timeline / Sunday / Archives**.
-7. **Settings** — interface appearance, accessibility, help, clock/testing, backups, pairing, advanced diagnostics, creator/private-canon configuration; secondary tabs **General / Data / Testing / Advanced**.
+1. **Home** — the **default landing page** and customizable personal SOL dashboard. Preserve existing user-configurable live widgets (ship hologram, diagnostics, crew locations, psychological climate, incidents, recent records, equipment, atmosphere, cameras, LAZARUS), their preferences and event handlers. Make layout editing straightforward. Provide a concise overview, optional quick links and no overwhelming wall of cards. **Do not remove Home or replace it with Bridge.**
+2. **Bridge** — the ship's dedicated operational command center: current autonomous decisions, ship command state, priority alerts, live camera, SOL directives, quick inspect, and pause/time status.
+3. **Ship** — physical cutaway, rooms, systems, atmosphere, equipment, doors, repairs, camera/surveillance; secondary tabs for **Overview / Systems / Cameras**.
+4. **Crew** — roster, health/availability, locations, relationships, activity/memory inspector; secondary tabs **Roster / Activity / Medical / Social**.
+5. **Missions** — local destinations, actual expedition planning, docking, field operations, assignments and safe SOL directives; secondary tabs **Active / Destinations / Logistics**.
+6. **Research** — experiments, samples, source-backed knowledge, science archives, LAZARUS (with clear safety context); secondary tabs **Projects / Evidence / LAZARUS**.
+7. **Chronicles** — recent events, source-labeled replays, Sunday films, historical archives, personal/crew records and optional ideas backlog; secondary tabs **Timeline / Sunday / Archives**.
+8. **Settings** — interface appearance, accessibility, help, clock/testing, backups, pairing, advanced diagnostics, creator/private-canon configuration; secondary tabs **General / Data / Testing / Advanced**.
 
 This is a *proposed information architecture*, not a demand to duplicate components. Audit actual existing controls and map **every reachable function** into one logical home. Preserve existing real DOM nodes/event handlers where possible; avoid relocating the same live node between tabs during an active interaction or causing hidden reparenting side effects. Avoid duplicate controls that perform different actions with the same label. Keep dangerous actions (New Voyage, import, reset, overwrite) clearly isolated and confirmed. Show emergencies from any tab via a compact persistent status/alert area, with click-through to source context. No unrelated tab should visually bleed into another. Distinguish global navigation from within-tab subnavigation and location selection.
 
@@ -45,7 +46,7 @@ This is a *proposed information architecture*, not a demand to duplicate compone
 
 ## Acceptance criteria and testing
 1. Inventory existing controls and create `PHASE4_UI_CONTROL_MAP.md`: existing ID/handler, new page/subtab, explanation, preserved behavior. No feature disappearance. Screenshot/snapshot baseline before redesign.
-2. Implement **Bridge** first as a usable SOL landing screen, then migrate Ship, Crew, Missions, Research, Chronicles, Settings in independently tested batches. Avoid documentation-only completion.
+2. Preserve and simplify **Home** first as the default customizable landing screen, implement a distinct usable **Bridge** command screen, then migrate Ship, Crew, Missions, Research, Chronicles, Settings in independently tested batches. Avoid documentation-only completion.
 3. Every tab/subtab has clear scope, browser back/forward or stable state navigation, no duplicate or unreachable controls, predictable scrolling, keyboard and touch support. Keep all underlying simulation, crew, archives, resource, calendar, backup and Remote Deck functionality unchanged unless explicitly approved.
 4. Verify autonomous SOL continues operating while browsing; directives are attributed to SOL, audit logged, physically constrained, and can be released without creating a second decision engine.
 5. Implement and prove user-facing 20× test path with actual tick measurements, visible diagnostics and invariants. No test-voyage cloning requirement. Normal 4×/holiday 1× must remain identical; prove real Monday boundaries and six-hour offline catch-up are not corrupted.
@@ -58,4 +59,4 @@ This is a *proposed information architecture*, not a demand to duplicate compone
 The user expects **new episodes each week** with the **same persistent crew and world**. The user is comfortable resetting experimental builds during development, but does not want weekly story resets. Preserve existing Monday–Sunday episode boundaries and continuous character consequences unless the user explicitly chooses a new voyage. Focus testing on whether each weekly chronicle actually reflects the autonomous world and whether the user can see and diagnose its operation. Do not invent weekly plot events to meet a quota.
 
 ## Development workflow
-Start implementation now with UI control inventory and working Bridge screen, not only documents. Continue in large, independently tested, committed batches. Stop and explicitly report a blocker if safety, save isolation or time semantics cannot be maintained. No universe expansion, forced events, character rewrites, new network services or new graphics engine. Focus on an understandable, visually coherent interface where **SOL runs the ship and the user can step in as SOL**.
+Start implementation now with UI control inventory, retained/improved Home and a distinct working Bridge screen, not only documents. Continue in large, independently tested, committed batches. Stop and explicitly report a blocker if safety, save isolation or time semantics cannot be maintained. No universe expansion, forced events, character rewrites, new network services or new graphics engine. Focus on an understandable, visually coherent interface where **SOL runs the ship and the user can step in as SOL**.
