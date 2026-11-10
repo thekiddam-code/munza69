@@ -29,7 +29,7 @@ function observe(s,source,witnesses,options={}){
 }
 function can(s,from,to,channel,env={}){const a=position(s,from),b=position(s,to);if(!a||!b)return false;
  if(channel==='conversation')return a.domain===b.domain&&a.node!==null&&a.node===b.node&&a.stationary&&b.stationary&&!['SOL'].includes(from)&&to!=='SOL';
- if(channel==='debrief')return a.domain==='ship'&&b.domain==='ship'&&a.stationary&&b.stationary&&env.recordsAvailable?.(from,to)!==false;
+ if(channel==='debrief')return a.domain==='ship'&&b.domain==='ship'&&a.stationary&&b.stationary&&env.recordsAvailable?.(from,to)===true;
  if(channel==='radio')return env.radio?.(from,to,a,b)===true;
  return false;
 }

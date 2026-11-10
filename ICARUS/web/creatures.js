@@ -7,7 +7,7 @@ function tick(s,env){const w=s.unifiedWorld;if(!w)return;for(const o of Object.v
  if(!['adult','juvenile'].includes(o.stage))continue;const b=init(o);if(b.lastTick===s.tick||s.tick%5!==0)continue;b.lastTick=s.tick;
  if(b.health<=0){note(s,o,'dead');continue;}
  if(o.sealed){note(s,o,'contained');continue;}if(o.dormant){note(s,o,'dormant');continue;}
- const here=env.parse(o.location);if(!here){note(s,o,'unknown legacy location');continue;}
+ if(o.location?.startsWith('vehicle:')){const arrival=env.vehicle?.(o.location.slice(8));if(arrival)o.location=env.format(arrival);else{note(s,o,'contained in transport');continue;}}const here=env.parse(o.location);if(!here){note(s,o,'unknown legacy location');continue;}
  const edges=env.neighbors(here).filter(n=>n.domain===here.domain),air=env.air?.(here);
  // Species rule for this simulation: prolonged low pressure/fire harms active organisms.
  if(air&&(air.pressure<10||air.fire&&air.temperature>65)){b.health=clamp(b.health-2);b.stamina=clamp(b.stamina-4);}
@@ -34,7 +34,7 @@ function tick(s,env){const w=s.unifiedWorld;if(!w)return;for(const o of Object.v
 function rest(s,o){const b=init(o),n=Math.min(4,100-b.stamina,b.energy*2);b.stamina+=n;b.energy=clamp(b.energy-n*.5);}
 function move(s,o,to,env){if(!to)return;const b=init(o);o.location=env.format(to);b.steps++;b.stamina=clamp(b.stamina-5);b.energy=clamp(b.energy-.3);}
 function parse(location){if(typeof location!=='string')return null;const i=location.indexOf(':');if(i<0)return /^[ABC]\d\d$/.test(location)?{domain:'ship',node:'R:'+location}:null;const domain=location.slice(0,i),node=location.slice(i+1);return ['ship','asteroid','derelict'].includes(domain)&&node!==''?{domain,node:domain==='ship'?node:Number(node)}:null;}
-function format(q){return q.domain+':'+q.node;}
+function format(q){return q?q.domain+':'+q.node:'legacy-unlocated:unknown';}
 function same(a,b){return !!a&&!!b&&a.domain===b.domain&&a.node===b.node;}
 function audit(s){const errors=[];for(const o of Object.values(s.unifiedWorld?.organisms||{})){const b=o.behavior;if(!b)continue;for(const k of ['health','energy','stamina'])if(!Number.isFinite(b[k])||b[k]<0||b[k]>100)errors.push(o.id+': invalid '+k);if(b.trace.length>64)errors.push(o.id+': unbounded trace');}for(const d of s.living?.deceased||[])if((d.biomassConsumed||0)>1+1e-9)errors.push('Body biomass duplication '+d.name);return errors;}
 const api={init,tick,parse,format,same,audit};if(typeof module==='object'&&module.exports)module.exports=api;else root.ICARUSCreatures=api;
