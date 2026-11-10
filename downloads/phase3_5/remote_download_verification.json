@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "branch": "codex/cinematic-refinement-phase3-5",
+  "artifact_commit": "99dbf75900669b34b00b9d0c2ac8af78b7c86a50",
+  "downloads": [
+    {
+      "file": "ICARUS_Cinematic_Refinement_Phase3_5_Lite.zip",
+      "bytes": 424388,
+      "sha256": "86a88c9680c76cded140faf1454f6602e537c12c9a3f09d98befbd9575df23d5",
+      "remote_bytes_match": true,
+      "crc_passed": true
+    },
+    {
+      "file": "ICARUS_Phase3_5_Engineering_and_Test_Evidence.zip",
+      "bytes": 204013,
+      "sha256": "5fc0b99fb1266fb714584b0079af59bef742980294331583c5f71e3de077c7b3",
+      "remote_bytes_match": true,
+      "crc_passed": true
+    }
+  ],
+  "protected_refs_unchanged": {
+    "refs/heads/codex/cinematic-living-world-phase3": "3332c9606b21892bed41b52c23a3e3ce0ee1feb0",
+    "refs/heads/codex/living-world-phase2": "0e4f5f01ce053d22cf40762f937c869559bd3d5b",
+    "refs/heads/downloads/unified-phase1-lite": "46495d48ee8ff587929863e1dba8febedcfb3c22",
+    "refs/heads/main": "a85fa03099e4cd491fe84ceb015eb5e09ecf03d8"
+  }
+}
