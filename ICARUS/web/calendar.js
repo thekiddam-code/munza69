@@ -1,6 +1,6 @@
 /* Wall time drives pacing; only existing simulation steps mutate physical history. */
 (function(root){'use strict';
-const MINUTE=60000,DAY=86400000,formatters=new Map();
+const MINUTE=60000,DAY=86400000,formatters=new Map(),Lunar=typeof module==='object'&&module.exports?require('./lunar'):root.ICARUSLunar;
 function zone(z){try{new Intl.DateTimeFormat('en',{timeZone:z}).format(0);return z;}catch{throw new Error('Invalid IANA timezone');}}
 function parts(ms,z){let f=formatters.get(z);if(!f){f=new Intl.DateTimeFormat('en-CA',{timeZone:zone(z),year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hourCycle:'h23'});formatters.set(z,f);}const a=Object.fromEntries(f.formatToParts(ms).filter(x=>x.type!=='literal').map(x=>[x.type,Number(x.value)]));return {y:a.year,m:a.month,d:a.day,h:a.hour,min:a.minute,sec:a.second};}
 function key(p){return [p.y,String(p.m).padStart(2,'0'),String(p.d).padStart(2,'0')].join('-');}
@@ -12,7 +12,7 @@ function holiday(p){const w=weekday(p),nth=Math.floor((p.d-1)/7)+1,last=p.d+7>ne
  const e=easter(p.y),recognized=p.m===1&&w===1&&nth===3?'Martin Luther King Jr. Day':p.m===2&&p.d===14?'Valentine’s Day':p.m===2&&w===1&&nth===3?'Presidents’ Day':p.m===3&&p.d===17?'St. Patrick’s Day':p.m===e.m&&p.d===e.d?'Easter':p.m===6&&p.d===19?'Juneteenth':p.m===10&&w===1&&nth===2?'Columbus Day / Indigenous Peoples’ Day':p.m===12&&p.d===31?'New Year’s Eve':null;
  return {name:sync||recognized,synchronized:!!sync,rate:sync?1:4,id:(sync||recognized)?key(p)+':'+(sync||recognized):null};
 }
-function atmosphere(ms,z){const p=parts(ms,z),monday=new Date(week(p)+'T00:00:00Z');monday.setUTCDate(monday.getUTCDate()+4);const lunarDays=(ms-Date.UTC(2000,0,6,18,14))/DAY,phase=((lunarDays/29.530588853)%1+1)%1,full=Math.abs(phase-.5)<.035;return {october:p.m===10,friday13Week:monday.getUTCDate()===13,fullMoon:full,lunarPhase:phase,lunarModel:'Approximate mean synodic Earth cycle; not an astronomical ephemeris',presentationOnly:true};}
+function atmosphere(ms,z){const p=parts(ms,z),monday=new Date(week(p)+'T00:00:00Z');monday.setUTCDate(monday.getUTCDate()+4);return {october:p.m===10,friday13Week:monday.getUTCDate()===13,...Lunar.view(ms,t=>key(parts(t,z))),presentationOnly:true};}
 function nextMidnight(ms,z){const date=key(parts(ms,z));let lo=ms,hi=ms+27*3600000;while(hi-lo>1){const mid=Math.floor((lo+hi)/2);if(key(parts(mid,z))===date)lo=mid;else hi=mid;}return hi;}
 function init(s,now,z){if(s.calendar)return s.calendar;if(!Number.isFinite(now))throw new Error('Finite real timestamp required');z=zone(z||Intl.DateTimeFormat().resolvedOptions().timeZone||'UTC');const p=parts(now,z);return s.calendar={version:1,timeZone:z,wallCursor:now,displayMs:now,carry:0,lastSeen:now,episodeKey:week(p),visitedWeeks:{[week(p)]:true},occurrences:{},pending:[],corrections:[],recovery:{discardedMs:0,rollbackCount:0},mode:'wall',maxCatchupMs:6*3600000};}
 function sync(s,c,at,env){const p=parts(at,c.timeZone),h=holiday(p),wk=week(p);
