@@ -32,6 +32,6 @@ function advance(s,now,env={},options={}){const c=init(s,now,options.timeZone);i
  return {ticks,backlogMs:Math.max(0,now-c.wallCursor),rate:holiday(parts(c.wallCursor,c.timeZone)).rate};
 }
 function configure(s,z,now,env={}){zone(z);const c=init(s,now,z);if(c.wallCursor<now)throw new Error('Drain pending wall time before changing timezone');c.timeZone=z;sync(s,c,now,env);return c;}
-function view(s,now){const c=s.calendar;if(!c)return null;const h=holiday(parts(now,c.timeZone));return {date:key(parts(c.displayMs,c.timeZone)),time:parts(c.displayMs,c.timeZone),timeZone:c.timeZone,rate:h.rate,holiday:h.name,week:c.episodeKey,atmosphere:atmosphere(now,c.timeZone),recovery:c.recovery};}
+function view(s,now){const c=s.calendar;if(!c)return null;const h=holiday(parts(now,c.timeZone));return {date:key(parts(c.displayMs,c.timeZone)),time:parts(c.displayMs,c.timeZone),timeZone:c.timeZone,rate:h.rate,holiday:h.name,week:week(parts(now,c.timeZone)),archiveWeek:c.episodeKey,atmosphere:atmosphere(now,c.timeZone),recovery:c.recovery};}
 const api={parts,key,week,holiday,easter,atmosphere,nextMidnight,init,advance,configure,view};if(typeof module==='object'&&module.exports)module.exports=api;else root.ICARUSCalendar=api;
 })(globalThis);

@@ -1,9 +1,13 @@
 /* Nonmutating structural checks. Optional old domains remain migratable. */
 (function(root){'use strict';
 const object=x=>!!x&&typeof x==='object'&&!Array.isArray(x),array=Array.isArray,finiteMap=x=>object(x)&&Object.values(x).every(n=>Number.isFinite(n)&&n>=-1e-7);
-function valid(s,requireModern=false,requireAnthology=false){
+function valid(s,requireModern=false,requireAnthology=false,requireUnified=false){
  if(!object(s)||!array(s.crew)||!Number.isFinite(s.tick)||s.tick<0||!Number.isInteger(s.episode)||s.episode<1)return false;
  if(requireAnthology&&s.anthology===undefined)return false;
+ if(requireUnified&&!s.unifiedWorld)return false;
+ if(s.calendar!==undefined&&s.calendar!==null){const c=s.calendar;if(!object(c)||c.version!==1||c.mode!=='wall'||typeof c.timeZone!=='string'||!Number.isFinite(c.wallCursor)||!Number.isFinite(c.lastSeen)||!Number.isFinite(c.displayMs)||!Number.isFinite(c.carry)||c.carry<0||c.carry>=60000||!object(c.occurrences)||!object(c.visitedWeeks)||!array(c.pending)||!array(c.corrections)||!object(c.recovery)||!Number.isFinite(c.maxCatchupMs)||c.maxCatchupMs<1||c.maxCatchupMs>604800000)return false;try{new Intl.DateTimeFormat('en',{timeZone:c.timeZone}).format(0);}catch{return false;}}
+ if(s.unifiedWorld!==undefined&&s.unifiedWorld!==null){const w=s.unifiedWorld;if(!object(w)||w.version!==1||!object(w.canon)||Object.values(w.canon).some(x=>typeof x!=='string'||x.length>6000)||!array(w.archives)||!object(w.items)||!object(w.preferences)||!object(w.military)||!object(w.organisms)||!object(w.infections)||!Number.isFinite(w.military.reservePower)||w.military.reservePower<0||!array(w.military.visited)||!object(w.military.doors)||!object(w.seen))return false;for(const o of Object.values(w.organisms))if(!object(o)||typeof o.id!=='string'||!['adult','egg','spent egg','juvenile'].includes(o.stage)||typeof o.dormant!=='boolean')return false;}
+
  if(s.anthology!==undefined){const a=s.anthology;if(!object(a)||a.version!==1||!array(a.arcs)||!object(a.seen)||!array(a.traditions)||!object(a.config)||!Number.isFinite(a.config.frequency)||a.config.frequency<0||a.config.frequency>3||!finiteMap(a.config.weights)||a.arcs.some(r=>!object(r)||typeof r.id!=='string'||!array(r.sources)||!array(r.history)||!Number.isFinite(r.started)||!Number.isFinite(r.progress)))return false;}
  const domains=['entities','experiences','emergencyOps','chronicles'],modern=requireModern||domains.some(k=>s[k]!==undefined);
  if(!modern)return true;
