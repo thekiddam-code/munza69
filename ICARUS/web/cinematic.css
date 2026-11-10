@@ -12,3 +12,4 @@ button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visi
 .spectator-controls button,#cinematic-chronicle button,#backup-transfer button{min-height:44px;min-width:44px}.spectator-controls{align-items:center}#film-stage{padding:12px;min-height:140px;line-height:1.5;background:#0b2029;color:#e0f4f4}#film-stage small{display:block;overflow-wrap:anywhere;color:#bad4db}.film-frame svg{width:100%;max-height:200px}.film-frame{border:1px solid #527580;padding:8px}#film-position{color:#cee7eb}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 @keyframes legStep{0%,100%{rotate:-16deg}50%{rotate:16deg}}
+#cinematic-chronicle[data-playing=true] .film-credits{animation:creditRoll 10s linear 1}#cinematic-chronicle[data-playing=false] .film-credits{animation-play-state:paused}@keyframes creditRoll{from{translate:0 12px}to{translate:0 -12px}}
