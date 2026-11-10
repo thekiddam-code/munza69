@@ -37,7 +37,7 @@ class CoreIntegration(Integration):
         p=self.page();self.advance(p,3000);p.evaluate('__icarusSoak.save()');p.evaluate('ICARUSDurable.flush()');before=self.snap(p)
         self.operations(p)
         with p.expect_download() as dl:p.locator('#durable-export').click()
-        payload=Path(dl.value.path()).read_bytes();backup=json.loads(payload);self.assertEqual(backup['appVersion'],'1.7.0-phase3');self.assertTrue(backup['historyComplete']);history={r['id'] for r in backup['history']};self.assertTrue(all(set(a['sources'])<=history for a in before['anthology']['arcs']))
+        payload=Path(dl.value.path()).read_bytes();backup=json.loads(payload);self.assertEqual(backup['appVersion'],'1.7.5-phase35');self.assertTrue(backup['historyComplete']);history={r['id'] for r in backup['history']};self.assertTrue(all(set(a['sources'])<=history for a in before['anthology']['arcs']))
         q=self.page();q.on('dialog',lambda d:d.accept());q.locator('#backupfile').set_input_files({'name':'core.json','mimeType':'application/json','buffer':payload});q.wait_for_function("document.querySelector('#backupmessage').textContent.includes('Restored')");q.evaluate('ICARUSDurable.flush()');after=self.snap(q)
         for key in ['crew','anthology','economy','universe','navigation','director','experiences']:self.assertEqual(after[key],before[key],key)
         q.reload();self.assertEqual(self.snap(q),after)
