@@ -1,0 +1,5 @@
+# Phase 3.5 engineering changelog
+
+Milestones: c0d2374 actual-state animation/accessibility; 4920317 visibility, manual direction and bounded source frames; ce316b9 evidence-based awards/classification and weekly player; 9331b78 contextual crew/SOL editorial and unchanged grievance suppression; 018e906 streamed staged persistence and fenced single-writer policy. See PHASE35_ARCHITECTURE.md for ownership, staging, limits and migration. Final validation reports superseded diagnostic failures separately, including private-row fallback, hidden-header test routing/download interception and omitted-history legacy migration.
+
+The full migration regression identified old v1.3 save-only backups without a history array. They now import all retained source records and explicitly report incomplete older archives, preserving the existing Core/Extended isolation instead of silently inventing history. Unknown future snapshots are detected before any metadata cleanup and fail closed. Original crew/world data are not recreated, source IDs are not rewritten, and no incident or breakthrough is forced. Host/launcher/dependencies and calendar algorithm remain unchanged.
