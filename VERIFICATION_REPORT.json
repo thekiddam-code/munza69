@@ -339,9 +339,21 @@
       "refs/heads/downloads/unified-phase1": "d66a2cbb544d63fdf6d056e70c0134b82afb95f2",
       "refs/heads/main": "a85fa03099e4cd491fe84ceb015eb5e09ecf03d8"
     },
-    "protected_refs_after": null,
-    "protected_refs_verified_unchanged": null,
-    "only_new_branch_authorized": "refs/heads/downloads/unified-phase1-lite"
+    "protected_refs_after": {
+      "refs/heads/codex/unified-world-phase1": "c73c7da49e19fe82b2fb8028cbd6fc30915d2864",
+      "refs/heads/downloads/unified-phase1": "d66a2cbb544d63fdf6d056e70c0134b82afb95f2",
+      "refs/heads/main": "a85fa03099e4cd491fe84ceb015eb5e09ecf03d8"
+    },
+    "protected_refs_verified_unchanged": true,
+    "only_new_branch_authorized": "refs/heads/downloads/unified-phase1-lite",
+    "initial_download_branch_commit": "58c245e8348ad61627b1f87d2e1ed093d0dd7de9",
+    "download_verification": {
+      "url": "https://raw.githubusercontent.com/thekiddam-code/munza69/refs/heads/downloads/unified-phase1-lite/ICARUS_Unified_World_Phase1_Lite.zip",
+      "http_status": 200,
+      "bytes": 249162,
+      "sha256": "2be4872de017331b5615449e004b5bf8fb1e26c9f8f16b41794a9097b0940165",
+      "matches_local_package": true
+    }
   },
   "errors": []
 }

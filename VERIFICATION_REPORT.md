@@ -55,6 +55,6 @@ No reviewed runtime command disables antivirus, adds an antivirus exception, edi
 
 ## Publication protection
 
-Only a new downloads/unified-phase1-lite branch is written. Source and existing release branches are retained. The JSON report records the main, existing downloads/unified-phase1 and source branch refs before publication; the post-publication check is added after the first new-branch push. The ZIP itself remains unchanged when publication evidence is updated.
+Only a new downloads/unified-phase1-lite branch is written. Source and existing release branches are retained. The JSON report records before/after refs: main, the existing downloads/unified-phase1 release and the source branch are verified unchanged after publication. The public ZIP download returns HTTP 200 and its complete SHA-256 matches the locally verified artifact. The ZIP itself remains unchanged when publication evidence is updated.
 
 Runtime capabilities and unfinished Phase 1 features are those of the pinned source. Lite reduces distribution contents; it does not resolve the source’s incomplete creature, art, lunar-ephemeris, knowledge-delivery or spatial-consolidation work.
