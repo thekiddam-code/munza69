@@ -1,0 +1,15 @@
+{
+  "passed": false,
+  "errors": [
+    ""
+  ],
+  "backup": "backup_1001_7.json",
+  "stage": "durable_save_and_reload",
+  "timeout_seconds": 120,
+  "import_seconds": 8.771497973000805,
+  "migrated_archive_annotations": 24,
+  "mismatched_import_domains": [],
+  "imported_history_records": 10659,
+  "traceback": "Traceback (most recent call last):\n  File \"/workspace/work/munza69/ICARUS/verify_frontier_backup.py\", line 22, in main\n    report['stage']='durable_save_and_reload';assert p.evaluate('window.__icarusSoak.save()');reload_started=time.monotonic();p.reload();p.wait_for_function('!!window.__icarusSoak');after=json.loads(p.evaluate('JSON.stringify(window.__icarusSoak.snapshot())'));assert snap==after;report['reload_seconds']=time.monotonic()-reload_started\n                                                                                                                                                                                                                                                                            ^^^^^^^^^^^\nAssertionError\n",
+  "elapsed_seconds": 72.87996082600148
+}

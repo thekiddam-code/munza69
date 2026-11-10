@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "errors": [],
+  "backup": "backup_1001_30.json",
+  "stage": "finished",
+  "timeout_seconds": 120,
+  "import_seconds": 22.89259536300233,
+  "migrated_archive_annotations": 0,
+  "mismatched_import_domains": [],
+  "imported_history_records": 50170,
+  "reload_seconds": 62.49260353700083,
+  "imported_tick": 160920,
+  "resumed_tick": 161040,
+  "storage": {
+    "physical_bytes": 2098844,
+    "primary_bytes": 1049422,
+    "compressed": true
+  },
+  "elapsed_seconds": 253.50430910399882
+}

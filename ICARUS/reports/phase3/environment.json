@@ -1,0 +1,9 @@
+{
+  "os": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python": "3.12.14",
+  "node": "v24.22.1",
+  "chromium": "Chromium 156.0.8078.79 built on Debian GNU/Linux 13 (trixie)",
+  "playwright": "1.62.0",
+  "timezone": "Etc/UTC; campaigns America/Chicago",
+  "hardware": "Managed Linux execution environment; no native Windows/Android/Samsung devices"
+}

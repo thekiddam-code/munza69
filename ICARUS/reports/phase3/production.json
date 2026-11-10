@@ -1,0 +1,14 @@
+{
+  "suite": "production",
+  "runtime_root": "/workspace/work/phase3_final_validation/tested/ICARUS_Cinematic_Living_World_Phase3_Lite",
+  "source_commit": "d06bb2bf94bd3e35d68175bc643928fb6bdf5f81",
+  "harness": "Pinned source tests outside Lite; runtime ROOT rebound to independent ZIP extraction. No runtime source patches. Desktop input stubbed in bridge tests.",
+  "passed": true,
+  "tests_run": 2,
+  "passed_cases": [
+    "test_actual_holiday_timer_is_one_times_and_ignores_old_speed_button (test_production_clock.ProductionClock.test_actual_holiday_timer_is_one_times_and_ignores_old_speed_button)",
+    "test_actual_normal_timer_is_four_times_and_pause_drops_elapsed_time (test_production_clock.ProductionClock.test_actual_normal_timer_is_four_times_and_pause_drops_elapsed_time)"
+  ],
+  "failures": [],
+  "errors": []
+}

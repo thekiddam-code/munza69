@@ -1,0 +1,1 @@
+These are superseded failed diagnostic imports before the restore initializer fix. They are excluded from accepted totals. Earlier aborted slow-search campaigns are not accepted evidence. See ENGINEERING_PHASE3.md.

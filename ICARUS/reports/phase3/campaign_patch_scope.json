@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "campaign_start_runtime": "65403c01a09a11756ffb97f24a33cf82b0cc3a14",
+  "candidate_source": "d06bb2bf94bd3e35d68175bc643928fb6bdf5f81",
+  "runtime_files": 55,
+  "changed": [
+    "web/icarus.html"
+  ],
+  "change": "Only restoreBackup initializes three optional Phase 3 groups. Exact string reconstruction verified; physical ticking, calendar, all 54 other runtime files unchanged."
+}

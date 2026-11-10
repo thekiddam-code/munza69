@@ -1,0 +1,2144 @@
+{
+  "runtime_source_commit": "d06bb2bf94bd3e35d68175bc643928fb6bdf5f81",
+  "runtime_files": {
+    "Start_Remote_Deck.bat": "ffbd4b2e6d561ad162547e4f32c0de891915a6d3876ba6d2bff427ec06df368b",
+    "config.json": "54a4ac908d2fe82e9c58fb942134327cf0562665e47b170b5d9b0b085ce8b865",
+    "requirements.txt": "3dd40988330002f37cd1f2b2b80e65ee3919798dc38771b00fed572a4d659f9e",
+    "server.py": "d43781ba1af5f371de05f32b572efbbb9c44b69efbf133e988a43f67076cee44",
+    "web/anthology-ui.js": "d4ca2419004918f5d6cc423b354d6fee306e34fcb7f05932051014c39dba36ae",
+    "web/anthology.js": "e2621ab0e567e85a9a4b25b11968df7480e69f6abe311e547fddea412a224bb2",
+    "web/calendar.js": "6d1c316968a5f2fb29b82e110fa3678a49e3be9ad9ffd38833600a1f55cdd29a",
+    "web/chronicle-film.js": "acd44c721d00da5aa91708fd16774882df362b015ab70d7d9228707f65944b94",
+    "web/chronicles.js": "cb613ccd783d9843ffe5d73e5a06f01b96b12d9b0df19c51ef0b522fa0211367",
+    "web/cinema-ui.js": "dbdd080a349fcf790401c04e707aaf146eb33a839c6aa7aad3da47a2784a29f1",
+    "web/cinema.js": "c9340e83ba5ea57b3b8a63a39662f5da8ee1c309ec954263f4d3c15222480cac",
+    "web/core-context.js": "984feae5ab86359013cfad335c7fd2cfc398c6515a69ebf90add78969424d0d2",
+    "web/creatures.js": "a4eaea655b4a47066d217585b77110b1b68049fb50bb425520f6e9eb38ee340e",
+    "web/crew-life.js": "6b1f75e529a2911204f4c134ee3100f2ce6b832fa3e9ddb95345cb6af1f44469",
+    "web/diagnostics.js": "a4f29c565348ecc3adff65e6d0459f233f9fde60fbf0794e240d0ee8ad9759dc",
+    "web/discovery.js": "e950ac6b0f3aff732995b5adc1991b2d6fd935538a879e93c5f90f778cfa8b98",
+    "web/durable-store.js": "d7a13b77f979f7c0f8cd6182683b91442415378d7887fa1738a1013bcea28a83",
+    "web/economy.js": "919fcfdef54d30b6320d8886d4eff43273bb9642763eeaad179bb7607ab3e292",
+    "web/edition.js": "33f4c281646bb8baa8f45b015c82dd5cabb780e69383448f3390f64566e5331f",
+    "web/embodiment.js": "589c39b15781205258b622f82d8f67a2c44b4e21b8f383e231c6ca10d0c9ba0e",
+    "web/emergency-ops.js": "95a0ec04365879fff84ad62399650cfb28037102e3083a6b0946894fe84a9116",
+    "web/entities.js": "c8fe473a604345d7543c6f545909dcf734eb2a8ef2d3a6f62aa48bbf0f9305d1",
+    "web/expeditions.js": "729ad659e78636b42b6a743619bc0c0f7f80d9c8480912ec006115a26ee783ef",
+    "web/experiences.js": "2b39dd4736704bd1619d0f7d25b285d090ab0193eacbc424cdc8f25508ab4b14",
+    "web/film-ui.js": "8ff38db286085cd99c630b5d225afa535816450864623ffee749130a9e0ce0ed",
+    "web/frontier-ui.js": "8b11361b26cd23b57c4418a404ffc1c7472c8af5f93057d4c08a10c79b61548e",
+    "web/frontier.js": "58494ff752b3fc3abc6518bfeba3c29ed74c21cb46bad8358510c16f949bb115",
+    "web/icarus.html": "7a1282e880f55c2a9bc3f64f172d4fc9d3ecb5fc0859364b556cea0f72da9c50",
+    "web/index.html": "f328e21ccc1ba10691960e2de355c556e96f19d88cd996366943f061d8a32952",
+    "web/knowledge-runtime.js": "65145b39b9eb7e36f8f49919a2fc43ac71a300093febe37bf33091cf6abada12",
+    "web/knowledge.js": "bd21c044137a62cb2eab437de142221333595c71c4dd5615a5c8dc2ac429fb05",
+    "web/living-frontier-ui.js": "c93bc5a3e5a8d8e3a85c1efdd053e2b566eda05d3b7a3027dc3e77335e577924",
+    "web/living.js": "421a73f5ff1c5b317ab78476692abf3a0fe5e54f2017c88a96b38d19aaf8cdbb",
+    "web/logistics.js": "260d8684db9b0bccc5bbd6c60186fd50e973bbba5c0507ead7b5ad9a712f50ff",
+    "web/lunar.js": "7fe249230562a6d6eb3b6633381a4cddaff56bf90de1676a9ed6c0908c661d51",
+    "web/manifest.webmanifest": "a8ed1d727916b17acf15d37d9a637d4a32cad8e9dbe739084462d0fac28c182b",
+    "web/navigation.js": "36351d320ab0ec49524cc57aefc0c6e6f58fc7ba5b1605d1b21355c5ff2f3b92",
+    "web/operations.js": "8711fc4ed9e2e6937c4a1f600ef873f15efceef5c22690f0f3d04f96c9719a12",
+    "web/repair-policy.js": "a1d3b6a64fa3561563b369a49cb30718c015dea79a47c0486d3954560c19de1d",
+    "web/research.js": "ca4de958ed72b3a6404e792abc24b9821b7fc44190a57444f48e69b61e91a3cd",
+    "web/save-store.js": "77f0bbb42ad82da9bcbcebd25d1de3e12d0989f1dea0087e1ad4ca28678150fe",
+    "web/sol-voice.js": "2e5b80ddbeb2b92c9b0b5c0793de43999e252464bde4f351cec03bc93dd8ce03",
+    "web/spatial.js": "6b4ce51759665185fa558b653e27e2514362d692deb4117ee371f8182b5ae750",
+    "web/stability-diagnostics.js": "d3faeaf4fce68e04960938928ef1729dbe717579ed6b2cb31f0d07972c0732bb",
+    "web/story.js": "2b0464ee7ac4be2409506c7a162ddd8003be6d0df70f47f252641e97c90bb19d",
+    "web/tablet-frontier.js": "6682318bc42b5a46a5703b64137e0d55172ce4eed201305f619c193d55ed6e38",
+    "web/teams.js": "69817c50c92ae5edcdc880b28c904665e6117df25e71a8edabd6ba426597c71b",
+    "web/unified-ui.js": "5a643369c817239bcf3948d5cdfd10d69cc210eaca6a7583da191db61fa91874",
+    "web/unified-world.js": "35e2a8ad0717a19b795f03bc55de0852450766279b17db527f8cf9b9e755fb38",
+    "web/universe.js": "7a3f83170de63739706445cc992c560583e913b577d87087115dfb8cbfae06d4",
+    "web/vendor/LZ_STRING_LICENSE.txt": "433fc9dfe659dbfb1e91eed8351f13651e97bfa3ac6d03394c3d63f61d4bbc80",
+    "web/vendor/astronomy.js": "a2cfab19cab1a15843e4c8cc7410b6cbaafd0907122a8698c25d63d00c2774e4",
+    "web/vendor/lz-string.min.js": "95f4d1cbf099f57161b664bc048426ec3df92637801a4c79116e83315aa787e7",
+    "web/voyage.js": "a70b7bff458052b1ba68713c3a2971ce110a3b169e4e7fe90c9e71cabc90eeda",
+    "web/world-schema.js": "5b958d1116cb1371116ec72a12bc41a06a10efea55f602831bf7e7a35bab844e"
+  },
+  "unit_tests": {
+    "passed": 241,
+    "failed": 0,
+    "skipped": 0
+  },
+  "tests": {
+    "cinematic": {
+      "suite": "cinematic",
+      "runtime_root": "/workspace/work/phase3_final_validation/tested/ICARUS_Cinematic_Living_World_Phase3_Lite",
+      "source_commit": "d06bb2bf94bd3e35d68175bc643928fb6bdf5f81",
+      "harness": "Pinned source tests outside Lite; runtime ROOT rebound to independent ZIP extraction. No runtime source patches. Desktop input stubbed in bridge tests.",
+      "passed": true,
+      "tests_run": 55,
+      "passed_cases": [
+        "test_aborted_boarding_returns_paid_cargo_without_exhausting_an_unvisited_field_objective (test_cinematic_world_integration.CinematicWorldIntegration.test_aborted_boarding_returns_paid_cargo_without_exhausting_an_unvisited_field_objective)",
+        "test_actual_body_and_waiting_pose_on_tablet_and_readonly_docked_render (test_cinematic_world_integration.CinematicWorldIntegration.test_actual_body_and_waiting_pose_on_tablet_and_readonly_docked_render)",
+        "test_actual_conversation_has_source_memory_and_visible_pose (test_cinematic_world_integration.CinematicWorldIntegration.test_actual_conversation_has_source_memory_and_visible_pose)",
+        "test_actual_relay_chain_restoration_delivers_once_and_survives_reload (test_cinematic_world_integration.CinematicWorldIntegration.test_actual_relay_chain_restoration_delivers_once_and_survives_reload)",
+        "test_actual_reserve_deficit_triggers_finite_local_extraction (test_cinematic_world_integration.CinematicWorldIntegration.test_actual_reserve_deficit_triggers_finite_local_extraction)",
+        "test_adjacent_barrier_observation_is_local_then_delivered_by_actual_relay (test_cinematic_world_integration.CinematicWorldIntegration.test_adjacent_barrier_observation_is_local_then_delivered_by_actual_relay)",
+        "test_broken_ship_receiver_blocks_good_field_relays (test_cinematic_world_integration.CinematicWorldIntegration.test_broken_ship_receiver_blocks_good_field_relays)",
+        "test_cinematic_player_is_optional_source_labeled_and_observer_only (test_cinematic_world_integration.CinematicWorldIntegration.test_cinematic_player_is_optional_source_labeled_and_observer_only)",
+        "test_completed_delivered_surveys_allow_autonomous_navigation_without_a_mission_quota (test_cinematic_world_integration.CinematicWorldIntegration.test_completed_delivered_surveys_allow_autonomous_navigation_without_a_mission_quota)",
+        "test_core_durable_commit_abort_keeps_previous_acknowledged_snapshot (test_cinematic_world_integration.CinematicWorldIntegration.test_core_durable_commit_abort_keeps_previous_acknowledged_snapshot)",
+        "test_core_replaces_stellar_dashboard_and_remains_tablet_usable (test_cinematic_world_integration.CinematicWorldIntegration.test_core_replaces_stellar_dashboard_and_remains_tablet_usable)",
+        "test_creator_lore_does_not_leak_to_the_acquired_archive (test_cinematic_world_integration.CinematicWorldIntegration.test_creator_lore_does_not_leak_to_the_acquired_archive)",
+        "test_critical_atmosphere_emergency_blocks_new_launches (test_cinematic_world_integration.CinematicWorldIntegration.test_critical_atmosphere_emergency_blocks_new_launches)",
+        "test_exact_lunar_dates_and_explicit_personal_configuration_in_browser (test_cinematic_world_integration.CinematicWorldIntegration.test_exact_lunar_dates_and_explicit_personal_configuration_in_browser)",
+        "test_exhausted_reserves_cannot_fund_research (test_cinematic_world_integration.CinematicWorldIntegration.test_exhausted_reserves_cannot_fund_research)",
+        "test_extinction_remains_saved_and_does_not_repopulate_next_week (test_cinematic_world_integration.CinematicWorldIntegration.test_extinction_remains_saved_and_does_not_repopulate_next_week)",
+        "test_follow_camera_uses_corridor_node_without_room_occupancy (test_cinematic_world_integration.CinematicWorldIntegration.test_follow_camera_uses_corridor_node_without_room_occupancy)",
+        "test_full_backup_roundtrip_keeps_story_sources_memories_and_preferences (test_cinematic_world_integration.CinematicWorldIntegration.test_full_backup_roundtrip_keeps_story_sources_memories_and_preferences)",
+        "test_grief_requires_actual_death_knowledge_and_does_not_repeat_after_records_or_reload (test_cinematic_world_integration.CinematicWorldIntegration.test_grief_requires_actual_death_knowledge_and_does_not_repeat_after_records_or_reload)",
+        "test_holiday_correction_does_not_change_crew_inventory_or_complete_missions (test_cinematic_world_integration.CinematicWorldIntegration.test_holiday_correction_does_not_change_crew_inventory_or_complete_missions)",
+        "test_host_emergence_keeps_physical_location_after_host_health_reaches_zero (test_cinematic_world_integration.CinematicWorldIntegration.test_host_emergence_keeps_physical_location_after_host_health_reaches_zero)",
+        "test_individual_routines_and_interaction_memories_survive_reload (test_cinematic_world_integration.CinematicWorldIntegration.test_individual_routines_and_interaction_memories_survive_reload)",
+        "test_initial_biology_and_personal_inventory_persist_without_fabricated_history (test_cinematic_world_integration.CinematicWorldIntegration.test_initial_biology_and_personal_inventory_persist_without_fabricated_history)",
+        "test_isolated_observer_pending_report_and_private_recap (test_cinematic_world_integration.CinematicWorldIntegration.test_isolated_observer_pending_report_and_private_recap)",
+        "test_legacy_save_migrates_without_losing_research (test_cinematic_world_integration.CinematicWorldIntegration.test_legacy_save_migrates_without_losing_research)",
+        "test_legacy_save_without_ledger_migrates_once_without_changing_existing_world (test_cinematic_world_integration.CinematicWorldIntegration.test_legacy_save_without_ledger_migrates_once_without_changing_existing_world)",
+        "test_local_creature_attack_has_private_source_and_causal_injury (test_cinematic_world_integration.CinematicWorldIntegration.test_local_creature_attack_has_private_source_and_causal_injury)",
+        "test_mid_simulation_reload_then_future_is_identical (test_cinematic_world_integration.CinematicWorldIntegration.test_mid_simulation_reload_then_future_is_identical)",
+        "test_military_archive_is_not_shared_until_report_received (test_cinematic_world_integration.CinematicWorldIntegration.test_military_archive_is_not_shared_until_report_received)",
+        "test_nonmodal_chronicle_cards_include_recorded_story_sources (test_cinematic_world_integration.CinematicWorldIntegration.test_nonmodal_chronicle_cards_include_recorded_story_sources)",
+        "test_old_backup_initializes_presentation_groups_before_first_save (test_cinematic_world_integration.CinematicWorldIntegration.test_old_backup_initializes_presentation_groups_before_first_save)",
+        "test_old_room_label_in_corridor_cannot_read_terminal_records (test_cinematic_world_integration.CinematicWorldIntegration.test_old_room_label_in_corridor_cannot_read_terminal_records)",
+        "test_pending_personal_report_and_active_field_team_survive_real_monday (test_cinematic_world_integration.CinematicWorldIntegration.test_pending_personal_report_and_active_field_team_survive_real_monday)",
+        "test_quiet_preferences_and_positive_only_channel_use_actual_nonlethal_outcomes (test_cinematic_world_integration.CinematicWorldIntegration.test_quiet_preferences_and_positive_only_channel_use_actual_nonlethal_outcomes)",
+        "test_reading_ship_records_requires_actual_terminal_and_is_persistent (test_cinematic_world_integration.CinematicWorldIntegration.test_reading_ship_records_requires_actual_terminal_and_is_persistent)",
+        "test_real_calendar_boundary_preserves_active_mission_research_medical_and_fire (test_cinematic_world_integration.CinematicWorldIntegration.test_real_calendar_boundary_preserves_active_mission_research_medical_and_fire)",
+        "test_real_calendar_day_advances_four_days_without_four_episode_resets (test_cinematic_world_integration.CinematicWorldIntegration.test_real_calendar_day_advances_four_days_without_four_episode_resets)",
+        "test_real_monday_archives_film_once_without_losing_active_voyage (test_cinematic_world_integration.CinematicWorldIntegration.test_real_monday_archives_film_once_without_losing_active_voyage)",
+        "test_real_monday_boundary_keeps_work_and_full_calendar_after_reload (test_cinematic_world_integration.CinematicWorldIntegration.test_real_monday_boundary_keeps_work_and_full_calendar_after_reload)",
+        "test_recap_options_have_real_sources_and_survive_reload (test_cinematic_world_integration.CinematicWorldIntegration.test_recap_options_have_real_sources_and_survive_reload)",
+        "test_reduced_motion_and_visual_refresh_do_not_advance_or_mutate_world (test_cinematic_world_integration.CinematicWorldIntegration.test_reduced_motion_and_visual_refresh_do_not_advance_or_mutate_world)",
+        "test_sealed_chamber_cannot_attack_actual_field_crew (test_cinematic_world_integration.CinematicWorldIntegration.test_sealed_chamber_cannot_attack_actual_field_crew)",
+        "test_sealed_fire_compartment_does_not_crash_evacuation_or_dispatch_unreachable_engineers (test_cinematic_world_integration.CinematicWorldIntegration.test_sealed_fire_compartment_does_not_crash_evacuation_or_dispatch_unreachable_engineers)",
+        "test_sealed_hatch_blocks_medical_retrieval_without_crash_or_teleportation (test_cinematic_world_integration.CinematicWorldIntegration.test_sealed_hatch_blocks_medical_retrieval_without_crash_or_teleportation)",
+        "test_seeded_full_engine_reproduces (test_cinematic_world_integration.CinematicWorldIntegration.test_seeded_full_engine_reproduces)",
+        "test_sender_death_before_restored_radio_does_not_deliver_or_repopulate (test_cinematic_world_integration.CinematicWorldIntegration.test_sender_death_before_restored_radio_does_not_deliver_or_repopulate)",
+        "test_social_action_cannot_use_an_away_person_old_room_label (test_cinematic_world_integration.CinematicWorldIntegration.test_social_action_cannot_use_an_away_person_old_room_label)",
+        "test_sol_notes_are_saved_and_have_real_sources (test_cinematic_world_integration.CinematicWorldIntegration.test_sol_notes_are_saved_and_have_real_sources)",
+        "test_spectator_and_repeated_camera_refresh_are_observer_only (test_cinematic_world_integration.CinematicWorldIntegration.test_spectator_and_repeated_camera_refresh_are_observer_only)",
+        "test_spectator_layout_and_recording_provenance_on_tablet_landscape (test_cinematic_world_integration.CinematicWorldIntegration.test_spectator_layout_and_recording_provenance_on_tablet_landscape)",
+        "test_true_v13_import_is_explicit_preserves_active_world_and_does_not_overwrite_extended_save (test_cinematic_world_integration.CinematicWorldIntegration.test_true_v13_import_is_explicit_preserves_active_world_and_does_not_overwrite_extended_save)",
+        "test_unsafe_medbay_cannot_heal_injuries_or_spend_cartridges (test_cinematic_world_integration.CinematicWorldIntegration.test_unsafe_medbay_cannot_heal_injuries_or_spend_cartridges)",
+        "test_unsaved_encounter_preferences_survive_live_panel_refresh (test_cinematic_world_integration.CinematicWorldIntegration.test_unsaved_encounter_preferences_survive_live_panel_refresh)",
+        "test_weekly_casualty_and_personality_continuity (test_cinematic_world_integration.CinematicWorldIntegration.test_weekly_casualty_and_personality_continuity)",
+        "test_wheelchair_never_teleports_or_uses_ladders_when_lift_is_offline (test_cinematic_world_integration.CinematicWorldIntegration.test_wheelchair_never_teleports_or_uses_ladders_when_lift_is_offline)"
+      ],
+      "failures": [],
+      "errors": []
+    },
+    "stability": {
+      "suite": "stability",
+      "runtime_root": "/workspace/work/phase3_final_validation/tested/ICARUS_Cinematic_Living_World_Phase3_Lite",
+      "source_commit": "d06bb2bf94bd3e35d68175bc643928fb6bdf5f81",
+      "harness": "Pinned source tests outside Lite; runtime ROOT rebound to independent ZIP extraction. No runtime source patches. Desktop input stubbed in bridge tests.",
+      "passed": true,
+      "tests_run": 30,
+      "passed_cases": [
+        "test_actual_paid_social_meal_satisfies_the_recovery_goal (test_stability_integration.StabilityIntegration.test_actual_paid_social_meal_satisfies_the_recovery_goal)",
+        "test_actual_reserve_deficit_triggers_finite_local_extraction (test_stability_integration.StabilityIntegration.test_actual_reserve_deficit_triggers_finite_local_extraction)",
+        "test_completed_machine_work_does_not_hide_a_still_jammed_hatch (test_stability_integration.StabilityIntegration.test_completed_machine_work_does_not_hide_a_still_jammed_hatch)",
+        "test_core_durable_commit_abort_keeps_previous_acknowledged_snapshot (test_stability_integration.StabilityIntegration.test_core_durable_commit_abort_keeps_previous_acknowledged_snapshot)",
+        "test_core_replaces_stellar_dashboard_and_remains_tablet_usable (test_stability_integration.StabilityIntegration.test_core_replaces_stellar_dashboard_and_remains_tablet_usable)",
+        "test_critical_atmosphere_emergency_blocks_new_launches (test_stability_integration.StabilityIntegration.test_critical_atmosphere_emergency_blocks_new_launches)",
+        "test_emergency_crew_queue_yields_to_rest_and_stale_maintenance_reopens (test_stability_integration.StabilityIntegration.test_emergency_crew_queue_yields_to_rest_and_stale_maintenance_reopens)",
+        "test_exhausted_reserves_cannot_fund_research (test_stability_integration.StabilityIntegration.test_exhausted_reserves_cannot_fund_research)",
+        "test_extinction_remains_saved_and_does_not_repopulate_next_week (test_stability_integration.StabilityIntegration.test_extinction_remains_saved_and_does_not_repopulate_next_week)",
+        "test_full_backup_roundtrip_keeps_story_sources_memories_and_preferences (test_stability_integration.StabilityIntegration.test_full_backup_roundtrip_keeps_story_sources_memories_and_preferences)",
+        "test_legacy_save_migrates_without_losing_research (test_stability_integration.StabilityIntegration.test_legacy_save_migrates_without_losing_research)",
+        "test_mid_simulation_reload_then_future_is_identical (test_stability_integration.StabilityIntegration.test_mid_simulation_reload_then_future_is_identical)",
+        "test_native_jammed_galley_is_repaired_from_corridor_with_finite_supplies (test_stability_integration.StabilityIntegration.test_native_jammed_galley_is_repaired_from_corridor_with_finite_supplies)",
+        "test_nonmodal_chronicle_cards_include_recorded_story_sources (test_stability_integration.StabilityIntegration.test_nonmodal_chronicle_cards_include_recorded_story_sources)",
+        "test_preventive_repair_is_paid_and_survives_an_interrupted_worker (test_stability_integration.StabilityIntegration.test_preventive_repair_is_paid_and_survives_an_interrupted_worker)",
+        "test_queued_preventive_worker_acquires_parts_before_admitted_work (test_stability_integration.StabilityIntegration.test_queued_preventive_worker_acquires_parts_before_admitted_work)",
+        "test_queued_routine_equipment_work_cannot_bypass_empty_tools (test_stability_integration.StabilityIntegration.test_queued_routine_equipment_work_cannot_bypass_empty_tools)",
+        "test_quiet_preferences_and_positive_only_channel_use_actual_nonlethal_outcomes (test_stability_integration.StabilityIntegration.test_quiet_preferences_and_positive_only_channel_use_actual_nonlethal_outcomes)",
+        "test_read_only_failure_diagnostics_do_not_change_world_or_random_state (test_stability_integration.StabilityIntegration.test_read_only_failure_diagnostics_do_not_change_world_or_random_state)",
+        "test_recap_options_have_real_sources_and_survive_reload (test_stability_integration.StabilityIntegration.test_recap_options_have_real_sources_and_survive_reload)",
+        "test_returning_paid_repair_worker_waits_for_real_station_capacity (test_stability_integration.StabilityIntegration.test_returning_paid_repair_worker_waits_for_real_station_capacity)",
+        "test_save_reload_mid_hatch_work_preserves_paid_progress_and_next_outcome (test_stability_integration.StabilityIntegration.test_save_reload_mid_hatch_work_preserves_paid_progress_and_next_outcome)",
+        "test_sealed_fire_compartment_does_not_crash_evacuation_or_dispatch_unreachable_engineers (test_stability_integration.StabilityIntegration.test_sealed_fire_compartment_does_not_crash_evacuation_or_dispatch_unreachable_engineers)",
+        "test_sealed_hatch_blocks_medical_retrieval_without_crash_or_teleportation (test_stability_integration.StabilityIntegration.test_sealed_hatch_blocks_medical_retrieval_without_crash_or_teleportation)",
+        "test_seeded_full_engine_reproduces (test_stability_integration.StabilityIntegration.test_seeded_full_engine_reproduces)",
+        "test_true_v13_import_is_explicit_preserves_active_world_and_does_not_overwrite_extended_save (test_stability_integration.StabilityIntegration.test_true_v13_import_is_explicit_preserves_active_world_and_does_not_overwrite_extended_save)",
+        "test_unrecoverable_zero_materials_cannot_repair_or_create_resources (test_stability_integration.StabilityIntegration.test_unrecoverable_zero_materials_cannot_repair_or_create_resources)",
+        "test_unsafe_medbay_cannot_heal_injuries_or_spend_cartridges (test_stability_integration.StabilityIntegration.test_unsafe_medbay_cannot_heal_injuries_or_spend_cartridges)",
+        "test_unsaved_encounter_preferences_survive_live_panel_refresh (test_stability_integration.StabilityIntegration.test_unsaved_encounter_preferences_survive_live_panel_refresh)",
+        "test_weekly_casualty_and_personality_continuity (test_stability_integration.StabilityIntegration.test_weekly_casualty_and_personality_continuity)"
+      ],
+      "failures": [],
+      "errors": []
+    },
+    "compatibility": {
+      "suite": "compatibility",
+      "runtime_root": "/workspace/work/phase3_final_validation/tested/ICARUS_Cinematic_Living_World_Phase3_Lite",
+      "source_commit": "d06bb2bf94bd3e35d68175bc643928fb6bdf5f81",
+      "harness": "Pinned source tests outside Lite; runtime ROOT rebound to independent ZIP extraction. No runtime source patches. Desktop input stubbed in bridge tests.",
+      "passed": true,
+      "tests_run": 44,
+      "passed_cases": [
+        "test_active_eva_rescue_and_stranded_team_cross_week_and_reload_without_reset (test_living_frontier_integration.LivingFrontierIntegration.test_active_eva_rescue_and_stranded_team_cross_week_and_reload_without_reset)",
+        "test_captain_can_cancel_staging_without_teleporting_or_duplicating_supplies (test_living_frontier_integration.LivingFrontierIntegration.test_captain_can_cancel_staging_without_teleporting_or_duplicating_supplies)",
+        "test_captain_course_hold_and_inflight_reload_preserve_actual_coordinates (test_living_frontier_integration.LivingFrontierIntegration.test_captain_course_hold_and_inflight_reload_preserve_actual_coordinates)",
+        "test_chronicle_playback_is_skippable_nonmodal_and_source_grounded (test_living_frontier_integration.LivingFrontierIntegration.test_chronicle_playback_is_skippable_nonmodal_and_source_grounded)",
+        "test_clinical_hardware_can_be_repaired_through_actual_engineer_work (test_living_frontier_integration.LivingFrontierIntegration.test_clinical_hardware_can_be_repaired_through_actual_engineer_work)",
+        "test_compressed_primary_corruption_recovers_the_verified_previous_snapshot (test_living_frontier_integration.LivingFrontierIntegration.test_compressed_primary_corruption_recovers_the_verified_previous_snapshot)",
+        "test_containment_incident_produces_actual_injury_and_recorded_failed_measurement (test_living_frontier_integration.LivingFrontierIntegration.test_containment_incident_produces_actual_injury_and_recorded_failed_measurement)",
+        "test_corrupt_committed_snapshot_falls_back_to_valid_database_revision (test_living_frontier_integration.LivingFrontierIntegration.test_corrupt_committed_snapshot_falls_back_to_valid_database_revision)",
+        "test_critical_atmosphere_emergency_blocks_new_launches (test_living_frontier_integration.LivingFrontierIntegration.test_critical_atmosphere_emergency_blocks_new_launches)",
+        "test_daily_metrics_match_full_world_audits_and_clock_without_mutation (test_living_frontier_integration.LivingFrontierIntegration.test_daily_metrics_match_full_world_audits_and_clock_without_mutation)",
+        "test_exhausted_reserves_cannot_fund_research (test_living_frontier_integration.LivingFrontierIntegration.test_exhausted_reserves_cannot_fund_research)",
+        "test_explicit_new_voyage_initializes_new_systems_and_saves_without_stock_duplication (test_living_frontier_integration.LivingFrontierIntegration.test_explicit_new_voyage_initializes_new_systems_and_saves_without_stock_duplication)",
+        "test_extinction_remains_saved_and_does_not_repopulate_next_week (test_living_frontier_integration.LivingFrontierIntegration.test_extinction_remains_saved_and_does_not_repopulate_next_week)",
+        "test_failed_mining_creates_recoverable_cache_without_crediting_ship_stock (test_living_frontier_integration.LivingFrontierIntegration.test_failed_mining_creates_recoverable_cache_without_crediting_ship_stock)",
+        "test_failed_storage_writes_do_not_prevent_complete_off_device_backup (test_living_frontier_integration.LivingFrontierIntegration.test_failed_storage_writes_do_not_prevent_complete_off_device_backup)",
+        "test_fuel_shortage_rejects_departure_without_teleportation (test_living_frontier_integration.LivingFrontierIntegration.test_fuel_shortage_rejects_departure_without_teleportation)",
+        "test_incomplete_modern_backup_is_rejected_before_replacing_world (test_living_frontier_integration.LivingFrontierIntegration.test_incomplete_modern_backup_is_rejected_before_replacing_world)",
+        "test_indexed_history_retains_provenance_after_live_journal_window_rolls (test_living_frontier_integration.LivingFrontierIntegration.test_indexed_history_retains_provenance_after_live_journal_window_rolls)",
+        "test_indexeddb_primary_restores_world_when_cache_is_removed (test_living_frontier_integration.LivingFrontierIntegration.test_indexeddb_primary_restores_world_when_cache_is_removed)",
+        "test_interrupted_research_releases_analyst_without_duplicate_payment (test_living_frontier_integration.LivingFrontierIntegration.test_interrupted_research_releases_analyst_without_duplicate_payment)",
+        "test_interrupted_transaction_retains_previous_verified_revision (test_living_frontier_integration.LivingFrontierIntegration.test_interrupted_transaction_retains_previous_verified_revision)",
+        "test_large_compressed_voyage_remains_plain_json_to_game_and_reload (test_living_frontier_integration.LivingFrontierIntegration.test_large_compressed_voyage_remains_plain_json_to_game_and_reload)",
+        "test_legacy_clock_migration_preserves_remaining_cooldown_and_is_idempotent (test_living_frontier_integration.LivingFrontierIntegration.test_legacy_clock_migration_preserves_remaining_cooldown_and_is_idempotent)",
+        "test_legacy_save_migrates_without_losing_research (test_living_frontier_integration.LivingFrontierIntegration.test_legacy_save_migrates_without_losing_research)",
+        "test_mid_simulation_reload_then_future_is_identical (test_living_frontier_integration.LivingFrontierIntegration.test_mid_simulation_reload_then_future_is_identical)",
+        "test_missing_capability_blocks_rescue_without_spending_or_teleporting (test_living_frontier_integration.LivingFrontierIntegration.test_missing_capability_blocks_rescue_without_spending_or_teleporting)",
+        "test_natural_samples_and_teams_have_real_field_provenance (test_living_frontier_integration.LivingFrontierIntegration.test_natural_samples_and_teams_have_real_field_provenance)",
+        "test_orphan_snapshot_without_transaction_head_is_never_restored (test_living_frontier_integration.LivingFrontierIntegration.test_orphan_snapshot_without_transaction_head_is_never_restored)",
+        "test_paid_meal_activity_reduces_hunger_after_supply_collection (test_living_frontier_integration.LivingFrontierIntegration.test_paid_meal_activity_reduces_hunger_after_supply_collection)",
+        "test_recap_options_have_real_sources_and_survive_reload (test_living_frontier_integration.LivingFrontierIntegration.test_recap_options_have_real_sources_and_survive_reload)",
+        "test_recovery_preserves_archived_future_when_new_events_are_recorded (test_living_frontier_integration.LivingFrontierIntegration.test_recovery_preserves_archived_future_when_new_events_are_recorded)",
+        "test_registry_and_personal_memories_survive_week_and_database_reload (test_living_frontier_integration.LivingFrontierIntegration.test_registry_and_personal_memories_survive_week_and_database_reload)",
+        "test_resource_failure_injures_real_crew_and_suspends_optional_operations (test_living_frontier_integration.LivingFrontierIntegration.test_resource_failure_injures_real_crew_and_suspends_optional_operations)",
+        "test_seeded_full_engine_reproduces (test_living_frontier_integration.LivingFrontierIntegration.test_seeded_full_engine_reproduces)",
+        "test_ship_damage_interrupts_travel_at_real_position_then_repair_can_resume (test_living_frontier_integration.LivingFrontierIntegration.test_ship_damage_interrupts_travel_at_real_position_then_repair_can_resume)",
+        "test_ship_repairs_never_use_an_off_ship_engineer_and_release_his_reservation (test_living_frontier_integration.LivingFrontierIntegration.test_ship_repairs_never_use_an_off_ship_engineer_and_release_his_reservation)",
+        "test_star_map_is_usable_on_tablet_and_does_not_advance_clock (test_living_frontier_integration.LivingFrontierIntegration.test_star_map_is_usable_on_tablet_and_does_not_advance_clock)",
+        "test_team_loss_records_failed_mission_and_disposes_cargo_without_duplication (test_living_frontier_integration.LivingFrontierIntegration.test_team_loss_records_failed_mission_and_disposes_cargo_without_duplication)",
+        "test_transition_during_mission_research_treatment_and_emergency (test_living_frontier_integration.LivingFrontierIntegration.test_transition_during_mission_research_treatment_and_emergency)",
+        "test_unavailable_database_warns_and_retains_uncommitted_history_for_export (test_living_frontier_integration.LivingFrontierIntegration.test_unavailable_database_warns_and_retains_uncommitted_history_for_export)",
+        "test_unsafe_medbay_cannot_heal_injuries_or_spend_cartridges (test_living_frontier_integration.LivingFrontierIntegration.test_unsafe_medbay_cannot_heal_injuries_or_spend_cartridges)",
+        "test_weekly_boundary_does_not_replace_frontier_contacts_or_receipts (test_living_frontier_integration.LivingFrontierIntegration.test_weekly_boundary_does_not_replace_frontier_contacts_or_receipts)",
+        "test_weekly_boundary_during_ship_transit_keeps_leg_and_cooldown (test_living_frontier_integration.LivingFrontierIntegration.test_weekly_boundary_during_ship_transit_keeps_leg_and_cooldown)",
+        "test_weekly_casualty_and_personality_continuity (test_living_frontier_integration.LivingFrontierIntegration.test_weekly_casualty_and_personality_continuity)"
+      ],
+      "failures": [],
+      "errors": []
+    },
+    "production": {
+      "suite": "production",
+      "runtime_root": "/workspace/work/phase3_final_validation/tested/ICARUS_Cinematic_Living_World_Phase3_Lite",
+      "source_commit": "d06bb2bf94bd3e35d68175bc643928fb6bdf5f81",
+      "harness": "Pinned source tests outside Lite; runtime ROOT rebound to independent ZIP extraction. No runtime source patches. Desktop input stubbed in bridge tests.",
+      "passed": true,
+      "tests_run": 2,
+      "passed_cases": [
+        "test_actual_holiday_timer_is_one_times_and_ignores_old_speed_button (test_production_clock.ProductionClock.test_actual_holiday_timer_is_one_times_and_ignores_old_speed_button)",
+        "test_actual_normal_timer_is_four_times_and_pause_drops_elapsed_time (test_production_clock.ProductionClock.test_actual_normal_timer_is_four_times_and_pause_drops_elapsed_time)"
+      ],
+      "failures": [],
+      "errors": []
+    },
+    "bridge": {
+      "suite": "bridge",
+      "runtime_root": "/workspace/work/phase3_final_validation/tested/ICARUS_Cinematic_Living_World_Phase3_Lite",
+      "source_commit": "d06bb2bf94bd3e35d68175bc643928fb6bdf5f81",
+      "harness": "Pinned source tests outside Lite; runtime ROOT rebound to independent ZIP extraction. No runtime source patches. Desktop input stubbed in bridge tests.",
+      "passed": true,
+      "tests_run": 3,
+      "passed_cases": [
+        "test_authentication_command_validation_and_exactly_once_queue_drain (test_frontier_bridge.FrontierBridge.test_authentication_command_validation_and_exactly_once_queue_drain)",
+        "test_expanded_telemetry_requires_host_auth_and_stays_bounded (test_frontier_bridge.FrontierBridge.test_expanded_telemetry_requires_host_auth_and_stays_bounded)",
+        "test_paired_tablet_map_sends_navigation_to_authoritative_pc (test_frontier_bridge.FrontierBridge.test_paired_tablet_map_sends_navigation_to_authoritative_pc)"
+      ],
+      "failures": [],
+      "errors": []
+    },
+    "mobile_functional": {
+      "passed": true,
+      "runtime_root": "/workspace/work/phase3_final_validation/tested/ICARUS_Cinematic_Living_World_Phase3_Lite",
+      "checks": [
+        "Unpaired telemetry denied",
+        "Wrong pairing PIN denied",
+        "Touch pairing persists only token hash on PC",
+        "Android-layout course reaches authoritative PC simulation",
+        "Touch hold reaches PC",
+        "Phone remains a thin client",
+        "Mobile panel fits viewport",
+        "Paired phone reconnects after reload",
+        "Foreign POST Origin denied",
+        "Predefined keyboard macro routes to stub only",
+        "Emergency stop routes to input release",
+        "TV public address rejected",
+        "TV private address config and allowlisted key contract",
+        "Unpair invalidates persisted device token",
+        "No browser script errors"
+      ],
+      "errors": [],
+      "limits": "Android Chrome mobile/touch emulation on Chromium through real HTTP pairing/bridge. PyAutoGUI and television socket stubbed. No physical Android, Windows desktop input, Wi-Fi or Samsung device used.",
+      "stubbed_io_calls": [
+        {
+          "operation": "hotkey",
+          "args": [
+            "ctrl",
+            "c"
+          ]
+        },
+        {
+          "operation": "tv_connect",
+          "url": "wss://192.168.1.99:8002/api/v2/channels/samsung.remote.control?name=UmVtb3RlIERlY2s=",
+          "certificate_validation": 0
+        },
+        {
+          "operation": "tv_send",
+          "payload": {
+            "method": "ms.remote.control",
+            "params": {
+              "Cmd": "Click",
+              "DataOfCmd": "KEY_HOME",
+              "Option": "false",
+              "TypeOfRemote": "SendRemoteKey"
+            }
+          }
+        }
+      ]
+    },
+    "migrate_phase1": {
+      "passed": true,
+      "errors": [],
+      "backup": "backup_1001_7.json",
+      "stage": "finished",
+      "timeout_seconds": 120,
+      "import_seconds": 6.437257207995572,
+      "migrated_archive_annotations": 24,
+      "mismatched_import_domains": [],
+      "imported_history_records": 10659,
+      "mismatched_reload_domains": [],
+      "reload_seconds": 15.813200814998709,
+      "imported_tick": 36000,
+      "resumed_tick": 36120,
+      "storage": {
+        "physical_bytes": 879016,
+        "primary_bytes": 439508,
+        "compressed": true
+      },
+      "elapsed_seconds": 53.99932216400339
+    },
+    "migrate_phase2": {
+      "passed": true,
+      "errors": [],
+      "backup": "backup_1001_30.json",
+      "stage": "finished",
+      "timeout_seconds": 120,
+      "import_seconds": 22.89259536300233,
+      "migrated_archive_annotations": 0,
+      "mismatched_import_domains": [],
+      "imported_history_records": 50170,
+      "reload_seconds": 62.49260353700083,
+      "imported_tick": 160920,
+      "resumed_tick": 161040,
+      "storage": {
+        "physical_bytes": 2098844,
+        "primary_bytes": 1049422,
+        "compressed": true
+      },
+      "elapsed_seconds": 253.50430910399882
+    },
+    "migrate_phase3": {
+      "passed": true,
+      "errors": [],
+      "backup": "backup_4807_7.json",
+      "stage": "finished",
+      "timeout_seconds": 120,
+      "import_seconds": 19.679978574000415,
+      "migrated_archive_annotations": 0,
+      "mismatched_import_domains": [],
+      "imported_history_records": 10300,
+      "mismatched_reload_domains": [],
+      "reload_seconds": 33.31149330599874,
+      "imported_tick": 36000,
+      "resumed_tick": 36120,
+      "storage": {
+        "physical_bytes": 1370188,
+        "primary_bytes": 685094,
+        "compressed": true
+      },
+      "elapsed_seconds": 129.93902133800293
+    },
+    "migrate_phase3_30": {
+      "passed": true,
+      "errors": [],
+      "backup": "backup_1001_30.json",
+      "stage": "finished",
+      "timeout_seconds": 120,
+      "import_seconds": 3.5188779329982935,
+      "migrated_archive_annotations": 0,
+      "mismatched_import_domains": [],
+      "imported_history_records": 48137,
+      "mismatched_reload_domains": [],
+      "reload_seconds": 9.269070424001256,
+      "imported_tick": 160920,
+      "resumed_tick": 161040,
+      "storage": {
+        "physical_bytes": 2756988,
+        "primary_bytes": 1378494,
+        "compressed": true
+      },
+      "elapsed_seconds": 25.975897265998356
+    },
+    "static": {
+      "passed": true,
+      "syntax_files": 48,
+      "local_scripts": 46,
+      "manifest_files": 64,
+      "runtime_files": 55,
+      "host_files_unchanged_from_phase2": true,
+      "new_module_network_execution_pattern_hits": 0,
+      "source_commit": "d06bb2bf94bd3e35d68175bc643928fb6bdf5f81",
+      "limits": "Static source checks, not antivirus certification or penetration test."
+    },
+    "performance": {
+      "heap_before": {
+        "JSHeapUsedSize": 5747460,
+        "JSHeapTotalSize": 11067392
+      },
+      "samples": 1000,
+      "mean_ms": 5.060800000004471,
+      "p95_ms": 39.5,
+      "max_ms": 87.5,
+      "before": {
+        "renders": 2,
+        "actorRebuilds": 2,
+        "totalMs": 73.79999999701977
+      },
+      "after": {
+        "renders": 1003,
+        "actorRebuilds": 2,
+        "totalMs": 5105.000000022352
+      },
+      "observer_unchanged": true,
+      "heap_after": {
+        "JSHeapUsedSize": 11335780,
+        "JSHeapTotalSize": 23949312
+      },
+      "limits": "Headless Linux Chromium synchronous camera JS/DOM update timings, not GPU/compositor frame rate or native tablet certification. Heap sampling may include unreclaimed temporary allocations.",
+      "passed": true
+    },
+    "campaign_patch_scope": {
+      "passed": true,
+      "campaign_start_runtime": "65403c01a09a11756ffb97f24a33cf82b0cc3a14",
+      "candidate_source": "d06bb2bf94bd3e35d68175bc643928fb6bdf5f81",
+      "runtime_files": 55,
+      "changed": [
+        "web/icarus.html"
+      ],
+      "change": "Only restoreBackup initializes three optional Phase 3 groups. Exact string reconstruction verified; physical ticking, calendar, all 54 other runtime files unchanged."
+    }
+  },
+  "campaigns": {
+    "chamber_4807": {
+      "passed": true,
+      "seed": 4807,
+      "scenario": "released_chamber",
+      "real_days": 7,
+      "sim_days": 25.0,
+      "alive": 20,
+      "dead": [],
+      "arrivals": 5,
+      "field_missions": 13,
+      "local_jobs": 5,
+      "science_cases": 17,
+      "experiment_statuses": {
+        "complete": 54,
+        "no_result": 13,
+        "failed": 1
+      },
+      "confirmed_conclusions": 3,
+      "conversations": 392,
+      "retained_visual_frames": 120,
+      "captured_state_frames": 1887,
+      "weekly_films": 1,
+      "film_durations_seconds": [
+        210
+      ],
+      "film_recorded_segments": 1,
+      "film_legendary_segments": 0,
+      "public_source_audit_errors": [],
+      "history_records": 10251,
+      "source_kind_counts": {
+        "system": 265,
+        "observation": 140,
+        "little": 7335,
+        "encounter": 7,
+        "injury": 6,
+        "crew_memory": 113,
+        "medical": 2,
+        "mission": 37,
+        "anthology": 353,
+        "relationship": 968,
+        "research": 81,
+        "social": 728,
+        "emergency": 7,
+        "mission_history": 5,
+        "encounter_history": 3,
+        "maintenance": 6
+      },
+      "most_repeated_social_text": [
+        [
+          "Linda Park: Opened a grievance follow-up. An unresolved crew dispute is on record",
+          48
+        ],
+        [
+          "Derek Cole and Sana Okafor: Neither party backed down; resentment increased.",
+          43
+        ],
+        [
+          "Derek Cole and Yara Finch: Neither party backed down; resentment increased.",
+          16
+        ],
+        [
+          "DISPUTE: Derek Cole and Sana Okafor disagree over unresolved personal grievance. They are moving to Equipment Storage.",
+          14
+        ],
+        [
+          "DISPUTE: Derek Cole and Sana Okafor disagree over unresolved personal grievance. They are moving to Crew Quarters N.",
+          13
+        ]
+      ],
+      "death_details": [],
+      "resources": {
+        "food": 159.98600000000002,
+        "water": 152.86600000000448,
+        "oxygen": 111.15800000000087,
+        "energy": 179.87556204,
+        "medical": 20,
+        "spares": 69.6604767999998,
+        "tools": 69.991,
+        "lab": 80
+      },
+      "resource_acquisition": {},
+      "travel_fuel": 1.9624515496596866,
+      "storage_first": {
+        "physical_bytes": 366358,
+        "primary_bytes": 347568,
+        "compressed": true
+      },
+      "storage_last": {
+        "physical_bytes": 1267974,
+        "primary_bytes": 649726,
+        "compressed": true
+      },
+      "snapshot_bytes_first": 1767193,
+      "snapshot_bytes_last": 3769601,
+      "checkpoints": [
+        {
+          "real_day": 7,
+          "sim_days": 25.0,
+          "episode": 2,
+          "exact_reload": true,
+          "crew": 20,
+          "dead": 0,
+          "stories": 84,
+          "resources": {
+            "food": 159.98600000000002,
+            "water": 152.86600000000448,
+            "oxygen": 111.15800000000087,
+            "energy": 179.87556204,
+            "medical": 20,
+            "spares": 69.6604767999998,
+            "tools": 69.991,
+            "lab": 80
+          },
+          "arrivals": 5,
+          "calendar_occurrences": [
+            "2026-10-31:Halloween"
+          ],
+          "organisms": {
+            "XENO-INITIAL": {
+              "id": "XENO-INITIAL",
+              "stage": "adult",
+              "dormant": false,
+              "location": "asteroid:6",
+              "origin": "initial concealed chamber",
+              "sealed": false,
+              "behavior": {
+                "version": 1,
+                "state": "starved",
+                "energy": 0,
+                "stamina": 68.40000000000045,
+                "health": 100,
+                "lastTick": 36000,
+                "lastAttack": 1440,
+                "steps": 27,
+                "meals": 0,
+                "trace": [
+                  {
+                    "at": 555,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:18"
+                  },
+                  {
+                    "at": 580,
+                    "from": "hiding",
+                    "to": "sensing",
+                    "location": "asteroid:18"
+                  },
+                  {
+                    "at": 585,
+                    "from": "sensing",
+                    "to": "resting",
+                    "location": "asteroid:13"
+                  },
+                  {
+                    "at": 590,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:13"
+                  },
+                  {
+                    "at": 595,
+                    "from": "hiding",
+                    "to": "sensing",
+                    "location": "asteroid:13"
+                  },
+                  {
+                    "at": 600,
+                    "from": "sensing",
+                    "to": "resting",
+                    "location": "asteroid:14"
+                  },
+                  {
+                    "at": 610,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:14"
+                  },
+                  {
+                    "at": 665,
+                    "from": "hiding",
+                    "to": "sensing",
+                    "location": "asteroid:14"
+                  },
+                  {
+                    "at": 670,
+                    "from": "sensing",
+                    "to": "resting",
+                    "location": "asteroid:13"
+                  },
+                  {
+                    "at": 675,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:13"
+                  },
+                  {
+                    "at": 690,
+                    "from": "hiding",
+                    "to": "sensing",
+                    "location": "asteroid:13"
+                  },
+                  {
+                    "at": 695,
+                    "from": "sensing",
+                    "to": "resting",
+                    "location": "asteroid:8"
+                  },
+                  {
+                    "at": 700,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:8"
+                  },
+                  {
+                    "at": 710,
+                    "from": "hiding",
+                    "to": "sensing",
+                    "location": "asteroid:8"
+                  },
+                  {
+                    "at": 715,
+                    "from": "sensing",
+                    "to": "resting",
+                    "location": "asteroid:7"
+                  },
+                  {
+                    "at": 720,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:7"
+                  },
+                  {
+                    "at": 720,
+                    "from": "hiding",
+                    "to": "sensing",
+                    "location": "asteroid:7"
+                  },
+                  {
+                    "at": 725,
+                    "from": "sensing",
+                    "to": "resting",
+                    "location": "asteroid:2"
+                  },
+                  {
+                    "at": 735,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:2"
+                  },
+                  {
+                    "at": 835,
+                    "from": "hiding",
+                    "to": "sensing",
+                    "location": "asteroid:2"
+                  },
+                  {
+                    "at": 840,
+                    "from": "sensing",
+                    "to": "resting",
+                    "location": "asteroid:1"
+                  },
+                  {
+                    "at": 845,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:1"
+                  },
+                  {
+                    "at": 845,
+                    "from": "hiding",
+                    "to": "sensing",
+                    "location": "asteroid:1"
+                  },
+                  {
+                    "at": 850,
+                    "from": "sensing",
+                    "to": "resting",
+                    "location": "asteroid:2"
+                  },
+                  {
+                    "at": 855,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:2"
+                  },
+                  {
+                    "at": 855,
+                    "from": "hiding",
+                    "to": "sensing",
+                    "location": "asteroid:2"
+                  },
+                  {
+                    "at": 860,
+                    "from": "sensing",
+                    "to": "resting",
+                    "location": "asteroid:1"
+                  },
+                  {
+                    "at": 865,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:1"
+                  },
+                  {
+                    "at": 870,
+                    "from": "hiding",
+                    "to": "sensing",
+                    "location": "asteroid:1"
+                  },
+                  {
+                    "at": 875,
+                    "from": "sensing",
+                    "to": "resting",
+                    "location": "asteroid:6"
+                  },
+                  {
+                    "at": 885,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:6"
+                  },
+                  {
+                    "at": 895,
+                    "from": "hiding",
+                    "to": "sensing",
+                    "location": "asteroid:6"
+                  },
+                  {
+                    "at": 900,
+                    "from": "sensing",
+                    "to": "resting",
+                    "location": "asteroid:11"
+                  },
+                  {
+                    "at": 905,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:11"
+                  },
+                  {
+                    "at": 950,
+                    "from": "hiding",
+                    "to": "sensing",
+                    "location": "asteroid:11"
+                  },
+                  {
+                    "at": 955,
+                    "from": "sensing",
+                    "to": "resting",
+                    "location": "asteroid:6"
+                  },
+                  {
+                    "at": 960,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:6"
+                  },
+                  {
+                    "at": 1275,
+                    "from": "hiding",
+                    "to": "sensing",
+                    "location": "asteroid:6"
+                  },
+                  {
+                    "at": 1280,
+                    "from": "sensing",
+                    "to": "resting",
+                    "location": "asteroid:7"
+                  },
+                  {
+                    "at": 1285,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:7"
+                  },
+                  {
+                    "at": 1295,
+                    "from": "hiding",
+                    "to": "sensing",
+                    "location": "asteroid:7"
+                  },
+                  {
+                    "at": 1300,
+                    "from": "sensing",
+                    "to": "resting",
+                    "location": "asteroid:12"
+                  },
+                  {
+                    "at": 1310,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:12"
+                  },
+                  {
+                    "at": 1340,
+                    "from": "hiding",
+                    "to": "sensing",
+                    "location": "asteroid:12"
+                  },
+                  {
+                    "at": 1345,
+                    "from": "sensing",
+                    "to": "resting",
+                    "location": "asteroid:13"
+                  },
+                  {
+                    "at": 1350,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:13"
+                  },
+                  {
+                    "at": 1365,
+                    "from": "hiding",
+                    "to": "sensing",
+                    "location": "asteroid:13"
+                  },
+                  {
+                    "at": 1370,
+                    "from": "sensing",
+                    "to": "resting",
+                    "location": "asteroid:14"
+                  },
+                  {
+                    "at": 1375,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:14"
+                  },
+                  {
+                    "at": 1405,
+                    "from": "hiding",
+                    "to": "sensing",
+                    "location": "asteroid:14"
+                  },
+                  {
+                    "at": 1410,
+                    "from": "sensing",
+                    "to": "resting",
+                    "location": "asteroid:13"
+                  },
+                  {
+                    "at": 1415,
+                    "from": "resting",
+                    "to": "pursuit",
+                    "location": "asteroid:13"
+                  },
+                  {
+                    "at": 1420,
+                    "from": "pursuit",
+                    "to": "attack",
+                    "location": "asteroid:12",
+                    "target": "Sana Okafor"
+                  },
+                  {
+                    "at": 1425,
+                    "from": "attack",
+                    "to": "hiding",
+                    "location": "asteroid:12"
+                  },
+                  {
+                    "at": 1440,
+                    "from": "hiding",
+                    "to": "attack",
+                    "location": "asteroid:12",
+                    "target": "Jules Mercer"
+                  },
+                  {
+                    "at": 1445,
+                    "from": "attack",
+                    "to": "hiding",
+                    "location": "asteroid:12"
+                  },
+                  {
+                    "at": 1460,
+                    "from": "hiding",
+                    "to": "resting",
+                    "location": "asteroid:12"
+                  },
+                  {
+                    "at": 1505,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:12"
+                  },
+                  {
+                    "at": 1515,
+                    "from": "hiding",
+                    "to": "sensing",
+                    "location": "asteroid:12"
+                  },
+                  {
+                    "at": 1520,
+                    "from": "sensing",
+                    "to": "resting",
+                    "location": "asteroid:7"
+                  },
+                  {
+                    "at": 1525,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:7"
+                  },
+                  {
+                    "at": 1545,
+                    "from": "hiding",
+                    "to": "sensing",
+                    "location": "asteroid:7"
+                  },
+                  {
+                    "at": 1550,
+                    "from": "sensing",
+                    "to": "resting",
+                    "location": "asteroid:6"
+                  },
+                  {
+                    "at": 1555,
+                    "from": "resting",
+                    "to": "starved",
+                    "location": "asteroid:6"
+                  }
+                ],
+                "sightingKey": "asteroid:12:Jules Mercer,Sana Okafor",
+                "sightedAt": 1420
+              }
+            },
+            "EGG-1": {
+              "id": "EGG-1",
+              "stage": "egg",
+              "dormant": true,
+              "location": "asteroid:22"
+            },
+            "EGG-2": {
+              "id": "EGG-2",
+              "stage": "egg",
+              "dormant": true,
+              "location": "asteroid:24"
+            }
+          }
+        }
+      ],
+      "backup_sha256": "4058ceadb28448d141d0959ac98ef79191f3314d59ca94bd9fb5f6386bbb6c2f",
+      "runtime_sha256": {
+        "server.py": "d43781ba1af5f371de05f32b572efbbb9c44b69efbf133e988a43f67076cee44",
+        "requirements.txt": "3dd40988330002f37cd1f2b2b80e65ee3919798dc38771b00fed572a4d659f9e",
+        "config.json": "54a4ac908d2fe82e9c58fb942134327cf0562665e47b170b5d9b0b085ce8b865",
+        "Start_Remote_Deck.bat": "ffbd4b2e6d561ad162547e4f32c0de891915a6d3876ba6d2bff427ec06df368b",
+        "web/anthology-ui.js": "d4ca2419004918f5d6cc423b354d6fee306e34fcb7f05932051014c39dba36ae",
+        "web/anthology.js": "e2621ab0e567e85a9a4b25b11968df7480e69f6abe311e547fddea412a224bb2",
+        "web/calendar.js": "6d1c316968a5f2fb29b82e110fa3678a49e3be9ad9ffd38833600a1f55cdd29a",
+        "web/chronicle-film.js": "acd44c721d00da5aa91708fd16774882df362b015ab70d7d9228707f65944b94",
+        "web/chronicles.js": "cb613ccd783d9843ffe5d73e5a06f01b96b12d9b0df19c51ef0b522fa0211367",
+        "web/cinema-ui.js": "dbdd080a349fcf790401c04e707aaf146eb33a839c6aa7aad3da47a2784a29f1",
+        "web/cinema.js": "c9340e83ba5ea57b3b8a63a39662f5da8ee1c309ec954263f4d3c15222480cac",
+        "web/core-context.js": "984feae5ab86359013cfad335c7fd2cfc398c6515a69ebf90add78969424d0d2",
+        "web/creatures.js": "a4eaea655b4a47066d217585b77110b1b68049fb50bb425520f6e9eb38ee340e",
+        "web/crew-life.js": "6b1f75e529a2911204f4c134ee3100f2ce6b832fa3e9ddb95345cb6af1f44469",
+        "web/diagnostics.js": "a4f29c565348ecc3adff65e6d0459f233f9fde60fbf0794e240d0ee8ad9759dc",
+        "web/discovery.js": "e950ac6b0f3aff732995b5adc1991b2d6fd935538a879e93c5f90f778cfa8b98",
+        "web/durable-store.js": "d7a13b77f979f7c0f8cd6182683b91442415378d7887fa1738a1013bcea28a83",
+        "web/economy.js": "919fcfdef54d30b6320d8886d4eff43273bb9642763eeaad179bb7607ab3e292",
+        "web/edition.js": "33f4c281646bb8baa8f45b015c82dd5cabb780e69383448f3390f64566e5331f",
+        "web/embodiment.js": "589c39b15781205258b622f82d8f67a2c44b4e21b8f383e231c6ca10d0c9ba0e",
+        "web/emergency-ops.js": "95a0ec04365879fff84ad62399650cfb28037102e3083a6b0946894fe84a9116",
+        "web/entities.js": "c8fe473a604345d7543c6f545909dcf734eb2a8ef2d3a6f62aa48bbf0f9305d1",
+        "web/expeditions.js": "729ad659e78636b42b6a743619bc0c0f7f80d9c8480912ec006115a26ee783ef",
+        "web/experiences.js": "2b39dd4736704bd1619d0f7d25b285d090ab0193eacbc424cdc8f25508ab4b14",
+        "web/film-ui.js": "8ff38db286085cd99c630b5d225afa535816450864623ffee749130a9e0ce0ed",
+        "web/frontier-ui.js": "8b11361b26cd23b57c4418a404ffc1c7472c8af5f93057d4c08a10c79b61548e",
+        "web/frontier.js": "58494ff752b3fc3abc6518bfeba3c29ed74c21cb46bad8358510c16f949bb115",
+        "web/icarus.html": "538006bfb41e95038c3142bb8d1703b77260536c6eaf1976fa91e1ce0cd27de3",
+        "web/index.html": "f328e21ccc1ba10691960e2de355c556e96f19d88cd996366943f061d8a32952",
+        "web/knowledge-runtime.js": "65145b39b9eb7e36f8f49919a2fc43ac71a300093febe37bf33091cf6abada12",
+        "web/knowledge.js": "bd21c044137a62cb2eab437de142221333595c71c4dd5615a5c8dc2ac429fb05",
+        "web/living-frontier-ui.js": "c93bc5a3e5a8d8e3a85c1efdd053e2b566eda05d3b7a3027dc3e77335e577924",
+        "web/living.js": "421a73f5ff1c5b317ab78476692abf3a0fe5e54f2017c88a96b38d19aaf8cdbb",
+        "web/logistics.js": "260d8684db9b0bccc5bbd6c60186fd50e973bbba5c0507ead7b5ad9a712f50ff",
+        "web/lunar.js": "7fe249230562a6d6eb3b6633381a4cddaff56bf90de1676a9ed6c0908c661d51",
+        "web/manifest.webmanifest": "a8ed1d727916b17acf15d37d9a637d4a32cad8e9dbe739084462d0fac28c182b",
+        "web/navigation.js": "36351d320ab0ec49524cc57aefc0c6e6f58fc7ba5b1605d1b21355c5ff2f3b92",
+        "web/operations.js": "8711fc4ed9e2e6937c4a1f600ef873f15efceef5c22690f0f3d04f96c9719a12",
+        "web/repair-policy.js": "a1d3b6a64fa3561563b369a49cb30718c015dea79a47c0486d3954560c19de1d",
+        "web/research.js": "ca4de958ed72b3a6404e792abc24b9821b7fc44190a57444f48e69b61e91a3cd",
+        "web/save-store.js": "77f0bbb42ad82da9bcbcebd25d1de3e12d0989f1dea0087e1ad4ca28678150fe",
+        "web/sol-voice.js": "2e5b80ddbeb2b92c9b0b5c0793de43999e252464bde4f351cec03bc93dd8ce03",
+        "web/spatial.js": "6b4ce51759665185fa558b653e27e2514362d692deb4117ee371f8182b5ae750",
+        "web/stability-diagnostics.js": "d3faeaf4fce68e04960938928ef1729dbe717579ed6b2cb31f0d07972c0732bb",
+        "web/story.js": "2b0464ee7ac4be2409506c7a162ddd8003be6d0df70f47f252641e97c90bb19d",
+        "web/tablet-frontier.js": "6682318bc42b5a46a5703b64137e0d55172ce4eed201305f619c193d55ed6e38",
+        "web/teams.js": "69817c50c92ae5edcdc880b28c904665e6117df25e71a8edabd6ba426597c71b",
+        "web/unified-ui.js": "5a643369c817239bcf3948d5cdfd10d69cc210eaca6a7583da191db61fa91874",
+        "web/unified-world.js": "35e2a8ad0717a19b795f03bc55de0852450766279b17db527f8cf9b9e755fb38",
+        "web/universe.js": "7a3f83170de63739706445cc992c560583e913b577d87087115dfb8cbfae06d4",
+        "web/vendor/LZ_STRING_LICENSE.txt": "433fc9dfe659dbfb1e91eed8351f13651e97bfa3ac6d03394c3d63f61d4bbc80",
+        "web/vendor/astronomy.js": "a2cfab19cab1a15843e4c8cc7410b6cbaafd0907122a8698c25d63d00c2774e4",
+        "web/vendor/lz-string.min.js": "95f4d1cbf099f57161b664bc048426ec3df92637801a4c79116e83315aa787e7",
+        "web/voyage.js": "a70b7bff458052b1ba68713c3a2971ce110a3b169e4e7fe90c9e71cabc90eeda",
+        "web/world-schema.js": "5b958d1116cb1371116ec72a12bc41a06a10efea55f602831bf7e7a35bab844e"
+      },
+      "elapsed_seconds": 435.78711989099975
+    },
+    "compound_1001": {
+      "passed": true,
+      "seed": 1001,
+      "scenario": "compound",
+      "real_days": 7,
+      "sim_days": 25.0,
+      "alive": 20,
+      "dead": [],
+      "arrivals": 5,
+      "field_missions": 8,
+      "local_jobs": 5,
+      "science_cases": 19,
+      "experiment_statuses": {
+        "complete": 62,
+        "no_result": 14,
+        "failed": 3
+      },
+      "confirmed_conclusions": 3,
+      "conversations": 389,
+      "retained_visual_frames": 120,
+      "captured_state_frames": 1919,
+      "weekly_films": 1,
+      "film_durations_seconds": [
+        210
+      ],
+      "film_recorded_segments": 0,
+      "film_legendary_segments": 0,
+      "public_source_audit_errors": [],
+      "history_records": 10802,
+      "source_kind_counts": {
+        "system": 290,
+        "injury": 4,
+        "anthology": 311,
+        "medical": 2,
+        "emergency": 14,
+        "little": 7672,
+        "crew_memory": 111,
+        "relationship": 1006,
+        "maintenance": 1,
+        "observation": 137,
+        "social": 929,
+        "research": 94,
+        "mission": 36,
+        "encounter": 3,
+        "encounter_history": 3,
+        "mission_history": 5
+      },
+      "most_repeated_social_text": [
+        [
+          "Linda Park: Opened a grievance follow-up. An unresolved crew dispute is on record",
+          56
+        ],
+        [
+          "Dr. Voss and Sana Okafor: Neither party backed down; resentment increased.",
+          33
+        ],
+        [
+          "Derek Cole and Sana Okafor: Neither party backed down; resentment increased.",
+          31
+        ],
+        [
+          "Derek Cole and Ari Novak: Neither party backed down; resentment increased.",
+          28
+        ],
+        [
+          "Derek Cole and Caleb Stone: Neither party backed down; resentment increased.",
+          27
+        ]
+      ],
+      "death_details": [],
+      "resources": {
+        "food": 159.98600000000002,
+        "water": 152.84080000000785,
+        "oxygen": 111.95400000000134,
+        "energy": 179.89416,
+        "medical": 20,
+        "spares": 70,
+        "tools": 70,
+        "lab": 80
+      },
+      "resource_acquisition": {},
+      "travel_fuel": 1.9624515496596866,
+      "storage_first": {
+        "physical_bytes": 388136,
+        "primary_bytes": 368942,
+        "compressed": true
+      },
+      "storage_last": {
+        "physical_bytes": 1289472,
+        "primary_bytes": 657668,
+        "compressed": true
+      },
+      "snapshot_bytes_first": 1754434,
+      "snapshot_bytes_last": 3725608,
+      "checkpoints": [
+        {
+          "real_day": 7,
+          "sim_days": 25.0,
+          "episode": 2,
+          "exact_reload": true,
+          "crew": 20,
+          "dead": 0,
+          "stories": 93,
+          "resources": {
+            "food": 159.98600000000002,
+            "water": 152.84080000000785,
+            "oxygen": 111.95400000000134,
+            "energy": 179.89416,
+            "medical": 20,
+            "spares": 70,
+            "tools": 70,
+            "lab": 80
+          },
+          "arrivals": 5,
+          "calendar_occurrences": [
+            "2026-10-31:Halloween"
+          ],
+          "organisms": {
+            "XENO-INITIAL": {
+              "id": "XENO-INITIAL",
+              "stage": "adult",
+              "dormant": true,
+              "location": "asteroid:23",
+              "origin": "initial concealed chamber",
+              "sealed": true,
+              "behavior": {
+                "version": 1,
+                "state": "contained",
+                "energy": 100,
+                "stamina": 100,
+                "health": 100,
+                "lastTick": 36000,
+                "lastAttack": -100,
+                "steps": 0,
+                "meals": 0,
+                "trace": [
+                  {
+                    "at": 5,
+                    "from": "dormant",
+                    "to": "contained",
+                    "location": "asteroid:23"
+                  }
+                ]
+              }
+            },
+            "EGG-1": {
+              "id": "EGG-1",
+              "stage": "egg",
+              "dormant": true,
+              "location": "asteroid:22"
+            },
+            "EGG-2": {
+              "id": "EGG-2",
+              "stage": "egg",
+              "dormant": true,
+              "location": "asteroid:24"
+            }
+          }
+        }
+      ],
+      "backup_sha256": "01826782bd00387f079cc089c58a3c679276d3123deca9fa83a8aa8cf31ad2d4",
+      "runtime_sha256": {
+        "server.py": "d43781ba1af5f371de05f32b572efbbb9c44b69efbf133e988a43f67076cee44",
+        "requirements.txt": "3dd40988330002f37cd1f2b2b80e65ee3919798dc38771b00fed572a4d659f9e",
+        "config.json": "54a4ac908d2fe82e9c58fb942134327cf0562665e47b170b5d9b0b085ce8b865",
+        "Start_Remote_Deck.bat": "ffbd4b2e6d561ad162547e4f32c0de891915a6d3876ba6d2bff427ec06df368b",
+        "web/anthology-ui.js": "d4ca2419004918f5d6cc423b354d6fee306e34fcb7f05932051014c39dba36ae",
+        "web/anthology.js": "e2621ab0e567e85a9a4b25b11968df7480e69f6abe311e547fddea412a224bb2",
+        "web/calendar.js": "6d1c316968a5f2fb29b82e110fa3678a49e3be9ad9ffd38833600a1f55cdd29a",
+        "web/chronicle-film.js": "acd44c721d00da5aa91708fd16774882df362b015ab70d7d9228707f65944b94",
+        "web/chronicles.js": "cb613ccd783d9843ffe5d73e5a06f01b96b12d9b0df19c51ef0b522fa0211367",
+        "web/cinema-ui.js": "dbdd080a349fcf790401c04e707aaf146eb33a839c6aa7aad3da47a2784a29f1",
+        "web/cinema.js": "c9340e83ba5ea57b3b8a63a39662f5da8ee1c309ec954263f4d3c15222480cac",
+        "web/core-context.js": "984feae5ab86359013cfad335c7fd2cfc398c6515a69ebf90add78969424d0d2",
+        "web/creatures.js": "a4eaea655b4a47066d217585b77110b1b68049fb50bb425520f6e9eb38ee340e",
+        "web/crew-life.js": "6b1f75e529a2911204f4c134ee3100f2ce6b832fa3e9ddb95345cb6af1f44469",
+        "web/diagnostics.js": "a4f29c565348ecc3adff65e6d0459f233f9fde60fbf0794e240d0ee8ad9759dc",
+        "web/discovery.js": "e950ac6b0f3aff732995b5adc1991b2d6fd935538a879e93c5f90f778cfa8b98",
+        "web/durable-store.js": "d7a13b77f979f7c0f8cd6182683b91442415378d7887fa1738a1013bcea28a83",
+        "web/economy.js": "919fcfdef54d30b6320d8886d4eff43273bb9642763eeaad179bb7607ab3e292",
+        "web/edition.js": "33f4c281646bb8baa8f45b015c82dd5cabb780e69383448f3390f64566e5331f",
+        "web/embodiment.js": "589c39b15781205258b622f82d8f67a2c44b4e21b8f383e231c6ca10d0c9ba0e",
+        "web/emergency-ops.js": "95a0ec04365879fff84ad62399650cfb28037102e3083a6b0946894fe84a9116",
+        "web/entities.js": "c8fe473a604345d7543c6f545909dcf734eb2a8ef2d3a6f62aa48bbf0f9305d1",
+        "web/expeditions.js": "729ad659e78636b42b6a743619bc0c0f7f80d9c8480912ec006115a26ee783ef",
+        "web/experiences.js": "2b39dd4736704bd1619d0f7d25b285d090ab0193eacbc424cdc8f25508ab4b14",
+        "web/film-ui.js": "8ff38db286085cd99c630b5d225afa535816450864623ffee749130a9e0ce0ed",
+        "web/frontier-ui.js": "8b11361b26cd23b57c4418a404ffc1c7472c8af5f93057d4c08a10c79b61548e",
+        "web/frontier.js": "58494ff752b3fc3abc6518bfeba3c29ed74c21cb46bad8358510c16f949bb115",
+        "web/icarus.html": "538006bfb41e95038c3142bb8d1703b77260536c6eaf1976fa91e1ce0cd27de3",
+        "web/index.html": "f328e21ccc1ba10691960e2de355c556e96f19d88cd996366943f061d8a32952",
+        "web/knowledge-runtime.js": "65145b39b9eb7e36f8f49919a2fc43ac71a300093febe37bf33091cf6abada12",
+        "web/knowledge.js": "bd21c044137a62cb2eab437de142221333595c71c4dd5615a5c8dc2ac429fb05",
+        "web/living-frontier-ui.js": "c93bc5a3e5a8d8e3a85c1efdd053e2b566eda05d3b7a3027dc3e77335e577924",
+        "web/living.js": "421a73f5ff1c5b317ab78476692abf3a0fe5e54f2017c88a96b38d19aaf8cdbb",
+        "web/logistics.js": "260d8684db9b0bccc5bbd6c60186fd50e973bbba5c0507ead7b5ad9a712f50ff",
+        "web/lunar.js": "7fe249230562a6d6eb3b6633381a4cddaff56bf90de1676a9ed6c0908c661d51",
+        "web/manifest.webmanifest": "a8ed1d727916b17acf15d37d9a637d4a32cad8e9dbe739084462d0fac28c182b",
+        "web/navigation.js": "36351d320ab0ec49524cc57aefc0c6e6f58fc7ba5b1605d1b21355c5ff2f3b92",
+        "web/operations.js": "8711fc4ed9e2e6937c4a1f600ef873f15efceef5c22690f0f3d04f96c9719a12",
+        "web/repair-policy.js": "a1d3b6a64fa3561563b369a49cb30718c015dea79a47c0486d3954560c19de1d",
+        "web/research.js": "ca4de958ed72b3a6404e792abc24b9821b7fc44190a57444f48e69b61e91a3cd",
+        "web/save-store.js": "77f0bbb42ad82da9bcbcebd25d1de3e12d0989f1dea0087e1ad4ca28678150fe",
+        "web/sol-voice.js": "2e5b80ddbeb2b92c9b0b5c0793de43999e252464bde4f351cec03bc93dd8ce03",
+        "web/spatial.js": "6b4ce51759665185fa558b653e27e2514362d692deb4117ee371f8182b5ae750",
+        "web/stability-diagnostics.js": "d3faeaf4fce68e04960938928ef1729dbe717579ed6b2cb31f0d07972c0732bb",
+        "web/story.js": "2b0464ee7ac4be2409506c7a162ddd8003be6d0df70f47f252641e97c90bb19d",
+        "web/tablet-frontier.js": "6682318bc42b5a46a5703b64137e0d55172ce4eed201305f619c193d55ed6e38",
+        "web/teams.js": "69817c50c92ae5edcdc880b28c904665e6117df25e71a8edabd6ba426597c71b",
+        "web/unified-ui.js": "5a643369c817239bcf3948d5cdfd10d69cc210eaca6a7583da191db61fa91874",
+        "web/unified-world.js": "35e2a8ad0717a19b795f03bc55de0852450766279b17db527f8cf9b9e755fb38",
+        "web/universe.js": "7a3f83170de63739706445cc992c560583e913b577d87087115dfb8cbfae06d4",
+        "web/vendor/LZ_STRING_LICENSE.txt": "433fc9dfe659dbfb1e91eed8351f13651e97bfa3ac6d03394c3d63f61d4bbc80",
+        "web/vendor/astronomy.js": "a2cfab19cab1a15843e4c8cc7410b6cbaafd0907122a8698c25d63d00c2774e4",
+        "web/vendor/lz-string.min.js": "95f4d1cbf099f57161b664bc048426ec3df92637801a4c79116e83315aa787e7",
+        "web/voyage.js": "a70b7bff458052b1ba68713c3a2971ce110a3b169e4e7fe90c9e71cabc90eeda",
+        "web/world-schema.js": "5b958d1116cb1371116ec72a12bc41a06a10efea55f602831bf7e7a35bab844e"
+      },
+      "elapsed_seconds": 408.3946773360003
+    },
+    "normal_1001": {
+      "passed": true,
+      "seed": 1001,
+      "scenario": "normal",
+      "real_days": 30,
+      "sim_days": 111.75,
+      "alive": 20,
+      "dead": [],
+      "arrivals": 5,
+      "field_missions": 8,
+      "local_jobs": 5,
+      "science_cases": 25,
+      "experiment_statuses": {
+        "no_result": 17,
+        "complete": 83,
+        "failed": 3
+      },
+      "confirmed_conclusions": 4,
+      "conversations": 1975,
+      "retained_visual_frames": 120,
+      "captured_state_frames": 8489,
+      "weekly_films": 4,
+      "film_durations_seconds": [
+        182,
+        166,
+        134,
+        134
+      ],
+      "film_recorded_segments": 0,
+      "film_legendary_segments": 0,
+      "public_source_audit_errors": [],
+      "history_records": 48136,
+      "source_kind_counts": {
+        "system": 1026,
+        "little": 34207,
+        "relationship": 4471,
+        "anthology": 1306,
+        "social": 5872,
+        "observation": 232,
+        "research": 124,
+        "crew_memory": 436,
+        "emergency": 6,
+        "mission": 36,
+        "encounter": 3,
+        "encounter_history": 3,
+        "mission_history": 5,
+        "maintenance": 55
+      },
+      "most_repeated_social_text": [
+        [
+          "Linda Park: Opened a grievance follow-up. An unresolved crew dispute is on record",
+          300
+        ],
+        [
+          "Dr. Voss and Sana Okafor: Neither party backed down; resentment increased.",
+          164
+        ],
+        [
+          "Mara Chen and Derek Cole: Neither party backed down; resentment increased.",
+          157
+        ],
+        [
+          "Derek Cole and Yara Finch: Neither party backed down; resentment increased.",
+          129
+        ],
+        [
+          "Derek Cole and Caleb Stone: Neither party backed down; resentment increased.",
+          129
+        ]
+      ],
+      "death_details": [],
+      "resources": {
+        "food": 159.986,
+        "water": 152.82680000003762,
+        "oxygen": 112.08600000000078,
+        "energy": 179.86416,
+        "medical": 20,
+        "spares": 70,
+        "tools": 70,
+        "lab": 80
+      },
+      "resource_acquisition": {},
+      "travel_fuel": 1.9624515496596866,
+      "storage_first": {
+        "physical_bytes": 357102,
+        "primary_bytes": 357102,
+        "compressed": true
+      },
+      "storage_last": {
+        "physical_bytes": 2735958,
+        "primary_bytes": 1378494,
+        "compressed": true
+      },
+      "snapshot_bytes_first": 1786250,
+      "snapshot_bytes_last": 9164883,
+      "checkpoints": [
+        {
+          "real_day": 7,
+          "sim_days": 25.0,
+          "episode": 2,
+          "exact_reload": true,
+          "crew": 20,
+          "dead": 0,
+          "stories": 101,
+          "resources": {
+            "food": 159.98600000000002,
+            "water": 152.8268000000065,
+            "oxygen": 112.08600000000078,
+            "energy": 179.89416,
+            "medical": 20,
+            "spares": 70,
+            "tools": 70,
+            "lab": 80
+          },
+          "arrivals": 5,
+          "calendar_occurrences": [
+            "2026-10-31:Halloween"
+          ],
+          "organisms": {
+            "XENO-INITIAL": {
+              "id": "XENO-INITIAL",
+              "stage": "adult",
+              "dormant": true,
+              "location": "asteroid:23",
+              "origin": "initial concealed chamber",
+              "sealed": true,
+              "behavior": {
+                "version": 1,
+                "state": "contained",
+                "energy": 100,
+                "stamina": 100,
+                "health": 100,
+                "lastTick": 36000,
+                "lastAttack": -100,
+                "steps": 0,
+                "meals": 0,
+                "trace": [
+                  {
+                    "at": 5,
+                    "from": "dormant",
+                    "to": "contained",
+                    "location": "asteroid:23"
+                  }
+                ]
+              }
+            },
+            "EGG-1": {
+              "id": "EGG-1",
+              "stage": "egg",
+              "dormant": true,
+              "location": "asteroid:22"
+            },
+            "EGG-2": {
+              "id": "EGG-2",
+              "stage": "egg",
+              "dormant": true,
+              "location": "asteroid:24"
+            }
+          }
+        },
+        {
+          "real_day": 30,
+          "sim_days": 111.75,
+          "episode": 5,
+          "exact_reload": true,
+          "crew": 20,
+          "dead": 0,
+          "stories": 340,
+          "resources": {
+            "food": 159.986,
+            "water": 152.82680000003762,
+            "oxygen": 112.08600000000078,
+            "energy": 179.86416,
+            "medical": 20,
+            "spares": 70,
+            "tools": 70,
+            "lab": 80
+          },
+          "arrivals": 5,
+          "calendar_occurrences": [
+            "2026-10-31:Halloween",
+            "2026-11-11:Veterans Day",
+            "2026-11-26:Thanksgiving"
+          ],
+          "organisms": {
+            "XENO-INITIAL": {
+              "id": "XENO-INITIAL",
+              "stage": "adult",
+              "dormant": true,
+              "location": "asteroid:23",
+              "origin": "initial concealed chamber",
+              "sealed": true,
+              "behavior": {
+                "version": 1,
+                "state": "contained",
+                "energy": 100,
+                "stamina": 100,
+                "health": 100,
+                "lastTick": 160920,
+                "lastAttack": -100,
+                "steps": 0,
+                "meals": 0,
+                "trace": [
+                  {
+                    "at": 5,
+                    "from": "dormant",
+                    "to": "contained",
+                    "location": "asteroid:23"
+                  }
+                ]
+              }
+            },
+            "EGG-1": {
+              "id": "EGG-1",
+              "stage": "egg",
+              "dormant": true,
+              "location": "asteroid:22"
+            },
+            "EGG-2": {
+              "id": "EGG-2",
+              "stage": "egg",
+              "dormant": true,
+              "location": "asteroid:24"
+            }
+          }
+        }
+      ],
+      "backup_sha256": "11dd1e3ebbd5dcfb94d23ed0be2786e2af7d6feee7498c606cdf3a04d4224e02",
+      "runtime_sha256": {
+        "server.py": "d43781ba1af5f371de05f32b572efbbb9c44b69efbf133e988a43f67076cee44",
+        "requirements.txt": "3dd40988330002f37cd1f2b2b80e65ee3919798dc38771b00fed572a4d659f9e",
+        "config.json": "54a4ac908d2fe82e9c58fb942134327cf0562665e47b170b5d9b0b085ce8b865",
+        "Start_Remote_Deck.bat": "ffbd4b2e6d561ad162547e4f32c0de891915a6d3876ba6d2bff427ec06df368b",
+        "web/anthology-ui.js": "d4ca2419004918f5d6cc423b354d6fee306e34fcb7f05932051014c39dba36ae",
+        "web/anthology.js": "e2621ab0e567e85a9a4b25b11968df7480e69f6abe311e547fddea412a224bb2",
+        "web/calendar.js": "6d1c316968a5f2fb29b82e110fa3678a49e3be9ad9ffd38833600a1f55cdd29a",
+        "web/chronicle-film.js": "acd44c721d00da5aa91708fd16774882df362b015ab70d7d9228707f65944b94",
+        "web/chronicles.js": "cb613ccd783d9843ffe5d73e5a06f01b96b12d9b0df19c51ef0b522fa0211367",
+        "web/cinema-ui.js": "dbdd080a349fcf790401c04e707aaf146eb33a839c6aa7aad3da47a2784a29f1",
+        "web/cinema.js": "c9340e83ba5ea57b3b8a63a39662f5da8ee1c309ec954263f4d3c15222480cac",
+        "web/core-context.js": "984feae5ab86359013cfad335c7fd2cfc398c6515a69ebf90add78969424d0d2",
+        "web/creatures.js": "a4eaea655b4a47066d217585b77110b1b68049fb50bb425520f6e9eb38ee340e",
+        "web/crew-life.js": "6b1f75e529a2911204f4c134ee3100f2ce6b832fa3e9ddb95345cb6af1f44469",
+        "web/diagnostics.js": "a4f29c565348ecc3adff65e6d0459f233f9fde60fbf0794e240d0ee8ad9759dc",
+        "web/discovery.js": "e950ac6b0f3aff732995b5adc1991b2d6fd935538a879e93c5f90f778cfa8b98",
+        "web/durable-store.js": "d7a13b77f979f7c0f8cd6182683b91442415378d7887fa1738a1013bcea28a83",
+        "web/economy.js": "919fcfdef54d30b6320d8886d4eff43273bb9642763eeaad179bb7607ab3e292",
+        "web/edition.js": "33f4c281646bb8baa8f45b015c82dd5cabb780e69383448f3390f64566e5331f",
+        "web/embodiment.js": "589c39b15781205258b622f82d8f67a2c44b4e21b8f383e231c6ca10d0c9ba0e",
+        "web/emergency-ops.js": "95a0ec04365879fff84ad62399650cfb28037102e3083a6b0946894fe84a9116",
+        "web/entities.js": "c8fe473a604345d7543c6f545909dcf734eb2a8ef2d3a6f62aa48bbf0f9305d1",
+        "web/expeditions.js": "729ad659e78636b42b6a743619bc0c0f7f80d9c8480912ec006115a26ee783ef",
+        "web/experiences.js": "2b39dd4736704bd1619d0f7d25b285d090ab0193eacbc424cdc8f25508ab4b14",
+        "web/film-ui.js": "8ff38db286085cd99c630b5d225afa535816450864623ffee749130a9e0ce0ed",
+        "web/frontier-ui.js": "8b11361b26cd23b57c4418a404ffc1c7472c8af5f93057d4c08a10c79b61548e",
+        "web/frontier.js": "58494ff752b3fc3abc6518bfeba3c29ed74c21cb46bad8358510c16f949bb115",
+        "web/icarus.html": "538006bfb41e95038c3142bb8d1703b77260536c6eaf1976fa91e1ce0cd27de3",
+        "web/index.html": "f328e21ccc1ba10691960e2de355c556e96f19d88cd996366943f061d8a32952",
+        "web/knowledge-runtime.js": "65145b39b9eb7e36f8f49919a2fc43ac71a300093febe37bf33091cf6abada12",
+        "web/knowledge.js": "bd21c044137a62cb2eab437de142221333595c71c4dd5615a5c8dc2ac429fb05",
+        "web/living-frontier-ui.js": "c93bc5a3e5a8d8e3a85c1efdd053e2b566eda05d3b7a3027dc3e77335e577924",
+        "web/living.js": "421a73f5ff1c5b317ab78476692abf3a0fe5e54f2017c88a96b38d19aaf8cdbb",
+        "web/logistics.js": "260d8684db9b0bccc5bbd6c60186fd50e973bbba5c0507ead7b5ad9a712f50ff",
+        "web/lunar.js": "7fe249230562a6d6eb3b6633381a4cddaff56bf90de1676a9ed6c0908c661d51",
+        "web/manifest.webmanifest": "a8ed1d727916b17acf15d37d9a637d4a32cad8e9dbe739084462d0fac28c182b",
+        "web/navigation.js": "36351d320ab0ec49524cc57aefc0c6e6f58fc7ba5b1605d1b21355c5ff2f3b92",
+        "web/operations.js": "8711fc4ed9e2e6937c4a1f600ef873f15efceef5c22690f0f3d04f96c9719a12",
+        "web/repair-policy.js": "a1d3b6a64fa3561563b369a49cb30718c015dea79a47c0486d3954560c19de1d",
+        "web/research.js": "ca4de958ed72b3a6404e792abc24b9821b7fc44190a57444f48e69b61e91a3cd",
+        "web/save-store.js": "77f0bbb42ad82da9bcbcebd25d1de3e12d0989f1dea0087e1ad4ca28678150fe",
+        "web/sol-voice.js": "2e5b80ddbeb2b92c9b0b5c0793de43999e252464bde4f351cec03bc93dd8ce03",
+        "web/spatial.js": "6b4ce51759665185fa558b653e27e2514362d692deb4117ee371f8182b5ae750",
+        "web/stability-diagnostics.js": "d3faeaf4fce68e04960938928ef1729dbe717579ed6b2cb31f0d07972c0732bb",
+        "web/story.js": "2b0464ee7ac4be2409506c7a162ddd8003be6d0df70f47f252641e97c90bb19d",
+        "web/tablet-frontier.js": "6682318bc42b5a46a5703b64137e0d55172ce4eed201305f619c193d55ed6e38",
+        "web/teams.js": "69817c50c92ae5edcdc880b28c904665e6117df25e71a8edabd6ba426597c71b",
+        "web/unified-ui.js": "5a643369c817239bcf3948d5cdfd10d69cc210eaca6a7583da191db61fa91874",
+        "web/unified-world.js": "35e2a8ad0717a19b795f03bc55de0852450766279b17db527f8cf9b9e755fb38",
+        "web/universe.js": "7a3f83170de63739706445cc992c560583e913b577d87087115dfb8cbfae06d4",
+        "web/vendor/LZ_STRING_LICENSE.txt": "433fc9dfe659dbfb1e91eed8351f13651e97bfa3ac6d03394c3d63f61d4bbc80",
+        "web/vendor/astronomy.js": "a2cfab19cab1a15843e4c8cc7410b6cbaafd0907122a8698c25d63d00c2774e4",
+        "web/vendor/lz-string.min.js": "95f4d1cbf099f57161b664bc048426ec3df92637801a4c79116e83315aa787e7",
+        "web/voyage.js": "a70b7bff458052b1ba68713c3a2971ce110a3b169e4e7fe90c9e71cabc90eeda",
+        "web/world-schema.js": "5b958d1116cb1371116ec72a12bc41a06a10efea55f602831bf7e7a35bab844e"
+      },
+      "elapsed_seconds": 1245.828946544003
+    },
+    "normal_4807": {
+      "passed": true,
+      "seed": 4807,
+      "scenario": "normal",
+      "real_days": 30,
+      "sim_days": 111.75,
+      "alive": 19,
+      "dead": [
+        "Nadia Kline"
+      ],
+      "arrivals": 5,
+      "field_missions": 11,
+      "local_jobs": 5,
+      "science_cases": 27,
+      "experiment_statuses": {
+        "complete": 79,
+        "no_result": 29,
+        "failed": 6
+      },
+      "confirmed_conclusions": 4,
+      "conversations": 1767,
+      "retained_visual_frames": 120,
+      "captured_state_frames": 8164,
+      "weekly_films": 4,
+      "film_durations_seconds": [
+        210,
+        196,
+        190,
+        182
+      ],
+      "film_recorded_segments": 2,
+      "film_legendary_segments": 0,
+      "public_source_audit_errors": [],
+      "history_records": 45869,
+      "source_kind_counts": {
+        "system": 796,
+        "little": 31825,
+        "social": 5779,
+        "relationship": 4508,
+        "observation": 264,
+        "research": 134,
+        "emergency": 8,
+        "anthology": 1493,
+        "crew_memory": 502,
+        "medical": 8,
+        "injury": 8,
+        "encounter": 10,
+        "death": 1,
+        "recovery": 3,
+        "mission": 36,
+        "mission_history": 5,
+        "encounter_history": 3,
+        "maintenance": 102
+      },
+      "most_repeated_social_text": [
+        [
+          "Linda Park: Opened a grievance follow-up. An unresolved crew dispute is on record",
+          301
+        ],
+        [
+          "Frank Morrow and Dr. Voss: Neither party backed down; resentment increased.",
+          146
+        ],
+        [
+          "Frank Morrow and Sana Okafor: Neither party backed down; resentment increased.",
+          133
+        ],
+        [
+          "Frank Morrow and Derek Cole: Neither party backed down; resentment increased.",
+          132
+        ],
+        [
+          "Derek Cole and Ari Novak: Neither party backed down; resentment increased.",
+          125
+        ]
+      ],
+      "death_details": [
+        {
+          "death": {
+            "id": "CHR-1-V2o3ai1-957",
+            "episode": 1,
+            "minute": 2937,
+            "wallTime": 1793182455000,
+            "realWeek": "2026-10-26",
+            "kind": "death",
+            "message": "Nadia Kline died from documented parasitic emergence from EGG-1",
+            "people": [
+              "Frank Morrow"
+            ],
+            "data": {
+              "cause": "documented parasitic emergence from EGG-1",
+              "deceased": "Nadia Kline",
+              "lethal": true,
+              "encounter": false,
+              "storyKind": "death",
+              "privateKnowledge": true
+            },
+            "missionId": null
+          },
+          "causal_window": [
+            {
+              "id": "CHR-1-V2o3ai1-957",
+              "episode": 1,
+              "minute": 2937,
+              "wallTime": 1793182455000,
+              "realWeek": "2026-10-26",
+              "kind": "death",
+              "message": "Nadia Kline died from documented parasitic emergence from EGG-1",
+              "people": [
+                "Frank Morrow"
+              ],
+              "data": {
+                "cause": "documented parasitic emergence from EGG-1",
+                "deceased": "Nadia Kline",
+                "lethal": true,
+                "encounter": false,
+                "storyKind": "death",
+                "privateKnowledge": true
+              },
+              "missionId": null
+            }
+          ]
+        }
+      ],
+      "resources": {
+        "food": 159.9867,
+        "water": 152.77919999999563,
+        "oxygen": 111.0830000000009,
+        "energy": 179.84769871999998,
+        "medical": 20,
+        "spares": 69.23718359999995,
+        "tools": 69.991,
+        "lab": 80
+      },
+      "resource_acquisition": {},
+      "travel_fuel": 1.9624515496596866,
+      "storage_first": {
+        "physical_bytes": 377202,
+        "primary_bytes": 377202,
+        "compressed": true
+      },
+      "storage_last": {
+        "physical_bytes": 2742376,
+        "primary_bytes": 1384282,
+        "compressed": true
+      },
+      "snapshot_bytes_first": 1927502,
+      "snapshot_bytes_last": 9020907,
+      "checkpoints": [
+        {
+          "real_day": 7,
+          "sim_days": 25.0,
+          "episode": 2,
+          "exact_reload": true,
+          "crew": 19,
+          "dead": 1,
+          "stories": 105,
+          "resources": {
+            "food": 159.98669999999998,
+            "water": 152.77919999999958,
+            "oxygen": 111.0830000000009,
+            "energy": 179.857748,
+            "medical": 20,
+            "spares": 70,
+            "tools": 70,
+            "lab": 79.56515999999985
+          },
+          "arrivals": 5,
+          "calendar_occurrences": [
+            "2026-10-31:Halloween"
+          ],
+          "organisms": {
+            "XENO-INITIAL": {
+              "id": "XENO-INITIAL",
+              "stage": "adult",
+              "dormant": true,
+              "location": "asteroid:23",
+              "origin": "initial concealed chamber",
+              "sealed": true,
+              "behavior": {
+                "version": 1,
+                "state": "contained",
+                "energy": 100,
+                "stamina": 100,
+                "health": 100,
+                "lastTick": 36000,
+                "lastAttack": -100,
+                "steps": 0,
+                "meals": 0,
+                "trace": [
+                  {
+                    "at": 5,
+                    "from": "dormant",
+                    "to": "contained",
+                    "location": "asteroid:23"
+                  }
+                ]
+              }
+            },
+            "EGG-1": {
+              "id": "EGG-1",
+              "stage": "spent egg",
+              "dormant": false,
+              "location": "asteroid:22"
+            },
+            "EGG-2": {
+              "id": "EGG-2",
+              "stage": "egg",
+              "dormant": true,
+              "location": "asteroid:24"
+            },
+            "XENO-HOST-1": {
+              "id": "XENO-HOST-1",
+              "stage": "adult",
+              "dormant": false,
+              "location": "ship:H:A:1",
+              "born": 2457,
+              "host": "Nadia Kline",
+              "variant": {
+                "hostSpecies": "human",
+                "limbs": 2,
+                "build": "medium",
+                "size": 1,
+                "locomotion": "bipedal"
+              },
+              "origin": "EGG-1",
+              "behavior": {
+                "version": 1,
+                "state": "starved",
+                "energy": 0,
+                "stamina": 2.840000000000517,
+                "health": 100,
+                "lastTick": 36000,
+                "lastAttack": 2675,
+                "steps": 34,
+                "meals": 0,
+                "trace": [
+                  {
+                    "at": 2460,
+                    "from": "sensing",
+                    "to": "hiding",
+                    "location": "ship:R:A05"
+                  },
+                  {
+                    "at": 2465,
+                    "from": "hiding",
+                    "to": "attack",
+                    "location": "ship:R:A05",
+                    "target": "Mara Chen"
+                  },
+                  {
+                    "at": 2470,
+                    "from": "attack",
+                    "to": "hiding",
+                    "location": "ship:R:A05"
+                  },
+                  {
+                    "at": 2495,
+                    "from": "hiding",
+                    "to": "attack",
+                    "location": "ship:R:A05",
+                    "target": "Rhea Ortiz"
+                  },
+                  {
+                    "at": 2500,
+                    "from": "attack",
+                    "to": "hiding",
+                    "location": "ship:R:A05"
+                  },
+                  {
+                    "at": 2520,
+                    "from": "hiding",
+                    "to": "attack",
+                    "location": "ship:R:A05",
+                    "target": "Theo Moss"
+                  },
+                  {
+                    "at": 2525,
+                    "from": "attack",
+                    "to": "hiding",
+                    "location": "ship:R:A05"
+                  },
+                  {
+                    "at": 2585,
+                    "from": "hiding",
+                    "to": "attack",
+                    "location": "ship:R:A05",
+                    "target": "Mara Chen"
+                  },
+                  {
+                    "at": 2590,
+                    "from": "attack",
+                    "to": "hiding",
+                    "location": "ship:R:A05"
+                  },
+                  {
+                    "at": 2635,
+                    "from": "hiding",
+                    "to": "attack",
+                    "location": "ship:R:A05",
+                    "target": "Elena Ruiz"
+                  },
+                  {
+                    "at": 2640,
+                    "from": "attack",
+                    "to": "hiding",
+                    "location": "ship:R:A05"
+                  },
+                  {
+                    "at": 2675,
+                    "from": "hiding",
+                    "to": "attack",
+                    "location": "ship:R:A05",
+                    "target": "Elena Ruiz"
+                  },
+                  {
+                    "at": 2680,
+                    "from": "attack",
+                    "to": "retreat",
+                    "location": "ship:R:A05"
+                  },
+                  {
+                    "at": 3055,
+                    "from": "retreat",
+                    "to": "starved",
+                    "location": "ship:H:A:1"
+                  }
+                ],
+                "sightingKey": "ship:R:A05:Frank Morrow,Elena Ruiz,Priya Shah,Rhea Ortiz,Sana Okafor,Theo Moss,Ari Novak",
+                "sightedAt": 2675
+              }
+            }
+          }
+        },
+        {
+          "real_day": 30,
+          "sim_days": 111.75,
+          "episode": 5,
+          "exact_reload": true,
+          "crew": 19,
+          "dead": 1,
+          "stories": 365,
+          "resources": {
+            "food": 159.9867,
+            "water": 152.77919999999563,
+            "oxygen": 111.0830000000009,
+            "energy": 179.84769871999998,
+            "medical": 20,
+            "spares": 69.23718359999995,
+            "tools": 69.991,
+            "lab": 80
+          },
+          "arrivals": 5,
+          "calendar_occurrences": [
+            "2026-10-31:Halloween",
+            "2026-11-11:Veterans Day",
+            "2026-11-26:Thanksgiving"
+          ],
+          "organisms": {
+            "XENO-INITIAL": {
+              "id": "XENO-INITIAL",
+              "stage": "adult",
+              "dormant": true,
+              "location": "asteroid:23",
+              "origin": "initial concealed chamber",
+              "sealed": true,
+              "behavior": {
+                "version": 1,
+                "state": "contained",
+                "energy": 100,
+                "stamina": 100,
+                "health": 100,
+                "lastTick": 160920,
+                "lastAttack": -100,
+                "steps": 0,
+                "meals": 0,
+                "trace": [
+                  {
+                    "at": 5,
+                    "from": "dormant",
+                    "to": "contained",
+                    "location": "asteroid:23"
+                  }
+                ]
+              }
+            },
+            "EGG-1": {
+              "id": "EGG-1",
+              "stage": "spent egg",
+              "dormant": false,
+              "location": "asteroid:22"
+            },
+            "EGG-2": {
+              "id": "EGG-2",
+              "stage": "egg",
+              "dormant": true,
+              "location": "asteroid:24"
+            },
+            "XENO-HOST-1": {
+              "id": "XENO-HOST-1",
+              "stage": "adult",
+              "dormant": false,
+              "location": "ship:H:A:1",
+              "born": 2457,
+              "host": "Nadia Kline",
+              "variant": {
+                "hostSpecies": "human",
+                "limbs": 2,
+                "build": "medium",
+                "size": 1,
+                "locomotion": "bipedal"
+              },
+              "origin": "EGG-1",
+              "behavior": {
+                "version": 1,
+                "state": "starved",
+                "energy": 0,
+                "stamina": 2.840000000000517,
+                "health": 100,
+                "lastTick": 160920,
+                "lastAttack": 2675,
+                "steps": 34,
+                "meals": 0,
+                "trace": [
+                  {
+                    "at": 2460,
+                    "from": "sensing",
+                    "to": "hiding",
+                    "location": "ship:R:A05"
+                  },
+                  {
+                    "at": 2465,
+                    "from": "hiding",
+                    "to": "attack",
+                    "location": "ship:R:A05",
+                    "target": "Mara Chen"
+                  },
+                  {
+                    "at": 2470,
+                    "from": "attack",
+                    "to": "hiding",
+                    "location": "ship:R:A05"
+                  },
+                  {
+                    "at": 2495,
+                    "from": "hiding",
+                    "to": "attack",
+                    "location": "ship:R:A05",
+                    "target": "Rhea Ortiz"
+                  },
+                  {
+                    "at": 2500,
+                    "from": "attack",
+                    "to": "hiding",
+                    "location": "ship:R:A05"
+                  },
+                  {
+                    "at": 2520,
+                    "from": "hiding",
+                    "to": "attack",
+                    "location": "ship:R:A05",
+                    "target": "Theo Moss"
+                  },
+                  {
+                    "at": 2525,
+                    "from": "attack",
+                    "to": "hiding",
+                    "location": "ship:R:A05"
+                  },
+                  {
+                    "at": 2585,
+                    "from": "hiding",
+                    "to": "attack",
+                    "location": "ship:R:A05",
+                    "target": "Mara Chen"
+                  },
+                  {
+                    "at": 2590,
+                    "from": "attack",
+                    "to": "hiding",
+                    "location": "ship:R:A05"
+                  },
+                  {
+                    "at": 2635,
+                    "from": "hiding",
+                    "to": "attack",
+                    "location": "ship:R:A05",
+                    "target": "Elena Ruiz"
+                  },
+                  {
+                    "at": 2640,
+                    "from": "attack",
+                    "to": "hiding",
+                    "location": "ship:R:A05"
+                  },
+                  {
+                    "at": 2675,
+                    "from": "hiding",
+                    "to": "attack",
+                    "location": "ship:R:A05",
+                    "target": "Elena Ruiz"
+                  },
+                  {
+                    "at": 2680,
+                    "from": "attack",
+                    "to": "retreat",
+                    "location": "ship:R:A05"
+                  },
+                  {
+                    "at": 3055,
+                    "from": "retreat",
+                    "to": "starved",
+                    "location": "ship:H:A:1"
+                  }
+                ],
+                "sightingKey": "ship:R:A05:Frank Morrow,Elena Ruiz,Priya Shah,Rhea Ortiz,Sana Okafor,Theo Moss,Ari Novak",
+                "sightedAt": 2675
+              }
+            }
+          }
+        }
+      ],
+      "backup_sha256": "14a54eb1c944727f19f2d617224b6a57d473aae73c92079a1bda444fc00d1d30",
+      "runtime_sha256": {
+        "server.py": "d43781ba1af5f371de05f32b572efbbb9c44b69efbf133e988a43f67076cee44",
+        "requirements.txt": "3dd40988330002f37cd1f2b2b80e65ee3919798dc38771b00fed572a4d659f9e",
+        "config.json": "54a4ac908d2fe82e9c58fb942134327cf0562665e47b170b5d9b0b085ce8b865",
+        "Start_Remote_Deck.bat": "ffbd4b2e6d561ad162547e4f32c0de891915a6d3876ba6d2bff427ec06df368b",
+        "web/anthology-ui.js": "d4ca2419004918f5d6cc423b354d6fee306e34fcb7f05932051014c39dba36ae",
+        "web/anthology.js": "e2621ab0e567e85a9a4b25b11968df7480e69f6abe311e547fddea412a224bb2",
+        "web/calendar.js": "6d1c316968a5f2fb29b82e110fa3678a49e3be9ad9ffd38833600a1f55cdd29a",
+        "web/chronicle-film.js": "acd44c721d00da5aa91708fd16774882df362b015ab70d7d9228707f65944b94",
+        "web/chronicles.js": "cb613ccd783d9843ffe5d73e5a06f01b96b12d9b0df19c51ef0b522fa0211367",
+        "web/cinema-ui.js": "dbdd080a349fcf790401c04e707aaf146eb33a839c6aa7aad3da47a2784a29f1",
+        "web/cinema.js": "c9340e83ba5ea57b3b8a63a39662f5da8ee1c309ec954263f4d3c15222480cac",
+        "web/core-context.js": "984feae5ab86359013cfad335c7fd2cfc398c6515a69ebf90add78969424d0d2",
+        "web/creatures.js": "a4eaea655b4a47066d217585b77110b1b68049fb50bb425520f6e9eb38ee340e",
+        "web/crew-life.js": "6b1f75e529a2911204f4c134ee3100f2ce6b832fa3e9ddb95345cb6af1f44469",
+        "web/diagnostics.js": "a4f29c565348ecc3adff65e6d0459f233f9fde60fbf0794e240d0ee8ad9759dc",
+        "web/discovery.js": "e950ac6b0f3aff732995b5adc1991b2d6fd935538a879e93c5f90f778cfa8b98",
+        "web/durable-store.js": "d7a13b77f979f7c0f8cd6182683b91442415378d7887fa1738a1013bcea28a83",
+        "web/economy.js": "919fcfdef54d30b6320d8886d4eff43273bb9642763eeaad179bb7607ab3e292",
+        "web/edition.js": "33f4c281646bb8baa8f45b015c82dd5cabb780e69383448f3390f64566e5331f",
+        "web/embodiment.js": "589c39b15781205258b622f82d8f67a2c44b4e21b8f383e231c6ca10d0c9ba0e",
+        "web/emergency-ops.js": "95a0ec04365879fff84ad62399650cfb28037102e3083a6b0946894fe84a9116",
+        "web/entities.js": "c8fe473a604345d7543c6f545909dcf734eb2a8ef2d3a6f62aa48bbf0f9305d1",
+        "web/expeditions.js": "729ad659e78636b42b6a743619bc0c0f7f80d9c8480912ec006115a26ee783ef",
+        "web/experiences.js": "2b39dd4736704bd1619d0f7d25b285d090ab0193eacbc424cdc8f25508ab4b14",
+        "web/film-ui.js": "8ff38db286085cd99c630b5d225afa535816450864623ffee749130a9e0ce0ed",
+        "web/frontier-ui.js": "8b11361b26cd23b57c4418a404ffc1c7472c8af5f93057d4c08a10c79b61548e",
+        "web/frontier.js": "58494ff752b3fc3abc6518bfeba3c29ed74c21cb46bad8358510c16f949bb115",
+        "web/icarus.html": "538006bfb41e95038c3142bb8d1703b77260536c6eaf1976fa91e1ce0cd27de3",
+        "web/index.html": "f328e21ccc1ba10691960e2de355c556e96f19d88cd996366943f061d8a32952",
+        "web/knowledge-runtime.js": "65145b39b9eb7e36f8f49919a2fc43ac71a300093febe37bf33091cf6abada12",
+        "web/knowledge.js": "bd21c044137a62cb2eab437de142221333595c71c4dd5615a5c8dc2ac429fb05",
+        "web/living-frontier-ui.js": "c93bc5a3e5a8d8e3a85c1efdd053e2b566eda05d3b7a3027dc3e77335e577924",
+        "web/living.js": "421a73f5ff1c5b317ab78476692abf3a0fe5e54f2017c88a96b38d19aaf8cdbb",
+        "web/logistics.js": "260d8684db9b0bccc5bbd6c60186fd50e973bbba5c0507ead7b5ad9a712f50ff",
+        "web/lunar.js": "7fe249230562a6d6eb3b6633381a4cddaff56bf90de1676a9ed6c0908c661d51",
+        "web/manifest.webmanifest": "a8ed1d727916b17acf15d37d9a637d4a32cad8e9dbe739084462d0fac28c182b",
+        "web/navigation.js": "36351d320ab0ec49524cc57aefc0c6e6f58fc7ba5b1605d1b21355c5ff2f3b92",
+        "web/operations.js": "8711fc4ed9e2e6937c4a1f600ef873f15efceef5c22690f0f3d04f96c9719a12",
+        "web/repair-policy.js": "a1d3b6a64fa3561563b369a49cb30718c015dea79a47c0486d3954560c19de1d",
+        "web/research.js": "ca4de958ed72b3a6404e792abc24b9821b7fc44190a57444f48e69b61e91a3cd",
+        "web/save-store.js": "77f0bbb42ad82da9bcbcebd25d1de3e12d0989f1dea0087e1ad4ca28678150fe",
+        "web/sol-voice.js": "2e5b80ddbeb2b92c9b0b5c0793de43999e252464bde4f351cec03bc93dd8ce03",
+        "web/spatial.js": "6b4ce51759665185fa558b653e27e2514362d692deb4117ee371f8182b5ae750",
+        "web/stability-diagnostics.js": "d3faeaf4fce68e04960938928ef1729dbe717579ed6b2cb31f0d07972c0732bb",
+        "web/story.js": "2b0464ee7ac4be2409506c7a162ddd8003be6d0df70f47f252641e97c90bb19d",
+        "web/tablet-frontier.js": "6682318bc42b5a46a5703b64137e0d55172ce4eed201305f619c193d55ed6e38",
+        "web/teams.js": "69817c50c92ae5edcdc880b28c904665e6117df25e71a8edabd6ba426597c71b",
+        "web/unified-ui.js": "5a643369c817239bcf3948d5cdfd10d69cc210eaca6a7583da191db61fa91874",
+        "web/unified-world.js": "35e2a8ad0717a19b795f03bc55de0852450766279b17db527f8cf9b9e755fb38",
+        "web/universe.js": "7a3f83170de63739706445cc992c560583e913b577d87087115dfb8cbfae06d4",
+        "web/vendor/LZ_STRING_LICENSE.txt": "433fc9dfe659dbfb1e91eed8351f13651e97bfa3ac6d03394c3d63f61d4bbc80",
+        "web/vendor/astronomy.js": "a2cfab19cab1a15843e4c8cc7410b6cbaafd0907122a8698c25d63d00c2774e4",
+        "web/vendor/lz-string.min.js": "95f4d1cbf099f57161b664bc048426ec3df92637801a4c79116e83315aa787e7",
+        "web/voyage.js": "a70b7bff458052b1ba68713c3a2971ce110a3b169e4e7fe90c9e71cabc90eeda",
+        "web/world-schema.js": "5b958d1116cb1371116ec72a12bc41a06a10efea55f602831bf7e7a35bab844e"
+      },
+      "elapsed_seconds": 1252.180977199001
+    }
+  },
+  "campaign_scope": "Campaigns began at 65403c0. Final runtime differs only by idempotent group initialization in restoreBackup, exactly verified in campaign_patch_scope; no physical simulation/calendar changes. Ordinary runs checkpoint-reload at days 7/30; adverse runs complete day 7. This is not a claim that every campaign began at the final packaging commit.",
+  "not_run": [
+    "Native Windows BAT/input",
+    "Physical Android/Wi-Fi and Galaxy Tab S5e/Samsung TV",
+    "Firefox/Safari",
+    "Antivirus engine/penetration testing",
+    "Human long-form story quality, final art/audio and accessibility review"
+  ],
+  "passed": true,
+  "full_phase3_complete": false
+}
