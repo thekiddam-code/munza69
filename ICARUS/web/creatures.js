@@ -16,10 +16,10 @@ function tick(s,env){const w=s.unifiedWorld;if(!w)return;for(const o of Object.v
  const local=prey.filter(x=>x.q.node===here.node),near=prey.filter(x=>edges.some(n=>n.node===x.q.node));
  const r=key=>env.draw(s.entropy?.seed||1,o.id+':'+s.tick+':'+key);
  b.energy=clamp(b.energy-.02); // Dormant/contained metabolism is not an infinite active hunting budget.
- if(b.energy<=0){note(s,o,'starved');continue;}
  // Feeding can occur only on a real co-located deceased body, with bounded biomass debit.
  const corpse=(s.living?.deceased||[]).find(d=>d.crew&&d.crew.body?.species!=='android'&&(d.biomassConsumed||0)<1&&env.same(env.bodyPosition(d),here));
  if(corpse&&b.energy<80){const n=Math.min(.1,1-(corpse.biomassConsumed||0));corpse.biomassConsumed=(corpse.biomassConsumed||0)+n;b.energy=clamp(b.energy+n*40);b.meals++;note(s,o,'feeding');continue;}
+ if(b.energy<=0){note(s,o,'starved');continue;}
  if(b.stamina<25||b.health<30){note(s,o,'retreat');const safe=edges.filter(n=>!prey.some(x=>env.same(x.q,n)));if(safe.length&&b.stamina>=5)move(s,o,safe[Math.floor(r('retreat')*safe.length)],env);else rest(s,o);continue;}
  if(local.length){const witnesses=local.map(x=>x.p.name);const sightingKey=o.location+':'+witnesses.join(',');if(b.sightingKey!==sightingKey||s.tick-(b.sightedAt??-100)>=60){env.record('observation','A local observer sighted an active organism.',witnesses,{organismId:o.id,location:o.location,behavior:b.state});b.sightingKey=sightingKey;b.sightedAt=s.tick;}
   if(s.tick-b.lastAttack>=20&&b.stamina>=15&&r('attack')<.35){const victim=local[Math.floor(r('target')*local.length)].p;b.lastAttack=s.tick;b.stamina=clamp(b.stamina-15);b.energy=clamp(b.energy-1);note(s,o,'attack',{target:victim.name});const source=env.record('encounter','A documented organism attacked '+victim.name+' at its physical location.',witnesses,{organismId:o.id,location:o.location,encounter:true,lethal:false});env.life.hurt(s,victim,12+Math.floor(r('damage')*23),'documented encounter '+o.id+' source '+(source?.id||'unavailable'),(k,m,people,data)=>env.record(k,m,people,{...data,organismId:o.id,encounter:true,encounterSourceId:source?.id||null}));
