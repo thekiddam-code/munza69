@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "checks": [
+    "ICARUS_Living_World_Phase2_Lite.zip: checksum, CRC and safe archive paths",
+    "ICARUS_Living_World_Phase2_Source.zip: checksum, CRC and safe archive paths",
+    "ICARUS_Living_World_Phase2_Test_Evidence.zip: checksum, CRC and safe archive paths",
+    "Lite: 49 complete runtime files, source-file hashes, no standalone tests/reports/generated credentials",
+    "Source archive runtime matches independently tested Lite content",
+    "Evidence summary matches committed validation data"
+  ]
+}

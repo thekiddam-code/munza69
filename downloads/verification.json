@@ -1,0 +1,22 @@
+{
+  "runtime_source": "113e79b7693db4c37c8519449339032cf2ed60a1",
+  "source_zip_commit": "e5944bfa2030f24e1907950efe59442b6b62ed0b",
+  "files": [
+    {
+      "file": "ICARUS_Living_World_Phase2_Lite.zip",
+      "bytes": 381521,
+      "sha256": "1ea7f7aff55aba64e1f9ccbc3adebcdbb0ad8163166bb24f428d685c12af9891"
+    },
+    {
+      "file": "ICARUS_Living_World_Phase2_Source.zip",
+      "bytes": 683692,
+      "sha256": "78e62fb560d94cbefceed8b6f4750da962ad6f155af6cac715c0f3311f26a576"
+    },
+    {
+      "file": "ICARUS_Living_World_Phase2_Test_Evidence.zip",
+      "bytes": 13263097,
+      "sha256": "f93f09150117daeac270b47ebe7f5920e5a157af442215e76132e357350df142"
+    }
+  ],
+  "evidence_files": 170
+}
