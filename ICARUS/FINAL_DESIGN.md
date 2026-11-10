@@ -1,6 +1,6 @@
 # ICARUS — Final Core Design
 
-Status: governing product direction from v1.4. This document defines the destination, not a claim that the current build is a finished commercial release. Changes must show how they deepen or finish this experience. Depth before breadth. Cohesion before expansion. Completion before additional scope.
+Status: governing core anthology direction, extended by the approved Unified World Phase 1 specification (UNIFIED_WORLD_SPEC.md). This document defines the destination, not a claim that the current build is a finished commercial release. Changes must show how they deepen or finish this experience. Depth before breadth. Cohesion before expansion. Completion before additional scope.
 
 ## 1. Identity and player experience
 
@@ -9,6 +9,10 @@ Status: governing product direction from v1.4. This document defines the destina
 A persistent spaceship, its established crew and the autonomous corporate AI SOL provide continuity through unpredictable, sometimes interconnected deep-space stories. The player can observe quietly or intervene as captain. The ship continues operating without a mandatory dispatcher, dialogue choice, daily checklist or encounter quota.
 
 A good session can contain a satisfying ordinary watch, a humorous communication, friendship, a scientific uncertainty, philosophical disagreement, a frightening incident or a bittersweet departure. Danger is one possibility. An uneventful passage is valid. The final game must remain interesting through people, observation and consequences, rather than an escalating supply of emergencies or map cells.
+
+## Approved time and bounded-world update
+
+Normal production time advances at 4× real time; the nine approved local holidays use 1×. Displayed date corrections never rewind physical history. Episodes use real local Monday–Sunday weeks. Personal observances and presentation-only seasonal flags cannot force incidents or global slowdown. The ship, asteroid 8847-A, Weyland-Yutani derelict and military wreck form the approved bounded setting, reusing existing maps. This authorization does not activate procedural planetary expansion or a galactic economy. See UNIFIED_ARCHITECTURE.md and UNIFIED_LIMITATIONS.md for implemented and incomplete scope.
 
 ## 2. Essential final-release systems
 

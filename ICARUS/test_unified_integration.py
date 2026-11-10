@@ -15,6 +15,16 @@ class UnifiedIntegration(CoreIntegration):
         p=self.page();p.evaluate('__icarusSoak.realStart(Date.parse("2026-12-24T12:00Z"),"UTC")');before=self.snap(p);p.evaluate('__icarusSoak.realAdvance(Date.parse("2026-12-24T12:00Z"))');after=self.snap(p)
         for key in ['crew','economy','missions','director','tick']:self.assertEqual(after[key],before[key],key)
         self.assertEqual(len(after['calendar']['occurrences']),1);p.evaluate('__icarusSoak.realAdvance(Date.parse("2026-12-24T12:01Z"))');self.assertEqual(self.snap(p)['tick'],1)
+    def test_real_calendar_boundary_preserves_active_mission_research_medical_and_fire(self):
+        from test_continuity import Continuous
+        original=self.advance
+        def real_boundary(page,count):
+            self.assertEqual(count,1)
+            page.evaluate('__icarusSoak.realStart(Date.parse("2026-06-07T23:59:45Z"),"UTC")')
+            page.evaluate('__icarusSoak.realAdvance(Date.parse("2026-06-08T00:00Z"))')
+        self.advance=real_boundary
+        try:Continuous.test_transition_during_mission_research_treatment_and_emergency(self)
+        finally:self.advance=original
     def test_creator_lore_does_not_leak_to_the_acquired_archive(self):
         p=self.page();p.locator('#icarus-menu button[data-page="settings"]').click();p.locator('summary').filter(has_text='CREATOR LORE EDITOR').click();p.locator('#canon-key').select_option('military');self.assertIn('dormant adult',p.locator('#canon-text').input_value());p.locator('#canon-text').fill('PRIVATE CANON TEST');p.locator('#canon-save').click();self.assertEqual(self.snap(p)['unifiedWorld']['canon']['military'],'PRIVATE CANON TEST');self.assertEqual(self.snap(p)['unifiedWorld']['archives'],[]);self.operations(p);p.locator('summary').filter(has_text='IN-GAME ARCHIVES').click();self.assertNotIn('PRIVATE CANON TEST',p.locator('#acquired-lore').inner_text())
     def test_initial_biology_and_personal_inventory_persist_without_fabricated_history(self):

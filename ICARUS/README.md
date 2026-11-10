@@ -1,3 +1,7 @@
+# ICARUS — Unified World Phase 1
+
+Read [README_UNIFIED_PHASE1.md](README_UNIFIED_PHASE1.md) for the current build, launch and configuration. This is a tested implementation increment with documented unfinished scope, not a final version of the complete uploaded design. Existing launchers and Remote Deck bridge remain in place.
+
 # ICARUS v1.4.1 — Stability & Survival
 
 Start with [README_v1.4.1.md](README_v1.4.1.md) for launch, save compatibility, investigation and validation instructions. This is the focused core-anthology maintenance release; the existing launchers and Remote Deck remain in place. Full results and remaining work are documented in VALIDATION_v1.4.1.md and FINAL_RELEASE_ROADMAP.md.

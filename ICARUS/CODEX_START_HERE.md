@@ -1,3 +1,7 @@
+# Current handoff: Unified World Phase 1
+
+Start with README_UNIFIED_PHASE1.md and UNIFIED_PROGRESS.md. The approved request is preserved in UNIFIED_WORLD_SPEC.md. Read the architecture, limitations, validation and roadmap; distinguish the verified calendar/spatial/lore/biology foundations from the unfinished complete design. Calendar tests use explicit wall timestamps and IANA zones. Legacy fixed-step compatibility tests alone do not prove production pacing. All historical handoffs below are context only.
+
 # Current handoff: ICARUS v1.4.1 Stability & Survival
 
 Read AGENTS.md, ROOT_CAUSE_v1.4.1.md, ENGINEERING_v1.4.1.md, VALIDATION_v1.4.1.md, KNOWN_LIMITATIONS_v1.4.1.md, FINAL_DESIGN.md and FINAL_RELEASE_ROADMAP.md. The original seed-1001 failure was reproduced using its original day-30/day-90 reload profile. The captured pre-collapse state and source history are in reports/investigation; use recover_cascade.py to compare identical starting worlds. Preserve core/Extended Universe separation and captain intervention. Final reports describe verified behavior and unresolved issues; tests do not certify final-release quality. Historical handoffs follow.

@@ -1,3 +1,7 @@
+# Current handoff: Unified World Phase 1
+
+Read UNIFIED_WORLD_SPEC.md, UNIFIED_ARCHITECTURE.md, UNIFIED_LIMITATIONS.md, UNIFIED_VALIDATION.md and the final-design documents. Baseline is v1.4.1 a363799. Real production pacing is 4×, official holiday pacing 1×, episodes real local Monday–Sunday; do not restore legacy minute-per-second production or accelerated weekly resets. Preserve physical route authority, paid repair, actual sources and captain controls. Military wreck state references existing asteroid rooms 21–24. Full uploaded scope is not complete: finish the documented art, creature, knowledge and calendar limits before expanding elsewhere.
+
 # Current maintenance handoff: ICARUS v1.4.1
 
 This focused Stability & Survival update continues v1.4 602b4a2. Read ROOT_CAUSE_v1.4.1.md, ENGINEERING_v1.4.1.md, VALIDATION_v1.4.1.md, KNOWN_LIMITATIONS_v1.4.1.md and the final-design documents. Retain paid physical repair, safe near-side hatch access, bounded reservations, real station/supply checks and exhausted-objective navigation limits. Replay seed plus external checkpoint profile; preserve deaths and captain seals. Packaged reports distinguish final evidence from superseded diagnostic attempts. Historical directions below remain context, not a request to expand scope.
