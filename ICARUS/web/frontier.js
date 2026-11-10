@@ -18,6 +18,7 @@ function opportunities(s,env){const n=s.navigation;if(n.phase!=='orbit'||n.curre
  if(d.distress&&!d.signalResolved&&failed('distress')<2)options.push({...base,type:'distress',priority:75,objective:'Recover and inspect the observed distress beacon telemetry',reason:'An unresolved distress carrier was detected',duration:100});
  if(Object.values(d.cache||{}).some(n=>n>0)&&failed('recovery')<2)options.push({...base,type:'recovery',priority:85,objective:'Recover the finite cargo cache left by an earlier failed field operation',reason:'Recorded abandoned cargo has known provenance',duration:120});
  if(d.visited)for(const [key,amount] of Object.entries(need))if(amount>1&&(d.deposits[key]||0)>0&&failed('extract_'+key)<2)options.push({...base,type:'extract_'+key,priority:90,resource:key,requested:Math.min(30,amount,d.deposits[key]),objective:'Extract up to '+Math.min(30,amount,d.deposits[key]).toFixed(1)+' '+key+' units and return the cargo',reason:'Projected operating reserve deficit: '+amount.toFixed(1)+' '+key,duration:180});
+ if(env.unified&&d.id==='LOCAL-HULL'&&d.surveyed&&s.unifiedWorld?.military.power>0&&!s.unifiedWorld.military.interiorComplete&&failed('wreck_interior')<2)options.push({...base,type:'wreck_interior',priority:55,objective:'Map the compartments indicated by the surveyed military power bus',reason:'Field evidence shows a finite local power source and unexplored sealed compartments',duration:360});
  return options.sort((a,b)=>b.priority-a.priority||a.type.localeCompare(b.type));
 }
 function begin(s,op,env){const f=s.frontier;if(env.emergencyOps&&(s.emergencyOps.transport.unrecovered||s.emergencyOps.transport.condition<65)){s.navigation.lastDecision={at:s.tick,reason:'No return-capable primary transport; field launch withheld'};return false;}if(env.operations?.criticalShip(s))return false;if(Object.values(s.remoteCore.missions).some(Boolean)||s.economy.allowLaunch===false)return false;
@@ -60,6 +61,7 @@ function activeTick(s,env){const f=s.frontier,job=f.jobs.find(j=>j.id===f.active
  const condition=Math.min(s.equipment.C06?.condition||0,s.equipment.C07?.condition||0)/100;
  if(condition<.3||s.economy.stock.energy<3){m.failed=true;m.phase='returning';m.progress=0;return;}
  env.economy.consume(s,'energy',.025,'field operation '+job.id);m.fieldProgress+=Math.max(.35,condition)*(m.workRate||1)*(m.plan?.kitCondition!==undefined ? .5+.5*m.plan.kitCondition/100 : 1);job.progress=m.fieldProgress;env.expeditions?.advance(s,m,job,d,env);
+ env.unified?.field(s,m,job,env);
  if(job.resource){const amount=env.logistics.extract(s,d,m,job.resource,Math.min(.2,job.requested-Object.values(m.extracted).reduce((a,b)=>a+b,0)));if(!amount&&m.fieldProgress>10){m.fieldProgress=job.duration;}}
  if(job.type==='recovery')env.logistics.recover(s,d,m,.2);
  if(job.type==='survey')while(m.lastSample<3&&m.fieldProgress>=(m.lastSample+1)*60){

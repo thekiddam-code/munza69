@@ -1,0 +1,5 @@
+const {test}=require('node:test'),a=require('node:assert/strict'),S=require('./web/spatial');
+test('corridor traversal is not successive room occupancy and uses current node interpolation',()=>{const p={room:'A01',route:['C05'],nav:{at:'H:B:2',steps:['H:B:3'],index:0,progress:.25}};const q=S.position(p);a.equal(q.room,null);a.equal(q.node,'H:B:2');a.equal(q.fraction,.25);a.equal(S.deck(q),'B');a.match(S.camera(p).label,/CORRIDOR/);});
+test('field camera never invents authenticated ship footage',()=>{a.equal(S.position({room:'C01',expeditionAway:'asteroid'}).environment,'asteroid');a.equal(S.position({room:'C01',expeditionAway:'asteroid'}).room,null);});
+test('stopped route and actual room have distinct camera positions',()=>{a.equal(S.position({room:'A01'}).room,'A01');a.equal(S.position({room:'A01',nav:{at:'H:A:1',steps:null}}).room,null);});
+test('mobility changes pace without inventing different identity or geometry',()=>{a.equal(S.locomotion({body:{locomotion:'wheelchair'}}),.75);a.equal(S.locomotion({body:{locomotion:'damaged-android'}}),.55);a.equal(S.locomotion({}),1);});
