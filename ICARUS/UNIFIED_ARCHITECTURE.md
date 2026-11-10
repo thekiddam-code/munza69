@@ -30,7 +30,7 @@ The deterministic soak endpoint requires `?icarus_soak=1`, disables the automati
 
 ## Authoritative spatial presentation
 
-`spatial.js` reads `p.nav.at`, current edge and edge fraction. Camera follow now presents the actual corridor or lift/ladder transition; a traversing character is not shown successively occupying adjacent compartments. Room cameras and cutaway occupancy use the same projection. Field actors do not receive invented authenticated camera footage. Bridge telemetry identifies physical corridor nodes.
+`spatial.js` reads `p.nav.at`, current edge and edge fraction. Camera follow now presents the actual corridor or lift/ladder transition; a traversing character is not shown successively occupying adjacent compartments. Room cameras and cutaway occupancy use the same projection. Legacy horizontal cutaway marker and some hologram coordinates remain schematic; their full coordinate consolidation is still incomplete. Field actors do not receive invented authenticated camera footage. Bridge telemetry identifies physical corridor nodes.
 
 Wheelchair routing excludes ladder edges, respects lift outages and can legitimately fail to find a route. Mobility profiles affect traversal rate. Build/locomotion profiles are persistent and configurable for stationary crew. This provides data and navigation support; it is not a completed anatomy, natural-animation or wheelchair/prosthetic art pipeline. Historic reconstruction frames without navigation data retain their old limited room information and their reconstruction label.
 
