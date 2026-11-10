@@ -5,7 +5,7 @@ An autonomous science-fiction anthology simulation. This build refines the exist
 ## Back up and install
 
 1. In the working Phase 1/2/3 build, export a **complete JSON backup**. Confirm the file exists. Preserve an untouched copy of that working folder and this pre-upgrade backup.
-2. Stop the old PC server. Extract the entire new Lite ZIP to a separate folder. Keep all web assets and the Python host together; do not mix individual files from different builds.
+2. Close all old simulation tabs and stop the old PC server. Extract the entire new Lite ZIP to a separate folder. Keep all web assets and the Python host together; do not mix individual files from different builds.
 3. Copy your customized `config.json` and, when present, `paired_devices.json` and `samsung_tv.json` from the old folder. No generated credentials are shipped.
 4. Start the unchanged `Start_Remote_Deck.bat`. Keep the **same browser profile, hostname and port 8765**. Existing core save keys and IndexedDB schema remain compatible. Do not click New Voyage to recover a save. If necessary import your complete backup in Settings.
 5. Keep one simulation writer tab. Additional same-origin tabs show **READ-ONLY SPECTATOR** and cannot save, run the physical simulation or consume Remote Deck commands. Close the writer and reload the desired tab to take over; LAN lease fallback can require 15 seconds after a crashed writer. Different browser profiles/origins are separate voyages, as before.
@@ -25,7 +25,7 @@ Settings → Save Management → **Stream complete backup** writes `.ndjson`: wo
 
 **Import backup (.json / .ndjson)** accepts existing files and the new format. It validates the world, source availability, chunk hashes/order/IDs and final manifest, stages history, then commits world and history in one IndexedDB transaction. Progress and Cancel are visible; cancellation closes when atomic commit begins. Physical ticking is held during transfer, then existing bounded catch-up resumes. Failed/cancelled staging leaves the old world; after a crash, a new writer cleans abandoned staging. Keep backups outside browser storage.
 
-Legacy JSON still requires whole-file parsing under the existing 128 MiB limit. New streamed files avoid loading the entire history array; individual lines have a 64 MiB safety bound and history batches contain at most 128 rows. Old save-only files without a full archive import all records they actually contain and are explicitly labeled partial; unavailable older history is never invented. Import requires working IndexedDB; if storage fails, use the labeled JSON rescue export and restore in a functioning browser. SHA-256 detects corruption, not who authored a file.
+Legacy JSON still requires whole-file parsing under the existing 128 MiB limit. New streamed files avoid loading the entire history array; individual lines have a 64 Mi UTF-16 code-unit buffer bound and history batches contain at most 128 rows. Old save-only files without a full archive import all records they actually contain and are explicitly labeled partial; unavailable older history is never invented. Import requires working IndexedDB; if storage fails, use the labeled JSON rescue export and restore in a functioning browser. SHA-256 detects corruption, not who authored a file.
 
 ## Rollback
 

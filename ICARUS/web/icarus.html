@@ -3202,6 +3202,7 @@ const cameraMarkup=new WeakMap(),cameraPerf={renders:0,actorRebuilds:0,totalMs:0
 function cameraHTML(el,html){if(cameraMarkup.get(el)!==html){el.innerHTML=html;cameraMarkup.set(el,html);cameraPerf.actorRebuilds++;}}
 function renderCamera(){document.documentElement.classList.toggle('motion-paused',paused||observation.view);const start=performance.now();try{return drawCamera();}finally{cameraPerf.renders++;cameraPerf.totalMs+=performance.now()-start;}}
 function drawCamera(){
+ if(!state.crew.length&&!observation.view){$('camstatus').textContent='TELEMETRY / NO ACTIVE CREW';cameraHTML($('campeople'),'No living crew available.');return;}
  if(!ICARUSCinema.hardware(state)&&!observation.view){$('camstatus').textContent='TELEMETRY / CAMERA RECEIVER UNAVAILABLE';$('campeople').textContent='No authenticated camera view.';cameraMarkup.delete($('campeople'));return;}
  const subject=state.crew[follow];const spatial=subject?ICARUSSpatial.camera(subject):null;
  if(!observation.view&&cameraMode==='follow'&&spatial&&spatial.kind!=='room'){
