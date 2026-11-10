@@ -4,6 +4,8 @@ This roadmap follows FINAL_DESIGN.md. Status is about demonstrated behavior, not
 
 Phase 2 is an implementation increment with deterministic and browser evidence, not final-release certification. Details and actual campaign outcomes are in PHASE2_VALIDATION.md: the extracted Lite runtime passed 217 Node cases, 46 Living World/30 stability/44 compatibility browser cases, two timer/three bridge cases and 15 mobile checks. Two ordinary 111.75-simulated-day voyages and two asserted 25-day adverse profiles preserve state and make five actual arrivals each. This evidence verifies an implementation increment, not final human story/visual quality.
 
+Phase 3 adds implemented causal individual routines/conversations, observer camera direction, real saved-state snapshots, source-backed SOL watch notes and an optional Sunday timeline. These are **implemented but needing refinement**, with native hardware, audiovisual/human story review, richer awards/content, archival streaming and single-writer reliability still open. PHASE3_VALIDATION.md records final evidence; automated success alone does not establish final-release readiness.
+
 Status vocabulary: **Complete and verified**, **Implemented but needing refinement**, **Partially implemented**, **Not started**, **Deferred to the Extended Universe edition**.
 
 | Milestone | Current status | Evidence / remaining release gate |
