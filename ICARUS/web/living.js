@@ -20,6 +20,7 @@ function hurt(s,p,amount,cause,emit){
  }
  if(before>=60&&v.health<60)emit('medical',p.name+' requires medical recovery',[p.name],{health:v.health});
 }
+function mourn(s,p,name,sourceId){if(!p||p.name===name||!sourceId||!s.living?.deceased?.some(d=>d.name===name))return false;p.bereavements=p.bereavements||{};if(p.bereavements[name])return false;p.bereavements[name]={sourceId,at:s.tick};const rel=p.relationships?.[name]||0;p.stress=clamp((p.stress||0)+5+Math.max(0,rel)/2);p.vitals.morale=clamp(p.vitals.morale-5-Math.max(0,rel)/2);return true;}
 function tick(s,env){
  const life=init(s);if(life.lastTick===env.now)return;life.lastTick=env.now;
  for(const p of s.crew){
@@ -50,8 +51,8 @@ function tick(s,env){
  for(const p of [...s.crew].filter(p=>p.vitals.health<=0)){
   const record={name:p.name,job:p.job,at:env.now,cause:p.vitals.injuries.at(-1)?.cause||'critical injury',crew:p};
   life.deceased.push(record);s.crew=s.crew.filter(q=>q!==p);
-  env.emit('death',p.name+' died from '+record.cause,[p.name],{cause:record.cause,lethal:true,encounter:false});
-  for(const q of s.crew){const rel=q.relationships?.[p.name]||0;q.stress=clamp((q.stress||0)+5+Math.max(0,rel)/2);q.vitals.morale=clamp(q.vitals.morale-5-Math.max(0,rel)/2);}
+  env.emit('death',p.name+' died from '+record.cause,[p.name],{cause:record.cause,deceased:p.name,lethal:true,encounter:false});
+  for(const q of s.crew){if(env.knowledgeManagedGrief)continue;const rel=q.relationships?.[p.name]||0;q.stress=clamp((q.stress||0)+5+Math.max(0,rel)/2);q.vitals.morale=clamp(q.vitals.morale-5-Math.max(0,rel)/2);}
   for(const [loc,m] of Object.entries(s.remoteCore?.missions||{}))if(m&&(m.members||[m.crew]).includes(p.name)){
    m.casualties=m.casualties||[];if(!m.casualties.includes(p.name))m.casualties.push(p.name);
    const survivors=(m.members||[m.crew]).map(n=>s.crew.find(q=>q.name===n)).filter(Boolean);
@@ -64,5 +65,5 @@ function tick(s,env){
 const durable=['living','operations','entropy','chronicle','socialDynamics','socialFear','lazarus','tissueRepair','specimenCustody','remoteExploration','asteroidExploration'];
 function capture(s){const saved={crew:s.crew};for(const k of durable)if(s[k]!==undefined)saved[k]=s[k];return saved;}
 function restore(s,saved){for(const [k,v] of Object.entries(saved))s[k]=v;for(const p of s.crew)if(!p.expeditionAway){p.route=[];p.nav=null;p.emergencyId=null;p.maintenanceRoom=null;p.interaction=null;p.rescuePatient=null;p.rescueMedic=null;p.rescueStage=null;p.taskMinutes=0;}}
-const api={random,init,ready,risk,hurt,tick,capture,restore};if(typeof module==='object'&&module.exports)module.exports=api;else root.ICARUSLife=api;
+const api={random,init,ready,risk,hurt,mourn,tick,capture,restore};if(typeof module==='object'&&module.exports)module.exports=api;else root.ICARUSLife=api;
 })(typeof globalThis!=='undefined'?globalThis:this);

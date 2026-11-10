@@ -17,3 +17,5 @@ test('inference requires known premises and cannot upgrade uncertain evidence',(
 test('legitimate records can be read at a working archive path, not from an isolated field',()=>{const x=fixture(),f=observation(x);x.radio(true);K.queue(x.s,'A','SOL',f.id);K.tick(x.s,x.env);a.equal(K.read(x.s,'A',f.id,x.env),false);a.equal(K.read(x.s,'B',f.id,x.env),true);a.equal(K.read(x.s,'C',f.id,{recordsAvailable:()=>false}),false);a.deepEqual(K.audit(x.s),[]);});
 
 test('record access is denied without an explicitly established working path',()=>{const x=fixture(),f=observation(x);x.radio(true);K.queue(x.s,'A','SOL',f.id);K.tick(x.s,x.env);a.equal(K.read(x.s,'B',f.id),false);});
+
+test('acquisition callbacks run once on actual observation, delivery and record reading',()=>{const x=fixture(),seen=[];const e=x.source('Actual witnessed death');e.kind='death';e.data.deceased='Recorded deceased';const f=K.observe(x.s,e,['A'],{learned:(n,f)=>seen.push(n)});a.deepEqual(seen,['A']);x.env.learned=n=>seen.push(n);x.radio(true);K.queue(x.s,'A','SOL',f.id);K.tick(x.s,x.env);K.read(x.s,'B',f.id,x.env);K.read(x.s,'B',f.id,x.env);a.deepEqual(seen,['A','SOL','B']);});

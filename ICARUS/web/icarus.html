@@ -3737,7 +3737,7 @@ function voyageBoundary(){if(state.calendar?.mode==='wall')return;ICARUSChronicl
 function economyTick(){ICARUSEconomy.tick(state,{emit:log,hurt:(p,n,cause)=>ICARUSLife.hurt(state,p,n,cause,(k,msg)=>log(msg,'emergency',p.name))});}
 function livingTick(){
  const before=state.crew.length;
- ICARUSLife.tick(state,{now:directorClock(),power:state.power,tissue:tissueSystem(),consume:(key,n)=>ICARUSEconomy.externalConsumption(state,key,n,'clinical treatment'),lossMission:m=>{ICARUSEconomy.loseCargo(state,m);if(m.id?.startsWith('F-')){if(m.phase!=='boarding'){state.emergencyOps.transport.unrecovered=state.frontier.jobs.find(j=>j.id===m.id)?.destination||'recorded field location';log('Primary field transport remains unrecovered after '+m.id+' team loss.','system',null,{storyKind:'mission',missionId:m.id});}ICARUSLogistics.lose(state,m);for(const i of specimenState().items)if(i.source?.missionId===m.id)i.status='lost';}},air:atmosphereRoom,emit:(kind,message,people,data)=>{log(message,kind==='death'||kind==='injury'?'emergency':'system',people[0],{...data,storyKind:kind});}});
+ ICARUSLife.tick(state,{knowledgeManagedGrief:ICARUSEdition.core,now:directorClock(),power:state.power,tissue:tissueSystem(),consume:(key,n)=>ICARUSEconomy.externalConsumption(state,key,n,'clinical treatment'),lossMission:m=>{ICARUSEconomy.loseCargo(state,m);if(m.id?.startsWith('F-')){if(m.phase!=='boarding'){state.emergencyOps.transport.unrecovered=state.frontier.jobs.find(j=>j.id===m.id)?.destination||'recorded field location';log('Primary field transport remains unrecovered after '+m.id+' team loss.','system',null,{storyKind:'mission',missionId:m.id});}ICARUSLogistics.lose(state,m);for(const i of specimenState().items)if(i.source?.missionId===m.id)i.status='lost';}},air:atmosphereRoom,emit:(kind,message,people,data)=>{log(message,kind==='death'||kind==='injury'?'emergency':'system',people[0],{...data,storyKind:kind});}});
  if(before!==state.crew.length){follow=0;observation.frames=[];observation.view=false;observation.playing=false;}
 }
 function naturalSurvey(loc,room,m,p,w){
@@ -4176,6 +4176,7 @@ showPage('home');
 // v0.94.3 patch 1: expose diagnostics inside the ICARUS lexical closure.
 // The simulation state is intentionally private and not a window global.
 function knowledgeRuntime(){return knowledgeService||(knowledgeService=ICARUSKnowledgeRuntime.create(()=>state,{
+ grieve:(name,deceased,sourceId)=>ICARUSLife.mourn(state,state.crew.find(p=>p.name===name),deceased,sourceId),
  radioHardware:()=>state.power>=35&&(state.equipment.B07?.condition??100)>=30,
  signal:loc=>loc==='asteroid'?asteroidSignal(asteroidWorld()):loc==='derelict'?((remote.derelict.docking==='docked'||remote.derelict.power&&remote.derelict.adapter)?'RELAYED':'LOST'):remote.missions.frontier?.phase==='onsite'?'DIRECT':'LOST',
  localRecord:(kind,msg,people,data)=>log(msg,kind==='injury'?'emergency':'system',people[0]||null,{...data,storyKind:kind}),
