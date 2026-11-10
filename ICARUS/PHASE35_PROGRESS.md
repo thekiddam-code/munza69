@@ -1,0 +1,5 @@
+# Phase 3.5 progress
+
+Baseline branch 872b63f / Phase 3 3332c96. Issue #3 and PHASE35_REFINEMENT_PLAN.md are authoritative; Phase 3 claims are not reused as new results. Audited the final design/roadmap, Phase 2/3 constraints and actual physical, crew, camera, chronicle, SOL, durable/cache, server and test interfaces. Baseline rerun: 241 Node tests pass.
+
+3.5A: new read-only animation.js maps performed work, actual nav edges/lift/ladder/wheelchair/carrying and clinical state to procedural motion. Assigned task text alone cannot animate fictitious work. Historical, paused, reduced-motion, dead and incapacitated actors are static. Existing procedural art and visual modes remain. New motion/keyboard/touch CSS reuses the established instrumentation design. Eight focused Node and four Chromium checks pass, including source-unchanged desktop/tablet landscape screenshots. Native devices/final authored art are not certified. Continue camera/provenance, editorial evidence and persistent storage reliability before packaging.

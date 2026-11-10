@@ -1,0 +1,14 @@
+/* Refinements of existing procedural art; no cosmetic world events. */
+.cam-person{transition:left .32s linear;--motion-span:1.8s}.cam-person[data-build=large]{--motion-span:2.2s}.cam-person[data-build=small]{--motion-span:1.4s}
+.cam-person[data-animation=stride] .rig-leg-left{animation:legStep var(--motion-span) ease-in-out infinite}.cam-person[data-animation=stride] .rig-leg-right{animation:legStep var(--motion-span) ease-in-out infinite reverse}
+.cam-person[data-animation=tool] .rig-arm-right{animation:toolTurn 1.5s ease-in-out infinite}.cam-person[data-animation=sample] .rig-arm-right{animation:sampleReach 3s ease-in-out infinite}.cam-person[data-animation=console] .rig-arm-right{animation:sampleReach 2s ease-in-out infinite}
+.cam-person[data-animation=climb] .rig-arm{animation:ladderReach 2s ease-in-out infinite}.cam-person[data-animation=climb] .rig-leg{animation:legStep 2s ease-in-out infinite}
+.cam-person[data-animation=lift] .rig-leg,.cam-person[data-animation^=roll] .rig-leg{animation:none!important}.cam-person[data-animation^=roll] .mobility-aid circle{stroke-dasharray:12 2;animation:wheelTurn 3s linear infinite;transform-origin:19px 29px}
+.cam-person[data-animation=carry] .rig-arm,.cam-person[data-animation=roll-carry] .rig-arm{animation:none!important;rotate:-30deg}.cam-person[data-animation=gesture] .rig-arm-right{animation:conversationHand 3.8s ease-in-out infinite}.cam-person[data-animation=care] .rig-arm-right{rotate:-45deg;animation:sampleReach 4s ease-in-out infinite}.cam-person[data-animation=rest] .rig-art{rotate:6deg}
+.motion-paused .cam-person *,.motion-paused .cam-atmosphere *{animation-play-state:paused!important}.motion-paused .cam-person{transition:none!important}
+.cam-person[data-motion-active=false] *{animation:none!important}.reduce-motion *,.reduce-motion *::before,.reduce-motion *::after{animation:none!important;transition:none!important}
+@keyframes toolTurn{50%{rotate:-25deg}}@keyframes sampleReach{50%{rotate:-35deg;translate:0 -1px}}@keyframes ladderReach{50%{rotate:-65deg}}@keyframes conversationHand{45%,55%{rotate:-35deg}}@keyframes wheelTurn{to{rotate:360deg}}
+button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible,[role=button]:focus-visible{outline:3px solid #ffe29b;outline-offset:3px}
+.spectator-controls button,#cinematic-chronicle button,#backup-transfer button{min-height:44px;min-width:44px}.spectator-controls{align-items:center}#film-stage{padding:12px;min-height:140px;line-height:1.5;background:#0b2029;color:#e0f4f4}#film-stage small{display:block;overflow-wrap:anywhere;color:#bad4db}.film-frame svg{width:100%;max-height:200px}.film-frame{border:1px solid #527580;padding:8px}#film-position{color:#cee7eb}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+@keyframes legStep{0%,100%{rotate:-16deg}50%{rotate:16deg}}
