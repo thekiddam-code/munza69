@@ -1520,7 +1520,7 @@ function behaviorTick(){
    else p.stress=clamp(p.stress-0.06,0,100);
    if(p.hunger>85)p.mood=clamp(p.mood-0.045,0,100);
    if(p.stress>75)p.energy=clamp(p.energy-0.035,0,100);
-   if(!p.emergencyId&&!p.route.length&&state.tick%35===0&&p.taskMinutes>10&&p.task!=='Resting'){const needsChange=(p.hunger>80&&((capability('galley')<48&&!p.task.includes('rations'))||(capability('galley')>=48&&!p.task.includes('meal'))))||(p.job==='Security'&&capability('security')<65&&!p.task.includes('patrol'))||(p.job==='Scientist'&&capability('research')<55&&!p.task.includes('notes'))||(capability('air')<57&&p.job!=='Engineer'&&p.room!=='A08'&&!p.task.includes('Relocating'));if(needsChange){p.taskMinutes=0;assign(p)}}
+   if(!p.expeditionId&&!p.expeditionAway&&!p.emergencyId&&!p.route.length&&state.tick%35===0&&p.taskMinutes>10&&p.task!=='Resting'){const needsChange=(p.hunger>80&&((capability('galley')<48&&!p.task.includes('rations'))||(capability('galley')>=48&&!p.task.includes('meal'))))||(p.job==='Security'&&capability('security')<65&&!p.task.includes('patrol'))||(p.job==='Scientist'&&capability('research')<55&&!p.task.includes('notes'))||(capability('air')<57&&p.job!=='Engineer'&&p.room!=='A08'&&!p.task.includes('Relocating'));if(needsChange){p.taskMinutes=0;assign(p)}}
  }
 }
 function resetBehavior(){state.behavior={notices:{},disruptions:0,missedMeals:0,delayedRepairs:0,securityPatrols:0,scienceDelays:0,evacuations:0};for(const p of state.crew){p.hunger=35+rnd(30);p.stress=10+rnd(18);p.disruptions=0}}
@@ -2637,9 +2637,9 @@ if(state.tick%5===0&&p.job==='Engineer'&&p.room===p.target&&!p.route.length){
  }
 }
 if(p.taskMinutes===0&&simRandom()<.28)log(p.name+' finished '+p.goal.toLowerCase()+' in '+roomName(p.room)+'.','routine',p.name)}
-if(state.tick%31===0&&state.crew.length){let p=state.crew[rnd(state.crew.length)],other=state.crew.filter(q=>q!==p&&q.room===p.room&&!q.route.length);if(other.length){let q=other[rnd(other.length)];socialMoment(p,q);socialInfluence(p,q)}}
+if(state.tick%31===0){const present=state.crew.filter(p=>!p.expeditionAway&&!p.route.length&&ICARUSSpatial.position(p).kind==='room');if(present.length){const p=present[rnd(present.length)],other=present.filter(q=>q!==p&&ICARUSSpatial.position(q).room===ICARUSSpatial.position(p).room);if(other.length){const q=other[rnd(other.length)];socialMoment(p,q);socialInfluence(p,q)}}}
 
-if(state.tick%47===0){const present=state.crew.filter(p=>!p.expeditionAway&&!p.route.length);const p=present[rnd(present.length||1)];if(p){const peers=present.filter(q=>q!==p&&q.room===p.room);if(peers.length)socialInfluence(p,peers[rnd(peers.length)])}}
+if(state.tick%47===0){const present=state.crew.filter(p=>!p.expeditionAway&&!p.route.length&&ICARUSSpatial.position(p).kind==='room');const p=present[rnd(present.length||1)];if(p){const peers=present.filter(q=>q!==p&&q.room===p.room);if(peers.length)socialInfluence(p,peers[rnd(peers.length)])}}
 if(state.tick%1440===0)log('A new shipboard day begins.','system');
 voyageBoundary();
 if(state.tick%2===0){observation.frames.push({tick:state.tick,time:stamp(),crew:state.crew.map(p=>({room:p.room,task:p.task,goal:p.goal,target:p.target,route:p.route.length,travelProgress:p.travelProgress||0}))});if(observation.frames.length>360){observation.frames.shift();if(observation.view)observation.index=Math.max(0,observation.index-1)}}
@@ -3788,7 +3788,7 @@ function missionFieldAssessment(loc,m){
  return false;
 }
 function reachableUnvisited(loc){
- const w=loc==='derelict'?explorationWorld():asteroidWorld();if(ICARUSEdition.core&&state.knowledge)return w.rooms.some(r=>{const k=knowledgeRuntime().knownMap(loc,r.id);return !k?.visited&&!k?.blocked;});
+ const w=loc==='derelict'?explorationWorld():asteroidWorld();if(ICARUSEdition.core&&state.knowledge)return ICARUSKnowledge.reachableUnvisited(state,loc,loc==='derelict'?derelictNeighbors:asteroidNeighbors);
  const neighbors=loc==='derelict'?derelictNeighbors:asteroidNeighbors;
  const seen=new Set([0]),queue=[0];
  for(let i=0;i<queue.length;i++)for(const id of neighbors(queue[i])){
@@ -3810,6 +3810,7 @@ function launchTeamJob(job,preferred){
  remote.director.lastLaunch[loc]=now;const w=loc==='derelict'?explorationWorld():asteroidWorld();job.baseline={surveyed:ICARUSEdition.core?w.rooms.filter(x=>knowledgeRuntime().knownMap(loc,x.id)?.visited).length:w.rooms.filter(x=>x.visited).length,findings:ICARUSEdition.core?w.findings.filter(x=>knowledgeRuntime().findingKnown(x)).length:w.findings.length};
  return true;
 }
+function stagingAccessSignature(loc){const goal=navNode(loc==='derelict'&&dockingState().docking==='docked'?'C02':'C01');return JSON.stringify([goal,...state.crew.filter(p=>!p.expeditionAway&&p.vitals.health>0).map(p=>[p.name,routeFromNode(p.nav?.at||navNode(p.room),goal,false,p.body?.locomotion==='wheelchair')!==null])]);}
 function missionDecisionTick(){
  if(state.navigation&&(state.navigation.current!=='HOME'||state.navigation.phase!=='orbit'))return;
  const d=remote.director,now=directorClock();
@@ -3827,6 +3828,7 @@ function missionDecisionTick(){
   const surveyed=ICARUSEdition.core?world.rooms.filter(x=>knowledgeRuntime().knownMap(loc,x.id)?.visited).length:world.rooms.filter(x=>x.visited).length,findings=ICARUSEdition.core?world.findings.filter(x=>knowledgeRuntime().findingKnown(x)).length:world.findings.length;
   const newFindings=Math.max(0,intel.pendingLead||0);
   const unexplored=reachableUnvisited(loc);
+  if((intel.stagingFailures||0)>=3){const signature=stagingAccessSignature(loc);if(signature===intel.stagingAccessSignature)continue;intel.stagingFailures=0;intel.pendingSurvey=unexplored;}
   const firstContact=(intel.attempts||0)===0;
   const freshSurvey=Boolean(intel.pendingSurvey);
   const shortage=loc==='asteroid'&&(lowSpares||lowLab);
@@ -3851,7 +3853,6 @@ function missionDecisionTick(){
   if(!launchTeamJob(job))continue;
   if(job.type==='research')d.intelligence[loc].pendingLead=0;
   if(job.type==='survey'||job.type==='resource')d.intelligence[loc].pendingSurvey=false;
-  const world=loc==='derelict'?explorationWorld():asteroidWorld();job.baseline={surveyed:world.rooms.filter(x=>x.visited).length,findings:world.findings.length};
   log('Captain authorized '+job.id+': '+job.members.join(', ')+' dispatched to '+loc+'.','system');
   solAudit('Authorized mission '+job.id,job.reason,'Objective: '+job.objective);
  }
@@ -3908,11 +3909,11 @@ function fieldTick(){
    const destination=m.transfer==='collar'?'C02':'C01',members=ICARUSTeams.names(m).map(n=>state.crew.find(p=>p.name===n)).filter(Boolean);
    if(members.length&&members.every(p=>p.room===destination&&!p.route.length)){
     for(const p of members){if(ICARUSEdition.core)for(const f of ICARUSKnowledge.view(state,'SOL'))if(f.data.map?.location===loc)ICARUSKnowledge.read(state,p.name,f.id,knowledgeRuntime().env());p.expeditionAway=loc;p.route=[];p.task='Expedition transit';}
-    m.phase='transit';m.progress=0;
+    m.phase='transit';m.progress=0;remote.director.intelligence[loc].stagingFailures=0;
    }else if(state.tick-(m.launched??state.tick)>360){
     ICARUSEconomy.returnCargo(state,m);state.teamLog.suits+=m.suits||0;m.suits=0;
     for(const p of members){p.expeditionId=null;p.expeditionAway=false;p.taskMinutes=0;}
-    job.status='failed';job.outcome='Staging access unavailable';job.completionReason='staging_access';remote.director.intelligence[loc].attempts++;remote.director.intelligence[loc].pendingSurvey=false;remote.missions[loc]=null;log('Mission '+job.id+' safely aborted: staging access unavailable.','system');
+    job.status='failed';job.completed=state.tick;job.outcome='Staging access unavailable';job.completionReason='staging_access';const intel=remote.director.intelligence[loc];intel.stagingFailures=(intel.stagingFailures||0)+1;intel.stagingAccessSignature=stagingAccessSignature(loc);intel.pendingSurvey=reachableUnvisited(loc);for(const p of members)remote.director.crewReadyAt[p.name]=state.tick+1440;remote.missions[loc]=null;log('Mission '+job.id+' safely aborted: staging access unavailable.','system');
    }
    continue;
   }
@@ -4176,6 +4177,7 @@ showPage('home');
 // v0.94.3 patch 1: expose diagnostics inside the ICARUS lexical closure.
 // The simulation state is intentionally private and not a window global.
 function knowledgeRuntime(){return knowledgeService||(knowledgeService=ICARUSKnowledgeRuntime.create(()=>state,{
+ obstructions:(loc,id)=>{const w=loc==='asteroid'?asteroidWorld():explorationWorld(),neighbors=loc==='asteroid'?asteroidNeighbors:derelictNeighbors;return neighbors(id).filter(n=>w.rooms[n]?.blocked);},
  grieve:(name,deceased,sourceId)=>ICARUSLife.mourn(state,state.crew.find(p=>p.name===name),deceased,sourceId),
  radioHardware:()=>state.power>=35&&(state.equipment.B07?.condition??100)>=30,
  signal:loc=>loc==='asteroid'?asteroidSignal(asteroidWorld()):loc==='derelict'?((remote.derelict.docking==='docked'||remote.derelict.power&&remote.derelict.adapter)?'RELAYED':'LOST'):remote.missions.frontier?.phase==='onsite'?'DIRECT':'LOST',

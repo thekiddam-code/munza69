@@ -1,5 +1,6 @@
 /* Per-actor evidence, not omniscient world state. All channels are local simulation callbacks. */
 (function(root){'use strict';
+const projections=new WeakMap(); // Derived actor maps only; never serialized or used to admit facts.
 const clamp=x=>Math.max(0,Math.min(1,Number.isFinite(x)?x:.6));
 function init(s){
  if(s.knowledge)return s.knowledge;
@@ -10,7 +11,7 @@ function init(s){
  seedCharts(s);
  return k;
 }
-function seedCharts(s){const k=s.knowledge;if(!k||k.migration.chartsDone)return;if(!s.asteroidExploration&&!s.remoteExploration)return; for(const [loc,w] of [['asteroid',s.asteroidExploration],['derelict',s.remoteExploration]])for(const room of w?.rooms||[])if(room.known||room.visited){const f={id:'FACT-'+k.nextFact++,key:'legacy-map:'+loc+':'+room.id,sourceId:'LEGACY-CHART:'+loc+':'+room.id,text:'Existing chart: '+room.name,kind:'recorded-evidence',at:s.tick,location:'ship-records',confidence:.6,disclosure:'shareable',legacy:true,data:{map:{location:loc,cell:room.id,name:room.name,visited:!!room.visited,blocked:!!room.blocked,hazard:room.hazard||null}}};k.facts[f.id]=f;k.byKey[f.key]=f.id;k.actors.SOL.entries[f.id]={sourceId:f.sourceId,acquiredAt:s.tick,observedAt:s.tick,location:'ship-records',method:'legacy-chart',confidence:.6,disclosure:'shareable',receivedFrom:null,deliveredAt:s.tick};}k.migration.chartsDone=true;}
+function seedCharts(s){const k=s.knowledge;if(!k||k.migration.chartsDone)return;if(!s.asteroidExploration&&!s.remoteExploration)return; for(const [loc,w] of [['asteroid',s.asteroidExploration],['derelict',s.remoteExploration]])for(const room of w?.rooms||[])if(room.known||room.visited||k.migration.at>0&&room.blocked){const chartName=room.known||room.visited?room.name:'Obstructed passage';const f={id:'FACT-'+k.nextFact++,key:'legacy-map:'+loc+':'+room.id,sourceId:'LEGACY-CHART:'+loc+':'+room.id,text:'Existing chart: '+chartName,kind:'recorded-evidence',at:s.tick,location:'ship-records',confidence:.6,disclosure:'shareable',legacy:true,data:{map:{location:loc,cell:room.id,name:chartName,visited:!!room.visited,blocked:!!room.blocked,hazard:room.hazard||null}}};k.facts[f.id]=f;k.byKey[f.key]=f.id;k.actors.SOL.entries[f.id]={sourceId:f.sourceId,acquiredAt:s.tick,observedAt:s.tick,location:'ship-records',method:'legacy-chart',confidence:.6,disclosure:'shareable',receivedFrom:null,deliveredAt:s.tick};}k.migration.chartsDone=true;projections.delete(k);}
 
 function actor(s,name){if(name==='SOL')return {name,sol:true};return (s.crew||[]).find(p=>p.name===name&&(p.vitals?.health??100)>0)||Object.values(s.entities?.registry||{}).find(p=>'NPC:'+p.id===name)||null;}
 function position(s,name){const p=actor(s,name);if(!p)return null;if(p.sol)return {domain:'ship',node:'SOL',stationary:true};if(name.startsWith('NPC:'))return {domain:'contact:'+p.location,node:p.id,stationary:true};
@@ -19,7 +20,7 @@ function position(s,name){const p=actor(s,name);if(!p)return null;if(p.sol)retur
 }
 function entry(s,name,id){return s.knowledge?.actors[name]?.entries[id]||null;}
 function known(s,name,id){return !!entry(s,name,id);}
-function learn(s,name,f,method,from=null,at=s.tick){const k=init(s);if(!actor(s,name)||known(s,name,f.id))return false;const a=k.actors[name]||(k.actors[name]={entries:{}});a.lastPosition=position(s,name);a.entries[f.id]={sourceId:f.sourceId,acquiredAt:at,observedAt:f.at,location:position(s,name),method,confidence:f.confidence,disclosure:f.disclosure,receivedFrom:from,deliveredAt:from?at:null};return true;}
+function learn(s,name,f,method,from=null,at=s.tick){const k=init(s);if(!actor(s,name)||known(s,name,f.id))return false;const a=k.actors[name]||(k.actors[name]={entries:{}});a.lastPosition=position(s,name);projections.get(k)?.delete(name);a.entries[f.id]={sourceId:f.sourceId,acquiredAt:at,observedAt:f.at,location:position(s,name),method,confidence:f.confidence,disclosure:f.disclosure,receivedFrom:from,deliveredAt:from?at:null};return true;}
 function observe(s,source,witnesses,options={}){
  const k=init(s),canonical=(s.chronicle?.records||[]).find(x=>x.id===source?.id);if(!canonical||canonical.message!==source.message||canonical.data?.creatorAuthored||options.method==='creator-canon')return null;
  const valid=[...new Set(witnesses||[])].filter(name=>{const p=position(s,name);if(!p)return false;if(options.location)return p.domain===options.location.domain&&(options.location.node===undefined||p.node===options.location.node);return true;});if(!valid.length)return null;
@@ -47,7 +48,8 @@ function recover(s,deadName,reader,env={}){const dead=(s.living?.deceased||[]).f
 }
 function infer(s,name,source,premises,text,confidence=.4){if(!premises?.length||premises.some(id=>!known(s,name,id)))return null;return observe(s,source,[name],{kind:'inference',method:'inference',confidence:Math.min(clamp(confidence),...premises.map(id=>entry(s,name,id).confidence)),data:{premises,text},disclosure:'private'});}
 function view(s,name){const k=s.knowledge,a=k?.actors[name];if(!a)return [];return Object.entries(a.entries).map(([id,e])=>({...k.facts[id],acquisition:{...e}}));}
-function mapCell(s,name,loc,id){return view(s,name).reverse().find(f=>f.data?.map?.location===loc&&f.data.map.cell===id)?.data.map||null;}
+function mapCell(s,name,loc,id){const k=s.knowledge;if(!k?.actors[name])return null;let actors=projections.get(k);if(!actors){actors=new Map();projections.set(k,actors);}let maps=actors.get(name);if(!maps){maps=new Map();for(const fid of Object.keys(k.actors[name].entries)){const m=k.facts[fid]?.data?.map;if(m)maps.set(m.location+':'+m.cell,m);}actors.set(name,maps);}return maps.get(loc+':'+id)||null;}
+function reachableUnvisited(s,loc,neighbors){const seen=new Set([0]),queue=[0];for(let i=0;i<queue.length;i++)for(const id of neighbors(queue[i])){if(seen.has(id)||mapCell(s,'SOL',loc,id)?.blocked)continue;seen.add(id);queue.push(id);}return [...seen].some(id=>{const k=mapCell(s,'SOL',loc,id);return !k?.visited&&!k?.blocked;});}
 function audit(s){const k=s.knowledge;if(!k)return [];const errors=[];for(const [name,a] of Object.entries(k.actors))for(const [id,e] of Object.entries(a.entries))if(!k.facts[id]||e.sourceId!==k.facts[id].sourceId||e.acquiredAt<0||e.acquiredAt>s.tick)errors.push('Invalid knowledge '+name+'/'+id);for(const m of k.messages)if(!k.facts[m.factId]||!known(s,m.from,m.factId))errors.push('Unfounded transmission '+m.id);return errors;}
-const api={init,seedCharts,actor,position,observe,entry,known,queue,tick,debrief,can,read,recover,infer,view,mapCell,audit};if(typeof module==='object'&&module.exports)module.exports=api;else root.ICARUSKnowledge=api;
+const api={init,seedCharts,actor,position,observe,entry,known,queue,tick,debrief,can,read,recover,infer,view,mapCell,reachableUnvisited,audit};if(typeof module==='object'&&module.exports)module.exports=api;else root.ICARUSKnowledge=api;
 })(globalThis);

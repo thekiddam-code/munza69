@@ -13,7 +13,7 @@ function select(s,job,candidates,life,preferred){
  const count=Math.max(2,Math.min(4,job.teamSize||2)),chosen=[],roles=job.type==='resource'?['Engineer','Scientist']:job.location==='derelict'?['Scientist','Security']:['Scientist','Engineer'];
  const score=p=>(p.vitals?.health??100)+(p.vitals?.morale??60)*.2-(p.vitals?.fatigue??0)-p.stress*.3+(p.vitals?.missions||0)*2+((p.career?.confidence||0)-(p.career?.caution||0))*2+chosen.reduce((n,q)=>n+(p.relationships?.[q.name]||0),0);
  const canSpare=p=>!['Medic','Engineer'].includes(p.job)||s.crew.filter(q=>q.job===p.job&&!q.expeditionAway&&!chosen.includes(q)&&life.ready(q)).length>1;
- const eligible=candidates.filter(p=>life.ready(p)&&!p.expeditionAway&&!p.expeditionId&&!p.responseAssignment&&!p.emergencyId&&!p.researchAssignment&&!p.rescuePatient&&!p.rescueMedic);
+ const eligible=candidates.filter(p=>life.ready(p)&&(p.hunger??0)<75&&!p.maintenanceRoom&&!p.expeditionAway&&!p.expeditionId&&!p.responseAssignment&&!p.emergencyId&&!p.researchAssignment&&!p.rescuePatient&&!p.rescueMedic);
  if(preferred){const p=eligible.find(p=>p.name===preferred);if(p&&canSpare(p))chosen.push(p);}
  for(const role of roles){const list=eligible.filter(p=>!chosen.includes(p)&&p.job===role&&canSpare(p)).sort((a,b)=>score(b)-score(a)||a.name.localeCompare(b.name));if(chosen.length<count&&list.length)chosen.push(list[0]);}
  for(const p of eligible.sort((a,b)=>score(b)-score(a)||a.name.localeCompare(b.name)))if(chosen.length<count&&!chosen.includes(p)){
@@ -22,6 +22,7 @@ function select(s,job,candidates,life,preferred){
  }
  return chosen.length===count?chosen:[];
 }
+function stage(p){p.interaction=null;p.activityKind=null;p.neededSupply=null;p.workRoom=null;p.waitLogged=false;}
 function launch(s,job,members,economy){
  const e=economy.init(s);if(job.location!=='derelict'&&s.emergencyOps&&(s.emergencyOps.transport.unrecovered||s.emergencyOps.transport.condition<65))return {allowed:false,reason:'primary transport unavailable'};s.teamLog=s.teamLog||{suits:6,lostSuits:0,launches:0,decisions:[]};
  if(!e.allowLaunch&&e.allowLaunch!==undefined)return {allowed:false,reason:'ship resource priority'};
@@ -30,6 +31,7 @@ function launch(s,job,members,economy){
  const m={members:members.map(p=>p.name),crew:members[0].name,cargo:{},suits:members.length,conditions:{},decisions:[],launched:s.tick,lastTick:-1};
  for(const [k,n] of Object.entries(need))economy.moveToCargo(s,m.cargo,k,n);
  economy.consume(s,'energy',8,'shuttle launch '+job.id);for(const [k,n] of Object.entries(loadout))economy.moveToCargo(s,m.cargo,k,n);s.teamLog.suits-=members.length;s.teamLog.launches++;
+ for(const p of members)stage(p);
  m.averageExperience=members.reduce((n,p)=>n+(p.vitals?.missions||0),0)/members.length;
  const relationship=members[0].relationships?.[members[1].name]||0;
  m.cohesion=relationship;m.workRate=Math.max(.5,Math.min(1.3,1+relationship*.01+m.averageExperience*.015));
@@ -62,5 +64,5 @@ function returned(s,m,job,env){
  for(const name of names(m)){const p=s.crew.find(p=>p.name===name);if(!p)continue;p.expeditionAway=false;p.room=m.transfer==='collar'?'C02':'C01';p.route=[];p.taskMinutes=20;p.task='Returned with expedition team';p.vitals.missions++;p.energy=Math.max(0,p.energy-5);returns.push({...m.conditions?.[name],name,health:p.vitals.health});if(job)s.remoteCore.director.crewReadyAt[name]=s.tick+180;}
  if(job){job.members=[...names(m)];job.teamDebrief={members:returns,decisions:m.decisions||[],rescue:m.rescue||null,casualties:m.casualties||[],cargoReturned:true};}
 }
-const api={migrate,names,select,launch,field,returned};if(typeof module==='object'&&module.exports)module.exports=api;else root.ICARUSTeams=api;
+const api={migrate,names,select,stage,launch,field,returned};if(typeof module==='object'&&module.exports)module.exports=api;else root.ICARUSTeams=api;
 })(typeof globalThis!=='undefined'?globalThis:this);
