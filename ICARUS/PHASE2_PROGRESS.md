@@ -1,0 +1,13 @@
+# Phase 2 — Living World progress
+
+Starting commit 5b14078; runtime inherited from Phase 1 Lite c73c7da. Read PHASE2_LIVING_WORLD_PLAN.md and Issue #1. All 158 baseline Node tests pass. No runtime changes to the clock, holidays, weekly boundaries or host bridge are planned in 2A.
+
+## 2A audit and design
+
+Physical topology stays in the ship navigator and existing asteroid/derelict grids. Asteroid radio authority stays asteroidSignal/fieldRelays (real battery/integrity and connected zones). Specimen custody stays specimenCustody; experimental conclusions stay director.science. Canon stays unifiedWorld.canon and never initializes actor knowledge.
+
+Confirmed leaks: unified-world field() publishes its observation and acquired archive immediately; naturalSurvey() logs directly despite lost signal; map rendering uses shared physical known/visited flags; several derelict reports bypass communications; mission debrief counts every globally discovered finding rather than returned/delivered evidence. Existing pending asteroid text transmissions do not identify individual recipients or preserve acquisition metadata.
+
+Add knowledge version 1: admitted source-backed facts, per-actor entries, finite per-tick pending delivery, real acquisition/disclosure/method/confidence and delivery metadata. Retain existing event/source IDs and archive objects; expose their delivered projection, not another scientific truth store. Private local observations are retained in full backup history but withheld from public chronicles/commentary until a delivery record exists. Migration preserves previously published legacy archives without inventing historical witnesses; canon and dormant biological truths remain private.
+
+Implementation batches: pure ledger/channel tests; actual field/radio/custody and UI integration plus browser regressions; validated 2A commit/report; then individually tested 2B, 2C and 2D; 2E integrated multi-seed/persistence/bridge and Lite packaging. Status remains in progress until measured evidence is added.
