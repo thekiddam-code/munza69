@@ -1,0 +1,12 @@
+{
+  "platform": "Linux-6.18.57-x86_64-with-glibc2.41",
+  "python": "3.12.14",
+  "node": "v24.22.1",
+  "chromium": "Chromium 156.0.8078.79 built on Debian GNU/Linux 13 (trixie)",
+  "playwright": "1.62.0",
+  "antivirus_scanner_available": false,
+  "physical_hardware_tested": false,
+  "host_input_and_tv_io": "stubbed only; real HTTP and Chromium used",
+  "mobile": "Pixel 5 Chromium touch emulation",
+  "time_zone": "America/Chicago for campaigns; UTC and other IANA zones in unit/browser cases"
+}

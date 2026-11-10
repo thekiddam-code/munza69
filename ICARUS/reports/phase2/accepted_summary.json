@@ -1,0 +1,2570 @@
+{
+  "source_commit": "113e79b7693db4c37c8519449339032cf2ed60a1",
+  "runtime_files": {
+    "Start_Remote_Deck.bat": "ffbd4b2e6d561ad162547e4f32c0de891915a6d3876ba6d2bff427ec06df368b",
+    "config.json": "54a4ac908d2fe82e9c58fb942134327cf0562665e47b170b5d9b0b085ce8b865",
+    "requirements.txt": "3dd40988330002f37cd1f2b2b80e65ee3919798dc38771b00fed572a4d659f9e",
+    "server.py": "d43781ba1af5f371de05f32b572efbbb9c44b69efbf133e988a43f67076cee44",
+    "web/anthology-ui.js": "d4ca2419004918f5d6cc423b354d6fee306e34fcb7f05932051014c39dba36ae",
+    "web/anthology.js": "e2621ab0e567e85a9a4b25b11968df7480e69f6abe311e547fddea412a224bb2",
+    "web/calendar.js": "6d1c316968a5f2fb29b82e110fa3678a49e3be9ad9ffd38833600a1f55cdd29a",
+    "web/chronicles.js": "306318854387e9f62c4d8bb22bccc90a9a151c48cb8f0c7d90940ac9342a8607",
+    "web/core-context.js": "984feae5ab86359013cfad335c7fd2cfc398c6515a69ebf90add78969424d0d2",
+    "web/creatures.js": "a4eaea655b4a47066d217585b77110b1b68049fb50bb425520f6e9eb38ee340e",
+    "web/diagnostics.js": "1c839db06519f81e6f7895e8678f51495e329b09bb3942e4016998e1d695aff5",
+    "web/discovery.js": "e950ac6b0f3aff732995b5adc1991b2d6fd935538a879e93c5f90f778cfa8b98",
+    "web/durable-store.js": "d7a13b77f979f7c0f8cd6182683b91442415378d7887fa1738a1013bcea28a83",
+    "web/economy.js": "919fcfdef54d30b6320d8886d4eff43273bb9642763eeaad179bb7607ab3e292",
+    "web/edition.js": "33f4c281646bb8baa8f45b015c82dd5cabb780e69383448f3390f64566e5331f",
+    "web/embodiment.js": "366abd1cc4851d7c13ab5a456ff2fa351f0c567997967f25b64f12817690d297",
+    "web/emergency-ops.js": "95a0ec04365879fff84ad62399650cfb28037102e3083a6b0946894fe84a9116",
+    "web/entities.js": "c8fe473a604345d7543c6f545909dcf734eb2a8ef2d3a6f62aa48bbf0f9305d1",
+    "web/expeditions.js": "729ad659e78636b42b6a743619bc0c0f7f80d9c8480912ec006115a26ee783ef",
+    "web/experiences.js": "2b39dd4736704bd1619d0f7d25b285d090ab0193eacbc424cdc8f25508ab4b14",
+    "web/frontier-ui.js": "8b11361b26cd23b57c4418a404ffc1c7472c8af5f93057d4c08a10c79b61548e",
+    "web/frontier.js": "58494ff752b3fc3abc6518bfeba3c29ed74c21cb46bad8358510c16f949bb115",
+    "web/icarus.html": "a012edfc5465ff9be5152df75a85bfe07683be137815abcd71ea6f7a025c8b92",
+    "web/index.html": "f328e21ccc1ba10691960e2de355c556e96f19d88cd996366943f061d8a32952",
+    "web/knowledge-runtime.js": "65145b39b9eb7e36f8f49919a2fc43ac71a300093febe37bf33091cf6abada12",
+    "web/knowledge.js": "f59ec41af8f2e030e8633a34899f023906c26d8d0e66bad26b14911cb09f5438",
+    "web/living-frontier-ui.js": "c93bc5a3e5a8d8e3a85c1efdd053e2b566eda05d3b7a3027dc3e77335e577924",
+    "web/living.js": "421a73f5ff1c5b317ab78476692abf3a0fe5e54f2017c88a96b38d19aaf8cdbb",
+    "web/logistics.js": "260d8684db9b0bccc5bbd6c60186fd50e973bbba5c0507ead7b5ad9a712f50ff",
+    "web/lunar.js": "7fe249230562a6d6eb3b6633381a4cddaff56bf90de1676a9ed6c0908c661d51",
+    "web/manifest.webmanifest": "a8ed1d727916b17acf15d37d9a637d4a32cad8e9dbe739084462d0fac28c182b",
+    "web/navigation.js": "36351d320ab0ec49524cc57aefc0c6e6f58fc7ba5b1605d1b21355c5ff2f3b92",
+    "web/operations.js": "8711fc4ed9e2e6937c4a1f600ef873f15efceef5c22690f0f3d04f96c9719a12",
+    "web/repair-policy.js": "a1d3b6a64fa3561563b369a49cb30718c015dea79a47c0486d3954560c19de1d",
+    "web/research.js": "ca4de958ed72b3a6404e792abc24b9821b7fc44190a57444f48e69b61e91a3cd",
+    "web/save-store.js": "77f0bbb42ad82da9bcbcebd25d1de3e12d0989f1dea0087e1ad4ca28678150fe",
+    "web/spatial.js": "6b4ce51759665185fa558b653e27e2514362d692deb4117ee371f8182b5ae750",
+    "web/stability-diagnostics.js": "d3faeaf4fce68e04960938928ef1729dbe717579ed6b2cb31f0d07972c0732bb",
+    "web/story.js": "2b0464ee7ac4be2409506c7a162ddd8003be6d0df70f47f252641e97c90bb19d",
+    "web/tablet-frontier.js": "6682318bc42b5a46a5703b64137e0d55172ce4eed201305f619c193d55ed6e38",
+    "web/teams.js": "69817c50c92ae5edcdc880b28c904665e6117df25e71a8edabd6ba426597c71b",
+    "web/unified-ui.js": "5a643369c817239bcf3948d5cdfd10d69cc210eaca6a7583da191db61fa91874",
+    "web/unified-world.js": "35e2a8ad0717a19b795f03bc55de0852450766279b17db527f8cf9b9e755fb38",
+    "web/universe.js": "7a3f83170de63739706445cc992c560583e913b577d87087115dfb8cbfae06d4",
+    "web/vendor/LZ_STRING_LICENSE.txt": "433fc9dfe659dbfb1e91eed8351f13651e97bfa3ac6d03394c3d63f61d4bbc80",
+    "web/vendor/astronomy.js": "a2cfab19cab1a15843e4c8cc7410b6cbaafd0907122a8698c25d63d00c2774e4",
+    "web/vendor/lz-string.min.js": "95f4d1cbf099f57161b664bc048426ec3df92637801a4c79116e83315aa787e7",
+    "web/voyage.js": "a70b7bff458052b1ba68713c3a2971ce110a3b169e4e7fe90c9e71cabc90eeda",
+    "web/world-schema.js": "4dc0a2ad6d6bf01f486a445372e410fa708ed17d09eb8835c559fad026ad0a85"
+  },
+  "tests": {
+    "node": {
+      "tests": 217,
+      "pass": 217,
+      "fail": 0,
+      "skipped": 0
+    },
+    "living_world": {
+      "passed": true,
+      "tests_run": 46,
+      "runtime_root": "/workspace/work/phase2_accepted_validation/tested/ICARUS_Living_World_Phase2_Lite",
+      "source_commit": "113e79b7693db4c37c8519449339032cf2ed60a1"
+    },
+    "stability": {
+      "passed": true,
+      "tests_run": 30,
+      "runtime_root": "/workspace/work/phase2_accepted_validation/tested/ICARUS_Living_World_Phase2_Lite",
+      "source_commit": "113e79b7693db4c37c8519449339032cf2ed60a1"
+    },
+    "compatibility": {
+      "passed": true,
+      "tests_run": 44,
+      "runtime_root": "/workspace/work/phase2_accepted_validation/tested/ICARUS_Living_World_Phase2_Lite",
+      "source_commit": "113e79b7693db4c37c8519449339032cf2ed60a1"
+    },
+    "production": {
+      "passed": true,
+      "tests_run": 2,
+      "runtime_root": "/workspace/work/phase2_accepted_validation/tested/ICARUS_Living_World_Phase2_Lite",
+      "source_commit": "113e79b7693db4c37c8519449339032cf2ed60a1"
+    },
+    "bridge": {
+      "passed": true,
+      "tests_run": 3,
+      "runtime_root": "/workspace/work/phase2_accepted_validation/tested/ICARUS_Living_World_Phase2_Lite",
+      "source_commit": "113e79b7693db4c37c8519449339032cf2ed60a1"
+    },
+    "runtime_identity": {
+      "passed": true,
+      "runtime_files": 49,
+      "source_commit": "113e79b7693db4c37c8519449339032cf2ed60a1",
+      "independent_extraction": "/workspace/work/phase2_accepted_validation/tested/ICARUS_Living_World_Phase2_Lite"
+    },
+    "syntax_dependencies": {
+      "passed": true,
+      "source_commit": "113e79b7693db4c37c8519449339032cf2ed60a1",
+      "verified_source_files": 54,
+      "checks": [
+        "web/anthology-ui.js",
+        "web/anthology.js",
+        "web/calendar.js",
+        "web/chronicles.js",
+        "web/core-context.js",
+        "web/creatures.js",
+        "web/diagnostics.js",
+        "web/discovery.js",
+        "web/durable-store.js",
+        "web/economy.js",
+        "web/edition.js",
+        "web/embodiment.js",
+        "web/emergency-ops.js",
+        "web/entities.js",
+        "web/expeditions.js",
+        "web/experiences.js",
+        "web/frontier-ui.js",
+        "web/frontier.js",
+        "web/knowledge-runtime.js",
+        "web/knowledge.js",
+        "web/living-frontier-ui.js",
+        "web/living.js",
+        "web/logistics.js",
+        "web/lunar.js",
+        "web/navigation.js",
+        "web/operations.js",
+        "web/repair-policy.js",
+        "web/research.js",
+        "web/save-store.js",
+        "web/spatial.js",
+        "web/stability-diagnostics.js",
+        "web/story.js",
+        "web/tablet-frontier.js",
+        "web/teams.js",
+        "web/unified-ui.js",
+        "web/unified-world.js",
+        "web/universe.js",
+        "web/vendor/astronomy.js",
+        "web/vendor/lz-string.min.js",
+        "web/voyage.js",
+        "web/world-schema.js",
+        "web/icarus.html:inline:0",
+        "web/icarus.html:inline:1",
+        "web/index.html:inline:0",
+        "web/index.html:inline:1",
+        "server.py"
+      ],
+      "script_dependencies_present_and_local": true
+    },
+    "mobile_functional": {
+      "passed": true,
+      "runtime_root": "/workspace/work/phase2_accepted_validation/tested/ICARUS_Living_World_Phase2_Lite",
+      "checks": [
+        "Unpaired telemetry denied",
+        "Wrong pairing PIN denied",
+        "Touch pairing persists only token hash on PC",
+        "Android-layout course reaches authoritative PC simulation",
+        "Touch hold reaches PC",
+        "Phone remains a thin client",
+        "Mobile panel fits viewport",
+        "Paired phone reconnects after reload",
+        "Foreign POST Origin denied",
+        "Predefined keyboard macro routes to stub only",
+        "Emergency stop routes to input release",
+        "TV public address rejected",
+        "TV private address config and allowlisted key contract",
+        "Unpair invalidates persisted device token",
+        "No browser script errors"
+      ],
+      "errors": [],
+      "limits": "Android Chrome mobile/touch emulation on Chromium through real HTTP pairing/bridge. PyAutoGUI and television socket stubbed. No physical Android, Windows desktop input, Wi-Fi or Samsung device used.",
+      "stubbed_io_calls": [
+        {
+          "operation": "hotkey",
+          "args": [
+            "ctrl",
+            "c"
+          ]
+        },
+        {
+          "operation": "tv_connect",
+          "url": "wss://192.168.1.99:8002/api/v2/channels/samsung.remote.control?name=UmVtb3RlIERlY2s=",
+          "certificate_validation": 0
+        },
+        {
+          "operation": "tv_send",
+          "payload": {
+            "method": "ms.remote.control",
+            "params": {
+              "Cmd": "Click",
+              "DataOfCmd": "KEY_HOME",
+              "Option": "false",
+              "TypeOfRemote": "SendRemoteKey"
+            }
+          }
+        }
+      ]
+    },
+    "phase1_backup": {
+      "passed": true,
+      "errors": [],
+      "backup": "backup_1001_7.json",
+      "stage": "finished",
+      "timeout_seconds": 120,
+      "import_seconds": 4.542679373997089,
+      "migrated_archive_annotations": 24,
+      "mismatched_import_domains": [],
+      "imported_history_records": 10659,
+      "reload_seconds": 14.104545923000842,
+      "imported_tick": 36000,
+      "resumed_tick": 36120,
+      "storage": {
+        "physical_bytes": 875780,
+        "primary_bytes": 437890,
+        "compressed": true
+      },
+      "elapsed_seconds": 45.901720803998614
+    },
+    "phase2_backup": {
+      "passed": true,
+      "errors": [],
+      "backup": "backup_1001_30.json",
+      "stage": "finished",
+      "timeout_seconds": 120,
+      "import_seconds": 4.009038242002134,
+      "migrated_archive_annotations": 0,
+      "mismatched_import_domains": [],
+      "imported_history_records": 50170,
+      "reload_seconds": 7.704428152999753,
+      "imported_tick": 160920,
+      "resumed_tick": 161040,
+      "storage": {
+        "physical_bytes": 2095560,
+        "primary_bytes": 1047780,
+        "compressed": true
+      },
+      "elapsed_seconds": 32.379182942000625
+    }
+  },
+  "campaigns": [
+    {
+      "profile": "normal_1001",
+      "seed": 1001,
+      "scenario": "normal",
+      "source_commit": "113e79b7693db4c37c8519449339032cf2ed60a1",
+      "runtime_source_commit": "113e79b7693db4c37c8519449339032cf2ed60a1",
+      "initial_state_validated": null,
+      "initial_state": null,
+      "scenario_application": null,
+      "real_days": 30,
+      "sim_days": 111.75,
+      "ticks": 160920,
+      "episodes": 5,
+      "crew_alive": 20,
+      "deaths": 0,
+      "death_causes": [],
+      "daily_sample_min_health": 100,
+      "arrivals": 5,
+      "fuel_used": 1.9624515496596866,
+      "field_missions": 14,
+      "field_statuses": {
+        "completed": 14
+      },
+      "field_reasons": {
+        "objective_met": 12,
+        "field_window_ended": 2
+      },
+      "staging_failures": 0,
+      "frontier_jobs": 5,
+      "frontier_types": {
+        "survey": 5
+      },
+      "science_cases": 26,
+      "retained_experiments": 106,
+      "retained_experiment_statuses": {
+        "complete": 74,
+        "no_result": 28,
+        "failed": 4
+      },
+      "confirmed_conclusions": 2,
+      "knowledge": {
+        "facts": 284,
+        "sol": 284,
+        "pending": 0,
+        "delivered": 364
+      },
+      "biology": [
+        {
+          "id": "XENO-INITIAL",
+          "stage": "adult",
+          "location": "asteroid:23",
+          "state": "contained",
+          "energy": 100,
+          "health": 100,
+          "steps": 0
+        },
+        {
+          "id": "EGG-1",
+          "stage": "egg",
+          "location": "asteroid:22",
+          "state": "uninitialized",
+          "steps": 0
+        },
+        {
+          "id": "EGG-2",
+          "stage": "egg",
+          "location": "asteroid:24",
+          "state": "uninitialized",
+          "steps": 0
+        }
+      ],
+      "creature_attack_events": 0,
+      "recorded_event_kinds": {
+        "system": 973,
+        "little": 37197,
+        "social": 5055,
+        "relationship": 4486,
+        "observation": 402,
+        "anthology": 1362,
+        "research": 148,
+        "emergency": 8,
+        "crew_memory": 430,
+        "mission": 37,
+        "encounter": 3,
+        "encounter_history": 3,
+        "mission_history": 5,
+        "maintenance": 60
+      },
+      "history_records": 50169,
+      "private_records": 279,
+      "resource_final": {
+        "food": 159.98600000000002,
+        "water": 152.838000000027,
+        "oxygen": 110.18600000000099,
+        "energy": 179.84565024,
+        "medical": 20,
+        "spares": 69.73465919999991,
+        "tools": 69.991,
+        "lab": 80
+      },
+      "acquired": {},
+      "ledger_rows": 589,
+      "ledger_kinds": {
+        "produce": 10,
+        "feedstock_use": 12,
+        "consume": 448,
+        "recover": 41,
+        "transfer": 78
+      },
+      "resource_sources": [
+        {
+          "kind": "produce",
+          "key": "energy",
+          "source": "incident starlight / installed collector",
+          "amount": 18698.046886256063,
+          "count": 160920
+        },
+        {
+          "kind": "produce",
+          "key": "energy",
+          "source": "reactor fuel conversion",
+          "amount": 339.07602353589385,
+          "count": 7720
+        },
+        {
+          "kind": "produce",
+          "key": "spares",
+          "source": "conversion from ore",
+          "amount": 735.7346592000009,
+          "count": 78627
+        },
+        {
+          "kind": "recover",
+          "key": "organicWaste",
+          "source": "recovered metabolic output",
+          "amount": 2246.0242,
+          "count": 160920
+        },
+        {
+          "kind": "recover",
+          "key": "wasteWater",
+          "source": "recovered metabolic output",
+          "amount": 4492.0484,
+          "count": 160920
+        },
+        {
+          "kind": "recover",
+          "key": "co2",
+          "source": "recovered metabolic output",
+          "amount": 3208.606,
+          "count": 160920
+        },
+        {
+          "kind": "produce",
+          "key": "water",
+          "source": "melted recovered/carried water ice",
+          "amount": 24.577600000004935,
+          "count": 623
+        },
+        {
+          "kind": "produce",
+          "key": "water",
+          "source": "wastewater reclamation",
+          "amount": 4560.0204,
+          "count": 160919
+        },
+        {
+          "kind": "produce",
+          "key": "oxygen",
+          "source": "closed-cycle CO2 regeneration",
+          "amount": 3208.5860000000002,
+          "count": 160919
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered process scrap",
+          "amount": 8035.0199999999995,
+          "count": 8061
+        },
+        {
+          "kind": "recover",
+          "key": "organicWaste",
+          "source": "recovered meal residue",
+          "amount": 7513,
+          "count": 7513
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-1",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-1",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "produce",
+          "key": "medical",
+          "source": "sterile cartridge culture from nutrients and water",
+          "amount": 76,
+          "count": 76
+        },
+        {
+          "kind": "produce",
+          "key": "food",
+          "source": "conversion from organicWaste / nutrients",
+          "amount": 9745.365999999372,
+          "count": 160550
+        },
+        {
+          "kind": "produce",
+          "key": "lab",
+          "source": "conversion from ore",
+          "amount": 3390.5000000000014,
+          "count": 23835
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-3",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-3",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-4",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-4",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-5",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-5",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "produce",
+          "key": "tools",
+          "source": "conversion from ore",
+          "amount": 4308.845000000011,
+          "count": 47783
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-7",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-7",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-8",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-8",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-9",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-9",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-10",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-10",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-11",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-11",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-14",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-14",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "wasteWater",
+          "source": "recovered clinical rinse",
+          "amount": 68,
+          "count": 68
+        },
+        {
+          "kind": "recover",
+          "key": "organicWaste",
+          "source": "spent culture medium",
+          "amount": 68,
+          "count": 68
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-15",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-15",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-16",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-16",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-17",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-17",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-18",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-18",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-19",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-19",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-20",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-20",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-21",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-21",
+          "amount": 2,
+          "count": 1
+        }
+      ],
+      "primary_cache_first_bytes": 307324,
+      "primary_cache_final_bytes": 1047780,
+      "snapshot_final_bytes": 6345598,
+      "exact_reload_checkpoints": [
+        {
+          "real_day": 7,
+          "sim_days": 25.0,
+          "episode": 2,
+          "exact_reload": true,
+          "crew": 20,
+          "dead": 0,
+          "stories": 101,
+          "resources": {
+            "food": 159.98600000000002,
+            "water": 152.83800000000662,
+            "oxygen": 110.18600000000099,
+            "energy": 179.84842608,
+            "medical": 20,
+            "spares": 68.78654359999999,
+            "tools": 69.982,
+            "lab": 79.91069999999976
+          },
+          "arrivals": 5,
+          "calendar_occurrences": [
+            "2026-10-31:Halloween"
+          ],
+          "organisms": {
+            "XENO-INITIAL": {
+              "id": "XENO-INITIAL",
+              "stage": "adult",
+              "dormant": true,
+              "location": "asteroid:23",
+              "origin": "initial concealed chamber",
+              "sealed": true,
+              "behavior": {
+                "version": 1,
+                "state": "contained",
+                "energy": 100,
+                "stamina": 100,
+                "health": 100,
+                "lastTick": 36000,
+                "lastAttack": -100,
+                "steps": 0,
+                "meals": 0,
+                "trace": [
+                  {
+                    "at": 5,
+                    "from": "dormant",
+                    "to": "contained",
+                    "location": "asteroid:23"
+                  }
+                ]
+              }
+            },
+            "EGG-1": {
+              "id": "EGG-1",
+              "stage": "egg",
+              "dormant": true,
+              "location": "asteroid:22"
+            },
+            "EGG-2": {
+              "id": "EGG-2",
+              "stage": "egg",
+              "dormant": true,
+              "location": "asteroid:24"
+            }
+          }
+        },
+        {
+          "real_day": 30,
+          "sim_days": 111.75,
+          "episode": 5,
+          "exact_reload": true,
+          "crew": 20,
+          "dead": 0,
+          "stories": 340,
+          "resources": {
+            "food": 159.98600000000002,
+            "water": 152.838000000027,
+            "oxygen": 110.18600000000099,
+            "energy": 179.84565024,
+            "medical": 20,
+            "spares": 69.73465919999991,
+            "tools": 69.991,
+            "lab": 80
+          },
+          "arrivals": 5,
+          "calendar_occurrences": [
+            "2026-10-31:Halloween",
+            "2026-11-11:Veterans Day",
+            "2026-11-26:Thanksgiving"
+          ],
+          "organisms": {
+            "XENO-INITIAL": {
+              "id": "XENO-INITIAL",
+              "stage": "adult",
+              "dormant": true,
+              "location": "asteroid:23",
+              "origin": "initial concealed chamber",
+              "sealed": true,
+              "behavior": {
+                "version": 1,
+                "state": "contained",
+                "energy": 100,
+                "stamina": 100,
+                "health": 100,
+                "lastTick": 160920,
+                "lastAttack": -100,
+                "steps": 0,
+                "meals": 0,
+                "trace": [
+                  {
+                    "at": 5,
+                    "from": "dormant",
+                    "to": "contained",
+                    "location": "asteroid:23"
+                  }
+                ]
+              }
+            },
+            "EGG-1": {
+              "id": "EGG-1",
+              "stage": "egg",
+              "dormant": true,
+              "location": "asteroid:22"
+            },
+            "EGG-2": {
+              "id": "EGG-2",
+              "stage": "egg",
+              "dormant": true,
+              "location": "asteroid:24"
+            }
+          }
+        }
+      ],
+      "elapsed_seconds": 465.6096758169988,
+      "audits_passed": true
+    },
+    {
+      "profile": "normal_4807",
+      "seed": 4807,
+      "scenario": "normal",
+      "source_commit": "113e79b7693db4c37c8519449339032cf2ed60a1",
+      "runtime_source_commit": "113e79b7693db4c37c8519449339032cf2ed60a1",
+      "initial_state_validated": null,
+      "initial_state": null,
+      "scenario_application": null,
+      "real_days": 30,
+      "sim_days": 111.75,
+      "ticks": 160920,
+      "episodes": 5,
+      "crew_alive": 20,
+      "deaths": 0,
+      "death_causes": [],
+      "daily_sample_min_health": 98.12247834017501,
+      "arrivals": 5,
+      "fuel_used": 1.9624515496596866,
+      "field_missions": 9,
+      "field_statuses": {
+        "completed": 9
+      },
+      "field_reasons": {
+        "objective_met": 8,
+        "field_window_ended": 1
+      },
+      "staging_failures": 0,
+      "frontier_jobs": 5,
+      "frontier_types": {
+        "survey": 5
+      },
+      "science_cases": 23,
+      "retained_experiments": 96,
+      "retained_experiment_statuses": {
+        "complete": 72,
+        "no_result": 22,
+        "failed": 2
+      },
+      "confirmed_conclusions": 4,
+      "knowledge": {
+        "facts": 257,
+        "sol": 257,
+        "pending": 0,
+        "delivered": 335
+      },
+      "biology": [
+        {
+          "id": "XENO-INITIAL",
+          "stage": "adult",
+          "location": "asteroid:23",
+          "state": "contained",
+          "energy": 100,
+          "health": 100,
+          "steps": 0
+        },
+        {
+          "id": "EGG-1",
+          "stage": "egg",
+          "location": "asteroid:22",
+          "state": "uninitialized",
+          "steps": 0
+        },
+        {
+          "id": "EGG-2",
+          "stage": "egg",
+          "location": "asteroid:24",
+          "state": "uninitialized",
+          "steps": 0
+        }
+      ],
+      "creature_attack_events": 0,
+      "recorded_event_kinds": {
+        "system": 873,
+        "little": 37617,
+        "relationship": 4452,
+        "observation": 365,
+        "research": 132,
+        "social": 5471,
+        "emergency": 7,
+        "anthology": 1457,
+        "crew_memory": 452,
+        "mission": 37,
+        "mission_history": 5,
+        "encounter": 3,
+        "encounter_history": 3,
+        "maintenance": 77,
+        "injury": 1
+      },
+      "history_records": 50952,
+      "private_records": 253,
+      "resource_final": {
+        "food": 159.3265,
+        "water": 153.07260000002458,
+        "oxygen": 111.32800000000088,
+        "energy": 179.84373000000002,
+        "medical": 20,
+        "spares": 70,
+        "tools": 70,
+        "lab": 80
+      },
+      "acquired": {},
+      "ledger_rows": 558,
+      "ledger_kinds": {
+        "produce": 10,
+        "feedstock_use": 12,
+        "consume": 442,
+        "recover": 31,
+        "transfer": 63
+      },
+      "resource_sources": [
+        {
+          "kind": "produce",
+          "key": "energy",
+          "source": "incident starlight / installed collector",
+          "amount": 18731.254591107256,
+          "count": 160920
+        },
+        {
+          "kind": "produce",
+          "key": "energy",
+          "source": "reactor fuel conversion",
+          "amount": 332.7403288926758,
+          "count": 8173
+        },
+        {
+          "kind": "produce",
+          "key": "spares",
+          "source": "conversion from ore",
+          "amount": 735.9999999999994,
+          "count": 78670
+        },
+        {
+          "kind": "recover",
+          "key": "organicWaste",
+          "source": "recovered metabolic output",
+          "amount": 2246.8236,
+          "count": 160920
+        },
+        {
+          "kind": "recover",
+          "key": "wasteWater",
+          "source": "recovered metabolic output",
+          "amount": 4493.6472,
+          "count": 160920
+        },
+        {
+          "kind": "recover",
+          "key": "co2",
+          "source": "recovered metabolic output",
+          "amount": 3209.748,
+          "count": 160920
+        },
+        {
+          "kind": "produce",
+          "key": "water",
+          "source": "melted recovered/carried water ice",
+          "amount": 23.213400000002284,
+          "count": 588
+        },
+        {
+          "kind": "produce",
+          "key": "water",
+          "source": "wastewater reclamation",
+          "amount": 4560.6192,
+          "count": 160919
+        },
+        {
+          "kind": "produce",
+          "key": "oxygen",
+          "source": "closed-cycle CO2 regeneration",
+          "amount": 3209.728,
+          "count": 160919
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered process scrap",
+          "amount": 8152.62,
+          "count": 8188
+        },
+        {
+          "kind": "recover",
+          "key": "organicWaste",
+          "source": "recovered meal residue",
+          "amount": 7660,
+          "count": 7660
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-2",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-2",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-3",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-3",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "produce",
+          "key": "medical",
+          "source": "sterile cartridge culture from nutrients and water",
+          "amount": 75,
+          "count": 75
+        },
+        {
+          "kind": "produce",
+          "key": "food",
+          "source": "conversion from organicWaste / nutrients",
+          "amount": 9891.30649999936,
+          "count": 160577
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-4",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-4",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-5",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-5",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "produce",
+          "key": "lab",
+          "source": "conversion from ore",
+          "amount": 3519.499999999999,
+          "count": 24696
+        },
+        {
+          "kind": "produce",
+          "key": "tools",
+          "source": "conversion from ore",
+          "amount": 4300.502000000011,
+          "count": 47703
+        },
+        {
+          "kind": "recover",
+          "key": "wasteWater",
+          "source": "recovered clinical rinse",
+          "amount": 67,
+          "count": 67
+        },
+        {
+          "kind": "recover",
+          "key": "organicWaste",
+          "source": "spent culture medium",
+          "amount": 67,
+          "count": 67
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-9",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-9",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-10",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-10",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-12",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-12",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-14",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-14",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-15",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-15",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-16",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-16",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-17",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-17",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-18",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-18",
+          "amount": 2,
+          "count": 1
+        }
+      ],
+      "primary_cache_first_bytes": 312076,
+      "primary_cache_final_bytes": 1039714,
+      "snapshot_final_bytes": 6152872,
+      "exact_reload_checkpoints": [
+        {
+          "real_day": 7,
+          "sim_days": 25.0,
+          "episode": 2,
+          "exact_reload": true,
+          "crew": 20,
+          "dead": 0,
+          "stories": 95,
+          "resources": {
+            "food": 159.986,
+            "water": 153.072600000005,
+            "oxygen": 111.32800000000088,
+            "energy": 179.87554151999998,
+            "medical": 20,
+            "spares": 68.40240159999996,
+            "tools": 69.991,
+            "lab": 80
+          },
+          "arrivals": 5,
+          "calendar_occurrences": [
+            "2026-10-31:Halloween"
+          ],
+          "organisms": {
+            "XENO-INITIAL": {
+              "id": "XENO-INITIAL",
+              "stage": "adult",
+              "dormant": true,
+              "location": "asteroid:23",
+              "origin": "initial concealed chamber",
+              "sealed": true,
+              "behavior": {
+                "version": 1,
+                "state": "contained",
+                "energy": 100,
+                "stamina": 100,
+                "health": 100,
+                "lastTick": 36000,
+                "lastAttack": -100,
+                "steps": 0,
+                "meals": 0,
+                "trace": [
+                  {
+                    "at": 5,
+                    "from": "dormant",
+                    "to": "contained",
+                    "location": "asteroid:23"
+                  }
+                ]
+              }
+            },
+            "EGG-1": {
+              "id": "EGG-1",
+              "stage": "egg",
+              "dormant": true,
+              "location": "asteroid:22"
+            },
+            "EGG-2": {
+              "id": "EGG-2",
+              "stage": "egg",
+              "dormant": true,
+              "location": "asteroid:24"
+            }
+          }
+        },
+        {
+          "real_day": 30,
+          "sim_days": 111.75,
+          "episode": 5,
+          "exact_reload": true,
+          "crew": 20,
+          "dead": 0,
+          "stories": 352,
+          "resources": {
+            "food": 159.3265,
+            "water": 153.07260000002458,
+            "oxygen": 111.32800000000088,
+            "energy": 179.84373000000002,
+            "medical": 20,
+            "spares": 70,
+            "tools": 70,
+            "lab": 80
+          },
+          "arrivals": 5,
+          "calendar_occurrences": [
+            "2026-10-31:Halloween",
+            "2026-11-11:Veterans Day",
+            "2026-11-26:Thanksgiving"
+          ],
+          "organisms": {
+            "XENO-INITIAL": {
+              "id": "XENO-INITIAL",
+              "stage": "adult",
+              "dormant": true,
+              "location": "asteroid:23",
+              "origin": "initial concealed chamber",
+              "sealed": true,
+              "behavior": {
+                "version": 1,
+                "state": "contained",
+                "energy": 100,
+                "stamina": 100,
+                "health": 100,
+                "lastTick": 160920,
+                "lastAttack": -100,
+                "steps": 0,
+                "meals": 0,
+                "trace": [
+                  {
+                    "at": 5,
+                    "from": "dormant",
+                    "to": "contained",
+                    "location": "asteroid:23"
+                  }
+                ]
+              }
+            },
+            "EGG-1": {
+              "id": "EGG-1",
+              "stage": "egg",
+              "dormant": true,
+              "location": "asteroid:22"
+            },
+            "EGG-2": {
+              "id": "EGG-2",
+              "stage": "egg",
+              "dormant": true,
+              "location": "asteroid:24"
+            }
+          }
+        }
+      ],
+      "elapsed_seconds": 461.1950523559972,
+      "audits_passed": true
+    },
+    {
+      "profile": "compound_1001",
+      "seed": 1001,
+      "scenario": "compound",
+      "source_commit": "177e367b2d7d516fb749c25b62e992191de19463",
+      "runtime_source_commit": "113e79b7693db4c37c8519449339032cf2ed60a1",
+      "initial_state_validated": true,
+      "initial_state": {
+        "tick": 0,
+        "equipment": {
+          "B07": 10,
+          "C09": 32,
+          "C07": 45
+        },
+        "crew0_health": 55,
+        "organism": {
+          "id": "XENO-INITIAL",
+          "stage": "adult",
+          "dormant": true,
+          "location": "asteroid:23",
+          "origin": "initial concealed chamber",
+          "sealed": true
+        },
+        "asteroid_mission": null,
+        "resource_audit": []
+      },
+      "scenario_application": "Normal backup-import UI in isolated test context; explicit initial fixture, not a natural simulation event.",
+      "real_days": 7,
+      "sim_days": 25.0,
+      "ticks": 36000,
+      "episodes": 2,
+      "crew_alive": 20,
+      "deaths": 0,
+      "death_causes": [],
+      "daily_sample_min_health": 70.05999999999625,
+      "arrivals": 5,
+      "fuel_used": 1.9624515496596866,
+      "field_missions": 8,
+      "field_statuses": {
+        "completed": 8
+      },
+      "field_reasons": {
+        "objective_met": 6,
+        "field_window_ended": 2
+      },
+      "staging_failures": 0,
+      "frontier_jobs": 5,
+      "frontier_types": {
+        "survey": 5
+      },
+      "science_cases": 15,
+      "retained_experiments": 64,
+      "retained_experiment_statuses": {
+        "complete": 47,
+        "no_result": 11,
+        "failed": 6
+      },
+      "confirmed_conclusions": 3,
+      "knowledge": {
+        "facts": 160,
+        "sol": 160,
+        "pending": 0,
+        "delivered": 172
+      },
+      "biology": [
+        {
+          "id": "XENO-INITIAL",
+          "stage": "adult",
+          "location": "asteroid:23",
+          "state": "contained",
+          "energy": 100,
+          "health": 100,
+          "steps": 0
+        },
+        {
+          "id": "EGG-1",
+          "stage": "egg",
+          "location": "asteroid:22",
+          "state": "uninitialized",
+          "steps": 0
+        },
+        {
+          "id": "EGG-2",
+          "stage": "egg",
+          "location": "asteroid:24",
+          "state": "uninitialized",
+          "steps": 0
+        }
+      ],
+      "creature_attack_events": 0,
+      "recorded_event_kinds": {
+        "system": 259,
+        "injury": 2,
+        "anthology": 339,
+        "medical": 3,
+        "emergency": 14,
+        "little": 8040,
+        "crew_memory": 111,
+        "social": 955,
+        "relationship": 966,
+        "maintenance": 2,
+        "observation": 234,
+        "research": 84,
+        "mission": 37,
+        "encounter": 3,
+        "encounter_history": 3,
+        "mission_history": 5
+      },
+      "history_records": 11057,
+      "private_records": 156,
+      "resource_final": {
+        "food": 159.986,
+        "water": 153.47755200000555,
+        "oxygen": 112.01200000000132,
+        "energy": 179.87476800000002,
+        "medical": 20,
+        "spares": 70,
+        "tools": 69.16139999999999,
+        "lab": 78.97339999999976
+      },
+      "acquired": {},
+      "ledger_rows": 273,
+      "ledger_kinds": {
+        "produce": 10,
+        "feedstock_use": 12,
+        "consume": 174,
+        "recover": 17,
+        "transfer": 60
+      },
+      "resource_sources": [
+        {
+          "kind": "produce",
+          "key": "energy",
+          "source": "incident starlight / installed collector",
+          "amount": 4223.831448378427,
+          "count": 36000
+        },
+        {
+          "kind": "produce",
+          "key": "energy",
+          "source": "reactor fuel conversion",
+          "amount": 184.66857802160234,
+          "count": 2646
+        },
+        {
+          "kind": "produce",
+          "key": "spares",
+          "source": "conversion from ore",
+          "amount": 167.99999999999932,
+          "count": 17924
+        },
+        {
+          "kind": "recover",
+          "key": "organicWaste",
+          "source": "recovered metabolic output",
+          "amount": 498.4224,
+          "count": 36000
+        },
+        {
+          "kind": "recover",
+          "key": "wasteWater",
+          "source": "recovered metabolic output",
+          "amount": 996.8448,
+          "count": 36000
+        },
+        {
+          "kind": "recover",
+          "key": "co2",
+          "source": "recovered metabolic output",
+          "amount": 712.032,
+          "count": 36000
+        },
+        {
+          "kind": "produce",
+          "key": "water",
+          "source": "melted recovered/carried water ice",
+          "amount": 22.66075200000098,
+          "count": 638
+        },
+        {
+          "kind": "produce",
+          "key": "water",
+          "source": "wastewater reclamation",
+          "amount": 1012.8168000000001,
+          "count": 35999
+        },
+        {
+          "kind": "produce",
+          "key": "oxygen",
+          "source": "closed-cycle CO2 regeneration",
+          "amount": 712.0120000000001,
+          "count": 35999
+        },
+        {
+          "kind": "recover",
+          "key": "wasteWater",
+          "source": "recovered clinical rinse",
+          "amount": 16,
+          "count": 16
+        },
+        {
+          "kind": "recover",
+          "key": "organicWaste",
+          "source": "spent culture medium",
+          "amount": 16,
+          "count": 16
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered process scrap",
+          "amount": 1902.18,
+          "count": 1850
+        },
+        {
+          "kind": "recover",
+          "key": "organicWaste",
+          "source": "recovered meal residue",
+          "amount": 1639,
+          "count": 1639
+        },
+        {
+          "kind": "produce",
+          "key": "medical",
+          "source": "sterile cartridge culture from nutrients and water",
+          "amount": 24,
+          "count": 24
+        },
+        {
+          "kind": "produce",
+          "key": "food",
+          "source": "conversion from organicWaste / nutrients",
+          "amount": 2118.085999999889,
+          "count": 35640
+        },
+        {
+          "kind": "produce",
+          "key": "tools",
+          "source": "conversion from ore",
+          "amount": 971.8924000000026,
+          "count": 10569
+        },
+        {
+          "kind": "produce",
+          "key": "lab",
+          "source": "conversion from ore",
+          "amount": 834.4734000000001,
+          "count": 5813
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-3",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-3",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-4",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-4",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-8",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-8",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-9",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-9",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-10",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-10",
+          "amount": 2,
+          "count": 1
+        }
+      ],
+      "primary_cache_first_bytes": 302578,
+      "primary_cache_final_bytes": 530406,
+      "snapshot_final_bytes": 2895328,
+      "exact_reload_checkpoints": [
+        {
+          "real_day": 7,
+          "sim_days": 25.0,
+          "episode": 2,
+          "exact_reload": true,
+          "crew": 20,
+          "dead": 0,
+          "stories": 91,
+          "resources": {
+            "food": 159.986,
+            "water": 153.47755200000555,
+            "oxygen": 112.01200000000132,
+            "energy": 179.87476800000002,
+            "medical": 20,
+            "spares": 70,
+            "tools": 69.16139999999999,
+            "lab": 78.97339999999976
+          },
+          "arrivals": 5,
+          "calendar_occurrences": [
+            "2026-10-31:Halloween"
+          ],
+          "organisms": {
+            "XENO-INITIAL": {
+              "id": "XENO-INITIAL",
+              "stage": "adult",
+              "dormant": true,
+              "location": "asteroid:23",
+              "origin": "initial concealed chamber",
+              "sealed": true,
+              "behavior": {
+                "version": 1,
+                "state": "contained",
+                "energy": 100,
+                "stamina": 100,
+                "health": 100,
+                "lastTick": 36000,
+                "lastAttack": -100,
+                "steps": 0,
+                "meals": 0,
+                "trace": [
+                  {
+                    "at": 5,
+                    "from": "dormant",
+                    "to": "contained",
+                    "location": "asteroid:23"
+                  }
+                ]
+              }
+            },
+            "EGG-1": {
+              "id": "EGG-1",
+              "stage": "egg",
+              "dormant": true,
+              "location": "asteroid:22"
+            },
+            "EGG-2": {
+              "id": "EGG-2",
+              "stage": "egg",
+              "dormant": true,
+              "location": "asteroid:24"
+            }
+          }
+        }
+      ],
+      "elapsed_seconds": 45.63040609699965,
+      "audits_passed": true
+    },
+    {
+      "profile": "chamber_4807",
+      "seed": 4807,
+      "scenario": "released_chamber",
+      "source_commit": "177e367b2d7d516fb749c25b62e992191de19463",
+      "runtime_source_commit": "113e79b7693db4c37c8519449339032cf2ed60a1",
+      "initial_state_validated": true,
+      "initial_state": {
+        "tick": 0,
+        "equipment": {
+          "B07": 74,
+          "C09": 82,
+          "C07": 75
+        },
+        "crew0_health": 100,
+        "organism": {
+          "id": "XENO-INITIAL",
+          "stage": "adult",
+          "dormant": false,
+          "location": "asteroid:23",
+          "origin": "initial concealed chamber",
+          "sealed": false
+        },
+        "asteroid_mission": {
+          "id": "ADVERSE-CHAMBER",
+          "crew": "Frank Morrow",
+          "members": [
+            "Frank Morrow",
+            "Mara Chen"
+          ],
+          "phase": "onsite",
+          "progress": 0,
+          "kit": 0,
+          "suits": 2,
+          "cargo": {
+            "food": 2,
+            "water": 4,
+            "oxygen": 4
+          },
+          "conditions": {},
+          "onsiteMinutes": 0,
+          "workRate": 1
+        },
+        "resource_audit": []
+      },
+      "scenario_application": "Normal backup-import UI in isolated test context; explicit initial fixture, not a natural simulation event.",
+      "real_days": 7,
+      "sim_days": 25.0,
+      "ticks": 36000,
+      "episodes": 2,
+      "crew_alive": 20,
+      "deaths": 0,
+      "death_causes": [],
+      "daily_sample_min_health": 66.62665933223892,
+      "arrivals": 5,
+      "fuel_used": 1.9624515496596866,
+      "field_missions": 10,
+      "field_statuses": {
+        "completed": 10
+      },
+      "field_reasons": {
+        "team_safety": 2,
+        "objective_met": 7,
+        "field_window_ended": 1
+      },
+      "staging_failures": 0,
+      "frontier_jobs": 5,
+      "frontier_types": {
+        "survey": 5
+      },
+      "science_cases": 23,
+      "retained_experiments": 98,
+      "retained_experiment_statuses": {
+        "complete": 67,
+        "no_result": 27,
+        "failed": 4
+      },
+      "confirmed_conclusions": 4,
+      "knowledge": {
+        "facts": 182,
+        "sol": 182,
+        "pending": 0,
+        "delivered": 195
+      },
+      "biology": [
+        {
+          "id": "XENO-INITIAL",
+          "stage": "adult",
+          "location": "asteroid:6",
+          "state": "starved",
+          "energy": 0,
+          "health": 100,
+          "steps": 35
+        },
+        {
+          "id": "EGG-1",
+          "stage": "egg",
+          "location": "asteroid:22",
+          "state": "uninitialized",
+          "steps": 0
+        },
+        {
+          "id": "EGG-2",
+          "stage": "egg",
+          "location": "asteroid:24",
+          "state": "uninitialized",
+          "steps": 0
+        }
+      ],
+      "creature_attack_events": 5,
+      "recorded_event_kinds": {
+        "system": 326,
+        "little": 8128,
+        "observation": 234,
+        "encounter": 13,
+        "injury": 12,
+        "crew_memory": 119,
+        "social": 927,
+        "relationship": 993,
+        "medical": 8,
+        "mission": 39,
+        "anthology": 376,
+        "research": 132,
+        "emergency": 7,
+        "maintenance": 6,
+        "mission_history": 5,
+        "encounter_history": 3
+      },
+      "history_records": 11328,
+      "private_records": 181,
+      "resource_final": {
+        "food": 159.7066,
+        "water": 153.16920000000783,
+        "oxygen": 111.36500000000086,
+        "energy": 179.84404992,
+        "medical": 20,
+        "spares": 69.48855000000003,
+        "tools": 69.991,
+        "lab": 79.33511999999993
+      },
+      "acquired": {},
+      "ledger_rows": 280,
+      "ledger_kinds": {
+        "transfer": 66,
+        "produce": 10,
+        "feedstock_use": 12,
+        "consume": 171,
+        "recover": 21
+      },
+      "resource_sources": [
+        {
+          "kind": "produce",
+          "key": "energy",
+          "source": "incident starlight / installed collector",
+          "amount": 4255.510691449617,
+          "count": 36000
+        },
+        {
+          "kind": "produce",
+          "key": "energy",
+          "source": "reactor fuel conversion",
+          "amount": 207.00707467039456,
+          "count": 3159
+        },
+        {
+          "kind": "produce",
+          "key": "spares",
+          "source": "conversion from ore",
+          "amount": 171.48854999999978,
+          "count": 18341
+        },
+        {
+          "kind": "recover",
+          "key": "organicWaste",
+          "source": "recovered metabolic output",
+          "amount": 497.9695,
+          "count": 36000
+        },
+        {
+          "kind": "recover",
+          "key": "wasteWater",
+          "source": "recovered metabolic output",
+          "amount": 995.939,
+          "count": 36000
+        },
+        {
+          "kind": "recover",
+          "key": "co2",
+          "source": "recovered metabolic output",
+          "amount": 711.385,
+          "count": 36000
+        },
+        {
+          "kind": "produce",
+          "key": "water",
+          "source": "melted recovered/carried water ice",
+          "amount": 23.25820000000407,
+          "count": 589
+        },
+        {
+          "kind": "produce",
+          "key": "water",
+          "source": "wastewater reclamation",
+          "amount": 1015.9110000000001,
+          "count": 35999
+        },
+        {
+          "kind": "produce",
+          "key": "oxygen",
+          "source": "closed-cycle CO2 regeneration",
+          "amount": 711.365,
+          "count": 35999
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered process scrap",
+          "amount": 1910.02,
+          "count": 1806
+        },
+        {
+          "kind": "recover",
+          "key": "organicWaste",
+          "source": "recovered meal residue",
+          "amount": 1743,
+          "count": 1743
+        },
+        {
+          "kind": "recover",
+          "key": "wasteWater",
+          "source": "recovered clinical rinse",
+          "amount": 20,
+          "count": 20
+        },
+        {
+          "kind": "recover",
+          "key": "organicWaste",
+          "source": "spent culture medium",
+          "amount": 20,
+          "count": 20
+        },
+        {
+          "kind": "produce",
+          "key": "medical",
+          "source": "sterile cartridge culture from nutrients and water",
+          "amount": 28,
+          "count": 28
+        },
+        {
+          "kind": "produce",
+          "key": "food",
+          "source": "conversion from organicWaste / nutrients",
+          "amount": 2221.8065999998867,
+          "count": 35661
+        },
+        {
+          "kind": "produce",
+          "key": "lab",
+          "source": "conversion from ore",
+          "amount": 896.8351200000001,
+          "count": 6251
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-2",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-2",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "produce",
+          "key": "tools",
+          "source": "conversion from ore",
+          "amount": 912.5710000000024,
+          "count": 10233
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-10",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-10",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-11",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-11",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-13",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-13",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-14",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-14",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-17",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-17",
+          "amount": 2,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "ore",
+          "source": "recovered bulk FIELD-18",
+          "amount": 4,
+          "count": 1
+        },
+        {
+          "kind": "recover",
+          "key": "waterIce",
+          "source": "recovered bulk FIELD-18",
+          "amount": 2,
+          "count": 1
+        }
+      ],
+      "primary_cache_first_bytes": 313940,
+      "primary_cache_final_bytes": 542158,
+      "snapshot_final_bytes": 3069951,
+      "exact_reload_checkpoints": [
+        {
+          "real_day": 7,
+          "sim_days": 25.0,
+          "episode": 2,
+          "exact_reload": true,
+          "crew": 20,
+          "dead": 0,
+          "stories": 95,
+          "resources": {
+            "food": 159.7066,
+            "water": 153.16920000000783,
+            "oxygen": 111.36500000000086,
+            "energy": 179.84404992,
+            "medical": 20,
+            "spares": 69.48855000000003,
+            "tools": 69.991,
+            "lab": 79.33511999999993
+          },
+          "arrivals": 5,
+          "calendar_occurrences": [
+            "2026-10-31:Halloween"
+          ],
+          "organisms": {
+            "XENO-INITIAL": {
+              "id": "XENO-INITIAL",
+              "stage": "adult",
+              "dormant": false,
+              "location": "asteroid:6",
+              "origin": "initial concealed chamber",
+              "sealed": false,
+              "behavior": {
+                "version": 1,
+                "state": "starved",
+                "energy": 0,
+                "stamina": 5.960000000000848,
+                "health": 100,
+                "lastTick": 36000,
+                "lastAttack": 1445,
+                "steps": 35,
+                "meals": 0,
+                "trace": [
+                  {
+                    "at": 5,
+                    "from": "sensing",
+                    "to": "hiding",
+                    "location": "asteroid:23"
+                  },
+                  {
+                    "at": 20,
+                    "from": "hiding",
+                    "to": "attack",
+                    "location": "asteroid:23",
+                    "target": "Mara Chen"
+                  },
+                  {
+                    "at": 25,
+                    "from": "attack",
+                    "to": "hiding",
+                    "location": "asteroid:23"
+                  },
+                  {
+                    "at": 40,
+                    "from": "hiding",
+                    "to": "attack",
+                    "location": "asteroid:23",
+                    "target": "Frank Morrow"
+                  },
+                  {
+                    "at": 45,
+                    "from": "attack",
+                    "to": "pursuit",
+                    "location": "asteroid:23"
+                  },
+                  {
+                    "at": 50,
+                    "from": "pursuit",
+                    "to": "hiding",
+                    "location": "asteroid:22"
+                  },
+                  {
+                    "at": 60,
+                    "from": "hiding",
+                    "to": "attack",
+                    "location": "asteroid:22",
+                    "target": "Frank Morrow"
+                  },
+                  {
+                    "at": 65,
+                    "from": "attack",
+                    "to": "resting",
+                    "location": "asteroid:22"
+                  },
+                  {
+                    "at": 90,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:22"
+                  },
+                  {
+                    "at": 215,
+                    "from": "hiding",
+                    "to": "sensing",
+                    "location": "asteroid:22"
+                  },
+                  {
+                    "at": 220,
+                    "from": "sensing",
+                    "to": "resting",
+                    "location": "asteroid:23"
+                  },
+                  {
+                    "at": 230,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:23"
+                  },
+                  {
+                    "at": 535,
+                    "from": "hiding",
+                    "to": "sensing",
+                    "location": "asteroid:23"
+                  },
+                  {
+                    "at": 540,
+                    "from": "sensing",
+                    "to": "resting",
+                    "location": "asteroid:22"
+                  },
+                  {
+                    "at": 545,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:22"
+                  },
+                  {
+                    "at": 615,
+                    "from": "hiding",
+                    "to": "sensing",
+                    "location": "asteroid:22"
+                  },
+                  {
+                    "at": 620,
+                    "from": "sensing",
+                    "to": "resting",
+                    "location": "asteroid:17"
+                  },
+                  {
+                    "at": 625,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:17"
+                  },
+                  {
+                    "at": 720,
+                    "from": "hiding",
+                    "to": "sensing",
+                    "location": "asteroid:17"
+                  },
+                  {
+                    "at": 725,
+                    "from": "sensing",
+                    "to": "resting",
+                    "location": "asteroid:12"
+                  },
+                  {
+                    "at": 730,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:12"
+                  },
+                  {
+                    "at": 770,
+                    "from": "hiding",
+                    "to": "sensing",
+                    "location": "asteroid:12"
+                  },
+                  {
+                    "at": 775,
+                    "from": "sensing",
+                    "to": "resting",
+                    "location": "asteroid:11"
+                  },
+                  {
+                    "at": 785,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:11"
+                  },
+                  {
+                    "at": 785,
+                    "from": "hiding",
+                    "to": "sensing",
+                    "location": "asteroid:11"
+                  },
+                  {
+                    "at": 790,
+                    "from": "sensing",
+                    "to": "resting",
+                    "location": "asteroid:10"
+                  },
+                  {
+                    "at": 795,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:10"
+                  },
+                  {
+                    "at": 905,
+                    "from": "hiding",
+                    "to": "sensing",
+                    "location": "asteroid:10"
+                  },
+                  {
+                    "at": 910,
+                    "from": "sensing",
+                    "to": "resting",
+                    "location": "asteroid:5"
+                  },
+                  {
+                    "at": 915,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:5"
+                  },
+                  {
+                    "at": 1000,
+                    "from": "hiding",
+                    "to": "sensing",
+                    "location": "asteroid:5"
+                  },
+                  {
+                    "at": 1005,
+                    "from": "sensing",
+                    "to": "resting",
+                    "location": "asteroid:10"
+                  },
+                  {
+                    "at": 1010,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:10"
+                  },
+                  {
+                    "at": 1055,
+                    "from": "hiding",
+                    "to": "sensing",
+                    "location": "asteroid:10"
+                  },
+                  {
+                    "at": 1060,
+                    "from": "sensing",
+                    "to": "resting",
+                    "location": "asteroid:5"
+                  },
+                  {
+                    "at": 1070,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:5"
+                  },
+                  {
+                    "at": 1150,
+                    "from": "hiding",
+                    "to": "sensing",
+                    "location": "asteroid:5"
+                  },
+                  {
+                    "at": 1155,
+                    "from": "sensing",
+                    "to": "resting",
+                    "location": "asteroid:0"
+                  },
+                  {
+                    "at": 1160,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:0"
+                  },
+                  {
+                    "at": 1165,
+                    "from": "hiding",
+                    "to": "sensing",
+                    "location": "asteroid:0"
+                  },
+                  {
+                    "at": 1170,
+                    "from": "sensing",
+                    "to": "resting",
+                    "location": "asteroid:5"
+                  },
+                  {
+                    "at": 1175,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:5"
+                  },
+                  {
+                    "at": 1190,
+                    "from": "hiding",
+                    "to": "sensing",
+                    "location": "asteroid:5"
+                  },
+                  {
+                    "at": 1195,
+                    "from": "sensing",
+                    "to": "resting",
+                    "location": "asteroid:10"
+                  },
+                  {
+                    "at": 1200,
+                    "from": "resting",
+                    "to": "hiding",
+                    "location": "asteroid:10"
+                  },
+                  {
+                    "at": 1355,
+                    "from": "hiding",
+                    "to": "pursuit",
+                    "location": "asteroid:10"
+                  },
+                  {
+                    "at": 1360,
+                    "from": "pursuit",
+                    "to": "hiding",
+                    "location": "asteroid:5"
+                  },
+                  {
+                    "at": 1395,
+                    "from": "hiding",
+                    "to": "pursuit",
+                    "location": "asteroid:5"
+                  },
+                  {
+                    "at": 1400,
+                    "from": "pursuit",
+                    "to": "hiding",
+                    "location": "asteroid:6"
+                  },
+                  {
+                    "at": 1410,
+                    "from": "hiding",
+                    "to": "pursuit",
+                    "location": "asteroid:6"
+                  },
+                  {
+                    "at": 1415,
+                    "from": "pursuit",
+                    "to": "hiding",
+                    "location": "asteroid:7"
+                  },
+                  {
+                    "at": 1420,
+                    "from": "hiding",
+                    "to": "attack",
+                    "location": "asteroid:7",
+                    "target": "Sana Okafor"
+                  },
+                  {
+                    "at": 1425,
+                    "from": "attack",
+                    "to": "pursuit",
+                    "location": "asteroid:7"
+                  },
+                  {
+                    "at": 1430,
+                    "from": "pursuit",
+                    "to": "hiding",
+                    "location": "asteroid:12"
+                  },
+                  {
+                    "at": 1445,
+                    "from": "hiding",
+                    "to": "attack",
+                    "location": "asteroid:12",
+                    "target": "Sana Okafor"
+                  },
+                  {
+                    "at": 1450,
+                    "from": "attack",
+                    "to": "retreat",
+                    "location": "asteroid:12"
+                  },
+                  {
+                    "at": 1635,
+                    "from": "retreat",
+                    "to": "starved",
+                    "location": "asteroid:6"
+                  }
+                ],
+                "sightingKey": "asteroid:12:Sana Okafor,Theo Moss",
+                "sightedAt": 1430
+              }
+            },
+            "EGG-1": {
+              "id": "EGG-1",
+              "stage": "egg",
+              "dormant": true,
+              "location": "asteroid:22"
+            },
+            "EGG-2": {
+              "id": "EGG-2",
+              "stage": "egg",
+              "dormant": true,
+              "location": "asteroid:24"
+            }
+          }
+        }
+      ],
+      "elapsed_seconds": 45.54098561999854,
+      "audits_passed": true
+    }
+  ],
+  "not_run": [
+    "Native Windows BAT launcher and actual PyAutoGUI desktop/game input (Linux environment; input stubbed).",
+    "Physical Android phone, Wi-Fi interruptions and Samsung TV hardware/TLS (mobile emulation and TV socket stub used).",
+    "Firefox/Safari, hostile concurrent browser writers, exhaustive fuzzing/penetration and transitive dependency audit.",
+    "Antivirus engine scan (clamscan/Windows Defender unavailable); no protection was disabled or bypassed.",
+    "180/365-day Phase 2 full-world campaigns; final tested durations are stated individually.",
+    "The user's live Windows browser profile was not accessed; migration uses a real historical Phase 1 Lite campaign backup."
+  ],
+  "passed": true
+}

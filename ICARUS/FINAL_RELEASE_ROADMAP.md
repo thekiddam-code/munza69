@@ -2,7 +2,7 @@
 
 This roadmap follows FINAL_DESIGN.md. Status is about demonstrated behavior, not aspiration. v1.4.1 is a focused stabilization batch, not a declaration of final release.
 
-Phase 2 is an implementation increment with deterministic and browser evidence, not final-release certification. Details and actual campaign outcomes are in PHASE2_VALIDATION.md.
+Phase 2 is an implementation increment with deterministic and browser evidence, not final-release certification. Details and actual campaign outcomes are in PHASE2_VALIDATION.md: the extracted Lite runtime passed 217 Node cases, 46 Living World/30 stability/44 compatibility browser cases, two timer/three bridge cases and 15 mobile checks. Two ordinary 111.75-simulated-day voyages and two asserted 25-day adverse profiles preserve state and make five actual arrivals each. This evidence verifies an implementation increment, not final human story/visual quality.
 
 Status vocabulary: **Complete and verified**, **Implemented but needing refinement**, **Partially implemented**, **Not started**, **Deferred to the Extended Universe edition**.
 
