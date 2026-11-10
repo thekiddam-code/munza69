@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "branch": "codex/cinematic-living-world-phase3",
+  "published_commit": "5a94b755cf8bdade76e30ca9d84a7881b38ab40b",
+  "verified_remote_downloads": [
+    {
+      "file": "ICARUS_Cinematic_Living_World_Phase3_Lite.zip",
+      "bytes": 408835,
+      "sha256": "42d608607ef4abaf37b24783e50c85a609ede33af113e04ea6c65922bd1b1f69",
+      "remote_bytes_match_local": true,
+      "crc_passed": true
+    },
+    {
+      "file": "ICARUS_Phase3_Engineering_and_Test_Evidence.zip",
+      "bytes": 212596,
+      "sha256": "bb68c344612f8a063e253b8041f8b2dbedaefd48f5a7e67f6113b0fa3c317582",
+      "remote_bytes_match_local": true,
+      "crc_passed": true
+    }
+  ],
+  "protected_remote_refs_unchanged": {
+    "refs/heads/codex/living-world-phase2": "0e4f5f01ce053d22cf40762f937c869559bd3d5b",
+    "refs/heads/downloads/unified-phase1-lite": "46495d48ee8ff587929863e1dba8febedcfb3c22",
+    "refs/heads/main": "a85fa03099e4cd491fe84ceb015eb5e09ecf03d8"
+  }
+}
