@@ -217,7 +217,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
  def __init__(self,*args,**kwargs): super().__init__(*args,directory=str(ROOT/'web'),**kwargs)
  def log_message(self,*args): pass
  def respond(self,code,data):
-  body=json.dumps(data).encode(); self.send_response(code); self.send_header('Content-Type','application/json'); self.send_header('Cache-Control','no-store'); self.send_header('Content-Length',str(len(body))); self.end_headers(); self.wfile.write(body)
+  body=json.dumps(data).encode(); self.send_response(code); self.send_header('Content-Type','application/json'); self.send_header('Cache-Control','no-store'); self.send_header('Content-Length',str(len(body))); self.end_headers();
+  try:self.wfile.write(body)
+  except (BrokenPipeError,ConnectionResetError):pass
  def do_GET(self):
   if self.path=='/api/icarus/telemetry':
    if not self.authorized(): return self.respond(401,{'error':'Pair first'})

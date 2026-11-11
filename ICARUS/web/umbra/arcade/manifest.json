@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "collection": "UMBRA Arcade Kill Cam",
+  "provenance": "FICTIONAL 8-BIT ARCADE GIF",
+  "enabled_by_default": false,
+  "master_toggle": "Corporate Anomalies",
+  "feature_toggle": "Arcade Kill Cam",
+  "offline": true,
+  "format": "GIF89a",
+  "dimensions": {
+    "width": 128,
+    "height": 72
+  },
+  "frames_per_clip": 12,
+  "frame_duration_ms": 240,
+  "loop": true,
+  "sound": false,
+  "assets": [
+    {
+      "id": "vent-ambush",
+      "title": "Vent Ambush",
+      "description": "A security guard discovers the overhead ventilation hazard",
+      "file": "vent-ambush.gif",
+      "type": "fictional-arcade",
+      "alt": "8-bit pixel-art Xenomorph scene: A security guard discovers the overhead ventilation hazard"
+    },
+    {
+      "id": "tail-strike",
+      "title": "Tail Strike",
+      "description": "A Xenomorph closes in with a tail strike",
+      "file": "tail-strike.gif",
+      "type": "fictional-arcade",
+      "alt": "8-bit pixel-art Xenomorph scene: A Xenomorph closes in with a tail strike"
+    },
+    {
+      "id": "facehugger-surprise",
+      "title": "Facehugger Surprise",
+      "description": "A fast-moving facehugger leaps toward a guard",
+      "file": "facehugger-surprise.gif",
+      "type": "fictional-arcade",
+      "alt": "8-bit pixel-art Xenomorph scene: A fast-moving facehugger leaps toward a guard"
+    },
+    {
+      "id": "corridor-chase",
+      "title": "Corridor Chase",
+      "description": "A corridor pursuit ends in a close encounter",
+      "file": "corridor-chase.gif",
+      "type": "fictional-arcade",
+      "alt": "8-bit pixel-art Xenomorph scene: A corridor pursuit ends in a close encounter"
+    },
+    {
+      "id": "motion-tracker",
+      "title": "Motion Tracker",
+      "description": "The blip on the radar gets dangerously close",
+      "file": "motion-tracker.gif",
+      "type": "fictional-arcade",
+      "alt": "8-bit pixel-art Xenomorph scene: The blip on the radar gets dangerously close"
+    },
+    {
+      "id": "corporate-cleanup",
+      "title": "Corporate Cleanup",
+      "description": "An incident is filed as asset recovery",
+      "file": "corporate-cleanup.gif",
+      "type": "fictional-arcade",
+      "alt": "8-bit pixel-art Xenomorph scene: An incident is filed as asset recovery"
+    }
+  ]
+}
