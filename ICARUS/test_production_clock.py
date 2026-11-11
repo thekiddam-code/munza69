@@ -13,8 +13,10 @@ class ProductionClock(unittest.TestCase):
         cls.server=http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(ROOT/'web')));threading.Thread(target=cls.server.serve_forever,daemon=True).start();cls.pw=sync_playwright().start();cls.browser=cls.pw.chromium.launch(executable_path=os.environ.get('ICARUS_CHROMIUM') or None)
     @classmethod
     def tearDownClass(cls):cls.browser.close();cls.pw.stop();cls.server.shutdown()
-    def start(self,date):
-        self.context=self.browser.new_context(timezone_id='America/Chicago');p=self.context.new_page();self.errors=[];p.on('pageerror',lambda e:self.errors.append(str(e)));p.clock.install(time=datetime.fromisoformat(date).replace(tzinfo=timezone.utc));p.goto(f'http://127.0.0.1:{self.server.server_port}/icarus.html');p.wait_for_function('document.querySelector("#status").textContent.includes("LIVE")');self.assertEqual(p.evaluate('typeof __icarusSoak'),'undefined');return p
+    def start(self,date,fixed=False):
+        self.context=self.browser.new_context(timezone_id='America/Chicago');p=self.context.new_page();self.errors=[];p.on('pageerror',lambda e:self.errors.append(str(e)));p.clock.install(time=datetime.fromisoformat(date).replace(tzinfo=timezone.utc));
+        if fixed:p.clock.pause_at(datetime.fromisoformat(date).replace(tzinfo=timezone.utc))
+        p.goto(f'http://127.0.0.1:{self.server.server_port}/icarus.html');p.wait_for_function('document.querySelector("#status").textContent.includes("LIVE")');self.assertEqual(p.evaluate('typeof __icarusSoak'),'undefined');return p
     def state(self,p):p.evaluate('document.querySelector("#save").click()');p.evaluate('ICARUSDurable.flush()');return p.evaluate('JSON.parse(localStorage.getItem("icarus-v02"))')
     def tearDown(self):self.context.close();self.assertEqual(self.errors,[])
     def test_actual_normal_timer_is_four_times_and_pause_drops_elapsed_time(self):
