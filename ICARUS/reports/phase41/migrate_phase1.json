@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "errors": [],
+  "backup": "backup_1001_7.json",
+  "stage": "finished",
+  "timeout_seconds": 600.0,
+  "transfer_progress": "Committing verified world and history atomically; cancellation closed",
+  "import_seconds": 29.267448426995543,
+  "migrated_archive_annotations": 24,
+  "mismatched_import_domains": [],
+  "imported_history_records": 10659,
+  "mismatched_reload_domains": [],
+  "reload_seconds": 10.611938610993093,
+  "crew_before": 20,
+  "crew_after": 20,
+  "memorials_before": [],
+  "memorials_after": [],
+  "imported_tick": 36000,
+  "resumed_tick": 36120,
+  "storage": {
+    "physical_bytes": 879040,
+    "primary_bytes": 439520,
+    "compressed": true
+  },
+  "elapsed_seconds": 54.396487006000825
+}

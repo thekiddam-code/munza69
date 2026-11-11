@@ -1,0 +1,30 @@
+{
+  "suite": "interface",
+  "runtime_root": "/workspace/work/phase41_final_validation/tested/ICARUS_Phase4_1_Command_Bridge_Lite",
+  "runtime_source_commit": "53aa62d76d356343cfb514b725de30b24fba4a06",
+  "harness_source_commit": "53aa62d76d356343cfb514b725de30b24fba4a06",
+  "harness": "Pinned source tests outside Lite; runtime ROOT rebound to independent ZIP extraction. No runtime source patches. Desktop input stubbed in bridge tests.",
+  "passed": true,
+  "tests_run": 17,
+  "passed_cases": [
+    "test_20x_crosses_real_monday_once_with_same_people (test_command_interface.CommandInterface.test_20x_crosses_real_monday_once_with_same_people)",
+    "test_20x_holiday_then_normal_one_times (test_command_interface.CommandInterface.test_20x_holiday_then_normal_one_times)",
+    "test_20x_runs_same_physical_resource_and_crew_steps_as_normal (test_command_interface.CommandInterface.test_20x_runs_same_physical_resource_and_crew_steps_as_normal)",
+    "test_actual_holiday_timer_is_one_times_and_ignores_old_speed_button (test_command_interface.CommandInterface.test_actual_holiday_timer_is_one_times_and_ignores_old_speed_button)",
+    "test_actual_normal_timer_is_four_times_and_pause_drops_elapsed_time (test_command_interface.CommandInterface.test_actual_normal_timer_is_four_times_and_pause_drops_elapsed_time)",
+    "test_all_major_pages_responsive_and_rectangular_gradients (test_command_interface.CommandInterface.test_all_major_pages_responsive_and_rectangular_gradients)",
+    "test_directives_are_sourced_and_release_is_scoped (test_command_interface.CommandInterface.test_directives_are_sourced_and_release_is_scoped)",
+    "test_home_is_default_and_widgets_keep_same_live_nodes_and_preferences (test_command_interface.CommandInterface.test_home_is_default_and_widgets_keep_same_live_nodes_and_preferences)",
+    "test_keyboard_navigation_help_and_return_to_home (test_command_interface.CommandInterface.test_keyboard_navigation_help_and_return_to_home)",
+    "test_lazarus_home_and_research_share_no_duplicate_controls (test_command_interface.CommandInterface.test_lazarus_home_and_research_share_no_duplicate_controls)",
+    "test_one_and_five_times_are_real_user_facing_rates (test_command_interface.CommandInterface.test_one_and_five_times_are_real_user_facing_rates)",
+    "test_preferences_follow_imported_world_and_remain_editable (test_command_interface.CommandInterface.test_preferences_follow_imported_world_and_remain_editable)",
+    "test_readonly_spectator_can_navigate_but_cannot_enable_test_clock (test_command_interface.CommandInterface.test_readonly_spectator_can_navigate_but_cannot_enable_test_clock)",
+    "test_real_20x_timer_pause_normal_and_reload (test_command_interface.CommandInterface.test_real_20x_timer_pause_normal_and_reload)",
+    "test_sol_course_uses_existing_fuel_and_real_transit_and_releases_scope (test_command_interface.CommandInterface.test_sol_course_uses_existing_fuel_and_real_transit_and_releases_scope)",
+    "test_tabs_are_isolated_unique_and_browser_back_preserves_navigation (test_command_interface.CommandInterface.test_tabs_are_isolated_unique_and_browser_back_preserves_navigation)",
+    "test_test_warning_cancel_and_deliberate_reset_confirmation (test_command_interface.CommandInterface.test_test_warning_cancel_and_deliberate_reset_confirmation)"
+  ],
+  "failures": [],
+  "errors": []
+}

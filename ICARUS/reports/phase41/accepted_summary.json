@@ -1,0 +1,119 @@
+{
+  "browser_server_implementation_verified": true,
+  "physical_release_acceptance_complete": false,
+  "tested_runtime_commit": "53aa62d76d356343cfb514b725de30b24fba4a06",
+  "tested_package_source_commit": "53aa62d76d356343cfb514b725de30b24fba4a06",
+  "runtime_files": 102,
+  "node_tests": 279,
+  "browser_http_suites": {
+    "phase41": 30,
+    "unpaused_disconnect": 1,
+    "cinematic": 71,
+    "stability": 30,
+    "compatibility": 44,
+    "interface": 17,
+    "production": 2,
+    "bridge": 3
+  },
+  "browser_http_executions": 198,
+  "service_unit_tests": 15,
+  "automated_executions_total": 492,
+  "phone_functional_checks": 15,
+  "tablet_touch_checks": 11,
+  "historical_migrations": {
+    "phase4a": {
+      "source_sha256": "46e0cd9cede1fed60aa5311aec59ed1361ee3eba30d3f3a1ee28b6888cd1fd1d",
+      "imported_source_rows": 45515,
+      "crew": 20,
+      "memorials": [],
+      "resumed_tick": 161040,
+      "imported_tick": 160920
+    },
+    "phase1": {
+      "source_sha256": "7b7254949ad9b5b60f75f40767e37215bd0d7e1c7d9371656dc55913e445f321",
+      "imported_source_rows": 10659,
+      "crew": 20,
+      "memorials": [],
+      "resumed_tick": 36120,
+      "imported_tick": 36000
+    },
+    "phase2": {
+      "source_sha256": "8eaa5451be5a1512cc1fa8dd0f4f18ef66c7259d6caef4518460b9596b335a2e",
+      "imported_source_rows": 50170,
+      "crew": 20,
+      "memorials": [],
+      "resumed_tick": 161040,
+      "imported_tick": 160920
+    },
+    "phase3": {
+      "source_sha256": "11dd1e3ebbd5dcfb94d23ed0be2786e2af7d6feee7498c606cdf3a04d4224e02",
+      "imported_source_rows": 48137,
+      "crew": 20,
+      "memorials": [],
+      "resumed_tick": 161040,
+      "imported_tick": 160920
+    },
+    "phase3_memorial": {
+      "source_sha256": "14a54eb1c944727f19f2d617224b6a57d473aae73c92079a1bda444fc00d1d30",
+      "imported_source_rows": 45870,
+      "crew": 19,
+      "memorials": [
+        "Nadia Kline"
+      ],
+      "resumed_tick": 161040,
+      "imported_tick": 160920
+    },
+    "phase35": {
+      "source_sha256": "527a99efacb316503c3784685cb9abeaa1a442aee4441281bc4e4c11bf9f51dd",
+      "imported_source_rows": 45515,
+      "crew": 20,
+      "memorials": [],
+      "resumed_tick": 161040,
+      "imported_tick": 160920
+    }
+  },
+  "campaigns": {
+    "compound_4807": {
+      "passed": true,
+      "real_days": 7,
+      "sim_days": 25.0,
+      "alive": 20,
+      "dead": [],
+      "arrivals": 5,
+      "field_missions": 12,
+      "science_cases": 21,
+      "conversations": 417,
+      "weekly_films": 1,
+      "history_records": 10463,
+      "public_source_audit_errors": []
+    },
+    "normal_1001": {
+      "passed": true,
+      "real_days": 30,
+      "sim_days": 111.75,
+      "alive": 20,
+      "dead": [],
+      "arrivals": 5,
+      "field_missions": 8,
+      "science_cases": 24,
+      "conversations": 2032,
+      "weekly_films": 4,
+      "history_records": 45514,
+      "public_source_audit_errors": []
+    }
+  },
+  "runtime_identity": "All 102 extracted/source/campaign runtime hashes match; 32 existing model modules byte-identical to Phase 4A",
+  "security_review": "Static syntax/source/manifest checks pass; not AV/penetration certification",
+  "environment_retry": "Disk ENOSPC prevented some browser launches. Failed reports retained in environment_failure; generated diagnostic logs losslessly archived and blocked checks rerun successfully. No runtime patch for this environment issue.",
+  "limitations": [
+    "Native APK build pending original Android Studio source recovery; installed app preserved",
+    "Physical Windows/Android/Tab S5e/TV/Wi-Fi/Tailscale/AV NOT RUN",
+    "Human usability, screen reader, native GPU/FPS NOT RUN",
+    "SSE/protocol tests use real local HTTP and stubbed desktop/TV I/O",
+    "At-most-once commands are not a crash-proof distributed transaction; server restart requires host reload",
+    "Camera wall is a schematic projection; actual recorded-video streaming deferred",
+    "Classic view redraw can defer while select keeps focus; canvas is state-driven even in minimal mode",
+    "Camera manual pixel resize is not separately persisted; workspace module size and selected wall/columns are"
+  ],
+  "counts_note": "Totals are executed cases, including inherited regressions repeated by suites; not a count of unique requirements."
+}

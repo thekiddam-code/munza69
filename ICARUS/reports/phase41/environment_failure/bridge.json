@@ -1,0 +1,20 @@
+{
+  "suite": "bridge",
+  "runtime_root": "/workspace/work/phase41_final_validation/tested/ICARUS_Phase4_1_Command_Bridge_Lite",
+  "runtime_source_commit": "53aa62d76d356343cfb514b725de30b24fba4a06",
+  "harness_source_commit": "53aa62d76d356343cfb514b725de30b24fba4a06",
+  "harness": "Pinned source tests outside Lite; runtime ROOT rebound to independent ZIP extraction. No runtime source patches. Desktop input stubbed in bridge tests.",
+  "passed": false,
+  "tests_run": 3,
+  "passed_cases": [
+    "test_authentication_command_validation_and_exactly_once_queue_drain (test_frontier_bridge.FrontierBridge.test_authentication_command_validation_and_exactly_once_queue_drain)",
+    "test_expanded_telemetry_requires_host_auth_and_stays_bounded (test_frontier_bridge.FrontierBridge.test_expanded_telemetry_requires_host_auth_and_stays_bounded)"
+  ],
+  "failures": [],
+  "errors": [
+    {
+      "test": "test_paired_tablet_map_sends_navigation_to_authoritative_pc (test_frontier_bridge.FrontierBridge.test_paired_tablet_map_sends_navigation_to_authoritative_pc)",
+      "detail": "Traceback (most recent call last):\n  File \"/workspace/work/munza69/ICARUS/test_frontier_bridge.py\", line 43, in test_paired_tablet_map_sends_navigation_to_authoritative_pc\n    b=pw.chromium.launch(headless=True,executable_path=os.environ.get('ICARUS_CHROMIUM') or None)\n      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/sync_api/_generated.py\", line 16702, in launch\n    self._sync(\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_sync_base.py\", line 115, in _sync\n    return task.result()\n           ^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_browser_type.py\", line 97, in launch\n    await self._channel.send(\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_connection.py\", line 76, in send\n    return await self._connection.wrap_api_call(\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_connection.py\", line 632, in wrap_api_call\n    raise rewrite_error(error, f\"{parsed_st['apiName']}: {error}\") from None\nplaywright._impl._errors.Error: BrowserType.launch: ENOSPC: no space left on device, mkdtemp '/tmp/playwright-artifacts-Vsj5UN'\n"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+from pathlib import Path
+import hashlib,json,re,shutil
+base=Path(__file__).resolve().parent;src=Path('/workspace/work/munza69/ICARUS');r=base/'reports';out=src/'reports/phase41';out.mkdir(parents=True,exist_ok=True)
+expected={'phase41':30,'unpaused_disconnect':1,'cinematic':71,'stability':30,'compatibility':44,'interface':17,'production':2,'bridge':3}
+for n,count in expected.items():
+ d=json.loads((r/(n+'.json')).read_text());assert d['passed'] and d['tests_run']==count and not d['failures'] and not d['errors'],n
+assert re.search(r'pass 279\b',(r/'node.txt').read_text()) and re.search(r'fail 0\b',(r/'node.txt').read_text())
+assert 'Ran 15 tests' in (r/'python.txt').read_text() and (r/'python.txt').read_text().rstrip().endswith('OK')
+for n,count in [('mobile_functional',15),('tablet_touch',11)]:
+ d=json.loads((r/(n+'.json')).read_text());assert d['passed'] and len(d['checks'])==count,n
+fixtures={'phase4a':'/workspace/work/phase4a_reports/campaigns/normal_1001/backup_1001_30.json','phase1':'/workspace/work/lite_build/reports/soak/backup_1001_7.json','phase2':'/workspace/work/phase2_reports/campaigns/normal_1001/backup_1001_30.json','phase3':'/workspace/work/phase3_reports/campaigns/normal_1001/backup_1001_30.json','phase3_memorial':'/workspace/work/phase3_reports/campaigns/normal_4807/backup_4807_30.json','phase35':'/workspace/work/phase35_reports/campaigns/normal_1001/backup_1001_30.json'};migrations={}
+for n,path in fixtures.items():
+ d=json.loads((r/f'migrate_{n}.json').read_text());assert d['passed'] and not d['errors'] and not d['mismatched_import_domains'] and not d['mismatched_reload_domains'],n
+ migrations[n]={'source_sha256':hashlib.sha256(Path(path).read_bytes()).hexdigest(),'imported_source_rows':d['imported_history_records'],'crew':d['crew_after'],'memorials':d['memorials_after'],'resumed_tick':d['resumed_tick'],'imported_tick':d['imported_tick']}
+c=json.loads((r/'campaign_summary.json').read_text());assert c['passed'];manifest=json.loads((base/'tested/ICARUS_Phase4_1_Command_Bridge_Lite/BUILD_MANIFEST.json').read_text())
+for n,h in manifest['runtime_files'].items():assert hashlib.sha256((src/n).read_bytes()).hexdigest()==h,n
+for v in c['campaigns'].values():assert v['runtime_sha256']==manifest['runtime_files'] and v['passed'] and not v['public_source_audit_errors']
+shutil.copytree(r,out,dirs_exist_ok=True)
+# Preserve prior failed environment attempts, but the top-level summary is the successful retry.
+(out/'migrations.json').write_text(json.dumps([{'name':n,'passed':True} for n in migrations],indent=2));(out/'migration_fixtures.json').write_text(json.dumps(migrations,indent=2))
+for p in (base/'campaigns').glob('*/campaign_*.json'):
+ target=out/'campaigns'/p.parent.name/p.name;target.parent.mkdir(exist_ok=True,parents=True);shutil.copy2(p,target)
+for n in ['run_suite.py','migrate.py','run_migrations.py','rerun_failed_migrations.py','mobile_functional.py','tablet_touch.py','capture.py','soak.py','collect_evidence.py']:shutil.copy2(base/n,out/n)
+screens=out/'screenshots';screens.mkdir(exist_ok=True)
+for folder,prefix in [(Path('/workspace/work/phase4a_reports/screenshots'),'umbra_'),(Path('/workspace/work/phase4_reports/screenshots'),'core_')]:
+ for p in folder.glob('*.png'):
+  if prefix=='umbra_' or p.name.startswith(('desktop_','tablet_','narrow_')):shutil.copy2(p,screens/(prefix+p.name))
+summary={'browser_server_implementation_verified':True,'physical_release_acceptance_complete':False,'tested_runtime_commit':'53aa62d76d356343cfb514b725de30b24fba4a06','tested_package_source_commit':manifest['source_commit'],'runtime_files':102,'node_tests':279,'browser_http_suites':expected,'browser_http_executions':sum(expected.values()),'service_unit_tests':15,'automated_executions_total':sum(expected.values())+279+15,'phone_functional_checks':15,'tablet_touch_checks':11,'historical_migrations':migrations,'campaigns':{n:{k:v[k] for k in ['passed','real_days','sim_days','alive','dead','arrivals','field_missions','science_cases','conversations','weekly_films','history_records','public_source_audit_errors']} for n,v in c['campaigns'].items()},'runtime_identity':'All 102 extracted/source/campaign runtime hashes match; 32 existing model modules byte-identical to Phase 4A','security_review':'Static syntax/source/manifest checks pass; not AV/penetration certification','environment_retry':'Disk ENOSPC prevented some browser launches. Failed reports retained in environment_failure; generated diagnostic logs losslessly archived and blocked checks rerun successfully. No runtime patch for this environment issue.','limitations':['Native APK build pending original Android Studio source recovery; installed app preserved','Physical Windows/Android/Tab S5e/TV/Wi-Fi/Tailscale/AV NOT RUN','Human usability, screen reader, native GPU/FPS NOT RUN','SSE/protocol tests use real local HTTP and stubbed desktop/TV I/O','At-most-once commands are not a crash-proof distributed transaction; server restart requires host reload','Camera wall is a schematic projection; actual recorded-video streaming deferred','Classic view redraw can defer while select keeps focus; canvas is state-driven even in minimal mode','Camera manual pixel resize is not separately persisted; workspace module size and selected wall/columns are'], 'counts_note':'Totals are executed cases, including inherited regressions repeated by suites; not a count of unique requirements.'};(out/'accepted_summary.json').write_text(json.dumps(summary,indent=2));print(json.dumps({k:v for k,v in summary.items() if k not in ['historical_migrations','campaigns','limitations']},indent=2))

@@ -1,0 +1,7 @@
+test_bridge_observed_crew_follow_and_creator_route_recovery (test_command_bridge.CommandBridge.test_bridge_observed_crew_follow_and_creator_route_recovery) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 2.008s
+
+OK
+sys:1: ResourceWarning: unclosed <socket.socket fd=3, family=2, type=1, proto=0, laddr=('127.0.0.1', 33319)>

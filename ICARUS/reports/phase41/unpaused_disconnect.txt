@@ -1,0 +1,6 @@
+test_real_unpaused_host_clock_continues_during_phone_disconnect (test_command_bridge.CommandBridge.test_real_unpaused_host_clock_continues_during_phone_disconnect) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 22.503s
+
+OK

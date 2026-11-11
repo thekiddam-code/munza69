@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "actual_local_HTTP_SSE_projection": true,
+  "world_unchanged": true,
+  "screenshots": [
+    "creator_mode.png",
+    "desktop_bridge.png",
+    "desktop_home.png",
+    "phone_live_terminal.png",
+    "tablet_live_terminal.png",
+    "tablet_retained_tv.png"
+  ],
+  "physical_device": false
+}

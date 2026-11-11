@@ -1,0 +1,52 @@
+{
+  "phase4a": {
+    "source_sha256": "46e0cd9cede1fed60aa5311aec59ed1361ee3eba30d3f3a1ee28b6888cd1fd1d",
+    "imported_source_rows": 45515,
+    "crew": 20,
+    "memorials": [],
+    "resumed_tick": 161040,
+    "imported_tick": 160920
+  },
+  "phase1": {
+    "source_sha256": "7b7254949ad9b5b60f75f40767e37215bd0d7e1c7d9371656dc55913e445f321",
+    "imported_source_rows": 10659,
+    "crew": 20,
+    "memorials": [],
+    "resumed_tick": 36120,
+    "imported_tick": 36000
+  },
+  "phase2": {
+    "source_sha256": "8eaa5451be5a1512cc1fa8dd0f4f18ef66c7259d6caef4518460b9596b335a2e",
+    "imported_source_rows": 50170,
+    "crew": 20,
+    "memorials": [],
+    "resumed_tick": 161040,
+    "imported_tick": 160920
+  },
+  "phase3": {
+    "source_sha256": "11dd1e3ebbd5dcfb94d23ed0be2786e2af7d6feee7498c606cdf3a04d4224e02",
+    "imported_source_rows": 48137,
+    "crew": 20,
+    "memorials": [],
+    "resumed_tick": 161040,
+    "imported_tick": 160920
+  },
+  "phase3_memorial": {
+    "source_sha256": "14a54eb1c944727f19f2d617224b6a57d473aae73c92079a1bda444fc00d1d30",
+    "imported_source_rows": 45870,
+    "crew": 19,
+    "memorials": [
+      "Nadia Kline"
+    ],
+    "resumed_tick": 161040,
+    "imported_tick": 160920
+  },
+  "phase35": {
+    "source_sha256": "527a99efacb316503c3784685cb9abeaa1a442aee4441281bc4e4c11bf9f51dd",
+    "imported_source_rows": 45515,
+    "crew": 20,
+    "memorials": [],
+    "resumed_tick": 161040,
+    "imported_tick": 160920
+  }
+}

@@ -1,7 +1,7 @@
 """Phase 4.1 host/terminal integration over real HTTP; no physical host or TV input."""
 import json,unittest,urllib.request,urllib.error
-from test_umbra_browser import UmbraBrowser
-class CommandBridge(UmbraBrowser):
+import test_umbra_browser as companion_tests
+class CommandBridge(companion_tests.UmbraBrowser):
  def req(self,path,payload=None,headers=None):
   req=urllib.request.Request(self.url+path,json.dumps(payload).encode() if payload is not None else None,headers={'Content-Type':'application/json',**(headers or {})})
   try:
@@ -47,4 +47,7 @@ class CommandBridge(UmbraBrowser):
   q=popup.value;q.wait_for_function('!!window.__icarusSoak');self.assertEqual(p.evaluate('ICARUSHost.instance'),q.evaluate('ICARUSHost.instance'));self.assertTrue(p.evaluate('ICARUSHost.canWrite()'));self.assertFalse(q.evaluate('ICARUSHost.canWrite()'));self.assertFalse(q.evaluate('ICARUSDurable.canWrite()'))
  def test_bridge_observed_crew_follow_and_creator_route_recovery(self):
   p=self.page(pc=True);before=p.evaluate('__icarusSoak.snapshot()');self.assertNotIn('×',p.locator('#command-clock').inner_text());p.locator('[data-bridge-follow="Mara Chen"]').click();self.assertTrue(p.locator('#page-operations').is_visible());self.assertIn('B07 Security Control',p.locator('#camstatus').inner_text());self.assertIn('MARA CHEN',p.locator('#status').inner_text());self.assertEqual(p.evaluate('__icarusSoak.snapshot()'),before);p.keyboard.press('Control+Shift+F12');p.evaluate("ICARUSCommandUI.navigate('settings','advanced')");p.keyboard.press('Control+Shift+F12');self.assertTrue(p.locator('#area-settings-general').is_visible());self.assertFalse(p.locator('#area-settings-advanced').is_visible())
+ def test_real_unpaused_host_clock_continues_during_phone_disconnect(self):
+  from datetime import datetime,timezone
+  c=self.browser.new_context(timezone_id='America/Chicago');self.contexts.append(c);pc=c.new_page();pc.on('pageerror',lambda e:self.errors.append(str(e)));pc.clock.install(time=datetime(2026,11,9,12,tzinfo=timezone.utc));pc.goto(self.url+'/icarus.html');pc.wait_for_function('ICARUSCommandUI.active&&ICARUSHost.canWrite()');self.assertEqual(pc.evaluate('typeof __icarusSoak'),'undefined');pc.wait_for_function('document.querySelector("#rd-bridge-status").textContent.includes("LINKED")');phone=self.page(width=393,height=851);self.tab(phone,'icarus');phone.wait_for_function("UmbraLive.state==='HOST CONNECTED'");before=phone.evaluate('UmbraLive.current.telemetry.tick');names=phone.evaluate('UmbraLive.current.telemetry.companion.crew.map(p=>p.name)');clock=pc.locator('#clock').inner_text();phone.context.set_offline(True);phone.wait_for_function("UmbraLive.state==='RECONNECTING'");pc.wait_for_function('(clock)=>document.querySelector("#clock").textContent!==clock',arg=clock,timeout=45000);pc.evaluate('document.querySelector("#save").click()');pc.evaluate('ICARUSDurable.flush()');saved=pc.evaluate('JSON.parse(localStorage.getItem("icarus-v02"))');self.assertGreater(saved['tick'],before);phone.context.set_offline(False);phone.wait_for_function('(tick)=>UmbraLive.state==="HOST CONNECTED"&&UmbraLive.current.telemetry.tick>=tick',arg=saved['tick'],timeout=30000);self.assertEqual(phone.evaluate('UmbraLive.current.telemetry.companion.crew.map(p=>p.name)'),names)
 if __name__=='__main__':unittest.main()

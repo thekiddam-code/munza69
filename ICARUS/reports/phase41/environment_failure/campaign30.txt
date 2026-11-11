@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/workspace/work/phase41_final_validation/soak.py", line 47, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ^^^^^^
+  File "/workspace/work/phase41_final_validation/soak.py", line 10, in main
+    ap=argparse.ArgumentParser();ap.add_argument('--seed',type=int,default=1001);ap.add_argument('--days',type=int,default=30);ap.add_argument('--scenario',choices=['normal','compound','released_chamber'],default='normal');ap.add_argument('--output',type=Path,required=True);args=ap.parse_args();args.output.mkdir(parents=True,exist_ok=True)
+                                                                                                                                                                                                                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py", line 1311, in mkdir
+    os.mkdir(self, mode)
+OSError: [Errno 28] No space left on device: '/workspace/work/phase41_final_validation/campaigns/normal_1001'
