@@ -33,6 +33,8 @@ Every important status should explain its cause and offer appropriate optional i
 
 ## 4. SOL and the captain
 
+Approved Phase 4 interface clarification: the player operates SOL’s directed layer while the same autonomous intelligence continues running the ship. Existing captain NPC roles and source authorship remain. Home is the default customizable workspace; Bridge is a distinct operational screen. Normal 4×/holiday 1× pacing remains, with explicitly warned session-only development testing.
+
 SOL operates ship systems, weighs actual survival and staffing needs, authorizes safe missions and research, and records the reason for decisions. Its corporate restraint permits dry humor, curiosity and recognition of people. Unusual does not mean hostile. Commentary must remain bounded by received information and actual outcomes.
 
 The captain can hold/release local travel, override a feasible local course, recall expeditions, inspect evidence, attempt feasible rescue and alter existing protocols. Refusal must explain the physical or safety constraint. Silence is a supported player choice; the simulation must not stop waiting for routine approval.
