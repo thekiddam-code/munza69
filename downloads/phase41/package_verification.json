@@ -1,0 +1,9 @@
+{
+  "zip": "ICARUS_Phase4_1_Command_Bridge_Lite.zip",
+  "source_commit": "4bfa6b034f7003126b653befe36cc7d783fadb7c",
+  "sha256": "0e4819ead53fddc0e6746bce37b0ff57c8a22216fd62f162df1cf23ae4c80ffb",
+  "bytes": 628241,
+  "runtime_files": 102,
+  "all_files": 125,
+  "crc_and_hashes_passed": true
+}

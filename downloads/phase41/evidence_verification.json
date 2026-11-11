@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "zip": "ICARUS_Phase4_1_Verification_Evidence.zip",
+  "sha256": "8ef98d6a27d5eb2c18ebf7953d5f9065b8f48c5d5285c2b96f31619b1ddab620",
+  "bytes": 36094596,
+  "manifest_files": 251,
+  "crc_and_all_evidence_hashes_passed": true
+}

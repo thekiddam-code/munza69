@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "final_package_source_commit": "4bfa6b034f7003126b653befe36cc7d783fadb7c",
+  "tested_runtime_commit": "53aa62d76d356343cfb514b725de30b24fba4a06",
+  "runtime_files": 102,
+  "final_and_tested_runtime_hashes_identical": true,
+  "package_sha256": "0e4819ead53fddc0e6746bce37b0ff57c8a22216fd62f162df1cf23ae4c80ffb",
+  "package_bytes": 628241,
+  "model_modules_unchanged": 32,
+  "security_review": "SECURITY_PHASE41.md",
+  "physical_release_ready": false
+}

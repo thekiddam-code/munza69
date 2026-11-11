@@ -1,6 +1,8 @@
-phase4a 0
-phase1 1
-phase2 1
-phase3 1
-phase3_memorial 1
-phase35 1
+Successful results from recorded attempts: Phase 4A original run plus five post-ENOSPC retries. This is a summary, not a fabricated new test run.
+phase4a: PASS; see migrate_phase4a.json
+phase1: PASS; see migrate_phase1.json
+phase2: PASS; see migrate_phase2.json
+phase3: PASS; see migrate_phase3.json
+phase3_memorial: PASS; see migrate_phase3_memorial.json
+phase35: PASS; see migrate_phase35.json
+Earlier failed browser launches are retained in environment_failure.
