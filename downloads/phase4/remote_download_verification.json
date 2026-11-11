@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "published_branch": "codex/sol-interface-phase4",
+  "download_commit": "87e45cc",
+  "package_source_commit": "b41ab1463d0d1b099c979335c64cd96ba208108a",
+  "runtime_from_commit": "d39f2d70f8cae7599bcf4705f4d846116502373c",
+  "downloaded_files": [
+    {
+      "file": "ICARUS_SOL_Command_Interface_Phase4_Lite.zip",
+      "bytes": 453223,
+      "sha256": "2a4869e88c4530af67416ade7802e374cbdb877db5c23668ca927f75917c01ee",
+      "matches_published_checksum": true,
+      "zip_crc_verified": true,
+      "url": "https://github.com/thekiddam-code/munza69/raw/87e45cc/downloads/phase4/ICARUS_SOL_Command_Interface_Phase4_Lite.zip"
+    },
+    {
+      "file": "ICARUS_Phase4_Engineering_and_Test_Evidence.zip",
+      "bytes": 11385907,
+      "sha256": "af228e7f6761a1b0d52d97693ecd5edf5fdd794443f6aaafdbc14c0a1e240f16",
+      "matches_published_checksum": true,
+      "zip_crc_verified": true,
+      "url": "https://github.com/thekiddam-code/munza69/raw/87e45cc/downloads/phase4/ICARUS_Phase4_Engineering_and_Test_Evidence.zip"
+    }
+  ],
+  "protected_refs_unchanged": {
+    "refs/heads/codex/cinematic-living-world-phase3": "3332c9606b21892bed41b52c23a3e3ce0ee1feb0",
+    "refs/heads/codex/cinematic-refinement-phase3-5": "7182bbcbbe70ebd694353254c5a29c891a4ad478",
+    "refs/heads/codex/living-world-phase2": "0e4f5f01ce053d22cf40762f937c869559bd3d5b",
+    "refs/heads/downloads/unified-phase1-lite": "46495d48ee8ff587929863e1dba8febedcfb3c22",
+    "refs/heads/main": "a85fa03099e4cd491fe84ceb015eb5e09ecf03d8"
+  },
+  "full_phase4_complete": false,
+  "unverified": "Native Windows/Android/TV, antivirus, screen reader/GPU/FPS and sustained human usability/content/contrast review."
+}

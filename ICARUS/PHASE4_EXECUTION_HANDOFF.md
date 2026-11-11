@@ -1,3 +1,11 @@
+# Phase 4 recovery record — resolved
+
+The workspace was recovered. Implementation, completed test evidence, and the verified Lite ZIP are now published on `codex/sol-interface-phase4`. Download commit: `87e45cc`; package source: `b41ab1463d0d1b099c979335c64cd96ba208108a`. Both ZIPs were downloaded from GitHub and their bytes, SHA-256 and CRC verified. Main and earlier development/download branches are unchanged.
+
+See [verified downloads](../downloads/phase4/VERIFICATION.md) and [measured validation](PHASE4_UI_VALIDATION.md). Full Phase 4/final release remains open for the documented native/human gates.
+
+The text below preserves the historical interruption record and is superseded by the recovery above.
+
 # Phase 4 execution handoff — publication blocked by environment loss
 
 This is a recovery record, **not a shipped build or a Phase 4 completion claim**. The execution environment became unavailable during the final commit/package command. The GitHub connector remains usable, so this record is committed separately to preserve progress. Main and existing releases were not modified.
