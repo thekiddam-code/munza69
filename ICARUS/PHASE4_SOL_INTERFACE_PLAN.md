@@ -49,6 +49,16 @@ User provided a real screenshot of the current ICARUS / WY DERELICT / ASTEROID l
 - Audit all major pages, nested tabs, modals, Remote Deck controls, home widgets and tablet layouts for overflowing rows, orphaned controls, uneven heights and misaligned groups. Define reusable button sizes, spacing, layout grids, states, focus outlines and touch targets. Test at desktop 1920×1080, narrower desktop, and Tab S5e landscape emulation. Capture before/after screenshots, including the screenshot's location/command region, and prove the CSS change is not confined to one row.
 - Preserve all existing actions and disabled/active/hover/focus semantics; no blanket CSS hiding or action removal.
 
+## Muted amber selected-state styling — user-approved
+
+The user specifically finds the existing **bright orange/amber active navigation buttons** too visually dominant (visible on the ICARUS location button in the screenshot). **Tone down amber, make active fills translucent, and reduce glow** across main navigation, location selectors, subtabs, toggles and ordinary selected buttons.
+
+- Establish shared theme tokens, e.g. `--ui-active-amber-fill: rgba(171,117,57,.19)`, `--ui-active-amber-border: rgba(194,147,83,.58)`, `--ui-active-amber-text: #e0c49c`, with adjusted values as needed for real contrast and dark background. These are **starting targets**, not hardcoded requirements.
+- Use subtle active borders/indicator strips and readable text instead of bright solid orange fills or heavy neon box shadows. Preserve a clear active/inactive distinction under color-vision differences and reduced motion.
+- Reserve strong amber for genuine warnings and red for critical hazards; selected tabs should never compete with emergency signals.
+- Apply consistently to **Home/Bridge/Ship/Crew/Missions/Research/Chronicles/Settings**, location buttons, segmented controls and all nested tabs. Hover/focus/disabled states remain visually distinguishable and accessible.
+- Fix conflicting CSS rules at their source rather than piling more global `!important` overrides. Add desktop/tablet visual regression screenshots and check text contrast.
+
 ## 20× safe testing mode
 - Add a clearly labeled **TEST MODE** UI in Settings > Testing, with **1× / 5× / 20×** options (or 20× toggle plus intermediate choice) and a prominent persistent TEST banner and return-to-normal action. **Primary goal is fast, observable functional testing during active development**. Full save/backup UX hardening is deferred until closer to final release, not permanently discarded. Provide a clear test reset and diagnostic readout (ticks, simulated minutes, active jobs, warnings, errors, actual decisions). Default normal live voyage remains automatic 4× (1× on nine synchronized holidays).
 - Existing `__icarusSoakMode` and `#speed` are diagnostic-only; inspect actual clock code. Build a user-accessible, tested path instead of simply changing button text. 20× must actually accelerate **physical simulation progression** with correct resource, movement, health, ecology, job, mission, knowledge, and source-event accounting, deterministic tick bounds, no skipped decisions or retroactive history, no reentrancy/CPU freeze, and safe paused behavior. Do not accidentally speed up Sunday wall-calendar week boundaries or reinterpret synchronized holidays.
