@@ -1,0 +1,19 @@
+# Phase 4 static security review
+
+Reviewed the new command/router/style and optional calendar-rate changes against baseline 32fa18e, plus the retained launcher/host/configuration. They add no runtime network endpoint, shell execution, dynamic code evaluation, installer, host macro or system modification. SOL directives remain simulated actions through existing physically constrained APIs. Test acceleration only pumps simulation minutes; it does not issue extra TV or desktop commands. Command/status text is escaped or assigned through textContent. Route names are fixed constants. Basic writer ownership remains enforced.
+
+## Security-relevant retained behavior
+
+The Python host, config.json, requirements.txt and Windows BAT are byte-identical to the validated Phase 2 host (113e79b); file hashes and static verification check this. This does not establish that all inherited behavior is risk-free.
+
+- `Start_Remote_Deck.bat` changes to its own folder, uses `where py`, executes local `py server.py` or `python server.py`, and pauses on exit. It performs no elevation, hidden install, firewall changes, startup registration or antivirus changes. The optional documented pip command installs unchanged Python dependencies into the selected environment; the launcher does not install them.
+- `server.py` intentionally supports authenticated remote desktop keyboard/mouse/text operations through PyAutoGUI. Configured macros can affect the focused application/clipboard. These capabilities may look suspicious to security products and require a trusted paired device. Input release/fail-safe protections remain.
+- The server listens on `0.0.0.0:8765` using plain HTTP. PIN pairing, hashed bearer-token storage, host key, Origin/body validation and bounded command queues remain. This is a trusted-LAN service, not an Internet-hardened endpoint. The package does not create firewall rules or install TLS certificates.
+- Optional Samsung TV control connects to a configured private IPv4 address over WSS port 8002. The inherited `ssl.CERT_NONE` omits peer-certificate verification for TV compatibility; LAN impersonation remains a risk. Local-address discovery uses a UDP route selection to `192.0.2.1:80`, without application payload in that function. Normal browser/Android bridge requests use existing same-origin `/api` routes.
+- Expected writes include pairing token hashes, optional TV configuration/token and temporary atomic replacements; browser IndexedDB/local/session storage; and requested backup downloads. Generated pairing/TV credentials are excluded from Lite. No service, registry key, driver, scheduled task, antivirus exclusion or protection bypass is installed.
+- Creator canon and individual records are stored in save files. Character knowledge constraints are game mechanics, not multi-user secrecy against someone with the PC/save. Basic backup validation, writer fencing and recovery remain; full import/backup hardening is deferred, not claimed complete.
+- Python requirements are unchanged version ranges (PyAutoGUI, psutil, websocket-client), not a hashed transitive lockfile. The dependency chain was not independently vulnerability-audited. Vendored LZ-String/Astronomy Engine and licenses remain local; the simulation needs no generated-dialogue cloud service.
+
+## Verification limits
+
+Readable source ZIP, dependency existence, syntax, source/hash identity and targeted network/execution-pattern checks are verified separately. These checks are not an antivirus certification, penetration test or dependency-vulnerability audit. `clamscan`, Windows Defender/native Windows and physical Android/TV execution are unavailable. No antivirus scan or hardware certification is claimed. No protection was disabled or bypassed. SHA-256 identifies the package; it does not prove every possible risk absent.
