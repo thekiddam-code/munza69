@@ -1,4 +1,5 @@
 import re
+from bridge_service import BridgeService,BridgeError
 import http.server, json, os, secrets, socket, threading, time, urllib.parse, hashlib, ipaddress, ssl, base64
 from pathlib import Path
 
@@ -20,6 +21,7 @@ ROOT=Path(__file__).parent
 PORT=8765
 PIN=secrets.token_urlsafe(6)
 ICARUS_KEY=secrets.token_urlsafe(18)
+BRIDGE_SERVICE=BridgeService()
 ICARUS_BRIDGE={"telemetry":None,"updated":0,"commands":[],"next_id":1}
 # Store only SHA-256 hashes of approved device tokens on disk.
 DEVICES_FILE=ROOT/'paired_devices.json'
@@ -220,7 +222,36 @@ class Handler(http.server.SimpleHTTPRequestHandler):
   body=json.dumps(data).encode(); self.send_response(code); self.send_header('Content-Type','application/json'); self.send_header('Cache-Control','no-store'); self.send_header('Content-Length',str(len(body))); self.end_headers();
   try:self.wfile.write(body)
   except (BrokenPipeError,ConnectionResetError):pass
+ def local_host(self):
+  host=urllib.parse.urlsplit('http://'+self.headers.get('Host','')).hostname
+  return self.client_address[0] in ('127.0.0.1','::1') and host in ('127.0.0.1','localhost','::1')
+ def host_auth(self):
+  return secrets.compare_digest(self.headers.get('X-Icarus-Key',''),ICARUS_KEY)
+ def host_identity(self):
+  try:return self.headers.get('X-Icarus-Instance',''),int(self.headers.get('X-Icarus-Generation','0'))
+  except ValueError:raise BridgeError(400,'Invalid generation')
  def do_GET(self):
+  if urllib.parse.urlsplit(self.path).path=='/icarus.html' and not self.local_host():
+   self.send_response(302);self.send_header('Location','/?terminal=icarus');self.send_header('Cache-Control','no-store');self.end_headers();return
+  if self.path=='/api/icarus/bootstrap':
+   if not self.local_host():return self.respond(403,{'error':'Open the host on this PC at http://127.0.0.1:8765/icarus.html'})
+   return self.respond(200,{'key':ICARUS_KEY,'protocol':2})
+  if self.path=='/api/icarus/host/commands':
+   if not self.host_auth():return self.respond(403,{'error':'Invalid host key'})
+   try:return self.respond(200,{'commands':BRIDGE_SERVICE.pending(*self.host_identity())})
+   except BridgeError as e:return self.respond(e.status,{'error':str(e)})
+  if self.path in ('/api/icarus/live','/api/icarus/events'):
+   if not self.authorized():return self.respond(401,{'error':'Pair first'})
+   if self.path.endswith('/live'):return self.respond(200,BRIDGE_SERVICE.view())
+   self.send_response(200);self.send_header('Content-Type','text/event-stream');self.send_header('Cache-Control','no-store');self.send_header('X-Accel-Buffering','no');self.end_headers()
+   # Bounded stream lifetime allows token revocation and reconnect without a worker leak.
+   try:
+    for _ in range(30):
+     if not self.authorized():break
+     data=BRIDGE_SERVICE.view();self.wfile.write(('id: '+str(data['revision'])+'\nevent: telemetry\ndata: '+json.dumps(data)+'\n\n').encode());self.wfile.flush()
+     with BRIDGE_SERVICE.changed:BRIDGE_SERVICE.changed.wait(timeout=2)
+   except (BrokenPipeError,ConnectionResetError,OSError):pass
+   self.close_connection=True;return
   if self.path in ('/api/icarus/telemetry','/api/icarus/telemetry?companion=1'):
    if not self.authorized(): return self.respond(401,{'error':'Pair first'})
    with LOCK:
@@ -248,11 +279,24 @@ class Handler(http.server.SimpleHTTPRequestHandler):
  def do_POST(self):
   try:
    if self.headers.get('Content-Type','').split(';')[0]!='application/json': return self.respond(415,{'error':'JSON required'})
-   if int(self.headers.get('Content-Length','0'))>(16384 if self.path=='/api/icarus/telemetry' else 4096): return self.respond(413,{'error':'Too large'})
+   if int(self.headers.get('Content-Length','0'))>(65536 if self.path=='/api/icarus/host/publish' else 16384 if self.path=='/api/icarus/telemetry' else 4096): return self.respond(413,{'error':'Too large'})
    origin=self.headers.get('Origin','')
    host=self.headers.get('Host','')
    if origin and origin not in ('http://'+host,'https://'+host): return self.respond(403,{'error':'Invalid origin'})
    data=json.loads(self.rfile.read(int(self.headers.get('Content-Length','0'))))
+   if self.path in ('/api/icarus/host/claim','/api/icarus/host/publish','/api/icarus/host/heartbeat'):
+    if not self.host_auth():return self.respond(403,{'error':'Invalid host key'})
+    try:
+     if self.path.endswith('/claim'):return self.respond(200,BRIDGE_SERVICE.claim(data.get('instance')))
+     owner,generation=self.host_identity()
+     if self.path.endswith('/heartbeat'):return self.respond(200,BRIDGE_SERVICE.heartbeat(owner,generation))
+     result=BRIDGE_SERVICE.publish(owner,generation,data.get('telemetry'),data.get('acks',[]))
+     # Legacy installed Android response stays the same; extra protocol-2 fields are opt-in.
+     legacy=data.get('legacy')
+     if isinstance(legacy,dict) and len(json.dumps(legacy))<=14000:
+      with LOCK:ICARUS_BRIDGE.update(telemetry=legacy,updated=time.time())
+     return self.respond(200,result)
+    except BridgeError as e:return self.respond(e.status,{'error':str(e)})
    if self.path=='/api/pair':
     if secrets.compare_digest(str(data.get('pin','')),PIN):
      token=secrets.token_urlsafe(32)
@@ -263,6 +307,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
    # ICARUS host publishes telemetry using its own dedicated host key.
    # Tablet endpoints below continue to require the paired-device bearer token.
    if self.path=='/api/icarus/telemetry':
+    if BRIDGE_SERVICE.active():return self.respond(409,{'error':'A fenced host is already active'})
     if not secrets.compare_digest(self.headers.get('X-Icarus-Key',''),ICARUS_KEY): return self.respond(403,{'error':'Invalid host key'})
     if not isinstance(data,dict) or len(json.dumps(data))>14000: return self.respond(400,{'error':'Invalid telemetry'})
     with LOCK:
@@ -270,7 +315,17 @@ class Handler(http.server.SimpleHTTPRequestHandler):
      ICARUS_BRIDGE['updated']=time.time()
     return self.respond(200,{'ok':True})
    if not self.authorized(): return self.respond(401,{'error':'Pair first'})
+   if self.path=='/api/icarus/dispatch':
+    command=data.get('command')
+    if not valid_icarus_command(command):return self.respond(400,{'error':'Unknown command'})
+    try:return self.respond(200,BRIDGE_SERVICE.enqueue(token_hash(self.headers.get('Authorization','')),data.get('requestId'),command))
+    except BridgeError as e:return self.respond(e.status,{'error':str(e)})
    if self.path=='/api/icarus/command':
+    if BRIDGE_SERVICE.active():
+     if not valid_icarus_command(data.get('command')):return self.respond(400,{'error':'Unknown command'})
+     try:
+      result=BRIDGE_SERVICE.enqueue(token_hash(self.headers.get('Authorization','')),data.get('requestId') or secrets.token_hex(12),data['command']);return self.respond(200,{'queued':result['queued']})
+     except BridgeError as e:return self.respond(e.status,{'error':str(e)})
     command=data.get('command')
     if not valid_icarus_command(command): return self.respond(400,{'error':'Unknown command'})
     with LOCK:
@@ -320,6 +375,8 @@ if __name__=='__main__':
  print('Pairing PIN:',PIN)
  print('ICARUS host key (PC only):',ICARUS_KEY)
  print('ICARUS PC URL: http://127.0.0.1:%s/icarus.html'%PORT)
+ import webbrowser
+ threading.Timer(.8,lambda:webbrowser.open('http://127.0.0.1:%s/icarus.html'%PORT)).start()
  print('Keep this window running. Ctrl+C stops the receiver.')
  try: http.server.ThreadingHTTPServer(('0.0.0.0',PORT),Handler).serve_forever()
  except KeyboardInterrupt: pass

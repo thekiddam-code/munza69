@@ -16,7 +16,7 @@ class UmbraBrowser(unittest.TestCase):
   cls.m.create_connection=lambda *a,**k:WS();cls.server=cls.m.http.server.ThreadingHTTPServer(('127.0.0.1',0),cls.m.Handler);threading.Thread(target=cls.server.serve_forever,daemon=True).start();cls.url=f'http://127.0.0.1:{cls.server.server_port}';cls.pw=sync_playwright().start();cls.browser=cls.pw.chromium.launch(executable_path=os.environ.get('ICARUS_CHROMIUM') or None)
  @classmethod
  def tearDownClass(cls):cls.m.TV_SERVICE.close();cls.browser.close();cls.pw.stop();cls.server.shutdown();cls.tmp.cleanup()
- def setUp(self):self.contexts=[];self.errors=[];self.calls.clear();self.m.ICARUS_BRIDGE.update(telemetry=None,updated=0,commands=[],next_id=1);self.m.TV_SERVICE.reconfigure();self.m.TOKENS={self.m.token_hash('test-client')};self.m.TV_FILE.write_text('{"ip":"192.168.1.99","token":"fixture"}')
+ def setUp(self):self.m.BRIDGE_SERVICE=self.m.BridgeService();self.contexts=[];self.errors=[];self.calls.clear();self.m.ICARUS_BRIDGE.update(telemetry=None,updated=0,commands=[],next_id=1);self.m.TV_SERVICE.reconfigure();self.m.TOKENS={self.m.token_hash('test-client')};self.m.TV_FILE.write_text('{"ip":"192.168.1.99","token":"fixture"}')
  def tearDown(self):
   for c in self.contexts:c.close()
   self.assertEqual(self.errors,[])
