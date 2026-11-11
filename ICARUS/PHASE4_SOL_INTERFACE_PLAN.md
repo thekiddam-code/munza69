@@ -105,6 +105,20 @@ For the **Samsung Galaxy Tab S5e landscape Lounge remote**, prioritize **right-h
 - Preserve the compact **phone portrait** layout separately; do not force the tablet's two-column right-hand remote onto the phone. Keep feature parity.
 - Validate one-handed right-side use, stable button positions during panel expansion, volume/channel repetition, D-pad operation, and touch target accessibility in browser emulation. Actual physical tablet ergonomics remain pending until tested.
 
+### Fully customizable Samsung TV remote button layouts — explicit user requirement
+
+The right-hand optimized tablet remote is a **default preset**, not a locked arrangement. Provide an intuitive **Edit Layout** mode in UMBRA Lounge, with a clear Save / Cancel / Undo / Reset-to-default flow, plus **Lock Layout** to prevent accidental edits during normal use.
+
+- **Position:** drag/drop or accessible move controls to rearrange buttons in a snap grid; allow users to move frequently used buttons to the right or any permitted zone. Maintain safe spacing and avoid overlap/offscreen controls.
+- **Size:** resize individual controls (including large D-pad/OK, Volume and Channel controls) using bounded sizes that remain touch accessible.
+- **Assignment:** choose from a **capability-verified command library** supported by the existing Samsung TV connection (Power, Home, Back, D-pad, Volume, Channels, Mute, playback etc. where confirmed). Support command remapping and adding/removing buttons, but **do not** execute arbitrary network requests, unsupported Samsung keycodes, host commands or unrestricted macros.
+- **Appearance:** user-editable label, icon and limited accent/color/shape style within UMBRA's accessible OS theme; retain contrast, disabled, focus and pressed states. Keep the interface clean and coherent rather than enabling unreadable combinations.
+- **Profiles:** save multiple named remote presets, including a factory default and independent **tablet-landscape and phone-portrait** layouts. Persist preferences via existing client/app settings where available, without overwriting ICARUS simulation state; migrate defaults safely.
+- **Editing ergonomics:** provide preview and visible drag handles only in edit mode; support touchscreen and keyboard alternatives, undo/reset and accidental-edit protection. Allow hiding unused buttons, but preserve an easy path to restore Power, Home, Back, D-pad and recovery/pairing functions. Clearly label any command not supported by the connected TV.
+- **Optional later:** advanced automation/multi-step macro editor, gesture binding and cloud-synced layouts; do not add unsafe speculative functionality to Phase 4A.
+
+**Acceptance:** verify layout edit/save/reload, independent phone/tablet profiles, drag/resize/remap, offline editing, reset, invalid command prevention, no overlapping controls, right-side preset stability, and preservation of actual remote functionality. If existing Android source is absent, report native editor implementation as blocked rather than inventing a replacement APK.
+
 ### Separate adaptive layouts for phone and tablet — explicit user requirement
 
 **Design and implement two intentionally different UMBRA layouts** using one shared app/codebase, data model, server connection, feature set and OS visual identity. This is more than simply shrinking the tablet view. Select layout by **available window width, aspect ratio and orientation**, not a hardcoded device model or user agent; react cleanly to rotation, resize and split-screen. Keep user-specific display preferences where supported.
