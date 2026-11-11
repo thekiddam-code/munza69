@@ -10,7 +10,7 @@ function plan(s,id,env,override=false){
  if(s.power<40||(s.equipment?.C08?.condition||0)<35)return reject('Drive or ship power unavailable');
  const leg={id:'NAV-'+n.nextLeg++,from:{...n.position},to:{x:d.x,y:d.y},target:id,start:s.tick,duration:Math.max(90,Math.ceil(dist*800)),cost,elapsed:0,burned:0};
  n.leg=leg;n.target=id;n.current=null;n.phase='transit';n.hold=false;
- n.lastDecision={at:s.tick,reason:override?'Captain course override':'Selected observed contact by scientific value, fuel need and risk',target:id,cost,duration:leg.duration};
+ n.lastDecision={at:s.tick,reason:override?(env.operatorDirected?'SOL operator course directive':'Captain course override'):'Selected observed contact by scientific value, fuel need and risk',target:id,cost,duration:leg.duration};
  if(env.emit)env.emit('departure','ICARUS departed toward '+d.name+'; '+leg.duration+' minutes and '+cost.toFixed(2)+' fuel budget.',{legId:leg.id,destination:id});return {ok:true,leg};
 }
 function step(s,env){const n=init(s);if(n.phase!=='transit'||n.lastTick===s.tick)return;n.lastTick=s.tick;

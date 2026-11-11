@@ -88,7 +88,7 @@ function tick(s,env){const f=init(s,env);if(f.lastTick===s.tick)return;f.lastTic
  if(s.economy.mode==='survival'){s.navigation.lastDecision={at:s.tick,reason:'Hold: ship survival priorities'};return;}
  const target=env.navigation.choose(s,env);if(target)env.navigation.plan(s,target.id,navEnv);
 }
-function command(s,action,id,env){init(s,env);if(action==='hold'){s.navigation.hold=true;emit(s,env,'captain_hold','Captain ordered hold at the current or next arrival orbit.');return {ok:true};}
+function command(s,action,id,env){init(s,env);if(action==='hold'){s.navigation.hold=true;emit(s,env,'captain_hold',env.operatorDirected?'SOL directive: hold at the current or next arrival orbit.':'Captain ordered hold at the current or next arrival orbit.');return {ok:true};}
  if(action==='resume'){s.navigation.hold=false;s.frontier.enabled=true;return {ok:true};}
  if(action==='course')return env.navigation.plan(s,id,{...env,emit:(k,m,d)=>emit(s,env,k,m,d)},true);
  if(action==='recall'){const m=s.remoteCore.missions.frontier;if(m){if(m.stranded)return {ok:false,reason:'Stranded transport requires feasible rescue or repair'};m.failed=true;if(m.phase==='boarding'){m.stagingCancelled=true;finish(s,s.frontier.jobs.find(j=>j.id===s.frontier.active),m,env);}else{m.phase='returning';m.progress=0;}return {ok:true};}return {ok:false,reason:'No frontier expedition'};}
