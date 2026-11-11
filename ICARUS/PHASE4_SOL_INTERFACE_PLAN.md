@@ -116,6 +116,16 @@ Add an optional **Arcade Kill Cam** inside UMBRA's **Settings > Appearance > Cor
 
 **Acceptance:** verify all 4–6 packaged GIFs load/play offline on phone and Tab S5e emulator, master and independent toggle state persistence, manual archive, reduced-motion fallback, dismissal/cooldown, no command interruption, no fabricated event provenance, and no changes to ICARUS event/clock/state. Physical Android validation remains pending until performed.
 
+### Future evolution: actual in-game Kill Cam recordings in UMBRA (NOT a Phase 4A deliverable)
+
+The user intends to **eventually** add authentic **ICARUS in-game Kill Cam recordings** to the same UMBRA Arcade Archive **once the game has real rendered footage/capture infrastructure**. Do not implement or promise gameplay video recording in Phase 4A; preserve an extensible archive/data model and UX affordance without creating fake clips.
+
+- **Archive categories:** **8-bit Arcade** (preloaded fictional pixel GIFs, current phase) and, only when genuine footage exists, **ICARUS Recordings** (real captured gameplay video). Clearly distinguish **ACTUAL CAPTURE**, **EVENT-BASED RECONSTRUCTION** and **FICTIONAL ARCADE GIF** on every item. Never label a state-projection or reconstruction as captured video.
+- **Future capture pipeline:** when feasible, record actual renderer/camera frames with time range, viewpoint, encounter ID, involved entities, source event references, capture status and file integrity metadata. Store/serve recordings through existing authenticated local architecture with bounded retention/storage, no new public endpoint; playback in UMBRA should be optional, lightweight and device-appropriate.
+- **Selection:** rare, consequential, remarkable encounters (not every death); use actual causal/event data for danger, ingenuity, rarity, disadvantage and impact. Support genuine close calls and nonfatal moments as appropriate. Do not invent fatalities to satisfy a quota.
+- **Playback:** select, replay, pause, scrub and inspect related crew/event context when implemented. Future Sunday Legendary Kill Cam and UMBRA archive may link to the same authenticated genuine clip but must not silently duplicate/fabricate provenance.
+- **Phase 4A gate:** implement only the fictional 8-bit GIF archive and, if cheap, noninteractive structural separation for a future recordings category marked **NOT AVAILABLE YET**. No dummy gameplay videos, no claim that recording works, no unrequested renderer rewrite, no expansion of Phase 4A scope. Record this as a deferred milestone in roadmap.
+
 ### Tablet TV remote right-hand ergonomics — explicit user requirement
 
 For the **Samsung Galaxy Tab S5e landscape Lounge remote**, prioritize **right-handed reach**. The most frequently used controls must live in a compact, persistent **right-side control zone**:
