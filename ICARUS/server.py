@@ -133,18 +133,10 @@ def tv_connect():
   # Some models do not send the initial event promptly.
   pass
  return ws
-def tv_command(command):
- key=TV_KEYS.get(command)
- if not key: raise ValueError('Unknown TV control')
- with LOCK:
-  try:
-   ws=tv_connect()
-   try:
-    ws.send(json.dumps({'method':'ms.remote.control','params':{'Cmd':'Click','DataOfCmd':key,'Option':'false','TypeOfRemote':'SendRemoteKey'}}))
-   finally: ws.close()
-  except Exception as e:
-   raise ValueError('TV connection failed: '+str(e)[:120])
- return 'TV: '+command.replace('_',' ')
+# Same allowlist and authenticated endpoints; a reusable transport avoids reconnecting per key.
+from tv_service import TVService
+TV_SERVICE=TVService(tv_connect,tv_settings,TV_KEYS)
+def tv_command(command): return TV_SERVICE.command(command)
 
 def release():
  global TIMER
@@ -239,6 +231,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
     cmds=ICARUS_BRIDGE['commands'][:]
     ICARUS_BRIDGE['commands'].clear()
    return self.respond(200,{'commands':cmds})
+  if self.path=='/api/tv/status':
+   if not self.authorized(): return self.respond(401,{'error':'Pair first'})
+   return self.respond(200,TV_SERVICE.status())
   if self.path=='/api/status':
    if not self.authorized(): return self.respond(401,{'error':'Pair first'})
    self.respond(200,{'cpu':psutil.cpu_percent(interval=.1) if psutil else None,'ram':psutil.virtual_memory().percent if psutil else None,'mining':'mouse_left' in HELD,'quick':list(cfg()['quick']),'macros':list(cfg()['macros']),'custom_messages':cfg().get('custom_messages',[]),'fortnite_emotes':get_fortnite_buttons(),'tv_ip':tv_settings()['ip'],'tv_configured':bool(tv_settings()['ip'])}); return
@@ -283,11 +278,16 @@ class Handler(http.server.SimpleHTTPRequestHandler):
    if self.path=='/api/unpair':
     token=self.headers.get('Authorization','').removeprefix('Bearer ')
     with LOCK:
-     TOKENS.discard(token_hash(token)); save_tokens()
+     TOKENS.discard(token_hash(token)); save_tokens();TV_SERVICE.cancel('Owner unpaired',token_hash(token))
     return self.respond(200,{'message':'Device forgotten'})
+   if self.path=='/api/tv/timer':
+    if data.get('cancel') is True:
+     TV_SERVICE.cancel();return self.respond(200,TV_SERVICE.status())
+    return self.respond(200,{'timer':TV_SERVICE.start(data.get('minutes'),token_hash(self.headers.get('Authorization','').removeprefix('Bearer ')))})
    if self.path=='/api/tv/config':
     ip=tv_ip(str(data.get('ip','')).strip())
-    with LOCK:
+    with TV_SERVICE.lock:
+     TV_SERVICE.reconfigure()
      previous=tv_settings()
      tv_save({'ip':ip,'token':previous['token'] if previous['ip']==ip else ''})
     return self.respond(200,{'message':'TV address saved','ip':ip})
@@ -320,4 +320,4 @@ if __name__=='__main__':
  print('Keep this window running. Ctrl+C stops the receiver.')
  try: http.server.ThreadingHTTPServer(('0.0.0.0',PORT),Handler).serve_forever()
  except KeyboardInterrupt: pass
- finally: release()
+ finally: release();TV_SERVICE.close()
