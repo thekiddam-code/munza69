@@ -1,0 +1,9 @@
+const {test}=require('node:test'),a=require('node:assert/strict'),C=require('./web/calendar');
+function make(date='2026-11-09T12:00Z'){const s={tick:0,episode:1,crew:[{health:100}],jobs:[{progress:2}]};C.init(s,Date.parse(date),'UTC');return s;}
+function advance(s,ms,rate,max=120,paused=false){return C.advance(s,s.calendar.lastSeen+ms,{step(){s.tick++;s.jobs[0].progress++;},boundary(){s.episode++;}},{rateOverride:rate,maxTicks:max,paused});}
+for(const rate of [1,5,20])test('development '+rate+'x advances every full physical minute',()=>{const s=make();const r=advance(s,60000,rate);a.equal(r.ticks,rate);a.equal(s.jobs[0].progress,rate+2);a.equal(s.episode,1);});
+test('20x retains bounded backlog without skipping physical decisions',()=>{const s=make();a.equal(advance(s,3600000,20,120).ticks,120);while(s.calendar.wallCursor<s.calendar.lastSeen)advance(s,0,20);a.equal(s.tick,1200);});
+test('test holiday override does not change the synchronized holiday or real week',()=>{const s=make('2026-11-10T23:59Z');advance(s,120000,20);a.equal(s.tick,40);a.equal(s.episode,1);a.equal(Object.values(s.calendar.occurrences)[0].synchronized,true);advance(s,60000,undefined);a.equal(s.tick,41);});
+test('test Monday archives once with continuous jobs and crew',()=>{const s=make('2026-11-08T23:59Z');advance(s,120000,20);a.equal(s.episode,2);a.equal(s.tick,40);a.equal(s.jobs[0].progress,42);a.equal(s.crew[0].health,100);advance(s,60000,20);a.equal(s.episode,2);});
+test('pause drops elapsed wall time and restart defaults normal without double accounting',()=>{let s=make();advance(s,30000,20);a.equal(s.tick,10);advance(s,120000,20,120,true);s=JSON.parse(JSON.stringify(s));advance(s,15000,undefined);a.equal(s.tick,11);});
+test('test rate validates and retains the six hour recovery limit',()=>{const s=make();a.throws(()=>advance(s,60000,100));const r=advance(s,86400000,20,10000);a.equal(r.ticks,7200);a.equal(s.calendar.recovery.discardedMs,18*3600000);});

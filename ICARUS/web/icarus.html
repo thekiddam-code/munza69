@@ -1,5 +1,5 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1519"><title>ICARUS | UNIFIED WORLD PHASE 1</title><style>
-:root{font-family:ui-monospace,Consolas,monospace;background:#091115;color:#dce9df}*{box-sizing:border-box}body{margin:0}button,select{font:inherit;color:inherit;background:#243a3b;border:1px solid #658278;border-radius:6px;padding:8px 10px;cursor:pointer}button.active{background:#635c3b;border-color:#ddc985}button:focus-visible,.room:focus-visible{outline:2px solid #edcd7c}header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;background:#132328;padding:14px 18px;border-bottom:1px solid #3c5b55}h1{margin:0;font-size:24px;letter-spacing:5px;color:#e7d39d}h2{font-size:12px;letter-spacing:2px;color:#e4cb90;margin:0 0 10px}small,.muted{color:#9db6ab;font-size:11px}.controls{display:flex;gap:7px;flex-wrap:wrap}.layout{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(290px,1fr);gap:12px;padding:12px}.panel{background:#122126;border:1px solid #47635c;border-radius:9px;padding:12px;min-width:0}.left,.right{display:grid;gap:12px;align-content:start}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.stat{background:#20343a;border-radius:6px;padding:9px}.stat b{display:block;font-size:17px}.stat span{font-size:9px;color:#a9bfb2}.viewport{background:linear-gradient(#0d1d23,#0b1519);border:1px solid #526960;border-radius:8px;padding:9px;overflow:hidden}.deck{margin-bottom:10px}.decklabel{display:flex;justify-content:space-between;gap:8px;font-size:10px;color:#c4d3c9;margin-bottom:5px}.rooms{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:3px}.room{min-height:113px;position:relative;border:1px solid #526b65;border-bottom:4px solid #657d72;border-radius:4px 4px 1px 1px;background:linear-gradient(155deg,#2b4043,#1a3034);padding:5px 3px;cursor:pointer;overflow:hidden}.room:nth-child(3n){background:linear-gradient(155deg,#364349,#21333a)}.room.selected{border-color:#e8c97e;box-shadow:inset 0 0 0 1px #e8c97e}.room.working{box-shadow:inset 0 -5px 0 #b1a66a55}.room.focused{background:linear-gradient(150deg,#4b5040,#263b3b)}.roomid{font-size:9px;color:#d7c68f}.roomname{font-size:9px;line-height:1.15;overflow-wrap:anywhere;min-height:31px}.fixture{position:absolute;bottom:9px;left:4px;font-size:17px;opacity:.65}.activity{position:absolute;right:3px;bottom:34px;font-size:9px;color:#f2d99e;background:#0d1d23dd;padding:2px 3px;border-radius:3px;z-index:1;animation:blink 1.2s steps(2,end) infinite}.machine{position:absolute;bottom:7px;left:3px;width:22px;height:21px;border:2px solid #718e83;background:linear-gradient(90deg,#354e50 40%,#172d32 40%);box-shadow:inset 0 3px #b4bfa0}.machine:after{content:"";position:absolute;right:3px;top:4px;width:5px;height:5px;background:#c29a65}.machine.good:after{background:#73d9a2}.sprites{position:absolute;bottom:4px;left:2px;right:2px;display:flex;align-items:end;justify-content:center;gap:1px;flex-wrap:wrap;max-height:53px;overflow:hidden}.sprite{font-size:17px;display:inline-flex;flex-direction:column;align-items:center;line-height:1;position:relative;filter:drop-shadow(0 1px 2px #000);animation:bob 1.7s ease-in-out infinite alternate;cursor:pointer}.sprite i{font-size:8px;font-style:normal;color:#ffe5a3;background:#102225bb;padding:1px 2px;border-radius:2px;margin-top:3px}.sprite.followed{outline:1px solid #e9d18b;border-radius:3px}.sprite.travel{opacity:.6;animation:walk .4s ease-in-out infinite alternate}.sprite .bubble{position:absolute;bottom:25px;font-size:11px;background:#203c3c;border:1px solid #b2c9a7;border-radius:3px;padding:2px;white-space:nowrap;z-index:3}.corridor{background:#293a39;border:1px solid #52655c;height:14px;margin:3px 0 0;display:flex;align-items:center;justify-content:space-between;padding:0 10px;color:#c2ac77;font-size:9px;letter-spacing:2px}.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:10px;color:#a8beb3;margin-top:8px}.roster{max-height:330px;overflow:auto}.person{width:100%;display:flex;text-align:left;justify-content:space-between;gap:5px;border:0;border-bottom:1px solid #2d4744;background:transparent;padding:8px 3px;border-radius:0;font-size:11px}.person:hover,.person.active{background:#28413d}.person .righttext{text-align:right;color:#a4c7b7}.eventlog{height:250px;overflow:auto}.entry{border-bottom:1px solid #2b4541;padding:7px 0;font-size:11px;line-height:1.5}.entry time{color:#e2c78c}.detail{font-size:12px;line-height:1.6}.meter{height:7px;background:#314344;border-radius:8px;overflow:hidden;margin:4px 0 8px}.meter>div{height:100%;background:#8ba993}.footer{padding:4px 14px 20px;color:#9aafa4;font-size:10px;line-height:1.5}.tag{font-size:10px;color:#e1c98d}.modal{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;padding:16px;z-index:20}.modal.open{display:flex}.modal>div{width:min(540px,100%);background:#14272b;border:1px solid #a4a17b;border-radius:12px;padding:22px;max-height:90vh;overflow:auto}.modal h3{color:#e2c98d;letter-spacing:2px}.modal p{line-height:1.6;font-size:12px}.notice{padding:8px;background:#243b39;border-radius:5px;font-size:11px;color:#bed3c6}@keyframes blink{50%{opacity:.35}}@keyframes bob{to{transform:translateY(-2px)}}@keyframes walk{to{transform:translateX(2px) translateY(-2px)}}@media(max-width:1000px){.layout{grid-template-columns:1fr}.rooms{grid-template-columns:repeat(10,minmax(0,1fr))}}@media(max-width:600px){.room{min-height:100px;padding:3px 1px}.roomname{font-size:7px;min-height:35px}.roomid{font-size:8px}.sprite{font-size:13px}.sprite i{font-size:7px}.fixture{font-size:12px}.stats{grid-template-columns:repeat(2,1fr)}.controls button{font-size:11px;padding:7px}h1{font-size:20px}}
+:root{font-family:ui-monospace,Consolas,monospace;background:#091115;color:#dce9df}*{box-sizing:border-box}body{margin:0}button,select{font:inherit;padding:8px 10px;cursor:pointer}button.active{}button:focus-visible,.room:focus-visible{outline:2px solid #edcd7c}header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;background:#132328;padding:14px 18px;border-bottom:1px solid #3c5b55}h1{margin:0;font-size:24px;letter-spacing:5px;color:#e7d39d}h2{font-size:12px;letter-spacing:2px;color:#e4cb90;margin:0 0 10px}small,.muted{color:#9db6ab;font-size:11px}.controls{display:flex;gap:7px;flex-wrap:wrap}.layout{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(290px,1fr);gap:12px;padding:12px}.panel{background:#122126;border:1px solid #47635c;border-radius:9px;padding:12px;min-width:0}.left,.right{display:grid;gap:12px;align-content:start}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:7px}.stat{background:#20343a;border-radius:6px;padding:9px}.stat b{display:block;font-size:17px}.stat span{font-size:9px;color:#a9bfb2}.viewport{background:linear-gradient(#0d1d23,#0b1519);border:1px solid #526960;border-radius:8px;padding:9px;overflow:hidden}.deck{margin-bottom:10px}.decklabel{display:flex;justify-content:space-between;gap:8px;font-size:10px;color:#c4d3c9;margin-bottom:5px}.rooms{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:3px}.room{min-height:113px;position:relative;border:1px solid #526b65;border-bottom:4px solid #657d72;border-radius:4px 4px 1px 1px;background:linear-gradient(155deg,#2b4043,#1a3034);padding:5px 3px;cursor:pointer;overflow:hidden}.room:nth-child(3n){background:linear-gradient(155deg,#364349,#21333a)}.room.selected{border-color:#e8c97e;box-shadow:inset 0 0 0 1px #e8c97e}.room.working{box-shadow:inset 0 -5px 0 #b1a66a55}.room.focused{background:linear-gradient(150deg,#4b5040,#263b3b)}.roomid{font-size:9px;color:#d7c68f}.roomname{font-size:9px;line-height:1.15;overflow-wrap:anywhere;min-height:31px}.fixture{position:absolute;bottom:9px;left:4px;font-size:17px;opacity:.65}.activity{position:absolute;right:3px;bottom:34px;font-size:9px;color:#f2d99e;background:#0d1d23dd;padding:2px 3px;border-radius:3px;z-index:1;animation:blink 1.2s steps(2,end) infinite}.machine{position:absolute;bottom:7px;left:3px;width:22px;height:21px;border:2px solid #718e83;background:linear-gradient(90deg,#354e50 40%,#172d32 40%);box-shadow:inset 0 3px #b4bfa0}.machine:after{content:"";position:absolute;right:3px;top:4px;width:5px;height:5px;background:#c29a65}.machine.good:after{background:#73d9a2}.sprites{position:absolute;bottom:4px;left:2px;right:2px;display:flex;align-items:end;justify-content:center;gap:1px;flex-wrap:wrap;max-height:53px;overflow:hidden}.sprite{font-size:17px;display:inline-flex;flex-direction:column;align-items:center;line-height:1;position:relative;filter:drop-shadow(0 1px 2px #000);animation:bob 1.7s ease-in-out infinite alternate;cursor:pointer}.sprite i{font-size:8px;font-style:normal;color:#ffe5a3;background:#102225bb;padding:1px 2px;border-radius:2px;margin-top:3px}.sprite.followed{outline:1px solid #e9d18b;border-radius:3px}.sprite.travel{opacity:.6;animation:walk .4s ease-in-out infinite alternate}.sprite .bubble{position:absolute;bottom:25px;font-size:11px;background:#203c3c;border:1px solid #b2c9a7;border-radius:3px;padding:2px;white-space:nowrap;z-index:3}.corridor{background:#293a39;border:1px solid #52655c;height:14px;margin:3px 0 0;display:flex;align-items:center;justify-content:space-between;padding:0 10px;color:#c2ac77;font-size:9px;letter-spacing:2px}.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:10px;color:#a8beb3;margin-top:8px}.roster{max-height:330px;overflow:auto}.person{width:100%;display:flex;text-align:left;justify-content:space-between;gap:5px;border:0;border-bottom:1px solid #2d4744;background:transparent;padding:8px 3px;border-radius:0;font-size:11px}.person:hover,.person.active{background:#28413d}.person .righttext{text-align:right;color:#a4c7b7}.eventlog{height:250px;overflow:auto}.entry{border-bottom:1px solid #2b4541;padding:7px 0;font-size:11px;line-height:1.5}.entry time{color:#e2c78c}.detail{font-size:12px;line-height:1.6}.meter{height:7px;background:#314344;border-radius:8px;overflow:hidden;margin:4px 0 8px}.meter>div{height:100%;background:#8ba993}.footer{padding:4px 14px 20px;color:#9aafa4;font-size:10px;line-height:1.5}.tag{font-size:10px;color:#e1c98d}.modal{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;padding:16px;z-index:20}.modal.open{display:flex}.modal>div{width:min(540px,100%);background:#14272b;border:1px solid #a4a17b;border-radius:12px;padding:22px;max-height:90vh;overflow:auto}.modal h3{color:#e2c98d;letter-spacing:2px}.modal p{line-height:1.6;font-size:12px}.notice{padding:8px;background:#243b39;border-radius:5px;font-size:11px;color:#bed3c6}@keyframes blink{50%{opacity:.35}}@keyframes bob{to{transform:translateY(-2px)}}@keyframes walk{to{transform:translateX(2px) translateY(-2px)}}@media(max-width:1000px){.layout{grid-template-columns:1fr}.rooms{grid-template-columns:repeat(10,minmax(0,1fr))}}@media(max-width:600px){.room{min-height:100px;padding:3px 1px}.roomname{font-size:7px;min-height:35px}.roomid{font-size:8px}.sprite{font-size:13px}.sprite i{font-size:7px}.fixture{font-size:12px}.stats{grid-template-columns:repeat(2,1fr)}.controls button{font-size:11px;padding:7px}h1{font-size:20px}}
  .crew-art{display:block;width:20px;height:31px;flex-shrink:0;filter:drop-shadow(0 2px 1px #0008)}.sprite{font-size:initial;animation:idle 1.6s steps(2,end) infinite}.sprite.travel{opacity:1;animation:stride .32s steps(2,end) infinite}.sprite.followed{outline:1px solid #f2d187;background:#e8c97e22}.sprite .bubble{bottom:37px}.sprite i{font-size:7px}.person .crew-art,.detail .crew-art{display:inline-block;vertical-align:middle;width:16px;height:25px;margin-right:5px}@keyframes idle{50%{transform:translateY(1px)}}@keyframes stride{50%{transform:translate(2px,-2px)}}@media(max-width:600px){.crew-art{width:15px;height:23px}.sprite i{font-size:6px}} 
 .room.alarming{border-color:#ff776b;box-shadow:inset 0 0 0 2px #ff776b88,0 0 10px #e54b4080;animation:alarmPulse 1.1s ease-in-out infinite}
 .room.alarming.critical{background:linear-gradient(150deg,#6b2c31,#2c222b)}
@@ -216,7 +216,7 @@
 /* Route positions are tied to simulation progress, not arbitrary bobbing. */
 .cam-person.walk{transition:left .85s linear;animation-duration:.45s}
 .cam-transit .travel-rail span{transition:width .85s linear}
-.psych-roster{max-height:260px;overflow:auto}.psych-row{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #344a49;padding:7px 0;font-size:11px}.psych-row span{color:#aac2ba;text-align:right}details{margin-top:10px}summary{cursor:pointer;color:#e7c57f}
+.psych-roster{max-height:260px;overflow:auto}.psych-row{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #344a49;padding:7px 0;font-size:11px}.psych-row span{color:#aac2ba;text-align:right}details{margin-top:10px}summary{cursor:pointer}
 /* v0.36: streamlined monitoring, native details retain open state across render ticks */
 .compact-panel{padding:0;overflow:hidden}.compact-panel>summary{list-style:none;cursor:pointer;padding:11px 12px;color:#e4cb90;font-size:11px;font-weight:bold;letter-spacing:1.4px;user-select:none}.compact-panel>summary::-webkit-details-marker{display:none}.compact-panel>summary:before{content:'▸';margin-right:8px;color:#9ebbb0}.compact-panel[open]>summary:before{content:'▾'}.compact-panel>summary.has-warning{color:#e5b66d}.compact-panel>.detail,.compact-panel>.observer{margin:0 11px 11px}.compact-panel:not([open]){min-height:0}.dependency-list{display:grid;gap:3px}.dependency-row{display:grid;grid-template-columns:minmax(95px,1fr) minmax(55px,1fr) 42px 28px;align-items:center;gap:7px;padding:5px 7px;background:#192d30;border-radius:4px;font-size:10px}.dependency-row.warn{background:#342f28}.dependency-row.critical{background:#3a262a}.dependency-name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.dependency-track{height:5px;background:#3a4a49;border-radius:8px;overflow:hidden}.dependency-track i{display:block;height:100%;border-radius:8px}.dependency-row b{text-align:right;font-size:10px}.dependency-row small{font-size:9px;text-align:right}.dependency-meta{margin-top:7px;color:#9db6ab;font-size:9px;line-height:1.5}.compact-panel .history{max-height:150px;overflow:auto}@media(max-width:600px){.compact-panel>summary{padding:10px}.dependency-row{grid-template-columns:minmax(80px,1fr) minmax(35px,.8fr) 38px 24px;gap:4px;padding:5px}}
 
@@ -322,9 +322,9 @@
 @media(max-width:700px){.viewport .dock-assembly{padding-right:30px}.viewport .derelict-cutaway{flex-basis:580px;width:580px}}
 .viewport .derelict-occupant{margin-top:3px;color:#c8e5a5;font-weight:bold;font-size:10px;text-shadow:0 0 3px #152617}
 .wy-camera-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:5px;margin:12px 0}
-.wy-camera-grid button{padding:7px 2px;font:10px monospace;border:1px solid #59665b;background:#1c2926;color:#b7c6a6}
-.wy-camera-grid button small{display:block;font-size:8px;color:#9fa79c}
-.wy-camera-grid button.online{border-color:#718f6c}.wy-camera-grid button.offline{opacity:.55}.wy-camera-grid button.selected{outline:2px solid #d0c38d}
+.wy-camera-grid button{padding:7px 2px;font:10px monospace}
+.wy-camera-grid button small{display:block;font-size:8px}
+.wy-camera-grid button.online{}.wy-camera-grid button.offline{opacity:.55}.wy-camera-grid button.selected{outline:2px solid #d0c38d}
 .wy-feed{position:relative;border:2px solid #6b7b64;background:#0a1714;color:#b5c9ad;min-height:210px;overflow:hidden;font:11px monospace}
 .wy-feed-hdr,.wy-feed-foot{padding:8px 12px;background:#1e3129}
 .wy-feed-room{position:relative;height:160px;background:repeating-linear-gradient(90deg,#263b32 0 24px,#1c302a 24px 27px);overflow:hidden}
@@ -350,7 +350,7 @@
 
 /* v0.72: page navigation, customizable home, and touch-first director terminal */
 #icarus-menu{display:flex;gap:7px;flex-wrap:wrap;padding:10px 16px;background:#091922;border-bottom:1px solid #315360;position:sticky;top:0;z-index:20}
-#icarus-menu button{min-height:39px}#icarus-menu button.active{border-color:#69d6cf;color:#9ff5e8;background:#183b42}
+#icarus-menu button{min-height:39px}#icarus-menu button.active{}
 .icarus-page{display:none;padding:12px;max-width:1650px;margin:auto}.icarus-page.active{display:block}
 #icarus-main.menu-hidden{display:none}#icarus-home{display:none}#icarus-home.active{display:block}
 .home-widgets{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px}.home-widget{border:1px solid #31535e;background:#102630;border-radius:10px;padding:14px;min-height:120px}.home-widget.wide{grid-column:span 2}.home-widget #holo-panel{margin:0;padding:8px;border:0;background:transparent}.home-widget #holo-canvas{height:350px}.home-widget .holo-controls{gap:7px}.home-widget h3{margin:0 0 12px;color:#90e5e1;font-size:14px}.home-widget p{margin:7px 0}.home-widget button{margin:3px}.home-editor{padding:12px;margin:12px 0;border:1px dashed #4d7881;border-radius:10px}.home-editor label{display:inline-flex;gap:6px;align-items:center;margin:5px 12px 5px 0}
@@ -410,8 +410,7 @@ button,select,input:not([type="range"]):not([type="checkbox"]):not([type="radio"
 #icarus-menu,.icarus-page,#icarus-main details,#holo-canvas,.camera-scene,
 .lazarus-personnel,.lazarus-personnel-row,.remote-workspace button,
 .home-widget button,.home-widget select{border-radius:0!important;box-shadow:none!important}
-button,select,input:not([type="range"]):not([type="checkbox"]):not([type="radio"]),textarea{
- background:#19323b;color:#dceee9;border:1px solid #52747a;min-height:42px;
+button,select,input:not([type="range"]):not([type="checkbox"]):not([type="radio"]),textarea{min-height:42px;
  font-family:ui-monospace,Consolas,monospace;touch-action:manipulation}
 button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid #94d5c5;outline-offset:2px}
 .panel,.home-widget,.remote-card{background:#10242c;border-color:#3f616a}
@@ -425,7 +424,7 @@ button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-vis
 /* v0.85 Remote Deck iteration: precise squared control surfaces */
 :root{--deck-edge:#47717b;--deck-ink:#a8dce1}
 .panel, .panel.panel, .lazarus-personnel, .lazarus-personnel-row, .widget, .widget-card, .card, .compact-panel, .modal>div, button, select, input, textarea, .controls button, .person, details, .tag {border-radius:2px!important}
-button,select{border:1px solid var(--deck-edge);box-shadow:inset 0 1px 0 #ffffff0c;background-image:none!important}
+button,select{}
 button:active{transform:translateY(1px)}
 .lazarus-personnel-row{border-bottom:1px solid #34545d;padding:9px 0;min-height:60px}
 .lazarus-personnel-row button{min-height:44px}
@@ -434,10 +433,10 @@ button:active{transform:translateY(1px)}
 /* v0.86 / bridge holographic UI: softened military-sci-fi framing, twin palettes. */
 :root{--rd-bg:#081923;--rd-surface:#102b39;--rd-edge:#42798a;--rd-accent:#88e1ed;--deck-accent:#82d8ed;--deck-line:#4c91a6;--deck-panel:#102734;--deck-ink:#e0f8ff}
 body{background:radial-gradient(ellipse at 50% -20%,#173c4b 0%,#07151e 55%,#050e15 100%);color:#d9eef4}
-.panel,.panel.panel,.lazarus-personnel,.lazarus-personnel-row,.widget,.widget-card,.card,.compact-panel,.modal>div,button,select,input,textarea,.controls button,.person,details,.tag,.home-widget,.remote-card,.remote-screen,.remote-notice,#icarus-menu,.icarus-page,.settings-inline-manager,.director-window,.camera-scene,#holo-canvas{border-radius:8px!important}
+.panel,.panel.panel,.lazarus-personnel,.lazarus-personnel-row,.widget,.widget-card,.card,.compact-panel,.modal>div,.person,details,.tag,.home-widget,.remote-card,.remote-screen,.remote-notice,#icarus-menu,.icarus-page,.settings-inline-manager,.director-window,.camera-scene,#holo-canvas{border-radius:8px!important}
 .panel,.home-widget,.remote-card,.icarus-page{background:linear-gradient(148deg,#142f3d 0%,#0a1b28 92%);border:1px solid #426e7e;box-shadow:inset 0 1px 0 #a3e7f21c,0 3px 18px #0005!important}
-button,select,input:not([type=range]):not([type=checkbox]):not([type=radio]),textarea{background:linear-gradient(180deg,#214555,#152f3e);border:1px solid #527e90;color:#e0f3f7;box-shadow:inset 0 1px 0 #c6ffff18!important}
-button:hover{border-color:#8de4f2;background:#254c5b}button:active{background:#326475}
+button,select,input:not([type=range]):not([type=checkbox]):not([type=radio]),textarea{}
+button:hover{}button:active{}
 .panel>h2,.home-widget>h3,.remote-card h2,details.panel>summary{color:#9ce6ef;letter-spacing:.09em;text-shadow:0 0 12px #4bbad033}
 #roomdetail .panel,#roomdetail details,#roomdetail button,#roomdetail select,#roomdetail input,#roomdetail textarea{border-radius:8px!important}
 #roomdetail .panel{background:linear-gradient(145deg,#15313d,#0d222e);border-color:#487587}
@@ -458,9 +457,9 @@ button:hover{border-color:#8de4f2;background:#254c5b}button:active{background:#3
 :root{--hud-cut:11px;--hud-shape:polygon(0 var(--hud-cut),var(--hud-cut) 0,calc(100% - var(--hud-cut)) 0,100% var(--hud-cut),100% calc(100% - var(--hud-cut)),calc(100% - var(--hud-cut)) 100%,var(--hud-cut) 100%,0 calc(100% - var(--hud-cut)));}
 .panel,.home-widget,.director-window,.modal>div,.stat,.tag,.home-editor,.lazarus-personnel-row,.settings-line,.save-manager,.idea-vault{border-radius:0!important;clip-path:var(--hud-shape);}
 .panel,.home-widget,.director-window{box-shadow:inset 0 0 0 1px rgba(114,211,232,.14),0 5px 20px rgba(0,0,0,.19)!important;}
-button,select,input:not([type=range]),textarea,.home-widget button,.director-commands button{border-radius:0!important;clip-path:polygon(0 7px,7px 0,calc(100% - 7px) 0,100% 7px,100% calc(100% - 7px),calc(100% - 7px) 100%,7px 100%,0 calc(100% - 7px));}
+button,select,input:not([type=range]),textarea,.home-widget button,.director-commands button{}
 button{min-height:35px;transition:filter .12s ease,background-color .12s ease;}
-button:active{filter:brightness(1.3)}
+button:active{}
 .home-widget>h3,.panel>h2{letter-spacing:.08em;text-transform:uppercase;}
 .home-widget[data-widget-id=lazarus]{grid-column:1/-1;}
 .home-widget[data-widget-id=lazarus] .home-widget-body{max-height:70vh;overflow:auto;overscroll-behavior:contain;}
@@ -469,20 +468,19 @@ button:active{filter:brightness(1.3)}
 @media(max-width:650px){.home-widget[data-widget-id=lazarus] .home-widget-body{max-height:68vh;}}
 
 /* v0.88: unified modular HUD geometry, responsive controls and per-widget sizing */
-:root{--hud-cut:10px;--hud-edge:rgba(104,191,216,.48);--hud-surface:rgba(13,35,48,.91);--hud-control-height:39px;--hud-pad:13px}
+:root{--hud-cut:10px;--hud-edge:rgba(104,191,216,.48);--hud-surface:rgba(13,35,48,.91);--hud-control-height:44px;--hud-pad:13px}
 body[data-hud-style="command"]{--hud-cut:10px;--hud-edge:rgba(104,191,216,.48);--hud-surface:rgba(13,35,48,.91)}
 body[data-hud-style="tactical"]{--hud-cut:17px;--hud-edge:rgba(91,204,230,.65);--hud-surface:rgba(8,29,44,.95)}
 body[data-hud-style="legacy"]{--hud-cut:6px;--hud-edge:rgba(168,151,102,.53);--hud-surface:rgba(30,36,36,.94)}
-body[data-hud-density="compact"]{--hud-control-height:32px;--hud-pad:9px}
-body[data-hud-density="comfort"]{--hud-control-height:39px;--hud-pad:13px}
+body[data-hud-density="compact"]{--hud-control-height:44px;--hud-pad:9px}
+body[data-hud-density="comfort"]{--hud-control-height:44px;--hud-pad:13px}
 body[data-hud-density="touch"]{--hud-control-height:49px;--hud-pad:17px}
 /* Use one shape for all interactive surfaces; don't round children independently. */
 body .panel,body .home-widget,body .remote-card,body .remote-panel,body .stat,body .idea-entry,body .lazarus-personnel-row,body .settings-inline-manager,body .home-editor,body .modal>div,body .director-window{
  border-radius:0!important;clip-path:polygon(var(--hud-cut) 0,100% 0,100% calc(100% - var(--hud-cut)),calc(100% - var(--hud-cut)) 100%,0 100%,0 var(--hud-cut));
  border:1px solid var(--hud-edge)!important;background-color:var(--hud-surface);padding:var(--hud-pad);
 }
-body button,body select,body input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),body textarea,body .tag,body summary{
- border-radius:0!important;min-height:var(--hud-control-height);clip-path:polygon(6px 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%,0 6px);
+body button,body select,body input:not([type="checkbox"]):not([type="radio"]):not([type="range"]),body textarea,body .tag,body summary{min-height:var(--hud-control-height);
 }
 body button,body select{touch-action:manipulation}
 body button:focus-visible,body select:focus-visible,body input:focus-visible{outline:2px solid #85e6ff;outline-offset:2px}
@@ -510,7 +508,6 @@ body .panel,body .home-widget,body .remote-card,body .remote-panel,body .stat,bo
  clip-path:none!important;border-radius:var(--rd-radius)!important;
 }
 body button,body select,body input:not([type=checkbox]):not([type=radio]):not([type=range]),body textarea,body .tag,body summary{
- clip-path:none!important;border-radius:7px!important;
 }
 body .panel,body .home-widget,body .icarus-page,body .remote-card{background:linear-gradient(145deg,#142f3d,#0b202c);border-color:#426e7e!important;box-shadow:inset 0 1px #a3e7f21c,0 3px 18px #0005!important}
 body .remote-derelict{background:linear-gradient(150deg,#333329,#1b221e)!important;border-color:#82734a!important;color:#e7dcb4}
@@ -548,17 +545,10 @@ body .director-window,body #icarus-menu,body .icarus-page,body .lazarus-personne
 }
 body button,body select,body input:not([type=checkbox]):not([type=radio]):not([type=range]),body textarea,
 body .tag,body summary{
-  border-radius:0!important;
-  clip-path:polygon(7px 0,calc(100% - 7px) 0,100% 7px,100% calc(100% - 7px),calc(100% - 7px) 100%,7px 100%,0 calc(100% - 7px),0 7px)!important;
-  border:1px solid #699eac!important;
-  background-image:linear-gradient(180deg,#1c3e4e,#102a38)!important;
-  box-shadow:none!important;
 }
 body button.active,body button[aria-pressed=true],body button[aria-selected=true]{
-  background-image:linear-gradient(180deg,#28677b,#194657)!important;
-  border-color:#9be7f0!important;
 }
-body button:hover{filter:brightness(1.12)}
+body button:hover{}
 body .panel>h2,body .home-widget>h3,body .remote-card h2,body details.panel>summary{
   border-bottom:1px solid #4d8798;
   padding-bottom:7px;
@@ -631,13 +621,10 @@ body .remote-card .remote-panel::before,body .panel details::before{opacity:.32}
 body .panel .panel,body .home-widget .panel,body .remote-card .remote-panel{background:#091820!important}
 body button,body select,body input:not([type=checkbox]):not([type=radio]):not([type=range]),
 body textarea,body .tag,body summary{
-  border:1px solid #397f91!important;border-image:none!important;border-radius:0!important;
-  clip-path:none!important;background:#102632!important;background-image:none!important;
-  box-shadow:none!important;color:#c4e6ef;
 }
 body button.active,body button[aria-pressed=true],body button[aria-selected=true],
-body button:focus-visible,body select:focus-visible{border-color:var(--ng-bright)!important;box-shadow:var(--ng-glow)!important;background:#123b49!important}
-body button:hover{border-color:#58c9dc!important}
+body button:focus-visible,body select:focus-visible{}
+body button:hover{}
 body .home-widget>h3,body .panel>h2,body .remote-card h2{border-bottom:1px solid #1c4b5a!important}
 body .home-widget-body,body .remote-metric,body .lazarus-personnel-row{border-color:#214a59!important}
 /* Preserve the legacy WY color identity, but use the same deep contrast and geometry. */
@@ -648,7 +635,7 @@ body .remote-derelict button,body .remote-derelict select{background:#25271e!imp
 body button,body select{min-height:42px;touch-action:manipulation}
 .neon-mode-picker{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
 .neon-mode-picker button{min-width:85px}
-.neon-mode-picker button[aria-pressed="true"]{border-color:var(--ng-bright)!important;box-shadow:var(--ng-glow)!important}
+.neon-mode-picker button[aria-pressed="true"]{}
 @media(prefers-reduced-motion:reduce){body *{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 
 
@@ -673,9 +660,6 @@ body .ng-stack>.ng-module:last-child{border-bottom:1px solid #2d6474!important;c
 body .ng-stack>.ng-module:only-child{clip-path:polygon(9px 0,calc(100% - 9px) 0,100% 9px,100% calc(100% - 9px),calc(100% - 9px) 100%,9px 100%,0 calc(100% - 9px),0 9px)!important}
 /* Standalone controls: upper-left and lower-right diagonals only. */
 body button,body select,body input:not([type=checkbox]):not([type=radio]):not([type=range]),body textarea{
-  --ng-control-cut:7px;border-radius:0!important;
-  clip-path:polygon(var(--ng-control-cut) 0,100% 0,100% calc(100% - var(--ng-control-cut)),calc(100% - var(--ng-control-cut)) 100%,0 100%,0 var(--ng-control-cut))!important;
-  background:#102631!important;border:1px solid #397e90!important;
 }
 body button:focus-visible,body select:focus-visible{outline:2px solid #70e6f3;outline-offset:2px}
 /* Dense controls must not stack into enormous vertical towers. */
@@ -713,27 +697,13 @@ body .remote-workspace[data-ai-signature="rogue"] .remote-card::before{filter:dr
 /* v0.92.1: seamless module boundaries and CLOSED chamfer outlines */
 /* A clipped CSS border loses the diagonal segment. Draw each segment instead. */
 body button,body select,body input:not([type=checkbox]):not([type=radio]):not([type=range]),body textarea{
-  --ng-cut:8px;--ng-line:#397e90;
-  border:0!important;border-radius:0!important;clip-path:none!important;
-  background-color:#102631!important;
-  background-image:
-    linear-gradient(135deg,transparent calc(50% - .9px),var(--ng-line) calc(50% - .7px),var(--ng-line) calc(50% + .7px),transparent calc(50% + .9px)),
-    linear-gradient(135deg,transparent calc(50% - .9px),var(--ng-line) calc(50% - .7px),var(--ng-line) calc(50% + .7px),transparent calc(50% + .9px)),
-    linear-gradient(var(--ng-line),var(--ng-line)),linear-gradient(var(--ng-line),var(--ng-line)),
-    linear-gradient(var(--ng-line),var(--ng-line)),linear-gradient(var(--ng-line),var(--ng-line))!important;
-  background-size:var(--ng-cut) var(--ng-cut),var(--ng-cut) var(--ng-cut),calc(100% - var(--ng-cut)) 1px,calc(100% - var(--ng-cut)) 1px,1px calc(100% - var(--ng-cut)),1px calc(100% - var(--ng-cut))!important;
-  background-position:top left,bottom right,top right,bottom left,top right,bottom left!important;
-  background-repeat:no-repeat!important;
+  --ng-cut:8px;
   padding:9px 13px!important;
 }
 /* Diagonal top-left and bottom-right corner lines use the opposite slope. */
-body button,body select{background-image:
-    linear-gradient(135deg,transparent calc(50% - .9px),var(--ng-line) calc(50% - .7px),var(--ng-line) calc(50% + .7px),transparent calc(50% + .9px)),
-    linear-gradient(135deg,transparent calc(50% - .9px),var(--ng-line) calc(50% - .7px),var(--ng-line) calc(50% + .7px),transparent calc(50% + .9px)),
-    linear-gradient(var(--ng-line),var(--ng-line)),linear-gradient(var(--ng-line),var(--ng-line)),
-    linear-gradient(var(--ng-line),var(--ng-line)),linear-gradient(var(--ng-line),var(--ng-line))!important;
+body button,body select{
 }
-body button.active,body button[aria-pressed=true],body button[aria-selected=true],body button:focus-visible{--ng-line:#65e7f4}
+body button.active,body button[aria-pressed=true],body button[aria-selected=true],body button:focus-visible{}
 /* No extra parenthesis brackets inside the outer LAZARUS structure. */
 body .home-widget .panel::before,body .panel .panel::before,body .panel details::before{display:none!important}
 body .home-widget .panel,body .panel .panel{border:1px solid #245061!important;margin-block:8px!important}
@@ -749,16 +719,8 @@ body .footer{border-top:1px solid #214f60!important;box-shadow:none!important;pa
 /* v0.92.2 / consistency audit: unified closed borders and positional crew geometry */
 /* Shared control outline: exact SVG strokes instead of clipped CSS borders. */
 body button:not(.person),body select,body input:not([type=checkbox]):not([type=radio]):not([type=range]),body textarea{
- --ng-line:#39899b;
- border:8px solid transparent!important;
- border-image-source:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cpath d='M9 1H47V39L39 47H1V9Z' fill='none' stroke='%2352a4b8' stroke-width='2'/%3E%3C/svg%3E")!important;
- border-image-slice:10!important;border-image-width:8px!important;border-image-repeat:stretch!important;
- border-radius:0!important;clip-path:none!important;
- background:#102631!important;background-image:none!important;
- box-shadow:none!important;
 }
 body button:not(.person):hover,body button:not(.person).active,body button:not(.person)[aria-pressed=true],body button:not(.person):focus-visible{
- border-image-source:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cpath d='M9 1H47V39L39 47H1V9Z' fill='none' stroke='%2371eafa' stroke-width='2'/%3E%3C/svg%3E")!important;
 }
 /* Crew rows are a contiguous structural stack. Interior rows have four 90-degree corners. */
 body .roster{display:flex!important;flex-direction:column!important;gap:0!important;min-width:0;padding:1px 0!important}
@@ -837,16 +799,9 @@ body #roomdetail>.tag:first-of-type{margin-top:12px!important}
 /* Closed two-chamfer controls: 9-slice border keeps diagonal strokes intact
    at every responsive width. This includes controls inside details and widgets. */
 body button:not(.person),body select,body input:not([type=checkbox]):not([type=radio]):not([type=range]),body textarea{
- box-sizing:border-box!important;border:9px solid transparent!important;
- border-image-source:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cpath d='M9 1H47V39L39 47H1V9Z' fill='none' stroke='%2352a4b8' stroke-width='2'/%3E%3C/svg%3E")!important;
- border-image-slice:10!important;border-image-width:9px!important;
- border-image-repeat:stretch!important;
- clip-path:none!important;outline-offset:1px!important;
- background-image:none!important;box-shadow:none!important;
+ box-sizing:border-box!important;outline-offset:1px!important;
 }
-body button:not(.person)::after{pointer-events:none}
 body button:not(.person):is(:hover,:focus-visible,.active,[aria-pressed='true'],[aria-selected='true']){
- border-image-source:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cpath d='M9 1H47V39L39 47H1V9Z' fill='none' stroke='%2371eafa' stroke-width='2'/%3E%3C/svg%3E")!important;
 }
 /* WY retains its separate amber strokes and signature glow. */
 body .remote-derelict button:not(.person),body .remote-derelict select{
@@ -910,11 +865,6 @@ body #roomdetail>.tag{clip-path:none!important;border:1px solid #438fa1!importan
 /* v0.92.5: high-visibility selected ENHANCED lighting control.
    Keep the established closed chamfer geometry intact. */
 body .neon-mode-picker button[data-neon-choice="enhanced"][aria-pressed="true"]{
-  color:#ffe6ac!important;
-  background:linear-gradient(135deg,rgba(167,104,27,.48),rgba(67,48,23,.90))!important;
-  border-color:#ffca70!important;
-  text-shadow:0 0 5px rgba(255,194,95,.8),0 0 12px rgba(74,225,246,.55)!important;
-  box-shadow:0 0 0 1px rgba(255,191,87,.72),0 0 8px rgba(255,180,67,.65),0 0 16px rgba(49,220,248,.68),0 0 27px rgba(49,220,248,.34),inset 0 0 12px rgba(255,183,69,.23)!important;
 }
 
 /* v0.92.6: universal selection visibility, independent of compact density.
@@ -924,12 +874,6 @@ body button[aria-pressed="true"], body button[aria-selected="true"],
 body button[data-active="true"],
 body .segmented-control button.active,
 body .wy-camera-grid button.selected {
-  color:#ffe4aa!important;
-  background-color:#51381b!important;
-  background-image:linear-gradient(135deg,rgba(179,112,30,.44),rgba(67,44,21,.82))!important;
-  border-color:#ffca70!important;
-  text-shadow:0 0 5px rgba(255,194,95,.65),0 0 8px rgba(75,222,246,.3)!important;
-  box-shadow:0 0 0 1px rgba(255,191,87,.58),0 0 7px rgba(255,180,67,.55),0 0 15px rgba(49,220,248,.58),0 0 23px rgba(49,220,248,.27),inset 0 0 9px rgba(255,183,69,.18)!important;
 }
 /* Preserve the extra emphasis of the selected ENHANCED option. */
 
@@ -940,38 +884,9 @@ body .wy-camera-grid button.selected {
 body button:is(.active,.selected,[aria-pressed="true"],[aria-selected="true"],[data-active="true"]),
 body .segmented-control button.active,
 body .wy-camera-grid button.selected{
-  position:relative!important;
-  isolation:isolate!important;
-  background:transparent!important;
-  background-image:none!important;
-  box-shadow:none!important;
-  border-image-source:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cpath d='M9 1H47V39L39 47H1V9Z' fill='none' stroke='%23ffcf85' stroke-width='2.4'/%3E%3C/svg%3E")!important;
-  filter:drop-shadow(0 0 3px rgba(74,233,255,.95)) drop-shadow(0 0 8px rgba(42,212,248,.64))!important;
-}
-body button:is(.active,.selected,[aria-pressed="true"],[aria-selected="true"],[data-active="true"])::before,
-body .segmented-control button.active::before,
-body .wy-camera-grid button.selected::before{
-  content:""!important;
-  display:block!important;
-  position:absolute!important;
-  inset:0!important;
-  z-index:-1!important;
-  pointer-events:none!important;
-  background:linear-gradient(135deg,#b86b2a 0%,#ad6028 50%,#7b411e 100%)!important;
-  clip-path:polygon(0 7px,calc(100% - 7px) 7px,calc(100% - 7px) calc(100% - 7px),calc(100% - 7px) 100%,7px 100%,7px 7px)!important;
-}
-/* Use the same two diagonals as the original button's SVG border:
-   top-left and bottom-right. The amber plate sits just inside the stroke. */
-body button:is(.active,.selected,[aria-pressed="true"],[aria-selected="true"],[data-active="true"])::before,
-body .segmented-control button.active::before,
-body .wy-camera-grid button.selected::before{
-  clip-path:polygon(9px 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,0 100%,0 9px)!important;
 }
 /* Enhanced lighting mode is still stronger, but its amber fill uses this shape. */
 body .neon-mode-picker button[data-neon-choice="enhanced"][aria-pressed="true"]{
-  background:transparent!important;background-image:none!important;
-  box-shadow:none!important;
-  filter:drop-shadow(0 0 4px rgba(74,233,255,1)) drop-shadow(0 0 11px rgba(42,212,248,.85))!important;
 }
 
 /* v0.92.8: full-bleed amber inside the closed chamfered border.
@@ -980,33 +895,8 @@ body .neon-mode-picker button[data-neon-choice="enhanced"][aria-pressed="true"]{
 body button:is(.active,.selected,[aria-pressed="true"],[aria-selected="true"],[data-active="true"]),
 body .segmented-control button.active,
 body .wy-camera-grid button.selected{
-  filter:drop-shadow(0 0 3px rgba(74,233,255,.98))
-         drop-shadow(0 0 7px rgba(42,212,248,.78))
-         drop-shadow(0 0 12px rgba(42,212,248,.40))!important;
-}
-body button:is(.active,.selected,[aria-pressed="true"],[aria-selected="true"],[data-active="true"])::before,
-body .segmented-control button.active::before,
-body .wy-camera-grid button.selected::before{
-  /* 2px is the border's inset: fill the entire interior, including chamfers. */
-  inset:2px!important;
-  background:linear-gradient(135deg,#c97930 0%,#b76a2d 48%,#8d4b22 100%)!important;
-  clip-path:polygon(7px 0,100% 0,100% calc(100% - 7px),calc(100% - 7px) 100%,0 100%,0 7px)!important;
 }
 body .neon-mode-picker button[data-neon-choice="enhanced"][aria-pressed="true"]{
-  filter:drop-shadow(0 0 4px rgba(74,233,255,1))
-         drop-shadow(0 0 9px rgba(42,212,248,.85))
-         drop-shadow(0 0 14px rgba(42,212,248,.48))!important;
-}
-
-/* v0.92.9: no dark gutter between amber plate and cyan chamfer outline.
-   The selected button's border-image occupies a 9px border band; the
-   absolutely positioned plate is positioned relative to the padding box.
-   Extend the plate through that band and clip it to the same outer polygon. */
-body button:is(.active,.selected,[aria-pressed="true"],[aria-selected="true"],[data-active="true"])::before,
-body .segmented-control button.active::before,
-body .wy-camera-grid button.selected::before{
-  inset:-9px!important;
-  clip-path:polygon(9px 0,100% 0,100% calc(100% - 9px),calc(100% - 9px) 100%,0 100%,0 9px)!important;
 }
 
 /* v0.93.0: layer order: amber plate BEHIND, cyan neon outline IN FRONT.
@@ -1016,24 +906,6 @@ body .wy-camera-grid button.selected::before{
 body button:is(.active,.selected,[aria-pressed="true"],[aria-selected="true"],[data-active="true"]),
 body .segmented-control button.active,
 body .wy-camera-grid button.selected{
-  border-image-source:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cpath d='M9 1H47V39L39 47H1V9Z' fill='none' stroke='%2355e9ff' stroke-width='2.4'/%3E%3C/svg%3E")!important;
-}
-body button:is(.active,.selected,[aria-pressed="true"],[aria-selected="true"],[data-active="true"])::after,
-body .segmented-control button.active::after,
-body .wy-camera-grid button.selected::after{
-  content:""!important;
-  display:block!important;
-  position:absolute!important;
-  inset:-9px!important;
-  box-sizing:border-box!important;
-  border:9px solid transparent!important;
-  border-image-source:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cpath d='M9 1H47V39L39 47H1V9Z' fill='none' stroke='%2361eaff' stroke-width='2.4'/%3E%3C/svg%3E")!important;
-  border-image-slice:10!important;
-  border-image-width:9px!important;
-  border-image-repeat:stretch!important;
-  background:none!important;
-  z-index:2!important;
-  pointer-events:none!important;
 }
 .transit-view .cam-console{visibility:hidden}.cam-person[data-locomotion="wheelchair"]:after{content:'♿';color:#8ac7cc;font-size:28px;position:absolute;bottom:14px;left:4px}.cam-person[data-locomotion="damaged-android"]{filter:saturate(.4)}.cam-person[data-locomotion="prosthetic"] .rig-leg-right{filter:grayscale(1)}.home-widget{resize:vertical;overflow:auto;min-height:160px;max-width:100%}body[data-season="october"] #calendar-status{color:#d9ad72}
 .cam-person[data-build="small"] .crew-art{scale:.9}.cam-person[data-build="large"] .crew-art{scale:1.1}
@@ -1042,11 +914,11 @@ body .wy-camera-grid button.selected::after{
 .reduce-motion *, .reduce-motion *::before, .reduce-motion *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 .cam-person[data-pose="rest"] .rig-arm{rotate:12deg}.cam-person[data-pose="talk"] .rig-arm-right{rotate:-24deg}.cam-person[data-pose="console"] .rig-arm-right{rotate:-40deg}.cam-person[data-pose="research"] .rig-arm-right{rotate:-30deg}.cam-person[data-locomotion="damaged-android"] .rig-art{filter:saturate(.3)}.cam-person[data-pose="treatment"] .rig-arm-left{rotate:30deg}.spectator-controls{flex-wrap:wrap;gap:8px}.spectator-controls span{font-size:11px;max-width:100%;overflow-wrap:anywhere}
-</style><link rel="stylesheet" href="cinematic.css">
+</style><link rel="stylesheet" href="cinematic.css"><link rel="stylesheet" href="command-ui.css">
 </head><body><header><div><small>WEYLAND-YUTANI // AUTONOMOUS BRIDGE</small><h1>ICARUS</h1><small id="status">LIVING SHIP · INITIALIZING</small></div><div class="controls"><button id="pause">⏸ Pause</button><button id="speed">Speed 1×</button><button id="save">Save</button><button id="followoff">Clear Follow</button><button id="settingsopen" aria-haspopup="dialog">⚙ Settings</button><button id="credits">Sunday Credits</button><button id="reset">New Voyage</button></div></header><nav class="location-nav" aria-label="Location selector"><button data-location="icarus" class="active">◈ ICARUS</button><button data-location="derelict">▤ WY DERELICT</button><button data-location="asteroid">◉ ASTEROID</button><span class="remote-muted" style="align-self:center">SOL / REMOTE OPERATIONS · SHARED SHIP CLOCK</span></nav><div id="remote-workspace" class="remote-workspace" aria-live="polite"></div><main class="layout" id="icarus-main"><div class="left"><section class="panel"><h2>LIVE VESSEL CUTAWAY / THREE DECKS</h2><div class="cutaway-toolbar"><label for="cutawaymode">CUTAWAY LAYOUT</label><select id="cutawaymode" aria-label="Cutaway layout"><option value="classic">Classic grid</option><option value="proportional">Proportional rooms</option><option value="hull">Proportional in ship hull</option><option value="deckplan">Two-sided proportional deck plan</option></select><span id="cutawayinfo" class="muted"></span></div><div class="stats"><div class="stat"><b id="clock">08:00</b><span>SHIP TIME</span></div><div class="stat"><b id="population">20</b><span>CREW</span></div><div class="stat"><b id="power">100%</b><span>POWER</span></div><div class="stat"><b id="coffee">BROKEN</b><span>COFFEE DISPENSER</span></div><div class="stat"><b id="air">100%</b><span>AIR QUALITY</span></div><div class="stat"><b id="alert">NORMAL</b><span>SHIP ALERT</span></div></div><p class="muted">Tap a character to follow their routine. Tap a room to inspect it. Crew now traverse each route segment in phases. At high simulation speed, follow the recorded route to inspect the journey.</p><div id="focusbar" aria-live="polite"></div><div id="liveincident" class="liveincident"></div><details class="panel" id="holo-panel" open><summary>◇ HOLOGRAPHIC SHIP MAP · 3D TACTICAL VIEW</summary><p class="muted">Offline interactive projection · drag to orbit · pinch to zoom · select rooms or crew</p><canvas id="holo-canvas" aria-label="Interactive three dimensional holographic ship map"></canvas><div class="controls holo-controls"><label>Deck separation <output id="holo-separation-value">130%</output> <input id="holo-explode" type="range" min="0" max="250" value="130"></label><label>Visible decks <select id="holo-deck"><option value="all">All decks</option><option value="A">Deck A</option><option value="B">Deck B</option><option value="C">Deck C</option></select></label><label><input type="checkbox" id="holo-detail" checked> Architectural detail</label><label><input type="checkbox" id="holo-crew" checked> Crew lights</label><label><input type="checkbox" id="holo-damage" checked> Damage lights</label><label><input type="checkbox" id="holo-atmosphere" checked> Atmosphere overlay</label><label><input type="checkbox" id="holo-routes" checked> Selected crew route</label><label><input type="checkbox" id="holo-access" checked> Access points</label><button id="holo-reset">Reset view</button></div><div id="holo-selection" class="muted" aria-live="polite">Drag to rotate · pinch to zoom · tap a marker to inspect</div><p class="muted">Cyan: crew · amber: maintenance · red: emergency or critical damage · dashed gold: selected crew route · red X: jammed hatch. When docked, the WY Derelict appears in amber with limited sensor coverage.</p></details><details class="panel compact-panel" id="bulkhead-panel"><summary>▣ BULKHEAD & HATCH CONTROL · SOL ACCESS NETWORK</summary><div id="bulkhead-controls" data-deck="A"></div></details><details class="panel compact-panel" id="atmosphere-panel"><summary>◉ ATMOSPHERIC CONTROL · PRESSURE / OXYGEN / HEAT</summary><div id="atmosphere-controls"></div></details><div class="viewport" id="viewport"></div><div class="legend"><span>■ Engineering</span><span>■ Security</span><span>■ Science</span><span>■ Medical</span><span>■ Other</span><span>◌ Traveling</span></div></section><section class="panel"><h2>BRIDGE / FORWARD VIEWPORT & DOCKING</h2><div id="bridge-docking"></div></section><section class="panel"><h2>SOL / SHIP OPERATIONS</h2><div id="soldirectives" class="detail"></div></section><details class="panel compact-panel system-dependencies"><summary>SYSTEM DEPENDENCIES</summary><div id="cascades" class="detail"></div></details><details class="panel compact-panel crew-impact"><summary>CREW IMPACT</summary><div id="crewimpact" class="detail"></div></details><section class="panel"><h2>BEHAVIORAL INDEPENDENCE / CREW PSYCHOLOGICAL CLIMATE</h2><div id="horrormonitor" class="detail"></div></section><details class="panel compact-panel supplies"><summary>SUPPLIES & WORKSTATIONS</summary><div id="interactions" class="detail"></div></details><details class="panel compact-panel disputes"><summary>INTERPERSONAL DYNAMICS</summary><div id="conflicts" class="detail"></div></details><details class="panel compact-panel audit" hidden><summary>INTERNAL SOL AUDIT</summary><div id="decisions" class="detail"></div></details><section class="panel"><h2>ROOM INSPECTOR</h2><div id="roomdetail" class="detail"></div></section><section class="panel"><h2>ACTIVE INCIDENT MONITOR · 7 FAULT TYPES</h2><div id="emergencies" class="detail"></div></section><details class="panel compact-panel replays"><summary>INCIDENT RECORDINGS</summary><div id="replays" class="detail"></div></details><details class="panel compact-panel world"><summary>OPERATIONAL ENVIRONMENT</summary><div id="world" class="detail"></div></details></div><div class="right"><section class="panel"><h2>PERSONNEL / OBSERVATION</h2><div id="detail" class="detail"></div></section><section class="panel"><h2>SECURITY CAMERA / LIVING ROOM VIEW</h2><div class="cam-toolbar"><button id="camfollow">Follow crew</button><button id="camroom">Lock room</button><button id="camreview">Review recorded</button><button id="camcycle" title="Switch cameras within this compartment">CAM A</button><button id="camscan" title="Pan across large rooms">SCAN ON</button><button id="camzoom" title="Magnify the room camera">🔎 Zoom: 1×</button></div><div id="camstatus" class="muted"></div><div id="camcoverage" class="muted" style="margin:5px 0;color:#e5ca8e"></div><div class="camera-scene" id="camera-scene"><div class="cam-world" id="cam-world"><div class="cam-back"><div class="cam-door left-door">◀ CORRIDOR</div><div class="cam-console">▥</div><div class="cam-door right-door">CORRIDOR ▶</div><div class="cam-floor"></div><div id="campeople"></div><div class="cam-scan"></div></div></div><p class="muted" style="font-size:11px">Large rooms use multiple viewpoints. Follow mode shows corridor and ladder transitions for traveling crew. Movement uses per-crew route progress and doorway crossing. Corridors remain schematic rather than full ship coordinates. Camera coverage is not yet occlusion-aware. Procedural room scenery responds to simulated equipment condition and alerts. Crew work poses and handheld props reflect current tasks. Repair stages now follow actual incident progress; tool placement and exact footsteps remain illustrative.</p></section><details class="panel compact-panel movement"><summary>MOVEMENT RECORDINGS</summary><div id="observer" class="observer"></div></details><section class="panel"><h2>PERSONNEL / TAP TO FOLLOW</h2><div class="roster" id="crew"></div></section><section class="panel"><h2>AUTHENTIC EVENT JOURNAL</h2><div class="controls" style="margin-bottom:8px"><button id="filterall" class="active">All</button><button id="filterlittle">Little moments</button><button id="filtersocial">Social</button><button id="filtersystem">Systems</button><button id="filteremergency">Emergencies</button></div><div class="eventlog" id="log"></div></section></div></main><div class="footer">ICARUS Phase 2 Living World · NIGHTGRID / CLOSED OUTLINES · OFFLINE SIMULATION · LOCAL SAVES</div><div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Sunday recap"><div><button id="close" style="float:right">Close ✕</button><small>WEYLAND-YUTANI CORPORATION PRESENTS</small><h3>ICARUS · WEEKLY REVIEW</h3><div id="recap"></div></div></div><div class="modal" id="settingsmodal" role="dialog" aria-modal="true" aria-label="ICARUS settings"><div><button id="settingsclose" style="float:right">Close ✕</button><small>ICARUS / CONFIGURATION</small><h3>Settings · v0.87</h3><p class="muted">Settings, save management, and development notes. Your simulation state is preserved.</p><div class="settings-line"><label for="visualmode">51st State Mode</label><button id="visualmode" aria-pressed="false">🇨🇦 51st State: OFF</button></div><p class="muted">A hidden visual easter egg, available only from Settings. Applies to live cameras and incident replays.</p><details class="save-manager" id="savemanager"><summary>▣ SAVE MANAGEMENT / BACKUP & RESTORE</summary><p class="muted">Export a portable backup of your current episode, crew, history and expedition data. The file is saved to your device. Import replaces the current simulation only after confirmation.</p><div class="save-meta" id="savestatus">Checking save...</div><div class="controls" style="margin:12px 0;flex-wrap:wrap"><button id="exportbackup">⬇ Export JSON backup</button><button id="importbackup">⬆ Import backup (.json / .ndjson)</button><input id="backupfile" type="file" accept=".json,application/json" style="display:none" aria-label="Choose ICARUS save backup"></div><div id="backupmessage" role="status" aria-live="polite" class="muted"></div><details><summary>Local recovery checkpoints</summary><p class="muted">Up to three local checkpoints are retained where browser storage permits. Download an exported JSON file for a safer backup.</p><div id="checkpointlist"></div><div class="controls"><button id="checkpointnow">Create checkpoint</button></div></details></details><details class="save-manager" id="episodearchives"><summary>▤ MISSION ARCHIVES / WEEKLY STORIES</summary><p class="muted">The voyage persists across weeks. Sunday archives preserve recorded highlights; only an explicitly confirmed New Voyage resets the world. Archives are included in full JSON backups.</p><div id="archivecount" class="save-meta"></div><div class="controls" style="margin:10px 0"><button id="exportarchives">⬇ Export Archives JSON</button></div><div id="archivelist"></div></details><details class="idea-vault" id="ideavault"><summary>✎ IDEA VAULT / NOTES & SUNDAY CLIPS</summary><p class="muted">Private development notes and custom Sunday clip concepts. Notes stay separate from episode resets and are included in JSON backups. Clips are ideas only; this version does not automatically play them.</p><div class="idea-grid"><label>Title<input id="ideatitle" maxlength="120" placeholder="A new idea..." /></label><label>Category<select id="ideacategory"><option>Sunday clip</option><option>Worldbuilding</option><option>Mechanic</option><option>Character</option><option>Other</option></select></label></div><label>Note<textarea id="ideabody" maxlength="12000" placeholder="Write it down before it disappears..."></textarea></label><div class="idea-actions"><button id="ideasave">＋ Save idea</button><button id="ideacancel" style="display:none">Cancel edit</button><button id="exportideas">⬇ Export Notes</button><button id="importideas">⬆ Import Notes</button><input id="ideasfile" type="file" accept=".json,application/json" style="display:none"></div><div id="ideamessage" role="status" aria-live="polite" class="muted"></div><div id="idealist"></div></details></div></div><div class="modal" id="replaymodal" role="dialog" aria-modal="true" aria-label="Incident replay"><div><button id="replayclose" style="float:right">Close ✕</button><small>WY-NET / INCIDENT RECONSTRUCTION</small><h3 id="replaytitle">INCIDENT</h3><div id="replaystage" class="replay-stage"></div><p id="replaycaption" class="muted"></p><input type="range" id="replayseek" min="0" max="0" value="0" aria-label="Replay position"><div class="replay-actions"><button id="replayplay">▶ Play</button><button id="replayback">◀ Frame</button><button id="replayforward">Frame ▶</button><button id="replayspeed">Speed 1×</button></div><p class="muted">RECONSTRUCTION from recorded simulation states, not authentic camera footage. Live simulation continues independently.</p></div></div>
 
 <div id="rd-host"><b>◈ REMOTE DECK BRIDGE</b> <span id="rd-bridge-status">Offline</span><div id="rd-host-pair"><input id="rd-host-key" type="password" placeholder="PC host key"><button id="rd-connect">Connect</button></div><small>Open through PC host :8765. Key appears in PC server console.</small></div>
-<script src="edition.js"></script><script src="vendor/lz-string.min.js"></script><script src="world-schema.js"></script><script src="save-store.js"></script><script src="durable-store.js"></script><script src="backup-codec.js"></script><script src="backup-transfer.js"></script><script src="backup-ui.js"></script><script src="writer-ui.js"></script><script src="universe.js"></script><script src="navigation.js"></script><script src="core-context.js"></script><script src="anthology.js"></script><script src="anthology-ui.js"></script><script src="logistics.js"></script><script src="entities.js"></script><script src="experiences.js"></script><script src="expeditions.js"></script><script src="emergency-ops.js"></script><script src="chronicles.js"></script><script src="living-frontier-ui.js"></script><script src="frontier.js"></script><script src="frontier-ui.js"></script><script src="stability-diagnostics.js"></script><script src="diagnostics.js"></script><script src="knowledge.js"></script><script src="knowledge-runtime.js"></script><script src="unified-ui.js"></script><script src="creatures.js"></script><script src="unified-world.js"></script><script src="spatial.js"></script><script src="embodiment.js"></script><script src="animation.js"></script><script src="crew-editorial.js"></script><script src="crew-life.js"></script><script src="cinema.js"></script><script src="cinema-ui.js"></script><script src="sol-voice.js"></script><script src="chronicle-evidence.js"></script><script src="chronicle-film.js"></script><script src="film-ui.js"></script><script src="vendor/astronomy.js"></script><script src="lunar.js"></script><script src="calendar.js"></script><script src="voyage.js"></script><script src="story.js"></script><script src="living.js"></script><script src="economy.js"></script><script src="teams.js"></script><script src="operations.js"></script><script src="repair-policy.js"></script><script src="discovery.js"></script><script src="research.js"></script><script>
+<script src="edition.js"></script><script src="vendor/lz-string.min.js"></script><script src="world-schema.js"></script><script src="save-store.js"></script><script src="durable-store.js"></script><script src="backup-codec.js"></script><script src="backup-transfer.js"></script><script src="backup-ui.js"></script><script src="writer-ui.js"></script><script src="universe.js"></script><script src="navigation.js"></script><script src="core-context.js"></script><script src="anthology.js"></script><script src="anthology-ui.js"></script><script src="logistics.js"></script><script src="entities.js"></script><script src="experiences.js"></script><script src="expeditions.js"></script><script src="emergency-ops.js"></script><script src="chronicles.js"></script><script src="living-frontier-ui.js"></script><script src="frontier.js"></script><script src="frontier-ui.js"></script><script src="stability-diagnostics.js"></script><script src="diagnostics.js"></script><script src="knowledge.js"></script><script src="knowledge-runtime.js"></script><script src="unified-ui.js"></script><script src="creatures.js"></script><script src="unified-world.js"></script><script src="spatial.js"></script><script src="embodiment.js"></script><script src="animation.js"></script><script src="crew-editorial.js"></script><script src="crew-life.js"></script><script src="cinema.js"></script><script src="cinema-ui.js"></script><script src="sol-voice.js"></script><script src="chronicle-evidence.js"></script><script src="chronicle-film.js"></script><script src="film-ui.js"></script><script src="vendor/astronomy.js"></script><script src="lunar.js"></script><script src="calendar.js"></script><script src="command-ui.js"></script><script src="voyage.js"></script><script src="story.js"></script><script src="living.js"></script><script src="economy.js"></script><script src="teams.js"></script><script src="operations.js"></script><script src="repair-policy.js"></script><script src="discovery.js"></script><script src="research.js"></script><script>
 window.ICARUSDurable.ready.then(()=>{
 (()=>{'use strict';
 let entropy={seed:(Date.now()>>>0)};
@@ -3305,7 +3177,7 @@ const occupants=state.crew.filter(p=>p.room===selectedRoom);
 const keepLazarus=selectedRoom==='B05'&&lastInspectorRoom==='B05'&&!lazarusNeedsRefresh&&!!$('lazarus-protocol');
 if(!keepLazarus){
 $('roomdetail').innerHTML='<b>'+esc(selectedRoom)+' · '+esc(roomName(selectedRoom))+'</b><p class="muted">'+occupants.length+' crew currently present</p>'+(occupants.map(p=>'<div style="padding:4px 0">'+spriteFor(p.job,p.name)+' <b>'+esc(p.name)+'</b> <span class="muted">· '+esc(p.task)+'</span></div>').join('')||'<p class="muted">Room currently unoccupied.</p>')+(equipmentFor(selectedRoom)?'<p class="tag">'+esc(equipmentFor(selectedRoom).name)+' · Condition '+Math.round(equipmentFor(selectedRoom).condition)+'%</p>':'')+(selectedRoom==='C05'?'<p class="tag">Coffee dispenser: '+(state.coffee.working?'FUNCTIONAL':'Repair '+state.coffee.progress+'%')+'</p>':'')+(selectedRoom==='A08'?'<div class="panel" style="margin-top:10px;padding:10px"><b>◈ REGENERATIVE TISSUE REPAIR / MEDICAL BAY</b><p class="muted">Autonomous supervised treatment · power ≥35% · medical attendant required</p><p>Unit condition: '+Math.round(tissueSystem().condition)+'% · Sterile cartridges: '+tissueSystem().cartridges+' · Completed cycles: '+tissueSystem().cycles+'</p><p class="tag">'+(tissueSystem().activePatient?'TREATING '+esc(tissueSystem().activePatient):'STANDBY / AWAITING PATIENT')+'</p><button id="tissue-service">Service unit / restock</button><p class="muted">Restocking is a manual logistics action; machine treatment occurs automatically when a medic and eligible patient are present.</p></div>':'');
- if(selectedRoom==='B05' && !(typeof currentPage!=='undefined' && currentPage==='home' && homeLayout.includes('lazarus'))){$('roomdetail').innerHTML+=lazarusPanel();bindLazarusPanel();lazarusNeedsRefresh=false;}
+ if(selectedRoom==='B05' && !ICARUSCommandUI.active && !(typeof currentPage!=='undefined' && currentPage==='home' && homeLayout.includes('lazarus'))){$('roomdetail').innerHTML+=lazarusPanel();bindLazarusPanel();lazarusNeedsRefresh=false;}
 lastInspectorRoom=selectedRoom;
 }
 if(selectedRoom==='B05' || (typeof currentPage!=='undefined' && currentPage==='home' && homeLayout.includes('lazarus')))updateLazarusLive();
@@ -3365,7 +3237,7 @@ $('replayforward').onclick=()=>{replayPlaying=false;replayIndex=Math.min((curren
 $('replayspeed').onclick=()=>{replaySpeed=replaySpeed===.5?1:replaySpeed===1?2:.5;showReplay()};
 setInterval(()=>{if(!replayPlaying)return;const r=currentReplay();if(!r){closeReplay();return}replayClock+=replaySpeed;if(replayClock>=1){replayIndex+=Math.floor(replayClock);replayClock%=1;if(replayIndex>=r.frames.length-1){replayIndex=r.frames.length-1;replayPlaying=false}showReplay()}},450);
 for(const kind of ['all','little','social','system','emergency'])$('filter'+kind).onclick=()=>{eventFilter=kind;for(const k of ['all','little','social','system','emergency'])$('filter'+k).classList.toggle('active',k===kind);render()};
-$('pause').onclick=()=>{paused=!paused;$('pause').textContent=paused?'▶ Resume':'⏸ Pause';render()};$('speed').onclick=()=>{if(!__icarusSoakMode){renderUnifiedClock();return;}speed=speed===1?5:speed===5?20:1;$('speed').textContent='Speed '+speed+'×'};$('save').onclick=async()=>{try{if(save()&&await ICARUSDurable.flush())log('Verified durable save committed.','system');else log('WARNING: Durable save not committed. Export a JSON backup.','system');}catch(e){log('WARNING: Durable save failed; previous committed snapshot retained. Export a JSON backup.','system');}render()};$('followoff').onclick=()=>{trackedEmergency=null;follow=0;selectedRoom='C05';render()};$('reset').onclick=()=>{if(!confirm('Start a new voyage? This explicitly resets the world. Automatic weekly archives never reset it.'))return;let next=state.episode+1;state.archived=state.archived||[];state.archived.push(makeEpisodeArchive(state,'Manual episode transition'));state.archived=state.archived.slice(-100);let archives=state.archived;trackedEmergency=null;observation={frames:[],index:0,playing:false,rate:1,view:false,clock:0};state=init();state.remoteCore=remote;Object.assign(remote,normalizeRemoteCore(null));state.episode=next;state.archived=archives;state.cascade={backup:100,ventilation:100,security:100,lab:100,oxygen:100,locks:'normal',medResponse:0,securityResponse:0,notices:{},lastStage:{}};state.equipment=Object.fromEntries(Object.entries(machineDefs).map(([id,d])=>[id,{...d,progress:0}]));state.faultCooldowns={};state.localSystems={fabrication:100,research:100,galley:100,surveillance:100,cooling:100};resetBehavior();state.conflict=initConflict();state.decisions=initDecisions();state.interactions=initInteractions();state.sol=newSolState();state.crewPsych={tension:0,lastBand:'calm',history:[]};ICARUSLife.init(state);ICARUSVoyage.migrate(state);ICARUSEconomy.init(state);ICARUSTeams.migrate(state);state.entropy=entropy;ICARUSFrontier.init(state,frontierEnvironment());log('New voyage initialized. Crew has reported for duty.','system');if(save())location.reload();else log('New voyage could not be saved. Export a backup.','system')};$('credits').onclick=()=>{renderLivingRecap();$('modal').classList.add('open')};$('close').onclick=()=>$('modal').classList.remove('open');$('modal').onclick=e=>{if(e.target===$('modal'))$('modal').classList.remove('open')};
+$('pause').onclick=()=>{if(state.calendar&&!__icarusSoakMode)pumpRealTime(Date.now());paused=!paused;$('pause').textContent=paused?'▶ Resume':'⏸ Pause';render()};$('speed').onclick=()=>{if(!__icarusSoakMode){renderUnifiedClock();return;}speed=speed===1?5:speed===5?20:1;$('speed').textContent='Speed '+speed+'×'};$('save').onclick=async()=>{try{if(save()&&await ICARUSDurable.flush())log('Verified durable save committed.','system');else log('WARNING: Durable save not committed. Export a JSON backup.','system');}catch(e){log('WARNING: Durable save failed; previous committed snapshot retained. Export a JSON backup.','system');}render()};$('followoff').onclick=()=>{trackedEmergency=null;follow=0;selectedRoom='C05';render()};$('reset').onclick=()=>{if(!confirm('Start a new voyage? This explicitly resets the world. Automatic weekly archives never reset it.'))return;let next=state.episode+1;state.archived=state.archived||[];state.archived.push(makeEpisodeArchive(state,'Manual episode transition'));state.archived=state.archived.slice(-100);let archives=state.archived;trackedEmergency=null;observation={frames:[],index:0,playing:false,rate:1,view:false,clock:0};state=init();state.remoteCore=remote;Object.assign(remote,normalizeRemoteCore(null));state.episode=next;state.archived=archives;state.cascade={backup:100,ventilation:100,security:100,lab:100,oxygen:100,locks:'normal',medResponse:0,securityResponse:0,notices:{},lastStage:{}};state.equipment=Object.fromEntries(Object.entries(machineDefs).map(([id,d])=>[id,{...d,progress:0}]));state.faultCooldowns={};state.localSystems={fabrication:100,research:100,galley:100,surveillance:100,cooling:100};resetBehavior();state.conflict=initConflict();state.decisions=initDecisions();state.interactions=initInteractions();state.sol=newSolState();state.crewPsych={tension:0,lastBand:'calm',history:[]};ICARUSLife.init(state);ICARUSVoyage.migrate(state);ICARUSEconomy.init(state);ICARUSTeams.migrate(state);state.entropy=entropy;ICARUSFrontier.init(state,frontierEnvironment());log('New voyage initialized. Crew has reported for duty.','system');if(save())location.reload();else log('New voyage could not be saved. Export a backup.','system')};$('credits').onclick=()=>{renderLivingRecap();$('modal').classList.add('open')};$('close').onclick=()=>$('modal').classList.remove('open');$('modal').onclick=e=>{if(e.target===$('modal'))$('modal').classList.remove('open')};
 // v0.94: Remote operations are part of the saved episode, not a transient UI singleton.
 const remoteDefaults={autonomyEnabled:true,proposals:[],lastAutonomousTick:-999,director:{nextId:1,lastScan:-999,lastLaunch:{derelict:-99999,asteroid:-99999},registry:[],interventions:[],authority:"full",science:{cases:[],nextCase:1,lastTick:-1},intelligence:{derelict:{surveyed:0,findings:0,attempts:0},asteroid:{surveyed:0,findings:0,attempts:0}}},missions:{derelict:null,asteroid:null},location:'icarus',tabs:{derelict:'Deck Map',asteroid:'Surface Map'},derelict:{power:false,adapter:false,scan:false,docking:'undocked',dockProgress:0},asteroid:{inventory:4,relays:2,relayDeployed:0,devices:[],selected:null},frame:0};
 function normalizeRemoteCore(raw){
@@ -3683,11 +3555,11 @@ function registerOpportunity(type,loc,title,reason,priority,objective){
 }
 function missionDirectorPanel(loc){
  const director=remote.director,items=missionLog().filter(x=>x.location===loc).slice(-5).reverse();
- let html='<div class="remote-card"><h2>AUTONOMOUS MISSION DIRECTOR</h2><p class="remote-muted">Authority: CAPTAIN / SOL. You may intervene; missions require an objective and a valid opportunity.</p>';
+ let html='<div class="remote-card"><h2>AUTONOMOUS MISSION DIRECTOR</h2><p class="remote-muted">Autonomous SOL / optional SOL directives. You may intervene; missions require an objective and a valid opportunity.</p>';
  for(const x of items){html+='<div class="remote-metric"><span>'+esc(x.id+' · '+x.title)+'</span><b>'+esc(x.status.toUpperCase())+'</b></div><p class="remote-muted">'+esc(x.objective)+' · '+esc(x.reason)+(x.outcome?' · Outcome: '+esc(x.outcome):'')+'</p>';
  if(x.riskAssessment)html+='<p class="remote-muted">'+esc('Dispatch risk index '+Math.round(x.riskAssessment.risk*100)+'/100 · Health '+Math.round(x.riskAssessment.health)+' · Fatigue '+Math.round(x.riskAssessment.fatigue)+(x.debrief?' · Return health '+Math.round(x.debrief.health)+' · Experience '+x.debrief.experience:''))+'</p>';
- if(['approved','active','direct','recall'].includes(x.status))html+='<div class="remote-actions">'+remoteButton('Request SOL assessment','missionexplain:'+x.id)+remoteButton('Order recall','missionrecall:'+x.id)+remoteButton('Abort objective','missionabort:'+x.id)+remoteButton('Take command','missioncommand:'+x.id)+'</div>';
- if(x.status==='direct')html+='<div class="remote-actions">'+remoteButton('Return authority to captain','missionrelease:'+x.id)+'</div>';
+ if(['approved','active','direct','recall'].includes(x.status))html+='<div class="remote-actions">'+remoteButton('Request SOL assessment','missionexplain:'+x.id)+remoteButton('SOL directive: recall','missionrecall:'+x.id)+remoteButton('Abort objective','missionabort:'+x.id)+remoteButton('SOL directive: take command','missioncommand:'+x.id)+'</div>';
+ if(x.status==='direct')html+='<div class="remote-actions">'+remoteButton('Release to autonomy','missionrelease:'+x.id)+'</div>';
  }
  if(!items.length)html+='<p class="remote-muted">No qualifying mission opportunities detected.</p>';
  return html+'</div>';
@@ -3745,7 +3617,7 @@ function frontierEnvironment(){return {
  recovered:(d,j,m)=>{const p=state.crew.find(p=>p.name===m.crew);if(p){specimenReturn(d.id,p);scienceIntake(d.id,j,{findings:(d.findings||[]).filter(f=>f.source.missionId===j.id)});}}
 };}
 function frontierTick(){ICARUSFrontier.tick(state,frontierEnvironment());if(ICARUSEdition.core)ICARUSAnthology.tick(state,frontierEnvironment());}
-function frontierCommand(action,id){if(action==='recall')for(const loc of ['derelict','asteroid']){const m=remote.missions[loc];if(m?.id)missionIntervene('recall',m.id);}const result=ICARUSFrontier.command(state,action,id,frontierEnvironment());if(!result.ok)log('SOL navigation: '+result.reason+'.','system');return result;}
+function frontierCommand(action,id){if(action==='recall')for(const loc of ['derelict','asteroid']){const m=remote.missions[loc];if(m?.id)missionIntervene('recall',m.id);}const result=ICARUSFrontier.command(state,action,id,frontierEnvironment());if(!result.ok)log('SOL navigation: '+result.reason+'.','system');if(ICARUSCommandUI.active){log('SOL directive '+action+': '+(result.ok?'accepted under existing safety rules':result.reason)+'.','system',null,{storyKind:'operation',authority:'SOL',controlLayer:'operator',action,target:id||null,accepted:result.ok});if(action==='course'&&result.ok)state.navigation.lastDecision.operatorDirected=true;if(action==='resume'&&result.ok&&state.navigation.lastDecision)state.navigation.lastDecision.operatorDirected=false;}return result;}
 function frontierRender(){const host=$('frontier-controls');if(host){if(ICARUSEdition.core)ICARUSAnthologyUI.render(host,state,frontierEnvironment(),frontierCommand);else ICARUSFrontierUI.render(host,state,frontierEnvironment(),frontierCommand);}ICARUSLivingFrontierUI.render($('living-frontier-controls'),state,livingFrontierCommand);}
 function livingFrontierCommand(action,id){if(action==='save'){save();ICARUSDurable.flush().then(()=>frontierRender()).catch(()=>frontierRender());return;}const result=ICARUSEmergencyOps.command(state,action,id,frontierEnvironment());if(!result.ok)log('SOL rescue assessment: '+result.reason+'.','system');frontierRender();}
 function voyageBoundary(){if(state.calendar?.mode==='wall')return;ICARUSChronicles.close(state);if(ICARUSEdition.core)ICARUSChronicleFilm.archive(state);ICARUSVoyage.rollover(state,s=>makeEpisodeArchive(s,'Continuous voyage weekly archive'),()=>log('Weekly episode archived. Voyage operations continue without interruption.','system'));}
@@ -3981,7 +3853,7 @@ if(loc==='derelict'){
  document.querySelectorAll('[data-device]').forEach(b=>b.onclick=()=>{a.selected=b.dataset.device;remoteRender()});
  document.querySelectorAll('[data-remote-action]').forEach(b=>b.onclick=()=>{let act=b.dataset.remoteAction;if(act.startsWith('mission')){const pieces=act.split(':');missionIntervene(pieces[0].slice(7),pieces[1]);remoteRender();return}if(act==='toggleauto'){remote.autonomyEnabled=!remote.autonomyEnabled;remoteRender();return}if(act==='dispatch'){const preferred=document.getElementById('fieldcrew')?.value;if(!remote.missions[loc]){registerOpportunity('direct',loc,'Captain field survey','Explicit captain intervention',90,'Survey reachable unvisited sectors and return safely');const job=missionLog().find(j=>j.location===loc&&j.status==='proposed');if(job)launchTeamJob(job,preferred);}remoteRender();return}if(act==='return'){let m=expedition(loc);if(m?.phase==='onsite'){m.phase='returning';m.progress=0;log(m.crew+' began return '+(m.transfer==='collar'?'through the docking collar':'transit')+' from '+loc+'.','system')}remoteRender();return}if(loc==='derelict'){if(act==='power')d.power=!d.power;if(act==='adapter'&&d.power)d.adapter=true;if(act==='dscan'&&expedition('derelict')?.phase==='onsite'&&expedition('derelict').kit>0){d.scan=true;expedition('derelict').kit--}}else{let sel=a.devices.find(x=>x.id===a.selected)||a.devices[0];if(act==='deploy'&&expedition('asteroid')?.phase==='onsite'&&expedition('asteroid').kit>0&&a.inventory>0){expedition('asteroid').kit--;let id='F'+String(a.devices.length+1).padStart(2,'0');a.devices.push({id,x:18+(a.devices.length*19)%68,y:38+(a.devices.length*13)%44,battery:100,mode:'lidar',online:true});a.selected=id;a.inventory--}if(act==='relay'&&a.relays>0&&expedition('asteroid')?.phase==='onsite'){a.relays--;let w=asteroidWorld();asteroidRelays(w).push({zone:w.rooms[w.position].zone,room:w.position,battery:100,integrity:100,boosted:false});a.relayDeployed=asteroidRelays(w).length;a.devices.forEach(x=>x.online=x.battery>0)};if(act.startsWith('mode-')&&sel)sel.mode=act.slice(5);if(act==='retrieve'&&sel&&expedition('asteroid')?.phase==='onsite'){a.devices=a.devices.filter(x=>x!==sel);a.inventory++;a.selected=a.devices[0]?.id||null}}remoteRender()});
 }
-function setLocation(loc){remote.location=loc;document.querySelectorAll('[data-location]').forEach(b=>b.classList.toggle('active',b.dataset.location===loc));$('icarus-main').style.display=loc==='icarus'?'':'none';$('remote-workspace').classList.toggle('open',loc!=='icarus');remoteRender()}
+function setLocation(loc){remote.location=loc;document.querySelectorAll('[data-location]').forEach(b=>b.classList.toggle('active',b.dataset.location===loc));if(!ICARUSCommandUI.active)$('icarus-main').style.display=loc==='icarus'?'':'none';$('remote-workspace').classList.toggle('open',loc!=='icarus');remoteRender()}
 document.querySelectorAll('[data-location]').forEach(b=>b.onclick=()=>setLocation(b.dataset.location));
 // Portable save manager: never replaces an existing save without explicit confirmation.
 const BACKUP_KEY='icarus-recovery-v039';
@@ -4219,8 +4091,9 @@ function realCalendarEnvironment(autosave=true){return {
  observance:e=>log('Calendar observance: '+e.name+' ('+e.date+'). Essential operations continue.', 'system',null,{holidayId:e.id,synchronized:e.synchronized}),
  gap:ms=>log('Suspension recovery omitted '+Math.round(ms/60000)+' real minutes beyond the six-hour catch-up limit; no events were invented for this interval.','system')
 };}
-function pumpRealTime(now,maxTicks=120,test=false){if(!ICARUSDurable.canWrite()||ICARUSBackupUI.busy())return {ticks:0,readOnly:true};const result=ICARUSCalendar.advance(state,now,realCalendarEnvironment(!test),{maxTicks,paused:test?false:paused});renderUnifiedClock(now);return result;}
-function renderUnifiedClock(now=Date.now()){const v=ICARUSCalendar.view(state,now);if(!v)return;const t=v.time;$('speed').textContent='Automatic '+v.rate+'×';$('calendar-status').textContent=v.date+' '+String(t.h).padStart(2,'0')+':'+String(t.min).padStart(2,'0')+' · '+v.timeZone+' · REAL WEEK '+v.week+(v.holiday?' · '+v.holiday:'')+(v.atmosphere.friday13Week?' · FRIDAY 13 WEEK':'')+(v.atmosphere.fullMoon?' · APPROX. EARTH FULL MOON':'');document.body.dataset.season=v.atmosphere.october?'october':v.atmosphere.friday13Week?'suspense':'ordinary';}
+let commandTestRate=0;
+function pumpRealTime(now,maxTicks=120,test=false){if(!ICARUSDurable.canWrite()||ICARUSBackupUI.busy())return {ticks:0,readOnly:true};const result=ICARUSCalendar.advance(state,now,realCalendarEnvironment(!test),{maxTicks,paused:test?false:paused,rateOverride:commandTestRate||undefined});renderUnifiedClock(now);return result;}
+function renderUnifiedClock(now=Date.now()){const v=ICARUSCalendar.view(state,now);if(!v)return;const t=v.time;$('speed').textContent=commandTestRate?'TEST '+commandTestRate+'×':'Automatic '+v.rate+'×';$('calendar-status').textContent=v.date+' '+String(t.h).padStart(2,'0')+':'+String(t.min).padStart(2,'0')+' · '+v.timeZone+' · REAL WEEK '+v.week+(v.holiday?' · '+v.holiday:'')+(v.atmosphere.friday13Week?' · FRIDAY 13 WEEK':'')+(v.atmosphere.fullMoon?' · APPROX. EARTH FULL MOON':'');document.body.dataset.season=v.atmosphere.october?'october':v.atmosphere.friday13Week?'suspense':'ordinary';}
 const calendarPanel=document.createElement('details');calendarPanel.className='save-manager';calendarPanel.innerHTML='<summary>TIME &amp; CALENDAR</summary><p id="calendar-status" class="muted"></p><label>Local IANA timezone <input id="calendar-zone" aria-label="Calendar timezone" maxlength="80"></label><button id="calendar-apply">Apply timezone</button><p class="muted">Automatic 4×, or 1× throughout the nine synchronized local holidays. Physical history never rewinds. Suspension catch-up is limited to six real hours and 120 simulation minutes per pump.</p>';
 settingsManager.appendChild(calendarPanel);if(ICARUSEdition.core){ICARUSUnifiedWorld.init(state);asteroidWorld();explorationWorld();ICARUSKnowledge.init(state);ICARUSKnowledge.seedCharts(state);ICARUSCrewLife.init(state);ICARUSCinema.init(state);ICARUSSOLVoice.init(state);}if(!__icarusSoakMode)ICARUSCalendar.init(state,Date.now());$('calendar-zone').value=state.calendar?.timeZone||Intl.DateTimeFormat().resolvedOptions().timeZone;
 $('calendar-apply').onclick=()=>{try{const now=Date.now();if(!state.calendar)ICARUSCalendar.init(state,now,$('calendar-zone').value);pumpRealTime(now);ICARUSCalendar.configure(state,$('calendar-zone').value,now,realCalendarEnvironment());save();renderUnifiedClock(now);}catch(e){$('calendar-status').textContent=e.message;}};renderUnifiedClock();
@@ -4229,6 +4102,22 @@ if(ICARUSEdition.core){const voice=document.createElement('details');voice.inner
 if(ICARUSEdition.core)ICARUSFilmUI.install($('camera-scene'),()=>state);
 if(ICARUSEdition.core)ICARUSCinemaUI.install($('camera-scene'),()=>state,shot=>{if(shot.subject){follow=state.crew.findIndex(p=>p.name===shot.subject);cameraMode='follow';observation.view=false;}renderCamera();},()=>paused);
 if(ICARUSEdition.core)ICARUSUnifiedUI.install(settingsManager,$('living-frontier-controls'),()=>state,unifiedEnvironment(),save);
+
+// Phase 4: one observer router, existing physical authorities unchanged.
+if(ICARUSEdition.core){
+ const commandUI=ICARUSCommandUI.install({
+  restore:()=>{restoreHologramToOperations();restoreLiveWidgets();if(ICARUSCommandUI.active){document.querySelector('.lazarus-home-mount')?.replaceChildren();ICARUSCommandUI.area('research','lazarus').replaceChildren();}},
+  rehome:()=>{for(const {el,marker} of Object.values(widgetOrigins))el.before(marker);},
+  setPage:p=>{currentPage=p;},home:renderHome,settings:()=>originalSettingsButton.click(),
+  ready:()=>frontierRender(),
+  rate:()=>commandTestRate,
+  setRate:rate=>{if(![0,1,5,20].includes(rate)||!ICARUSDurable.canWrite()||ICARUSBackupUI.busy())return false;const now=Date.now();const r=pumpRealTime(now);if(r.backlogMs>1)return false;commandTestRate=rate;renderUnifiedClock(now);return true;},
+  release:()=>{if(!ICARUSDurable.canWrite()||ICARUSBackupUI.busy())return;remote.autonomyEnabled=true;frontierCommand('resume');frontierRender();save();},
+  renderPage:(p,tab)=>{if(p==='missions'&&tab==='active'){const area=ICARUSCommandUI.area('missions','active');let a=$('mission-director-overview');if(!a){a=document.createElement('section');a.id='mission-director-overview';area.prepend(a);}a.innerHTML=missionDirectorPanel('derelict')+missionDirectorPanel('asteroid');a.querySelectorAll('[data-remote-action]').forEach(b=>b.onclick=()=>{const parts=b.dataset.remoteAction.split(':');missionIntervene(parts[0].slice(7),parts[1]);showPage('missions');});}if(p==='personnel'&&tab==='medical'){let m=$('medical-overview');if(!m){m=document.createElement('section');m.id='medical-overview';m.className='panel';ICARUSCommandUI.area('personnel','medical').prepend(m);}m.innerHTML='<h3>CREW HEALTH / CURRENT STATE</h3>'+state.crew.map(q=>'<p>'+esc(q.name)+' · health '+Math.round(q.vitals.health)+' · fatigue '+Math.round(q.vitals.fatigue)+' · '+esc(q.task)+'</p>').join('');}if(p==='ship')requestAnimationFrame(drawHologram);if(p==='missions')remoteRender();if(p==='research'){const area=ICARUSCommandUI.area;area('research','projects').innerHTML=sciencePanel('derelict')+sciencePanel('asteroid');if(tab==='lazarus'){area('research','lazarus').innerHTML=lazarusPanel();bindLazarusPanel();}}},
+  status:()=>{const n=state.navigation,incidents=Object.values(state.emergencies||{}).filter(x=>x?.status==='active').length,active=Object.values(remote.missions||{}).filter(Boolean),dir=n.hold||!remote.autonomyEnabled||!!n.lastDecision?.operatorDirected||missionLog().some(j=>j.status==='direct');return {directive:dir,scope:n.hold?'Travel held · ship and crew autonomy continue':!remote.autonomyEnabled?'Legacy field autonomy suspended':dir?'Scoped operator directive · other systems autonomous':'Ship, crew, research and feasible missions under autonomous control',reason:'Current controller: '+(dir?'operator direction in the indicated scope':'autonomous SOL')+'. '+(n.lastDecision?.reason||'Observing actual conditions; no qualifying new route decision.')+' Release restores autonomous decisions; physical transit and safety constraints remain.',paused,alerts:incidents,clock:(paused?'PAUSED · ':'')+(commandTestRate?'TEST '+commandTestRate+'×':$('speed').textContent),diagnostics:'Physical tick: '+state.tick+' / simulated minutes: '+(state.clock?.elapsed??state.tick)+'\nActive missions: '+active.length+' · crew: '+state.crew.length+'\nCalendar: '+(state.calendar?.episodeKey||'not initialized')+' · real Monday–Sunday\nRecovery backlog (ms): '+Math.max(0,(state.calendar?.lastSeen||0)-(state.calendar?.wallCursor||0))+'\nWarnings: '+(ICARUSDurable.status.warning||'none reported')+'\nLast route decision: '+(n.lastDecision?.reason||'none recorded')};}
+ });
+ showPage=(page)=>commandUI.navigate(page);commandUI.update();
+}
 
 // v0.94.3: test-only, read-only diagnostics and explicit deterministic advancement.
 // Disabled for normal Remote Deck sessions unless ?icarus_soak=1 is present.

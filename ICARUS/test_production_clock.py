@@ -15,7 +15,7 @@ class ProductionClock(unittest.TestCase):
     def tearDownClass(cls):cls.browser.close();cls.pw.stop();cls.server.shutdown()
     def start(self,date):
         self.context=self.browser.new_context(timezone_id='America/Chicago');p=self.context.new_page();self.errors=[];p.on('pageerror',lambda e:self.errors.append(str(e)));p.clock.install(time=datetime.fromisoformat(date).replace(tzinfo=timezone.utc));p.goto(f'http://127.0.0.1:{self.server.server_port}/icarus.html');p.wait_for_function('document.querySelector("#status").textContent.includes("LIVE")');self.assertEqual(p.evaluate('typeof __icarusSoak'),'undefined');return p
-    def state(self,p):p.locator('#save').click();p.evaluate('ICARUSDurable.flush()');return p.evaluate('JSON.parse(localStorage.getItem("icarus-v02"))')
+    def state(self,p):p.evaluate('document.querySelector("#save").click()');p.evaluate('ICARUSDurable.flush()');return p.evaluate('JSON.parse(localStorage.getItem("icarus-v02"))')
     def tearDown(self):self.context.close();self.assertEqual(self.errors,[])
     def test_actual_normal_timer_is_four_times_and_pause_drops_elapsed_time(self):
         p=self.start('2026-11-09T12:00:00');p.clock.fast_forward(15000);self.assertEqual(self.state(p)['tick'],1);self.assertIn('4×',p.locator('#speed').inner_text());p.locator('#pause').click();p.clock.fast_forward(60000);self.assertEqual(self.state(p)['tick'],1);p.locator('#pause').click();p.clock.fast_forward(15000);self.assertEqual(self.state(p)['tick'],2)
