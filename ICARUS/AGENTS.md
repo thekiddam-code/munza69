@@ -1,3 +1,7 @@
+# Current handoff: Phase 4.1 Command Bridge and Remote Synchronization
+
+Use codex/command-bridge-phase4-1 and the approved user specification. Read PHASE41_PROGRESS.md, PHASE41_ARCHITECTURE.md, PHASE41_VALIDATION.md, PHASE41_LIMITATIONS.md and README_PHASE41.md. bridge_service.py and host-authority.js fence the real host; never replace saves with remote/stale state. Creator mode is unsaved Ctrl+Shift+F12; private perspectives stay there. Workspace preferences remain per screen and outside world saves. Preserve installed APK; native build pending original source recovery. No physical-device or full-release claim without actual verification. Older handoffs below are historical.
+
 # Current handoff: Phase 4A UMBRA browser/server extension
 
 Continue on codex/sol-interface-phase4 under the latest PHASE4_SOL_INTERFACE_PLAN.md and user clarification: existing installed Android APK is preserved; native build is pending source recovery, not permanently unsupported. Read PHASE4A_PROGRESS.md, PHASE4A_ARCHITECTURE.md, PHASE4A_VALIDATION.md, PHASE4A_LIMITATIONS.md, NATIVE_ANDROID_RECOVERY.md and UMBRA_TV_CAPABILITIES.md. Existing legacy URLs/response bodies and pairing remain; browser companion metadata is opt-in. tv_service.py is required runtime. No actual TV/video/native test claim; fictional arcade never writes game events. Preserve all core world/save/time authority.

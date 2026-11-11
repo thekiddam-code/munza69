@@ -1,0 +1,9 @@
+# Phase 4.1 engineering changelog
+
+- a397960: diagnosed opt-in/manual host publication and remote duplicate-world entry; introduced local bootstrap, server-monotonic fenced authority, acknowledged bounded commands and authenticated SSE foundation.
+- 8d1daa9: integrated Bridge/Creator separation, stable scroll/disclosure/select behavior, non-overlapping customizable Home grid, independent desktop/mobile presets, compact real hologram controls, source-grounded operational/crew/SOL/camera wall and UMBRA live synchronization. Existing remote/game/TV functions remain.
+- a13beee: reload retains host identity and scoped applied-command receipts; duplicate tabs still require IDB ownership. Explicit retry/reload tests prevent replay of an applied-but-unacknowledged directive.
+
+Confirmed corrections during integration: old forced-width CSS defeated new resize spans; orientation blur could overwrite another profile; native select/editing redraws and delayed personal-settings loading could disrupt inputs; mode-dependent psychology initialization changed world shape; a first-pass JS identifier collision prevented UMBRA installation. These were repaired and targeted cases rerun, rather than removing assertions. Legacy regression drivers now explicitly enter Creator Mode for private perspectives, clock/pause, global autonomy or creator settings; their physical/source/calendar assertions remain.
+
+The update moves toward the final design through one persistent ship, trustworthy observation, clear role boundaries and a configurable coherent command workspace. It adds no universe breadth, forced incident, fabricated discovery, recording or extraordinary encounter. See PHASE41_VALIDATION.md for measured totals and PHASE41_LIMITATIONS.md for incomplete native, hardware and human acceptance. Installation/backup/origin preservation/rollback are in README_PHASE41.md.

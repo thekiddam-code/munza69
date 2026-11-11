@@ -1,0 +1,25 @@
+# Phase 4.1 architecture and invariants
+
+Baseline 2436d4f; implementation milestones a397960, 8d1daa9 and a13beee. No replacement simulation, universe, save namespace, authoritative cloud process or Android app is introduced.
+
+## Authority and transport
+
+`bridge_service.py` owns volatile server coordination only: monotonic 12-second lease, owner instance/generation, bounded 25-command queue, 30-second expiry and 256 token-scoped request receipts retained at most ten minutes. It stores no voyage. A new owner/generation clears prior telemetry/queue. Same-owner heartbeat can recover an expired lease only while no other generation has taken over. A losing owner receives conflict and cannot silently resume. The browser grants physical-step/save permission only for seven seconds after successful service renewal, shorter than server expiry.
+
+`host-authority.js` bootstraps through the existing trusted local server. Loopback requests or the laptop's own literal LAN-IP origin can obtain the dedicated host key; other peers cannot bootstrap. URL-normalized remote requests to icarus.html redirect to UMBRA before world boot. File startup redirects to a source-based launch guide. Static localhost developer/test serving without the new endpoints retains the existing IDB-only standalone writer, explicitly not a network companion host.
+
+Same-tab session identity permits reload; existing per-origin fenced IDB ownership prevents a duplicate tab with copied sessionStorage from acting as the same writer. A different browser/origin has a different server owner identity and is denied while the lease is live. The host checks both fences before physical steps, field updates, clock pumping and saves. A losing page never replaces a remote save. Existing browser data and original origin remain authoritative. host.html detects local save presence and makes origin choice explicit.
+
+The host publishes every ~1.2 seconds; heartbeat ~2 seconds. Its protocol-2 snapshot adds bounded source-backed operations to legacy telemetry. Host routes authenticate the dedicated key and identity/generation. Paired devices read SSE with bearer-authenticated fetch streaming and use a separate POST dispatch endpoint. The stream has a bounded 60-second lifetime and reconnects with bounded 1–8-second delay. Eight-second receipt/report freshness determines live/stale presentation. Aborting on the browser offline event prevents an already-open stream from falsely masking connectivity loss.
+
+Commands use token-scoped request IDs and server IDs. Host retains applied IDs before dispatch, saves accepted physical changes, and echoes acknowledgments. A reload retains the last 256 IDs for that server boot/generation. This prevents duplicate delivery/re-execution; it is **at-most-once**, not a distributed transaction guaranteeing execution through a browser crash. A crash between marking and applying can lose a command; expiry/replacement deliberately does not replay stale directives. Native legacy telemetry/TV response shapes remain; a legacy host is supported in protocol-1 mode. Creator-only command permissions are intentionally stricter on the modern host.
+
+## UI and evidence
+
+`workspace.js` handles bounded per-window presets/order/dimensions and actual same-node modules. It does not clone live controls or serialize them into the world. Old forced-width rules are scoped away from this new grid. UI-continuity.js restores stable disclosures and scroll positions; focused selects are not rebuilt. Existing live components and hologram handlers remain. Pointer/keyboard operations persist separately for desktop/mobile; old-orientation events cannot overwrite the other mode.
+
+`bridge-mode.js` controls unsaved presentation mode and hides existing creator functions. This is a role/presentation boundary, not a security sandbox against developer tools. Remote authorization is enforced by the server and checked again by the host. Existing psychology initialization remains independent of presentation mode; entering Creator does not initialize/change a different world.
+
+`operational-view.js` reuses companion-view.js and actual SOL knowledge/public sources. It exports received assessments and observed activity, not raw psychology/trust/vitals. Sensors unavailable means unknown, not zero failures. Mission progress is a received report, not unrestricted field truth. `operational-ui.js` incrementally updates rows and preserves profile/select nodes and scroll. Camera-wall tiles use the original sprites and coverage; source labels distinguish projections/reconstructions. SOL priorities sort actual records without producing new events. Home can mount those same operational modules through the existing widget-origin mechanism.
+
+`remote-sync.js`/`umbra/bridge.js` are thin terminals. No simulation modules or save-upload path are loaded there. They keep last telemetry explicitly stale, disable commands on disconnection, clear stale camera actors and resume only from new host reports. Existing UMBRA TV, game, pairing, icons and fictional default-off archive remain. Native source recovery and physical device checks remain separate.

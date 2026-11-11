@@ -76,3 +76,8 @@ Phase 4 advances final-design cohesion rather than universe breadth. Full phase/
 | Real captured ICARUS recordings / advanced native TV / Tailscale/push/voice/streaming | Deferred / not verified | Outside current browser/server batch |
 
 This batch improves access to the same persistent world and existing remote functions. Missing native sources do not block browser/server completion. Native/human gates still prevent a full final-release claim.
+
+
+## Phase 4.1 Command Bridge
+
+Authority/acknowledged remote synchronization, origin-aware Windows launch, unsaved Bridge/Creator separation, modular per-screen layouts, compact existing hologram, scroll/edit continuity and source-grounded operational/camera/crew/SOL views are implemented. Final automatic verification is recorded in PHASE41_VALIDATION.md. Native APK build remains pending original-source recovery. Physical Windows/Android/TV, real Tailscale deployment, AV, accessibility and sustained usability remain unverified. The core world is not expanded or reset. Final release requires these gates and human experience review, not just passing campaigns.
