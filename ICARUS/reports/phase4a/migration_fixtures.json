@@ -1,0 +1,27 @@
+{
+  "phase1": {
+    "file": "backup_1001_7.json",
+    "sha256": "7b7254949ad9b5b60f75f40767e37215bd0d7e1c7d9371656dc55913e445f321",
+    "bytes": 4979889
+  },
+  "phase2": {
+    "file": "backup_1001_30.json",
+    "sha256": "8eaa5451be5a1512cc1fa8dd0f4f18ef66c7259d6caef4518460b9596b335a2e",
+    "bytes": 19244171
+  },
+  "phase3": {
+    "file": "backup_1001_30.json",
+    "sha256": "11dd1e3ebbd5dcfb94d23ed0be2786e2af7d6feee7498c606cdf3a04d4224e02",
+    "bytes": 22183526
+  },
+  "phase3_memorial": {
+    "file": "backup_4807_30.json",
+    "sha256": "14a54eb1c944727f19f2d617224b6a57d473aae73c92079a1bda444fc00d1d30",
+    "bytes": 21429896
+  },
+  "phase35": {
+    "file": "backup_1001_30.json",
+    "sha256": "527a99efacb316503c3784685cb9abeaa1a442aee4441281bc4e4c11bf9f51dd",
+    "bytes": 22269648
+  }
+}

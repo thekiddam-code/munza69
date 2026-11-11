@@ -1,0 +1,20 @@
+{
+  "suite": "tv_service",
+  "runtime_root": "/workspace/work/phase4a_validation/tested/ICARUS_SOL_Command_Interface_Phase4_Lite",
+  "runtime_source_commit": "3b6d986f5e26c3fa33c42c61abc3f0e830b286c6",
+  "harness_source_commit": "3b6d986f5e26c3fa33c42c61abc3f0e830b286c6",
+  "harness": "Pinned source tests outside Lite; runtime ROOT rebound to independent ZIP extraction. No runtime source patches. Desktop input stubbed in bridge tests.",
+  "passed": true,
+  "tests_run": 7,
+  "passed_cases": [
+    "test_cancel_replacement_unpair_and_reconfigure_invalidate_callbacks (test_tv_service.TVServiceTests.test_cancel_replacement_unpair_and_reconfigure_invalidate_callbacks)",
+    "test_changed_target_never_powers_off_new_tv (test_tv_service.TVServiceTests.test_changed_target_never_powers_off_new_tv)",
+    "test_countdown_is_explicit_and_fires_exactly_once (test_tv_service.TVServiceTests.test_countdown_is_explicit_and_fires_exactly_once)",
+    "test_failure_no_late_retry (test_tv_service.TVServiceTests.test_failure_no_late_retry)",
+    "test_late_wake_never_sends_surprise_power_off (test_tv_service.TVServiceTests.test_late_wake_never_sends_surprise_power_off)",
+    "test_reuses_pairing_transport_and_denies_arbitrary_keys (test_tv_service.TVServiceTests.test_reuses_pairing_transport_and_denies_arbitrary_keys)",
+    "test_validation_and_restart (test_tv_service.TVServiceTests.test_validation_and_restart)"
+  ],
+  "failures": [],
+  "errors": []
+}

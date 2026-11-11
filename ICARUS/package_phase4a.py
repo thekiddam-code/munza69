@@ -4,7 +4,7 @@ from pathlib import Path
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--output',type=Path,required=True);args=ap.parse_args();project=Path(__file__).resolve().parent;repo=Path(subprocess.check_output(['git','rev-parse','--show-toplevel'],cwd=project,text=True).strip());commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=repo,text=True).strip();rel=project.relative_to(repo);args.output.mkdir(parents=True,exist_ok=True)
-    docs=['README_PHASE4A.md','PHASE4A_ARCHITECTURE.md','PHASE4A_PROGRESS.md','PHASE4A_VALIDATION.md','PHASE4A_LIMITATIONS.md','SECURITY_PHASE4A.md','UMBRA_TV_CAPABILITIES.md','UMBRA_ICON_INVENTORY.md','NATIVE_ANDROID_RECOVERY.md','README_PHASE4.md','FINAL_DESIGN.md','FINAL_RELEASE_ROADMAP.md','LUNAR_MODEL.md'];host=['tv_service.py','server.py','requirements.txt','config.json','Start_Remote_Deck.bat'];root='ICARUS_SOL_Command_Interface_Phase4_Lite';out=args.output/(root+'.zip')
+    docs=['ENGINEERING_PHASE4A.md','README_PHASE4A.md','PHASE4A_ARCHITECTURE.md','PHASE4A_PROGRESS.md','PHASE4A_VALIDATION.md','PHASE4A_LIMITATIONS.md','SECURITY_PHASE4A.md','UMBRA_TV_CAPABILITIES.md','UMBRA_ICON_INVENTORY.md','NATIVE_ANDROID_RECOVERY.md','README_PHASE4.md','FINAL_DESIGN.md','FINAL_RELEASE_ROADMAP.md','LUNAR_MODEL.md'];host=['tv_service.py','server.py','requirements.txt','config.json','Start_Remote_Deck.bat'];root='ICARUS_SOL_Command_Interface_Phase4_Lite';out=args.output/(root+'.zip')
     with tempfile.TemporaryDirectory(prefix='icarus-phase4-package-') as td:
         stage=Path(td)
         with tarfile.open(fileobj=io.BytesIO(subprocess.check_output(['git','archive',commit,str(rel)],cwd=repo))) as tar:tar.extractall(stage,filter='data')

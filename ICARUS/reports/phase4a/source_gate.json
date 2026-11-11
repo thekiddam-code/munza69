@@ -1,0 +1,8 @@
+{
+  "remote_refs_inspected": 24,
+  "native_project_paths": [],
+  "native_apk_status": "Pending recovery of existing Android Studio project; existing installed APK is not removed/replaced",
+  "browser_source": "ICARUS/web/index.html",
+  "server_source": "ICARUS/server.py",
+  "tv_protocol": "Existing allowlisted Tizen WSS 8002 with reusable token; physical device validation pending"
+}

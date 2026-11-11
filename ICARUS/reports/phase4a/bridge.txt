@@ -1,0 +1,8 @@
+test_authentication_command_validation_and_exactly_once_queue_drain (test_frontier_bridge.FrontierBridge.test_authentication_command_validation_and_exactly_once_queue_drain) ... ok
+test_expanded_telemetry_requires_host_auth_and_stays_bounded (test_frontier_bridge.FrontierBridge.test_expanded_telemetry_requires_host_auth_and_stays_bounded) ... ok
+test_paired_tablet_map_sends_navigation_to_authoritative_pc (test_frontier_bridge.FrontierBridge.test_paired_tablet_map_sends_navigation_to_authoritative_pc) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 12.008s
+
+OK

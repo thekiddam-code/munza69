@@ -1,0 +1,16 @@
+{
+  "suite": "bridge",
+  "runtime_root": "/workspace/work/phase4a_validation/tested/ICARUS_SOL_Command_Interface_Phase4_Lite",
+  "runtime_source_commit": "3b6d986f5e26c3fa33c42c61abc3f0e830b286c6",
+  "harness_source_commit": "3b6d986f5e26c3fa33c42c61abc3f0e830b286c6",
+  "harness": "Pinned source tests outside Lite; runtime ROOT rebound to independent ZIP extraction. No runtime source patches. Desktop input stubbed in bridge tests.",
+  "passed": true,
+  "tests_run": 3,
+  "passed_cases": [
+    "test_authentication_command_validation_and_exactly_once_queue_drain (test_frontier_bridge.FrontierBridge.test_authentication_command_validation_and_exactly_once_queue_drain)",
+    "test_expanded_telemetry_requires_host_auth_and_stays_bounded (test_frontier_bridge.FrontierBridge.test_expanded_telemetry_requires_host_auth_and_stays_bounded)",
+    "test_paired_tablet_map_sends_navigation_to_authoritative_pc (test_frontier_bridge.FrontierBridge.test_paired_tablet_map_sends_navigation_to_authoritative_pc)"
+  ],
+  "failures": [],
+  "errors": []
+}

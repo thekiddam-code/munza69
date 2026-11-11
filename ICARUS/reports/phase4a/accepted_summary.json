@@ -1,0 +1,102 @@
+{
+  "browser_server_scope_complete": true,
+  "full_phase_or_final_release_complete": false,
+  "tested_runtime_commit": "3b6d986f5e26c3fa33c42c61abc3f0e830b286c6",
+  "runtime_files": 90,
+  "node_tests": 276,
+  "unit_and_browser_suites": {
+    "cinematic": 71,
+    "stability": 30,
+    "compatibility": 44,
+    "interface": 17,
+    "production": 2,
+    "bridge": 3,
+    "umbra": 16,
+    "tv_service": 7
+  },
+  "unit_and_browser_total": 190,
+  "browser_server_cases": 183,
+  "phone_functional_checks": 15,
+  "tablet_touch_checks": 11,
+  "historical_migrations": {
+    "phase1": {
+      "history_records": 10659,
+      "crew": 20,
+      "memorials": [],
+      "tick": 36000,
+      "resumed_tick": 36120
+    },
+    "phase2": {
+      "history_records": 50170,
+      "crew": 20,
+      "memorials": [],
+      "tick": 160920,
+      "resumed_tick": 161040
+    },
+    "phase3": {
+      "history_records": 48137,
+      "crew": 20,
+      "memorials": [],
+      "tick": 160920,
+      "resumed_tick": 161040
+    },
+    "phase3_memorial": {
+      "history_records": 45870,
+      "crew": 19,
+      "memorials": [
+        "Nadia Kline"
+      ],
+      "tick": 160920,
+      "resumed_tick": 161040
+    },
+    "phase35": {
+      "history_records": 45515,
+      "crew": 20,
+      "memorials": [],
+      "tick": 160920,
+      "resumed_tick": 161040
+    }
+  },
+  "campaigns": {
+    "compound_4807": {
+      "passed": true,
+      "real_days": 7,
+      "sim_days": 25.0,
+      "alive": 20,
+      "dead": [],
+      "arrivals": 5,
+      "field_missions": 12,
+      "science_cases": 21,
+      "conversations": 417,
+      "weekly_films": 1,
+      "history_records": 10463,
+      "public_source_audit_errors": []
+    },
+    "normal_1001": {
+      "passed": true,
+      "real_days": 30,
+      "sim_days": 111.75,
+      "alive": 20,
+      "dead": [],
+      "arrivals": 5,
+      "field_missions": 8,
+      "science_cases": 24,
+      "conversations": 2032,
+      "weekly_films": 4,
+      "history_records": 45514,
+      "public_source_audit_errors": []
+    }
+  },
+  "static_review_passed": true,
+  "remaining": {
+    "native_apk_build": "Pending recovery of existing Android Studio source; installed APK preserved, not replaced",
+    "physical_windows": "NOT RUN",
+    "physical_android_tab_s5e_wifi": "NOT RUN",
+    "physical_samsung_tv": "NOT RUN; protocol/HTTP tested with stubbed socket",
+    "antivirus": "NOT RUN; no protection disabled",
+    "screen_reader_native_gpu_human_usability": "NOT RUN",
+    "actual_recorded_kill_cam_advanced_native_tv_streaming_push_voice": "Deferred/unverified"
+  },
+  "runtime_identity": "All 90 source/extracted runtime hashes match; campaign driver records 89 old host/web hashes, service covered independently",
+  "diagnostics": "See PHASE4A_VALIDATION.md; driver assumptions corrected, incomplete campaign audit rejected, no assertions removed."
+}

@@ -1,0 +1,25 @@
+{
+  "passed": false,
+  "tests_run": 13,
+  "passed_cases": [
+    "test_arcade_loads_local_gifs_reduced_motion_and_separate_off_defaults (__main__.UmbraBrowser.test_arcade_loads_local_gifs_reduced_motion_and_separate_off_defaults)",
+    "test_every_gif_and_static_frame_loads_on_phone_and_tablet_without_external_assets (__main__.UmbraBrowser.test_every_gif_and_static_frame_loads_on_phone_and_tablet_without_external_assets)",
+    "test_existing_authenticated_tv_commands_and_managed_timer_cancel (__main__.UmbraBrowser.test_existing_authenticated_tv_commands_and_managed_timer_cancel)",
+    "test_offline_pairing_preserves_local_editor_and_bundled_gallery (__main__.UmbraBrowser.test_offline_pairing_preserves_local_editor_and_bundled_gallery)",
+    "test_optional_decorations_do_not_interrupt_tv_timer_or_write_world_commands (__main__.UmbraBrowser.test_optional_decorations_do_not_interrupt_tv_timer_or_write_world_commands)",
+    "test_preserved_departments_offline_icons_and_adaptive_screenshots (__main__.UmbraBrowser.test_preserved_departments_offline_icons_and_adaptive_screenshots)",
+    "test_profile_edit_save_cancel_undo_resize_remap_reload_and_invalid_overlap (__main__.UmbraBrowser.test_profile_edit_save_cancel_undo_resize_remap_reload_and_invalid_overlap)",
+    "test_real_camera_styles_follow_and_stale_unknown_without_source_mutation (__main__.UmbraBrowser.test_real_camera_styles_follow_and_stale_unknown_without_source_mutation)",
+    "test_repeat_is_bounded_and_pointer_cancel_stops_transmission (__main__.UmbraBrowser.test_repeat_is_bounded_and_pointer_cancel_stops_transmission)",
+    "test_right_hand_cluster_stays_fixed_when_secondary_panel_expands (__main__.UmbraBrowser.test_right_hand_cluster_stays_fixed_when_secondary_panel_expands)",
+    "test_timer_http_auth_validation_reconfigure_and_unpair_safety (__main__.UmbraBrowser.test_timer_http_auth_validation_reconfigure_and_unpair_safety)",
+    "test_touch_drag_resize_and_orientation_keep_unsaved_drafts_without_commands (__main__.UmbraBrowser.test_touch_drag_resize_and_orientation_keep_unsaved_drafts_without_commands)"
+  ],
+  "failures": [
+    {
+      "test": "test_missing_renderer_and_unknown_contact_never_fake_camera (__main__.UmbraBrowser.test_missing_renderer_and_unknown_contact_never_fake_camera)",
+      "detail": "Traceback (most recent call last):\n  File \"/workspace/work/munza69/ICARUS/test_umbra_browser.py\", line 63, in test_missing_renderer_and_unknown_contact_never_fake_camera\n    p=self.page();self.m.ICARUS_BRIDGE['telemetry']={'episode':1,'time':'fixture','paused':True,'speed':4,'crewTotal':1,'crewAway':1,'crewWorking':0,'missions':{'asteroid':'onsite','derelict':'none'},'crew':[],'events':[],'companion':{'tick':4,'styles':['standard'],'cameras':[{'id':'C05','label':'C05','available':False}],'crew':[{'name':'Frank Morrow','job':'Engineer','status':'unknown','location':'Unknown','activity':'Unconfirmed','coverage':False,'camera':None,'observedTick':None}],'activity':[],'emergencies':0}};self.m.ICARUS_BRIDGE['updated']=__import__('time').time();self.tab(p,'icarus');p.evaluate('icarusPoll()');p.wait_for_selector('[data-follow=\"Frank Morrow\"]');p.locator('[data-follow=\"Frank Morrow\"]').click();self.assertIn('NO CAMERA',p.locator('#umbra-camera-source').inner_text());self.assertEqual(p.locator('#umbra-camera-frame .camera-actor').count(),0);self.assertTrue(p.locator('#umbra-camera-style option[value=state51]').is_disabled())\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: False is not true\n"
+    }
+  ],
+  "errors": []
+}

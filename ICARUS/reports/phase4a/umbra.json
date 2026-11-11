@@ -1,0 +1,29 @@
+{
+  "suite": "umbra",
+  "runtime_root": "/workspace/work/phase4a_validation/tested/ICARUS_SOL_Command_Interface_Phase4_Lite",
+  "runtime_source_commit": "3b6d986f5e26c3fa33c42c61abc3f0e830b286c6",
+  "harness_source_commit": "3b6d986f5e26c3fa33c42c61abc3f0e830b286c6",
+  "harness": "Pinned source tests outside Lite; runtime ROOT rebound to independent ZIP extraction. No runtime source patches. Desktop input stubbed in bridge tests.",
+  "passed": true,
+  "tests_run": 16,
+  "passed_cases": [
+    "test_arcade_loads_local_gifs_reduced_motion_and_separate_off_defaults (test_umbra_browser.UmbraBrowser.test_arcade_loads_local_gifs_reduced_motion_and_separate_off_defaults)",
+    "test_every_gif_and_static_frame_loads_on_phone_and_tablet_without_external_assets (test_umbra_browser.UmbraBrowser.test_every_gif_and_static_frame_loads_on_phone_and_tablet_without_external_assets)",
+    "test_existing_authenticated_tv_commands_and_managed_timer_cancel (test_umbra_browser.UmbraBrowser.test_existing_authenticated_tv_commands_and_managed_timer_cancel)",
+    "test_installed_android_legacy_responses_remain_unchanged_with_opt_in_camera (test_umbra_browser.UmbraBrowser.test_installed_android_legacy_responses_remain_unchanged_with_opt_in_camera)",
+    "test_master_alone_has_real_idle_decoration_with_dismiss_and_cooldown (test_umbra_browser.UmbraBrowser.test_master_alone_has_real_idle_decoration_with_dismiss_and_cooldown)",
+    "test_missing_renderer_and_unknown_contact_never_fake_camera (test_umbra_browser.UmbraBrowser.test_missing_renderer_and_unknown_contact_never_fake_camera)",
+    "test_offline_pairing_preserves_local_editor_and_bundled_gallery (test_umbra_browser.UmbraBrowser.test_offline_pairing_preserves_local_editor_and_bundled_gallery)",
+    "test_optional_decorations_do_not_interrupt_tv_timer_or_write_world_commands (test_umbra_browser.UmbraBrowser.test_optional_decorations_do_not_interrupt_tv_timer_or_write_world_commands)",
+    "test_preserved_departments_offline_icons_and_adaptive_screenshots (test_umbra_browser.UmbraBrowser.test_preserved_departments_offline_icons_and_adaptive_screenshots)",
+    "test_profile_edit_save_cancel_undo_resize_remap_reload_and_invalid_overlap (test_umbra_browser.UmbraBrowser.test_profile_edit_save_cancel_undo_resize_remap_reload_and_invalid_overlap)",
+    "test_real_camera_styles_follow_and_stale_unknown_without_source_mutation (test_umbra_browser.UmbraBrowser.test_real_camera_styles_follow_and_stale_unknown_without_source_mutation)",
+    "test_real_late_voyage_projection_fits_existing_telemetry_budget (test_umbra_browser.UmbraBrowser.test_real_late_voyage_projection_fits_existing_telemetry_budget)",
+    "test_repeat_is_bounded_and_pointer_cancel_stops_transmission (test_umbra_browser.UmbraBrowser.test_repeat_is_bounded_and_pointer_cancel_stops_transmission)",
+    "test_right_hand_cluster_stays_fixed_when_secondary_panel_expands (test_umbra_browser.UmbraBrowser.test_right_hand_cluster_stays_fixed_when_secondary_panel_expands)",
+    "test_timer_http_auth_validation_reconfigure_and_unpair_safety (test_umbra_browser.UmbraBrowser.test_timer_http_auth_validation_reconfigure_and_unpair_safety)",
+    "test_touch_drag_resize_and_orientation_keep_unsaved_drafts_without_commands (test_umbra_browser.UmbraBrowser.test_touch_drag_resize_and_orientation_keep_unsaved_drafts_without_commands)"
+  ],
+  "failures": [],
+  "errors": []
+}

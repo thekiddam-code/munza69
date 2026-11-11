@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "checks": [
+    "Ordinary page has no deterministic test hooks",
+    "Touch Bridge has one actual camera",
+    "Touch destination selector opens retained field console",
+    "Interior location segment is straight and touch sized",
+    "Touch Crew Social is isolated",
+    "Existing touch density preference persists",
+    "Touch custom Home mounts the same single camera",
+    "Camera returns to Bridge after touching navigation",
+    "Tablet page has no horizontal document overflow",
+    "Touch observation preserves physical crew, resources, navigation and tick",
+    "No browser errors"
+  ],
+  "errors": [],
+  "limit": "1280x800 CSS landscape, touch/mobile Chromium emulation. No physical Tab S5e/Android/Windows validation."
+}
