@@ -34,6 +34,10 @@ class CommandInterface(ProductionClock):
         for key in ['feedstock','consumed','produced','initial']:self.assertEqual(fast['economy'][key],normal['economy'][key],key)
         for a,b in zip(fast['crew'],normal['crew']):
             for key in ['name','room','route','task','energy','stress','vitals']:self.assertEqual(a[key],b[key],key)
+    def test_one_and_five_times_are_real_user_facing_rates(self):
+        p=self.start('2026-11-09T12:00:00',fixed=True);self.go(p,'settings','testing');p.on('dialog',lambda d:d.accept());p.locator('#test-rate').select_option('1');p.clock.fast_forward(60000);self.assertEqual(self.state(p)['tick'],1);p.locator('#test-rate').select_option('5');p.clock.fast_forward(60000);self.assertEqual(self.state(p)['tick'],6);p.locator('#test-rate').select_option('0');p.clock.fast_forward(15000);self.assertEqual(self.state(p)['tick'],7)
+    def test_readonly_spectator_can_navigate_but_cannot_enable_test_clock(self):
+        p=self.start('2026-11-09T12:00:00',fixed=True);q=p.context.new_page();q.on('pageerror',lambda e:self.errors.append(str(e)));q.goto(p.url);q.wait_for_function('ICARUSCommandUI.active');self.assertFalse(q.evaluate('ICARUSDurable.canWrite()'));self.go(q,'settings','testing');q.locator('#test-rate').select_option('20');self.assertFalse(q.locator('#command-test').is_visible());self.assertIn('Automatic',q.locator('#speed').inner_text());self.assertTrue(q.locator('#area-settings-testing').is_visible())
     def test_lazarus_home_and_research_share_no_duplicate_controls(self):
         p=self.start('2026-11-09T12:00:00');p.locator('#home-edit').click();p.locator('[data-widget="lazarus"]').check();self.assertEqual(p.locator('#lazarus-protocol').count(),1);self.go(p,'research','lazarus');self.assertEqual(p.locator('#lazarus-protocol').count(),1);self.go(p,'home');self.assertEqual(p.locator('#lazarus-protocol').count(),1)
     def test_preferences_follow_imported_world_and_remain_editable(self):
