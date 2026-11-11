@@ -26,6 +26,8 @@ class TVServiceTests(unittest.TestCase):
   self.service.start(15,'owner');cb=self.service.timer.callback;self.s.fail=True;cb();self.assertEqual(self.service.status()['timer']['state'],'failed');self.s.fail=False;cb();self.assertEqual(self.s.sent,[])
  def test_changed_target_never_powers_off_new_tv(self):
   self.service.start(15,'owner');cb=self.service.timer.callback;self.ip['ip']='192.168.1.100';cb();self.assertEqual(self.s.sent,[]);self.assertEqual(self.service.status()['timer']['state'],'cancelled')
+ def test_late_wake_never_sends_surprise_power_off(self):
+  self.service.start(15,'owner');cb=self.service.timer.callback;self.now=961;cb();self.assertEqual(self.s.sent,[]);self.assertEqual(self.service.status()['timer']['state'],'expired')
  def test_validation_and_restart(self):
   for value in [True,1,'15',16,None,0,-1]:
    with self.assertRaises(ValueError):self.service.start(value,'owner')

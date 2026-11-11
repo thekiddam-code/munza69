@@ -1,3 +1,7 @@
+# Current handoff: Phase 4A UMBRA browser/server extension
+
+Continue on codex/sol-interface-phase4 under the latest PHASE4_SOL_INTERFACE_PLAN.md and user clarification: existing installed Android APK is preserved; native build is pending source recovery, not permanently unsupported. Read PHASE4A_PROGRESS.md, PHASE4A_ARCHITECTURE.md, PHASE4A_VALIDATION.md, PHASE4A_LIMITATIONS.md, NATIVE_ANDROID_RECOVERY.md and UMBRA_TV_CAPABILITIES.md. Existing legacy URLs/response bodies and pairing remain; browser companion metadata is opt-in. tv_service.py is required runtime. No actual TV/video/native test claim; fictional arcade never writes game events. Preserve all core world/save/time authority.
+
 # Current handoff: Phase 4 SOL Command Interface
 
 Use codex/sol-interface-phase4, Issue #4 and PHASE4_SOL_INTERFACE_PLAN.md. Read PHASE4_UI_PROGRESS.md, PHASE4_UI_ARCHITECTURE.md, PHASE4_UI_VALIDATION.md, PHASE4_UI_LIMITATIONS.md and the control map. command-ui.js routes preserved live components; calendar.js accepts explicit session test rates without changing real weeks or synchronized holidays. User operates SOL's directed layer; historical captain roles/authorship remain. Basic persistence/writer integrity stays; elaborate backup polish is deferred. No scope expansion or full native/human completion claim. Older handoffs below are historical.

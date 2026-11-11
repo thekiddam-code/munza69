@@ -221,11 +221,12 @@ class Handler(http.server.SimpleHTTPRequestHandler):
   try:self.wfile.write(body)
   except (BrokenPipeError,ConnectionResetError):pass
  def do_GET(self):
-  if self.path=='/api/icarus/telemetry':
+  if self.path in ('/api/icarus/telemetry','/api/icarus/telemetry?companion=1'):
    if not self.authorized(): return self.respond(401,{'error':'Pair first'})
    with LOCK:
     data=ICARUS_BRIDGE['telemetry']
     age=time.time()-ICARUS_BRIDGE['updated'] if data else None
+   if data and 'companion' in data and self.path=='/api/icarus/telemetry':data={k:v for k,v in data.items() if k!='companion'}
    return self.respond(200,{'online':bool(data and age<8),'age':round(age,1) if age is not None else None,'telemetry':data if data and age<8 else None})
   if self.path=='/api/icarus/commands':
    if self.headers.get('X-Icarus-Key')!=ICARUS_KEY: return self.respond(403,{'error':'Invalid host key'})

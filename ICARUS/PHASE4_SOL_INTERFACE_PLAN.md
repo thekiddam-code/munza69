@@ -1,6 +1,6 @@
 # ICARUS Phase 4A — SOL Command Interface and Usability
 
-**Implementation status:** specification only, NOT coded. **Branch:** `codex/sol-interface-phase4` based on `codex/cinematic-refinement-phase3-5`.
+**Implementation status:** core Phase 4 published; the Phase 4A browser/server additions are implemented and undergoing final validation. Native APK rebuild is pending recovery of the existing Android Studio project. See PHASE4A_PROGRESS.md. **Branch:** `codex/sol-interface-phase4` based on `codex/cinematic-refinement-phase3-5`.
 
 ## User-approved direction
 Prioritize the **graphic interface** and ease of learning before additional world simulation features. Existing UI has accumulated controls, many unclear or scattered. Organize **separate tabs** with clear responsibilities, simplify navigation, and add contextual explanations. The user plays **SOL, the ship's AI**, while SOL's established autonomous controller continues running the ship. Preserve a safe **20× testing speed**, distinct from normal 4× and nine synchronized holiday 1× pacing.

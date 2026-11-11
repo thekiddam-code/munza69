@@ -63,3 +63,16 @@ Each batch must update evidence, status and remaining gates. A completed test do
 | Extended Universe features | Deferred to Extended Universe | No Phase 4 scope expansion. |
 
 Phase 4 advances final-design cohesion rather than universe breadth. Full phase/final-release completion remains open until documented acceptance gates are met.
+
+## Phase 4A — existing UMBRA companion depth
+
+| Milestone | Status | Remaining gate |
+| --- | --- | --- |
+| Existing browser OS/remote, separate phone/tablet UI and offline icons | Implemented; final automated validation in progress | Sustained human and physical WebView review |
+| Local TV profiles/editor/right-hand preset and managed timer | Implemented; protocol-level tests in progress | Physical Samsung behavior/model/firmware remains unverified; native timer is not claimed |
+| SOL camera/crew/status/source feed and optional 51st State | Implemented; pure shared renderer/provenance tests in progress | Native/video capture not claimed |
+| Optional fictional GIF archive / client-only anomalies | Implemented, independent default-OFF toggles | Physical Android performance/accessibility review |
+| Existing Android APK update | Pending source recovery | Recover original Android Studio project and preserve application/signing/preferences; no replacement APK |
+| Real captured ICARUS recordings / advanced native TV / Tailscale/push/voice/streaming | Deferred / not verified | Outside current browser/server batch |
+
+This batch improves access to the same persistent world and existing remote functions. Missing native sources do not block browser/server completion. Native/human gates still prevent a full final-release claim.

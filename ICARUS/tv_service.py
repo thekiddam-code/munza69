@@ -22,7 +22,7 @@ class TVService:
     self.last_used=self.clock();self.last_sent=key;self.last_error=None
    except Exception as exc:
     self.last_error=str(exc)[:120];self._disconnect();raise ValueError('TV connection failed: '+self.last_error)
-  return 'TV: '+key.replace('_',' ')+' sent; execution not acknowledged by this protocol'
+  return 'TV: '+key.replace('_',' ')
  def cancel(self,reason='Cancelled',owner=None):
   with self.lock:
    if owner is not None and self.countdown.get('owner')!=owner:return
@@ -42,6 +42,8 @@ class TVService:
   with self.lock:
    if generation!=self.generation or self.countdown.get('state')!='scheduled':return
    self.timer=None
+   if self.clock()-self.countdown['deadline']>60:
+    self.countdown={**self.countdown,'state':'expired','reason':'Server suspension/late wake; shutdown not attempted'};return
    if self.settings().get('ip')!=self.countdown['ip']:
     self.countdown={**self.countdown,'state':'cancelled','reason':'TV address changed'};return
    self.countdown={**self.countdown,'state':'sending'}
