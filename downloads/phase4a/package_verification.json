@@ -1,0 +1,9 @@
+{
+  "zip": "ICARUS_SOL_Command_Interface_Phase4_Lite.zip",
+  "source_commit": "12c2b8835c2e5d73d4231570443aeb83e9936867",
+  "sha256": "eb9128dbe97d16d6f166b80a9ba760474d27a66039e3e485df56486dbc300a4a",
+  "bytes": 583252,
+  "runtime_files": 90,
+  "all_files": 105,
+  "crc_and_hashes_passed": true
+}

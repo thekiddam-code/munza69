@@ -1,0 +1,72 @@
+{
+  "passed": true,
+  "source_commit": "12c2b8835c2e5d73d4231570443aeb83e9936867",
+  "syntax_files": 64,
+  "local_script_references": 63,
+  "manifest_files": 104,
+  "runtime_files": 90,
+  "unchanged_host_files": [
+    "config.json",
+    "requirements.txt",
+    "Start_Remote_Deck.bat"
+  ],
+  "unchanged_server_functions": [
+    "action",
+    "token_hash",
+    "tv_connect",
+    "tv_ip",
+    "load_tokens",
+    "save_tokens",
+    "tv_settings",
+    "tv_save",
+    "keyseq"
+  ],
+  "tv_key_allowlist_unchanged": true,
+  "pure_modules_without_network_execution_patterns": [
+    "web/companion-view.js",
+    "web/camera-sprites.js",
+    "web/umbra/layout.js",
+    "web/umbra/icons.js"
+  ],
+  "arcade_assets": [
+    {
+      "name": "corporate-cleanup.gif",
+      "sha256": "0b405fa8a95526b21da9d482d7d4e9880fb0b9d89e57eed0e2c74fbe560689d2",
+      "frames": 12,
+      "duration_ms": 2880
+    },
+    {
+      "name": "corridor-chase.gif",
+      "sha256": "520e5e8028fac8a29abaac59f61d9be10cba6057ef6fed1775b773e60049651c",
+      "frames": 12,
+      "duration_ms": 2880
+    },
+    {
+      "name": "facehugger-surprise.gif",
+      "sha256": "fa579aea196eeaa87f32d2c2e965298c3c495b47b127266e60e684d9e6037566",
+      "frames": 12,
+      "duration_ms": 2880
+    },
+    {
+      "name": "motion-tracker.gif",
+      "sha256": "35a6cb95da204feae26abed11f839ee441ff1cfd5e04ada0d05bbe21b2812ec7",
+      "frames": 12,
+      "duration_ms": 2880
+    },
+    {
+      "name": "tail-strike.gif",
+      "sha256": "c93708093cfcbf2b7643cba638e56b5600f9d097dbbcff8855834dcb2eea0aa8",
+      "frames": 12,
+      "duration_ms": 2880
+    },
+    {
+      "name": "vent-ambush.gif",
+      "sha256": "cc43ce5acb51c5bee5c302b2e394de4537f5f5f329cc09c3a2ee28ea4a48d189",
+      "frames": 12,
+      "duration_ms": 2880
+    }
+  ],
+  "private_files_tests_and_replacement_apk_absent": true,
+  "security_review": "SECURITY_PHASE4A.md",
+  "limitations": "Static checks, not antivirus certification or penetration testing; no physical device or native APK rebuild."
+}

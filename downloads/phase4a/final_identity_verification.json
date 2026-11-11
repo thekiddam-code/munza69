@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "final_package_source_commit": "12c2b8835c2e5d73d4231570443aeb83e9936867",
+  "tested_runtime_commit": "3b6d986f5e26c3fa33c42c61abc3f0e830b286c6",
+  "runtime_files": 90,
+  "final_and_tested_runtime_hashes_identical": true,
+  "evidence_manifest_hashes_passed": 202,
+  "evidence_sha256": "765ec733f5cc8f2289a8f303927586d5abc82b89260cca2e6cc6090a01211ddf",
+  "previous_phase4_download_unchanged": true,
+  "native_apk": "Pending source recovery; installed APK preserved",
+  "physical_samsung_tv": "NOT RUN; protocol tests separate"
+}
