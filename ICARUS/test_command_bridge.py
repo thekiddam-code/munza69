@@ -45,4 +45,6 @@ class CommandBridge(UmbraBrowser):
   p=self.page(pc=True)
   with p.expect_popup() as popup:p.evaluate("window.open('/icarus.html?icarus_soak=1','_blank')")
   q=popup.value;q.wait_for_function('!!window.__icarusSoak');self.assertEqual(p.evaluate('ICARUSHost.instance'),q.evaluate('ICARUSHost.instance'));self.assertTrue(p.evaluate('ICARUSHost.canWrite()'));self.assertFalse(q.evaluate('ICARUSHost.canWrite()'));self.assertFalse(q.evaluate('ICARUSDurable.canWrite()'))
+ def test_bridge_observed_crew_follow_and_creator_route_recovery(self):
+  p=self.page(pc=True);before=p.evaluate('__icarusSoak.snapshot()');self.assertNotIn('×',p.locator('#command-clock').inner_text());p.locator('[data-bridge-follow="Mara Chen"]').click();self.assertTrue(p.locator('#page-operations').is_visible());self.assertIn('B07 Security Control',p.locator('#camstatus').inner_text());self.assertIn('MARA CHEN',p.locator('#status').inner_text());self.assertEqual(p.evaluate('__icarusSoak.snapshot()'),before);p.keyboard.press('Control+Shift+F12');p.evaluate("ICARUSCommandUI.navigate('settings','advanced')");p.keyboard.press('Control+Shift+F12');self.assertTrue(p.locator('#area-settings-general').is_visible());self.assertFalse(p.locator('#area-settings-advanced').is_visible())
 if __name__=='__main__':unittest.main()
