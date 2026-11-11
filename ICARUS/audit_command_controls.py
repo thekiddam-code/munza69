@@ -22,5 +22,7 @@ with sync_playwright() as w:
   id=el['id'];n=p.locator('[id="'+id+'"]');record=seen.get(id);exists=n.count()>0
   if not exists:missing.append(id)
   rows.append({'id':id,'baseline_label':el['text'][:65],'present':exists,'location':record or 'Home/live widget, closed replay/director/legacy compatibility, or dynamically selected content; see grouped map'})
+ locations=p.evaluate('''()=>Object.fromEntries([...document.querySelectorAll('[id]')].map(e=>[e.id,{area:e.closest('.command-area')?.id||null,page:e.closest('[data-command-page]')?.dataset.commandPage||null,handler:!!(e.onclick||e.onchange||e.oninput),dialog:e.closest('[role=dialog]')?.id||null}]))''')
+ for row in rows:row['logical_home']=locations.get(row['id'])
  (OUT/'control_inventory.json').write_text(json.dumps({'unchanged_world_during_full_inventory':True,'existing_controls':rows,'missing_ids':missing,'reachable_ids':seen},indent=2));b.close()
 print(json.dumps({'baseline_id_controls':len(rows),'seen_id_controls':len(seen),'missing':missing}))

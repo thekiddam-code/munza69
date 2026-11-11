@@ -1,5 +1,7 @@
 # Phase 4 — SOL interface progress
 
+Current status: substantial implemented batch automatically verified against final runtime d39f2d7. Full Phase 4/final release remains open for native/human gates. See PHASE4_UI_VALIDATION.md.
+
 Authority: Issue #4, PHASE4_SOL_INTERFACE_PLAN.md, branch codex/sol-interface-phase4. Baseline 32fa18e (Phase 3.5 runtime inherited from 9da612e). Final-design scope remains the bounded anthology.
 
 ## Milestone 1: working presentation and clock foundations
@@ -23,3 +25,9 @@ Final command review corrected two integration details: new SOL holds/courses no
 A longer production-page run caught a real UI regression: re-rendered legacy living-history sections were appended after relocation without removing their preceding instances. This duplicated registry/memory/archive/save controls and caused DOM growth. Corrected by retaining selection/open state, removing the preceding section instances, then installing the refreshed nodes. The regression test now advances real timers before checking unique IDs. Earlier package/suites and the interrupted initial campaign are superseded, not counted as final passes. A preference-disclosure test now checks its actual open state before toggling; browser-history assertions wait for popstate visibility.
 
 Runtime frozen at d39f2d7 after the duplicate-section fix. Final validation uses a fresh independent extraction; earlier f635687/f9137fb package runs remain superseded. Added actual user-facing 1×/5× transitions, read-only spectator test-mode denial, and scoped mission release without team movement/resource changes. No runtime feature is disabled to make tests pass.
+
+## Final accepted validation
+
+265 Node cases; 71 cinematic, 30 stability, 44 compatibility, 17 interface, 2 production and 3 bridge browser executions; 15 phone and 11 tablet touch checks. All executed final-runtime checks pass. Five real full-backup migrations preserve their supplied history, research, crew and exact reload state, including 19 survivors/Nadia Kline memorial. Final-runtime 7-day compound and 30-day normal campaigns pass full source/history/resource audits and match all 65 extracted runtime hashes. Screenshots and diagnostics are in reports/phase4. See that evidence and validation document for measured outcomes and unavailable tests; counts overlap inherited cases.
+
+New course coverage checks actual per-minute fuel burn and physical motion; an initial up-front-payment test assumption was corrected after inspecting the existing model, without altering physics. Package identity is verified independently and again after final documentation packaging. Native Windows/Android/Tab S5e/TV, antivirus, screen-reader/native FPS and sustained human review remain unverified. This batch moves ICARUS toward the final design through cohesive observation/control and preservation of its existing world, not additional scope.

@@ -1,0 +1,32 @@
+{
+  "passed": false,
+  "tests_run": 11,
+  "passed_cases": [
+    "test_20x_crosses_real_monday_once_with_same_people (__main__.CommandInterface.test_20x_crosses_real_monday_once_with_same_people)",
+    "test_20x_holiday_then_normal_one_times (__main__.CommandInterface.test_20x_holiday_then_normal_one_times)",
+    "test_actual_holiday_timer_is_one_times_and_ignores_old_speed_button (__main__.CommandInterface.test_actual_holiday_timer_is_one_times_and_ignores_old_speed_button)",
+    "test_actual_normal_timer_is_four_times_and_pause_drops_elapsed_time (__main__.CommandInterface.test_actual_normal_timer_is_four_times_and_pause_drops_elapsed_time)",
+    "test_directives_are_sourced_and_release_is_scoped (__main__.CommandInterface.test_directives_are_sourced_and_release_is_scoped)",
+    "test_keyboard_navigation_help_and_return_to_home (__main__.CommandInterface.test_keyboard_navigation_help_and_return_to_home)",
+    "test_real_20x_timer_pause_normal_and_reload (__main__.CommandInterface.test_real_20x_timer_pause_normal_and_reload)"
+  ],
+  "failures": [
+    {
+      "test": "test_all_major_pages_responsive_and_rectangular_gradients (__main__.CommandInterface.test_all_major_pages_responsive_and_rectangular_gradients)",
+      "detail": "Traceback (most recent call last):\n  File \"/workspace/work/munza69/ICARUS/test_command_interface.py\", line 29, in test_all_major_pages_responsive_and_rectangular_gradients\n    self.go(p,page);p.screenshot(path=str(out/f'{label}_{page}.png'));self.assertLessEqual(p.evaluate('document.documentElement.scrollWidth'),size['width']);b=p.locator('#icarus-menu .active');self.assertEqual(b.evaluate('e=>getComputedStyle(e).clipPath'),'none');self.assertIn('gradient',b.evaluate('e=>getComputedStyle(e).backgroundImage'));self.assertEqual(b.evaluate('e=>getComputedStyle(e).filter'),'none')\n                                                                                                                                                                                                                                                                                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 'brightness(1.08)' != 'none'\n- brightness(1.08)\n+ none\n\n"
+    },
+    {
+      "test": "test_home_is_default_and_widgets_keep_same_live_nodes_and_preferences (__main__.CommandInterface.test_home_is_default_and_widgets_keep_same_live_nodes_and_preferences)",
+      "detail": "Traceback (most recent call last):\n  File \"/workspace/work/munza69/ICARUS/test_command_interface.py\", line 11, in test_home_is_default_and_widgets_keep_same_live_nodes_and_preferences\n    p=self.start('2026-11-09T12:00:00');self.assertTrue(p.locator('#icarus-home').is_visible());p.evaluate('window.originalCrew=document.querySelector(\"#crew\")');p.locator('#home-edit').click();p.locator('[data-widget=\"cameras\"]').check();self.go(p,'operations');self.go(p,'home');self.assertTrue(p.evaluate('window.originalCrew===document.querySelector(\"#crew\")'));p.reload();self.assertTrue(p.locator('[data-widget-id=\"cameras\"]').is_visible());self.assertEqual(p.locator('#crew').count(),1)\n                                                                                                                                                                                                                                                                                                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: False is not true\n"
+    },
+    {
+      "test": "test_tabs_are_isolated_unique_and_browser_back_preserves_navigation (__main__.CommandInterface.test_tabs_are_isolated_unique_and_browser_back_preserves_navigation)",
+      "detail": "Traceback (most recent call last):\n  File \"/workspace/work/munza69/ICARUS/test_command_interface.py\", line 13, in test_tabs_are_isolated_unique_and_browser_back_preserves_navigation\n    p=self.start('2026-11-09T12:00:00');self.assertEqual(p.locator('#icarus-menu button').all_text_contents(),['Home','Bridge','Ship','Crew','Missions','Research','Chronicles','Settings']);self.go(p,'ship','systems');self.assertTrue(p.locator('#area-ship-systems').is_visible());self.go(p,'research','evidence');self.assertFalse(p.locator('#area-ship-systems').is_visible());p.go_back();self.assertTrue(p.locator('#area-ship-systems').is_visible());self.assertEqual(p.evaluate('()=>{const a=[...document.querySelectorAll(\"[id]\")].map(e=>e.id);return a.length-new Set(a).size;}'),0)\n                                                                                                                                                                                                                                                                                                                                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: False is not true\n"
+    },
+    {
+      "test": "test_test_warning_cancel_and_deliberate_reset_confirmation (__main__.CommandInterface.test_test_warning_cancel_and_deliberate_reset_confirmation)",
+      "detail": "Traceback (most recent call last):\n  File \"/workspace/work/munza69/ICARUS/test_command_interface.py\", line 23, in test_test_warning_cancel_and_deliberate_reset_confirmation\n    p=self.start('2026-11-09T12:00:00');self.go(p,'settings','testing');p.on('dialog',lambda d:d.dismiss());p.locator('#test-rate').select_option('20');self.assertEqual(p.locator('#test-rate').input_value(),'0');before=self.state(p);p.locator('#test-reset').click();self.assertEqual(self.state(p),before)\n                                                                                                                                                                                                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: {'ver[18625 chars]e': 'Verified durable save committed.', 'kind'[39486 chars]000}} != {'ver[18625 chars]e': 'ICARUS v0.17 initialized. Crew schedules [39113 chars]000}}\nDiff is 154236 characters long. Set self.maxDiff to None to see it.\n"
+    }
+  ],
+  "errors": []
+}

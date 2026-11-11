@@ -1,0 +1,28 @@
+"""Exercise normal backup-file UI with a real campaign artifact, then resume it."""
+import argparse, functools, http.server, json, os, threading,time,traceback
+from pathlib import Path
+from playwright.sync_api import sync_playwright
+ROOT=Path(__file__).resolve().parent
+
+def main():
+    ap=argparse.ArgumentParser();ap.add_argument('backup',type=Path);ap.add_argument('--report',type=Path,default=Path('backup_roundtrip.json'));args=ap.parse_args();timeout=int(os.environ.get('ICARUS_BACKUP_TIMEOUT','120000'));report={'passed':False,'errors':[],'backup':args.backup.name,'stage':'starting','timeout_seconds':timeout/1000};started=time.monotonic()
+    class Quiet(http.server.SimpleHTTPRequestHandler):
+        def log_message(self,*a):pass
+    server=http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(ROOT/'web')));threading.Thread(target=server.serve_forever,daemon=True).start()
+    try:
+        backup=json.loads(args.backup.read_text());raw=backup['state'];expected_history_ids={r['id'] for r in backup.get('history',[])};del backup
+        with sync_playwright() as pw:
+            b=pw.chromium.launch(headless=True,executable_path=os.environ.get('ICARUS_CHROMIUM') or None);ctx=b.new_context();p=ctx.new_page();p.set_default_timeout(timeout);p.set_default_navigation_timeout(timeout);report['stage']='startup';p.goto(f'http://127.0.0.1:{server.server_port}/icarus.html?icarus_soak=1');p.wait_for_function('!!window.__icarusSoak');p.on('dialog',lambda d:d.accept());report['stage']='import';import_started=time.monotonic();p.locator('#backupfile').set_input_files(str(args.backup));p.wait_for_function('(tick)=>window.__icarusSoak.time()===tick||document.querySelector("#backup-progress")?.textContent.includes("Import stopped")',arg=raw['tick']);report['transfer_progress']=p.locator('#backup-progress').inner_text();assert p.evaluate('window.__icarusSoak.time()')==raw['tick'],report['transfer_progress'];snap=json.loads(p.evaluate('JSON.stringify(window.__icarusSoak.snapshot())'))
+            report['import_seconds']=time.monotonic()-import_started;report['stage']='source_and_history_validation';keys=['entities','experiences','emergencyOps','chronicles','clock','crew','universe','navigation','logistics','frontier','economy','entropy','living','specimenCustody'];keys+=[k for k in ['anthology','repairControl','calendar','unifiedWorld','knowledge','crewLife','cinema','solVoice'] if k in raw];projected=json.loads(json.dumps(snap));report['migrated_archive_annotations']=0
+            if 'cinema' in raw and 'sourceFrames' not in raw['cinema']:assert projected['cinema'].pop('sourceFrames',[])==[]
+            if 'knowledge' not in raw and 'unifiedWorld' in raw:
+                for old,new in zip(raw['unifiedWorld']['archives'],projected['unifiedWorld']['archives']):
+                    if 'knowledgeId' not in old and 'knowledgeId' in new:
+                        fid=new.pop('knowledgeId');fact=snap['knowledge']['facts'][fid];assert fact['sourceId']==old['sourceId'];assert fid in snap['knowledge']['actors']['SOL']['entries'];report['migrated_archive_annotations']+=1
+            report['mismatched_import_domains']=[k for k in keys if projected[k]!=raw[k]];assert not report['mismatched_import_domains'],report['mismatched_import_domains'];assert snap['director']['science']==raw['remoteCore']['director']['science'];assert snap['knowledgeAudit']==[];assert snap['creatureAudit']==[];assert snap['resourceAudit']==[];assert snap['frontierAudit']==[];history_ids=json.loads(p.evaluate('ICARUSDurable.history().then(rows=>JSON.stringify(rows.map(r=>r.id)))'));assert expected_history_ids<=set(history_ids);report['imported_history_records']=len(history_ids)
+            report['stage']='durable_save_and_reload';assert p.evaluate('window.__icarusSoak.save()');reload_started=time.monotonic();p.reload();p.wait_for_function('!!window.__icarusSoak');after=json.loads(p.evaluate('JSON.stringify(window.__icarusSoak.snapshot())'));report['mismatched_reload_domains']=[k for k in snap if snap[k]!=after.get(k)];assert snap==after,report['mismatched_reload_domains'];report['reload_seconds']=time.monotonic()-reload_started
+            p.evaluate('window.__icarusSoak.advance(120)');final=json.loads(p.evaluate('JSON.stringify(window.__icarusSoak.snapshot())'));assert final['tick']==raw['tick']+120;assert final['knowledgeAudit']==[];assert final['creatureAudit']==[];assert final['resourceAudit']==[];assert final['frontierAudit']==[];report.update(crew_before=len(raw['crew']),crew_after=len(final['crew']),memorials_before=[p['name'] for p in raw['living']['deceased']],memorials_after=[p['name'] for p in final['living']['deceased']],stage='finished',passed=True,imported_tick=raw['tick'],resumed_tick=final['tick'],storage=p.evaluate('ICARUSSaveStore.stats()'));b.close()
+    except Exception as e:report['errors'].append(str(e));report['traceback']=traceback.format_exc()
+    finally:server.shutdown();server.server_close();args.report.parent.mkdir(parents=True,exist_ok=True);report['elapsed_seconds']=time.monotonic()-started;args.report.write_text(json.dumps(report,indent=2))
+    print(json.dumps(report,indent=2));return not report['passed']
+if __name__=='__main__':raise SystemExit(main())

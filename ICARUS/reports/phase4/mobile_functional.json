@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "runtime_root": "/workspace/work/phase4_final_validation/tested/ICARUS_SOL_Command_Interface_Phase4_Lite",
+  "checks": [
+    "Unpaired telemetry denied",
+    "Wrong pairing PIN denied",
+    "Touch pairing persists only token hash on PC",
+    "Android-layout course reaches authoritative PC simulation",
+    "Touch hold reaches PC",
+    "Phone remains a thin client",
+    "Mobile panel fits viewport",
+    "Paired phone reconnects after reload",
+    "Foreign POST Origin denied",
+    "Predefined keyboard macro routes to stub only",
+    "Emergency stop routes to input release",
+    "TV public address rejected",
+    "TV private address config and allowlisted key contract",
+    "Unpair invalidates persisted device token",
+    "No browser script errors"
+  ],
+  "errors": [],
+  "limits": "Android Chrome mobile/touch emulation on Chromium through real HTTP pairing/bridge. PyAutoGUI and television socket stubbed. No physical Android, Windows desktop input, Wi-Fi or Samsung device used.",
+  "stubbed_io_calls": [
+    {
+      "operation": "hotkey",
+      "args": [
+        "ctrl",
+        "c"
+      ]
+    },
+    {
+      "operation": "tv_connect",
+      "url": "wss://192.168.1.99:8002/api/v2/channels/samsung.remote.control?name=UmVtb3RlIERlY2s=",
+      "certificate_validation": 0
+    },
+    {
+      "operation": "tv_send",
+      "payload": {
+        "method": "ms.remote.control",
+        "params": {
+          "Cmd": "Click",
+          "DataOfCmd": "KEY_HOME",
+          "Option": "false",
+          "TypeOfRemote": "SendRemoteKey"
+        }
+      }
+    }
+  ]
+}

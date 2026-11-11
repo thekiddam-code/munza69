@@ -51,3 +51,15 @@ Status vocabulary: **Complete and verified**, **Implemented but needing refineme
 7. Run broader balance campaigns plus sustained human playtests; then define an audio/cinematic accessibility budget and a final-release candidate checklist.
 
 Each batch must update evidence, status and remaining gates. A completed test does not automatically change a partially implemented content or polish milestone to complete.
+
+## Phase 4 — cohesion toward the final design
+
+| Milestone | Status | Scope / remaining gate |
+| --- | --- | --- |
+| SOL interface and retained Home | Implemented and automatically verified; human refinement pending | Eight destinations, source-backed live components, scoped directives, help and responsive controls. Human/native usability remains unverified. |
+| Development clock | Implemented and automatically verified; human refinement pending | Actual 1/5/20× physical testing; normal pacing/real weeks preserved; 17 extracted interface cases and 7/30-real-day campaigns verified; native/human gates remain. |
+| Basic save/Remote Deck continuity | Retained and automatically verified | No namespace/schema/host rewrite; five full-backup migrations and HTTP pairing checks verified. Full backup/migration polish is deferred by user priority. |
+| Native hardware, accessibility and sustained human play | Not started / unavailable here | Physical Windows, Tab S5e/Android, TV, antivirus and human review cannot be inferred from Chromium. |
+| Extended Universe features | Deferred to Extended Universe | No Phase 4 scope expansion. |
+
+Phase 4 advances final-design cohesion rather than universe breadth. Full phase/final-release completion remains open until documented acceptance gates are met.

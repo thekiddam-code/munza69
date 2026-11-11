@@ -1,0 +1,662 @@
+{
+  "campaigns": {
+    "compound_4807": {
+      "passed": true,
+      "seed": 4807,
+      "scenario": "compound",
+      "real_days": 7,
+      "sim_days": 25.0,
+      "alive": 20,
+      "dead": [],
+      "arrivals": 5,
+      "field_missions": 12,
+      "local_jobs": 5,
+      "science_cases": 21,
+      "experiment_statuses": {
+        "complete": 62,
+        "no_result": 26,
+        "failed": 3
+      },
+      "confirmed_conclusions": 4,
+      "conversations": 417,
+      "retained_visual_frames": 120,
+      "captured_state_frames": 1982,
+      "weekly_films": 1,
+      "film_durations_seconds": [
+        268
+      ],
+      "film_recorded_segments": 3,
+      "film_award_segments": 3,
+      "grievance_followups": 11,
+      "dispute_outcomes": 18,
+      "human_review_samples": [
+        {
+          "sourceId": "CHR-2-V2o3ai1-9734",
+          "kind": "social",
+          "message": "Theo Moss and June Adler reached an agreement in Mess Hall & Galley."
+        },
+        {
+          "sourceId": "CHR-2-V2o3ai1-9821",
+          "kind": "social",
+          "message": "Derek Cole confronted Ari Novak after a tense conversation in Cargo Bay."
+        },
+        {
+          "sourceId": "CHR-2-V2o3ai1-9872",
+          "kind": "social",
+          "message": "Derek Cole and Priya Shah reached an agreement in Crew Quarters 1."
+        },
+        {
+          "sourceId": "CHR-2-V2o3ai1-10048",
+          "kind": "social",
+          "message": "Derek Cole confronted Milo Grant after a tense conversation in Recreation."
+        },
+        {
+          "sourceId": "CHR-2-V2o3ai1-10055",
+          "kind": "social",
+          "message": "Derek Cole confronted Yara Finch after a tense conversation in Recreation."
+        },
+        {
+          "sourceId": "CHR-2-V2o3ai1-10157",
+          "kind": "social",
+          "message": "Nadia Kline and June Adler reached an agreement in Observation Lounge."
+        },
+        {
+          "sourceId": "CHR-2-V2o3ai1-10228",
+          "kind": "social",
+          "message": "Mara Chen and Owen Briggs reached an agreement in Security Control."
+        },
+        {
+          "sourceId": "CHR-2-V2o3ai1-10244",
+          "kind": "social",
+          "message": "Jules Mercer and Milo Grant reached an agreement in Crew Quarters 2."
+        },
+        {
+          "sourceId": "CHR-2-V2o3ai1-10247",
+          "kind": "social",
+          "message": "Dr. Voss and Milo Grant reached an agreement in Crew Quarters 2."
+        },
+        {
+          "sourceId": "CHR-2-V2o3ai1-10255",
+          "kind": "social",
+          "message": "Tomas Vale and Iris Bell reached an agreement in Crew Quarters 2."
+        },
+        {
+          "sourceId": "CHR-2-V2o3ai1-10290",
+          "kind": "social",
+          "message": "Elena Ruiz and Frank Morrow reached an agreement in Crew Quarters 1."
+        },
+        {
+          "sourceId": "CHR-2-V2o3ai1-10294",
+          "kind": "social",
+          "message": "Theo Moss and Frank Morrow reached an agreement in Crew Quarters 1."
+        }
+      ],
+      "film_legendary_segments": 0,
+      "public_source_audit_errors": [],
+      "history_records": 10463,
+      "source_kind_counts": {
+        "system": 353,
+        "injury": 1,
+        "anthology": 380,
+        "medical": 2,
+        "emergency": 15,
+        "little": 7429,
+        "crew_memory": 106,
+        "maintenance": 4,
+        "social": 630,
+        "relationship": 1013,
+        "observation": 150,
+        "research": 107,
+        "mission": 36,
+        "mission_history": 5,
+        "encounter": 3,
+        "encounter_history": 3
+      },
+      "most_repeated_social_text": [
+        [
+          "Linda Park: Opened a grievance follow-up. An unresolved crew dispute is on record",
+          11
+        ],
+        [
+          "DISPUTE: Derek Cole and Sana Okafor disagree over unresolved personal grievance.",
+          6
+        ],
+        [
+          "Several crew members gathered in Mess Hall & Galley for a private discussion.",
+          5
+        ],
+        [
+          "Several crew members gathered in Crew Quarters N for a private discussion.",
+          5
+        ],
+        [
+          "DISPUTE: Derek Cole and Ari Novak disagree over unresolved personal grievance.",
+          5
+        ]
+      ],
+      "death_details": [],
+      "resources": {
+        "food": 159.98600000000002,
+        "water": 152.85480000000612,
+        "oxygen": 110.72400000000144,
+        "energy": 179.85762684,
+        "medical": 20,
+        "spares": 68.60142320000001,
+        "tools": 69.982,
+        "lab": 80
+      },
+      "resource_acquisition": {},
+      "travel_fuel": 1.9624515496596866,
+      "storage_first": {
+        "physical_bytes": 381610,
+        "primary_bytes": 362334,
+        "compressed": true
+      },
+      "storage_last": {
+        "physical_bytes": 1363276,
+        "primary_bytes": 698092,
+        "compressed": true
+      },
+      "snapshot_bytes_first": 1764556,
+      "snapshot_bytes_last": 4014121,
+      "checkpoints": [
+        {
+          "real_day": 7,
+          "sim_days": 25.0,
+          "episode": 2,
+          "exact_reload": true,
+          "crew": 20,
+          "dead": 0,
+          "stories": 95,
+          "resources": {
+            "food": 159.98600000000002,
+            "water": 152.85480000000612,
+            "oxygen": 110.72400000000144,
+            "energy": 179.85762684,
+            "medical": 20,
+            "spares": 68.60142320000001,
+            "tools": 69.982,
+            "lab": 80
+          },
+          "arrivals": 5,
+          "calendar_occurrences": [
+            "2026-10-31:Halloween"
+          ],
+          "organisms": {
+            "XENO-INITIAL": {
+              "id": "XENO-INITIAL",
+              "stage": "adult",
+              "dormant": true,
+              "location": "asteroid:23",
+              "origin": "initial concealed chamber",
+              "sealed": true,
+              "behavior": {
+                "version": 1,
+                "state": "contained",
+                "energy": 100,
+                "stamina": 100,
+                "health": 100,
+                "lastTick": 36000,
+                "lastAttack": -100,
+                "steps": 0,
+                "meals": 0,
+                "trace": [
+                  {
+                    "at": 5,
+                    "from": "dormant",
+                    "to": "contained",
+                    "location": "asteroid:23"
+                  }
+                ]
+              }
+            },
+            "EGG-1": {
+              "id": "EGG-1",
+              "stage": "egg",
+              "dormant": true,
+              "location": "asteroid:22"
+            },
+            "EGG-2": {
+              "id": "EGG-2",
+              "stage": "egg",
+              "dormant": true,
+              "location": "asteroid:24"
+            }
+          }
+        }
+      ],
+      "backup_sha256": "9fa43aa33b8d0aabe135261cbdf0c4df95f6016e8f40e2170a7fc8e040a3463a",
+      "runtime_sha256": {
+        "server.py": "d43781ba1af5f371de05f32b572efbbb9c44b69efbf133e988a43f67076cee44",
+        "requirements.txt": "3dd40988330002f37cd1f2b2b80e65ee3919798dc38771b00fed572a4d659f9e",
+        "config.json": "54a4ac908d2fe82e9c58fb942134327cf0562665e47b170b5d9b0b085ce8b865",
+        "Start_Remote_Deck.bat": "ffbd4b2e6d561ad162547e4f32c0de891915a6d3876ba6d2bff427ec06df368b",
+        "web/animation.js": "833e12fb8c11d625d9cf737438337535bb56bb567703d2eaa09bbb18af7e1884",
+        "web/anthology-ui.js": "f4aa4b5536287853abdd32b68dd0e2f87f113a79e0674cad3c6fa10b59f4e6b5",
+        "web/anthology.js": "e2621ab0e567e85a9a4b25b11968df7480e69f6abe311e547fddea412a224bb2",
+        "web/backup-codec.js": "5055483368e3ec04a5a006945273a7e232cb2de9a83361fc10c707fde391b974",
+        "web/backup-transfer.js": "0ca533a1f6bbbc3ddfbe1e7ea6791fa187aa265eacb884b6a48c8d1273cedbec",
+        "web/backup-ui.js": "922e41162b7330aafef1f250996fb30cd1b7dbf3d3866f9933c3113b0d900a98",
+        "web/calendar.js": "69de37387e887f162417011d1607dc386f2bba9f08fa3f4ae8e066e765a5f072",
+        "web/chronicle-evidence.js": "e72ae182f7d6cc00e600ca5d185f03d63257a5cda0baba22cbbf0ee2e37f8488",
+        "web/chronicle-film.js": "38aadf29719bd900b2c3d501a6feb6a2a744b3691411b3624a9dee554cea3bdc",
+        "web/chronicles.js": "a7823ad26e86f65249561ccbf29d0e70d46d0679ed3c0f98cb06457886902456",
+        "web/cinema-ui.js": "830f050b8e8fc03785b49c95fd285eb7f6f542d70088a82035dd09a4ad630b12",
+        "web/cinema.js": "5f914a9815c3f68a9f360cd6a36b8ef89ea08b9fa14868f73b81d88f05312fb1",
+        "web/cinematic.css": "69605d6837e6b1c4985a06e2f88ca1925d75f3721c5ea715e88b3cfc61d811e2",
+        "web/command-ui.css": "f6cc605cc44cc68a5694d59a5689c97bb3f61ce2124b7b85c4d9a3b5eb5ebd35",
+        "web/command-ui.js": "5cc50e816d25b74f6dbc203153e73b07f330610f1c59fb6c6adbc2d4896266d8",
+        "web/core-context.js": "984feae5ab86359013cfad335c7fd2cfc398c6515a69ebf90add78969424d0d2",
+        "web/creatures.js": "729bede3b4c59c139fb5e703fd4b12c151ccf4c4e9c2e103d99e3881effc90d9",
+        "web/crew-editorial.js": "f12b127e1a217a1afbde3c5f37e2b3a63433ddada4f9b3834944e9a7ac763490",
+        "web/crew-life.js": "4b37016189295bf1915d7888e967cf46ae8573baa71ee1d04901a4d87e6c041b",
+        "web/diagnostics.js": "a4f29c565348ecc3adff65e6d0459f233f9fde60fbf0794e240d0ee8ad9759dc",
+        "web/discovery.js": "e950ac6b0f3aff732995b5adc1991b2d6fd935538a879e93c5f90f778cfa8b98",
+        "web/durable-store.js": "fec39ec1ea1716b7f7917dcf8fe9c2d82a3fd947e8acbe079c196898df6c69e4",
+        "web/economy.js": "919fcfdef54d30b6320d8886d4eff43273bb9642763eeaad179bb7607ab3e292",
+        "web/edition.js": "33f4c281646bb8baa8f45b015c82dd5cabb780e69383448f3390f64566e5331f",
+        "web/embodiment.js": "589c39b15781205258b622f82d8f67a2c44b4e21b8f383e231c6ca10d0c9ba0e",
+        "web/emergency-ops.js": "405de452acf28d5635c3e7f51ce3c239b54c1e868f2a0d619fee36e78fa7f3c9",
+        "web/entities.js": "c8fe473a604345d7543c6f545909dcf734eb2a8ef2d3a6f62aa48bbf0f9305d1",
+        "web/expeditions.js": "729ad659e78636b42b6a743619bc0c0f7f80d9c8480912ec006115a26ee783ef",
+        "web/experiences.js": "2b39dd4736704bd1619d0f7d25b285d090ab0193eacbc424cdc8f25508ab4b14",
+        "web/film-ui.js": "6d9d5d9b400cd707960a9e7aa83fd43771a72e5d0768dbe38b1b16abaeaac679",
+        "web/frontier-ui.js": "8b11361b26cd23b57c4418a404ffc1c7472c8af5f93057d4c08a10c79b61548e",
+        "web/frontier.js": "afdec19b117520eeb9a40d330104b8154bd6ffc879dca4164c81e7c2f2a3a4b7",
+        "web/icarus.html": "708e3f4785577f0c7270d7d9b564ff2a240ba1417ed785a46d743a5aa70218f0",
+        "web/index.html": "f328e21ccc1ba10691960e2de355c556e96f19d88cd996366943f061d8a32952",
+        "web/knowledge-runtime.js": "65145b39b9eb7e36f8f49919a2fc43ac71a300093febe37bf33091cf6abada12",
+        "web/knowledge.js": "bd21c044137a62cb2eab437de142221333595c71c4dd5615a5c8dc2ac429fb05",
+        "web/living-frontier-ui.js": "b134f15f266ee4293a41ce6a1b99ab9f76da8ebb7bb5f25dfa9575d453dca634",
+        "web/living.js": "421a73f5ff1c5b317ab78476692abf3a0fe5e54f2017c88a96b38d19aaf8cdbb",
+        "web/logistics.js": "260d8684db9b0bccc5bbd6c60186fd50e973bbba5c0507ead7b5ad9a712f50ff",
+        "web/lunar.js": "7fe249230562a6d6eb3b6633381a4cddaff56bf90de1676a9ed6c0908c661d51",
+        "web/manifest.webmanifest": "a8ed1d727916b17acf15d37d9a637d4a32cad8e9dbe739084462d0fac28c182b",
+        "web/navigation.js": "eb85891ed5c84a3b8cdc6f700b2a21ceb021e18ee4f415a9119ac0bde648a35d",
+        "web/operations.js": "8711fc4ed9e2e6937c4a1f600ef873f15efceef5c22690f0f3d04f96c9719a12",
+        "web/repair-policy.js": "a1d3b6a64fa3561563b369a49cb30718c015dea79a47c0486d3954560c19de1d",
+        "web/research.js": "ca4de958ed72b3a6404e792abc24b9821b7fc44190a57444f48e69b61e91a3cd",
+        "web/save-store.js": "77f0bbb42ad82da9bcbcebd25d1de3e12d0989f1dea0087e1ad4ca28678150fe",
+        "web/sol-voice.js": "7728cb909cd8c394bb1f62764d77d5c417afc15b829f091e56762519fa0b06c1",
+        "web/spatial.js": "6b4ce51759665185fa558b653e27e2514362d692deb4117ee371f8182b5ae750",
+        "web/stability-diagnostics.js": "d3faeaf4fce68e04960938928ef1729dbe717579ed6b2cb31f0d07972c0732bb",
+        "web/story.js": "2b0464ee7ac4be2409506c7a162ddd8003be6d0df70f47f252641e97c90bb19d",
+        "web/tablet-frontier.js": "6682318bc42b5a46a5703b64137e0d55172ce4eed201305f619c193d55ed6e38",
+        "web/teams.js": "69817c50c92ae5edcdc880b28c904665e6117df25e71a8edabd6ba426597c71b",
+        "web/unified-ui.js": "5a643369c817239bcf3948d5cdfd10d69cc210eaca6a7583da191db61fa91874",
+        "web/unified-world.js": "35e2a8ad0717a19b795f03bc55de0852450766279b17db527f8cf9b9e755fb38",
+        "web/universe.js": "7a3f83170de63739706445cc992c560583e913b577d87087115dfb8cbfae06d4",
+        "web/vendor/LZ_STRING_LICENSE.txt": "433fc9dfe659dbfb1e91eed8351f13651e97bfa3ac6d03394c3d63f61d4bbc80",
+        "web/vendor/astronomy.js": "a2cfab19cab1a15843e4c8cc7410b6cbaafd0907122a8698c25d63d00c2774e4",
+        "web/vendor/lz-string.min.js": "95f4d1cbf099f57161b664bc048426ec3df92637801a4c79116e83315aa787e7",
+        "web/voyage.js": "a70b7bff458052b1ba68713c3a2971ce110a3b169e4e7fe90c9e71cabc90eeda",
+        "web/world-schema.js": "3692ac39772e71912b12214f316cd844bdb292a1bd91626ed1c3d037084d58bb",
+        "web/writer-ui.js": "a255c539f4817a6ba4828d25ca9ff370f81c2e773e78224977d6ae8dcfb3a093"
+      },
+      "elapsed_seconds": 113.01296762599668
+    },
+    "normal_1001": {
+      "passed": true,
+      "seed": 1001,
+      "scenario": "normal",
+      "real_days": 30,
+      "sim_days": 111.75,
+      "alive": 20,
+      "dead": [],
+      "arrivals": 5,
+      "field_missions": 8,
+      "local_jobs": 5,
+      "science_cases": 24,
+      "experiment_statuses": {
+        "complete": 72,
+        "no_result": 25,
+        "failed": 4
+      },
+      "confirmed_conclusions": 3,
+      "conversations": 2032,
+      "retained_visual_frames": 120,
+      "captured_state_frames": 8587,
+      "weekly_films": 4,
+      "film_durations_seconds": [
+        268,
+        208,
+        218,
+        218
+      ],
+      "film_recorded_segments": 3,
+      "film_award_segments": 3,
+      "grievance_followups": 81,
+      "dispute_outcomes": 238,
+      "human_review_samples": [
+        {
+          "sourceId": "CHR-5-V1j54z2l-44587",
+          "kind": "social",
+          "message": "Several crew members gathered in Medical Bay for a private discussion."
+        },
+        {
+          "sourceId": "CHR-5-V1j54z2l-44607",
+          "kind": "social",
+          "message": "Theo Moss and Elena Ruiz reached an agreement in Crew Quarters 1."
+        },
+        {
+          "sourceId": "CHR-5-V1j54z2l-44624",
+          "kind": "social",
+          "message": "Theo Moss and Tomas Vale reached an agreement in Mess Hall & Galley."
+        },
+        {
+          "sourceId": "CHR-5-V1j54z2l-44626",
+          "kind": "maintenance",
+          "message": "SOL: Released obsolete maintenance reservation for Tomas Vale; current assignment retained."
+        },
+        {
+          "sourceId": "CHR-5-V1j54z2l-44641",
+          "kind": "social",
+          "message": "Milo Grant and Tomas Vale reached an agreement in Crew Quarters 2."
+        },
+        {
+          "sourceId": "CHR-5-V1j54z2l-44649",
+          "kind": "social",
+          "message": "Sana Okafor and Elena Ruiz reached an agreement in Crew Quarters 1."
+        },
+        {
+          "sourceId": "CHR-5-V1j54z2l-44667",
+          "kind": "social",
+          "message": "Mara Chen and Theo Moss reached an agreement in Crew Quarters 1."
+        },
+        {
+          "sourceId": "CHR-5-V1j54z2l-44729",
+          "kind": "social",
+          "message": "Elena Ruiz / Ari Novak repeated their recorded greeting tradition TRAD-ARC-260."
+        },
+        {
+          "sourceId": "CHR-5-V1j54z2l-44793",
+          "kind": "social",
+          "message": "Owen Briggs and Mara Chen reached an agreement in Bridge."
+        },
+        {
+          "sourceId": "CHR-5-V1j54z2l-44909",
+          "kind": "social",
+          "message": "Dr. Voss and Jules Mercer reached an agreement in Research Lab 1."
+        },
+        {
+          "sourceId": "CHR-5-V1j54z2l-44911",
+          "kind": "maintenance",
+          "message": "SOL: Released obsolete maintenance reservation for Jules Mercer; current assignment retained."
+        },
+        {
+          "sourceId": "CHR-5-V1j54z2l-45043",
+          "kind": "social",
+          "message": "Nadia Kline and Sana Okafor reached an agreement in Biological Analysis."
+        }
+      ],
+      "film_legendary_segments": 0,
+      "public_source_audit_errors": [],
+      "history_records": 45514,
+      "source_kind_counts": {
+        "system": 893,
+        "little": 34196,
+        "relationship": 4490,
+        "anthology": 1305,
+        "social": 3252,
+        "observation": 229,
+        "research": 120,
+        "crew_memory": 432,
+        "emergency": 6,
+        "mission": 36,
+        "encounter": 3,
+        "encounter_history": 3,
+        "mission_history": 5,
+        "maintenance": 16
+      },
+      "most_repeated_social_text": [
+        [
+          "Linda Park: Opened a grievance follow-up. An unresolved crew dispute is on record",
+          81
+        ],
+        [
+          "Several crew members gathered in Crew Quarters N for a private discussion.",
+          34
+        ],
+        [
+          "DISPUTE: Derek Cole and Ari Novak disagree over unresolved personal grievance.",
+          33
+        ],
+        [
+          "Derek Cole and Ari Novak: Neither party backed down; resentment increased.",
+          30
+        ],
+        [
+          "DISPUTE: Derek Cole and Sana Okafor disagree over unresolved personal grievance.",
+          29
+        ]
+      ],
+      "death_details": [],
+      "resources": {
+        "food": 159.98600000000002,
+        "water": 152.82680000002944,
+        "oxygen": 112.09200000000081,
+        "energy": 179.83416,
+        "medical": 20,
+        "spares": 70,
+        "tools": 70,
+        "lab": 80
+      },
+      "resource_acquisition": {},
+      "travel_fuel": 1.9624515496596866,
+      "storage_first": {
+        "physical_bytes": 350360,
+        "primary_bytes": 350360,
+        "compressed": true
+      },
+      "storage_last": {
+        "physical_bytes": 2878014,
+        "primary_bytes": 1454206,
+        "compressed": true
+      },
+      "snapshot_bytes_first": 1756606,
+      "snapshot_bytes_last": 9922484,
+      "checkpoints": [
+        {
+          "real_day": 7,
+          "sim_days": 25.0,
+          "episode": 2,
+          "exact_reload": true,
+          "crew": 20,
+          "dead": 0,
+          "stories": 99,
+          "resources": {
+            "food": 159.986,
+            "water": 152.82680000000548,
+            "oxygen": 112.09200000000081,
+            "energy": 179.84189112,
+            "medical": 20,
+            "spares": 69.04990359999981,
+            "tools": 69.982,
+            "lab": 80
+          },
+          "arrivals": 5,
+          "calendar_occurrences": [
+            "2026-10-31:Halloween"
+          ],
+          "organisms": {
+            "XENO-INITIAL": {
+              "id": "XENO-INITIAL",
+              "stage": "adult",
+              "dormant": true,
+              "location": "asteroid:23",
+              "origin": "initial concealed chamber",
+              "sealed": true,
+              "behavior": {
+                "version": 1,
+                "state": "contained",
+                "energy": 100,
+                "stamina": 100,
+                "health": 100,
+                "lastTick": 36000,
+                "lastAttack": -100,
+                "steps": 0,
+                "meals": 0,
+                "trace": [
+                  {
+                    "at": 5,
+                    "from": "dormant",
+                    "to": "contained",
+                    "location": "asteroid:23"
+                  }
+                ]
+              }
+            },
+            "EGG-1": {
+              "id": "EGG-1",
+              "stage": "egg",
+              "dormant": true,
+              "location": "asteroid:22"
+            },
+            "EGG-2": {
+              "id": "EGG-2",
+              "stage": "egg",
+              "dormant": true,
+              "location": "asteroid:24"
+            }
+          }
+        },
+        {
+          "real_day": 30,
+          "sim_days": 111.75,
+          "episode": 5,
+          "exact_reload": true,
+          "crew": 20,
+          "dead": 0,
+          "stories": 337,
+          "resources": {
+            "food": 159.98600000000002,
+            "water": 152.82680000002944,
+            "oxygen": 112.09200000000081,
+            "energy": 179.83416,
+            "medical": 20,
+            "spares": 70,
+            "tools": 70,
+            "lab": 80
+          },
+          "arrivals": 5,
+          "calendar_occurrences": [
+            "2026-10-31:Halloween",
+            "2026-11-11:Veterans Day",
+            "2026-11-26:Thanksgiving"
+          ],
+          "organisms": {
+            "XENO-INITIAL": {
+              "id": "XENO-INITIAL",
+              "stage": "adult",
+              "dormant": true,
+              "location": "asteroid:23",
+              "origin": "initial concealed chamber",
+              "sealed": true,
+              "behavior": {
+                "version": 1,
+                "state": "contained",
+                "energy": 100,
+                "stamina": 100,
+                "health": 100,
+                "lastTick": 160920,
+                "lastAttack": -100,
+                "steps": 0,
+                "meals": 0,
+                "trace": [
+                  {
+                    "at": 5,
+                    "from": "dormant",
+                    "to": "contained",
+                    "location": "asteroid:23"
+                  }
+                ]
+              }
+            },
+            "EGG-1": {
+              "id": "EGG-1",
+              "stage": "egg",
+              "dormant": true,
+              "location": "asteroid:22"
+            },
+            "EGG-2": {
+              "id": "EGG-2",
+              "stage": "egg",
+              "dormant": true,
+              "location": "asteroid:24"
+            }
+          }
+        }
+      ],
+      "backup_sha256": "612c4d1819d2947c299c79b9e978a85ccc759106f8438b3f5ccea59621a8d1aa",
+      "runtime_sha256": {
+        "server.py": "d43781ba1af5f371de05f32b572efbbb9c44b69efbf133e988a43f67076cee44",
+        "requirements.txt": "3dd40988330002f37cd1f2b2b80e65ee3919798dc38771b00fed572a4d659f9e",
+        "config.json": "54a4ac908d2fe82e9c58fb942134327cf0562665e47b170b5d9b0b085ce8b865",
+        "Start_Remote_Deck.bat": "ffbd4b2e6d561ad162547e4f32c0de891915a6d3876ba6d2bff427ec06df368b",
+        "web/animation.js": "833e12fb8c11d625d9cf737438337535bb56bb567703d2eaa09bbb18af7e1884",
+        "web/anthology-ui.js": "f4aa4b5536287853abdd32b68dd0e2f87f113a79e0674cad3c6fa10b59f4e6b5",
+        "web/anthology.js": "e2621ab0e567e85a9a4b25b11968df7480e69f6abe311e547fddea412a224bb2",
+        "web/backup-codec.js": "5055483368e3ec04a5a006945273a7e232cb2de9a83361fc10c707fde391b974",
+        "web/backup-transfer.js": "0ca533a1f6bbbc3ddfbe1e7ea6791fa187aa265eacb884b6a48c8d1273cedbec",
+        "web/backup-ui.js": "922e41162b7330aafef1f250996fb30cd1b7dbf3d3866f9933c3113b0d900a98",
+        "web/calendar.js": "69de37387e887f162417011d1607dc386f2bba9f08fa3f4ae8e066e765a5f072",
+        "web/chronicle-evidence.js": "e72ae182f7d6cc00e600ca5d185f03d63257a5cda0baba22cbbf0ee2e37f8488",
+        "web/chronicle-film.js": "38aadf29719bd900b2c3d501a6feb6a2a744b3691411b3624a9dee554cea3bdc",
+        "web/chronicles.js": "a7823ad26e86f65249561ccbf29d0e70d46d0679ed3c0f98cb06457886902456",
+        "web/cinema-ui.js": "830f050b8e8fc03785b49c95fd285eb7f6f542d70088a82035dd09a4ad630b12",
+        "web/cinema.js": "5f914a9815c3f68a9f360cd6a36b8ef89ea08b9fa14868f73b81d88f05312fb1",
+        "web/cinematic.css": "69605d6837e6b1c4985a06e2f88ca1925d75f3721c5ea715e88b3cfc61d811e2",
+        "web/command-ui.css": "f6cc605cc44cc68a5694d59a5689c97bb3f61ce2124b7b85c4d9a3b5eb5ebd35",
+        "web/command-ui.js": "5cc50e816d25b74f6dbc203153e73b07f330610f1c59fb6c6adbc2d4896266d8",
+        "web/core-context.js": "984feae5ab86359013cfad335c7fd2cfc398c6515a69ebf90add78969424d0d2",
+        "web/creatures.js": "729bede3b4c59c139fb5e703fd4b12c151ccf4c4e9c2e103d99e3881effc90d9",
+        "web/crew-editorial.js": "f12b127e1a217a1afbde3c5f37e2b3a63433ddada4f9b3834944e9a7ac763490",
+        "web/crew-life.js": "4b37016189295bf1915d7888e967cf46ae8573baa71ee1d04901a4d87e6c041b",
+        "web/diagnostics.js": "a4f29c565348ecc3adff65e6d0459f233f9fde60fbf0794e240d0ee8ad9759dc",
+        "web/discovery.js": "e950ac6b0f3aff732995b5adc1991b2d6fd935538a879e93c5f90f778cfa8b98",
+        "web/durable-store.js": "fec39ec1ea1716b7f7917dcf8fe9c2d82a3fd947e8acbe079c196898df6c69e4",
+        "web/economy.js": "919fcfdef54d30b6320d8886d4eff43273bb9642763eeaad179bb7607ab3e292",
+        "web/edition.js": "33f4c281646bb8baa8f45b015c82dd5cabb780e69383448f3390f64566e5331f",
+        "web/embodiment.js": "589c39b15781205258b622f82d8f67a2c44b4e21b8f383e231c6ca10d0c9ba0e",
+        "web/emergency-ops.js": "405de452acf28d5635c3e7f51ce3c239b54c1e868f2a0d619fee36e78fa7f3c9",
+        "web/entities.js": "c8fe473a604345d7543c6f545909dcf734eb2a8ef2d3a6f62aa48bbf0f9305d1",
+        "web/expeditions.js": "729ad659e78636b42b6a743619bc0c0f7f80d9c8480912ec006115a26ee783ef",
+        "web/experiences.js": "2b39dd4736704bd1619d0f7d25b285d090ab0193eacbc424cdc8f25508ab4b14",
+        "web/film-ui.js": "6d9d5d9b400cd707960a9e7aa83fd43771a72e5d0768dbe38b1b16abaeaac679",
+        "web/frontier-ui.js": "8b11361b26cd23b57c4418a404ffc1c7472c8af5f93057d4c08a10c79b61548e",
+        "web/frontier.js": "afdec19b117520eeb9a40d330104b8154bd6ffc879dca4164c81e7c2f2a3a4b7",
+        "web/icarus.html": "708e3f4785577f0c7270d7d9b564ff2a240ba1417ed785a46d743a5aa70218f0",
+        "web/index.html": "f328e21ccc1ba10691960e2de355c556e96f19d88cd996366943f061d8a32952",
+        "web/knowledge-runtime.js": "65145b39b9eb7e36f8f49919a2fc43ac71a300093febe37bf33091cf6abada12",
+        "web/knowledge.js": "bd21c044137a62cb2eab437de142221333595c71c4dd5615a5c8dc2ac429fb05",
+        "web/living-frontier-ui.js": "b134f15f266ee4293a41ce6a1b99ab9f76da8ebb7bb5f25dfa9575d453dca634",
+        "web/living.js": "421a73f5ff1c5b317ab78476692abf3a0fe5e54f2017c88a96b38d19aaf8cdbb",
+        "web/logistics.js": "260d8684db9b0bccc5bbd6c60186fd50e973bbba5c0507ead7b5ad9a712f50ff",
+        "web/lunar.js": "7fe249230562a6d6eb3b6633381a4cddaff56bf90de1676a9ed6c0908c661d51",
+        "web/manifest.webmanifest": "a8ed1d727916b17acf15d37d9a637d4a32cad8e9dbe739084462d0fac28c182b",
+        "web/navigation.js": "eb85891ed5c84a3b8cdc6f700b2a21ceb021e18ee4f415a9119ac0bde648a35d",
+        "web/operations.js": "8711fc4ed9e2e6937c4a1f600ef873f15efceef5c22690f0f3d04f96c9719a12",
+        "web/repair-policy.js": "a1d3b6a64fa3561563b369a49cb30718c015dea79a47c0486d3954560c19de1d",
+        "web/research.js": "ca4de958ed72b3a6404e792abc24b9821b7fc44190a57444f48e69b61e91a3cd",
+        "web/save-store.js": "77f0bbb42ad82da9bcbcebd25d1de3e12d0989f1dea0087e1ad4ca28678150fe",
+        "web/sol-voice.js": "7728cb909cd8c394bb1f62764d77d5c417afc15b829f091e56762519fa0b06c1",
+        "web/spatial.js": "6b4ce51759665185fa558b653e27e2514362d692deb4117ee371f8182b5ae750",
+        "web/stability-diagnostics.js": "d3faeaf4fce68e04960938928ef1729dbe717579ed6b2cb31f0d07972c0732bb",
+        "web/story.js": "2b0464ee7ac4be2409506c7a162ddd8003be6d0df70f47f252641e97c90bb19d",
+        "web/tablet-frontier.js": "6682318bc42b5a46a5703b64137e0d55172ce4eed201305f619c193d55ed6e38",
+        "web/teams.js": "69817c50c92ae5edcdc880b28c904665e6117df25e71a8edabd6ba426597c71b",
+        "web/unified-ui.js": "5a643369c817239bcf3948d5cdfd10d69cc210eaca6a7583da191db61fa91874",
+        "web/unified-world.js": "35e2a8ad0717a19b795f03bc55de0852450766279b17db527f8cf9b9e755fb38",
+        "web/universe.js": "7a3f83170de63739706445cc992c560583e913b577d87087115dfb8cbfae06d4",
+        "web/vendor/LZ_STRING_LICENSE.txt": "433fc9dfe659dbfb1e91eed8351f13651e97bfa3ac6d03394c3d63f61d4bbc80",
+        "web/vendor/astronomy.js": "a2cfab19cab1a15843e4c8cc7410b6cbaafd0907122a8698c25d63d00c2774e4",
+        "web/vendor/lz-string.min.js": "95f4d1cbf099f57161b664bc048426ec3df92637801a4c79116e83315aa787e7",
+        "web/voyage.js": "a70b7bff458052b1ba68713c3a2971ce110a3b169e4e7fe90c9e71cabc90eeda",
+        "web/world-schema.js": "3692ac39772e71912b12214f316cd844bdb292a1bd91626ed1c3d037084d58bb",
+        "web/writer-ui.js": "a255c539f4817a6ba4828d25ca9ff370f81c2e773e78224977d6ae8dcfb3a093"
+      },
+      "elapsed_seconds": 550.8502284729911
+    }
+  },
+  "passed": true
+}

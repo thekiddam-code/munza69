@@ -1,0 +1,242 @@
+{
+  "automated_scope_passed": true,
+  "full_phase4_complete": false,
+  "final_release_ready": false,
+  "runtime_from_commit": "d39f2d70f8cae7599bcf4705f4d846116502373c",
+  "tested_extracted_manifest_source": "d39f2d70f8cae7599bcf4705f4d846116502373c",
+  "runtime_files": {
+    "Start_Remote_Deck.bat": "ffbd4b2e6d561ad162547e4f32c0de891915a6d3876ba6d2bff427ec06df368b",
+    "config.json": "54a4ac908d2fe82e9c58fb942134327cf0562665e47b170b5d9b0b085ce8b865",
+    "requirements.txt": "3dd40988330002f37cd1f2b2b80e65ee3919798dc38771b00fed572a4d659f9e",
+    "server.py": "d43781ba1af5f371de05f32b572efbbb9c44b69efbf133e988a43f67076cee44",
+    "web/animation.js": "833e12fb8c11d625d9cf737438337535bb56bb567703d2eaa09bbb18af7e1884",
+    "web/anthology-ui.js": "f4aa4b5536287853abdd32b68dd0e2f87f113a79e0674cad3c6fa10b59f4e6b5",
+    "web/anthology.js": "e2621ab0e567e85a9a4b25b11968df7480e69f6abe311e547fddea412a224bb2",
+    "web/backup-codec.js": "5055483368e3ec04a5a006945273a7e232cb2de9a83361fc10c707fde391b974",
+    "web/backup-transfer.js": "0ca533a1f6bbbc3ddfbe1e7ea6791fa187aa265eacb884b6a48c8d1273cedbec",
+    "web/backup-ui.js": "922e41162b7330aafef1f250996fb30cd1b7dbf3d3866f9933c3113b0d900a98",
+    "web/calendar.js": "69de37387e887f162417011d1607dc386f2bba9f08fa3f4ae8e066e765a5f072",
+    "web/chronicle-evidence.js": "e72ae182f7d6cc00e600ca5d185f03d63257a5cda0baba22cbbf0ee2e37f8488",
+    "web/chronicle-film.js": "38aadf29719bd900b2c3d501a6feb6a2a744b3691411b3624a9dee554cea3bdc",
+    "web/chronicles.js": "a7823ad26e86f65249561ccbf29d0e70d46d0679ed3c0f98cb06457886902456",
+    "web/cinema-ui.js": "830f050b8e8fc03785b49c95fd285eb7f6f542d70088a82035dd09a4ad630b12",
+    "web/cinema.js": "5f914a9815c3f68a9f360cd6a36b8ef89ea08b9fa14868f73b81d88f05312fb1",
+    "web/cinematic.css": "69605d6837e6b1c4985a06e2f88ca1925d75f3721c5ea715e88b3cfc61d811e2",
+    "web/command-ui.css": "f6cc605cc44cc68a5694d59a5689c97bb3f61ce2124b7b85c4d9a3b5eb5ebd35",
+    "web/command-ui.js": "5cc50e816d25b74f6dbc203153e73b07f330610f1c59fb6c6adbc2d4896266d8",
+    "web/core-context.js": "984feae5ab86359013cfad335c7fd2cfc398c6515a69ebf90add78969424d0d2",
+    "web/creatures.js": "729bede3b4c59c139fb5e703fd4b12c151ccf4c4e9c2e103d99e3881effc90d9",
+    "web/crew-editorial.js": "f12b127e1a217a1afbde3c5f37e2b3a63433ddada4f9b3834944e9a7ac763490",
+    "web/crew-life.js": "4b37016189295bf1915d7888e967cf46ae8573baa71ee1d04901a4d87e6c041b",
+    "web/diagnostics.js": "a4f29c565348ecc3adff65e6d0459f233f9fde60fbf0794e240d0ee8ad9759dc",
+    "web/discovery.js": "e950ac6b0f3aff732995b5adc1991b2d6fd935538a879e93c5f90f778cfa8b98",
+    "web/durable-store.js": "fec39ec1ea1716b7f7917dcf8fe9c2d82a3fd947e8acbe079c196898df6c69e4",
+    "web/economy.js": "919fcfdef54d30b6320d8886d4eff43273bb9642763eeaad179bb7607ab3e292",
+    "web/edition.js": "33f4c281646bb8baa8f45b015c82dd5cabb780e69383448f3390f64566e5331f",
+    "web/embodiment.js": "589c39b15781205258b622f82d8f67a2c44b4e21b8f383e231c6ca10d0c9ba0e",
+    "web/emergency-ops.js": "405de452acf28d5635c3e7f51ce3c239b54c1e868f2a0d619fee36e78fa7f3c9",
+    "web/entities.js": "c8fe473a604345d7543c6f545909dcf734eb2a8ef2d3a6f62aa48bbf0f9305d1",
+    "web/expeditions.js": "729ad659e78636b42b6a743619bc0c0f7f80d9c8480912ec006115a26ee783ef",
+    "web/experiences.js": "2b39dd4736704bd1619d0f7d25b285d090ab0193eacbc424cdc8f25508ab4b14",
+    "web/film-ui.js": "6d9d5d9b400cd707960a9e7aa83fd43771a72e5d0768dbe38b1b16abaeaac679",
+    "web/frontier-ui.js": "8b11361b26cd23b57c4418a404ffc1c7472c8af5f93057d4c08a10c79b61548e",
+    "web/frontier.js": "afdec19b117520eeb9a40d330104b8154bd6ffc879dca4164c81e7c2f2a3a4b7",
+    "web/icarus.html": "708e3f4785577f0c7270d7d9b564ff2a240ba1417ed785a46d743a5aa70218f0",
+    "web/index.html": "f328e21ccc1ba10691960e2de355c556e96f19d88cd996366943f061d8a32952",
+    "web/knowledge-runtime.js": "65145b39b9eb7e36f8f49919a2fc43ac71a300093febe37bf33091cf6abada12",
+    "web/knowledge.js": "bd21c044137a62cb2eab437de142221333595c71c4dd5615a5c8dc2ac429fb05",
+    "web/living-frontier-ui.js": "b134f15f266ee4293a41ce6a1b99ab9f76da8ebb7bb5f25dfa9575d453dca634",
+    "web/living.js": "421a73f5ff1c5b317ab78476692abf3a0fe5e54f2017c88a96b38d19aaf8cdbb",
+    "web/logistics.js": "260d8684db9b0bccc5bbd6c60186fd50e973bbba5c0507ead7b5ad9a712f50ff",
+    "web/lunar.js": "7fe249230562a6d6eb3b6633381a4cddaff56bf90de1676a9ed6c0908c661d51",
+    "web/manifest.webmanifest": "a8ed1d727916b17acf15d37d9a637d4a32cad8e9dbe739084462d0fac28c182b",
+    "web/navigation.js": "eb85891ed5c84a3b8cdc6f700b2a21ceb021e18ee4f415a9119ac0bde648a35d",
+    "web/operations.js": "8711fc4ed9e2e6937c4a1f600ef873f15efceef5c22690f0f3d04f96c9719a12",
+    "web/repair-policy.js": "a1d3b6a64fa3561563b369a49cb30718c015dea79a47c0486d3954560c19de1d",
+    "web/research.js": "ca4de958ed72b3a6404e792abc24b9821b7fc44190a57444f48e69b61e91a3cd",
+    "web/save-store.js": "77f0bbb42ad82da9bcbcebd25d1de3e12d0989f1dea0087e1ad4ca28678150fe",
+    "web/sol-voice.js": "7728cb909cd8c394bb1f62764d77d5c417afc15b829f091e56762519fa0b06c1",
+    "web/spatial.js": "6b4ce51759665185fa558b653e27e2514362d692deb4117ee371f8182b5ae750",
+    "web/stability-diagnostics.js": "d3faeaf4fce68e04960938928ef1729dbe717579ed6b2cb31f0d07972c0732bb",
+    "web/story.js": "2b0464ee7ac4be2409506c7a162ddd8003be6d0df70f47f252641e97c90bb19d",
+    "web/tablet-frontier.js": "6682318bc42b5a46a5703b64137e0d55172ce4eed201305f619c193d55ed6e38",
+    "web/teams.js": "69817c50c92ae5edcdc880b28c904665e6117df25e71a8edabd6ba426597c71b",
+    "web/unified-ui.js": "5a643369c817239bcf3948d5cdfd10d69cc210eaca6a7583da191db61fa91874",
+    "web/unified-world.js": "35e2a8ad0717a19b795f03bc55de0852450766279b17db527f8cf9b9e755fb38",
+    "web/universe.js": "7a3f83170de63739706445cc992c560583e913b577d87087115dfb8cbfae06d4",
+    "web/vendor/LZ_STRING_LICENSE.txt": "433fc9dfe659dbfb1e91eed8351f13651e97bfa3ac6d03394c3d63f61d4bbc80",
+    "web/vendor/astronomy.js": "a2cfab19cab1a15843e4c8cc7410b6cbaafd0907122a8698c25d63d00c2774e4",
+    "web/vendor/lz-string.min.js": "95f4d1cbf099f57161b664bc048426ec3df92637801a4c79116e83315aa787e7",
+    "web/voyage.js": "a70b7bff458052b1ba68713c3a2971ce110a3b169e4e7fe90c9e71cabc90eeda",
+    "web/world-schema.js": "3692ac39772e71912b12214f316cd844bdb292a1bd91626ed1c3d037084d58bb",
+    "web/writer-ui.js": "a255c539f4817a6ba4828d25ca9ff370f81c2e773e78224977d6ae8dcfb3a093"
+  },
+  "node": {
+    "passed": 265,
+    "failed": 0,
+    "skipped": 0
+  },
+  "browser_executions": 167,
+  "suites": {
+    "cinematic": {
+      "passed": true,
+      "executions": 71
+    },
+    "stability": {
+      "passed": true,
+      "executions": 30
+    },
+    "compatibility": {
+      "passed": true,
+      "executions": 44
+    },
+    "interface": {
+      "passed": true,
+      "executions": 17
+    },
+    "production": {
+      "passed": true,
+      "executions": 2
+    },
+    "bridge": {
+      "passed": true,
+      "executions": 3
+    },
+    "mobile_functional": {
+      "passed": true,
+      "checks": 15,
+      "limits": "Android Chrome mobile/touch emulation on Chromium through real HTTP pairing/bridge. PyAutoGUI and television socket stubbed. No physical Android, Windows desktop input, Wi-Fi or Samsung device used."
+    },
+    "tablet_touch": {
+      "passed": true,
+      "checks": 11,
+      "limits": "1280x800 CSS landscape, touch/mobile Chromium emulation. No physical Tab S5e/Android/Windows validation."
+    }
+  },
+  "control_inventory": {
+    "baseline_id_controls": 106,
+    "missing": [],
+    "visibly_reached_id_controls": 100,
+    "world_unchanged_during_inspection": true
+  },
+  "migrations": {
+    "phase1": {
+      "imported_history_records": 10659,
+      "imported_tick": 36000,
+      "resumed_tick": 36120,
+      "crew_before": 20,
+      "crew_after": 20,
+      "memorials_after": [],
+      "import_seconds": 14.879206942001474,
+      "elapsed_seconds": 26.302148232993204
+    },
+    "phase2": {
+      "imported_history_records": 50170,
+      "imported_tick": 160920,
+      "resumed_tick": 161040,
+      "crew_before": 20,
+      "crew_after": 20,
+      "memorials_after": [],
+      "import_seconds": 59.55761805998918,
+      "elapsed_seconds": 78.97908036000445
+    },
+    "phase3": {
+      "imported_history_records": 48137,
+      "imported_tick": 160920,
+      "resumed_tick": 161040,
+      "crew_before": 20,
+      "crew_after": 20,
+      "memorials_after": [],
+      "import_seconds": 27.702065674995538,
+      "elapsed_seconds": 43.51201559600304
+    },
+    "phase3_loss": {
+      "imported_history_records": 45870,
+      "imported_tick": 160920,
+      "resumed_tick": 161040,
+      "crew_before": 19,
+      "crew_after": 19,
+      "memorials_after": [
+        "Nadia Kline"
+      ],
+      "import_seconds": 140.1574341999949,
+      "elapsed_seconds": 187.66595640299784
+    },
+    "phase35": {
+      "imported_history_records": 45515,
+      "imported_tick": 160920,
+      "resumed_tick": 161040,
+      "crew_before": 20,
+      "crew_after": 20,
+      "memorials_after": [],
+      "import_seconds": 49.4744220309949,
+      "elapsed_seconds": 70.3536063759966
+    }
+  },
+  "campaigns": [
+    "compound_4807",
+    "normal_1001"
+  ],
+  "test_source_sha256": {
+    "test_animation.js": "167edd1b6f894bc160f867d4587c03854455dbe153118165bc7ed2deb6f72b81",
+    "test_anthology.js": "ae1dd78f59331ef66ae357d9fd2cfe3696ce8f23168eed489962d713e7dcf7a4",
+    "test_anthology_integration.py": "b0f06d1b3b9f3fc5be7a16cf9095767a9f2336a7254d455a2f0a6b63860b99c2",
+    "test_backup_codec.js": "0c04bd132156119e6a08abefb12ad6038e22ec1e6cfcc7420c44dfeb486a72c0",
+    "test_calendar.js": "b05b1548362d33b990ff08320fc4ccee1603746adff81b8f9e45c1f6703a5279",
+    "test_chronicle_evidence.js": "a4ca41d71a088210b125cac1b37654baf9029a997806aaaffa13beb74444995d",
+    "test_chronicle_film.js": "a1c81437bcf252769058b536b1cf152b3ceca4b9a7573850960226b7b47e90be",
+    "test_chronicle_retention.js": "ac5b153f8cb98acba4617210c05bc27398558eeb0caf897caa60455896e592db",
+    "test_cinema.js": "099fc3c361e814bd56d6f8cac3b2e3b4050285939bf66e137231f10b91dfde73",
+    "test_cinematic_world_integration.py": "8ce3798a898feb1217cb2d27acf6919114f7cb9da3360705a220d3a6597ae5ff",
+    "test_command_interface.py": "087867ff2e7ad960a0f4f88c9e410f3fd1959fec055462bc08feaf434e78b6b5",
+    "test_continuity.py": "76200dc9d554522c86d8a31c81d112829e484dac96ad7867f1622ff1b1006fee",
+    "test_creatures.js": "bcedeec253510493121939a51c16cd6fd7bcceb4a3bd56c7fe1d0191cecbcc28",
+    "test_crew_editorial.js": "f3b28e51aef90a806a7ff729d09e7c7de8d27ae24028b0add9cafbfa72ab74b1",
+    "test_crew_life.js": "ad60a6d6334db933b1b035c8f210b7597ad8f51ec64fd88ab12fbc603f4e28bc",
+    "test_discovery.js": "0ecf39d2bda2edc23984b5b85eaf5a9be1417644d65ef93ead70a9eebfbac9b9",
+    "test_economy.js": "e71a79d09fa72271d724d981a6cefbdadfe2fbaa9cdcdc6716719da6b2f15005",
+    "test_embodiment.js": "b76503a7f1648efbb6c6410ece4563b61151ec7b017d99d44c9bb3e72f8af49d",
+    "test_frontier.js": "9bd999d67161e0736d1c6a9471a84f4c54eb5a0aadcebaee1ece29a6485770db",
+    "test_frontier_bridge.py": "27d020388dbc29ce1960767399eda6d45a5433ed4b80bb008f3f662fe2e95c29",
+    "test_frontier_integration.py": "27a248e78d7b340fb65105b2922898d6a96747990526e0cabc4e129cb03e1713",
+    "test_integration.py": "2bbe2827d05dffde2f815b2e63bb6bfef017e57b50a1525c6ed88487e101f710",
+    "test_knowledge.js": "5489651c4144a48b1e5fd6654e53655e6c27f1f96793e088d37e566a5c5b00f7",
+    "test_knowledge_integration.py": "53ecade5c9af987980c7abaa3ed9412d9647764c578630eedddbae17f7fb6734",
+    "test_living.js": "395f415f439b447b92d5bc84c6f8f50d400e123375a8b535d27029c9458b6db0",
+    "test_living_frontier.js": "88a031b1f3276c5a5647f95af37d97f0e97d8e298dbc2310d8f1325e98618771",
+    "test_living_frontier_integration.py": "9da38530d006e1d84fc9f3a54378c3d5b43bf6a8bbd8ba12bd971b5d9c4f37d3",
+    "test_living_world_integration.py": "dcc8b8858dccbaab16596bd84d6358e6042796c807fe434bd0e3e193db42cabf",
+    "test_logistics.js": "60b0e215d133c98f153ec13e6226ce63cd4a28b89d1e613ef2a22deda18ea72e",
+    "test_lunar.js": "710ba65d55743cd790e7d482f8a94cbc2f0f895246a1136c0ffa693fad4a8588",
+    "test_navigation.js": "fd3bff7ed95773f83984db16e8a603f97fe12ae5c4688865a1cb2724e1c3bb66",
+    "test_observances.js": "5343872e27e43ee7abcb5a8a6c356923647d28c9d4d3dada36c2fcc81a54475a",
+    "test_operations.js": "37c4bcc8bbbc93b6086fd4a27a3ff7718fcb65e2ead3607833507bb1dbaf7102",
+    "test_production_clock.py": "5274b3b0423d7f6769fabc6eb1647095b8351b9b9a10ea4655bf9eaf851ec2ab",
+    "test_refinement_integration.py": "b6bb8cc5adb6b825f54a96f066704e2e751191971a989c64e5481c531715649c",
+    "test_repair_policy.js": "1e76b0034c547fff720824b8b7ab11b0def85daf766c699f1d2ba137e73317e9",
+    "test_research.js": "bc92c0d979a17766f33893a96ea6378ddad6e424317f69c72834f9ab6c6d1773",
+    "test_save_store.js": "a7e44e9bcc57356e5690a06acc3101f21df3b50173842d91ff82dbccb9a68505",
+    "test_scientific_discovery.js": "e078ef4bf52b3d0aa94c36b732e78362ea814bfbb761a71df8946a5affd015d0",
+    "test_sol_voice.js": "29bbd85a8c9588ed2f2c3462cd97c54e93ad04b45158048caa5da1a00768dd9f",
+    "test_spatial.js": "86c14106d8fd09f256fd1babad580d2e550e7c986eb2c75837a2d1abb579c218",
+    "test_stability_integration.py": "510875816f5d810ede96a031c6de3a3f60e46bf21fc3044b10d04accaab5f0cb",
+    "test_story.js": "fc3f698b49cf1f7c6120048d0f3e298e3c061ef87183a699f735ee0a65ab6011",
+    "test_teams.js": "692795a45d24844c57fccb3b1c5dfde2ed798db6cc8aa42fe45f1dc6925ae57f",
+    "test_test_clock.js": "e73145c4654ac5ed07b36cfc46525cc6bdc606b1dfb8b20077dd7ed379c41da3",
+    "test_unified_integration.py": "3eaaf00ef26dcd435fb2f5be32c6bce7086642ca2b67e9ad24983700830f70db",
+    "test_unified_world.js": "22954c68210fb76f59e12caa9ff8340d12a4fc7be4b98b223e0201aee0f65842",
+    "test_universe.js": "28bf91783765f37e14c16323612a0e59a0fc03fec3a7d3b4ba0ad45cce58e3e6",
+    "test_v11_upgrade.py": "412fb07316c670fb6a538640dd2d1c4e86b63c57facd1fdf74110ca48cd4c27c",
+    "test_v12_upgrade.py": "a0450e6036cd93d4d6835a67d0cb20566e6140694363953a098160f71aaa9bd0",
+    "test_voyage.js": "dc5273c5365a0f5687e6a135c1ebf63b522901179af56f4dccf9d65d4b653cb9",
+    "test_world_schema.js": "8a6b3cd3d16f8171061866854df20dce6b786f03abb3c251efe75c9037d06d73"
+  },
+  "unverified_gates": [
+    "Physical Windows installation/desktop input",
+    "Physical Tab S5e/Android/Wi-Fi",
+    "Physical Samsung TV",
+    "Antivirus engine scan (clamscan/Defender unavailable)",
+    "Screen reader and sustained human usability/content/contrast review"
+  ],
+  "evidence_policy": "Only completed final-runtime reports are accepted. Earlier source/package runs and aborted initial campaign are diagnostics. Counts overlap inherited scenarios. Emulation and stubbed host I/O are not hardware certification."
+}

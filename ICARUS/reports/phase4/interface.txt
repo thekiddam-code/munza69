@@ -1,0 +1,22 @@
+test_20x_crosses_real_monday_once_with_same_people (test_command_interface.CommandInterface.test_20x_crosses_real_monday_once_with_same_people) ... ok
+test_20x_holiday_then_normal_one_times (test_command_interface.CommandInterface.test_20x_holiday_then_normal_one_times) ... ok
+test_20x_runs_same_physical_resource_and_crew_steps_as_normal (test_command_interface.CommandInterface.test_20x_runs_same_physical_resource_and_crew_steps_as_normal) ... ok
+test_actual_holiday_timer_is_one_times_and_ignores_old_speed_button (test_command_interface.CommandInterface.test_actual_holiday_timer_is_one_times_and_ignores_old_speed_button) ... ok
+test_actual_normal_timer_is_four_times_and_pause_drops_elapsed_time (test_command_interface.CommandInterface.test_actual_normal_timer_is_four_times_and_pause_drops_elapsed_time) ... ok
+test_all_major_pages_responsive_and_rectangular_gradients (test_command_interface.CommandInterface.test_all_major_pages_responsive_and_rectangular_gradients) ... ok
+test_directives_are_sourced_and_release_is_scoped (test_command_interface.CommandInterface.test_directives_are_sourced_and_release_is_scoped) ... ok
+test_home_is_default_and_widgets_keep_same_live_nodes_and_preferences (test_command_interface.CommandInterface.test_home_is_default_and_widgets_keep_same_live_nodes_and_preferences) ... ok
+test_keyboard_navigation_help_and_return_to_home (test_command_interface.CommandInterface.test_keyboard_navigation_help_and_return_to_home) ... ok
+test_lazarus_home_and_research_share_no_duplicate_controls (test_command_interface.CommandInterface.test_lazarus_home_and_research_share_no_duplicate_controls) ... ok
+test_one_and_five_times_are_real_user_facing_rates (test_command_interface.CommandInterface.test_one_and_five_times_are_real_user_facing_rates) ... ok
+test_preferences_follow_imported_world_and_remain_editable (test_command_interface.CommandInterface.test_preferences_follow_imported_world_and_remain_editable) ... ok
+test_readonly_spectator_can_navigate_but_cannot_enable_test_clock (test_command_interface.CommandInterface.test_readonly_spectator_can_navigate_but_cannot_enable_test_clock) ... ok
+test_real_20x_timer_pause_normal_and_reload (test_command_interface.CommandInterface.test_real_20x_timer_pause_normal_and_reload) ... ok
+test_sol_course_uses_existing_fuel_and_real_transit_and_releases_scope (test_command_interface.CommandInterface.test_sol_course_uses_existing_fuel_and_real_transit_and_releases_scope) ... ok
+test_tabs_are_isolated_unique_and_browser_back_preserves_navigation (test_command_interface.CommandInterface.test_tabs_are_isolated_unique_and_browser_back_preserves_navigation) ... ok
+test_test_warning_cancel_and_deliberate_reset_confirmation (test_command_interface.CommandInterface.test_test_warning_cancel_and_deliberate_reset_confirmation) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 30.383s
+
+OK

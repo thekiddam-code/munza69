@@ -27,7 +27,7 @@ An implemented formula or passing test is only part of completion. Balance, legi
 
 ## 3. Visual design and interface
 
-Retain the existing dark shipboard corporate instrumentation: restrained cyan/green information, amber attention, red for actual danger, consistent type scale, angular panels and familiar ship/crew views. ICARUS remains the title; avoid multiplying competing product names. Operations is a single ship-and-story overview, with local logistics and preferences disclosed on demand. Existing specialist research, crew and medical views remain, progressively consolidated rather than replaced by disconnected dashboards.
+Retain the existing dark shipboard corporate instrumentation: restrained cyan/green information, amber attention, red for actual danger, consistent type scale, angular panels and familiar ship/crew views. ICARUS remains the title; avoid multiplying competing product names. The approved Phase 4 interface has a retained customizable Home, distinct SOL Bridge, and scoped Ship, Crew, Missions, Research, Chronicles and Settings destinations. Existing specialist research, crew and medical views remain, progressively consolidated rather than replaced by disconnected dashboards.
 
 Every important status should explain its cause and offer appropriate optional intervention. Preserve tablet-sized touch controls, readable contrast, keyboard focus, reduced motion and nonmodal observation. A cinematic layer must never hide critical controls or imply an event that did not happen. Full archive/export lives on the authoritative PC; the paired tablet is a thin observer/controller.
 

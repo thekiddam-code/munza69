@@ -1,6 +1,6 @@
 # Phase 4 UI control map
 
-Baseline: 32fa18e; inventory uses an isolated paused voyage. All 106 baseline controls with IDs still exist. 104 ID controls (including new controls) were visibly reached across all sections; closed-dialog/file inputs remain behind their existing launchers. Full before/after inventory is reports/phase4/control_inventory.json. The inventory asserts no world-state change from inspection.
+Baseline: 32fa18e; inventory uses an isolated paused voyage. All 106 baseline controls with IDs still exist. 100 ID controls (including new controls) were visibly reached across all sections; closed-dialog/file inputs remain behind their existing launchers. Full before/after inventory is reports/phase4/control_inventory.json. The inventory asserts no world-state change from inspection.
 
 Navigation retains internal `operations`, `personnel`, `records` keys for existing callers; labels are Bridge, Crew, Chronicles. Old Upgrades links resolve to Ship / Systems. No simulation controller is replaced.
 
@@ -22,113 +22,113 @@ Navigation retains internal `operations`, `personnel`, `records` keys for existi
 
 ## Baseline ID inventory
 
-Each handler remains attached to the same node or uses the existing source renderer. Dynamic field-console action families are mapped above. A closed-dialog/file input entry is reached through its original launcher, rather than displayed on every page.
+All old IDs exist. Routes below come from the actual DOM after visiting every section. Closed dialogs and file inputs retain their original launchers; hidden header IDs remain compatibility entry points. Delegated handlers stay with their component. Dynamic field-console action families are mapped above.
 
-| ID | Page / section | Behavior |
+| ID | Logical home / launcher | Behavior |
 | --- | --- | --- |
-| `pause` | operations / watch | Existing callback retained |
-| `speed` | operations / watch | Existing callback retained |
-| `save` | settings / data | Existing callback retained |
-| `followoff` | operations / watch | Existing callback retained |
-| `settingsopen` | Home widget / launcher / compatibility node | Existing callback retained |
-| `credits` | records / sunday | Existing callback retained |
-| `reset` | settings / testing | Existing callback retained |
-| `frontier-target` | missions / logistics | Existing callback retained |
-| `encounter-frequency` | settings / general | Existing callback retained |
-| `encounter-apply` | settings / general | Existing callback retained |
-| `entity-select` | missions / destinations | Existing callback retained |
-| `memory-person` | personnel / activity | Existing callback retained |
-| `chronicle-week` | records / sunday | Existing callback retained |
-| `durable-save` | settings / data | Existing callback retained |
-| `durable-export` | settings / data | Existing callback retained |
-| `knowledge-actor` | research / evidence | Existing callback retained |
-| `knowledge-read` | research / evidence | Existing callback retained |
-| `knowledge-report` | research / evidence | Existing callback retained |
-| `cutawaymode` | ship / overview | Existing callback retained |
-| `holo-explode` | ship / overview | Existing callback retained |
-| `holo-deck` | ship / overview | Existing callback retained |
-| `holo-detail` | ship / overview | Existing callback retained |
-| `holo-crew` | ship / overview | Existing callback retained |
-| `holo-damage` | ship / overview | Existing callback retained |
-| `holo-atmosphere` | ship / overview | Existing callback retained |
-| `holo-routes` | ship / overview | Existing callback retained |
-| `holo-access` | ship / overview | Existing callback retained |
-| `holo-reset` | ship / overview | Existing callback retained |
-| `hatch-room` | ship / overview | Existing callback retained |
-| `hatch-toggle` | ship / overview | Existing callback retained |
-| `hatch-clear` | ship / overview | Existing callback retained |
-| `atmo-room` | ship / overview | Existing callback retained |
-| `dock-start` | missions / destinations | Existing callback retained |
-| `dock-release` | missions / destinations | Existing callback retained |
-| `camfollow` | operations / watch | Existing callback retained |
-| `camroom` | operations / watch | Existing callback retained |
-| `camreview` | operations / watch | Existing callback retained |
-| `camcycle` | operations / watch | Existing callback retained |
-| `camscan` | operations / watch | Existing callback retained |
-| `camzoom` | operations / watch | Existing callback retained |
-| `bridge-spectator` | operations / watch | Existing callback retained |
-| `spectator-next` | operations / watch | Existing callback retained |
-| `film-episode` | records / sunday | Existing callback retained |
-| `film-load` | records / sunday | Existing callback retained |
-| `film-prev` | records / sunday | Existing callback retained |
-| `film-play` | records / sunday | Existing callback retained |
-| `film-next` | records / sunday | Existing callback retained |
-| `film-seek` | records / sunday | Existing callback retained |
-| `home-edit` | Home widget / launcher / compatibility node | Existing callback retained |
-| `obsreplay` | personnel / activity | Existing callback retained |
-| `obsplay` | personnel / activity | Existing callback retained |
-| `obsback` | personnel / activity | Existing callback retained |
-| `obsnext` | personnel / activity | Existing callback retained |
-| `obsrate` | personnel / activity | Existing callback retained |
-| `obsseek` | personnel / activity | Existing callback retained |
-| `filterall` | records / timeline | Existing callback retained |
-| `filterlittle` | records / timeline | Existing callback retained |
-| `filtersocial` | records / timeline | Existing callback retained |
-| `filtersystem` | records / timeline | Existing callback retained |
-| `filteremergency` | records / timeline | Existing callback retained |
-| `rd-host-key` | settings / data | Existing callback retained |
-| `rd-connect` | settings / data | Existing callback retained |
-| `settingsclose` | Home widget / launcher / compatibility node | Existing callback retained |
-| `visualmode` | settings / general | Existing callback retained |
-| `reduced-motion` | settings / general | Existing callback retained |
-| `exportbackup` | settings / data | Existing callback retained |
-| `importbackup` | settings / data | Existing callback retained |
-| `backupfile` | Home widget / launcher / compatibility node | Existing callback retained |
-| `checkpointnow` | settings / data | Existing callback retained |
-| `export-stream` | settings / data | Existing callback retained |
-| `backup-cancel` | settings / data | Existing callback retained |
-| `exportarchives` | records / archives | Existing callback retained |
-| `ideatitle` | records / archives | Existing callback retained |
-| `ideacategory` | records / archives | Existing callback retained |
-| `ideabody` | records / archives | Existing callback retained |
-| `ideasave` | records / archives | Existing callback retained |
-| `ideacancel` | Home widget / launcher / compatibility node | Existing callback retained |
-| `exportideas` | records / archives | Existing callback retained |
-| `importideas` | records / archives | Existing callback retained |
-| `ideasfile` | Home widget / launcher / compatibility node | Existing callback retained |
-| `calendar-zone` | settings / testing | Existing callback retained |
-| `calendar-apply` | settings / testing | Existing callback retained |
-| `canon-key` | settings / advanced | Existing callback retained |
-| `canon-text` | settings / advanced | Existing callback retained |
-| `canon-save` | settings / advanced | Existing callback retained |
-| `personal-name` | settings / advanced | Existing callback retained |
-| `personal-shipwide` | settings / advanced | Existing callback retained |
-| `personal-dates` | settings / advanced | Existing callback retained |
-| `body-build` | settings / advanced | Existing callback retained |
-| `body-motion` | settings / advanced | Existing callback retained |
-| `personal-save` | settings / advanced | Existing callback retained |
-| `director-entry` | settings / advanced | Existing callback retained |
-| `hud-density` | settings / general | Existing callback retained |
-| `close` | Home widget / launcher / compatibility node | Existing callback retained |
-| `replayclose` | Home widget / launcher / compatibility node | Existing callback retained |
-| `replayseek` | Home widget / launcher / compatibility node | Existing callback retained |
-| `replayplay` | Home widget / launcher / compatibility node | Existing callback retained |
-| `replayback` | Home widget / launcher / compatibility node | Existing callback retained |
-| `replayforward` | Home widget / launcher / compatibility node | Existing callback retained |
-| `replayspeed` | Home widget / launcher / compatibility node | Existing callback retained |
-| `director-close` | Home widget / launcher / compatibility node | Existing callback retained |
-| `director-room` | Home widget / launcher / compatibility node | Existing callback retained |
-| `director-severity` | Home widget / launcher / compatibility node | Existing callback retained |
-| `director-execute` | Home widget / launcher / compatibility node | Existing callback retained |
-| `director-reset` | Home widget / launcher / compatibility node | Existing callback retained |
-| `director-quit` | Home widget / launcher / compatibility node | Existing callback retained |
+| `pause` | Global status / hidden legacy launcher | Existing callback / component delegation retained |
+| `speed` | Global status / hidden legacy launcher | Existing callback / component delegation retained |
+| `save` | area-settings-data | Existing callback / component delegation retained |
+| `followoff` | area-operations-watch | Existing callback / component delegation retained |
+| `settingsopen` | Global status / hidden legacy launcher | Existing callback / component delegation retained |
+| `credits` | area-records-sunday | Existing callback / component delegation retained |
+| `reset` | area-settings-testing | Existing callback / component delegation retained |
+| `frontier-target` | area-missions-logistics | Existing callback / component delegation retained |
+| `encounter-frequency` | area-settings-general | Existing callback / component delegation retained |
+| `encounter-apply` | area-settings-general | Existing callback / component delegation retained |
+| `entity-select` | area-missions-destinations | Existing callback / component delegation retained |
+| `memory-person` | area-personnel-activity | Existing callback / component delegation retained |
+| `chronicle-week` | area-records-sunday | Existing callback / component delegation retained |
+| `durable-save` | area-settings-data | Existing callback / component delegation retained |
+| `durable-export` | area-settings-data | Existing callback / component delegation retained |
+| `knowledge-actor` | area-research-evidence | Existing callback / component delegation retained |
+| `knowledge-read` | area-research-evidence | Existing callback / component delegation retained |
+| `knowledge-report` | area-research-evidence | Existing callback / component delegation retained |
+| `cutawaymode` | area-ship-overview | Existing callback / component delegation retained |
+| `holo-explode` | area-ship-overview | Existing callback / component delegation retained |
+| `holo-deck` | area-ship-overview | Existing callback / component delegation retained |
+| `holo-detail` | area-ship-overview | Existing callback / component delegation retained |
+| `holo-crew` | area-ship-overview | Existing callback / component delegation retained |
+| `holo-damage` | area-ship-overview | Existing callback / component delegation retained |
+| `holo-atmosphere` | area-ship-overview | Existing callback / component delegation retained |
+| `holo-routes` | area-ship-overview | Existing callback / component delegation retained |
+| `holo-access` | area-ship-overview | Existing callback / component delegation retained |
+| `holo-reset` | area-ship-overview | Existing callback / component delegation retained |
+| `hatch-room` | area-ship-overview | Existing callback / component delegation retained |
+| `hatch-toggle` | area-ship-overview | Existing callback / component delegation retained |
+| `hatch-clear` | area-ship-overview | Existing callback / component delegation retained |
+| `atmo-room` | area-ship-overview | Existing callback / component delegation retained |
+| `dock-start` | area-missions-destinations | Existing callback / component delegation retained |
+| `dock-release` | area-missions-destinations | Existing callback / component delegation retained |
+| `camfollow` | area-operations-watch | Existing callback / component delegation retained |
+| `camroom` | area-operations-watch | Existing callback / component delegation retained |
+| `camreview` | area-operations-watch | Existing callback / component delegation retained |
+| `camcycle` | area-operations-watch | Existing callback / component delegation retained |
+| `camscan` | area-operations-watch | Existing callback / component delegation retained |
+| `camzoom` | area-operations-watch | Existing callback / component delegation retained |
+| `bridge-spectator` | area-operations-watch | Existing callback / component delegation retained |
+| `spectator-next` | area-operations-watch | Existing callback / component delegation retained |
+| `film-episode` | area-records-sunday | Existing callback / component delegation retained |
+| `film-load` | area-records-sunday | Existing callback / component delegation retained |
+| `film-prev` | area-records-sunday | Existing callback / component delegation retained |
+| `film-play` | area-records-sunday | Existing callback / component delegation retained |
+| `film-next` | area-records-sunday | Existing callback / component delegation retained |
+| `film-seek` | area-records-sunday | Existing callback / component delegation retained |
+| `home-edit` | Home | Existing callback / component delegation retained |
+| `obsreplay` | area-personnel-activity | Existing callback / component delegation retained |
+| `obsplay` | area-personnel-activity | Existing callback / component delegation retained |
+| `obsback` | area-personnel-activity | Existing callback / component delegation retained |
+| `obsnext` | area-personnel-activity | Existing callback / component delegation retained |
+| `obsrate` | area-personnel-activity | Existing callback / component delegation retained |
+| `obsseek` | area-personnel-activity | Existing callback / component delegation retained |
+| `filterall` | area-records-timeline | Existing callback / component delegation retained |
+| `filterlittle` | area-records-timeline | Existing callback / component delegation retained |
+| `filtersocial` | area-records-timeline | Existing callback / component delegation retained |
+| `filtersystem` | area-records-timeline | Existing callback / component delegation retained |
+| `filteremergency` | area-records-timeline | Existing callback / component delegation retained |
+| `rd-host-key` | area-settings-data | Existing callback / component delegation retained |
+| `rd-connect` | area-settings-data | Existing callback / component delegation retained |
+| `settingsclose` | area-settings-general | Existing callback / component delegation retained |
+| `visualmode` | area-settings-general | Existing callback / component delegation retained |
+| `reduced-motion` | area-settings-general | Existing callback / component delegation retained |
+| `exportbackup` | area-settings-data | Existing callback / component delegation retained |
+| `importbackup` | area-settings-data | Existing callback / component delegation retained |
+| `backupfile` | area-settings-data | Existing callback / component delegation retained |
+| `checkpointnow` | area-settings-data | Existing callback / component delegation retained |
+| `export-stream` | area-settings-data | Existing callback / component delegation retained |
+| `backup-cancel` | area-settings-data | Existing callback / component delegation retained |
+| `exportarchives` | area-records-archives | Existing callback / component delegation retained |
+| `ideatitle` | area-records-archives | Existing callback / component delegation retained |
+| `ideacategory` | area-records-archives | Existing callback / component delegation retained |
+| `ideabody` | area-records-archives | Existing callback / component delegation retained |
+| `ideasave` | area-records-archives | Existing callback / component delegation retained |
+| `ideacancel` | area-records-archives | Existing callback / component delegation retained |
+| `exportideas` | area-records-archives | Existing callback / component delegation retained |
+| `importideas` | area-records-archives | Existing callback / component delegation retained |
+| `ideasfile` | area-records-archives | Existing callback / component delegation retained |
+| `calendar-zone` | area-settings-testing | Existing callback / component delegation retained |
+| `calendar-apply` | area-settings-testing | Existing callback / component delegation retained |
+| `canon-key` | area-settings-advanced | Existing callback / component delegation retained |
+| `canon-text` | area-settings-advanced | Existing callback / component delegation retained |
+| `canon-save` | area-settings-advanced | Existing callback / component delegation retained |
+| `personal-name` | area-settings-advanced | Existing callback / component delegation retained |
+| `personal-shipwide` | area-settings-advanced | Existing callback / component delegation retained |
+| `personal-dates` | area-settings-advanced | Existing callback / component delegation retained |
+| `body-build` | area-settings-advanced | Existing callback / component delegation retained |
+| `body-motion` | area-settings-advanced | Existing callback / component delegation retained |
+| `personal-save` | area-settings-advanced | Existing callback / component delegation retained |
+| `director-entry` | area-settings-advanced | Existing callback / component delegation retained |
+| `hud-density` | area-settings-general | Existing callback / component delegation retained |
+| `close` | modal | Existing callback / component delegation retained |
+| `replayclose` | replaymodal | Existing callback / component delegation retained |
+| `replayseek` | replaymodal | Existing callback / component delegation retained |
+| `replayplay` | replaymodal | Existing callback / component delegation retained |
+| `replayback` | replaymodal | Existing callback / component delegation retained |
+| `replayforward` | replaymodal | Existing callback / component delegation retained |
+| `replayspeed` | replaymodal | Existing callback / component delegation retained |
+| `director-close` | director-modal | Existing callback / component delegation retained |
+| `director-room` | director-modal | Existing callback / component delegation retained |
+| `director-severity` | director-modal | Existing callback / component delegation retained |
+| `director-execute` | director-modal | Existing callback / component delegation retained |
+| `director-reset` | director-modal | Existing callback / component delegation retained |
+| `director-quit` | director-modal | Existing callback / component delegation retained |

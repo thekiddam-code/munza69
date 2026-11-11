@@ -1,0 +1,2502 @@
+{
+  "unchanged_world_during_full_inventory": true,
+  "existing_controls": [
+    {
+      "id": "pause",
+      "baseline_label": "\u23f8 Pause",
+      "present": true,
+      "location": {
+        "id": "pause",
+        "label": "Resume",
+        "handler": true,
+        "page": "operations",
+        "subtab": "watch"
+      },
+      "logical_home": {
+        "area": null,
+        "page": null,
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "speed",
+      "baseline_label": "Speed 1\u00d7",
+      "present": true,
+      "location": {
+        "id": "speed",
+        "label": "Speed 1\u00d7",
+        "handler": true,
+        "page": "operations",
+        "subtab": "watch"
+      },
+      "logical_home": {
+        "area": null,
+        "page": null,
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "save",
+      "baseline_label": "Save",
+      "present": true,
+      "location": {
+        "id": "save",
+        "label": "Save",
+        "handler": true,
+        "page": "settings",
+        "subtab": "data"
+      },
+      "logical_home": {
+        "area": "area-settings-data",
+        "page": "settings",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "followoff",
+      "baseline_label": "Clear Follow",
+      "present": true,
+      "location": {
+        "id": "followoff",
+        "label": "Clear Follow",
+        "handler": true,
+        "page": "operations",
+        "subtab": "watch"
+      },
+      "logical_home": {
+        "area": "area-operations-watch",
+        "page": "operations",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "settingsopen",
+      "baseline_label": "\u2699 Settings",
+      "present": true,
+      "location": "Home/live widget, closed replay/director/legacy compatibility, or dynamically selected content; see grouped map",
+      "logical_home": {
+        "area": null,
+        "page": null,
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "credits",
+      "baseline_label": "Sunday Credits",
+      "present": true,
+      "location": {
+        "id": "credits",
+        "label": "Sunday Credits",
+        "handler": true,
+        "page": "records",
+        "subtab": "sunday"
+      },
+      "logical_home": {
+        "area": "area-records-sunday",
+        "page": "records",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "reset",
+      "baseline_label": "New Voyage",
+      "present": true,
+      "location": {
+        "id": "reset",
+        "label": "New voyage / reset experiment\u2026",
+        "handler": true,
+        "page": "settings",
+        "subtab": "testing"
+      },
+      "logical_home": {
+        "area": "area-settings-testing",
+        "page": "settings",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "frontier-target",
+      "baseline_label": "ICARUS / established expedition contextSurvey debrisLocal ice con",
+      "present": true,
+      "location": {
+        "id": "frontier-target",
+        "label": "ICARUS / established expedition contextSurvey debrisLocal ice contactIndependent service relaySilent",
+        "handler": false,
+        "page": "missions",
+        "subtab": "logistics"
+      },
+      "logical_home": {
+        "area": "area-missions-logistics",
+        "page": "missions",
+        "handler": false,
+        "dialog": null
+      }
+    },
+    {
+      "id": "encounter-frequency",
+      "baseline_label": "Quiet / external contacts offSparseStandardFrequentBusy",
+      "present": true,
+      "location": {
+        "id": "encounter-frequency",
+        "label": "Quiet / external contacts offSparseStandardFrequentBusy",
+        "handler": false,
+        "page": "settings",
+        "subtab": "general"
+      },
+      "logical_home": {
+        "area": "area-settings-general",
+        "page": "settings",
+        "handler": false,
+        "dialog": null
+      }
+    },
+    {
+      "id": "encounter-apply",
+      "baseline_label": "Apply preferences",
+      "present": true,
+      "location": {
+        "id": "encounter-apply",
+        "label": "Apply preferences",
+        "handler": true,
+        "page": "settings",
+        "subtab": "general"
+      },
+      "logical_home": {
+        "area": "area-settings-general",
+        "page": "settings",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "entity-select",
+      "baseline_label": "",
+      "present": true,
+      "location": {
+        "id": "entity-select",
+        "label": "select-one",
+        "handler": true,
+        "page": "missions",
+        "subtab": "destinations"
+      },
+      "logical_home": {
+        "area": "area-missions-destinations",
+        "page": "missions",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "memory-person",
+      "baseline_label": "Frank MorrowMara ChenDr. VossDerek ColeLinda ParkElena RuizJules ",
+      "present": true,
+      "location": {
+        "id": "memory-person",
+        "label": "Frank MorrowMara ChenDr. VossDerek ColeLinda ParkElena RuizJules MercerNadia KlineOwen BriggsPriya S",
+        "handler": true,
+        "page": "personnel",
+        "subtab": "activity"
+      },
+      "logical_home": {
+        "area": "area-personnel-activity",
+        "page": "personnel",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "chronicle-week",
+      "baseline_label": "Episode 1",
+      "present": true,
+      "location": {
+        "id": "chronicle-week",
+        "label": "Episode 1",
+        "handler": true,
+        "page": "records",
+        "subtab": "sunday"
+      },
+      "logical_home": {
+        "area": "area-records-sunday",
+        "page": "records",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "durable-save",
+      "baseline_label": "Commit save",
+      "present": true,
+      "location": {
+        "id": "durable-save",
+        "label": "Commit save",
+        "handler": true,
+        "page": "settings",
+        "subtab": "data"
+      },
+      "logical_home": {
+        "area": "area-settings-data",
+        "page": "settings",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "durable-export",
+      "baseline_label": "Export complete backup",
+      "present": true,
+      "location": {
+        "id": "durable-export",
+        "label": "Export complete backup",
+        "handler": true,
+        "page": "settings",
+        "subtab": "data"
+      },
+      "logical_home": {
+        "area": "area-settings-data",
+        "page": "settings",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "knowledge-actor",
+      "baseline_label": "SOL",
+      "present": true,
+      "location": {
+        "id": "knowledge-actor",
+        "label": "SOL",
+        "handler": false,
+        "page": "research",
+        "subtab": "evidence"
+      },
+      "logical_home": {
+        "area": "area-research-evidence",
+        "page": "research",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "knowledge-read",
+      "baseline_label": "Read available ship records",
+      "present": true,
+      "location": {
+        "id": "knowledge-read",
+        "label": "Read available ship records",
+        "handler": false,
+        "page": "research",
+        "subtab": "evidence"
+      },
+      "logical_home": {
+        "area": "area-research-evidence",
+        "page": "research",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "knowledge-report",
+      "baseline_label": "Send shareable report",
+      "present": true,
+      "location": {
+        "id": "knowledge-report",
+        "label": "Send shareable report",
+        "handler": false,
+        "page": "research",
+        "subtab": "evidence"
+      },
+      "logical_home": {
+        "area": "area-research-evidence",
+        "page": "research",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "cutawaymode",
+      "baseline_label": "Classic gridProportional roomsProportional in ship hullTwo-sided ",
+      "present": true,
+      "location": {
+        "id": "cutawaymode",
+        "label": "Classic gridProportional roomsProportional in ship hullTwo-sided proportional deck plan",
+        "handler": true,
+        "page": "ship",
+        "subtab": "overview"
+      },
+      "logical_home": {
+        "area": "area-ship-overview",
+        "page": "ship",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "holo-explode",
+      "baseline_label": "",
+      "present": true,
+      "location": {
+        "id": "holo-explode",
+        "label": "range",
+        "handler": true,
+        "page": "ship",
+        "subtab": "overview"
+      },
+      "logical_home": {
+        "area": "area-ship-overview",
+        "page": "ship",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "holo-deck",
+      "baseline_label": "All decksDeck ADeck BDeck C",
+      "present": true,
+      "location": {
+        "id": "holo-deck",
+        "label": "All decksDeck ADeck BDeck C",
+        "handler": true,
+        "page": "ship",
+        "subtab": "overview"
+      },
+      "logical_home": {
+        "area": "area-ship-overview",
+        "page": "ship",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "holo-detail",
+      "baseline_label": "",
+      "present": true,
+      "location": {
+        "id": "holo-detail",
+        "label": "checkbox",
+        "handler": true,
+        "page": "ship",
+        "subtab": "overview"
+      },
+      "logical_home": {
+        "area": "area-ship-overview",
+        "page": "ship",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "holo-crew",
+      "baseline_label": "",
+      "present": true,
+      "location": {
+        "id": "holo-crew",
+        "label": "checkbox",
+        "handler": true,
+        "page": "ship",
+        "subtab": "overview"
+      },
+      "logical_home": {
+        "area": "area-ship-overview",
+        "page": "ship",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "holo-damage",
+      "baseline_label": "",
+      "present": true,
+      "location": {
+        "id": "holo-damage",
+        "label": "checkbox",
+        "handler": true,
+        "page": "ship",
+        "subtab": "overview"
+      },
+      "logical_home": {
+        "area": "area-ship-overview",
+        "page": "ship",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "holo-atmosphere",
+      "baseline_label": "",
+      "present": true,
+      "location": {
+        "id": "holo-atmosphere",
+        "label": "checkbox",
+        "handler": true,
+        "page": "ship",
+        "subtab": "overview"
+      },
+      "logical_home": {
+        "area": "area-ship-overview",
+        "page": "ship",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "holo-routes",
+      "baseline_label": "",
+      "present": true,
+      "location": {
+        "id": "holo-routes",
+        "label": "checkbox",
+        "handler": true,
+        "page": "ship",
+        "subtab": "overview"
+      },
+      "logical_home": {
+        "area": "area-ship-overview",
+        "page": "ship",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "holo-access",
+      "baseline_label": "",
+      "present": true,
+      "location": {
+        "id": "holo-access",
+        "label": "checkbox",
+        "handler": true,
+        "page": "ship",
+        "subtab": "overview"
+      },
+      "logical_home": {
+        "area": "area-ship-overview",
+        "page": "ship",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "holo-reset",
+      "baseline_label": "Reset view",
+      "present": true,
+      "location": {
+        "id": "holo-reset",
+        "label": "Reset view",
+        "handler": true,
+        "page": "ship",
+        "subtab": "overview"
+      },
+      "logical_home": {
+        "area": "area-ship-overview",
+        "page": "ship",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "hatch-room",
+      "baseline_label": "A01 \u00b7 BridgeA02 \u00b7 CommunicationsA03 \u00b7 Observation LoungeA04 \u00b7 Mes",
+      "present": true,
+      "location": {
+        "id": "hatch-room",
+        "label": "A01 \u00b7 BridgeA02 \u00b7 CommunicationsA03 \u00b7 Observation LoungeA04 \u00b7 Mess Hall & GalleyA05 \u00b7 Crew Quarters ",
+        "handler": false,
+        "page": "ship",
+        "subtab": "overview"
+      },
+      "logical_home": {
+        "area": "area-ship-overview",
+        "page": "ship",
+        "handler": false,
+        "dialog": null
+      }
+    },
+    {
+      "id": "hatch-toggle",
+      "baseline_label": "Toggle seal",
+      "present": true,
+      "location": {
+        "id": "hatch-toggle",
+        "label": "Toggle seal",
+        "handler": true,
+        "page": "ship",
+        "subtab": "overview"
+      },
+      "logical_home": {
+        "area": "area-ship-overview",
+        "page": "ship",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "hatch-clear",
+      "baseline_label": "Clear jam / open",
+      "present": true,
+      "location": {
+        "id": "hatch-clear",
+        "label": "Clear jam / open",
+        "handler": true,
+        "page": "ship",
+        "subtab": "overview"
+      },
+      "logical_home": {
+        "area": "area-ship-overview",
+        "page": "ship",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "atmo-room",
+      "baseline_label": "A01 \u00b7 BridgeA02 \u00b7 CommunicationsA03 \u00b7 Observation LoungeA04 \u00b7 Mes",
+      "present": true,
+      "location": {
+        "id": "atmo-room",
+        "label": "A01 \u00b7 BridgeA02 \u00b7 CommunicationsA03 \u00b7 Observation LoungeA04 \u00b7 Mess Hall & GalleyA05 \u00b7 Crew Quarters ",
+        "handler": true,
+        "page": "ship",
+        "subtab": "overview"
+      },
+      "logical_home": {
+        "area": "area-ship-overview",
+        "page": "ship",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "dock-start",
+      "baseline_label": "Dock with WY Derelict",
+      "present": true,
+      "location": {
+        "id": "dock-start",
+        "label": "Dock with WY Derelict",
+        "handler": true,
+        "page": "missions",
+        "subtab": "destinations"
+      },
+      "logical_home": {
+        "area": "area-missions-destinations",
+        "page": "missions",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "dock-release",
+      "baseline_label": "Undock",
+      "present": true,
+      "location": {
+        "id": "dock-release",
+        "label": "Undock",
+        "handler": true,
+        "page": "missions",
+        "subtab": "destinations"
+      },
+      "logical_home": {
+        "area": "area-missions-destinations",
+        "page": "missions",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "camfollow",
+      "baseline_label": "Follow crew",
+      "present": true,
+      "location": {
+        "id": "camfollow",
+        "label": "Follow crew",
+        "handler": true,
+        "page": "operations",
+        "subtab": "watch"
+      },
+      "logical_home": {
+        "area": "area-operations-watch",
+        "page": "operations",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "camroom",
+      "baseline_label": "Lock room",
+      "present": true,
+      "location": {
+        "id": "camroom",
+        "label": "Lock room",
+        "handler": true,
+        "page": "operations",
+        "subtab": "watch"
+      },
+      "logical_home": {
+        "area": "area-operations-watch",
+        "page": "operations",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "camreview",
+      "baseline_label": "Review recorded",
+      "present": true,
+      "location": {
+        "id": "camreview",
+        "label": "Review recorded",
+        "handler": true,
+        "page": "operations",
+        "subtab": "watch"
+      },
+      "logical_home": {
+        "area": "area-operations-watch",
+        "page": "operations",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "camcycle",
+      "baseline_label": "CAM A / 2",
+      "present": true,
+      "location": {
+        "id": "camcycle",
+        "label": "CAM A / 2",
+        "handler": true,
+        "page": "operations",
+        "subtab": "watch"
+      },
+      "logical_home": {
+        "area": "area-operations-watch",
+        "page": "operations",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "camscan",
+      "baseline_label": "SCAN ON",
+      "present": true,
+      "location": {
+        "id": "camscan",
+        "label": "SCAN ON",
+        "handler": true,
+        "page": "operations",
+        "subtab": "watch"
+      },
+      "logical_home": {
+        "area": "area-operations-watch",
+        "page": "operations",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "camzoom",
+      "baseline_label": "\ud83d\udd0e Zoom: 1\u00d7",
+      "present": true,
+      "location": {
+        "id": "camzoom",
+        "label": "\ud83d\udd0e Zoom: 1\u00d7",
+        "handler": true,
+        "page": "operations",
+        "subtab": "watch"
+      },
+      "logical_home": {
+        "area": "area-operations-watch",
+        "page": "operations",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "bridge-spectator",
+      "baseline_label": "Bridge spectator: MANUAL",
+      "present": true,
+      "location": {
+        "id": "bridge-spectator",
+        "label": "Bridge spectator: MANUAL",
+        "handler": true,
+        "page": "operations",
+        "subtab": "watch"
+      },
+      "logical_home": {
+        "area": "area-operations-watch",
+        "page": "operations",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "spectator-next",
+      "baseline_label": "Choose actual activity",
+      "present": true,
+      "location": {
+        "id": "spectator-next",
+        "label": "Choose actual activity",
+        "handler": true,
+        "page": "operations",
+        "subtab": "watch"
+      },
+      "logical_home": {
+        "area": "area-operations-watch",
+        "page": "operations",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "film-episode",
+      "baseline_label": "1",
+      "present": true,
+      "location": {
+        "id": "film-episode",
+        "label": "1",
+        "handler": false,
+        "page": "records",
+        "subtab": "sunday"
+      },
+      "logical_home": {
+        "area": "area-records-sunday",
+        "page": "records",
+        "handler": false,
+        "dialog": null
+      }
+    },
+    {
+      "id": "film-load",
+      "baseline_label": "Load",
+      "present": true,
+      "location": {
+        "id": "film-load",
+        "label": "Load",
+        "handler": true,
+        "page": "records",
+        "subtab": "sunday"
+      },
+      "logical_home": {
+        "area": "area-records-sunday",
+        "page": "records",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "film-prev",
+      "baseline_label": "Previous",
+      "present": true,
+      "location": {
+        "id": "film-prev",
+        "label": "Previous",
+        "handler": true,
+        "page": "records",
+        "subtab": "sunday"
+      },
+      "logical_home": {
+        "area": "area-records-sunday",
+        "page": "records",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "film-play",
+      "baseline_label": "Play / pause",
+      "present": true,
+      "location": {
+        "id": "film-play",
+        "label": "Play / pause",
+        "handler": true,
+        "page": "records",
+        "subtab": "sunday"
+      },
+      "logical_home": {
+        "area": "area-records-sunday",
+        "page": "records",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "film-next",
+      "baseline_label": "Skip",
+      "present": true,
+      "location": {
+        "id": "film-next",
+        "label": "Skip",
+        "handler": true,
+        "page": "records",
+        "subtab": "sunday"
+      },
+      "logical_home": {
+        "area": "area-records-sunday",
+        "page": "records",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "film-seek",
+      "baseline_label": "",
+      "present": true,
+      "location": {
+        "id": "film-seek",
+        "label": "range",
+        "handler": true,
+        "page": "records",
+        "subtab": "sunday"
+      },
+      "logical_home": {
+        "area": "area-records-sunday",
+        "page": "records",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "home-edit",
+      "baseline_label": "\u2699 Customize widgets",
+      "present": true,
+      "location": "Home/live widget, closed replay/director/legacy compatibility, or dynamically selected content; see grouped map",
+      "logical_home": {
+        "area": null,
+        "page": "home",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "obsreplay",
+      "baseline_label": "Review movements",
+      "present": true,
+      "location": {
+        "id": "obsreplay",
+        "label": "Review movements",
+        "handler": true,
+        "page": "personnel",
+        "subtab": "activity"
+      },
+      "logical_home": {
+        "area": "area-personnel-activity",
+        "page": "personnel",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "obsplay",
+      "baseline_label": "Play",
+      "present": true,
+      "location": {
+        "id": "obsplay",
+        "label": "Play",
+        "handler": true,
+        "page": "personnel",
+        "subtab": "activity"
+      },
+      "logical_home": {
+        "area": "area-personnel-activity",
+        "page": "personnel",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "obsback",
+      "baseline_label": "\u25c0",
+      "present": true,
+      "location": {
+        "id": "obsback",
+        "label": "\u25c0",
+        "handler": true,
+        "page": "personnel",
+        "subtab": "activity"
+      },
+      "logical_home": {
+        "area": "area-personnel-activity",
+        "page": "personnel",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "obsnext",
+      "baseline_label": "\u25b6",
+      "present": true,
+      "location": {
+        "id": "obsnext",
+        "label": "\u25b6",
+        "handler": true,
+        "page": "personnel",
+        "subtab": "activity"
+      },
+      "logical_home": {
+        "area": "area-personnel-activity",
+        "page": "personnel",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "obsrate",
+      "baseline_label": "Playback 1\u00d7",
+      "present": true,
+      "location": {
+        "id": "obsrate",
+        "label": "Playback 1\u00d7",
+        "handler": true,
+        "page": "personnel",
+        "subtab": "activity"
+      },
+      "logical_home": {
+        "area": "area-personnel-activity",
+        "page": "personnel",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "obsseek",
+      "baseline_label": "",
+      "present": true,
+      "location": {
+        "id": "obsseek",
+        "label": "Movement recording position",
+        "handler": true,
+        "page": "personnel",
+        "subtab": "activity"
+      },
+      "logical_home": {
+        "area": "area-personnel-activity",
+        "page": "personnel",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "filterall",
+      "baseline_label": "All",
+      "present": true,
+      "location": {
+        "id": "filterall",
+        "label": "All",
+        "handler": true,
+        "page": "records",
+        "subtab": "timeline"
+      },
+      "logical_home": {
+        "area": "area-records-timeline",
+        "page": "records",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "filterlittle",
+      "baseline_label": "Little moments",
+      "present": true,
+      "location": {
+        "id": "filterlittle",
+        "label": "Little moments",
+        "handler": true,
+        "page": "records",
+        "subtab": "timeline"
+      },
+      "logical_home": {
+        "area": "area-records-timeline",
+        "page": "records",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "filtersocial",
+      "baseline_label": "Social",
+      "present": true,
+      "location": {
+        "id": "filtersocial",
+        "label": "Social",
+        "handler": true,
+        "page": "records",
+        "subtab": "timeline"
+      },
+      "logical_home": {
+        "area": "area-records-timeline",
+        "page": "records",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "filtersystem",
+      "baseline_label": "Systems",
+      "present": true,
+      "location": {
+        "id": "filtersystem",
+        "label": "Systems",
+        "handler": true,
+        "page": "records",
+        "subtab": "timeline"
+      },
+      "logical_home": {
+        "area": "area-records-timeline",
+        "page": "records",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "filteremergency",
+      "baseline_label": "Emergencies",
+      "present": true,
+      "location": {
+        "id": "filteremergency",
+        "label": "Emergencies",
+        "handler": true,
+        "page": "records",
+        "subtab": "timeline"
+      },
+      "logical_home": {
+        "area": "area-records-timeline",
+        "page": "records",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "rd-host-key",
+      "baseline_label": "",
+      "present": true,
+      "location": {
+        "id": "rd-host-key",
+        "label": "password",
+        "handler": false,
+        "page": "settings",
+        "subtab": "data"
+      },
+      "logical_home": {
+        "area": "area-settings-data",
+        "page": "settings",
+        "handler": false,
+        "dialog": null
+      }
+    },
+    {
+      "id": "rd-connect",
+      "baseline_label": "Connect",
+      "present": true,
+      "location": {
+        "id": "rd-connect",
+        "label": "Connect",
+        "handler": true,
+        "page": "settings",
+        "subtab": "data"
+      },
+      "logical_home": {
+        "area": "area-settings-data",
+        "page": "settings",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "settingsclose",
+      "baseline_label": "Close \u2715",
+      "present": true,
+      "location": "Home/live widget, closed replay/director/legacy compatibility, or dynamically selected content; see grouped map",
+      "logical_home": {
+        "area": "area-settings-general",
+        "page": "settings",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "visualmode",
+      "baseline_label": "\ud83c\udde8\ud83c\udde6 51st State: OFF",
+      "present": true,
+      "location": {
+        "id": "visualmode",
+        "label": "\ud83c\udde8\ud83c\udde6 51st State: OFF",
+        "handler": true,
+        "page": "settings",
+        "subtab": "general"
+      },
+      "logical_home": {
+        "area": "area-settings-general",
+        "page": "settings",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "reduced-motion",
+      "baseline_label": "Reduced motion: SYSTEM",
+      "present": true,
+      "location": {
+        "id": "reduced-motion",
+        "label": "Reduced motion: SYSTEM",
+        "handler": true,
+        "page": "settings",
+        "subtab": "general"
+      },
+      "logical_home": {
+        "area": "area-settings-general",
+        "page": "settings",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "exportbackup",
+      "baseline_label": "\u2b07 Export JSON backup",
+      "present": true,
+      "location": {
+        "id": "exportbackup",
+        "label": "\u2b07 Export JSON backup",
+        "handler": true,
+        "page": "settings",
+        "subtab": "data"
+      },
+      "logical_home": {
+        "area": "area-settings-data",
+        "page": "settings",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "importbackup",
+      "baseline_label": "\u2b06 Import backup (.json / .ndjson)",
+      "present": true,
+      "location": {
+        "id": "importbackup",
+        "label": "\u2b06 Import backup (.json / .ndjson)",
+        "handler": true,
+        "page": "settings",
+        "subtab": "data"
+      },
+      "logical_home": {
+        "area": "area-settings-data",
+        "page": "settings",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "backupfile",
+      "baseline_label": "",
+      "present": true,
+      "location": "Home/live widget, closed replay/director/legacy compatibility, or dynamically selected content; see grouped map",
+      "logical_home": {
+        "area": "area-settings-data",
+        "page": "settings",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "checkpointnow",
+      "baseline_label": "Create checkpoint",
+      "present": true,
+      "location": {
+        "id": "checkpointnow",
+        "label": "Create checkpoint",
+        "handler": true,
+        "page": "settings",
+        "subtab": "data"
+      },
+      "logical_home": {
+        "area": "area-settings-data",
+        "page": "settings",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "export-stream",
+      "baseline_label": "Stream complete backup",
+      "present": true,
+      "location": {
+        "id": "export-stream",
+        "label": "Stream complete backup",
+        "handler": true,
+        "page": "settings",
+        "subtab": "data"
+      },
+      "logical_home": {
+        "area": "area-settings-data",
+        "page": "settings",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "backup-cancel",
+      "baseline_label": "Cancel transfer",
+      "present": true,
+      "location": {
+        "id": "backup-cancel",
+        "label": "Cancel transfer",
+        "handler": true,
+        "page": "settings",
+        "subtab": "data"
+      },
+      "logical_home": {
+        "area": "area-settings-data",
+        "page": "settings",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "exportarchives",
+      "baseline_label": "\u2b07 Export Archives JSON",
+      "present": true,
+      "location": {
+        "id": "exportarchives",
+        "label": "\u2b07 Export Archives JSON",
+        "handler": true,
+        "page": "records",
+        "subtab": "archives"
+      },
+      "logical_home": {
+        "area": "area-records-archives",
+        "page": "records",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "ideatitle",
+      "baseline_label": "",
+      "present": true,
+      "location": {
+        "id": "ideatitle",
+        "label": "text",
+        "handler": false,
+        "page": "records",
+        "subtab": "archives"
+      },
+      "logical_home": {
+        "area": "area-records-archives",
+        "page": "records",
+        "handler": false,
+        "dialog": null
+      }
+    },
+    {
+      "id": "ideacategory",
+      "baseline_label": "Sunday clipWorldbuildingMechanicCharacterOther",
+      "present": true,
+      "location": {
+        "id": "ideacategory",
+        "label": "Sunday clipWorldbuildingMechanicCharacterOther",
+        "handler": false,
+        "page": "records",
+        "subtab": "archives"
+      },
+      "logical_home": {
+        "area": "area-records-archives",
+        "page": "records",
+        "handler": false,
+        "dialog": null
+      }
+    },
+    {
+      "id": "ideabody",
+      "baseline_label": "",
+      "present": true,
+      "location": {
+        "id": "ideabody",
+        "label": "textarea",
+        "handler": false,
+        "page": "records",
+        "subtab": "archives"
+      },
+      "logical_home": {
+        "area": "area-records-archives",
+        "page": "records",
+        "handler": false,
+        "dialog": null
+      }
+    },
+    {
+      "id": "ideasave",
+      "baseline_label": "\uff0b Save idea",
+      "present": true,
+      "location": {
+        "id": "ideasave",
+        "label": "\uff0b Save idea",
+        "handler": true,
+        "page": "records",
+        "subtab": "archives"
+      },
+      "logical_home": {
+        "area": "area-records-archives",
+        "page": "records",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "ideacancel",
+      "baseline_label": "Cancel edit",
+      "present": true,
+      "location": "Home/live widget, closed replay/director/legacy compatibility, or dynamically selected content; see grouped map",
+      "logical_home": {
+        "area": "area-records-archives",
+        "page": "records",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "exportideas",
+      "baseline_label": "\u2b07 Export Notes",
+      "present": true,
+      "location": {
+        "id": "exportideas",
+        "label": "\u2b07 Export Notes",
+        "handler": true,
+        "page": "records",
+        "subtab": "archives"
+      },
+      "logical_home": {
+        "area": "area-records-archives",
+        "page": "records",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "importideas",
+      "baseline_label": "\u2b06 Import Notes",
+      "present": true,
+      "location": {
+        "id": "importideas",
+        "label": "\u2b06 Import Notes",
+        "handler": true,
+        "page": "records",
+        "subtab": "archives"
+      },
+      "logical_home": {
+        "area": "area-records-archives",
+        "page": "records",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "ideasfile",
+      "baseline_label": "",
+      "present": true,
+      "location": "Home/live widget, closed replay/director/legacy compatibility, or dynamically selected content; see grouped map",
+      "logical_home": {
+        "area": "area-records-archives",
+        "page": "records",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "calendar-zone",
+      "baseline_label": "",
+      "present": true,
+      "location": {
+        "id": "calendar-zone",
+        "label": "Calendar timezone",
+        "handler": false,
+        "page": "settings",
+        "subtab": "testing"
+      },
+      "logical_home": {
+        "area": "area-settings-testing",
+        "page": "settings",
+        "handler": false,
+        "dialog": null
+      }
+    },
+    {
+      "id": "calendar-apply",
+      "baseline_label": "Apply timezone",
+      "present": true,
+      "location": {
+        "id": "calendar-apply",
+        "label": "Apply timezone",
+        "handler": true,
+        "page": "settings",
+        "subtab": "testing"
+      },
+      "logical_home": {
+        "area": "area-settings-testing",
+        "page": "settings",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "canon-key",
+      "baseline_label": "ICARUSAsteroid 8847-AWeyland-Yutani DerelictMilitary Wreck",
+      "present": true,
+      "location": {
+        "id": "canon-key",
+        "label": "ICARUSAsteroid 8847-AWeyland-Yutani DerelictMilitary Wreck",
+        "handler": true,
+        "page": "settings",
+        "subtab": "advanced"
+      },
+      "logical_home": {
+        "area": "area-settings-advanced",
+        "page": "settings",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "canon-text",
+      "baseline_label": "",
+      "present": true,
+      "location": {
+        "id": "canon-text",
+        "label": "textarea",
+        "handler": false,
+        "page": "settings",
+        "subtab": "advanced"
+      },
+      "logical_home": {
+        "area": "area-settings-advanced",
+        "page": "settings",
+        "handler": false,
+        "dialog": null
+      }
+    },
+    {
+      "id": "canon-save",
+      "baseline_label": "Save canon",
+      "present": true,
+      "location": {
+        "id": "canon-save",
+        "label": "Save canon",
+        "handler": true,
+        "page": "settings",
+        "subtab": "advanced"
+      },
+      "logical_home": {
+        "area": "area-settings-advanced",
+        "page": "settings",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "personal-name",
+      "baseline_label": "Frank MorrowMara ChenDr. VossDerek ColeLinda ParkElena RuizJules ",
+      "present": true,
+      "location": {
+        "id": "personal-name",
+        "label": "Frank MorrowMara ChenDr. VossDerek ColeLinda ParkElena RuizJules MercerNadia KlineOwen BriggsPriya S",
+        "handler": true,
+        "page": "settings",
+        "subtab": "advanced"
+      },
+      "logical_home": {
+        "area": "area-settings-advanced",
+        "page": "settings",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "personal-shipwide",
+      "baseline_label": "",
+      "present": true,
+      "location": {
+        "id": "personal-shipwide",
+        "label": "checkbox",
+        "handler": false,
+        "page": "settings",
+        "subtab": "advanced"
+      },
+      "logical_home": {
+        "area": "area-settings-advanced",
+        "page": "settings",
+        "handler": false,
+        "dialog": null
+      }
+    },
+    {
+      "id": "personal-dates",
+      "baseline_label": "",
+      "present": true,
+      "location": {
+        "id": "personal-dates",
+        "label": "Personal observances JSON",
+        "handler": false,
+        "page": "settings",
+        "subtab": "advanced"
+      },
+      "logical_home": {
+        "area": "area-settings-advanced",
+        "page": "settings",
+        "handler": false,
+        "dialog": null
+      }
+    },
+    {
+      "id": "body-build",
+      "baseline_label": "smallmediumlarge",
+      "present": true,
+      "location": {
+        "id": "body-build",
+        "label": "smallmediumlarge",
+        "handler": false,
+        "page": "settings",
+        "subtab": "advanced"
+      },
+      "logical_home": {
+        "area": "area-settings-advanced",
+        "page": "settings",
+        "handler": false,
+        "dialog": null
+      }
+    },
+    {
+      "id": "body-motion",
+      "baseline_label": "walkprostheticwheelchairdamaged-android",
+      "present": true,
+      "location": {
+        "id": "body-motion",
+        "label": "walkprostheticwheelchairdamaged-android",
+        "handler": false,
+        "page": "settings",
+        "subtab": "advanced"
+      },
+      "logical_home": {
+        "area": "area-settings-advanced",
+        "page": "settings",
+        "handler": false,
+        "dialog": null
+      }
+    },
+    {
+      "id": "personal-save",
+      "baseline_label": "Save individual preferences",
+      "present": true,
+      "location": {
+        "id": "personal-save",
+        "label": "Save individual preferences",
+        "handler": true,
+        "page": "settings",
+        "subtab": "advanced"
+      },
+      "logical_home": {
+        "area": "area-settings-advanced",
+        "page": "settings",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "director-entry",
+      "baseline_label": ">_",
+      "present": true,
+      "location": {
+        "id": "director-entry",
+        "label": ">_",
+        "handler": true,
+        "page": "settings",
+        "subtab": "advanced"
+      },
+      "logical_home": {
+        "area": "area-settings-advanced",
+        "page": "settings",
+        "handler": true,
+        "dialog": null
+      }
+    },
+    {
+      "id": "hud-density",
+      "baseline_label": "Compact / denseStandard / balancedTouch / large targets",
+      "present": true,
+      "location": {
+        "id": "hud-density",
+        "label": "Compact / denseStandard / balancedTouch / large targets",
+        "handler": false,
+        "page": "settings",
+        "subtab": "general"
+      },
+      "logical_home": {
+        "area": "area-settings-general",
+        "page": "settings",
+        "handler": false,
+        "dialog": null
+      }
+    },
+    {
+      "id": "close",
+      "baseline_label": "Close \u2715",
+      "present": true,
+      "location": "Home/live widget, closed replay/director/legacy compatibility, or dynamically selected content; see grouped map",
+      "logical_home": {
+        "area": null,
+        "page": null,
+        "handler": true,
+        "dialog": "modal"
+      }
+    },
+    {
+      "id": "replayclose",
+      "baseline_label": "Close \u2715",
+      "present": true,
+      "location": "Home/live widget, closed replay/director/legacy compatibility, or dynamically selected content; see grouped map",
+      "logical_home": {
+        "area": null,
+        "page": null,
+        "handler": true,
+        "dialog": "replaymodal"
+      }
+    },
+    {
+      "id": "replayseek",
+      "baseline_label": "",
+      "present": true,
+      "location": "Home/live widget, closed replay/director/legacy compatibility, or dynamically selected content; see grouped map",
+      "logical_home": {
+        "area": null,
+        "page": null,
+        "handler": true,
+        "dialog": "replaymodal"
+      }
+    },
+    {
+      "id": "replayplay",
+      "baseline_label": "\u25b6 Play",
+      "present": true,
+      "location": "Home/live widget, closed replay/director/legacy compatibility, or dynamically selected content; see grouped map",
+      "logical_home": {
+        "area": null,
+        "page": null,
+        "handler": true,
+        "dialog": "replaymodal"
+      }
+    },
+    {
+      "id": "replayback",
+      "baseline_label": "\u25c0 Frame",
+      "present": true,
+      "location": "Home/live widget, closed replay/director/legacy compatibility, or dynamically selected content; see grouped map",
+      "logical_home": {
+        "area": null,
+        "page": null,
+        "handler": true,
+        "dialog": "replaymodal"
+      }
+    },
+    {
+      "id": "replayforward",
+      "baseline_label": "Frame \u25b6",
+      "present": true,
+      "location": "Home/live widget, closed replay/director/legacy compatibility, or dynamically selected content; see grouped map",
+      "logical_home": {
+        "area": null,
+        "page": null,
+        "handler": true,
+        "dialog": "replaymodal"
+      }
+    },
+    {
+      "id": "replayspeed",
+      "baseline_label": "Speed 1\u00d7",
+      "present": true,
+      "location": "Home/live widget, closed replay/director/legacy compatibility, or dynamically selected content; see grouped map",
+      "logical_home": {
+        "area": null,
+        "page": null,
+        "handler": true,
+        "dialog": "replaymodal"
+      }
+    },
+    {
+      "id": "director-close",
+      "baseline_label": "\u2715",
+      "present": true,
+      "location": "Home/live widget, closed replay/director/legacy compatibility, or dynamically selected content; see grouped map",
+      "logical_home": {
+        "area": null,
+        "page": null,
+        "handler": true,
+        "dialog": "director-modal"
+      }
+    },
+    {
+      "id": "director-room",
+      "baseline_label": "A01 \u00b7 BridgeA02 \u00b7 CommunicationsA03 \u00b7 Observation LoungeA04 \u00b7 Mes",
+      "present": true,
+      "location": "Home/live widget, closed replay/director/legacy compatibility, or dynamically selected content; see grouped map",
+      "logical_home": {
+        "area": null,
+        "page": null,
+        "handler": true,
+        "dialog": "director-modal"
+      }
+    },
+    {
+      "id": "director-severity",
+      "baseline_label": "",
+      "present": true,
+      "location": "Home/live widget, closed replay/director/legacy compatibility, or dynamically selected content; see grouped map",
+      "logical_home": {
+        "area": null,
+        "page": null,
+        "handler": true,
+        "dialog": "director-modal"
+      }
+    },
+    {
+      "id": "director-execute",
+      "baseline_label": "\u25b6 Execute incident",
+      "present": true,
+      "location": "Home/live widget, closed replay/director/legacy compatibility, or dynamically selected content; see grouped map",
+      "logical_home": {
+        "area": null,
+        "page": null,
+        "handler": true,
+        "dialog": "director-modal"
+      }
+    },
+    {
+      "id": "director-reset",
+      "baseline_label": "Restore target",
+      "present": true,
+      "location": "Home/live widget, closed replay/director/legacy compatibility, or dynamically selected content; see grouped map",
+      "logical_home": {
+        "area": null,
+        "page": null,
+        "handler": true,
+        "dialog": "director-modal"
+      }
+    },
+    {
+      "id": "director-quit",
+      "baseline_label": "exit",
+      "present": true,
+      "location": "Home/live widget, closed replay/director/legacy compatibility, or dynamically selected content; see grouped map",
+      "logical_home": {
+        "area": null,
+        "page": null,
+        "handler": true,
+        "dialog": "director-modal"
+      }
+    }
+  ],
+  "missing_ids": [],
+  "reachable_ids": {
+    "command-release": {
+      "id": "command-release",
+      "label": "Release to autonomy",
+      "handler": true,
+      "page": "operations",
+      "subtab": "watch"
+    },
+    "command-explain": {
+      "id": "command-explain",
+      "label": "Explain decision",
+      "handler": true,
+      "page": "operations",
+      "subtab": "watch"
+    },
+    "pause": {
+      "id": "pause",
+      "label": "Resume",
+      "handler": true,
+      "page": "operations",
+      "subtab": "watch"
+    },
+    "command-alert": {
+      "id": "command-alert",
+      "label": "Incidents \u00b7 none active",
+      "handler": true,
+      "page": "operations",
+      "subtab": "watch"
+    },
+    "speed": {
+      "id": "speed",
+      "label": "Speed 1\u00d7",
+      "handler": true,
+      "page": "operations",
+      "subtab": "watch"
+    },
+    "camfollow": {
+      "id": "camfollow",
+      "label": "Follow crew",
+      "handler": true,
+      "page": "operations",
+      "subtab": "watch"
+    },
+    "camroom": {
+      "id": "camroom",
+      "label": "Lock room",
+      "handler": true,
+      "page": "operations",
+      "subtab": "watch"
+    },
+    "camreview": {
+      "id": "camreview",
+      "label": "Review recorded",
+      "handler": true,
+      "page": "operations",
+      "subtab": "watch"
+    },
+    "camcycle": {
+      "id": "camcycle",
+      "label": "CAM A / 2",
+      "handler": true,
+      "page": "operations",
+      "subtab": "watch"
+    },
+    "camscan": {
+      "id": "camscan",
+      "label": "SCAN ON",
+      "handler": true,
+      "page": "operations",
+      "subtab": "watch"
+    },
+    "camzoom": {
+      "id": "camzoom",
+      "label": "\ud83d\udd0e Zoom: 1\u00d7",
+      "handler": true,
+      "page": "operations",
+      "subtab": "watch"
+    },
+    "bridge-spectator": {
+      "id": "bridge-spectator",
+      "label": "Bridge spectator: MANUAL",
+      "handler": true,
+      "page": "operations",
+      "subtab": "watch"
+    },
+    "spectator-next": {
+      "id": "spectator-next",
+      "label": "Choose actual activity",
+      "handler": true,
+      "page": "operations",
+      "subtab": "watch"
+    },
+    "followoff": {
+      "id": "followoff",
+      "label": "Clear Follow",
+      "handler": true,
+      "page": "operations",
+      "subtab": "watch"
+    },
+    "cutawaymode": {
+      "id": "cutawaymode",
+      "label": "Classic gridProportional roomsProportional in ship hullTwo-sided proportional deck plan",
+      "handler": true,
+      "page": "ship",
+      "subtab": "overview"
+    },
+    "holo-explode": {
+      "id": "holo-explode",
+      "label": "range",
+      "handler": true,
+      "page": "ship",
+      "subtab": "overview"
+    },
+    "holo-deck": {
+      "id": "holo-deck",
+      "label": "All decksDeck ADeck BDeck C",
+      "handler": true,
+      "page": "ship",
+      "subtab": "overview"
+    },
+    "holo-detail": {
+      "id": "holo-detail",
+      "label": "checkbox",
+      "handler": true,
+      "page": "ship",
+      "subtab": "overview"
+    },
+    "holo-crew": {
+      "id": "holo-crew",
+      "label": "checkbox",
+      "handler": true,
+      "page": "ship",
+      "subtab": "overview"
+    },
+    "holo-damage": {
+      "id": "holo-damage",
+      "label": "checkbox",
+      "handler": true,
+      "page": "ship",
+      "subtab": "overview"
+    },
+    "holo-atmosphere": {
+      "id": "holo-atmosphere",
+      "label": "checkbox",
+      "handler": true,
+      "page": "ship",
+      "subtab": "overview"
+    },
+    "holo-routes": {
+      "id": "holo-routes",
+      "label": "checkbox",
+      "handler": true,
+      "page": "ship",
+      "subtab": "overview"
+    },
+    "holo-access": {
+      "id": "holo-access",
+      "label": "checkbox",
+      "handler": true,
+      "page": "ship",
+      "subtab": "overview"
+    },
+    "holo-reset": {
+      "id": "holo-reset",
+      "label": "Reset view",
+      "handler": true,
+      "page": "ship",
+      "subtab": "overview"
+    },
+    "hatch-room": {
+      "id": "hatch-room",
+      "label": "A01 \u00b7 BridgeA02 \u00b7 CommunicationsA03 \u00b7 Observation LoungeA04 \u00b7 Mess Hall & GalleyA05 \u00b7 Crew Quarters ",
+      "handler": false,
+      "page": "ship",
+      "subtab": "overview"
+    },
+    "hatch-toggle": {
+      "id": "hatch-toggle",
+      "label": "Toggle seal",
+      "handler": true,
+      "page": "ship",
+      "subtab": "overview"
+    },
+    "hatch-clear": {
+      "id": "hatch-clear",
+      "label": "Clear jam / open",
+      "handler": true,
+      "page": "ship",
+      "subtab": "overview"
+    },
+    "atmo-room": {
+      "id": "atmo-room",
+      "label": "A01 \u00b7 BridgeA02 \u00b7 CommunicationsA03 \u00b7 Observation LoungeA04 \u00b7 Mess Hall & GalleyA05 \u00b7 Crew Quarters ",
+      "handler": true,
+      "page": "ship",
+      "subtab": "overview"
+    },
+    "obsreplay": {
+      "id": "obsreplay",
+      "label": "Review movements",
+      "handler": true,
+      "page": "personnel",
+      "subtab": "activity"
+    },
+    "obsplay": {
+      "id": "obsplay",
+      "label": "Play",
+      "handler": true,
+      "page": "personnel",
+      "subtab": "activity"
+    },
+    "obsback": {
+      "id": "obsback",
+      "label": "\u25c0",
+      "handler": true,
+      "page": "personnel",
+      "subtab": "activity"
+    },
+    "obsnext": {
+      "id": "obsnext",
+      "label": "\u25b6",
+      "handler": true,
+      "page": "personnel",
+      "subtab": "activity"
+    },
+    "obsrate": {
+      "id": "obsrate",
+      "label": "Playback 1\u00d7",
+      "handler": true,
+      "page": "personnel",
+      "subtab": "activity"
+    },
+    "obsseek": {
+      "id": "obsseek",
+      "label": "Movement recording position",
+      "handler": true,
+      "page": "personnel",
+      "subtab": "activity"
+    },
+    "memory-person": {
+      "id": "memory-person",
+      "label": "Frank MorrowMara ChenDr. VossDerek ColeLinda ParkElena RuizJules MercerNadia KlineOwen BriggsPriya S",
+      "handler": true,
+      "page": "personnel",
+      "subtab": "activity"
+    },
+    "dock-start": {
+      "id": "dock-start",
+      "label": "Dock with WY Derelict",
+      "handler": true,
+      "page": "missions",
+      "subtab": "destinations"
+    },
+    "dock-release": {
+      "id": "dock-release",
+      "label": "Undock",
+      "handler": true,
+      "page": "missions",
+      "subtab": "destinations"
+    },
+    "entity-select": {
+      "id": "entity-select",
+      "label": "select-one",
+      "handler": true,
+      "page": "missions",
+      "subtab": "destinations"
+    },
+    "frontier-target": {
+      "id": "frontier-target",
+      "label": "ICARUS / established expedition contextSurvey debrisLocal ice contactIndependent service relaySilent",
+      "handler": false,
+      "page": "missions",
+      "subtab": "logistics"
+    },
+    "knowledge-actor": {
+      "id": "knowledge-actor",
+      "label": "SOL",
+      "handler": false,
+      "page": "research",
+      "subtab": "evidence"
+    },
+    "knowledge-read": {
+      "id": "knowledge-read",
+      "label": "Read available ship records",
+      "handler": false,
+      "page": "research",
+      "subtab": "evidence"
+    },
+    "knowledge-report": {
+      "id": "knowledge-report",
+      "label": "Send shareable report",
+      "handler": false,
+      "page": "research",
+      "subtab": "evidence"
+    },
+    "lazarus-protocol": {
+      "id": "lazarus-protocol",
+      "label": "Conservative / isolate anomaliesExperimental / expanded reconstruction",
+      "handler": true,
+      "page": "research",
+      "subtab": "lazarus"
+    },
+    "lazarus-name": {
+      "id": "lazarus-name",
+      "label": "text",
+      "handler": false,
+      "page": "research",
+      "subtab": "lazarus"
+    },
+    "lazarus-decay": {
+      "id": "lazarus-decay",
+      "label": "range",
+      "handler": false,
+      "page": "research",
+      "subtab": "lazarus"
+    },
+    "lazarus-foreign": {
+      "id": "lazarus-foreign",
+      "label": "range",
+      "handler": false,
+      "page": "research",
+      "subtab": "lazarus"
+    },
+    "lazarus-temporal": {
+      "id": "lazarus-temporal",
+      "label": "range",
+      "handler": false,
+      "page": "research",
+      "subtab": "lazarus"
+    },
+    "lazarus-intake": {
+      "id": "lazarus-intake",
+      "label": "Register deceased specimen",
+      "handler": true,
+      "page": "research",
+      "subtab": "lazarus"
+    },
+    "lazarus-service": {
+      "id": "lazarus-service",
+      "label": "Service chamber / provision biomass",
+      "handler": true,
+      "page": "research",
+      "subtab": "lazarus"
+    },
+    "filterall": {
+      "id": "filterall",
+      "label": "All",
+      "handler": true,
+      "page": "records",
+      "subtab": "timeline"
+    },
+    "filterlittle": {
+      "id": "filterlittle",
+      "label": "Little moments",
+      "handler": true,
+      "page": "records",
+      "subtab": "timeline"
+    },
+    "filtersocial": {
+      "id": "filtersocial",
+      "label": "Social",
+      "handler": true,
+      "page": "records",
+      "subtab": "timeline"
+    },
+    "filtersystem": {
+      "id": "filtersystem",
+      "label": "Systems",
+      "handler": true,
+      "page": "records",
+      "subtab": "timeline"
+    },
+    "filteremergency": {
+      "id": "filteremergency",
+      "label": "Emergencies",
+      "handler": true,
+      "page": "records",
+      "subtab": "timeline"
+    },
+    "film-episode": {
+      "id": "film-episode",
+      "label": "1",
+      "handler": false,
+      "page": "records",
+      "subtab": "sunday"
+    },
+    "film-load": {
+      "id": "film-load",
+      "label": "Load",
+      "handler": true,
+      "page": "records",
+      "subtab": "sunday"
+    },
+    "film-prev": {
+      "id": "film-prev",
+      "label": "Previous",
+      "handler": true,
+      "page": "records",
+      "subtab": "sunday"
+    },
+    "film-play": {
+      "id": "film-play",
+      "label": "Play / pause",
+      "handler": true,
+      "page": "records",
+      "subtab": "sunday"
+    },
+    "film-next": {
+      "id": "film-next",
+      "label": "Skip",
+      "handler": true,
+      "page": "records",
+      "subtab": "sunday"
+    },
+    "film-seek": {
+      "id": "film-seek",
+      "label": "range",
+      "handler": true,
+      "page": "records",
+      "subtab": "sunday"
+    },
+    "credits": {
+      "id": "credits",
+      "label": "Sunday Credits",
+      "handler": true,
+      "page": "records",
+      "subtab": "sunday"
+    },
+    "chronicle-week": {
+      "id": "chronicle-week",
+      "label": "Episode 1",
+      "handler": true,
+      "page": "records",
+      "subtab": "sunday"
+    },
+    "exportarchives": {
+      "id": "exportarchives",
+      "label": "\u2b07 Export Archives JSON",
+      "handler": true,
+      "page": "records",
+      "subtab": "archives"
+    },
+    "ideatitle": {
+      "id": "ideatitle",
+      "label": "text",
+      "handler": false,
+      "page": "records",
+      "subtab": "archives"
+    },
+    "ideacategory": {
+      "id": "ideacategory",
+      "label": "Sunday clipWorldbuildingMechanicCharacterOther",
+      "handler": false,
+      "page": "records",
+      "subtab": "archives"
+    },
+    "ideabody": {
+      "id": "ideabody",
+      "label": "textarea",
+      "handler": false,
+      "page": "records",
+      "subtab": "archives"
+    },
+    "ideasave": {
+      "id": "ideasave",
+      "label": "\uff0b Save idea",
+      "handler": true,
+      "page": "records",
+      "subtab": "archives"
+    },
+    "exportideas": {
+      "id": "exportideas",
+      "label": "\u2b07 Export Notes",
+      "handler": true,
+      "page": "records",
+      "subtab": "archives"
+    },
+    "importideas": {
+      "id": "importideas",
+      "label": "\u2b06 Import Notes",
+      "handler": true,
+      "page": "records",
+      "subtab": "archives"
+    },
+    "command-tour": {
+      "id": "command-tour",
+      "label": "Open guided tour",
+      "handler": true,
+      "page": "settings",
+      "subtab": "general"
+    },
+    "visualmode": {
+      "id": "visualmode",
+      "label": "\ud83c\udde8\ud83c\udde6 51st State: OFF",
+      "handler": true,
+      "page": "settings",
+      "subtab": "general"
+    },
+    "reduced-motion": {
+      "id": "reduced-motion",
+      "label": "Reduced motion: SYSTEM",
+      "handler": true,
+      "page": "settings",
+      "subtab": "general"
+    },
+    "hud-density": {
+      "id": "hud-density",
+      "label": "Compact / denseStandard / balancedTouch / large targets",
+      "handler": false,
+      "page": "settings",
+      "subtab": "general"
+    },
+    "encounter-frequency": {
+      "id": "encounter-frequency",
+      "label": "Quiet / external contacts offSparseStandardFrequentBusy",
+      "handler": false,
+      "page": "settings",
+      "subtab": "general"
+    },
+    "encounter-apply": {
+      "id": "encounter-apply",
+      "label": "Apply preferences",
+      "handler": true,
+      "page": "settings",
+      "subtab": "general"
+    },
+    "exportbackup": {
+      "id": "exportbackup",
+      "label": "\u2b07 Export JSON backup",
+      "handler": true,
+      "page": "settings",
+      "subtab": "data"
+    },
+    "importbackup": {
+      "id": "importbackup",
+      "label": "\u2b06 Import backup (.json / .ndjson)",
+      "handler": true,
+      "page": "settings",
+      "subtab": "data"
+    },
+    "checkpointnow": {
+      "id": "checkpointnow",
+      "label": "Create checkpoint",
+      "handler": true,
+      "page": "settings",
+      "subtab": "data"
+    },
+    "export-stream": {
+      "id": "export-stream",
+      "label": "Stream complete backup",
+      "handler": true,
+      "page": "settings",
+      "subtab": "data"
+    },
+    "backup-cancel": {
+      "id": "backup-cancel",
+      "label": "Cancel transfer",
+      "handler": true,
+      "page": "settings",
+      "subtab": "data"
+    },
+    "rd-host-key": {
+      "id": "rd-host-key",
+      "label": "password",
+      "handler": false,
+      "page": "settings",
+      "subtab": "data"
+    },
+    "rd-connect": {
+      "id": "rd-connect",
+      "label": "Connect",
+      "handler": true,
+      "page": "settings",
+      "subtab": "data"
+    },
+    "save": {
+      "id": "save",
+      "label": "Save",
+      "handler": true,
+      "page": "settings",
+      "subtab": "data"
+    },
+    "durable-save": {
+      "id": "durable-save",
+      "label": "Commit save",
+      "handler": true,
+      "page": "settings",
+      "subtab": "data"
+    },
+    "durable-export": {
+      "id": "durable-export",
+      "label": "Export complete backup",
+      "handler": true,
+      "page": "settings",
+      "subtab": "data"
+    },
+    "test-rate": {
+      "id": "test-rate",
+      "label": "Normal \u00b7 automatic 4\u00d7 / holiday 1\u00d7TEST 1\u00d7TEST 5\u00d7TEST 20\u00d7",
+      "handler": true,
+      "page": "settings",
+      "subtab": "testing"
+    },
+    "test-pause": {
+      "id": "test-pause",
+      "label": "Pause / resume simulation",
+      "handler": true,
+      "page": "settings",
+      "subtab": "testing"
+    },
+    "reset": {
+      "id": "reset",
+      "label": "New voyage / reset experiment\u2026",
+      "handler": true,
+      "page": "settings",
+      "subtab": "testing"
+    },
+    "calendar-zone": {
+      "id": "calendar-zone",
+      "label": "Calendar timezone",
+      "handler": false,
+      "page": "settings",
+      "subtab": "testing"
+    },
+    "calendar-apply": {
+      "id": "calendar-apply",
+      "label": "Apply timezone",
+      "handler": true,
+      "page": "settings",
+      "subtab": "testing"
+    },
+    "canon-key": {
+      "id": "canon-key",
+      "label": "ICARUSAsteroid 8847-AWeyland-Yutani DerelictMilitary Wreck",
+      "handler": true,
+      "page": "settings",
+      "subtab": "advanced"
+    },
+    "canon-text": {
+      "id": "canon-text",
+      "label": "textarea",
+      "handler": false,
+      "page": "settings",
+      "subtab": "advanced"
+    },
+    "canon-save": {
+      "id": "canon-save",
+      "label": "Save canon",
+      "handler": true,
+      "page": "settings",
+      "subtab": "advanced"
+    },
+    "personal-name": {
+      "id": "personal-name",
+      "label": "Frank MorrowMara ChenDr. VossDerek ColeLinda ParkElena RuizJules MercerNadia KlineOwen BriggsPriya S",
+      "handler": true,
+      "page": "settings",
+      "subtab": "advanced"
+    },
+    "personal-shipwide": {
+      "id": "personal-shipwide",
+      "label": "checkbox",
+      "handler": false,
+      "page": "settings",
+      "subtab": "advanced"
+    },
+    "personal-dates": {
+      "id": "personal-dates",
+      "label": "Personal observances JSON",
+      "handler": false,
+      "page": "settings",
+      "subtab": "advanced"
+    },
+    "body-build": {
+      "id": "body-build",
+      "label": "smallmediumlarge",
+      "handler": false,
+      "page": "settings",
+      "subtab": "advanced"
+    },
+    "body-motion": {
+      "id": "body-motion",
+      "label": "walkprostheticwheelchairdamaged-android",
+      "handler": false,
+      "page": "settings",
+      "subtab": "advanced"
+    },
+    "personal-save": {
+      "id": "personal-save",
+      "label": "Save individual preferences",
+      "handler": true,
+      "page": "settings",
+      "subtab": "advanced"
+    },
+    "director-entry": {
+      "id": "director-entry",
+      "label": ">_",
+      "handler": true,
+      "page": "settings",
+      "subtab": "advanced"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "syntax_files": 56,
+  "local_scripts": 54,
+  "manifest_files": 81,
+  "runtime_files": 65,
+  "host_files_unchanged_from_phase2": true,
+  "new_module_network_execution_pattern_hits": 0,
+  "phase4_control_stylesheet_present": true,
+  "source_commit": "d39f2d70f8cae7599bcf4705f4d846116502373c",
+  "limits": "Static source checks, not antivirus certification or penetration test."
+}

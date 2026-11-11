@@ -1,0 +1,77 @@
+----------------------------------------
+Exception occurred during processing of request from ('127.0.0.1', 60240)
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 697, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/workspace/work/phase4_final_validation/tested/ICARUS_SOL_Command_Interface_Phase4_Lite/server.py", line 225, in __init__
+    def __init__(self,*args,**kwargs): super().__init__(*args,directory=str(ROOT/'web'),**kwargs)
+                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 676, in __init__
+    super().__init__(*args, **kwargs)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 766, in __init__
+    self.handle()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 440, in handle
+    self.handle_one_request()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/http/server.py", line 428, in handle_one_request
+    method()
+  File "/workspace/work/phase4_final_validation/tested/ICARUS_SOL_Command_Interface_Phase4_Lite/server.py", line 244, in do_GET
+    self.respond(200,{'cpu':psutil.cpu_percent(interval=.1) if psutil else None,'ram':psutil.virtual_memory().percent if psutil else None,'mining':'mouse_left' in HELD,'quick':list(cfg()['quick']),'macros':list(cfg()['macros']),'custom_messages':cfg().get('custom_messages',[]),'fortnite_emotes':get_fortnite_buttons(),'tv_ip':tv_settings()['ip'],'tv_configured':bool(tv_settings()['ip'])}); return
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/work/phase4_final_validation/tested/ICARUS_SOL_Command_Interface_Phase4_Lite/server.py", line 228, in respond
+    body=json.dumps(data).encode(); self.send_response(code); self.send_header('Content-Type','application/json'); self.send_header('Cache-Control','no-store'); self.send_header('Content-Length',str(len(body))); self.end_headers(); self.wfile.write(body)
+                                                                                                                                                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/socketserver.py", line 845, in write
+    self._sock.sendall(b)
+BrokenPipeError: [Errno 32] Broken pipe
+----------------------------------------
+{
+  "passed": true,
+  "runtime_root": "/workspace/work/phase4_final_validation/tested/ICARUS_SOL_Command_Interface_Phase4_Lite",
+  "checks": [
+    "Unpaired telemetry denied",
+    "Wrong pairing PIN denied",
+    "Touch pairing persists only token hash on PC",
+    "Android-layout course reaches authoritative PC simulation",
+    "Touch hold reaches PC",
+    "Phone remains a thin client",
+    "Mobile panel fits viewport",
+    "Paired phone reconnects after reload",
+    "Foreign POST Origin denied",
+    "Predefined keyboard macro routes to stub only",
+    "Emergency stop routes to input release",
+    "TV public address rejected",
+    "TV private address config and allowlisted key contract",
+    "Unpair invalidates persisted device token",
+    "No browser script errors"
+  ],
+  "errors": [],
+  "limits": "Android Chrome mobile/touch emulation on Chromium through real HTTP pairing/bridge. PyAutoGUI and television socket stubbed. No physical Android, Windows desktop input, Wi-Fi or Samsung device used.",
+  "stubbed_io_calls": [
+    {
+      "operation": "hotkey",
+      "args": [
+        "ctrl",
+        "c"
+      ]
+    },
+    {
+      "operation": "tv_connect",
+      "url": "wss://192.168.1.99:8002/api/v2/channels/samsung.remote.control?name=UmVtb3RlIERlY2s=",
+      "certificate_validation": 0
+    },
+    {
+      "operation": "tv_send",
+      "payload": {
+        "method": "ms.remote.control",
+        "params": {
+          "Cmd": "Click",
+          "DataOfCmd": "KEY_HOME",
+          "Option": "false",
+          "TypeOfRemote": "SendRemoteKey"
+        }
+      }
+    }
+  ]
+}
