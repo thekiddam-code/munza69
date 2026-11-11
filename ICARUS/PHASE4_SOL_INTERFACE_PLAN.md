@@ -96,6 +96,15 @@ The user specifically finds the existing **bright orange/amber active navigation
 - Preserve current working pairing and avoid repeating Samsung permission prompts per button. Test power behavior, command acknowledgments/timeouts, key repeat and server disconnect. No internet port forwarding, bypassing TV pairing or new network services.
 - Build a small **capability matrix** in documentation: requested action, supported protocol, implemented/blocked, actual device test result. For sleep timer, explicitly distinguish native TV timer vs UMBRA countdown.
 
+### Tablet TV remote right-hand ergonomics — explicit user requirement
+
+For the **Samsung Galaxy Tab S5e landscape Lounge remote**, prioritize **right-handed reach**. The most frequently used controls must live in a compact, persistent **right-side control zone**:
+- **D-pad (Up/Down/Left/Right/OK), Volume +/−, Channel +/−** as highest priority, with **Home, Back, Power and Mute** within the same reachable right-hand area.
+- **Left-side secondary zone:** TV status, current source, sleep timer, app shortcuts, input selection, settings and advanced options. These must not push the right-side primary controls offscreen or cause them to jump when panels expand.
+- Use genuinely large touch targets with comfortable spacing, strong press feedback, hold/repeat where supported and no accidental adjacent-button hits. Prefer a fixed right-side remote cluster while left-side details scroll independently; test at Tab S5e landscape viewport and with Android system navigation/edge insets.
+- Preserve the compact **phone portrait** layout separately; do not force the tablet's two-column right-hand remote onto the phone. Keep feature parity.
+- Validate one-handed right-side use, stable button positions during panel expansion, volume/channel repetition, D-pad operation, and touch target accessibility in browser emulation. Actual physical tablet ergonomics remain pending until tested.
+
 ### Separate adaptive layouts for phone and tablet — explicit user requirement
 
 **Design and implement two intentionally different UMBRA layouts** using one shared app/codebase, data model, server connection, feature set and OS visual identity. This is more than simply shrinking the tablet view. Select layout by **available window width, aspect ratio and orientation**, not a hardcoded device model or user agent; react cleanly to rotation, resize and split-screen. Keep user-specific display preferences where supported.
