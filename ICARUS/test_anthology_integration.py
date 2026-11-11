@@ -24,6 +24,7 @@ class CoreIntegration(Integration):
         script=(ROOT/'web/vendor/lz-string.min.js').read_text()+";(()=>{if(sessionStorage.getItem('fixture'))return;sessionStorage.setItem('fixture','1');const raw=localStorage.getItem('icarus-anthology-v14');const s=JSON.parse(raw.startsWith('ICARUS-LZ1:')?LZString.decompressFromUTF16(raw.slice(11)):raw);"+code+";if(s.clock){s.clock.elapsed=s.minute-480;s.tick=s.clock.elapsed;}localStorage.setItem('icarus-anthology-v14',JSON.stringify(s));})();"
         p.add_init_script(script);p.reload();p.wait_for_function('!!window.__icarusSoak')
     def deck(self,p,page,tab=None):
+        if page=='settings' and tab in ('testing','advanced') and p.locator('body').get_attribute('data-bridge-mode')!='creator':p.keyboard.press('Control+Shift+F12')
         p.locator('#icarus-menu button[data-page="'+page+'"]').click()
         if tab:p.locator('#page-'+page+' [data-subtab="'+tab+'"]').click()
     def operations(self,p):p.locator('#icarus-menu button[data-page="operations"]').click()

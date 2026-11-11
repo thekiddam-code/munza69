@@ -50,7 +50,7 @@ function install(h){const $=id=>document.getElementById(id),host=$('icarus-pages
  function update(){h.refresh?.(current,sub[current]);const v=h.status();$('command-authority').textContent=v.directive?'DIRECTIVE ACTIVE':'AUTONOMOUS';$('command-scope').textContent=v.scope;$('command-explanation').textContent=v.reason;$('pause').textContent=v.paused?'Resume':'Pause';$('command-clock').textContent=v.clock;$('command-alert').textContent=v.alerts?'Inspect '+v.alerts+' active incidents':'Incidents · none active';bar.dataset.hazard=String(v.alerts>0);$('command-test').hidden=!h.rate();$('test-rate').value=String(h.rate());$('test-diagnostics').textContent=v.diagnostics;
  }
  document.addEventListener('keydown',e=>{if(!e.target.closest('#icarus-menu,.command-subnav')||!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;const buttons=[...e.target.parentNode.querySelectorAll('button')],i=buttons.indexOf(e.target);if(i<0)return;e.preventDefault();const j=e.key==='Home'?0:e.key==='End'?buttons.length-1:(i+(e.key==='ArrowRight'?1:-1)+buttons.length)%buttons.length;buttons[j].focus();buttons[j].click();});
- setInterval(update,1000);root.ICARUSCommandUI.active=true;root.ICARUSCommandUI.navigate=navigate;root.ICARUSCommandUI.area=area;root.ICARUSCommandUI.mapping=mapped;h.ready?.();fromHash();return {navigate,update,area};
+ setInterval(update,1000);root.ICARUSCommandUI.active=true;root.ICARUSCommandUI.navigate=navigate;root.ICARUSCommandUI.area=area;root.ICARUSCommandUI.mapping=mapped;root.ICARUSCommandUI.remoteRate=rate=>!!root.ICARUSBridgeMode?.creator&&h.setRate(rate);h.ready?.();fromHash();return {navigate,update,area};
 }
 root.ICARUSCommandUI={install,active:false};
 })(globalThis);

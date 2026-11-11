@@ -14,9 +14,12 @@ class BridgeService:
     self.generation+=1;self.queue=[];self.data=None;self.updated=None
    self.owner=owner;self.expires=self.clock()+12;self.revision+=1;self.changed.notify_all();return {'generation':self.generation,'boot':self.boot,'lease_seconds':12}
  def check(self,owner,generation):
-  if not self.active() or owner!=self.owner or generation!=self.generation:raise BridgeError(409,'Host ownership lost; reload the authoritative page')
+  if owner!=self.owner or generation!=self.generation:raise BridgeError(409,'Host ownership lost; reload the authoritative page')
+  if not self.active():raise BridgeError(425,'Lease expired; heartbeat required')
  def heartbeat(self,owner,generation):
-  with self.lock:self.check(owner,generation);self.expires=self.clock()+12;return {"ok":True}
+  with self.lock:
+   if owner!=self.owner or generation!=self.generation:raise BridgeError(409,"Host ownership lost")
+   self.expires=self.clock()+12;return {"ok":True}
  def publish(self,owner,generation,data,acks=()):
   with self.lock:
    self.check(owner,generation)

@@ -22,6 +22,10 @@ class BridgeServiceTests(unittest.TestCase):
   self.assertTrue(self.s.view()['stale']);self.assertEqual(self.s.view()['state'],'RECONNECTING')
  def test_new_host_cannot_receive_old_commands_or_old_telemetry(self):
   self.publish();self.s.enqueue('t','request-one','save');self.now=13;g=self.s.claim('next-instance')['generation'];self.assertEqual(self.s.pending('next-instance',g),[]);self.assertIsNone(self.s.view()['telemetry'])
+ def test_expired_same_owner_can_heartbeat_but_cannot_write_before_renewal(self):
+  self.publish();self.now=13
+  with self.assertRaises(BridgeError) as caught:self.publish()
+  self.assertEqual(caught.exception.status,425);self.s.heartbeat('host-instance',self.g);self.publish();self.assertTrue(self.s.view()['online'])
  def test_bounds_and_snapshot_isolation(self):
   self.publish(crew=[{'name':'Frank'}]);v=self.s.view();v['telemetry']['crew'][0]['name']='changed';self.assertEqual(self.s.view()['telemetry']['crew'][0]['name'],'Frank')
   for i in range(25):self.s.enqueue('t',f'request-{i:03}','save')

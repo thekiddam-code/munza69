@@ -1,4 +1,4 @@
-import re
+import re,posixpath
 from bridge_service import BridgeService,BridgeError
 import http.server, json, os, secrets, socket, threading, time, urllib.parse, hashlib, ipaddress, ssl, base64
 from pathlib import Path
@@ -224,14 +224,24 @@ class Handler(http.server.SimpleHTTPRequestHandler):
   except (BrokenPipeError,ConnectionResetError):pass
  def local_host(self):
   host=urllib.parse.urlsplit('http://'+self.headers.get('Host','')).hostname
-  return self.client_address[0] in ('127.0.0.1','::1') and host in ('127.0.0.1','localhost','::1')
+  if self.client_address[0] in ('127.0.0.1','::1') and host in ('127.0.0.1','localhost','::1'):return True
+  # Preserve an existing voyage at the laptop's own LAN-IP origin. Remote peers differ.
+  try:return ipaddress.ip_address(host)==ipaddress.ip_address(self.client_address[0])==ipaddress.ip_address(self.connection.getsockname()[0])
+  except ValueError:return False
  def host_auth(self):
   return secrets.compare_digest(self.headers.get('X-Icarus-Key',''),ICARUS_KEY)
  def host_identity(self):
   try:return self.headers.get('X-Icarus-Instance',''),int(self.headers.get('X-Icarus-Generation','0'))
   except ValueError:raise BridgeError(400,'Invalid generation')
+ def live_view(self):
+  view=BRIDGE_SERVICE.view()
+  if BRIDGE_SERVICE.owner is not None:return {**view,'protocol':2}
+  # Older authenticated Phase 4A host can still use its original bridge contract.
+  with LOCK:data=ICARUS_BRIDGE['telemetry'];age=time.time()-ICARUS_BRIDGE['updated'] if data else None
+  online=bool(data and age<8)
+  return {**view,'protocol':1,'online':online,'stale':not online,'age':age,'telemetry':data,'state':'SIMULATION PAUSED' if online and data.get('paused') else 'HOST CONNECTED' if online else 'HOST OFFLINE'}
  def do_GET(self):
-  if urllib.parse.urlsplit(self.path).path=='/icarus.html' and not self.local_host():
+  if posixpath.normpath(urllib.parse.unquote(urllib.parse.urlsplit(self.path).path))=='/icarus.html' and not self.local_host():
    self.send_response(302);self.send_header('Location','/?terminal=icarus');self.send_header('Cache-Control','no-store');self.end_headers();return
   if self.path=='/api/icarus/bootstrap':
    if not self.local_host():return self.respond(403,{'error':'Open the host on this PC at http://127.0.0.1:8765/icarus.html'})
@@ -242,13 +252,14 @@ class Handler(http.server.SimpleHTTPRequestHandler):
    except BridgeError as e:return self.respond(e.status,{'error':str(e)})
   if self.path in ('/api/icarus/live','/api/icarus/events'):
    if not self.authorized():return self.respond(401,{'error':'Pair first'})
-   if self.path.endswith('/live'):return self.respond(200,BRIDGE_SERVICE.view())
+   if self.path.endswith('/live'):return self.respond(200,self.live_view())
+   self.connection.settimeout(8)
    self.send_response(200);self.send_header('Content-Type','text/event-stream');self.send_header('Cache-Control','no-store');self.send_header('X-Accel-Buffering','no');self.end_headers()
    # Bounded stream lifetime allows token revocation and reconnect without a worker leak.
    try:
     for _ in range(30):
      if not self.authorized():break
-     data=BRIDGE_SERVICE.view();self.wfile.write(('id: '+str(data['revision'])+'\nevent: telemetry\ndata: '+json.dumps(data)+'\n\n').encode());self.wfile.flush()
+     data=self.live_view();self.wfile.write(('id: '+str(data['revision'])+'\nevent: telemetry\ndata: '+json.dumps(data)+'\n\n').encode());self.wfile.flush()
      with BRIDGE_SERVICE.changed:BRIDGE_SERVICE.changed.wait(timeout=2)
    except (BrokenPipeError,ConnectionResetError,OSError):pass
    self.close_connection=True;return
@@ -376,7 +387,7 @@ if __name__=='__main__':
  print('ICARUS host key (PC only):',ICARUS_KEY)
  print('ICARUS PC URL: http://127.0.0.1:%s/icarus.html'%PORT)
  import webbrowser
- threading.Timer(.8,lambda:webbrowser.open('http://127.0.0.1:%s/icarus.html'%PORT)).start()
+ threading.Timer(.8,lambda:webbrowser.open('http://127.0.0.1:%s/host.html'%PORT)).start()
  print('Keep this window running. Ctrl+C stops the receiver.')
  try: http.server.ThreadingHTTPServer(('0.0.0.0',PORT),Handler).serve_forever()
  except KeyboardInterrupt: pass
