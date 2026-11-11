@@ -59,6 +59,15 @@ The user specifically finds the existing **bright orange/amber active navigation
 - Apply consistently to **Home/Bridge/Ship/Crew/Missions/Research/Chronicles/Settings**, location buttons, segmented controls and all nested tabs. Hover/focus/disabled states remain visually distinguishable and accessible.
 - Fix conflicting CSS rules at their source rather than piling more global `!important` overrides. Add desktop/tablet visual regression screenshots and check text contrast.
 
+## Preserve gradients and subtle color — explicit user clarification
+
+**Do not flatten the interface into monochrome or solid-color rectangles.** User explicitly wants the existing soft gradients, slight color variation and understated illuminated sci-fi edges preserved. Refine rather than remove them:
+- Inactive controls: restrained dark teal/cyan-to-navy gradient, low saturation, subtle cool border.
+- Selected controls: **translucent muted amber gradient**, not a flat orange block; use layered alpha over the dark base and a legible warm label. Example design target: linear-gradient(145deg, rgba(180,126,65,.30), rgba(116,79,43,.19) 55%, rgba(28,45,48,.85)), with accessible contrast adjustments.
+- Panels/backgrounds: layered dark blue-green gradient, slight ambient cyan edge glow, consistent depth and angular industrial feel.
+- Remove *excessive* glow and saturated solid fills, not all lighting or visual texture. Retain active/inactive differentiation and reserved strong hazard signaling.
+- Preserve rectangular straight-sided interior segments and tidy responsive geometry independently of gradient styling. Validate real browser screenshots on desktop and tablet emulation.
+
 ## 20× safe testing mode
 - Add a clearly labeled **TEST MODE** UI in Settings > Testing, with **1× / 5× / 20×** options (or 20× toggle plus intermediate choice) and a prominent persistent TEST banner and return-to-normal action. **Primary goal is fast, observable functional testing during active development**. Full save/backup UX hardening is deferred until closer to final release, not permanently discarded. Provide a clear test reset and diagnostic readout (ticks, simulated minutes, active jobs, warnings, errors, actual decisions). Default normal live voyage remains automatic 4× (1× on nine synchronized holidays).
 - Existing `__icarusSoakMode` and `#speed` are diagnostic-only; inspect actual clock code. Build a user-accessible, tested path instead of simply changing button text. 20× must actually accelerate **physical simulation progression** with correct resource, movement, health, ecology, job, mission, knowledge, and source-event accounting, deterministic tick bounds, no skipped decisions or retroactive history, no reentrancy/CPU freeze, and safe paused behavior. Do not accidentally speed up Sunday wall-calendar week boundaries or reinterpret synchronized holidays.
