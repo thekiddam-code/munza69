@@ -110,6 +110,13 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - Preserve privacy (no ordinary crew quarters security cameras), saves, UMBRA mobile performance, and reduced-motion settings.
 - Acceptance: watch real crew actions for an extended shift, identify people and activities visually, and switch between matching live feeds without spawning duplicate simulations.
 
+## Pixel-art research references — approved for study (2026-11-12)
+- **Aliens: Infestation (Nintendo DS):** primary reference for detailed 16-bit-era sci-fi ship interiors, smaller character scale, corridor lighting, and environmental detail.
+- **Alien vs. Predator (Super Nintendo, 1993):** additional reference for larger character and creature silhouettes, readable poses, animation timing, and enemy visual states.
+- Public references identified: https://www.spriters-resource.com/snes/alienvspredator/ (sprite sheets); https://github.com/FitzRoyX/nesrip (SNES/NES tile extraction tool); https://github.com/bogaa/dizProjects (general SNES disassembly research; this title not confirmed). A specific complete SNES AVP source/assets repository was **not verified**.
+- Study art direction, palette organization, tile construction, sprite proportions, frame timing, and layering. Create **original** ICARUS art and animations; do not import copyrighted game sprites, ripped backgrounds, ROM content, or proprietary code into the project without appropriate rights.
+- Keep scope anchored to Phase 4.2A watchable crew, one-room/two-character prototype, and camera preview consistency. No requirement to reverse-engineer either game before development.
+
 ## Future phases / unscheduled
 ### Cinematic surveillance and weekly Sunday recap
 - Configurable security wall, focused cameras, real incident clips and labeled reconstructions.
