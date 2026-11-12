@@ -1,0 +1,7 @@
+test_real_cleanup_reduces_existing_debris_through_local_work_and_emits_actual_source (test_living_ship_integration.LivingShipIntegration.test_real_cleanup_reduces_existing_debris_through_local_work_and_emits_actual_source) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 2.241s
+
+OK
+sys:1: ResourceWarning: unclosed <socket.socket fd=3, family=2, type=1, proto=0, laddr=('127.0.0.1', 36451)>

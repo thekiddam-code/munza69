@@ -8,7 +8,7 @@ function project(p,options={}){
  else if(!disabled&&at.kind==='room'){
   if(p.conversation?.until>(options.tick??Infinity))motion='gesture';
   else if(p.rescuePatient||p.vitals?.treatmentPaid)motion='care';
-  else if(p.interaction==='working')motion=({repair:'tool',research:'sample',console:'console',inspect:'inspect',eat:'meal',talk:'gesture',rest:'rest'})[pose.kind]||'still';
+  else if(p.interaction==='working')motion=({repair:'tool',research:'sample',console:'console',inspect:'inspect',eat:'meal',talk:'gesture',rest:'rest',clean:'sweep',recreation:'recreation',treatment:'care'})[pose.kind]||'still';
   else if(pose.kind==='rest')motion='rest';
  }
  if(p.carrying&&walking){motion=pose.locomotion==='wheelchair'?'roll-carry':'carry';cue='CARRYING '+p.carrying;}

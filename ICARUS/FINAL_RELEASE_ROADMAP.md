@@ -81,3 +81,7 @@ This batch improves access to the same persistent world and existing remote func
 ## Phase 4.1 Command Bridge
 
 Authority/acknowledged remote synchronization, origin-aware Windows launch, unsaved Bridge/Creator separation, modular per-screen layouts, compact existing hologram, scroll/edit continuity and source-grounded operational/camera/crew/SOL views are implemented. Automatic verification is complete: 492 case executions, 26 additional functional checks, six historical migrations and extracted-runtime 7/30-real-day campaigns pass; see PHASE41_VALIDATION.md. Native APK build remains pending original-source recovery. Physical Windows/Android/TV, real Tailscale deployment, AV, accessibility and sustained usability remain unverified. The core world is not expanded or reset. Final release requires these gates and human experience review, not just passing campaigns.
+
+## Phase 4.2 — living ship depth
+
+Implemented: persistent shifts/activity, physically performed cleanup/inspection/recreation, sourced private social dimensions and gradual memory, knowledge-bound hearsay/correction, mutual adult consent foundation, observed requests and typed SOL evidence. Existing authority, movement, science and Sunday systems reused. Validation is PHASE42_VALIDATION.md. Refine relationship UX and assistance dispatch rather than expanding the universe; registered/dormant scale is a foundation, not 100 active actors. Device/native/AV gates remain unverified. Phase 4.1.1 clock investigation stays a separate batch. ICARUS is not declared final-release complete.

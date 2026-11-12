@@ -1,0 +1,19 @@
+test_real_cleanup_reduces_existing_debris_through_local_work_and_emits_actual_source (test_living_ship_integration.LivingShipIntegration.test_real_cleanup_reduces_existing_debris_through_local_work_and_emits_actual_source) ... FAIL
+test_private_social_memory_is_sourced_and_survives_reload_without_sol_access (test_living_ship_integration.LivingShipIntegration.test_private_social_memory_is_sourced_and_survives_reload_without_sol_access) ... ok
+test_optional_private_preferences_require_creator_and_do_not_invent_events (test_living_ship_integration.LivingShipIntegration.test_optional_private_preferences_require_creator_and_do_not_invent_events) ... ok
+test_100_registered_20_active_crew_registry_remains_dormant_across_week_and_reload (test_living_ship_integration.LivingShipIntegration.test_100_registered_20_active_crew_registry_remains_dormant_across_week_and_reload) ... ok
+
+======================================================================
+FAIL: test_real_cleanup_reduces_existing_debris_through_local_work_and_emits_actual_source (test_living_ship_integration.LivingShipIntegration.test_real_cleanup_reduces_existing_debris_through_local_work_and_emits_actual_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/work/munza69/ICARUS/test_living_ship_integration.py", line 25, in test_real_cleanup_reduces_existing_debris_through_local_work_and_emits_actual_source
+    p=self.page();self.configure(p,"""s.remoteCore.autonomyEnabled=false;s.frontier.enabled=false;const q=s.crew[0];q.room='C05';q.target='C05';q.route=[];q.nav=null;q.task=q.goal='Clearing debris';q.taskMinutes=12;q.energy=90;q.hunger=10;q.stress=30;q.interaction=null;q.maintenanceRoom=null;q.emergencyId=null;s.physicalWorld.rooms.C05.debris=20;""");self.advance(p,12);s=self.snap(p);self.assertAlmostEqual(s['world']['physicalWorld']['rooms']['C05']['debris'],10.4,places=6);self.assertLess(s['crew'][0]['energy'],90);sources=[r for r in s['chronicle']['records'] if r['data'].get('activity')=='cleanup'];self.assertEqual(len(sources),1);self.assertIn('Frank Morrow',sources[0]['people']);self.assertEqual(s['resourceAudit'],[]);self.assertEqual(s['socialAudit'],[])
+                                                                                                                                                                                                                                                                                                                                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 10.4 within 6 places (10.4 difference)
+
+----------------------------------------------------------------------
+Ran 4 tests in 7.148s
+
+FAILED (failures=1)
+sys:1: ResourceWarning: unclosed <socket.socket fd=3, family=2, type=1, proto=0, laddr=('127.0.0.1', 33671)>

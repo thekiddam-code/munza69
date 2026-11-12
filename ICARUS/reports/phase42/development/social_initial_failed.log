@@ -1,0 +1,50 @@
+test_private_social_memory_is_sourced_and_survives_reload_without_sol_access (test_living_ship_integration.LivingShipIntegration.test_private_social_memory_is_sourced_and_survives_reload_without_sol_access) ... ok
+test_optional_private_preferences_require_creator_and_do_not_invent_events (test_living_ship_integration.LivingShipIntegration.test_optional_private_preferences_require_creator_and_do_not_invent_events) ... ERROR
+test_100_registered_20_active_crew_registry_remains_dormant_across_week_and_reload (test_living_ship_integration.LivingShipIntegration.test_100_registered_20_active_crew_registry_remains_dormant_across_week_and_reload) ... ok
+
+======================================================================
+ERROR: test_optional_private_preferences_require_creator_and_do_not_invent_events (test_living_ship_integration.LivingShipIntegration.test_optional_private_preferences_require_creator_and_do_not_invent_events)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/work/munza69/ICARUS/test_living_ship_integration.py", line 21, in test_optional_private_preferences_require_creator_and_do_not_invent_events
+    p=self.page();self.operations(p);self.assertEqual(p.get_by_text('PRIVATE RELATIONSHIP PREFERENCES / CREATOR',exact=True).count(),0);p.keyboard.press('Control+Shift+F12');self.operations(p);box=p.locator('#detail details').filter(has=p.get_by_text('PRIVATE RELATIONSHIP PREFERENCES / CREATOR',exact=True));box.locator('summary').click();before=self.snap(p);box.locator('input[type=checkbox]').check();box.locator('select').select_option('Mara Chen');box.locator('button').click();after=self.snap(p);self.assertTrue(after['crew'][0]['adult']);self.assertEqual(after['crew'][0]['romanticInterest'],['Mara Chen']);self.assertEqual(after['chronicle'],before['chronicle']);self.assertEqual(after['knowledge'],before['knowledge']);p.evaluate('__icarusSoak.save()');p.reload();self.assertEqual(self.snap(p),after);self.assertFalse(p.evaluate('ICARUSBridgeMode.creator'))
+                                                                                                                                                                                                                                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/sync_api/_generated.py", line 17876, in click
+    self._sync(
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_locator.py", line 165, in click
+    return await self._frame._click(self._selector, strict=True, **params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_frame.py", line 593, in _click
+    await self._channel.send("click", self._timeout, locals_to_params(locals()))
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("#detail details").filter(has=get_by_text("PRIVATE RELATIONSHIP PREFERENCES / CREATOR", exact=True)).locator("summary")
+    - locator resolved to <summary>PRIVATE RELATIONSHIP PREFERENCES / CREATOR</summary>
+  - attempting click action
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+    - waiting 20ms
+    2 × waiting for element to be visible, enabled and stable
+      - element is not visible
+    - retrying click action
+      - waiting 100ms
+    56 × waiting for element to be visible, enabled and stable
+       - element is not visible
+     - retrying click action
+       - waiting 500ms
+
+
+----------------------------------------------------------------------
+Ran 3 tests in 41.699s
+
+FAILED (errors=1)
+sys:1: ResourceWarning: unclosed <socket.socket fd=3, family=2, type=1, proto=0, laddr=('127.0.0.1', 33643)>

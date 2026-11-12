@@ -11,6 +11,9 @@ function pose(p,spatial,alarm=false,now=Infinity){const moving=['corridor','vert
  else if(/rest|sleep|recover|quiet break/.test(t)){kind='rest';label='RESTING';}
  else if(p.interaction==='working'||!p.interaction){
   if(/repair|servic|maintain|fabricat|distribution circuit|reactor control/.test(t)){kind='repair';label='EQUIPMENT WORK';prop='⚒';}
+  else if(/clearing debris|cleaning/.test(t)){kind='clean';label='CLEARING DEBRIS';}
+  else if(/examin|administer|treat.*patient/.test(t)){kind='treatment';label='PATIENT CARE';prop='+';}
+  else if(/recreation break/.test(t)){kind='recreation';label='RECREATION BREAK';}
   else if(/experiment|analyz|sample|research/.test(t)){kind='research';label='RESEARCH';prop='⚗';}
   else if(/social|conversation|meeting|talk|mediat|disput/.test(t)){kind='talk';label='CONVERSATION';}
   else if(/meal|eat|ration|coffee/.test(t)){kind='eat';label='MEAL / BREAK';prop='◡';}

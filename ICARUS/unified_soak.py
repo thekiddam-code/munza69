@@ -2,13 +2,13 @@
 import argparse,functools,hashlib,http.server,json,os,threading,time,traceback
 from pathlib import Path
 from playwright.sync_api import sync_playwright
-ROOT=Path(__file__).resolve().parent
+ROOT=Path(os.environ.get('ICARUS_RUNTIME_ROOT',Path(__file__).resolve().parent))
 class Quiet(http.server.SimpleHTTPRequestHandler):
     def log_message(self,*args):pass
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--seed',type=int,default=1001);ap.add_argument('--days',type=int,default=30);ap.add_argument('--scenario',choices=['normal','compound','released_chamber'],default='normal');ap.add_argument('--output',type=Path,required=True);args=ap.parse_args();args.output.mkdir(parents=True,exist_ok=True)
-    r={'seed':args.seed,'scenario':args.scenario,'real_days':args.days,'start':'2026-10-28T00:00:00Z','zone':'America/Chicago','source_commit':__import__('subprocess').check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),'status':'running','passed':False,'errors':[],'daily':[],'checkpoints':[],'initialization':'Fixed seed and explicit wall clock. Simulation uses production step+field controllers; per-step autosave disabled in deterministic test driver; save/reload checked explicitly.'};r['runtime_sha256']={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [ROOT/'server.py',ROOT/'requirements.txt',ROOT/'config.json',ROOT/'Start_Remote_Deck.bat',*sorted((ROOT/'web').rglob('*'))] if p.is_file()};start=time.monotonic();server=http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(ROOT/'web')));threading.Thread(target=server.serve_forever,daemon=True).start()
+    r={'seed':args.seed,'scenario':args.scenario,'real_days':args.days,'start':'2026-10-28T00:00:00Z','zone':'America/Chicago','source_commit':(json.loads((ROOT/'BUILD_MANIFEST.json').read_text())['source_commit'] if (ROOT/'BUILD_MANIFEST.json').exists() else __import__('subprocess').check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()),'status':'running','passed':False,'errors':[],'daily':[],'checkpoints':[],'initialization':'Fixed seed and explicit wall clock. Simulation uses production step+field controllers; per-step autosave disabled in deterministic test driver; save/reload checked explicitly.'};r['runtime_sha256']={str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest() for p in [ROOT/'server.py',ROOT/'requirements.txt',ROOT/'config.json',ROOT/'Start_Remote_Deck.bat',*sorted((ROOT/'web').rglob('*'))] if p.is_file()};start=time.monotonic();server=http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(ROOT/'web')));threading.Thread(target=server.serve_forever,daemon=True).start()
     try:
         with sync_playwright() as pw:
             b=pw.chromium.launch(executable_path=os.environ.get('ICARUS_CHROMIUM') or None);c=b.new_context();c.add_init_script('window.__icarusSeed='+str(args.seed));p=c.new_page();p.set_default_timeout(120000);p.on('pageerror',lambda e:r['errors'].append(str(e)));p.goto(f'http://127.0.0.1:{server.server_port}/icarus.html?icarus_soak=1');p.wait_for_function('!!window.__icarusSoak')

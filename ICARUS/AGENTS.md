@@ -1,6 +1,6 @@
-# Current handoff: Phase 4.2 Living Ship (partial specification)
+# Current handoff: Phase 4.2 Living Ship
 
-Use codex/living-ship-phase4-2 and read PHASE42_PROGRESS.md. The request ends at section 5 “Conversations and Gossip — Implement”; remaining instructions/acceptance are pending. First milestone extends existing CrewLife with private activity continuity and shifts, preserves relationship ranges and fixes disabled animation priority. Do not call Phase 4.2 complete or invent missing gossip/romance requirements. Preserve all Phase 4.1 host/UMBRA/save behavior and leave the known 20× issue for Phase 4.1.1.
+Use codex/living-ship-phase4-2 and read PHASE42_LIVING_SHIP_PLAN.md (full user specification), PHASE42_PROGRESS.md, PHASE42_ARCHITECTURE.md and PHASE42_LIMITATIONS.md. First milestone 34e4c0d remains; the complete specification supersedes the earlier partial-request warning. CrewLife owns routine bookkeeping; crew-social stores private sourced bonds; crew-communications uses existing Knowledge channels; crew-decisions only extends local work. Keep numerical relationships and operational controllers authoritative. Preserve Phase 4.1 host/UMBRA/save behavior and defer the known 20× issue to Phase 4.1.1. No physical-device/native/AV claims without actual verification.
 
 # Current handoff: Phase 4.1 Command Bridge and Remote Synchronization
 

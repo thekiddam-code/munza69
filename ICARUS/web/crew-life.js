@@ -12,7 +12,7 @@ function choose(s,p,work,env){if(!available(p)||!work.length)return null;const c
  if((p.stress||0)>35||(p.social??60)<40)options.push({task:c.sociability<.45?'Taking a quiet break':'Seeking a conversation',dest:c.sociability<.45?c.quietRoom:'A09',weight:1+(p.stress||0)/40});
  if(c.curiosity>.6&&(p.energy??80)>50)options.push({task:'Watching the stars',dest:'A03',weight:.5+(t.curiosity??50)/100});
  const choices=options.filter(o=>env.reachable(p,o.dest));if(!choices.length)return null;
- for(const o of choices){const n=c.recent.filter(x=>x.task===o.task).length;o.weight/=1+n;}
+ for(const o of choices){const n=c.recent.filter(x=>x.task===o.task).length;o.weight/=1+n;o.weight*=root.ICARUSCrewSocial?.preference(s,p,o.dest)??1;}
  const total=choices.reduce((n,o)=>n+o.weight,0);let x=env.draw(s.universe?.seed??1,p.name+':choice:'+c.decisions++)*total,selected=choices.at(-1);for(const o of choices){x-=o.weight;if(x<0){selected=o;break;}}
  c.recent.push({at:s.tick,task:selected.task,dest:selected.dest,onDuty:duty.onDuty,reason:'Assigned shift, job, individual preference, needs, recent activity and reachable route'});c.recent=c.recent.slice(-12);
  return {task:selected.task,goal:selected.task,dest:selected.dest,duration:18+Math.floor(env.draw(s.universe?.seed??1,p.name+':duration:'+c.decisions)*23)};
@@ -23,9 +23,9 @@ function talk(s,p,q,env){if(!available(p)||!available(q)||!env.coLocated(p,q)||(
  const shared=fact?env.share(p,q,fact):false;if(fact&&!shared)return null;
  const topic=shared?'report':(p.stress>45||q.stress>45)?'support':'company';
  const text=root.ICARUSCrewEditorial.interaction(s,p,q,a,b,topic,shared?fact:null);
- const r=env.record('social',text,[p.name,q.name],{activity:'conversation',topic,quotedFactId:shared?fact.id:null,quotedSourceId:shared?fact.sourceId:null,confidence:shared?fact.confidence:null,location:env.position(p),publicAcknowledgment:topic==='company'&&a.sociability>.65&&b.sociability>.65},{disclosure:topic==='company'&&a.sociability>.65&&b.sociability>.65?'shareable':'private'});if(!r?.id)return null;
+ const r=shared?.record||env.record('social',text,[p.name,q.name],{activity:'conversation',topic,quotedFactId:shared?fact.id:null,quotedSourceId:shared?fact.sourceId:null,confidence:shared?fact.confidence:null,location:env.position(p),publicAcknowledgment:topic==='company'&&a.sociability>.65&&b.sociability>.65},{disclosure:topic==='company'&&a.sociability>.65&&b.sociability>.65?'shareable':'private'});if(!r?.id)return null;
  for(const [person,m,peer] of [[p,a,q],[q,b,p]]){m.lastSocial=s.tick;m.peerAt[peer.name]=s.tick;m.memories.push({sourceId:r.id,at:s.tick,peer:peer.name,topic});m.memories=m.memories.slice(-24);person.social=clamp((person.social??50)+5);person.stress=clamp((person.stress??0)-(topic==='support'?2:.5));person.relationships=person.relationships||{};person.relationships[peer.name]=clamp((person.relationships[peer.name]||0)+.5,-100,100);}
- p.conversation={with:q.name,sourceId:r.id,until:s.tick+2};q.conversation={with:p.name,sourceId:r.id,until:s.tick+2};c.conversations++;return r;
+ p.conversation={with:q.name,sourceId:r.id,until:s.tick+2};q.conversation={with:p.name,sourceId:r.id,until:s.tick+2};c.conversations++;env.courtship?.(p,q);return r;
 }
 // A private activity ledger observes existing controllers; it never assigns or advances time.
 function activityPhase(p,position,now=Infinity){
@@ -62,6 +62,7 @@ function observeActivities(s,env){const c=init(s);if(c.activityTick===s.tick)ret
  }
  for(const death of s.living?.deceased||[]){const activity=c.people[death.name]?.activity;if(activity&&activity.status==='active'){activity.status='deceased';activity.phase='deceased';activity.endedAt=Number.isFinite(death.at)?death.at:s.tick;activity.reason='Recorded crew death';}}
 }
+function completeActivity(s,p,source){const a=s.crewLife?.people[p.name]?.activity,canonical=(s.chronicle?.records||[]).find(r=>r.id===source?.id&&r.message===source.message&&!r.data?.creatorAuthored);if(!a||a.status!=='active'||!canonical||canonical.data?.activity!=='repair-complete'||canonical.data?.room!==a.destination||p.room!==a.destination||p.route?.length)return false;a.status='completed';a.endedAt=s.tick;a.completionSourceId=source.id;a.reason='Existing paid repair controller recorded actual completion';return true;}
 function audit(s){const c=s.crewLife;if(!c)return [];const errors=[];for(const [name,p] of Object.entries(c.people)){if(p.recent.length>12||p.memories.length>24)errors.push('Unbounded crew routine '+name);if(p.memories.some(m=>!m.sourceId))errors.push('Unsourced interaction '+name);if((p.activityHistory||[]).length>16)errors.push('Unbounded activity history '+name);if(p.activity&&[p.activity.activeMinutes,p.activity.waitingMinutes,p.activity.travelMinutes].some(v=>!Number.isFinite(v)||v<0))errors.push('Invalid activity accounting '+name);}return errors;}
-const api={init,shift,available,choose,talk,observeActivities,activityPhase,audit};if(typeof module==='object'&&module.exports){root.ICARUSCrewEditorial=require('./crew-editorial');root.ICARUSUniverse=require('./universe');module.exports=api;}else root.ICARUSCrewLife=api;
+const api={init,shift,available,choose,talk,observeActivities,activityPhase,completeActivity,audit};if(typeof module==='object'&&module.exports){root.ICARUSCrewEditorial=require('./crew-editorial');root.ICARUSUniverse=require('./universe');module.exports=api;}else root.ICARUSCrewLife=api;
 })(globalThis);

@@ -15,3 +15,5 @@ button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visi
 #cinematic-chronicle[data-playing=true] .film-credits{animation:creditRoll 10s linear 1}#cinematic-chronicle[data-playing=false] .film-credits{animation-play-state:paused}@keyframes creditRoll{from{translate:0 12px}to{translate:0 -12px}}
 #writer-status{padding:6px 16px;font-size:11px;color:#b8dfd9;background:#102932}#writer-status[data-readonly=true]{color:#ffe2a7;background:#352b1c}#backup-transfer{padding:10px;border:1px solid #527580}#backup-progress{overflow-wrap:anywhere;color:#c4e4e2}
 #rd-host.bridge-in-settings{position:static;max-width:none;margin:12px 0;box-shadow:none}#rd-host.bridge-in-settings button{min-height:44px}#rd-host.bridge-in-settings input{min-height:36px;max-width:100%}
+
+.cam-person[data-animation=sweep] .rig-arm-right{animation:cleanupSweep 2.5s ease-in-out infinite}.cam-person[data-animation=recreation] .rig-arm-right{animation:conversationHand 5s ease-in-out infinite}@keyframes cleanupSweep{50%{rotate:-45deg;translate:2px 0}}

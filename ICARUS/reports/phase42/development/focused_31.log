@@ -1,0 +1,39 @@
+✔ activity migration adopts existing work without resetting its budget, crew or history (3.727423ms)
+✔ one physical minute is accounted once; rendering and repeated observations cannot advance activity (0.337979ms)
+✔ blocked access and travel do not become performed work or completed tasks (0.403045ms)
+✔ real completion and emergency interruption remain distinguishable and persistent (1.362481ms)
+✔ history is bounded without dropping existing social memories or relationships (0.935632ms)
+✔ incapacitation and death outrank stale conversation, route and carried-tool animation cues (0.657371ms)
+✔ a forced budget drop is not fabricated into observed completion (0.298511ms)
+✔ legacy shifts migrate without resetting preferences and use elapsed voyage days, not episode number (0.370316ms)
+✔ professional peers stagger shifts while off-duty choices still respect reachable physical locations (0.816786ms)
+✔ a positive conversation cannot erase an established strong relationship by clamping it to twenty (0.821223ms)
+✔ fetching supplies preserves the parent assignment and a repeated completed duty gets a new activity identity (0.301946ms)
+✔ a recorded death closes the activity without resurrecting crew or erasing personal history (0.232774ms)
+✔ actual paid repair completion can close its adopted activity before the controller reassigns it (0.293804ms)
+✔ cleanup is local, sustained work and cannot interrupt an emergency or a committed researcher (2.29605ms)
+✔ cleanup has actual duration and cannot occur while travelling or at the wrong location (0.906719ms)
+✔ post-repair inspection requires actual arrival and completion, records condition without repairing for free (0.319261ms)
+✔ assistance requests are rate limited, caused by actual blocked work and cannot release emergency duty (0.848463ms)
+✔ recreation lowers stress only through performed local task time; waiting produces no recovery (0.300403ms)
+✔ existing crew, identities and canonical numeric relationships migrate without alteration (6.50975ms)
+✔ private conversation creates gradual sourced memories only for actual witnesses (1.397784ms)
+✔ unknown and fabricated sources cannot change social state (0.234717ms)
+✔ distance prevents a declared participant from gaining a conversation memory (0.274926ms)
+✔ reconciliation and passage of time gradually reduce resentment without erasing memories (0.910554ms)
+✔ remembered trust and resentment affect reachable-room preference with bounded weights (0.429544ms)
+✔ mentorship uses actual same-role experience; romance requires mutual explicit adult consent (2.634319ms)
+✔ 100 registered profiles keep only existing active crew; dormant registration needs a real manifest (0.902292ms)
+✔ memories bounded, existing mission experiences sourced once, save/reload deterministic (7.259547ms)
+✔ gossip cannot cross separation, disclose private information or mutate map facts (0.786251ms)
+✔ misinterpretation stays a claim and later source delivery corrects the recipient, not the world (0.905677ms)
+✔ quiet ticks and repeated rendering do not create incidents or conversations (7.079952ms)
+✔ autonomous courtship needs explicit adult preferences, repeated trust and actual contact; it remains private (0.639474ms)
+ℹ tests 31
+ℹ suites 0
+ℹ pass 31
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 281.94885

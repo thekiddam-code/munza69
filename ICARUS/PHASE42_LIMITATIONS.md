@@ -1,0 +1,14 @@
+# Phase 4.2 limits and remaining refinement
+
+This is an integrated Living Ship development build, not the final ICARUS release. The validated subset and campaigns are documented separately; do not infer completion from a ZIP or survival count.
+
+- 100 **registered**, smaller active population: tested dormant registry foundation; established active/deceased cast stays 20. No recruitment/activation UI, 100-active support, staff replacement or generated extra crew. Registration is a source-validated module API, exercised with explicit personnel-manifest fixtures.
+- Relationship dimensions and consent operate on actual interactions; no prescribed romances or dialogue quotations. Adult/interest preferences default unset in old saves. Creator can configure them without creating an event. Withdrawing consent currently requires private preference controls; no elaborate relationship dialogue UI. Mentorship reflects same-role interactions with an experienced colleague, not a separate skill tree.
+- Hearsay supports tentative exaggeration/interpretation and later correction with the original source. It does not invent specific false injuries/discoveries, leak secrets or implement open-ended natural-language misunderstanding. Private conversations are not automatically overheard. Existing received reports still propagate through established knowledge channels.
+- Assistance requests do not create an omniscient second dispatcher. Actual emergency allocation, safety refusal, mission willingness, medical treatment and resource allocation reuse established policies. Detailed misconduct investigations, promotion hierarchies and distinct animations for every named clinical procedure remain refinement work.
+- Existing procedural art remains schematic. Cleanup/recreation/care cues improve it; no new production-quality full-body asset library, generated spoken dialogue, real video footage or audio. Sunday and rare lethal eligibility retain prior source-backed functionality/limitations.
+- Long-run world/history growth follows prior durable archive design. New per-person recent memories/activity lists are bounded; historical crew and source facts are retained for continuity. No assertion of infinite-duration or 365-day Phase 4.2 validation.
+- Known 20× clock issue intentionally untouched; investigate in Phase 4.1.1. Existing normal/holiday/real-week contracts retained.
+- Physical Windows, phone/tablet, Samsung TV, real Wi-Fi/Tailscale, antivirus and native APK rebuild cannot be verified in Linux cloud. Installed Android functionality is retained. Original Android Studio source recovery remains pending, not permanently unsupported.
+
+Next priorities: verify host/phone behavior on the user's actual devices and backed-up voyage; isolate Phase 4.1.1 timing independently; refine observed help/mentorship dialogue and consent withdrawal UX; evaluate long-run archive size and substantive crew-behavior balance. No universe expansion is needed.

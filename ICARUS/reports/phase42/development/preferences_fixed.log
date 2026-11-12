@@ -1,0 +1,7 @@
+test_optional_private_preferences_require_creator_and_do_not_invent_events (test_living_ship_integration.LivingShipIntegration.test_optional_private_preferences_require_creator_and_do_not_invent_events) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 2.884s
+
+OK
+sys:1: ResourceWarning: unclosed <socket.socket fd=3, family=2, type=1, proto=0, laddr=('127.0.0.1', 38775)>
