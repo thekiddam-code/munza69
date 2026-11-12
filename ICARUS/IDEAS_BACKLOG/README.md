@@ -100,6 +100,16 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - Future option: prioritize feeds with motion, hazards or incidents without losing coverage of quiet rooms.
 - Acceptance: 4 previews cycle independently; tapping a preview switches main feed; main selection stays stable; pausing previews works; private rooms never appear in normal rotation.
 
+## Phase 4.2A camera graphics — detailed 16-bit pixel art (approved, 2026-11-12)
+- **Decision:** Use detailed 16-bit-era pixel art inside the security camera feeds. Keep the surrounding UMBRA UI in its near-black, cyan/green Prometheus-inspired technical style.
+- **Core milestone requirement**, not just future polish. Characters must be readable, distinguishable, and visibly animated according to real crew state.
+- Initial sprite design targets: approximately 32×48 to 48×64 pixels per character, adjustable after testing actual camera scale. Directional walking, idle/turning, talking/gesturing, equipment operation, eating, sitting/resting, reactions.
+- Room art: readable silhouettes, appropriate furniture/equipment, industrial ship details and distinct bridge, engineering, medical, mess, corridors, etc.; preserve real ship layout.
+- Renderer: nearest-neighbor crisp scaling; restrained lighting, console activity and emergency effects; no blurry scaling. Shared authoritative world for one primary feed and four rotating previews; lower-resolution or lower-frequency previews where needed.
+- Implementation order: inspect existing renderer → one fully functional room with two animated crew and equipment → validate real walking/conversation/task animations → integrate camera wall → expand reusable art across rooms.
+- Preserve privacy (no ordinary crew quarters security cameras), saves, UMBRA mobile performance, and reduced-motion settings.
+- Acceptance: watch real crew actions for an extended shift, identify people and activities visually, and switch between matching live feeds without spawning duplicate simulations.
+
 ## Future phases / unscheduled
 ### Cinematic surveillance and weekly Sunday recap
 - Configurable security wall, focused cameras, real incident clips and labeled reconstructions.
