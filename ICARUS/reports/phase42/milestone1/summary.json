@@ -1,0 +1,28 @@
+{
+  "phase42_complete": false,
+  "milestone": "Persistent activity/shift foundation and relationship preservation fix",
+  "baseline": "08544420003d637040ab279c20d337a20e0bb608",
+  "final_node_tests": 291,
+  "targeted_browser_tests": 4,
+  "development_browser_executions": 101,
+  "development_browser_note": "Inherited cinematic/core cases, development run; not claimed as a complete frozen release regression",
+  "full_phase41_backup_migration_passed": true,
+  "known_20x_issue": "Deferred unchanged to Phase 4.1.1",
+  "pending_specification": "User request ends at section 5: Conversations and Gossip \u2014 Implement",
+  "not_implemented": [
+    "Full typed social relationships/consensual romance/mentorship integration",
+    "Missing section 5 onward conversation/gossip requirements",
+    "Complete physical action expansion and release validation"
+  ],
+  "not_run": [
+    "Phase 4.2 long-duration campaigns",
+    "Full extracted release validation",
+    "Broad historical save matrix",
+    "Physical Windows/Android/TV/AV tests"
+  ],
+  "runtime_sha256": {
+    "web/crew-life.js": "ab30f59fd28a2e954caca881427452852040ddacb513fbe28e089fea941294da",
+    "web/embodiment.js": "e30bf22ad12551b87e80de2dc939b75a79da85dd23a13a83b6e6dd448e199516",
+    "web/icarus.html": "d2d96d32c0d260ffc011b7439d96b733deae60853c94e72aebc126df38bbc160"
+  }
+}

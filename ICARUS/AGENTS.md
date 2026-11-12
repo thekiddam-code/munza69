@@ -1,3 +1,7 @@
+# Current handoff: Phase 4.2 Living Ship (partial specification)
+
+Use codex/living-ship-phase4-2 and read PHASE42_PROGRESS.md. The request ends at section 5 “Conversations and Gossip — Implement”; remaining instructions/acceptance are pending. First milestone extends existing CrewLife with private activity continuity and shifts, preserves relationship ranges and fixes disabled animation priority. Do not call Phase 4.2 complete or invent missing gossip/romance requirements. Preserve all Phase 4.1 host/UMBRA/save behavior and leave the known 20× issue for Phase 4.1.1.
+
 # Current handoff: Phase 4.1 Command Bridge and Remote Synchronization
 
 Use codex/command-bridge-phase4-1 and the approved user specification. Read PHASE41_PROGRESS.md, PHASE41_ARCHITECTURE.md, PHASE41_VALIDATION.md, PHASE41_LIMITATIONS.md and README_PHASE41.md. bridge_service.py and host-authority.js fence the real host; never replace saves with remote/stale state. Creator mode is unsaved Ctrl+Shift+F12; private perspectives stay there. Workspace preferences remain per screen and outside world saves. Preserve installed APK; native build pending original source recovery. No physical-device or full-release claim without actual verification. Older handoffs below are historical.

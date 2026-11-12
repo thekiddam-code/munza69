@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "baseline": "0854442",
+  "unchanged_files": [
+    "web/calendar.js",
+    "web/command-ui.js",
+    "web/host-authority.js",
+    "web/remote-sync.js",
+    "server.py",
+    "bridge_service.py",
+    "web/workspace.js",
+    "web/knowledge.js",
+    "web/knowledge-runtime.js"
+  ],
+  "original_clock_pause_rate_handlers_byte_identical": true,
+  "known_20x_issue": "Deferred to Phase 4.1.1; not fixed here"
+}

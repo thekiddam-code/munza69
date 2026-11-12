@@ -1,0 +1,10 @@
+test_existing_world_gains_private_activity_continuity_and_exact_reload (test_living_ship_integration.LivingShipIntegration.test_existing_world_gains_private_activity_continuity_and_exact_reload) ... ok
+test_real_week_boundary_preserves_shift_and_activities_without_world_reset (test_living_ship_integration.LivingShipIntegration.test_real_week_boundary_preserves_shift_and_activities_without_world_reset) ... ok
+test_views_do_not_advance_activity_or_invent_progress (test_living_ship_integration.LivingShipIntegration.test_views_do_not_advance_activity_or_invent_progress) ... ok
+test_full_phase41_backup_import_retains_existing_crew_routines_and_history (test_living_ship_integration.LivingShipIntegration.test_full_phase41_backup_import_retains_existing_crew_routines_and_history) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 56.101s
+
+OK
+sys:1: ResourceWarning: unclosed <socket.socket fd=3, family=2, type=1, proto=0, laddr=('127.0.0.1', 38005)>
