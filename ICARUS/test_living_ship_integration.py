@@ -1,5 +1,5 @@
 """Phase 4.2 first milestone: actual physical activity and preserved world/clock contracts."""
-import unittest
+import unittest,os
 import test_living_world_integration as base
 class LivingShipIntegration(base.LivingWorldIntegration):
  def test_existing_world_gains_private_activity_continuity_and_exact_reload(self):
@@ -11,7 +11,7 @@ class LivingShipIntegration(base.LivingWorldIntegration):
  def test_full_phase41_backup_import_retains_existing_crew_routines_and_history(self):
   import json
   from pathlib import Path
-  donor=Path('/workspace/work/phase41_final_validation/campaigns/normal_1001/backup_1001_30.json');self.assertTrue(donor.exists(),'Genuine Phase 4.1 migration fixture is required');old=json.loads(donor.read_text())['state'];p=self.page();p.set_default_timeout(600000);p.on('dialog',lambda d:d.accept());p.locator('#backupfile').set_input_files(str(donor));p.wait_for_function('(tick)=>__icarusSoak.time()===tick',arg=old['tick']);s=self.snap(p);self.assertEqual(s['tick'],old['tick']);self.assertEqual([q['name'] for q in s['crew']],[q['name'] for q in old['crew']]);self.assertEqual(s['economy'],old['economy']);self.assertEqual(s['navigation'],old['navigation']);
+  donor=Path(os.environ.get('ICARUS_PHASE41_BACKUP','/workspace/work/phase41_final_validation/campaigns/normal_1001/backup_1001_30.json'));self.assertTrue(donor.exists(),'Genuine Phase 4.1 migration fixture is required');old=json.loads(donor.read_text())['state'];p=self.page();p.set_default_timeout(600000);p.on('dialog',lambda d:d.accept());p.locator('#backupfile').set_input_files(str(donor));p.wait_for_function('(tick)=>__icarusSoak.time()===tick',arg=old['tick']);s=self.snap(p);self.assertEqual(s['tick'],old['tick']);self.assertEqual([q['name'] for q in s['crew']],[q['name'] for q in old['crew']]);self.assertEqual(s['economy'],old['economy']);self.assertEqual(s['navigation'],old['navigation']);
   for name,person in old['crewLife']['people'].items():
    for key in ['memories','recent','decisions','lastSocial','peerAt','preferredWork']:self.assertEqual(s['crewLife']['people'][name][key],person[key])
   self.assertTrue(all(x.get('shift') for x in s['crewLife']['people'].values()));p.evaluate('__icarusSoak.save()');p.reload();self.assertEqual(self.snap(p),s)

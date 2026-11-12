@@ -11,3 +11,7 @@ The development browser run passed 50 cases, including full genuine Phase 4.1 ba
 Remaining production limits are explicit in PHASE42_LIMITATIONS.md. Passing tests does not make ICARUS a finished final release. Never claim a natural romance, disaster or extraordinary encounter unless a campaign actually recorded it. No live user save has been accessed or altered in this environment.
 
 4. **Communication receipt correction:** real-browser uncertain-claim test found an alternate legitimate original-report delivery path. Correction now runs at the established Runtime learned callback. 51 focused Node cases and the actual browser claim/publication/correction/save test passed. Freeze this correction and validate the final package separately from candidate 2dc5266.
+
+## Final validation milestone
+
+Frozen runtime 6707616 passed the independent extracted-package gate: 311 Node, 55 Living Ship browser, 31 host/remote browser+HTTP, two production-clock and 15 service cases (414 executions), plus 26 phone/tablet emulation checks. Corrected runtime campaigns completed 7 adverse and 30 normal real days with exact checkpoints and independent source audits. PHASE42_VALIDATION.md contains actual measurements and unavailable checks. Final packaging may change documentation/tooling only; all 106 runtime hashes must match. No final ICARUS production-readiness or physical-device claim.

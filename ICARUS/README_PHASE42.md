@@ -15,6 +15,8 @@ Continue your existing voyage. This package preserves the Phase 4.1 Windows simu
 
 Bridge Mode remains the default. Cameras show actual procedural activity and source-labeled reconstructions; SOL reports only received evidence. Ordinary shifts, downtime and quiet days are valid. Optional Ctrl+Shift+F12 opens Creator Mode. Crew > Roster shows private routine/social histories and optional adult/relationship-interest preferences. These preferences do not themselves create consent, conversations or couples; genuine repeated interaction and mutual autonomous agreement remain necessary. Unset preferences remain unset in old saves.
 
+The BUILD_MANIFEST identifies this edition; historical save-envelope version strings are retained for compatibility.
+
 No clock fix is included: the known 20× issue belongs to Phase 4.1.1. Do not change clocks to test this update on your only copy of a voyage.
 
 ## Roll back

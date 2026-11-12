@@ -1,0 +1,432 @@
+{
+  "passed": true,
+  "tested_runtime_commit": "6707616a454d8aa6dd36923e1d2bfa3378bf3502",
+  "runtime_files": 106,
+  "node_tests": 311,
+  "browser_http_executions": {
+    "living_ship": 55,
+    "phase41": 31,
+    "production": 2
+  },
+  "service_unit_tests": 15,
+  "executed_cases_total": 414,
+  "functional_emulation_checks": {
+    "mobile_functional": 15,
+    "tablet_touch": 11
+  },
+  "counts_note": "Executed cases include inherited regressions repeated by suites; functional checks and benchmark samples counted separately. Not a count of unique requirements.",
+  "historical_phase41_donor_sha256": "5b151a4a1a372f394931dfa389f23c767cbe434a1b6597c21ab818b4b1f10aa9",
+  "campaigns": {
+    "compound_4807": {
+      "passed": true,
+      "seed": 4807,
+      "scenario": "compound",
+      "real_days": 7,
+      "ship_days": 25.0,
+      "ticks": 36000,
+      "episode": 2,
+      "alive": 20,
+      "deaths": [],
+      "arrivals": 5,
+      "field_missions": 10,
+      "science_cases": 21,
+      "conversations": 420,
+      "source_activities": {
+        "conversation": 420,
+        "assistance-request": 14,
+        "repair-complete": 198,
+        "inspection": 92
+      },
+      "source_kinds": {
+        "system": 171,
+        "injury": 2,
+        "anthology": 405,
+        "medical": 2,
+        "emergency": 14,
+        "little": 5134,
+        "crew_memory": 106,
+        "social": 611,
+        "relationship": 1233,
+        "operation": 14,
+        "maintenance": 297,
+        "observation": 147,
+        "research": 104,
+        "mission": 36,
+        "encounter": 4,
+        "mission_history": 5,
+        "encounter_history": 3
+      },
+      "retained_social": {
+        "registered": 20,
+        "active": 20,
+        "retainedSocialMemories": 635,
+        "retainedBonds": 324,
+        "retainedActivityHistory": 320,
+        "retainedClaims": 0
+      },
+      "weekly_films": 1,
+      "legendary_segments": 0,
+      "maintenance_statistics": {
+        "version": 1,
+        "stats": {
+          "nativeFaults": 2,
+          "dispatches": 2,
+          "emergencyWork": 200.00000000000048,
+          "preventiveStarted": 204,
+          "maintenanceWork": 14318.199999998107,
+          "emergencyCompleted": 2,
+          "criticalRecoveries": 2,
+          "criticalEscalations": 1,
+          "preventiveCompleted": 198,
+          "releasedAssignments": 3
+        },
+        "decisions": [
+          {
+            "at": 146,
+            "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+          },
+          {
+            "at": 181,
+            "reason": "Measured life-support fault or reserve forecast below one day; optional research and launches suspended."
+          },
+          {
+            "at": 6449,
+            "reason": "Released obsolete maintenance reservation for Frank Morrow; current assignment retained.",
+            "person": "Frank Morrow"
+          },
+          {
+            "at": 10012,
+            "reason": "Released obsolete maintenance reservation for Frank Morrow; current assignment retained.",
+            "person": "Frank Morrow"
+          },
+          {
+            "at": 20681,
+            "reason": "Released obsolete maintenance reservation for Tomas Vale; current assignment retained.",
+            "person": "Tomas Vale"
+          }
+        ],
+        "notices": {
+          "forecast:false": 146,
+          "forecast:true": 181,
+          "detach:Frank Morrow": 10012,
+          "detach:Tomas Vale": 20681
+        },
+        "forecast": {
+          "food": {
+            "at": 35941,
+            "consumption": 0.06399999999999864,
+            "production": 0.06399999999999485,
+            "available": 159.98600000000002,
+            "minutes": null
+          },
+          "water": {
+            "at": 35941,
+            "consumption": 0.028000000000001062,
+            "production": 0.028000000000001062,
+            "available": 152.91640000000012,
+            "minutes": null
+          },
+          "oxygen": {
+            "at": 35941,
+            "consumption": 0.020000000000000757,
+            "production": 0.020000000000000757,
+            "available": 111.33200000000141,
+            "minutes": null
+          },
+          "energy": {
+            "at": 35941,
+            "consumption": 0.11098845360000571,
+            "production": 0.11097110760000153,
+            "available": 179.89311924,
+            "minutes": 10370870.47138614
+          }
+        },
+        "sample": {
+          "at": 35941,
+          "consumed": {
+            "energy": 4343.718247215995,
+            "food": 1841.174,
+            "water": 1015.3480000000001,
+            "oxygen": 718.82,
+            "medical": 1,
+            "tools": 524.4110000000001,
+            "lab": 519.5,
+            "spares": 201
+          },
+          "produced": {
+            "energy": 4403.611366456035,
+            "spares": 206.29445360000068,
+            "water": 1018.2644000000009,
+            "oxygen": 710.152,
+            "medical": 9,
+            "food": 1816.1599999998934,
+            "lab": 503.49999999999994,
+            "tools": 506.411000000003
+          }
+        },
+        "critical": false,
+        "lastDecision": {
+          "at": 20681,
+          "reason": "Released obsolete maintenance reservation for Tomas Vale; current assignment retained.",
+          "person": "Tomas Vale"
+        }
+      },
+      "resources_final": {
+        "food": 159.986,
+        "water": 152.91640000000012,
+        "oxygen": 111.33200000000141,
+        "energy": 179.8756704,
+        "medical": 20,
+        "spares": 69.78221759999988,
+        "tools": 69.991,
+        "lab": 80
+      },
+      "acquisition": {},
+      "fuel_used": 1.9624515496596866,
+      "history_records": 8806,
+      "snapshot_bytes_first": 2035663,
+      "snapshot_bytes_last": 5076362,
+      "checkpoint_reload_days": [
+        7
+      ],
+      "audit_errors": [],
+      "simulation_errors": [],
+      "backup_sha256": "5884580e8dd202ef6d4cbb691536b767257f120fc2028417a126e635cb36b78a",
+      "source_commit": "6707616a454d8aa6dd36923e1d2bfa3378bf3502",
+      "elapsed_seconds": 147.48645049699917,
+      "evidence_note": "Only actual campaign results. No generated extra crew; romances/claims need not occur. Checkpoint time is measured using unchanged production calendar including synchronized holidays."
+    },
+    "normal_1001": {
+      "passed": true,
+      "seed": 1001,
+      "scenario": "normal",
+      "real_days": 30,
+      "ship_days": 111.75,
+      "ticks": 160920,
+      "episode": 5,
+      "alive": 20,
+      "deaths": [],
+      "arrivals": 5,
+      "field_missions": 9,
+      "science_cases": 22,
+      "conversations": 1924,
+      "source_activities": {
+        "conversation": 1924,
+        "assistance-request": 34,
+        "repair-complete": 869,
+        "inspection": 409
+      },
+      "source_kinds": {
+        "system": 326,
+        "little": 23396,
+        "relationship": 5524,
+        "maintenance": 1291,
+        "social": 3397,
+        "operation": 34,
+        "observation": 234,
+        "research": 111,
+        "emergency": 7,
+        "anthology": 1487,
+        "crew_memory": 450,
+        "mission": 41,
+        "encounter": 3,
+        "encounter_history": 3,
+        "mission_history": 6,
+        "injury": 2
+      },
+      "retained_social": {
+        "registered": 20,
+        "active": 20,
+        "retainedSocialMemories": 640,
+        "retainedBonds": 378,
+        "retainedActivityHistory": 320,
+        "retainedClaims": 0
+      },
+      "weekly_films": 4,
+      "legendary_segments": 0,
+      "maintenance_statistics": {
+        "version": 1,
+        "stats": {
+          "preventiveStarted": 886,
+          "maintenanceWork": 62359.200000038494,
+          "criticalEscalations": 1,
+          "criticalRecoveries": 1,
+          "preventiveCompleted": 869,
+          "releasedAssignments": 12
+        },
+        "decisions": [
+          {
+            "at": 61,
+            "reason": "Measured life-support fault or reserve forecast below one day; optional research and launches suspended."
+          },
+          {
+            "at": 121,
+            "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+          },
+          {
+            "at": 16169,
+            "reason": "Released obsolete maintenance reservation for Frank Morrow; current assignment retained.",
+            "person": "Frank Morrow"
+          },
+          {
+            "at": 47772,
+            "reason": "Released obsolete maintenance reservation for Theo Moss; current assignment retained.",
+            "person": "Theo Moss"
+          },
+          {
+            "at": 62156,
+            "reason": "Released obsolete maintenance reservation for Theo Moss; current assignment retained.",
+            "person": "Theo Moss"
+          },
+          {
+            "at": 80277,
+            "reason": "Released obsolete maintenance reservation for Tomas Vale; current assignment retained.",
+            "person": "Tomas Vale"
+          },
+          {
+            "at": 93342,
+            "reason": "Released obsolete maintenance reservation for Tomas Vale; current assignment retained.",
+            "person": "Tomas Vale"
+          },
+          {
+            "at": 98395,
+            "reason": "Released obsolete maintenance reservation for Jules Mercer; current assignment retained.",
+            "person": "Jules Mercer"
+          },
+          {
+            "at": 117615,
+            "reason": "Released obsolete maintenance reservation for Tomas Vale; current assignment retained.",
+            "person": "Tomas Vale"
+          },
+          {
+            "at": 149884,
+            "reason": "Released obsolete maintenance reservation for Theo Moss; current assignment retained.",
+            "person": "Theo Moss"
+          },
+          {
+            "at": 151374,
+            "reason": "Released obsolete maintenance reservation for Frank Morrow; current assignment retained.",
+            "person": "Frank Morrow"
+          },
+          {
+            "at": 154970,
+            "reason": "Released obsolete maintenance reservation for Frank Morrow; current assignment retained.",
+            "person": "Frank Morrow"
+          },
+          {
+            "at": 158955,
+            "reason": "Released obsolete maintenance reservation for Jules Mercer; current assignment retained.",
+            "person": "Jules Mercer"
+          }
+        ],
+        "notices": {
+          "forecast:true": 61,
+          "forecast:false": 121,
+          "detach:Frank Morrow": 154970,
+          "detach:Theo Moss": 149884,
+          "detach:Tomas Vale": 117615,
+          "detach:Jules Mercer": 158955
+        },
+        "forecast": {
+          "food": {
+            "at": 160861,
+            "consumption": 0.08066666666666909,
+            "production": 0.08066666666666909,
+            "available": 159.98600000000002,
+            "minutes": null
+          },
+          "water": {
+            "at": 160861,
+            "consumption": 0.02800000000000485,
+            "production": 0.027999999999989693,
+            "available": 152.79600000000016,
+            "minutes": null
+          },
+          "oxygen": {
+            "at": 160861,
+            "consumption": 0.02000000000000455,
+            "production": 0.019999999999996968,
+            "available": 110.73800000000092,
+            "minutes": null
+          },
+          "energy": {
+            "at": 160861,
+            "consumption": 0.11189095680001629,
+            "production": 0.11216732480000549,
+            "available": 179.89416,
+            "minutes": null
+          }
+        },
+        "sample": {
+          "at": 160861,
+          "consumed": {
+            "energy": 18685.569939999965,
+            "food": 8291.154,
+            "water": 4512.108,
+            "oxygen": 3217.2200000000003,
+            "lab": 1714.8,
+            "spares": 869,
+            "tools": 2505.733
+          },
+          "produced": {
+            "energy": 18745.46409999997,
+            "spares": 874.9999999999993,
+            "water": 4514.904000000003,
+            "oxygen": 3207.958,
+            "medical": 8,
+            "food": 8266.139999999372,
+            "lab": 1698.8000000000006,
+            "tools": 2487.733000000012
+          }
+        },
+        "critical": false,
+        "lastDecision": {
+          "at": 158955,
+          "reason": "Released obsolete maintenance reservation for Jules Mercer; current assignment retained.",
+          "person": "Jules Mercer"
+        }
+      },
+      "resources_final": {
+        "food": 159.3205,
+        "water": 152.79600000000016,
+        "oxygen": 110.73800000000092,
+        "energy": 179.81730048000003,
+        "medical": 20,
+        "spares": 69.21090479999992,
+        "tools": 69.12919999999993,
+        "lab": 80
+      },
+      "acquisition": {},
+      "fuel_used": 1.9624515496596866,
+      "history_records": 38128,
+      "snapshot_bytes_first": 2041781,
+      "snapshot_bytes_last": 14117422,
+      "checkpoint_reload_days": [
+        7,
+        30
+      ],
+      "audit_errors": [],
+      "simulation_errors": [],
+      "backup_sha256": "b5ace1c65b93e58db95e1ef68dd0c6643cdfa22f5453ef4a5946fc123598a3a3",
+      "source_commit": "6707616a454d8aa6dd36923e1d2bfa3378bf3502",
+      "elapsed_seconds": 706.3250050740007,
+      "evidence_note": "Only actual campaign results. No generated extra crew; romances/claims need not occur. Checkpoint time is measured using unchanged production calendar including synchronized holidays."
+    }
+  },
+  "package_policy": "Final documentation packaging may use a later commit; all 106 runtime hashes must match this tested extraction.",
+  "unavailable": [
+    "Physical Windows laptop",
+    "Physical Android phone/Samsung Tab S5e/native APK rebuild (original Studio source pending recovery)",
+    "Physical Samsung TV",
+    "Real Wi-Fi/Tailscale interruption",
+    "Antivirus scan/certification",
+    "Human screen-reader/usability/GPU-FPS evaluation"
+  ],
+  "driver_limits": [
+    "Chromium Linux and phone/tablet emulation; paired desktop/TV I/O stubbed in HTTP tests",
+    "Long campaigns disable per-step autosave in deterministic driver, test explicit durable checkpoints and exact reloads",
+    "100 registered with 20 active fixture/component benchmark, not 100 active actors",
+    "No 365-real-day Phase 4.2 campaign"
+  ],
+  "remaining_refinement": "See PHASE42_LIMITATIONS.md; no final ICARUS release completion claim."
+}

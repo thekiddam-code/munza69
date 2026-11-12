@@ -1,0 +1,51 @@
+{
+  "kind": "CrewLife/CrewSocial component benchmark, synthetic isolated fixtures; NOT full simulation/FPS",
+  "node": "v24.22.1",
+  "samples": [
+    {
+      "registered": 20,
+      "active": 20,
+      "physicalMinutes": 10000,
+      "elapsedMs": 302.053672,
+      "msPerMinute": 0.0302053672,
+      "serializedComponentBytes": 21987,
+      "dormantPeopleScheduled": 0,
+      "auditErrors": [],
+      "exactContinuation": true
+    },
+    {
+      "registered": 100,
+      "active": 20,
+      "physicalMinutes": 10000,
+      "elapsedMs": 215.470797,
+      "msPerMinute": 0.0215470797,
+      "serializedComponentBytes": 32916,
+      "dormantPeopleScheduled": 0,
+      "auditErrors": [],
+      "exactContinuation": true
+    },
+    {
+      "registered": 20,
+      "active": 20,
+      "physicalMinutes": 10000,
+      "elapsedMs": 221.9985049999999,
+      "msPerMinute": 0.02219985049999999,
+      "serializedComponentBytes": 21987,
+      "dormantPeopleScheduled": 0,
+      "auditErrors": [],
+      "exactContinuation": true
+    },
+    {
+      "registered": 100,
+      "active": 20,
+      "physicalMinutes": 10000,
+      "elapsedMs": 200.31279600000005,
+      "msPerMinute": 0.020031279600000004,
+      "serializedComponentBytes": 32916,
+      "dormantPeopleScheduled": 0,
+      "auditErrors": [],
+      "exactContinuation": true
+    }
+  ],
+  "passed": true
+}
