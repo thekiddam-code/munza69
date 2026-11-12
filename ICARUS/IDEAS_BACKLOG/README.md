@@ -47,6 +47,34 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - Real camera observation and evidence for future recaps; no fabricated live footage.
 - ~100 registered crew with a smaller active population; performance and save compatibility.
 
+## Observation notes — 2026-11-12 (user testing)
+**Current priority: watchable simulation, not expanding lore.** Observations are user-reported and not yet verified in source.
+
+### Next visual/UX pass — prioritize
+- **Camera fidelity / observable intent:** Iris Bell was reported as “searching for a conversation” but appeared stationary with minimal detail, movement, or expression. Show intention through plausible motion: orient/look around, walk toward an available person, pause, gesture, begin an interaction, or give up; do not animate actions unsupported by state. Improve poses, expression cues and detail at camera scale. Test with real crew tasks and camera coverage.
+- **Crew Location quick actions:** add accessible `⋯` (horizontal or vertical) per-character menu linking to available live camera, psychological profile, assignments/duty history, relationships and other existing relevant records. No fabricated feeds; show unavailable/uncaptured states.
+- **Home widgets:** collapse/expand by clicking the widget header; remove separate collapse buttons. Keep keyboard accessibility and avoid triggering collapse from embedded buttons.
+- **Overlay collision:** user reports “Locked Autonomous” header blocks the Focus button. Remove unnecessary overlay or reposition it without obscuring controls; screenshot pending.
+- **Themed scrollbars:** standard scrollbars returned. Restore dark, slim, cyan/green styled scrollbars with usable contrast, hover/focus and browser fallbacks. Preserve scroll chaining.
+
+### World privacy / camera coverage — design direction
+- Crew quarters should be designated **private** and should **not** have ordinary security cameras in cutaway or standard security views.
+- Distinguish official surveillance, privacy boundaries, and any later covert SOL capabilities. Do not quietly give standard SOL/crew views omniscient access.
+
+### Deferred lore feature — classified SOL Operations
+- Preserve/revive the Linux-style hidden terminal idea as a **secret SOL Operations** menu for covert missions, investigations, and possibly concealed surveillance, including in private quarters.
+- Separate from out-of-universe **Creator Mode**. In-universe covert actions should have constraints, detection risks, consequences and clear provenance; not simply omniscient debug controls.
+- **Do not implement in the next visual milestone** if it slows watchable crew movement and camera fidelity. Existing lore/implementation status unverified.
+- Consider how hidden access is discovered, what evidence exists, and whether it creates meaningful crew privacy/conflict.
+
+### Acceptance tests for next visual milestone
+1. Observe a character seeking conversation: movement or meaningful idle searching must correspond to their state, and a real conversation should animate participants when it happens.
+2. Follow a crew member from Crew Location to their camera and psychological profile using `⋯`.
+3. Collapse/expand home widgets by header without losing Focus actions.
+4. Verify overlay does not block Focus at typical desktop widths.
+5. Verify custom scrollbars and natural scroll chaining.
+6. Confirm crew quarters have no **official** camera feed; document any covert-camera concept as deferred.
+
 ## Future phases / unscheduled
 ### Cinematic surveillance and weekly Sunday recap
 - Configurable security wall, focused cameras, real incident clips and labeled reconstructions.
