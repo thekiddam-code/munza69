@@ -1,0 +1,3 @@
+e6de8c5a6df04a5d6c0fe8a9f6d6a966bb56c6aee69bde2776ccfcabc4500c9b  umbra-mobile-debug.apk
+637b380ff7669e83765ad33c3c32ff5716cf55c9b387c156be6ab04ab0ecb63d  umbra-mobile-apk.zip
+604847b260f77c96acdb0e2a7802a3d382953aa60acd5480291af8b48cc26f55  umbra-mobile-source.zip
