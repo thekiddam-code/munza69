@@ -10,6 +10,7 @@ function share(s,p,q,f,env){const K=root.ICARUSKnowledge;if(!f||f.disclosure==='
  const r=env.record('social',text,[p.name,q.name],{activity:'conversation',topic:'interpretation',premise:f.id,epistemicStatus:'reported-claim'},{kind:'reported-claim',confidence:Math.min(.4,f.confidence),disclosure:'shareable'});
  const id=s.knowledge.byKey[r?.id];return id&&K.known(s,q.name,id)?{record:r}:false;
 }
+function review(s,name,received){const K=root.ICARUSKnowledge;if(!received||!K.known(s,name,received.id))return 0;const facts=received.kind==='reported-claim'?[received]:Object.keys(s.knowledge.actors[name].entries).map(id=>s.knowledge.facts[id]).filter(f=>f?.kind==='reported-claim'&&f.data.premise===received.id);let n=0;for(const claim of facts){if(!K.known(s,name,claim.data.premise))continue;const e=K.entry(s,name,claim.id);if(e.review)continue;e.review={at:s.tick,sourceFactId:claim.data.premise,status:'withdrawn interpretation; original report received'};n++;}return n;}
 function classification(f){return f.kind==='reported-claim'?'reported claim':f.kind==='inference'?'inference':f.acquisition?.method==='direct-observation'?'direct observation':f.acquisition?.method==='recorded-evidence'?'documented record':'received report';}
-const api={share,classification};if(typeof module==='object'&&module.exports){root.ICARUSKnowledge=require('./knowledge');root.ICARUSUniverse=require('./universe');module.exports=api;}else root.ICARUSCrewCommunications=api;
+const api={share,review,classification};if(typeof module==='object'&&module.exports){root.ICARUSKnowledge=require('./knowledge');root.ICARUSUniverse=require('./universe');module.exports=api;}else root.ICARUSCrewCommunications=api;
 })(globalThis);
