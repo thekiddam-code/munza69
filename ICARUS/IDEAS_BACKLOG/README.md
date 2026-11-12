@@ -75,6 +75,18 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 5. Verify custom scrollbars and natural scroll chaining.
 6. Confirm crew quarters have no **official** camera feed; document any covert-camera concept as deferred.
 
+## Cutaway redesign — ship systems schematic (approved direction, 2026-11-12)
+**Priority:** design for next visual milestone if feasible; otherwise defer implementation without losing concept.
+
+- The ship cutaway should **not** look like a live security-camera feed. It is a deck/room schematic displaying telemetry, controls, and operational state. Cameras remain a separate system.
+- **At-a-glance room overlay:** room name/ID, lighting state, ambient temperature, atmosphere/pressure, power status, occupancy or biological returns, access/door state, hazards and camera coverage indicator. Keep overlays legible; choose compact per-room controls rather than overcrowding the map.
+- **Quick controls directly on cutaway:** select room, toggle/adjust lighting where authorized, choose room focus, inspect warnings. Actual changes must flow through ship system state and permissions.
+- **Focused room view:** richer light presets and brightness, HVAC target temperature, oxygen/CO2/pressure/contaminants, power circuits, doors/locks, sensor logs, biological classification confidence, security coverage, equipment health. Only implement controls supported by actual simulation state; otherwise show read-only or unavailable.
+- **Biological sensing:** distinguish registered crew from detected life signs and unclassified/unknown biological signatures. Count and confidence depend on sensor capabilities, interference, coverage, and actual simulated entities. Do not infer creature identity from a heartbeat alone or expose omniscient world state.
+- **Privacy:** crew quarters have no ordinary security cameras. Room environment and occupancy readings can exist without live video; any covert SOL surveillance is a separately deferred in-universe feature, not standard access.
+- **Visual standard:** near-black ship blueprint with thin cyan/green room outlines, restrained amber/red alerts, schematic corridors, and responsive zoom/focus interactions.
+- **Acceptance:** choosing a room reveals correct room state; authorized controls affect real simulation; no fake readings or video; biological discrepancies can be reported without omniscience; quarters remain camera-private.
+
 ## Future phases / unscheduled
 ### Cinematic surveillance and weekly Sunday recap
 - Configurable security wall, focused cameras, real incident clips and labeled reconstructions.
