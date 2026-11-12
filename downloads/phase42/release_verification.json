@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "zip": "ICARUS_Phase4_2_Living_Ship_Lite.zip",
+  "sha256": "9ad850a532506b289fa03efb3274bab8c7cb50760a71167c40e4f3660ef56307",
+  "bytes": 659159,
+  "package_source_commit": "f0f9231f9d23393890a3da4c3e97c3c3acf4222f",
+  "tested_runtime_commit": "6707616a454d8aa6dd36923e1d2bfa3378bf3502",
+  "runtime_files": 106,
+  "all_runtime_hashes_equal_tested_extraction": true,
+  "all_retained_source_hashes_verified": true,
+  "crc_passed": true,
+  "test_results": "ICARUS/reports/phase42/accepted/accepted_summary.json",
+  "branch": "codex/living-ship-phase4-2",
+  "known_clock_issue": "20x issue deliberately deferred to Phase 4.1.1",
+  "physical_device_release_signoff": false
+}
