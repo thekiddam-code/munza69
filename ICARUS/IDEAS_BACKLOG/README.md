@@ -87,6 +87,19 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - **Visual standard:** near-black ship blueprint with thin cyan/green room outlines, restrained amber/red alerts, schematic corridors, and responsive zoom/focus interactions.
 - **Acceptance:** choosing a room reveals correct room state; authorized controls affect real simulation; no fake readings or video; biological discrepancies can be reported without omniscience; quarters remain camera-private.
 
+## Live Camera module — rotating preview bank (approved direction, 2026-11-12)
+**Goal:** watchable surveillance interface; candidate for next visual phase.
+- Retain the existing large primary live camera feed.
+- Add **3–4 smaller live preview monitors** alongside or below the main feed, adapting to screen size.
+- Preview slots automatically rotate through all authorized/available security cameras on a configurable interval (initial design suggestion: 10–15 seconds); include pause and manual next/previous bank.
+- Clicking/tapping any preview **promotes that exact camera** into the primary monitor. Main monitor remains pinned until the user selects another feed; preview cycling must not interrupt it.
+- Optionally pin one or more preview slots; avoid starving other feeds of rotation.
+- Camera names, room identifiers, online/offline/coverage status and actual simulation footage must be consistent across primary and preview monitors. No synthetic footage passed off as live.
+- Exclude ordinary crew quarters from standard security camera list and rotation. Covert SOL cameras, if ever implemented, belong to separate classified in-universe interface.
+- Keep preview rendering efficient: shared simulation state, lower-resolution previews, no separate world instances; account for bandwidth/performance on UMBRA mobile/Tailscale.
+- Future option: prioritize feeds with motion, hazards or incidents without losing coverage of quiet rooms.
+- Acceptance: 4 previews cycle independently; tapping a preview switches main feed; main selection stays stable; pausing previews works; private rooms never appear in normal rotation.
+
 ## Future phases / unscheduled
 ### Cinematic surveillance and weekly Sunday recap
 - Configurable security wall, focused cameras, real incident clips and labeled reconstructions.
