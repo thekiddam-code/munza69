@@ -67,6 +67,12 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - **Do not implement in the next visual milestone** if it slows watchable crew movement and camera fidelity. Existing lore/implementation status unverified.
 - Consider how hidden access is discovered, what evidence exists, and whether it creates meaningful crew privacy/conflict.
 
+### Screenshot evidence — 2026-11-12
+- User supplied screenshot of local ICARUS Ship Overview (`/icarus.html#/deck/ship/overview`). The broad **AUTONOMOUS** command strip occupies a full row near the top, containing Release to autonomy, Explain decision, Pause, Automatic 4×, and Incidents controls. The 3-deck cutaway starts substantially below it.
+- **UI recommendation:** condense routine simulation state and Pause into an unobtrusive always-accessible header; move debug/autonomy overrides into Creator Mode while retaining any valid in-universe commands. Do not hide essential Pause.
+- **Reported defect:** “Locked Autonomous” header obstructs Focus, but the Focus button itself is not visible in this screenshot; inspect actual stacking, sticky positioning, hitboxes, responsive layout before coding the fix.
+- Increase usable vertical room for the cutaway without losing important status indicators.
+
 ### Acceptance tests for next visual milestone
 1. Observe a character seeking conversation: movement or meaningful idle searching must correspond to their state, and a real conversation should animate participants when it happens.
 2. Follow a crew member from Crew Location to their camera and psychological profile using `⋯`.
