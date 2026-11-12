@@ -117,6 +117,26 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - Study art direction, palette organization, tile construction, sprite proportions, frame timing, and layering. Create **original** ICARUS art and animations; do not import copyrighted game sprites, ripped backgrounds, ROM content, or proprietary code into the project without appropriate rights.
 - Keep scope anchored to Phase 4.2A watchable crew, one-room/two-character prototype, and camera preview consistency. No requirement to reverse-engineer either game before development.
 
+## Open-source 2D/16-bit rendering research (2026-11-12)
+**Research only. No engine replacement or code integration approved yet.** Review existing ICARUS renderer before selecting any dependency.
+
+### Highest practical fit for browser-based UMBRA
+- LittleJS — https://github.com/KilledByAPixel/LittleJS — MIT; small JS engine, sprite/tilemap/rendering examples. Candidate for low-overhead browser pixel rendering.
+- Phaser examples — https://github.com/phaserjs/examples — MIT **code**, but example artwork/audio have separate restrictions. Study camera, sprite animation, tilemap, scene and scaling patterns.
+- Excalibur.js — https://github.com/excaliburjs/Excalibur — BSD-2-Clause; TypeScript HTML5 Canvas actors, animations, scenes.
+- Pixelorama — https://github.com/Orama-Interactive/Pixelorama — MIT; sprite editing/export tool, not game runtime.
+
+### Other reference engines (less direct to web architecture)
+- Tilengine — https://github.com/megamarc/Tilengine — MPL-2.0; retro tile/sprite/layer/raster rendering in native C. Study ideas before attempting integration.
+- Flare engine/game — https://github.com/flareteam/flare-engine and https://github.com/flareteam/flare-game — GPL-3.0 engine; CC-BY-SA 3.0 art. Study animation/data-driven entities, beware license obligations.
+- Solarus — https://gitlab.com/solarus-games/solarus — GPL-3.0; C++/Lua, maps and interactions.
+
+### Decision criteria
+- Prefer smallest proven change that improves observable crew movement, sprite animation, pixel scaling and five-feed camera performance.
+- Prototype one room with two actors first; compare frame time, memory and mobile performance against current renderer.
+- Maintain one authoritative simulation; rendering libraries may never create independent world state.
+- Check license of every code and asset file separately before importing; do not use proprietary Alien game sprites or extracted ROM assets.
+
 ## Future phases / unscheduled
 ### Cinematic surveillance and weekly Sunday recap
 - Configurable security wall, focused cameras, real incident clips and labeled reconstructions.
