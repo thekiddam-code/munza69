@@ -1,0 +1,8 @@
+test_protocol_four_previews_rotation_pin_promotion_and_pure_views (test_observation_integration.ObservationIntegration.test_protocol_four_previews_rotation_pin_promotion_and_pure_views) ... ok
+test_protocol_crew_menu_and_mobile_no_world_mutation (test_observation_integration.ObservationIntegration.test_protocol_crew_menu_and_mobile_no_world_mutation) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 5.230s
+
+OK
+sys:1: ResourceWarning: unclosed <socket.socket fd=3, family=2, type=1, proto=0, laddr=('127.0.0.1', 46059)>

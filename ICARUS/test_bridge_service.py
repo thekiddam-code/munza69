@@ -16,8 +16,8 @@ class BridgeServiceTests(unittest.TestCase):
   self.publish();cid=self.s.enqueue('token','request-one','save')['queued'];self.assertEqual(self.s.pending('host-instance',self.g),self.s.pending('host-instance',self.g));self.s.publish('host-instance',self.g,{},[cid]);self.assertEqual(self.s.pending('host-instance',self.g),[])
  def test_creator_controls_denied_by_default_and_offline_never_queues(self):
   self.publish()
-  with self.assertRaises(BridgeError):self.s.enqueue('t','request-one','pause')
-  self.publish(creator=True);self.s.enqueue('t','request-one','pause');self.now=9
+  with self.assertRaises(BridgeError):self.s.enqueue('t','request-one','speed20')
+  self.publish(creator=True);self.s.enqueue('t','request-one','speed20');self.now=9
   with self.assertRaises(BridgeError):self.s.enqueue('t','request-two','save')
   self.assertTrue(self.s.view()['stale']);self.assertEqual(self.s.view()['state'],'RECONNECTING')
  def test_new_host_cannot_receive_old_commands_or_old_telemetry(self):

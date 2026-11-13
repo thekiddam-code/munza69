@@ -10,7 +10,7 @@ function tick(s,env){if(s.observationTick===s.tick)return;s.observationTick=s.ti
  if(s.tick-a.startedAt<2)continue;
  if(!q){a.phase='waiting';a.target=null;a.targetPoint=null;continue;}
  if(a.target!==q.name){a.target=q.name;a.phase='approaching';a.phaseAt=s.tick;const i=s.crew.filter(x=>root.ICARUSSpatial.position(x).room===p.room).indexOf(q),at=root.ICARUSObservation.anchor(root.ICARUSEmbodiment.pose(q,root.ICARUSSpatial.position(q),false,s.tick).kind,Math.max(0,i));a.targetPoint={x:Math.max(48,at.x-37),y:at.y};}
- if(s.tick-a.phaseAt<3)continue;const r=env.talk(p,q);if(r?.id){a.phase='talking';a.sourceId=r.id;p.conversation.speaker=true;q.conversation.speaker=false;}else a.phase='waiting';
+ if(s.tick-a.phaseAt<3)continue;const r=env.talk(p,q);if(r?.id){a.phase='talking';a.sourceId=r.id;p.conversation.speaker=true;q.conversation.speaker=false;p.conversation.point={x:a.targetPoint.x+37,y:a.targetPoint.y};q.conversation.point={...p.conversation.point};}else a.phase='waiting';
  }}
 const api={tick};if(typeof module==='object'&&module.exports){root.ICARUSCrewLife=require('./crew-life');root.ICARUSSpatial=require('./spatial');root.ICARUSObservation=require('./observation-model');module.exports=api;}else root.ICARUSCrewObservation=api;
 })(globalThis);

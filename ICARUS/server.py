@@ -212,6 +212,7 @@ def action(d):
 
 def valid_icarus_command(command):
  if command in ('pause','resume','speed1','speed5','speed20','save','nav:hold','nav:resume','nav:recall'): return True
+ if isinstance(command,str) and re.fullmatch(r'room:light:[ABC](0[1-9]|10):(0|0\.25|0\.5|0\.75|1)',command):return True
  if isinstance(command,str) and re.fullmatch(r'frontier:(rescue|shelter):SOS-\d+',command): return True
  return isinstance(command,str) and len(command)<=100 and re.fullmatch(r'nav:course:(HOME|LOCAL-(DEBRIS|ICE|RELAY|HULL|ECHO)|SYS:-?\d+:-?\d+/\d+)',command) is not None
 

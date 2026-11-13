@@ -1,0 +1,30 @@
+test_protocol_iris_search_approach_conversation_and_failure (test_observation_integration.ObservationIntegration.test_protocol_iris_search_approach_conversation_and_failure) ... ok
+test_protocol_four_previews_rotation_pin_promotion_and_pure_views (test_observation_integration.ObservationIntegration.test_protocol_four_previews_rotation_pin_promotion_and_pure_views) ... FAIL
+test_protocol_private_rooms_have_no_main_preview_or_remote_actors (test_observation_integration.ObservationIntegration.test_protocol_private_rooms_have_no_main_preview_or_remote_actors) ... ok
+test_protocol_room_lighting_is_actual_saved_state_and_no_false_bio (test_observation_integration.ObservationIntegration.test_protocol_room_lighting_is_actual_saved_state_and_no_false_bio) ... ok
+test_protocol_bridge_pause_and_header_widgets_accessible (test_observation_integration.ObservationIntegration.test_protocol_bridge_pause_and_header_widgets_accessible) ... ok
+test_protocol_crew_menu_and_mobile_no_world_mutation (test_observation_integration.ObservationIntegration.test_protocol_crew_menu_and_mobile_no_world_mutation) ... FAIL
+
+======================================================================
+FAIL: test_protocol_four_previews_rotation_pin_promotion_and_pure_views (test_observation_integration.ObservationIntegration.test_protocol_four_previews_rotation_pin_promotion_and_pure_views)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/work/munza69/ICARUS/test_observation_integration.py", line 9, in test_protocol_four_previews_rotation_pin_promotion_and_pure_views
+    p=self.page();self.operations(p);p.wait_for_selector('.obs-previews');self.assertEqual(p.locator('.obs-preview').count(),4);before=self.snap(p);p.locator('.obs-preview .obs-promote').first.click();selected=p.evaluate('ICARUSObservationLive.camera.selected');p.locator('.obs-previews').scroll_into_view_if_needed();p.wait_for_timeout(200);p.clock.install();p.clock.fast_forward(13000);self.assertEqual(p.evaluate('ICARUSObservationLive.camera.selected'),selected);self.assertNotEqual(p.locator('.obs-preview').first.get_attribute('data-room'),selected);p.locator('.obs-rotation').click();bank=p.evaluate('ICARUSObservationLive.camera.bank');p.clock.fast_forward(13000);self.assertEqual(p.evaluate('ICARUSObservationLive.camera.bank'),bank);self.assertEqual(self.snap(p),before)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'A01' == 'A01'
+
+======================================================================
+FAIL: test_protocol_crew_menu_and_mobile_no_world_mutation (test_observation_integration.ObservationIntegration.test_protocol_crew_menu_and_mobile_no_world_mutation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/work/munza69/ICARUS/test_observation_integration.py", line 17, in test_protocol_crew_menu_and_mobile_no_world_mutation
+    p=self.page();self.operations(p);p.locator('.obs-crew>summary').click();before=self.snap(p);p.locator('.crew-quick summary').first.click();p.locator('.crew-quick[open] button').filter(has_text='Psychological assessment').click();self.assertIn('#/deck/personnel/',p.url);self.assertEqual(self.snap(p),before);p.set_viewport_size({'width':390,'height':844});self.operations(p);p.wait_for_timeout(200);self.assertLessEqual(p.evaluate('document.documentElement.scrollWidth'),392);self.assertEqual(self.snap(p),before)
+                                                                                                                                                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '#/deck/personnel/' not found in 'http://127.0.0.1:44275/icarus.html?icarus_soak=1#deck/personnel/roster'
+
+----------------------------------------------------------------------
+Ran 6 tests in 8.952s
+
+FAILED (failures=2)
+sys:1: ResourceWarning: unclosed <socket.socket fd=3, family=2, type=1, proto=0, laddr=('127.0.0.1', 44275)>
