@@ -236,3 +236,9 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - Architect future changes with a clean distinction between core simulation mechanics and setting-specific presentation/data. Potential mappings: ship rooms to buildings, decks to districts/regions, crew to villagers, jobs to trades, security cameras to an appropriate fantasy observation metaphor.
 - A full fantasy simulation requires new domain mechanics (economy, factions, travel, combat, magic, creatures, quests) and is not merely a visual reskin. Preserve the existing ICARUS universe and saves.
 - **Status:** exploratory future possibility only; no active development priority or implementation commitment.
+
+## Fantasy world — offline player protection (approved)
+- Future D&D-style autonomous fantasy simulation includes Spectator, Dungeon Master, and directly playable Adventurer modes (concept; not currently implemented).
+- **User-approved offline adventurer policy: Player Protection.** When the user leaves Adventurer Mode or disconnects, the player character remains in a designated safe location and does not autonomously embark on quests, enter combat, or take avoidable dangerous actions. The rest of the world continues evolving autonomously.
+- Handle disconnection safely: finish/resolve in-progress actions consistently; do not teleport out of combat or grant retroactive invulnerability. If offline in an unsafe location, define a fair safe-transition/checkpoint rule during implementation rather than exploiting the simulation.
+- On return, resume direct control from the persisted location and state; retain world events, relationships, inventory, and consequences. This is a future design preference, not an implementation claim.
