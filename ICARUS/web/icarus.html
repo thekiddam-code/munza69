@@ -4190,12 +4190,12 @@ if(new URLSearchParams(location.search).get('icarus_soak')==='1'){
  async function sync(){if(busy||!ICARUSDurable.canWrite()||ICARUSBackupUI.busy())return;busy=true;
   try{if(!ICARUSHost.standalone){
    if(ICARUSHost.lost){status.textContent='OWNERSHIP LOST · reload to observe the current host';return;}
-   const data=snapshot(),{operations,...legacy}=data;data.creator=!!window.ICARUSBridgeMode?.creator;
+   const data=snapshot(),{operations,observation:observationProjection,...legacy}=data;data.creator=!!window.ICARUSBridgeMode?.creator;
    await ICARUSHost.request('host/publish',{telemetry:data,legacy,acks:[...applied]});ICARUSHost.renewed();
    const pending=await ICARUSHost.request('host/commands');
    for(const c of pending.commands||[]){if(applied.has(c.id))continue;applied.add(c.id);if(applied.size>256)applied.delete(applied.values().next().value);try{sessionStorage.setItem('icarus-command-acks-v2',JSON.stringify({session:ICARUSHost.session,ids:[...applied]}));}catch{}command(c.command);save();}
    status.textContent='● LINKED · authoritative host';
-  }else{if(!key)return;const cmds=await call('commands');for(const c of cmds.commands||[])command(c.command);const {operations,...legacy}=snapshot();await call('telemetry','POST',legacy);status.textContent='● LINKED';}
+  }else{if(!key)return;const cmds=await call('commands');for(const c of cmds.commands||[])command(c.command);const {operations,observation:observationProjection,...legacy}=snapshot();await call('telemetry','POST',legacy);status.textContent='● LINKED';}
   status.style.color='#64eac7';
   }catch(e){ICARUSHost.failed(e);status.textContent='● '+e.message;status.style.color='#ffad8a';}finally{busy=false}}
 

@@ -291,7 +291,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
  def do_POST(self):
   try:
    if self.headers.get('Content-Type','').split(';')[0]!='application/json': return self.respond(415,{'error':'JSON required'})
-   if int(self.headers.get('Content-Length','0'))>(65536 if self.path=='/api/icarus/host/publish' else 16384 if self.path=='/api/icarus/telemetry' else 4096): return self.respond(413,{'error':'Too large'})
+   if int(self.headers.get('Content-Length','0'))>(131072 if self.path=='/api/icarus/host/publish' else 16384 if self.path=='/api/icarus/telemetry' else 4096): return self.respond(413,{'error':'Too large'})
    origin=self.headers.get('Origin','')
    host=self.headers.get('Host','')
    if origin and origin not in ('http://'+host,'https://'+host): return self.respond(403,{'error':'Invalid origin'})

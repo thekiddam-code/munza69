@@ -1,0 +1,34 @@
+test_real_late_voyage_projection_fits_existing_telemetry_budget (test_command_bridge.CommandBridge.test_real_late_voyage_projection_fits_existing_telemetry_budget) ... ERROR
+
+======================================================================
+ERROR: test_real_late_voyage_projection_fits_existing_telemetry_budget (test_command_bridge.CommandBridge.test_real_late_voyage_projection_fits_existing_telemetry_budget)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/work/munza69/ICARUS/test_umbra_browser.py", line 85, in test_real_late_voyage_projection_fits_existing_telemetry_budget
+    donor=Path('/workspace/work/phase4_reports/accepted_campaigns/normal_1001/backup_1001_30.json');self.assertTrue(donor.exists(),'Historical campaign donor required for this executed migration/projection case');world=json.loads(donor.read_text())['state'];context=self.browser.new_context();self.contexts.append(context);codec=(ROOT/'web/vendor/lz-string.min.js').read_text();context.add_init_script(codec+";localStorage.setItem('icarus-anthology-v14','ICARUS-LZ1:'+LZString.compressToUTF16(JSON.stringify("+json.dumps(world)+")));sessionStorage.setItem('icarusHostKey','test-host');");pc=context.new_page();pc.on('pageerror',lambda e:self.errors.append(str(e)));pc.goto(self.url+'/icarus.html?icarus_soak=1');pc.wait_for_function('!!window.__icarusSoak');self.assertEqual(pc.evaluate('__icarusSoak.time()'),world['tick']);pc.wait_for_function('document.querySelector("#rd-bridge-status").textContent.includes("LINKED")',timeout=30000);payload=self.m.ICARUS_BRIDGE['telemetry'];self.assertEqual(payload['tick'],world['tick']);self.assertLessEqual(len(json.dumps(payload)),14000);self.assertEqual(len(payload['companion']['crew']),20);self.assertEqual(pc.evaluate('__icarusSoak.snapshot().resourceAudit'),[]);self.assertEqual(pc.evaluate('__icarusSoak.snapshot().knowledgeAudit'),[])
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/sync_api/_generated.py", line 9875, in goto
+    self._sync(
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_sync_base.py", line 115, in _sync
+    return task.result()
+           ^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_page.py", line 560, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_frame.py", line 156, in goto
+    await self._channel.send(
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 76, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_connection.py", line 632, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "http://127.0.0.1:45151/icarus.html?icarus_soak=1", waiting until "load"
+
+
+----------------------------------------------------------------------
+Ran 1 test in 51.378s
+
+FAILED (errors=1)
+sys:1: ResourceWarning: unclosed <socket.socket fd=3, family=2, type=1, proto=0, laddr=('127.0.0.1', 45151)>
