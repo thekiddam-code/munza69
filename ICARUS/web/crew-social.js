@@ -9,28 +9,26 @@ function bond(person,peer){return person.bonds[peer]||(person.bonds[peer]={trust
 function remember(s,name,peer,sourceId,kind,location,delta={}){const c=init(s),m=c.people[name];if(!m||name===peer||!c.people[peer])return false;
  if(m.memories.some(x=>x.sourceId===sourceId&&x.peer===peer&&x.kind===kind))return false;
  const b=bond(m,peer);for(const [k,v] of Object.entries(delta))if(['trust','respect','resentment','attraction','loyalty'].includes(k))b[k]=limit(b[k]+v,k==='resentment'||k==='attraction'||k==='loyalty'?0:-100);b.encounters++;b.lastAt=s.tick;
- m.memories.push({at:s.tick,sourceId,peer,kind,location:location?copy(location):null});m.memories=m.memories.slice(-32);return true;}
+ const f=Object.values(s.knowledge?.facts||{}).find(f=>f.sourceId===sourceId);m.memories.push({at:s.tick,sourceId,peer,kind,category:kind,participants:[name,peer],location:location?copy(location):null,confidence:f?.confidence??.75,knowledgeSource:'participant experience / acquired event',relationshipEffects:copy(delta),significance:Object.values(delta).reduce((n,v)=>n+Math.abs(v),0),decay:'Minor resentment fades; source history retained'});m.memories=m.memories.slice(-32);return true;}
 function consent(s,name,peer,accepted,source){const c=init(s);if(!canonical(s,source)||!c.people[name]||!c.people[peer]||name===peer)return false;
  const K=root.ICARUSKnowledge,fid=s.knowledge?.byKey?.[source.id],p=s.crew.find(p=>p.name===name),q=s.crew.find(p=>p.name===peer);
  // Adult consent must be explicitly supplied in a legitimate private interaction, never inferred from identity.
  if(!p||!q||p.adult!==true||q.adult!==true||!K?.known(s,name,fid)||source.data?.consentActor!==name||source.data?.consentPeer!==peer||source.data?.accepted!==!!accepted)return false;
- c.people[name].consents[peer]={accepted:!!accepted,sourceId:source.id,at:s.tick};return true;}
+ c.people[name].consents[peer]={accepted:!!accepted,sourceId:source.id,at:s.tick,scope:source.data.scope||'legacy-relationship'};return true;}
 function observe(s,source,people,data={}){if(!canonical(s,source))return false;const K=root.ICARUSKnowledge,c=init(s),fid=s.knowledge?.byKey?.[source.id],witnesses=[...new Set(people)].filter(n=>c.people[n]&&K?.known(s,n,fid));if(witnesses.length<2)return false;
  for(const name of witnesses)for(const peer of witnesses){if(name===peer)continue;let kind,delta;
-  if(data.activity==='conversation'){kind=data.topic==='support'?'support':'conversation';delta={trust:.25,respect:.1,resentment:-.15};
+  if(data.activity==='conversation'){kind=data.topic==='support'?'support':'conversation';delta=data.topic==='disagreement'?{trust:-.25,resentment:.5}:data.topic==='apology'?{trust:.3,resentment:-.5}:{trust:.25,respect:.1,resentment:-.15};kind=data.topic==='disagreement'?'disagreement':data.topic==='apology'?'reconciliation':kind;
    const p=s.crew.find(p=>p.name===name),q=s.crew.find(p=>p.name===peer),m=c.people[name],other=c.people[peer];
-   if(m.consents[peer]?.accepted&&other.consents[name]?.accepted&&p?.adult===true&&q?.adult===true)delta.attraction=.2;
+   if(p?.adult===true&&q?.adult===true&&data.topic!=='disagreement'&&(!Array.isArray(p.romanticInterest)||p.romanticInterest.includes(q.name))){delta.attraction=m.consents[peer]?.accepted&&other.consents[name]?.accepted?.2:.08;}
    if(p?.job===q?.job&&(q?.vitals?.missions||0)>(p?.vitals?.missions||0)+2){kind='mentorship';delta.respect=.4;}
   }else if(data.disputeId){kind=data.outcome==='compromise'?'reconciliation':'disagreement';delta=kind==='reconciliation'?{trust:.3,resentment:-1}:{trust:-.5,resentment:1};}
+  else if(data.activity==='consent'){kind=data.accepted?'accepted-invitation':'declined-invitation';delta={respect:.05};}
+  else if(data.activity==='private-time'){kind=data.outcome==='completed'?'shared-private-time':'interrupted-private-time';delta={};}
   else if(data.activity==='assistance'){kind='assistance';delta={trust:.5,respect:.5,loyalty:.3};}else continue;
   remember(s,name,peer,source.id,kind,K.position(s,name),delta);
  }return true;}
-function courtship(s,p,q,env){const c=init(s),K=root.ICARUSKnowledge;
- if(p.adult!==true||q.adult!==true||!p.romanticInterest?.includes(q.name)||!q.romanticInterest?.includes(p.name)||!K.can(s,p.name,q.name,'conversation',env.channel))return false;
- const a=c.people[p.name],b=c.people[q.name];if((a.bonds[q.name]?.trust||0)<5||(b.bonds[p.name]?.trust||0)<5||a.consents[q.name]||b.consents[p.name])return false;
- // The preference enables an autonomous, mutual choice; it never grants knowledge to SOL.
- for(const [person,peer] of [[p,q],[q,p]]){const r=env.record('social',person.name+' privately agreed to explore a personal relationship with '+peer.name+'.',[person.name,peer.name],{activity:'consent',consentActor:person.name,consentPeer:peer.name,accepted:true},{disclosure:'private'});if(r)consent(s,person.name,peer.name,true,r);}return true;
-}
+function courtship(s,p,q,env){return root.ICARUSRelationships?.consider(s,p,q,{...env,consent:(name,peer,accepted,source)=>consent(s,name,peer,accepted,source)})||false;}
+
 function preference(s,p,destination){const m=s.crewSocial?.people[p.name];if(!m)return 1;let score=1;
  for(const memory of m.memories.slice(-8)){if(memory.location?.domain!=='ship'||memory.location.node!=='R:'+destination||s.tick-memory.at>3*1440)continue;const b=m.bonds[memory.peer];if(b)score+=limit((b.trust-b.resentment)/100,-.25,.25);}
  return limit(score,.4,1.8);}
@@ -45,5 +43,5 @@ function tick(s){const c=init(s);if(c.lastTick===s.tick)return;c.lastTick=s.tick
  for(const r of records.slice(c.experienceCursor)){if(!c.people[r.person]||!r.sourceId)continue;for(const peer of r.peers||[])remember(s,r.person,peer,r.sourceId,r.kind,null,r.kind==='rescued'?{trust:1,respect:.5,loyalty:1}:r.kind==='failure'?{respect:-.1}:{respect:.2});}c.experienceCursor=records.length;
 }
 function audit(s){const c=s.crewSocial;if(!c)return [];const errors=[];if(Object.keys(c.registry).length>128)errors.push('Crew registry overflow');for(const [n,m] of Object.entries(c.people)){if(m.memories.length>32)errors.push('Social memory overflow '+n);for(const r of m.memories)if(!r.sourceId)errors.push('Unsourced social memory '+n);for(const b of Object.values(m.bonds))if(['trust','respect','resentment','attraction','loyalty'].some(k=>!Number.isFinite(b[k])||Math.abs(b[k])>100))errors.push('Invalid social bond '+n);}return errors;}
-const api={init,observe,consent,courtship,preference,relationship,register,tick,audit};if(typeof module==='object'&&module.exports){root.ICARUSKnowledge=require('./knowledge');module.exports=api;}else root.ICARUSCrewSocial=api;
+const api={init,observe,consent,courtship,preference,relationship,register,tick,audit};if(typeof module==='object'&&module.exports){root.ICARUSKnowledge=require('./knowledge');root.ICARUSRelationships=require('./relationships');module.exports=api;}else root.ICARUSCrewSocial=api;
 })(globalThis);

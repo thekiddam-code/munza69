@@ -1,6 +1,6 @@
 /* Hearsay is a sourced communication claim, never a replacement for physical evidence. */
 (function(root){'use strict';
-function share(s,p,q,f,env){const K=root.ICARUSKnowledge;if(!f||f.disclosure==='private'||f.kind==='reported-claim'||!K.known(s,p.name,f.id)||!K.can(s,p.name,q.name,'conversation',env.channel))return false;
+function share(s,p,q,f,env){const K=root.ICARUSKnowledge;if(!f||['private','classified'].includes(f.disclosure)||f.kind==='reported-claim'||!K.known(s,p.name,f.id)||!K.can(s,p.name,q.name,'conversation',env.channel))return false;
  const claims=Object.values(s.knowledge.facts).filter(x=>x.kind==='reported-claim'&&x.data.premise===f.id&&K.known(s,q.name,x.id));
  // A later encounter can supply the original report and correct the listener's earlier interpretation.
  if(claims.length){const sent=K.speak(s,p.name,q.name,f.id,env.channel);if(sent)for(const claim of claims){const e=K.entry(s,q.name,claim.id);e.review={at:s.tick,sourceFactId:f.id,status:'withdrawn interpretation; original report received'};}return sent;}

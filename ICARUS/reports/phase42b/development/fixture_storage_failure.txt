@@ -1,0 +1,19 @@
+test_phase42b_creator_cannot_select_partners_and_presentation_does_not_rewrite_history (test_personalities_integration.PersonalitiesIntegration.test_phase42b_creator_cannot_select_partners_and_presentation_does_not_rewrite_history) ... ok
+test_phase42b_cross_deck_journey_uses_one_cabin_and_camera_occupancy (test_personalities_integration.PersonalitiesIntegration.test_phase42b_cross_deck_journey_uses_one_cabin_and_camera_occupancy) ... ok
+test_phase42b_lift_boarded_save_load_keeps_cabin_and_future (test_personalities_integration.PersonalitiesIntegration.test_phase42b_lift_boarded_save_load_keeps_cabin_and_future) ... ok
+test_phase42b_private_event_from_seeded_mechanics_fixture_travels_and_reloads (test_personalities_integration.PersonalitiesIntegration.test_phase42b_private_event_from_seeded_mechanics_fixture_travels_and_reloads) ... ERROR
+test_phase42b_topology_doors_and_follow_privacy_persist (test_personalities_integration.PersonalitiesIntegration.test_phase42b_topology_doors_and_follow_privacy_persist) ... ok
+
+======================================================================
+ERROR: test_phase42b_private_event_from_seeded_mechanics_fixture_travels_and_reloads (test_personalities_integration.PersonalitiesIntegration.test_phase42b_private_event_from_seeded_mechanics_fixture_travels_and_reloads)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/work/munza69/ICARUS/test_personalities_integration.py", line 26, in test_phase42b_private_event_from_seeded_mechanics_fixture_travels_and_reloads
+    self.advance(p,1);s=self.snap(p);event=s['crewSocial']['privateEvents'][-1];phases.append(event['phase'])
+                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^
+IndexError: list index out of range
+
+----------------------------------------------------------------------
+Ran 5 tests in 19.309s
+
+FAILED (errors=1)

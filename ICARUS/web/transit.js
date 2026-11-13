@@ -4,8 +4,8 @@ const decks=['A','B','C'];
 function init(s){return s.transit||(s.transit={version:1,lastTick:-1,doors:{},lift:{id:'LIFT-01',deck:'A',phase:'idle',from:'A',to:'A',remaining:0,passengers:[],queue:[],capacity:4,completed:0}});}
 function tick(s){const t=init(s);if(t.lastTick===s.tick)return;t.lastTick=s.tick;const l=t.lift;
  const alive=n=>(s.crew||[]).some(p=>p.name===n&&!p.expeditionAway&&(p.vitals?.health??100)>0);
- l.queue=l.queue.filter(r=>alive(r.name)&&s.crew.find(p=>p.name===r.name)?.route?.length);l.passengers=l.passengers.filter(alive);
- for(const [id,d] of Object.entries(t.doors)){const room=s.physicalWorld?.rooms?.[id];if(!room)continue;if(['sealed','jammed','locked','blocked','unpowered'].includes(room.door)){d.phase=room.door;continue;}if(d.phase==='opening'&&s.tick-d.at>=1){room.door='open';d.phase='open';d.until=s.tick+3;}else if(d.phase==='open'&&s.tick>d.until){d.phase='closing';d.at=s.tick;}else if(d.phase==='closing'&&s.tick-d.at>=1){room.door='closed';d.phase='closed';}}
+ l.queue=l.queue.filter(r=>{const p=s.crew.find(p=>p.name===r.name);return alive(r.name)&&p?.route?.length&&p.nav?.at==='H:'+r.from+':2'&&p.nav?.steps?.[p.nav.index]==='L:'+r.to+':2';});l.passengers=l.passengers.filter(alive);
+ for(const [id,d] of Object.entries(t.doors)){const room=s.physicalWorld?.rooms?.[id];if(!room)continue;if((s.power??100)<15&&['opening','closing'].includes(d.phase))continue;if(['sealed','jammed','locked','blocked','unpowered'].includes(room.door)){d.phase=room.door;continue;}if(d.phase==='opening'&&s.tick-d.at>=1){room.door='open';d.phase='open';d.until=s.tick+3;}else if(d.phase==='open'&&s.tick>d.until){d.phase='closing';d.at=s.tick;}else if(d.phase==='closing'&&s.tick-d.at>=1){room.door='closed';d.phase='closed';}}
  const online=s.navSystem?.elevator!=='offline'&&(s.power??100)>=15;l.fault=online?null:'Lift power/service unavailable';if(!online){if(l.phase!=='idle')l.stalled=true;return;}l.stalled=false;
  if(l.remaining>0){l.remaining--;if(l.remaining>0)return;}
  if(l.phase==='positioning'){l.deck=l.from;l.phase='boarding';l.remaining=1;}
@@ -17,6 +17,7 @@ function tick(s){const t=init(s);if(t.lastTick===s.tick)return;t.lastTick=s.tick
 
 }
 function gate(s,p,from,to){const id=from.startsWith('R:')?from.slice(2):to.startsWith('R:')?to.slice(2):null;if(!id)return true;const t=init(s),r=s.physicalWorld?.rooms?.[id];if(!r)return true;
+ if(r.privacy&&!p.emergencyId&&!p.survivalDestination&&!p.rescuePatient&&!p.rescueMedic&&!s.repairControl?.critical){const e=s.crewSocial?.privateEvents?.find(e=>e.id===r.privacy.eventId&&e.status==='active');if(e&&!e.people.includes(p.name))return false;}
  if(['sealed','jammed','locked','blocked','unpowered'].includes(r.door))return false;
  let d=t.doors[id];if(r.door==='closed'||d?.phase==='opening'){if((s.power??100)<15)return false;if(d?.phase!=='opening')t.doors[id]={phase:'opening',at:s.tick,until:s.tick+3};return false;}
  t.doors[id]={phase:'open',at:d?.at??s.tick,until:s.tick+3};return true;}
