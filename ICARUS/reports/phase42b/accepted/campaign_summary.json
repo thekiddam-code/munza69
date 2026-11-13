@@ -1,0 +1,522 @@
+{
+  "passed": true,
+  "campaigns": {
+    "adult_metadata_20x_8": {
+      "passed": true,
+      "seed": 8,
+      "scenario": "normal",
+      "real_days": 2,
+      "ship_days": 40.0,
+      "ticks": 57600,
+      "episode": 1,
+      "alive": 20,
+      "deaths": [],
+      "arrivals": 5,
+      "field_missions": 8,
+      "science_cases": 24,
+      "conversations": 735,
+      "source_activities": {
+        "assistance-request": 5,
+        "conversation": 735,
+        "repair-complete": 319,
+        "inspection": 143
+      },
+      "source_kinds": {
+        "system": 190,
+        "observation": 6531,
+        "little": 7532,
+        "research": 109,
+        "relationship": 1899,
+        "anthology": 638,
+        "operation": 5,
+        "social": 1099,
+        "emergency": 12,
+        "maintenance": 470,
+        "crew_memory": 189,
+        "injury": 3,
+        "mission": 36,
+        "mission_history": 5,
+        "encounter": 2,
+        "encounter_history": 2
+      },
+      "retained_social": {
+        "registered": 20,
+        "active": 20,
+        "retainedSocialMemories": 640,
+        "retainedBonds": 356,
+        "retainedActivityHistory": 320,
+        "retainedClaims": 0
+      },
+      "weekly_films": 0,
+      "legendary_segments": 0,
+      "maintenance_statistics": {
+        "version": 1,
+        "stats": {
+          "preventiveStarted": 325,
+          "maintenanceWork": 23033.799999994586,
+          "preventiveCompleted": 319,
+          "criticalEscalations": 1,
+          "criticalRecoveries": 1,
+          "nativeFaults": 2,
+          "dispatches": 2,
+          "emergencyWork": 200.00000000000048,
+          "emergencyCompleted": 2,
+          "releasedAssignments": 4
+        },
+        "decisions": [
+          {
+            "at": 4801,
+            "reason": "Measured life-support fault or reserve forecast below one day; optional research and launches suspended."
+          },
+          {
+            "at": 4861,
+            "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+          },
+          {
+            "at": 9131,
+            "reason": "Suspended Jules Mercer maintenance for required recovery.",
+            "person": "Jules Mercer",
+            "room": "A04"
+          },
+          {
+            "at": 10479,
+            "reason": "Released obsolete maintenance reservation for Tomas Vale; current assignment retained.",
+            "person": "Tomas Vale"
+          },
+          {
+            "at": 53476,
+            "reason": "Released obsolete maintenance reservation for Frank Morrow; current assignment retained.",
+            "person": "Frank Morrow"
+          },
+          {
+            "at": 56542,
+            "reason": "Released obsolete maintenance reservation for Theo Moss; current assignment retained.",
+            "person": "Theo Moss"
+          }
+        ],
+        "notices": {
+          "forecast:true": 4801,
+          "forecast:false": 4861,
+          "release:Jules Mercer": 9131,
+          "detach:Tomas Vale": 10479,
+          "detach:Frank Morrow": 53476,
+          "detach:Theo Moss": 56542
+        },
+        "forecast": {
+          "food": {
+            "at": 57541,
+            "consumption": 0.04733333333333576,
+            "production": 0.0470299999999952,
+            "available": 159.96780000000004,
+            "minutes": 527366.3736138107
+          },
+          "water": {
+            "at": 57541,
+            "consumption": 0.028000000000001062,
+            "production": 0.028000000000001062,
+            "available": 152.79600000000013,
+            "minutes": null
+          },
+          "oxygen": {
+            "at": 57541,
+            "consumption": 0.019999999999996968,
+            "production": 0.020000000000000757,
+            "available": 112.0140000000008,
+            "minutes": null
+          },
+          "energy": {
+            "at": 57541,
+            "consumption": 0.11742474399999689,
+            "production": 0.11694042999999207,
+            "available": 179.86395024,
+            "minutes": 371378.7960666257
+          }
+        },
+        "sample": {
+          "at": 57541,
+          "consumed": {
+            "energy": 6779.985938143989,
+            "food": 2809.074,
+            "water": 1619.1480000000001,
+            "oxygen": 1150.82,
+            "tools": 751.034,
+            "spares": 321,
+            "lab": 668.5
+          },
+          "produced": {
+            "energy": 6839.849888384031,
+            "spares": 326.85164239999995,
+            "water": 1621.9440000000034,
+            "oxygen": 1142.834,
+            "medical": 8,
+            "food": 2784.041799999799,
+            "lab": 652.5000000000002,
+            "tools": 732.8508600000046
+          }
+        },
+        "critical": false,
+        "lastDecision": {
+          "at": 56542,
+          "reason": "Released obsolete maintenance reservation for Theo Moss; current assignment retained.",
+          "person": "Theo Moss"
+        }
+      },
+      "resources_final": {
+        "food": 159.98600000000002,
+        "water": 152.79600000000013,
+        "oxygen": 112.0140000000008,
+        "energy": 179.89416,
+        "medical": 20,
+        "spares": 70,
+        "tools": 70,
+        "lab": 80
+      },
+      "acquisition": {},
+      "fuel_used": 1.9624515496596866,
+      "history_records": 19377,
+      "snapshot_bytes_first": 6643496,
+      "snapshot_bytes_last": 10499480,
+      "checkpoint_reload_days": [
+        2
+      ],
+      "audit_errors": [],
+      "simulation_errors": [],
+      "backup_sha256": "9f7ec66640b9ce3b0fc21c16bcdada1845db03e8806df2e76cde53449af99f6a",
+      "source_commit": "06b15aab4eaf73a2db6ecdb3a7a1a1c3984b3e7a",
+      "elapsed_seconds": 189.35936537900125,
+      "evidence_note": "Only actual campaign results. No generated extra crew; romances/claims need not occur. Checkpoint time is measured using unchanged production calendar including synchronized holidays."
+    },
+    "compound_4807": {
+      "passed": true,
+      "seed": 4807,
+      "scenario": "compound",
+      "real_days": 7,
+      "ship_days": 25.0,
+      "ticks": 36000,
+      "episode": 2,
+      "alive": 20,
+      "deaths": [],
+      "arrivals": 5,
+      "field_missions": 8,
+      "science_cases": 26,
+      "conversations": 475,
+      "source_activities": {
+        "conversation": 475,
+        "assistance-request": 9,
+        "repair-complete": 202,
+        "inspection": 94
+      },
+      "source_kinds": {
+        "system": 172,
+        "injury": 4,
+        "anthology": 391,
+        "medical": 2,
+        "emergency": 12,
+        "little": 4884,
+        "crew_memory": 104,
+        "relationship": 1224,
+        "social": 681,
+        "observation": 4037,
+        "operation": 9,
+        "maintenance": 303,
+        "research": 124,
+        "mission": 36,
+        "mission_history": 5,
+        "encounter": 3,
+        "encounter_history": 3
+      },
+      "retained_social": {
+        "registered": 20,
+        "active": 20,
+        "retainedSocialMemories": 634,
+        "retainedBonds": 338,
+        "retainedActivityHistory": 320,
+        "retainedClaims": 0
+      },
+      "weekly_films": 1,
+      "legendary_segments": 0,
+      "maintenance_statistics": {
+        "version": 1,
+        "stats": {
+          "nativeFaults": 2,
+          "dispatches": 2,
+          "emergencyWork": 200.00000000000048,
+          "preventiveStarted": 211,
+          "maintenanceWork": 14737.599999997938,
+          "emergencyCompleted": 2,
+          "criticalRecoveries": 1,
+          "preventiveCompleted": 202,
+          "releasedAssignments": 5
+        },
+        "decisions": [
+          {
+            "at": 182,
+            "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+          },
+          {
+            "at": 4589,
+            "reason": "Released obsolete maintenance reservation for Tomas Vale; current assignment retained.",
+            "person": "Tomas Vale"
+          },
+          {
+            "at": 21887,
+            "reason": "Released obsolete maintenance reservation for Tomas Vale; current assignment retained.",
+            "person": "Tomas Vale"
+          },
+          {
+            "at": 23995,
+            "reason": "Released obsolete maintenance reservation for Tomas Vale; current assignment retained.",
+            "person": "Tomas Vale"
+          },
+          {
+            "at": 24894,
+            "reason": "Released obsolete maintenance reservation for Jules Mercer; current assignment retained.",
+            "person": "Jules Mercer"
+          }
+        ],
+        "notices": {
+          "forecast:false": 182,
+          "detach:Tomas Vale": 23995,
+          "detach:Jules Mercer": 24894
+        },
+        "forecast": {
+          "food": {
+            "at": 35941,
+            "consumption": 0.014000000000002425,
+            "production": 0.013999999999994846,
+            "available": 159.986,
+            "minutes": null
+          },
+          "water": {
+            "at": 35941,
+            "consumption": 0.028000000000001062,
+            "production": 0.028000000000001062,
+            "available": 153.19579999999974,
+            "minutes": null
+          },
+          "oxygen": {
+            "at": 35941,
+            "consumption": 0.020000000000000757,
+            "production": 0.020000000000000757,
+            "available": 111.66800000000154,
+            "minutes": null
+          },
+          "energy": {
+            "at": 35941,
+            "consumption": 0.11414594399999865,
+            "production": 0.11419061000001421,
+            "available": 179.89246512,
+            "minutes": null
+          }
+        },
+        "sample": {
+          "at": 35941,
+          "consumed": {
+            "energy": 4321.058232351994,
+            "food": 1812.2740000000001,
+            "water": 1015.3480000000001,
+            "oxygen": 718.82,
+            "lab": 554.5,
+            "tools": 445.373,
+            "medical": 1,
+            "spares": 205
+          },
+          "produced": {
+            "energy": 4380.95069747204,
+            "spares": 209.685539200001,
+            "water": 1018.5438000000005,
+            "oxygen": 710.488,
+            "medical": 9,
+            "food": 1787.2599999998858,
+            "lab": 538.5,
+            "tools": 427.37300000000283
+          }
+        },
+        "critical": false,
+        "lastDecision": {
+          "at": 24911,
+          "reason": "Released obsolete maintenance reservation for Jules Mercer; current assignment retained.",
+          "person": "Jules Mercer"
+        }
+      },
+      "resources_final": {
+        "food": 159.986,
+        "water": 153.19579999999974,
+        "oxygen": 111.66800000000154,
+        "energy": 179.85754836,
+        "medical": 20,
+        "spares": 68.29284719999974,
+        "tools": 69.982,
+        "lab": 80
+      },
+      "acquisition": {},
+      "fuel_used": 1.9624515496596866,
+      "history_records": 12479,
+      "snapshot_bytes_first": 2634660,
+      "snapshot_bytes_last": 7761822,
+      "checkpoint_reload_days": [
+        7
+      ],
+      "audit_errors": [],
+      "simulation_errors": [],
+      "backup_sha256": "a146675a4210012b6693fdb317ea3c601b6f4d4e57dde5ebf6adadf735e1464f",
+      "source_commit": "06c4c5ae152e6ed47688fad0929d5d5bd77a6e2e",
+      "elapsed_seconds": 491.1162103380011,
+      "evidence_note": "Only actual campaign results. No generated extra crew; romances/claims need not occur. Checkpoint time is measured using unchanged production calendar including synchronized holidays."
+    },
+    "normal_1001": {
+      "passed": true,
+      "seed": 1001,
+      "scenario": "normal",
+      "real_days": 7,
+      "ship_days": 25.0,
+      "ticks": 36000,
+      "episode": 2,
+      "alive": 20,
+      "deaths": [],
+      "arrivals": 5,
+      "field_missions": 14,
+      "science_cases": 22,
+      "conversations": 487,
+      "source_activities": {
+        "conversation": 487,
+        "assistance-request": 11,
+        "repair-complete": 200,
+        "inspection": 93
+      },
+      "source_kinds": {
+        "system": 196,
+        "observation": 4218,
+        "little": 4851,
+        "maintenance": 295,
+        "research": 111,
+        "social": 699,
+        "relationship": 1176,
+        "operation": 11,
+        "anthology": 354,
+        "emergency": 10,
+        "crew_memory": 114,
+        "mission": 41,
+        "encounter": 3,
+        "encounter_history": 3,
+        "mission_history": 6,
+        "injury": 2
+      },
+      "retained_social": {
+        "registered": 20,
+        "active": 20,
+        "retainedSocialMemories": 640,
+        "retainedBonds": 346,
+        "retainedActivityHistory": 320,
+        "retainedClaims": 0
+      },
+      "weekly_films": 1,
+      "legendary_segments": 0,
+      "maintenance_statistics": {
+        "version": 1,
+        "stats": {
+          "preventiveStarted": 203,
+          "maintenanceWork": 14615.999999997988,
+          "criticalEscalations": 1,
+          "criticalRecoveries": 1,
+          "preventiveCompleted": 200
+        },
+        "decisions": [
+          {
+            "at": 61,
+            "reason": "Measured life-support fault or reserve forecast below one day; optional research and launches suspended."
+          },
+          {
+            "at": 121,
+            "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+          }
+        ],
+        "notices": {
+          "forecast:true": 61,
+          "forecast:false": 121
+        },
+        "forecast": {
+          "food": {
+            "at": 35941,
+            "consumption": 0.08066666666666909,
+            "production": 0.08066666666666152,
+            "available": 159.986,
+            "minutes": null
+          },
+          "water": {
+            "at": 35941,
+            "consumption": 0.028000000000001062,
+            "production": 0.027999999999999168,
+            "available": 152.83240000000015,
+            "minutes": null
+          },
+          "oxygen": {
+            "at": 35941,
+            "consumption": 0.020000000000000757,
+            "production": 0.020000000000000757,
+            "available": 109.26600000000103,
+            "minutes": null
+          },
+          "energy": {
+            "at": 35941,
+            "consumption": 0.11601268399999753,
+            "production": 0.11598500599999777,
+            "available": 179.89249931999998,
+            "minutes": 6499476.093703033
+          }
+        },
+        "sample": {
+          "at": 35941,
+          "consumed": {
+            "energy": 4342.411061039996,
+            "food": 1792.574,
+            "water": 1014.3480000000001,
+            "oxygen": 718.82,
+            "lab": 515.8,
+            "spares": 202,
+            "tools": 468.72
+          },
+          "produced": {
+            "energy": 4402.303560360042,
+            "spares": 206.53768400000027,
+            "water": 1017.1804000000036,
+            "oxygen": 708.086,
+            "medical": 8,
+            "food": 1767.559999999904,
+            "lab": 499.80000000000007,
+            "tools": 450.72000000000264
+          }
+        },
+        "critical": false,
+        "lastDecision": {
+          "at": 121,
+          "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+        }
+      },
+      "resources_final": {
+        "food": 159.98600000000002,
+        "water": 152.83240000000015,
+        "oxygen": 109.26600000000103,
+        "energy": 179.85759048,
+        "medical": 20,
+        "spares": 69.10403599999985,
+        "tools": 69.982,
+        "lab": 80
+      },
+      "acquisition": {},
+      "fuel_used": 1.9624515496596866,
+      "history_records": 12610,
+      "snapshot_bytes_first": 2718262,
+      "snapshot_bytes_last": 8045036,
+      "checkpoint_reload_days": [
+        7
+      ],
+      "audit_errors": [],
+      "simulation_errors": [],
+      "backup_sha256": "c442b80784af464f43e2028431674d9bc3989e9bbaa5b857d9ca001a57cadd25",
+      "source_commit": "d4bc3b2a34da8ae2bb9b6aeb472c3c9a98353aba",
+      "elapsed_seconds": 122.17237994199968,
+      "evidence_note": "Only actual campaign results. No generated extra crew; romances/claims need not occur. Checkpoint time is measured using unchanged production calendar including synchronized holidays."
+    }
+  }
+}

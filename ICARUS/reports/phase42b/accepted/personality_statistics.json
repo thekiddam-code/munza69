@@ -1,0 +1,35 @@
+{
+  "compound_4807": {
+    "passed": true,
+    "ship_days": 25.0,
+    "confirmed_adults": 0,
+    "lift_trips": 1732,
+    "stages": {},
+    "private_events": [],
+    "social_errors": [],
+    "transit_errors": [],
+    "relationship_errors": []
+  },
+  "adult_metadata_20x_8": {
+    "passed": true,
+    "ship_days": 40.0,
+    "confirmed_adults": 20,
+    "lift_trips": 2289,
+    "stages": {},
+    "private_events": [],
+    "social_errors": [],
+    "transit_errors": [],
+    "relationship_errors": []
+  },
+  "normal_1001": {
+    "passed": true,
+    "ship_days": 25.0,
+    "confirmed_adults": 0,
+    "lift_trips": 1673,
+    "stages": {},
+    "private_events": [],
+    "social_errors": [],
+    "transit_errors": [],
+    "relationship_errors": []
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "tests_run": 6,
+  "passed_cases": [
+    "test_phase42b_creator_cannot_select_partners_and_presentation_does_not_rewrite_history (test_personalities_integration.PersonalitiesIntegration.test_phase42b_creator_cannot_select_partners_and_presentation_does_not_rewrite_history)",
+    "test_phase42b_cross_deck_journey_uses_one_cabin_and_camera_occupancy (test_personalities_integration.PersonalitiesIntegration.test_phase42b_cross_deck_journey_uses_one_cabin_and_camera_occupancy)",
+    "test_phase42b_lift_boarded_save_load_keeps_cabin_and_future (test_personalities_integration.PersonalitiesIntegration.test_phase42b_lift_boarded_save_load_keeps_cabin_and_future)",
+    "test_phase42b_private_event_from_seeded_mechanics_fixture_travels_and_reloads (test_personalities_integration.PersonalitiesIntegration.test_phase42b_private_event_from_seeded_mechanics_fixture_travels_and_reloads)",
+    "test_phase42b_schematic_lift_matches_camera_and_focus_is_readonly (test_personalities_integration.PersonalitiesIntegration.test_phase42b_schematic_lift_matches_camera_and_focus_is_readonly)",
+    "test_phase42b_topology_doors_and_follow_privacy_persist (test_personalities_integration.PersonalitiesIntegration.test_phase42b_topology_doors_and_follow_privacy_persist)"
+  ],
+  "runtime_root": "/workspace/work/phase42b/delivery_runtime",
+  "source_commit": "06b15aab4eaf73a2db6ecdb3a7a1a1c3984b3e7a",
+  "errors": [],
+  "failures": []
+}

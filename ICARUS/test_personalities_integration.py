@@ -33,4 +33,13 @@ class PersonalitiesIntegration(ObservationIntegration):
   for i in range(40):
    self.advance(p,1)
    if self.snap(p)['crew'][0].get('liftRide'):break
-  before=self.snap(p);self.assertIsNotNone(before['crew'][0].get('liftRide'));self.deck(p,'ship','overview');p.locator('.schematic-lift').click();self.assertIn('observed occupants',p.locator('.schematic-detail').inner_text());self.assertIn(str(len(before['transit']['lift']['passengers'])),p.locator('.schematic-detail').inner_text());p.locator('.schematic-detail button').click();self.assertEqual(p.evaluate('ICARUSObservationLive.camera.selected'),'LIFT-01');self.assertEqual(self.snap(p),before)
+  before=self.snap(p);self.assertIsNotNone(before['crew'][0].get('liftRide'));self.deck(p,'ship','overview');p.wait_for_function('ICARUSObservationLive.camera.tick===__icarusSoak.time()');p.locator('.schematic-lift').click();self.assertIn('observed occupants',p.locator('.schematic-detail').inner_text());self.assertIn('observed occupants '+str(len(before['transit']['lift']['passengers'])),p.locator('.schematic-detail').inner_text());p.locator('.schematic-detail button').click();self.assertEqual(p.evaluate('ICARUSObservationLive.camera.selected'),'LIFT-01');self.assertEqual(self.snap(p),before)
+ def test_phase42b_three_crew_reach_different_topology_destinations(self):
+  p=self.page();self.configure(p,"""s.remoteCore.autonomyEnabled=false;const trips=[['C05','A01'],['A01','B05'],['B05','C04']];for(let i=0;i<3;i++){const q=s.crew[i];q.room=trips[i][0];q.target=trips[i][1];q.route=[q.target];q.nav=null;q.task=q.goal='Reviewing assignment';q.taskMinutes=100;q.energy=95;q.maintenanceRoom=null;q.researchAssignment=null;q.emergencyId=null;}""");destinations=['A01','B05','C04'];arrived=set()
+  for i in range(110):
+   self.advance(p,1);s=self.snap(p)
+   for j,q in enumerate(s['crew'][:3]):
+    if q['room']==destinations[j] and not q['route']:arrived.add(j)
+   self.assertEqual(s['transitAudit'],[])
+   if len(arrived)==3:break
+  self.assertEqual(arrived,{0,1,2});self.assertEqual(s['resourceAudit'],[])

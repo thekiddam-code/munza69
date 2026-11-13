@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "baseline": "633224844fda7451f6cbeda2a3c7f571ca93ba55",
+  "final_runtime_commit": "06b15aab4eaf73a2db6ecdb3a7a1a1c3984b3e7a",
+  "long_watch_and_full_browser_commit": "06c4c5ae152e6ed47688fad0929d5d5bd77a6e2e",
+  "runtime_files": 118,
+  "unchanged_from_long_watch": 115,
+  "post_freeze_files": [
+    "web/icarus.html",
+    "web/knowledge.js",
+    "web/ship-schematic.js"
+  ],
+  "post_freeze_scope": "Shared cabin occupancy/focus in schematic/hologram; acquired and injury/death source location corrected to actual cabin. Clock/social/transit controllers unchanged. Final Node/focused/remote/clock/20x campaign and shorter actual-time watch cover these fixes.",
+  "unchanged_baseline_authorities": [
+    "web/economy.js",
+    "web/repair-policy.js",
+    "web/voyage.js",
+    "web/durable-store.js",
+    "web/save-store.js",
+    "web/backup-codec.js",
+    "web/backup-transfer.js",
+    "web/creatures.js",
+    "web/teams.js",
+    "web/research.js",
+    "web/unified-world.js",
+    "tv_service.py",
+    "requirements.txt",
+    "Start_Remote_Deck.bat"
+  ],
+  "native_source_apks_unchanged": true,
+  "accepted_case_executions": 464,
+  "counts_note": "332 Node +69 frozen full browser +34 final remote +4 final clock +6 final focused +1 three-crew +18 service. Inherited/repeated cases, not unique requirements. Failed/superseded attempts excluded.",
+  "protocol": "128 KiB authenticated host request; classified subpayload max24 KiB, never ordinary telemetry. Legacy14000-character/command4KiB bounds retained. Restricted GET requires localhost and host capability; ordinary paired bearer insufficient.",
+  "static_review": "Original procedural art, no new dependency. Console is a fixed UI whitelist with no OS execution. New fetches are same-host bootstrap/restricted reads; restricted publication uses existing fenced host channel. No AV disabled or new system modification. Existing Windows dependencies and paired input/TV functionality retained. No AV/penetration certification.",
+  "phase_complete": false,
+  "remaining": "Dedicated art/poses, furniture/crowd routing, full cabin medical recovery, remote classified roles and physical/human validation remain incomplete. Campaigns observed no dating/private event; seeded mechanics tests verify those paths."
+}

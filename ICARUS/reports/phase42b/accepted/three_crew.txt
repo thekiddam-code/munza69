@@ -1,0 +1,6 @@
+test_phase42b_three_crew_reach_different_topology_destinations (test_personalities_integration.PersonalitiesIntegration.test_phase42b_three_crew_reach_different_topology_destinations) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 4.659s
+
+OK

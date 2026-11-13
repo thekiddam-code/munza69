@@ -1,0 +1,206 @@
+{
+  "passed": true,
+  "source_commit": "06b15aab4eaf73a2db6ecdb3a7a1a1c3984b3e7a",
+  "phases": [
+    {
+      "name": "normal",
+      "elapsed_seconds": 30.966073827999935,
+      "start_tick": 0,
+      "end_tick": 2,
+      "effective_rate": 3.8752087418810715,
+      "requested_rate": 4,
+      "conversations_before": 0,
+      "conversations_after": 0,
+      "lift_trips": 0,
+      "crew_alive": 20,
+      "dead": 0
+    },
+    {
+      "name": "accelerated",
+      "elapsed_seconds": 121.02610901500157,
+      "start_tick": 2,
+      "end_tick": 42,
+      "effective_rate": 19.830431793048163,
+      "requested_rate": 20,
+      "conversations_before": 0,
+      "conversations_after": 1,
+      "lift_trips": 3,
+      "crew_alive": 20,
+      "dead": 0
+    }
+  ],
+  "samples": [
+    {
+      "tick": 0,
+      "selected": "C05",
+      "following": "Frank Morrow",
+      "stats": {
+        "mainFrames": 80,
+        "previewFrames": 128,
+        "totalMs": 177.6000000052154,
+        "maxMs": 52,
+        "received": 9
+      },
+      "heap": 11431215,
+      "clock": "4\u00d7 authoritative pacing",
+      "phase": "normal",
+      "phase_seconds": 1.005339252002159
+    },
+    {
+      "tick": 2,
+      "selected": "C05",
+      "following": "Frank Morrow",
+      "stats": {
+        "mainFrames": 381,
+        "previewFrames": 596,
+        "totalMs": 788.4000000096858,
+        "maxMs": 67.10000000149012,
+        "received": 38
+      },
+      "heap": 13713380,
+      "clock": "4\u00d7 authoritative pacing",
+      "phase": "normal",
+      "phase_seconds": 30.1371837220031
+    },
+    {
+      "tick": 2,
+      "selected": "C05",
+      "following": "Frank Morrow",
+      "stats": {
+        "mainFrames": 382,
+        "previewFrames": 596,
+        "totalMs": 789.100000012666,
+        "maxMs": 67.10000000149012,
+        "received": 41
+      },
+      "heap": 16850855,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 1.0038070530026744
+    },
+    {
+      "tick": 12,
+      "selected": "C05",
+      "following": "Frank Morrow",
+      "stats": {
+        "mainFrames": 382,
+        "previewFrames": 596,
+        "totalMs": 789.100000012666,
+        "maxMs": 67.10000000149012,
+        "received": 70
+      },
+      "heap": 9067745,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 30.229858568000054
+    },
+    {
+      "tick": 22,
+      "selected": "C05",
+      "following": "Frank Morrow",
+      "stats": {
+        "mainFrames": 1,
+        "previewFrames": 4,
+        "totalMs": 6.800000000745058,
+        "maxMs": 6.800000000745058,
+        "received": 1
+      },
+      "heap": 17226302,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 60.36666376300127
+    },
+    {
+      "tick": 32,
+      "selected": "C06",
+      "following": "Frank Morrow",
+      "stats": {
+        "mainFrames": 254,
+        "previewFrames": 472,
+        "totalMs": 350.0000000409782,
+        "maxMs": 56.899999998509884,
+        "received": 30
+      },
+      "heap": 23181055,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 90.4615235170022
+    },
+    {
+      "tick": 42,
+      "selected": "COR-C-1",
+      "following": "Frank Morrow",
+      "stats": {
+        "mainFrames": 521,
+        "previewFrames": 956,
+        "totalMs": 624.2000000737607,
+        "maxMs": 56.899999998509884,
+        "received": 60
+      },
+      "heap": 30098364,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 120.51565123800174
+    }
+  ],
+  "reloads": [
+    {
+      "saved_tick": 22,
+      "resumed_tick": 22,
+      "rate": 20
+    }
+  ],
+  "errors": [],
+  "limits": "Actual monotonic/wall time and real server. Linux Chromium, desktop/TV I/O stubbed. Emulated phone is not a physical Android. No incidents/relationships/needs/adulthood injected.",
+  "final": {
+    "tick": 42,
+    "alive": 20,
+    "dead": 0,
+    "conversations": 1,
+    "private_events": 0,
+    "confirmed_adults": 0,
+    "lift": {
+      "id": "LIFT-01",
+      "deck": "A",
+      "phase": "boarding",
+      "from": "A",
+      "to": "C",
+      "remaining": 1,
+      "passengers": [
+        "Iris Bell",
+        "Theo Moss",
+        "Ari Novak"
+      ],
+      "queue": [],
+      "capacity": 4,
+      "completed": 3,
+      "fault": null,
+      "stalled": false
+    },
+    "calendar": {
+      "version": 1,
+      "timeZone": "America/Chicago",
+      "wallCursor": 1794542100706,
+      "displayMs": 1794544512183.998,
+      "carry": 52647.998046875,
+      "lastSeen": 1794542100706,
+      "episodeKey": "2026-11-09",
+      "visitedWeeks": {
+        "2026-11-09": true
+      },
+      "occurrences": {},
+      "pending": [],
+      "corrections": [],
+      "recovery": {
+        "discardedMs": 0,
+        "rollbackCount": 0
+      },
+      "mode": "wall",
+      "maxCatchupMs": 21600000,
+      "selectedRate": 20
+    },
+    "unique_sources": 28
+  },
+  "phone_reconnected": true,
+  "elapsed_seconds": 163.4586599610011
+}

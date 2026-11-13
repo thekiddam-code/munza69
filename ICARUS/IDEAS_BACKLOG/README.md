@@ -209,3 +209,10 @@ Implementation branch: `codex/observation-protocol-phase4-2a`, engine baseline P
 - Lift door opening, motion, arrival, and failure states must reflect actual travel mechanics, power, locks and service status. Never animate a lift arriving before the authoritative simulation does.
 - Keep preview rotation and manual camera selection functional; lift cameras are included among normal authorized feeds. Optimize to avoid multiplying world updates.
 - Acceptance: follow a crew member across two decks via labeled corridor doors and lift cameras, verify passenger occupancy and arrival against cutaway, and test blocked/stalled lift and save/reload.
+
+
+## Phase 4.2B Living Personalities implementation
+
+Implemented: shared saved cabin/corridor thresholds and ordinary corridor/lift cameras, privacy-aware Follow Crew, persistent production 20×, traits/habits/sourced social responses, autonomous confirmed-adult scoped invitations/private-time consequences, optional non-explicit presentation, separately gated local SOL console and classified sensor provenance. Original quarter-camera privacy remains in ordinary UMBRA. See PHASE42B_VALIDATION.md for executed evidence; seeded contact fixtures are not organic voyage claims.
+
+Refinement backlog: dedicated affectionate/seated/turning/alert/creature art; furniture/crowd pathing and threshold occlusion; full cabin medical rescue; multi-stop lift optimization; human accessibility and physical Windows/Android/TV/Tailscale validation; separately scoped remote classified roles and later surveillance consequences. Optional non-sexual nudity/shared-blanket/dressing art is incomplete. No broad secret mission or universe system in this batch. Native UMBRA source/APKs remain untouched.

@@ -1,0 +1,1292 @@
+{
+  "passed": true,
+  "accepted_case_executions": 464,
+  "phase_complete": false,
+  "runtime_provenance": {
+    "passed": true,
+    "baseline": "633224844fda7451f6cbeda2a3c7f571ca93ba55",
+    "final_runtime_commit": "06b15aab4eaf73a2db6ecdb3a7a1a1c3984b3e7a",
+    "long_watch_and_full_browser_commit": "06c4c5ae152e6ed47688fad0929d5d5bd77a6e2e",
+    "runtime_files": 118,
+    "unchanged_from_long_watch": 115,
+    "post_freeze_files": [
+      "web/icarus.html",
+      "web/knowledge.js",
+      "web/ship-schematic.js"
+    ],
+    "post_freeze_scope": "Shared cabin occupancy/focus in schematic/hologram; acquired and injury/death source location corrected to actual cabin. Clock/social/transit controllers unchanged. Final Node/focused/remote/clock/20x campaign and shorter actual-time watch cover these fixes.",
+    "unchanged_baseline_authorities": [
+      "web/economy.js",
+      "web/repair-policy.js",
+      "web/voyage.js",
+      "web/durable-store.js",
+      "web/save-store.js",
+      "web/backup-codec.js",
+      "web/backup-transfer.js",
+      "web/creatures.js",
+      "web/teams.js",
+      "web/research.js",
+      "web/unified-world.js",
+      "tv_service.py",
+      "requirements.txt",
+      "Start_Remote_Deck.bat"
+    ],
+    "native_source_apks_unchanged": true,
+    "accepted_case_executions": 464,
+    "counts_note": "332 Node +69 frozen full browser +34 final remote +4 final clock +6 final focused +1 three-crew +18 service. Inherited/repeated cases, not unique requirements. Failed/superseded attempts excluded.",
+    "protocol": "128 KiB authenticated host request; classified subpayload max24 KiB, never ordinary telemetry. Legacy14000-character/command4KiB bounds retained. Restricted GET requires localhost and host capability; ordinary paired bearer insufficient.",
+    "static_review": "Original procedural art, no new dependency. Console is a fixed UI whitelist with no OS execution. New fetches are same-host bootstrap/restricted reads; restricted publication uses existing fenced host channel. No AV disabled or new system modification. Existing Windows dependencies and paired input/TV functionality retained. No AV/penetration certification.",
+    "phase_complete": false,
+    "remaining": "Dedicated art/poses, furniture/crowd routing, full cabin medical recovery, remote classified roles and physical/human validation remain incomplete. Campaigns observed no dating/private event; seeded mechanics tests verify those paths."
+  },
+  "campaigns": {
+    "passed": true,
+    "campaigns": {
+      "adult_metadata_20x_8": {
+        "passed": true,
+        "seed": 8,
+        "scenario": "normal",
+        "real_days": 2,
+        "ship_days": 40.0,
+        "ticks": 57600,
+        "episode": 1,
+        "alive": 20,
+        "deaths": [],
+        "arrivals": 5,
+        "field_missions": 8,
+        "science_cases": 24,
+        "conversations": 735,
+        "source_activities": {
+          "assistance-request": 5,
+          "conversation": 735,
+          "repair-complete": 319,
+          "inspection": 143
+        },
+        "source_kinds": {
+          "system": 190,
+          "observation": 6531,
+          "little": 7532,
+          "research": 109,
+          "relationship": 1899,
+          "anthology": 638,
+          "operation": 5,
+          "social": 1099,
+          "emergency": 12,
+          "maintenance": 470,
+          "crew_memory": 189,
+          "injury": 3,
+          "mission": 36,
+          "mission_history": 5,
+          "encounter": 2,
+          "encounter_history": 2
+        },
+        "retained_social": {
+          "registered": 20,
+          "active": 20,
+          "retainedSocialMemories": 640,
+          "retainedBonds": 356,
+          "retainedActivityHistory": 320,
+          "retainedClaims": 0
+        },
+        "weekly_films": 0,
+        "legendary_segments": 0,
+        "maintenance_statistics": {
+          "version": 1,
+          "stats": {
+            "preventiveStarted": 325,
+            "maintenanceWork": 23033.799999994586,
+            "preventiveCompleted": 319,
+            "criticalEscalations": 1,
+            "criticalRecoveries": 1,
+            "nativeFaults": 2,
+            "dispatches": 2,
+            "emergencyWork": 200.00000000000048,
+            "emergencyCompleted": 2,
+            "releasedAssignments": 4
+          },
+          "decisions": [
+            {
+              "at": 4801,
+              "reason": "Measured life-support fault or reserve forecast below one day; optional research and launches suspended."
+            },
+            {
+              "at": 4861,
+              "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+            },
+            {
+              "at": 9131,
+              "reason": "Suspended Jules Mercer maintenance for required recovery.",
+              "person": "Jules Mercer",
+              "room": "A04"
+            },
+            {
+              "at": 10479,
+              "reason": "Released obsolete maintenance reservation for Tomas Vale; current assignment retained.",
+              "person": "Tomas Vale"
+            },
+            {
+              "at": 53476,
+              "reason": "Released obsolete maintenance reservation for Frank Morrow; current assignment retained.",
+              "person": "Frank Morrow"
+            },
+            {
+              "at": 56542,
+              "reason": "Released obsolete maintenance reservation for Theo Moss; current assignment retained.",
+              "person": "Theo Moss"
+            }
+          ],
+          "notices": {
+            "forecast:true": 4801,
+            "forecast:false": 4861,
+            "release:Jules Mercer": 9131,
+            "detach:Tomas Vale": 10479,
+            "detach:Frank Morrow": 53476,
+            "detach:Theo Moss": 56542
+          },
+          "forecast": {
+            "food": {
+              "at": 57541,
+              "consumption": 0.04733333333333576,
+              "production": 0.0470299999999952,
+              "available": 159.96780000000004,
+              "minutes": 527366.3736138107
+            },
+            "water": {
+              "at": 57541,
+              "consumption": 0.028000000000001062,
+              "production": 0.028000000000001062,
+              "available": 152.79600000000013,
+              "minutes": null
+            },
+            "oxygen": {
+              "at": 57541,
+              "consumption": 0.019999999999996968,
+              "production": 0.020000000000000757,
+              "available": 112.0140000000008,
+              "minutes": null
+            },
+            "energy": {
+              "at": 57541,
+              "consumption": 0.11742474399999689,
+              "production": 0.11694042999999207,
+              "available": 179.86395024,
+              "minutes": 371378.7960666257
+            }
+          },
+          "sample": {
+            "at": 57541,
+            "consumed": {
+              "energy": 6779.985938143989,
+              "food": 2809.074,
+              "water": 1619.1480000000001,
+              "oxygen": 1150.82,
+              "tools": 751.034,
+              "spares": 321,
+              "lab": 668.5
+            },
+            "produced": {
+              "energy": 6839.849888384031,
+              "spares": 326.85164239999995,
+              "water": 1621.9440000000034,
+              "oxygen": 1142.834,
+              "medical": 8,
+              "food": 2784.041799999799,
+              "lab": 652.5000000000002,
+              "tools": 732.8508600000046
+            }
+          },
+          "critical": false,
+          "lastDecision": {
+            "at": 56542,
+            "reason": "Released obsolete maintenance reservation for Theo Moss; current assignment retained.",
+            "person": "Theo Moss"
+          }
+        },
+        "resources_final": {
+          "food": 159.98600000000002,
+          "water": 152.79600000000013,
+          "oxygen": 112.0140000000008,
+          "energy": 179.89416,
+          "medical": 20,
+          "spares": 70,
+          "tools": 70,
+          "lab": 80
+        },
+        "acquisition": {},
+        "fuel_used": 1.9624515496596866,
+        "history_records": 19377,
+        "snapshot_bytes_first": 6643496,
+        "snapshot_bytes_last": 10499480,
+        "checkpoint_reload_days": [
+          2
+        ],
+        "audit_errors": [],
+        "simulation_errors": [],
+        "backup_sha256": "9f7ec66640b9ce3b0fc21c16bcdada1845db03e8806df2e76cde53449af99f6a",
+        "source_commit": "06b15aab4eaf73a2db6ecdb3a7a1a1c3984b3e7a",
+        "elapsed_seconds": 189.35936537900125,
+        "evidence_note": "Only actual campaign results. No generated extra crew; romances/claims need not occur. Checkpoint time is measured using unchanged production calendar including synchronized holidays."
+      },
+      "compound_4807": {
+        "passed": true,
+        "seed": 4807,
+        "scenario": "compound",
+        "real_days": 7,
+        "ship_days": 25.0,
+        "ticks": 36000,
+        "episode": 2,
+        "alive": 20,
+        "deaths": [],
+        "arrivals": 5,
+        "field_missions": 8,
+        "science_cases": 26,
+        "conversations": 475,
+        "source_activities": {
+          "conversation": 475,
+          "assistance-request": 9,
+          "repair-complete": 202,
+          "inspection": 94
+        },
+        "source_kinds": {
+          "system": 172,
+          "injury": 4,
+          "anthology": 391,
+          "medical": 2,
+          "emergency": 12,
+          "little": 4884,
+          "crew_memory": 104,
+          "relationship": 1224,
+          "social": 681,
+          "observation": 4037,
+          "operation": 9,
+          "maintenance": 303,
+          "research": 124,
+          "mission": 36,
+          "mission_history": 5,
+          "encounter": 3,
+          "encounter_history": 3
+        },
+        "retained_social": {
+          "registered": 20,
+          "active": 20,
+          "retainedSocialMemories": 634,
+          "retainedBonds": 338,
+          "retainedActivityHistory": 320,
+          "retainedClaims": 0
+        },
+        "weekly_films": 1,
+        "legendary_segments": 0,
+        "maintenance_statistics": {
+          "version": 1,
+          "stats": {
+            "nativeFaults": 2,
+            "dispatches": 2,
+            "emergencyWork": 200.00000000000048,
+            "preventiveStarted": 211,
+            "maintenanceWork": 14737.599999997938,
+            "emergencyCompleted": 2,
+            "criticalRecoveries": 1,
+            "preventiveCompleted": 202,
+            "releasedAssignments": 5
+          },
+          "decisions": [
+            {
+              "at": 182,
+              "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+            },
+            {
+              "at": 4589,
+              "reason": "Released obsolete maintenance reservation for Tomas Vale; current assignment retained.",
+              "person": "Tomas Vale"
+            },
+            {
+              "at": 21887,
+              "reason": "Released obsolete maintenance reservation for Tomas Vale; current assignment retained.",
+              "person": "Tomas Vale"
+            },
+            {
+              "at": 23995,
+              "reason": "Released obsolete maintenance reservation for Tomas Vale; current assignment retained.",
+              "person": "Tomas Vale"
+            },
+            {
+              "at": 24894,
+              "reason": "Released obsolete maintenance reservation for Jules Mercer; current assignment retained.",
+              "person": "Jules Mercer"
+            }
+          ],
+          "notices": {
+            "forecast:false": 182,
+            "detach:Tomas Vale": 23995,
+            "detach:Jules Mercer": 24894
+          },
+          "forecast": {
+            "food": {
+              "at": 35941,
+              "consumption": 0.014000000000002425,
+              "production": 0.013999999999994846,
+              "available": 159.986,
+              "minutes": null
+            },
+            "water": {
+              "at": 35941,
+              "consumption": 0.028000000000001062,
+              "production": 0.028000000000001062,
+              "available": 153.19579999999974,
+              "minutes": null
+            },
+            "oxygen": {
+              "at": 35941,
+              "consumption": 0.020000000000000757,
+              "production": 0.020000000000000757,
+              "available": 111.66800000000154,
+              "minutes": null
+            },
+            "energy": {
+              "at": 35941,
+              "consumption": 0.11414594399999865,
+              "production": 0.11419061000001421,
+              "available": 179.89246512,
+              "minutes": null
+            }
+          },
+          "sample": {
+            "at": 35941,
+            "consumed": {
+              "energy": 4321.058232351994,
+              "food": 1812.2740000000001,
+              "water": 1015.3480000000001,
+              "oxygen": 718.82,
+              "lab": 554.5,
+              "tools": 445.373,
+              "medical": 1,
+              "spares": 205
+            },
+            "produced": {
+              "energy": 4380.95069747204,
+              "spares": 209.685539200001,
+              "water": 1018.5438000000005,
+              "oxygen": 710.488,
+              "medical": 9,
+              "food": 1787.2599999998858,
+              "lab": 538.5,
+              "tools": 427.37300000000283
+            }
+          },
+          "critical": false,
+          "lastDecision": {
+            "at": 24911,
+            "reason": "Released obsolete maintenance reservation for Jules Mercer; current assignment retained.",
+            "person": "Jules Mercer"
+          }
+        },
+        "resources_final": {
+          "food": 159.986,
+          "water": 153.19579999999974,
+          "oxygen": 111.66800000000154,
+          "energy": 179.85754836,
+          "medical": 20,
+          "spares": 68.29284719999974,
+          "tools": 69.982,
+          "lab": 80
+        },
+        "acquisition": {},
+        "fuel_used": 1.9624515496596866,
+        "history_records": 12479,
+        "snapshot_bytes_first": 2634660,
+        "snapshot_bytes_last": 7761822,
+        "checkpoint_reload_days": [
+          7
+        ],
+        "audit_errors": [],
+        "simulation_errors": [],
+        "backup_sha256": "a146675a4210012b6693fdb317ea3c601b6f4d4e57dde5ebf6adadf735e1464f",
+        "source_commit": "06c4c5ae152e6ed47688fad0929d5d5bd77a6e2e",
+        "elapsed_seconds": 491.1162103380011,
+        "evidence_note": "Only actual campaign results. No generated extra crew; romances/claims need not occur. Checkpoint time is measured using unchanged production calendar including synchronized holidays."
+      },
+      "normal_1001": {
+        "passed": true,
+        "seed": 1001,
+        "scenario": "normal",
+        "real_days": 7,
+        "ship_days": 25.0,
+        "ticks": 36000,
+        "episode": 2,
+        "alive": 20,
+        "deaths": [],
+        "arrivals": 5,
+        "field_missions": 14,
+        "science_cases": 22,
+        "conversations": 487,
+        "source_activities": {
+          "conversation": 487,
+          "assistance-request": 11,
+          "repair-complete": 200,
+          "inspection": 93
+        },
+        "source_kinds": {
+          "system": 196,
+          "observation": 4218,
+          "little": 4851,
+          "maintenance": 295,
+          "research": 111,
+          "social": 699,
+          "relationship": 1176,
+          "operation": 11,
+          "anthology": 354,
+          "emergency": 10,
+          "crew_memory": 114,
+          "mission": 41,
+          "encounter": 3,
+          "encounter_history": 3,
+          "mission_history": 6,
+          "injury": 2
+        },
+        "retained_social": {
+          "registered": 20,
+          "active": 20,
+          "retainedSocialMemories": 640,
+          "retainedBonds": 346,
+          "retainedActivityHistory": 320,
+          "retainedClaims": 0
+        },
+        "weekly_films": 1,
+        "legendary_segments": 0,
+        "maintenance_statistics": {
+          "version": 1,
+          "stats": {
+            "preventiveStarted": 203,
+            "maintenanceWork": 14615.999999997988,
+            "criticalEscalations": 1,
+            "criticalRecoveries": 1,
+            "preventiveCompleted": 200
+          },
+          "decisions": [
+            {
+              "at": 61,
+              "reason": "Measured life-support fault or reserve forecast below one day; optional research and launches suspended."
+            },
+            {
+              "at": 121,
+              "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+            }
+          ],
+          "notices": {
+            "forecast:true": 61,
+            "forecast:false": 121
+          },
+          "forecast": {
+            "food": {
+              "at": 35941,
+              "consumption": 0.08066666666666909,
+              "production": 0.08066666666666152,
+              "available": 159.986,
+              "minutes": null
+            },
+            "water": {
+              "at": 35941,
+              "consumption": 0.028000000000001062,
+              "production": 0.027999999999999168,
+              "available": 152.83240000000015,
+              "minutes": null
+            },
+            "oxygen": {
+              "at": 35941,
+              "consumption": 0.020000000000000757,
+              "production": 0.020000000000000757,
+              "available": 109.26600000000103,
+              "minutes": null
+            },
+            "energy": {
+              "at": 35941,
+              "consumption": 0.11601268399999753,
+              "production": 0.11598500599999777,
+              "available": 179.89249931999998,
+              "minutes": 6499476.093703033
+            }
+          },
+          "sample": {
+            "at": 35941,
+            "consumed": {
+              "energy": 4342.411061039996,
+              "food": 1792.574,
+              "water": 1014.3480000000001,
+              "oxygen": 718.82,
+              "lab": 515.8,
+              "spares": 202,
+              "tools": 468.72
+            },
+            "produced": {
+              "energy": 4402.303560360042,
+              "spares": 206.53768400000027,
+              "water": 1017.1804000000036,
+              "oxygen": 708.086,
+              "medical": 8,
+              "food": 1767.559999999904,
+              "lab": 499.80000000000007,
+              "tools": 450.72000000000264
+            }
+          },
+          "critical": false,
+          "lastDecision": {
+            "at": 121,
+            "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+          }
+        },
+        "resources_final": {
+          "food": 159.98600000000002,
+          "water": 152.83240000000015,
+          "oxygen": 109.26600000000103,
+          "energy": 179.85759048,
+          "medical": 20,
+          "spares": 69.10403599999985,
+          "tools": 69.982,
+          "lab": 80
+        },
+        "acquisition": {},
+        "fuel_used": 1.9624515496596866,
+        "history_records": 12610,
+        "snapshot_bytes_first": 2718262,
+        "snapshot_bytes_last": 8045036,
+        "checkpoint_reload_days": [
+          7
+        ],
+        "audit_errors": [],
+        "simulation_errors": [],
+        "backup_sha256": "c442b80784af464f43e2028431674d9bc3989e9bbaa5b857d9ca001a57cadd25",
+        "source_commit": "d4bc3b2a34da8ae2bb9b6aeb472c3c9a98353aba",
+        "elapsed_seconds": 122.17237994199968,
+        "evidence_note": "Only actual campaign results. No generated extra crew; romances/claims need not occur. Checkpoint time is measured using unchanged production calendar including synchronized holidays."
+      }
+    }
+  },
+  "personalities": {
+    "compound_4807": {
+      "passed": true,
+      "ship_days": 25.0,
+      "confirmed_adults": 0,
+      "lift_trips": 1732,
+      "stages": {},
+      "private_events": [],
+      "social_errors": [],
+      "transit_errors": [],
+      "relationship_errors": []
+    },
+    "adult_metadata_20x_8": {
+      "passed": true,
+      "ship_days": 40.0,
+      "confirmed_adults": 20,
+      "lift_trips": 2289,
+      "stages": {},
+      "private_events": [],
+      "social_errors": [],
+      "transit_errors": [],
+      "relationship_errors": []
+    },
+    "normal_1001": {
+      "passed": true,
+      "ship_days": 25.0,
+      "confirmed_adults": 0,
+      "lift_trips": 1673,
+      "stages": {},
+      "private_events": [],
+      "social_errors": [],
+      "transit_errors": [],
+      "relationship_errors": []
+    }
+  },
+  "long_watch": {
+    "passed": true,
+    "source_commit": "06c4c5ae152e6ed47688fad0929d5d5bd77a6e2e",
+    "phases": [
+      {
+        "name": "normal",
+        "elapsed_seconds": 362.4110243489995,
+        "start_tick": 0,
+        "end_tick": 24,
+        "effective_rate": 3.9733890617336445,
+        "requested_rate": 4,
+        "conversations_before": 0,
+        "conversations_after": 0,
+        "lift_trips": 1,
+        "crew_alive": 20,
+        "dead": 0
+      },
+      {
+        "name": "accelerated",
+        "elapsed_seconds": 301.5102735340006,
+        "start_tick": 24,
+        "end_tick": 125,
+        "effective_rate": 20.098817625584584,
+        "requested_rate": 20,
+        "conversations_before": 0,
+        "conversations_after": 1,
+        "lift_trips": 11,
+        "crew_alive": 20,
+        "dead": 0
+      }
+    ],
+    "samples": [
+      {
+        "tick": 0,
+        "selected": "C05",
+        "following": "Frank Morrow",
+        "stats": {
+          "mainFrames": 75,
+          "previewFrames": 124,
+          "totalMs": 238.10000000149012,
+          "maxMs": 46.69999999925494,
+          "received": 9
+        },
+        "heap": 8889616,
+        "clock": "4\u00d7 authoritative pacing",
+        "phase": "normal",
+        "phase_seconds": 1.0072094979987014
+      },
+      {
+        "tick": 2,
+        "selected": "COR-C-2",
+        "following": "Frank Morrow",
+        "stats": {
+          "mainFrames": 366,
+          "previewFrames": 596,
+          "totalMs": 1033.1999999843538,
+          "maxMs": 84.5,
+          "received": 38
+        },
+        "heap": 14458672,
+        "clock": "4\u00d7 authoritative pacing",
+        "phase": "normal",
+        "phase_seconds": 30.204361019001226
+      },
+      {
+        "tick": 4,
+        "selected": "COR-C-2",
+        "following": "Frank Morrow",
+        "stats": {
+          "mainFrames": 661,
+          "previewFrames": 1064,
+          "totalMs": 1798.9999999329448,
+          "maxMs": 84.5,
+          "received": 68
+        },
+        "heap": 8066890,
+        "clock": "4\u00d7 authoritative pacing",
+        "phase": "normal",
+        "phase_seconds": 60.504381869999634
+      },
+      {
+        "tick": 6,
+        "selected": "COR-C-2",
+        "following": "Frank Morrow",
+        "stats": {
+          "mainFrames": 957,
+          "previewFrames": 1524,
+          "totalMs": 2632.999999921769,
+          "maxMs": 84.5,
+          "received": 98
+        },
+        "heap": 18857997,
+        "clock": "4\u00d7 authoritative pacing",
+        "phase": "normal",
+        "phase_seconds": 90.8486987940014
+      },
+      {
+        "tick": 8,
+        "selected": "COR-C-2",
+        "following": "Frank Morrow",
+        "stats": {
+          "mainFrames": 1244,
+          "previewFrames": 1984,
+          "totalMs": 3842.8999999426305,
+          "maxMs": 101.80000000074506,
+          "received": 128
+        },
+        "heap": 22299029,
+        "clock": "4\u00d7 authoritative pacing",
+        "phase": "normal",
+        "phase_seconds": 120.21721877799791
+      },
+      {
+        "tick": 10,
+        "selected": "COR-C-2",
+        "following": "Frank Morrow",
+        "stats": {
+          "mainFrames": 1542,
+          "previewFrames": 2464,
+          "totalMs": 4744.499999947846,
+          "maxMs": 101.80000000074506,
+          "received": 158
+        },
+        "heap": 33845716,
+        "clock": "4\u00d7 authoritative pacing",
+        "phase": "normal",
+        "phase_seconds": 150.6578472250003
+      },
+      {
+        "tick": 12,
+        "selected": "COR-C-1",
+        "following": "Frank Morrow",
+        "stats": {
+          "mainFrames": 1823,
+          "previewFrames": 2920,
+          "totalMs": 5894.6999999545515,
+          "maxMs": 121.09999999776483,
+          "received": 188
+        },
+        "heap": 26340267,
+        "clock": "4\u00d7 authoritative pacing",
+        "phase": "normal",
+        "phase_seconds": 180.1607149219999
+      },
+      {
+        "tick": 14,
+        "selected": "C04",
+        "following": "Frank Morrow",
+        "stats": {
+          "mainFrames": 2116,
+          "previewFrames": 3404,
+          "totalMs": 7364.099999986589,
+          "maxMs": 121.09999999776483,
+          "received": 218
+        },
+        "heap": 25843349,
+        "clock": "4\u00d7 authoritative pacing",
+        "phase": "normal",
+        "phase_seconds": 210.63277970499985
+      },
+      {
+        "tick": 16,
+        "selected": "COR-C-1",
+        "following": "Frank Morrow",
+        "stats": {
+          "mainFrames": 2388,
+          "previewFrames": 3856,
+          "totalMs": 8519.299999956042,
+          "maxMs": 121.09999999776483,
+          "received": 249
+        },
+        "heap": 36865186,
+        "clock": "4\u00d7 authoritative pacing",
+        "phase": "normal",
+        "phase_seconds": 240.95207117999962
+      },
+      {
+        "tick": 18,
+        "selected": "COR-C-1",
+        "following": "Frank Morrow",
+        "stats": {
+          "mainFrames": 2676,
+          "previewFrames": 4316,
+          "totalMs": 9487.499999962747,
+          "maxMs": 121.09999999776483,
+          "received": 278
+        },
+        "heap": 27140356,
+        "clock": "4\u00d7 authoritative pacing",
+        "phase": "normal",
+        "phase_seconds": 270.3522062089978
+      },
+      {
+        "tick": 20,
+        "selected": "COR-C-2",
+        "following": "Frank Morrow",
+        "stats": {
+          "mainFrames": 2958,
+          "previewFrames": 4776,
+          "totalMs": 10325.099999953061,
+          "maxMs": 121.09999999776483,
+          "received": 308
+        },
+        "heap": 29164731,
+        "clock": "4\u00d7 authoritative pacing",
+        "phase": "normal",
+        "phase_seconds": 300.814351721001
+      },
+      {
+        "tick": 22,
+        "selected": "COR-C-2",
+        "following": "Frank Morrow",
+        "stats": {
+          "mainFrames": 3237,
+          "previewFrames": 5244,
+          "totalMs": 11288.199999950826,
+          "maxMs": 121.09999999776483,
+          "received": 338
+        },
+        "heap": 14105034,
+        "clock": "4\u00d7 authoritative pacing",
+        "phase": "normal",
+        "phase_seconds": 330.0610405890002
+      },
+      {
+        "tick": 24,
+        "selected": "C06",
+        "following": "Frank Morrow",
+        "stats": {
+          "mainFrames": 3481,
+          "previewFrames": 5684,
+          "totalMs": 12983.199999962002,
+          "maxMs": 121.09999999776483,
+          "received": 368
+        },
+        "heap": 20293106,
+        "clock": "4\u00d7 authoritative pacing",
+        "phase": "normal",
+        "phase_seconds": 360.0514241279998
+      },
+      {
+        "tick": 25,
+        "selected": "C06",
+        "following": "Frank Morrow",
+        "stats": {
+          "mainFrames": 3485,
+          "previewFrames": 5692,
+          "totalMs": 12990.699999958277,
+          "maxMs": 121.09999999776483,
+          "received": 374
+        },
+        "heap": 17017866,
+        "clock": "20\u00d7 authoritative pacing",
+        "phase": "accelerated",
+        "phase_seconds": 1.0920617829979165
+      },
+      {
+        "tick": 34,
+        "selected": "C06",
+        "following": "Frank Morrow",
+        "stats": {
+          "mainFrames": 3485,
+          "previewFrames": 5692,
+          "totalMs": 12990.699999958277,
+          "maxMs": 121.09999999776483,
+          "received": 403
+        },
+        "heap": 22763953,
+        "clock": "20\u00d7 authoritative pacing",
+        "phase": "accelerated",
+        "phase_seconds": 30.40760625099938
+      },
+      {
+        "tick": 44,
+        "selected": "C06",
+        "following": "Frank Morrow",
+        "stats": {
+          "mainFrames": 3485,
+          "previewFrames": 5692,
+          "totalMs": 12990.699999958277,
+          "maxMs": 121.09999999776483,
+          "received": 433
+        },
+        "heap": 38601856,
+        "clock": "20\u00d7 authoritative pacing",
+        "phase": "accelerated",
+        "phase_seconds": 60.87011555600111
+      },
+      {
+        "tick": 55,
+        "selected": "C06",
+        "following": "Frank Morrow",
+        "stats": {
+          "mainFrames": 3485,
+          "previewFrames": 5692,
+          "totalMs": 12990.699999958277,
+          "maxMs": 121.09999999776483,
+          "received": 464
+        },
+        "heap": 19523682,
+        "clock": "20\u00d7 authoritative pacing",
+        "phase": "accelerated",
+        "phase_seconds": 90.88990027999898
+      },
+      {
+        "tick": 64,
+        "selected": "COR-C-2",
+        "following": "Frank Morrow",
+        "stats": {
+          "mainFrames": 3485,
+          "previewFrames": 5692,
+          "totalMs": 12990.699999958277,
+          "maxMs": 121.09999999776483,
+          "received": 493
+        },
+        "heap": 23947331,
+        "clock": "20\u00d7 authoritative pacing",
+        "phase": "accelerated",
+        "phase_seconds": 120.11870487199849
+      },
+      {
+        "tick": 76,
+        "selected": "COR-C-2",
+        "following": "Frank Morrow",
+        "stats": {
+          "mainFrames": 3,
+          "previewFrames": 8,
+          "totalMs": 29.5,
+          "maxMs": 20.100000001490116,
+          "received": 3
+        },
+        "heap": 47956139,
+        "clock": "20\u00d7 authoritative pacing",
+        "phase": "accelerated",
+        "phase_seconds": 150.3151323489983
+      },
+      {
+        "tick": 85,
+        "selected": "LIFT-01",
+        "following": "Frank Morrow",
+        "stats": {
+          "mainFrames": 234,
+          "previewFrames": 392,
+          "totalMs": 1884.6999999806285,
+          "maxMs": 656.5,
+          "received": 28
+        },
+        "heap": 17086334,
+        "clock": "20\u00d7 authoritative pacing",
+        "phase": "accelerated",
+        "phase_seconds": 180.80604943599974
+      },
+      {
+        "tick": 94,
+        "selected": "A03",
+        "following": "Frank Morrow",
+        "stats": {
+          "mainFrames": 517,
+          "previewFrames": 848,
+          "totalMs": 2835.9999999701977,
+          "maxMs": 656.5,
+          "received": 57
+        },
+        "heap": 33692265,
+        "clock": "20\u00d7 authoritative pacing",
+        "phase": "accelerated",
+        "phase_seconds": 210.09235633999924
+      },
+      {
+        "tick": 104,
+        "selected": "A03",
+        "following": "Frank Morrow",
+        "stats": {
+          "mainFrames": 807,
+          "previewFrames": 1336,
+          "totalMs": 3608.699999973178,
+          "maxMs": 656.5,
+          "received": 87
+        },
+        "heap": 17621325,
+        "clock": "20\u00d7 authoritative pacing",
+        "phase": "accelerated",
+        "phase_seconds": 240.23198290199798
+      },
+      {
+        "tick": 114,
+        "selected": "A03",
+        "following": "Frank Morrow",
+        "stats": {
+          "mainFrames": 1078,
+          "previewFrames": 1800,
+          "totalMs": 4582.399999972433,
+          "maxMs": 656.5,
+          "received": 117
+        },
+        "heap": 23006445,
+        "clock": "20\u00d7 authoritative pacing",
+        "phase": "accelerated",
+        "phase_seconds": 270.53255402799914
+      },
+      {
+        "tick": 124,
+        "selected": "COR-A-1",
+        "following": "Frank Morrow",
+        "stats": {
+          "mainFrames": 1358,
+          "previewFrames": 2256,
+          "totalMs": 5415.300000008196,
+          "maxMs": 656.5,
+          "received": 147
+        },
+        "heap": 31369079,
+        "clock": "20\u00d7 authoritative pacing",
+        "phase": "accelerated",
+        "phase_seconds": 300.7940488509994
+      }
+    ],
+    "reloads": [
+      {
+        "saved_tick": 75,
+        "resumed_tick": 75,
+        "rate": 20
+      }
+    ],
+    "errors": [],
+    "limits": "Actual monotonic/wall time and real server. Linux Chromium, desktop/TV I/O stubbed. Emulated phone is not a physical Android. No incidents/relationships/needs/adulthood injected.",
+    "final": {
+      "tick": 125,
+      "alive": 20,
+      "dead": 0,
+      "conversations": 1,
+      "private_events": 0,
+      "confirmed_adults": 0,
+      "lift": {
+        "id": "LIFT-01",
+        "deck": "A",
+        "phase": "travel",
+        "from": "A",
+        "to": "C",
+        "remaining": 5,
+        "passengers": [
+          "Mara Chen",
+          "Linda Park",
+          "Tomas Vale",
+          "Yara Finch"
+        ],
+        "queue": [],
+        "capacity": 4,
+        "completed": 11,
+        "fault": null,
+        "stalled": false
+      },
+      "calendar": {
+        "version": 1,
+        "timeZone": "America/Chicago",
+        "wallCursor": 1794541855207,
+        "displayMs": 1794548695935,
+        "carry": 15200,
+        "lastSeen": 1794541855207,
+        "episodeKey": "2026-11-09",
+        "visitedWeeks": {
+          "2026-11-09": true
+        },
+        "occurrences": {},
+        "pending": [],
+        "corrections": [],
+        "recovery": {
+          "discardedMs": 0,
+          "rollbackCount": 0
+        },
+        "mode": "wall",
+        "maxCatchupMs": 21600000,
+        "selectedRate": 20
+      },
+      "unique_sources": 76
+    },
+    "phone_reconnected": true,
+    "elapsed_seconds": 677.018126504001
+  },
+  "final_watch": {
+    "passed": true,
+    "source_commit": "06b15aab4eaf73a2db6ecdb3a7a1a1c3984b3e7a",
+    "phases": [
+      {
+        "name": "normal",
+        "elapsed_seconds": 30.966073827999935,
+        "start_tick": 0,
+        "end_tick": 2,
+        "effective_rate": 3.8752087418810715,
+        "requested_rate": 4,
+        "conversations_before": 0,
+        "conversations_after": 0,
+        "lift_trips": 0,
+        "crew_alive": 20,
+        "dead": 0
+      },
+      {
+        "name": "accelerated",
+        "elapsed_seconds": 121.02610901500157,
+        "start_tick": 2,
+        "end_tick": 42,
+        "effective_rate": 19.830431793048163,
+        "requested_rate": 20,
+        "conversations_before": 0,
+        "conversations_after": 1,
+        "lift_trips": 3,
+        "crew_alive": 20,
+        "dead": 0
+      }
+    ],
+    "samples": [
+      {
+        "tick": 0,
+        "selected": "C05",
+        "following": "Frank Morrow",
+        "stats": {
+          "mainFrames": 80,
+          "previewFrames": 128,
+          "totalMs": 177.6000000052154,
+          "maxMs": 52,
+          "received": 9
+        },
+        "heap": 11431215,
+        "clock": "4\u00d7 authoritative pacing",
+        "phase": "normal",
+        "phase_seconds": 1.005339252002159
+      },
+      {
+        "tick": 2,
+        "selected": "C05",
+        "following": "Frank Morrow",
+        "stats": {
+          "mainFrames": 381,
+          "previewFrames": 596,
+          "totalMs": 788.4000000096858,
+          "maxMs": 67.10000000149012,
+          "received": 38
+        },
+        "heap": 13713380,
+        "clock": "4\u00d7 authoritative pacing",
+        "phase": "normal",
+        "phase_seconds": 30.1371837220031
+      },
+      {
+        "tick": 2,
+        "selected": "C05",
+        "following": "Frank Morrow",
+        "stats": {
+          "mainFrames": 382,
+          "previewFrames": 596,
+          "totalMs": 789.100000012666,
+          "maxMs": 67.10000000149012,
+          "received": 41
+        },
+        "heap": 16850855,
+        "clock": "20\u00d7 authoritative pacing",
+        "phase": "accelerated",
+        "phase_seconds": 1.0038070530026744
+      },
+      {
+        "tick": 12,
+        "selected": "C05",
+        "following": "Frank Morrow",
+        "stats": {
+          "mainFrames": 382,
+          "previewFrames": 596,
+          "totalMs": 789.100000012666,
+          "maxMs": 67.10000000149012,
+          "received": 70
+        },
+        "heap": 9067745,
+        "clock": "20\u00d7 authoritative pacing",
+        "phase": "accelerated",
+        "phase_seconds": 30.229858568000054
+      },
+      {
+        "tick": 22,
+        "selected": "C05",
+        "following": "Frank Morrow",
+        "stats": {
+          "mainFrames": 1,
+          "previewFrames": 4,
+          "totalMs": 6.800000000745058,
+          "maxMs": 6.800000000745058,
+          "received": 1
+        },
+        "heap": 17226302,
+        "clock": "20\u00d7 authoritative pacing",
+        "phase": "accelerated",
+        "phase_seconds": 60.36666376300127
+      },
+      {
+        "tick": 32,
+        "selected": "C06",
+        "following": "Frank Morrow",
+        "stats": {
+          "mainFrames": 254,
+          "previewFrames": 472,
+          "totalMs": 350.0000000409782,
+          "maxMs": 56.899999998509884,
+          "received": 30
+        },
+        "heap": 23181055,
+        "clock": "20\u00d7 authoritative pacing",
+        "phase": "accelerated",
+        "phase_seconds": 90.4615235170022
+      },
+      {
+        "tick": 42,
+        "selected": "COR-C-1",
+        "following": "Frank Morrow",
+        "stats": {
+          "mainFrames": 521,
+          "previewFrames": 956,
+          "totalMs": 624.2000000737607,
+          "maxMs": 56.899999998509884,
+          "received": 60
+        },
+        "heap": 30098364,
+        "clock": "20\u00d7 authoritative pacing",
+        "phase": "accelerated",
+        "phase_seconds": 120.51565123800174
+      }
+    ],
+    "reloads": [
+      {
+        "saved_tick": 22,
+        "resumed_tick": 22,
+        "rate": 20
+      }
+    ],
+    "errors": [],
+    "limits": "Actual monotonic/wall time and real server. Linux Chromium, desktop/TV I/O stubbed. Emulated phone is not a physical Android. No incidents/relationships/needs/adulthood injected.",
+    "final": {
+      "tick": 42,
+      "alive": 20,
+      "dead": 0,
+      "conversations": 1,
+      "private_events": 0,
+      "confirmed_adults": 0,
+      "lift": {
+        "id": "LIFT-01",
+        "deck": "A",
+        "phase": "boarding",
+        "from": "A",
+        "to": "C",
+        "remaining": 1,
+        "passengers": [
+          "Iris Bell",
+          "Theo Moss",
+          "Ari Novak"
+        ],
+        "queue": [],
+        "capacity": 4,
+        "completed": 3,
+        "fault": null,
+        "stalled": false
+      },
+      "calendar": {
+        "version": 1,
+        "timeZone": "America/Chicago",
+        "wallCursor": 1794542100706,
+        "displayMs": 1794544512183.998,
+        "carry": 52647.998046875,
+        "lastSeen": 1794542100706,
+        "episodeKey": "2026-11-09",
+        "visitedWeeks": {
+          "2026-11-09": true
+        },
+        "occurrences": {},
+        "pending": [],
+        "corrections": [],
+        "recovery": {
+          "discardedMs": 0,
+          "rollbackCount": 0
+        },
+        "mode": "wall",
+        "maxCatchupMs": 21600000,
+        "selectedRate": 20
+      },
+      "unique_sources": 28
+    },
+    "phone_reconnected": true,
+    "elapsed_seconds": 163.4586599610011
+  },
+  "not_run": [
+    "Physical Windows/Android/TV",
+    "Real LAN/Tailscale",
+    "Native APK rebuild",
+    "Antivirus",
+    "Human accessibility/readability/GPU"
+  ],
+  "limits": "No organic dating/private event observed; positive paths use labeled source-generated mechanics fixtures. Dedicated art, furniture/crowd routing, cabin medical recovery and remote classified roles remain incomplete."
+}

@@ -1,0 +1,23 @@
+test_bounds_and_snapshot_isolation (test_bridge_service.BridgeServiceTests.test_bounds_and_snapshot_isolation) ... ok
+test_creator_controls_denied_by_default_and_offline_never_queues (test_bridge_service.BridgeServiceTests.test_creator_controls_denied_by_default_and_offline_never_queues) ... ok
+test_delivery_retains_until_ack_and_expires (test_bridge_service.BridgeServiceTests.test_delivery_retains_until_ack_and_expires) ... ok
+test_duplicate_request_cannot_execute_twice_or_change_payload (test_bridge_service.BridgeServiceTests.test_duplicate_request_cannot_execute_twice_or_change_payload) ... ok
+test_expired_same_owner_can_heartbeat_but_cannot_write_before_renewal (test_bridge_service.BridgeServiceTests.test_expired_same_owner_can_heartbeat_but_cannot_write_before_renewal) ... ok
+test_new_host_cannot_receive_old_commands_or_old_telemetry (test_bridge_service.BridgeServiceTests.test_new_host_cannot_receive_old_commands_or_old_telemetry) ... ok
+test_paused_is_connected_without_tick_movement (test_bridge_service.BridgeServiceTests.test_paused_is_connected_without_tick_movement) ... ok
+test_single_owner_expiry_and_generation_fencing (test_bridge_service.BridgeServiceTests.test_single_owner_expiry_and_generation_fencing) ... ok
+test_cancel_replacement_unpair_and_reconfigure_invalidate_callbacks (test_tv_service.TVServiceTests.test_cancel_replacement_unpair_and_reconfigure_invalidate_callbacks) ... ok
+test_changed_target_never_powers_off_new_tv (test_tv_service.TVServiceTests.test_changed_target_never_powers_off_new_tv) ... ok
+test_countdown_is_explicit_and_fires_exactly_once (test_tv_service.TVServiceTests.test_countdown_is_explicit_and_fires_exactly_once) ... ok
+test_failure_no_late_retry (test_tv_service.TVServiceTests.test_failure_no_late_retry) ... ok
+test_late_wake_never_sends_surprise_power_off (test_tv_service.TVServiceTests.test_late_wake_never_sends_surprise_power_off) ... ok
+test_reuses_pairing_transport_and_denies_arbitrary_keys (test_tv_service.TVServiceTests.test_reuses_pairing_transport_and_denies_arbitrary_keys) ... ok
+test_validation_and_restart (test_tv_service.TVServiceTests.test_validation_and_restart) ... ok
+test_classified_payload_is_separate_and_returned_copies_cannot_mutate_authority (test_phase42b_service.ClassifiedService.test_classified_payload_is_separate_and_returned_copies_cannot_mutate_authority) ... ok
+test_classified_public_routing_and_oversized_payloads_are_rejected (test_phase42b_service.ClassifiedService.test_classified_public_routing_and_oversized_payloads_are_rejected) ... ok
+test_replacement_host_clears_private_payload_and_stale_is_marked (test_phase42b_service.ClassifiedService.test_replacement_host_clears_private_payload_and_stale_is_marked) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.003s
+
+OK
