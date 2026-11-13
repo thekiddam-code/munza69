@@ -218,3 +218,12 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - Telemetry should display only verified host data (e.g., CPU/GPU/RAM, microphone device/state, active app, power mode, macro status); mark unavailable metrics instead of fabricating values. Game-specific stats require a supported integration.
 - Integrate with the separately proposed microphone-mixed soundboard; avoid implementing a second audio engine.
 - **Status: approved design/backlog, not implemented.** Keep separate from ICARUS ship simulation and avoid disturbing existing remote deck functionality.
+
+## UMBRA Simulator — Discord COMMS integration (proposed)
+- Add a shared **COMMS** panel in UMBRA Simulator, accessible from every game tab, with a compact always-available microphone / soundboard control strip. Integrate with the approved hybrid Macros system and auto-selected game profiles.
+- **Stage 1: Windows Discord desktop bridge.** Use user-configured Discord keybinds triggered by the existing Windows companion for mute, deafen, push-to-talk and other supported actions. Show control feedback only when verified; don't mistake sent keystrokes for confirmed Discord state. Support manual keybind configuration and prevent shortcuts going to the wrong app.
+- **Stage 2: investigate richer Discord integration** through officially supported Discord APIs/SDKs and permissions: voice settings, current voice connection/channel, participants/speaking indicators, activity and server/channel navigation **only where actually supported and authorized**. Do not rely on unsupported private Discord client APIs, self-bots, token extraction, or invasive automation. Clearly distinguish available telemetry from unavailable data.
+- **Shared soundboard:** reuse the proposed Windows-host microphone-mixed soundboard with routing targets Discord only, game chat only, both, or local speakers, where configured virtual devices/mixer support them. Avoid duplicate audio engines; prevent feedback and accidental broadcasting.
+- Tablet/phone UMBRA buttons remotely control the Windows companion; audio routing happens on Windows. Provide visible microphone status, output destination, stop-all, and a fast disable/mute option.
+- **Open design choice:** whether to include full authorized server/channel/friend browsing or focus initially on voice-chat controls; do not treat the deeper integration as approved or technically guaranteed yet.
+- **Status:** backlog concept, not implemented. Implement separately from ICARUS Phase 4.2B and preserve existing Simulator functions.
