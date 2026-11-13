@@ -1,0 +1,71 @@
+[
+  {
+    "full_name": "KilledByAPixel/LittleJS",
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "default_branch": "main",
+    "html_url": "https://github.com/KilledByAPixel/LittleJS",
+    "description": "Tiny fast 2D/3D HTML5 game engine with many features and no dependencies.",
+    "size": 35702,
+    "pushed_at": "2026-11-12T06:25:55Z"
+  },
+  {
+    "full_name": "phaserjs/phaser",
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "default_branch": "master",
+    "html_url": "https://github.com/phaserjs/phaser",
+    "description": "Phaser is a fun, free and fast 2D game framework for making HTML5 games for desktop and mobile web browsers, supporting Canvas and WebGL rendering.",
+    "size": 479407,
+    "pushed_at": "2026-08-21T06:56:13Z"
+  },
+  {
+    "full_name": "phaserjs/examples",
+    "license": null,
+    "default_branch": "master",
+    "html_url": "https://github.com/phaserjs/examples",
+    "description": "Phaser 3 Examples",
+    "size": 2089817,
+    "pushed_at": "2026-10-26T02:52:02Z"
+  },
+  {
+    "full_name": "excaliburjs/Excalibur",
+    "license": {
+      "key": "bsd-2-clause",
+      "name": "BSD 2-Clause \"Simplified\" License",
+      "spdx_id": "BSD-2-Clause",
+      "url": "https://api.github.com/licenses/bsd-2-clause",
+      "node_id": "MDc6TGljZW5zZTQ="
+    },
+    "default_branch": "main",
+    "html_url": "https://github.com/excaliburjs/Excalibur",
+    "description": "\ud83c\udfae Your friendly TypeScript 2D game engine for the web \ud83d\udde1\ufe0f",
+    "size": 649658,
+    "pushed_at": "2026-11-12T03:11:30Z"
+  },
+  {
+    "full_name": "Orama-Interactive/Pixelorama",
+    "license": {
+      "key": "mit",
+      "name": "MIT License",
+      "spdx_id": "MIT",
+      "url": "https://api.github.com/licenses/mit",
+      "node_id": "MDc6TGljZW5zZTEz"
+    },
+    "default_branch": "master",
+    "html_url": "https://github.com/Orama-Interactive/Pixelorama",
+    "description": "Unleash your creativity with Pixelorama, a powerful and accessible open-source pixel art multitool. Whether you want to create sprites, tiles, animations, or just express yourself in the language of pixel art, this software will realize your pixel-perfect dreams with a vast toolbox of features. Available on Windows, Linux, macOS and the Web!",
+    "size": 69854,
+    "pushed_at": "2026-11-12T22:52:07Z"
+  }
+]
