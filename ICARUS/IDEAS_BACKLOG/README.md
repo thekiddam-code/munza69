@@ -198,3 +198,13 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - Lift door opening, motion, arrival, and failure states must reflect actual travel mechanics, power, locks and service status. Never animate a lift arriving before the authoritative simulation does.
 - Keep preview rotation and manual camera selection functional; lift cameras are included among normal authorized feeds. Optimize to avoid multiplying world updates.
 - Acceptance: follow a crew member across two decks via labeled corridor doors and lift cameras, verify passenger occupancy and arrival against cutaway, and test blocked/stalled lift and save/reload.
+
+## UMBRA Simulator — microphone-integrated soundboard (proposed)
+- Add a reusable **Soundboard** panel available across UMBRA's **Simulator** game tabs, not a separate ICARUS ship simulation feature.
+- Provide customizable buttons that play assigned short audio clips into **game voice chat** via the user's microphone input path, while retaining normal live microphone speech.
+- Investigate a Windows companion-server implementation with a **virtual microphone / audio mixing device** (for example, a virtual audio cable or suitable virtual mixer); browser audio playback alone does not automatically reach game voice chat. Verify per-game input-device selection and compatibility.
+- Support per-game button layouts/profiles, clip import, naming, icons, volume, stop-all, optional hotkeys, and an easily accessible mute/disable toggle. Persist settings without embedding copyrighted clips in the repository.
+- Provide optional push-to-talk coordination, avoid feedback/echo by monitoring output routing, and do not silently capture or transmit microphone audio. Explicitly distinguish playback-to-speakers from routing-to-game-chat.
+- Preserve UMBRA's existing PC/Android remote-control architecture: buttons on tablet/phone can trigger authorized playback on the Windows host, while the Windows audio routing delivers the mixed signal to the selected game microphone device.
+- Keep latency low, make clipping/overlap behavior predictable, and test with at least one game using voice-chat microphone selection. Account for games that restrict virtual audio devices or require manual input configuration.
+- Status: **backlog idea only; not yet implemented**. Decide audio routing and UI details during a future Simulator/UMBRA development phase.
