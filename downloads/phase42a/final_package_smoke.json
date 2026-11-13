@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "runtime_root": "/workspace/work/phase42a/final_extracted/ICARUS_Phase4_2A_Observation_Protocol_Lite",
+  "source_commit": "c8055350c974d90130a5c4aaf8b489045a6ed9a3",
+  "tests_run": 9,
+  "cases": [
+    "test_protocol_bridge_pause_and_header_widgets_accessible",
+    "test_protocol_crew_menu_and_mobile_no_world_mutation",
+    "test_protocol_four_previews_rotation_pin_promotion_and_pure_views",
+    "test_protocol_iris_search_approach_conversation_and_failure",
+    "test_protocol_original_home_crew_location_menu_opens_received_profile",
+    "test_protocol_paid_engineering_repair_travels_to_actual_work_anchor",
+    "test_protocol_preview_pin_and_classic_camera_controls_preserve_world",
+    "test_protocol_private_rooms_have_no_main_preview_or_remote_actors",
+    "test_protocol_room_lighting_is_actual_saved_state_and_no_false_bio"
+  ],
+  "failures": [],
+  "errors": [],
+  "note": "Additional focused tests against the exact final ZIP extraction, including final Home menu. No runtime patches."
+}
