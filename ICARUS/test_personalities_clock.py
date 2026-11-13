@@ -1,0 +1,7 @@
+"""Ordinary production page timer with controlled wall timestamps, no soak hooks."""
+from test_production_clock import ProductionClock
+class PersonalitiesClock(ProductionClock):
+ def test_production_twenty_switch_pause_reload_and_unique_sources(self):
+  p=self.start('2026-11-12T12:00:00',fixed=True);p.locator('[aria-label="Ship pacing"]').select_option('20');p.clock.fast_forward(60000);s=self.state(p);self.assertEqual(s['tick'],20);self.assertEqual(s['calendar']['selectedRate'],20);self.assertEqual(len({r['id'] for r in s['chronicle']['records']}),len(s['chronicle']['records']));p.reload();p.wait_for_function('!!window.ICARUSObservationLive');self.assertEqual(p.locator('[aria-label="Ship pacing"]').input_value(),'20');self.assertEqual(self.state(p)['tick'],20);p.locator('[aria-label="Ship pacing"]').select_option('1');p.clock.fast_forward(60000);self.assertEqual(self.state(p)['tick'],21);p.locator('#pause').click();p.locator('[aria-label="Ship pacing"]').select_option('20');p.clock.fast_forward(60000);self.assertEqual(self.state(p)['tick'],21);p.locator('#pause').click();p.clock.fast_forward(60000);self.assertEqual(self.state(p)['tick'],41)
+ def test_selected_twenty_never_overrides_synchronized_holiday(self):
+  p=self.start('2026-11-11T12:00:00',fixed=True);p.locator('[aria-label="Ship pacing"]').select_option('20');p.clock.fast_forward(60000);s=self.state(p);self.assertEqual(s['tick'],1);self.assertEqual(s['calendar']['selectedRate'],20);self.assertIn('Synchronized holiday',p.locator('.voyage-clock small').inner_text())
