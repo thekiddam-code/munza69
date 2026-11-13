@@ -1,0 +1,16 @@
+{
+  "zip": "ICARUS_Phase4_3_Living_Ship_Operations_Lite.zip",
+  "source_commit": "790d994aa34cdb6c8ad8d26047b30feee87b69a0",
+  "sha256": "7ef11b2c4b8e332b0075593a08befba4915b1edfd81a8522889dc44e8529fde1",
+  "bytes": 799553,
+  "runtime_files": 122,
+  "all_files": 177,
+  "crc_and_hashes_passed": true,
+  "runtime_matches_corrected_freeze": true,
+  "corrected_runtime_commit": "13ab44756314a1e99587c3070914cefbfbe26fe0",
+  "all_retained_source_hashes_verified": true,
+  "development_tools_tests_and_reports_excluded": true,
+  "extracted_runtime": "/workspace/work/phase43/extracted/ICARUS_Phase4_3_Living_Ship_Operations_Lite",
+  "extracted_zip_functional_smoke_passed": true,
+  "extracted_zip_smoke_executions": 8
+}

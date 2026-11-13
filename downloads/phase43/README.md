@@ -1,0 +1,17 @@
+# ICARUS / UMBRA Phase 4.3 Living Ship Operations
+
+[Download the Lite ZIP](https://github.com/thekiddam-code/munza69/raw/refs/heads/codex/living-ship-operations-phase4-3/downloads/phase43/ICARUS_Phase4_3_Living_Ship_Operations_Lite.zip) · [SHA-256](ICARUS_Phase4_3_Living_Ship_Operations_Lite.zip.sha256) · [Verification evidence ZIP](https://github.com/thekiddam-code/munza69/raw/refs/heads/codex/living-ship-operations-phase4-3/downloads/phase43/ICARUS_Phase4_3_Verification_Evidence.zip)
+
+The Lite package contains the actual application, every runtime dependency file and installation/migration/rollback/architecture/limits documentation. Tests, reports, packaging tools, generated credentials and test worlds are excluded. The full source and automated suites remain on this branch. Existing main/releases and native Android files are unchanged.
+
+**Before upgrading:** export your own complete voyage/history backup, preserve the old installation, close old host tabs and stop its server. Extract Lite separately and run `Start_Remote_Deck.bat` on Windows with Python/runtime requirements installed. Use the same laptop browser/profile/origin or import your own backup. Phones remain paired UMBRA terminals. Do not import evidence test worlds as your voyage.
+
+Package source: `790d994aa34cdb6c8ad8d26047b30feee87b69a0`. All122 runtime file hashes match tested freeze `13ab44756314a1e99587c3070914cefbfbe26fe0`. ZIP CRC, retained-file/source SHA-256 and development-file exclusion checks pass. Eight additional extracted-ZIP browser/remote tests pass.
+
+The frozen runtime passed501 main/legacy test executions, plus one portable archived-fixture rerun. Normal and explicit damaged/injured seven-real-day campaigns each reached25 ship days; a corrected original-seed20× replay reached40 ship days. All20 crew survived each, with real paid generator repairs, voyages and source-backed activity. Independent source/privacy/resource/operational audits and exact reload checks pass. The earlier rejected candidate's genuine recovery failure is documented; its clean invariants are not presented as successful survival mechanics.
+
+The actual elapsed host/phone-emulation watch measured3.9624× and20.2835×, with reload, pause and disconnect/reconnect checks. Protocol/browser emulation does not certify physical Windows/Android/TV operation. Native APK rebuild, physical devices, real LAN/Tailscale, human accessibility/GPU and antivirus validation remain unrun. No antivirus was disabled. Full AI takeover/lifecycle behavior and deeper physics/art/recovery remain documented limits; this is not unconditional phase/final-game certification.
+
+[Detailed verification](../../ICARUS/PHASE43_VALIDATION.md) · [Installation and rollback](../../ICARUS/README_PHASE43.md) · [Architecture](../../ICARUS/PHASE43_ARCHITECTURE.md) · [Recovery investigation](../../ICARUS/PHASE43_RECOVERY_INVESTIGATION.md) · [Changelog](../../ICARUS/PHASE43_CHANGELOG.md) · [Known limitations](../../ICARUS/PHASE43_LIMITATIONS.md) · [Static security review](../../ICARUS/SECURITY_PHASE43.md)
+
+Machine results are package_verification.json and delivery_verification.json. The evidence ZIP includes fixture hashes, actual campaigns/history, executed test logs, elapsed watch, labeled visual examples and explicit rejected/development diagnostics. Its historical migration fixtures are isolated fictional test worlds, never a personal save to install.
