@@ -187,3 +187,32 @@ Implementation branch: `codex/observation-protocol-phase4-2a`, engine baseline P
 - **Unavailable model / deferred:** biological scan returns, CO₂/HVAC setpoint/circuit/suppression controls; no working-looking fake controls or hidden-creature counts.
 - **Explicitly deferred:** classified SOL Operations/covert quarters access and optional non-explicit adult relationship presentation (Phase 4.2B). Ordinary cameras remain excluded from quarters even in Creator Mode. The separate 4.1.1 clock issue is untouched.
 - **Native boundary:** main's S24+ Compose launcher/source/APKs retained unchanged. It is separate from the original Tab S5e project; no native/device rebuild/test claim in this browser/server batch.
+## Phase 4.2B decisions — autonomous relationships, 20× clock, corridor pacing (2026-11-12)
+- **Relationships entirely autonomous:** crew choose friendships, attraction, dates, intimacy, breakups, and consequences from personality, history, circumstances, and mutual consent. Creator Mode may inspect/debug but must not directly steer relationship outcomes in normal simulation.
+- **Add 20× time acceleration** to existing clock controls (retain pause, 1×, 4×; 10× optional if compatible). Simulation tick, pathfinding, activities, social state, timers, and saves must advance correctly. Separate authoritative simulation time from render FPS; at high speed prevent missed events, teleporting, runaway CPU, or duplicate outcomes. Test pause/resume and return to 1×.
+- **Investigate visually slow corridor walking before changing movement speed.** User suspects long in-world hallway is compressed into a single camera image. Compare physical corridor length, world-coordinate walking velocity, projection scale, camera framing, animation cadence, and interpolation. Preserve plausible world speeds; prefer multiple coverage zones/virtual camera framing if projection is the issue. Verify traversal time and visible progress at 1×/4×/20×.
+
+## Phase 4.2B — corridor door visibility and room wayfinding (2026-11-12)
+- Corridor camera scenes should visibly include **all actual room doorways connected to that corridor segment** (not arbitrary decorative doors), using authoritative ship topology and deck/segment mappings.
+- Each doorway gets a small readable room-type icon, room name and/or designation (e.g., ENG-01, MED-02, CQ-03). Labels scale sensibly with camera zoom and can be abbreviated on preview feeds.
+- Crew walk to the **correct mapped doorway**, trigger its real door state/animation, cross the threshold, and transition into the destination room. Ensure camera views and cutaway agree on identity, occupancy and timing.
+- Doors must reflect actual locked/sealed/damaged/powered states and cannot be bypassed by cosmetic animations. No camera scene should suggest a room entrance that does not exist in the ship topology.
+- For long corridors, diagnose condensed perspective and split into contiguous camera coverage segments where useful, keeping all room entrances represented and preserving travel distance/time.
+- Crew quarters retain normal camera privacy; classified SOL-only covert feeds remain separate.
+- Acceptance: choose several crew with different destinations, follow their route in corridor cameras, verify each uses the correct labeled door and appears in the correct room; test blocked doors and save/reload.
+
+## Phase 4.2B — personnel lift cameras and continuous deck transitions (2026-11-12)
+- Add an interior security camera to every operational personnel lift in the existing ship topology. Use the same authoritative simulation and camera array as corridors/rooms; do not invent lifts or duplicate worlds.
+- Crew visibly approach the correct lift, wait if necessary, board when doors open, stand or interact while riding, and exit at the correct deck. Support multiple passengers and different destinations if modeled.
+- Camera metadata: lift ID, current deck, target deck/direction, door state, occupant count, and faults where real telemetry exists (e.g., LIFT-02 | DECK 03 → 05 | 2 OCCUPANTS).
+- Offer optional follow-person camera handoff: origin corridor → lift interior → destination corridor → destination room (only where ordinary camera coverage is authorized). Respect privacy and camera access restrictions.
+- Lift door opening, motion, arrival, and failure states must reflect actual travel mechanics, power, locks and service status. Never animate a lift arriving before the authoritative simulation does.
+- Keep preview rotation and manual camera selection functional; lift cameras are included among normal authorized feeds. Optimize to avoid multiplying world updates.
+- Acceptance: follow a crew member across two decks via labeled corridor doors and lift cameras, verify passenger occupancy and arrival against cutaway, and test blocked/stalled lift and save/reload.
+
+
+## Phase 4.2B Living Personalities implementation
+
+Implemented: shared saved cabin/corridor thresholds and ordinary corridor/lift cameras, privacy-aware Follow Crew, persistent production 20×, traits/habits/sourced social responses, autonomous confirmed-adult scoped invitations/private-time consequences, optional non-explicit presentation, separately gated local SOL console and classified sensor provenance. Original quarter-camera privacy remains in ordinary UMBRA. See PHASE42B_VALIDATION.md for executed evidence; seeded contact fixtures are not organic voyage claims.
+
+Refinement backlog: dedicated affectionate/seated/turning/alert/creature art; furniture/crowd pathing and threshold occlusion; full cabin medical rescue; multi-stop lift optimization; human accessibility and physical Windows/Android/TV/Tailscale validation; separately scoped remote classified roles and later surveillance consequences. Optional non-sexual nudity/shared-blanket/dressing art is incomplete. No broad secret mission or universe system in this batch. Native UMBRA source/APKs remain untouched.

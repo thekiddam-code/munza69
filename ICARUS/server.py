@@ -247,6 +247,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
   if self.path=='/api/icarus/bootstrap':
    if not self.local_host():return self.respond(403,{'error':'Open the host on this PC at http://127.0.0.1:8765/icarus.html'})
    return self.respond(200,{'key':ICARUS_KEY,'protocol':2})
+  if self.path=='/api/icarus/classified':
+   if not self.local_host() or not self.host_auth():return self.respond(403,{'error':'Local SOL console capability required'})
+   return self.respond(200,BRIDGE_SERVICE.classified_view())
   if self.path=='/api/icarus/host/commands':
    if not self.host_auth():return self.respond(403,{'error':'Invalid host key'})
    try:return self.respond(200,{'commands':BRIDGE_SERVICE.pending(*self.host_identity())})
@@ -302,7 +305,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
      if self.path.endswith('/claim'):return self.respond(200,BRIDGE_SERVICE.claim(data.get('instance')))
      owner,generation=self.host_identity()
      if self.path.endswith('/heartbeat'):return self.respond(200,BRIDGE_SERVICE.heartbeat(owner,generation))
-     result=BRIDGE_SERVICE.publish(owner,generation,data.get('telemetry'),data.get('acks',[]))
+     result=BRIDGE_SERVICE.publish(owner,generation,data.get('telemetry'),data.get('acks',[]),classified=data.get('classified'))
      # Legacy installed Android response stays the same; extra protocol-2 fields are opt-in.
      legacy=data.get('legacy')
      if isinstance(legacy,dict) and len(json.dumps(legacy))<=14000:

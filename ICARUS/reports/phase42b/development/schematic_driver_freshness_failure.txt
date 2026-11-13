@@ -1,0 +1,20 @@
+test_phase42b_creator_cannot_select_partners_and_presentation_does_not_rewrite_history (test_personalities_integration.PersonalitiesIntegration.test_phase42b_creator_cannot_select_partners_and_presentation_does_not_rewrite_history) ... ok
+test_phase42b_cross_deck_journey_uses_one_cabin_and_camera_occupancy (test_personalities_integration.PersonalitiesIntegration.test_phase42b_cross_deck_journey_uses_one_cabin_and_camera_occupancy) ... ok
+test_phase42b_lift_boarded_save_load_keeps_cabin_and_future (test_personalities_integration.PersonalitiesIntegration.test_phase42b_lift_boarded_save_load_keeps_cabin_and_future) ... ok
+test_phase42b_private_event_from_seeded_mechanics_fixture_travels_and_reloads (test_personalities_integration.PersonalitiesIntegration.test_phase42b_private_event_from_seeded_mechanics_fixture_travels_and_reloads) ... ok
+test_phase42b_schematic_lift_matches_camera_and_focus_is_readonly (test_personalities_integration.PersonalitiesIntegration.test_phase42b_schematic_lift_matches_camera_and_focus_is_readonly) ... FAIL
+test_phase42b_topology_doors_and_follow_privacy_persist (test_personalities_integration.PersonalitiesIntegration.test_phase42b_topology_doors_and_follow_privacy_persist) ... ok
+
+======================================================================
+FAIL: test_phase42b_schematic_lift_matches_camera_and_focus_is_readonly (test_personalities_integration.PersonalitiesIntegration.test_phase42b_schematic_lift_matches_camera_and_focus_is_readonly)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/work/munza69/ICARUS/test_personalities_integration.py", line 36, in test_phase42b_schematic_lift_matches_camera_and_focus_is_readonly
+    before=self.snap(p);self.assertIsNotNone(before['crew'][0].get('liftRide'));self.deck(p,'ship','overview');p.locator('.schematic-lift').click();self.assertIn('observed occupants',p.locator('.schematic-detail').inner_text());self.assertIn(str(len(before['transit']['lift']['passengers'])),p.locator('.schematic-detail').inner_text());p.locator('.schematic-detail button').click();self.assertEqual(p.evaluate('ICARUSObservationLive.camera.selected'),'LIFT-01');self.assertEqual(self.snap(p),before)
+                                                                                                                                                                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '4' not found in 'LIFT-01 · Personnel lift · C → A · positioning\n\nDeck A → A · positioning · observed occupants 0 · No reported fault\n\nFocus available lift camera'
+
+----------------------------------------------------------------------
+Ran 6 tests in 77.121s
+
+FAILED (failures=1)

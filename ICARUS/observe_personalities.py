@@ -1,0 +1,29 @@
+"""Actual elapsed host watch: no fake clock, soak API, injected encounters or assigned relationships."""
+import argparse,hashlib,json,time,traceback
+from pathlib import Path
+import test_umbra_browser as H
+
+def main():
+ ap=argparse.ArgumentParser();ap.add_argument('--runtime',type=Path,required=True);ap.add_argument('--output',type=Path,required=True);ap.add_argument('--normal-seconds',type=int,default=360);ap.add_argument('--accelerated-seconds',type=int,default=300);a=ap.parse_args();a.output.mkdir(parents=True,exist_ok=True);H.ROOT=a.runtime;T=H.UmbraBrowser;T.setUpClass();t=T();t.setUp();r={'passed':False,'source_commit':json.loads((a.runtime/'BUILD_MANIFEST.json').read_text())['source_commit'],'phases':[],'samples':[],'reloads':[],'errors':[],'limits':'Actual monotonic/wall time and real server. Linux Chromium, desktop/TV I/O stubbed. Emulated phone is not a physical Android. No incidents/relationships/needs/adulthood injected.'};start=time.monotonic()
+ def save(p):
+  p.evaluate("document.getElementById('save').click()");p.evaluate('ICARUSDurable.flush()');return p.evaluate('JSON.parse(localStorage.getItem("icarus-v02"))')
+ try:
+  c=T.browser.new_context(viewport={'width':1440,'height':1000},timezone_id='America/Chicago');t.contexts.append(c);c.add_init_script('window.__icarusSeed=1001;');p=c.new_page();p.on('pageerror',lambda e:r['errors'].append(str(e)));p.goto(T.url+'/icarus.html');p.wait_for_function('!!window.ICARUSObservationLive');assert p.evaluate('typeof __icarusSoak')=='undefined';p.evaluate("ICARUSCommandUI.navigate('operations','watch')");p.locator('.obs-follow').select_option('Frank Morrow');p.locator('#camera-scene').scroll_into_view_if_needed();phone=t.page(width=390,height=844);t.tab(phone,'icarus');phone.wait_for_selector('.obs-follow');phone.locator('.obs-follow').select_option('Frank Morrow');assert phone.evaluate('typeof __icarusSoak')=='undefined'
+  for label,rate,duration in [('normal',0,a.normal_seconds),('accelerated',20,a.accelerated_seconds)]:
+   p.locator('[aria-label="Ship pacing"]').select_option(str(rate));before=save(p);phase_start=time.monotonic();last=-1;reloaded=False;disconnected=False;reconnected=False
+   while time.monotonic()-phase_start<duration:
+    p.wait_for_timeout(1000);elapsed=time.monotonic()-phase_start;sample_id=int(elapsed//30)
+    if label=='accelerated' and elapsed>=60 and not disconnected:phone.context.set_offline(True);disconnected=True
+    if label=='accelerated' and elapsed>=90 and not reconnected:phone.context.set_offline(False);reconnected=True
+    if label=='accelerated' and elapsed>=duration/2 and not reloaded:
+     checkpoint=save(p);p.reload();p.wait_for_function('!!window.ICARUSObservationLive');assert p.locator('[aria-label="Ship pacing"]').input_value()=='20';after=save(p);assert [q['name'] for q in checkpoint['crew']]==[q['name'] for q in after['crew']];assert after['tick']>=checkpoint['tick'];r['reloads'].append({'saved_tick':checkpoint['tick'],'resumed_tick':after['tick'],'rate':after['calendar']['selectedRate']});p.evaluate("ICARUSCommandUI.navigate('operations','watch')");p.locator('#camera-scene').scroll_into_view_if_needed();reloaded=True
+    if sample_id!=last:
+     last=sample_id;sample=p.evaluate('''()=>({tick:ICARUSObservationLive.camera.tick,selected:ICARUSObservationLive.camera.selected,following:ICARUSObservationLive.camera.following,stats:{...ICARUSObservationLive.camera.stats},heap:performance.memory?.usedJSHeapSize??null,clock:document.querySelector('.voyage-clock small').textContent})''');sample.update({'phase':label,'phase_seconds':elapsed});r['samples'].append(sample);print(label,'real seconds',round(elapsed,1),'tick',sample['tick'],'camera',sample['selected'],flush=True);(a.output/'watch.json').write_text(json.dumps(r,indent=2))
+   # Pause is an ordinary operator action. It drains the real interval, making the measured boundary explicit.
+   p.locator('#pause').click();after=save(p);seconds=time.monotonic()-phase_start;effective=(after['tick']-before['tick'])*60/seconds;assert abs(effective-(20 if rate else 4))<.75,(label,effective)
+   r['phases'].append({'name':label,'elapsed_seconds':seconds,'start_tick':before['tick'],'end_tick':after['tick'],'effective_rate':effective,'requested_rate':rate or 4,'conversations_before':before['crewLife']['conversations'],'conversations_after':after['crewLife']['conversations'],'lift_trips':after.get('transit',{}).get('lift',{}).get('completed',0),'crew_alive':len(after['crew']),'dead':len(after['living']['deceased'])});p.locator('#camera-scene').screenshot(path=str(a.output/(label+'.png')));p.locator('#pause').click()
+  final=save(p);ids=[x['id'] for x in final['chronicle']['records']];assert len(ids)==len(set(ids));assert final['calendar']['recovery']['discardedMs']==0;r['final']={'tick':final['tick'],'alive':len(final['crew']),'dead':len(final['living']['deceased']),'conversations':final['crewLife']['conversations'],'private_events':len(final['crewSocial'].get('privateEvents',[])),'confirmed_adults':sum(p.get('adult') is True for p in final['crew']),'lift':final.get('transit',{}).get('lift'),'calendar':final['calendar'],'unique_sources':len(ids)};r['phone_reconnected']=bool(t.m.BRIDGE_SERVICE.view()['online']);assert phone.evaluate('typeof __icarusSoak')=='undefined';(a.output/'isolated_test_world.json').write_text(json.dumps(final));r['passed']=not r['errors'] and len(r['phases'])==2 and len(r['reloads'])==1
+ except Exception as e:r['errors'].append(str(e));r['traceback']=traceback.format_exc()
+ finally:r['elapsed_seconds']=time.monotonic()-start;r['errors'].extend(t.errors);r['passed']=r['passed'] and not r['errors'];(a.output/'watch.json').write_text(json.dumps(r,indent=2));t.errors=[];t.tearDown();T.tearDownClass()
+ return not r['passed']
+if __name__=='__main__':raise SystemExit(main())

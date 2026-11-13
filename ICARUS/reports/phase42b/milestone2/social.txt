@@ -1,0 +1,28 @@
+✔ existing crew, identities and canonical numeric relationships migrate without alteration (2.253494ms)
+✔ private conversation creates gradual sourced memories only for actual witnesses (1.434155ms)
+✔ unknown and fabricated sources cannot change social state (0.227122ms)
+✔ distance prevents a declared participant from gaining a conversation memory (0.288443ms)
+✔ reconciliation and passage of time gradually reduce resentment without erasing memories (1.049957ms)
+✔ remembered trust and resentment affect reachable-room preference with bounded weights (0.397808ms)
+✔ mentorship uses actual same-role experience; romance requires mutual explicit adult consent (2.915408ms)
+✔ 100 registered profiles keep only existing active crew; dormant registration needs a real manifest (0.869096ms)
+✔ memories bounded, existing mission experiences sourced once, save/reload deterministic (6.182154ms)
+✔ gossip cannot cross separation, disclose private information or mutate map facts (1.497569ms)
+✔ misinterpretation stays a claim and later source delivery corrects the recipient, not the world (0.875915ms)
+✔ quiet ticks and repeated rendering do not create incidents or conversations (6.353753ms)
+✔ named preferences and trust cannot manufacture courtship without actual willing contact (4.457525ms)
+✔ independent receipt reviews claims, including an original already known before the claim arrives (0.360612ms)
+✔ personality is persistent, distinct, bounded and changes ordinary choice weights (2.326965ms)
+✔ real repeated conversations can produce autonomous invitations without preset attraction or named preferences (31.680139ms)
+✔ unknown adulthood, explicit exclusion and impaired judgment never qualify as willingness (6.543268ms)
+✔ private event uses simulation duration, closes door and applies consequences once after reload (11.604137ms)
+✔ withdrawal and emergencies terminate private time without relationship rewards (11.706772ms)
+✔ covert sensors observe visible posture only and classified knowledge cannot flow to ordinary records or crew (1.65802ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 306.934166

@@ -91,3 +91,8 @@ Phase 4.2 bounded implementation is now **implemented and automated-verified** (
 ## Phase 4.2A Observation Protocol
 
 Implemented and automated-verified: original shared pixel-camera renderer, actual search/approach/conversation intent, four rotating/pinnable previews, private-room exclusion, instrumented schematic/lighting, crew quick actions and dashboard repairs. Evidence: 430 executions +26 emulation checks, two seven-day campaigns and an actual 30-minute normal-time watch. Partial: full dedicated sprite-state sets, unique authored room assets and furniture/crowd routing. Not verified: physical Windows/Android/TV/Tailscale/AV/human visual/GPU readiness. Deferred: unsupported bio/HVAC/circuit models, classified SOL operations/4.2B and separate 4.1.1 clock work. This moves the core toward watchable ship life; it does not expand the universe or complete final-release readiness.
+
+
+## Phase 4.2B refinement toward the final design
+
+Implemented: connected authoritative ship transit/cameras, individual source-based routine/social depth, autonomous scoped relationships/private-time state, and persistent acceleration. The classified foundation is intentionally bounded/local; no new universe. Verification is enumerated in PHASE42B_VALIDATION.md; an emulated or seeded mechanics result is not a physical/organic claim. Still partial: dedicated relationship/creature/pose art, furniture/crowd routing, complete cabin medical recovery, remote classified roles and human/device accessibility/visual polish. Final-release readiness remains open; tests alone do not establish anthology quality or a finished game.

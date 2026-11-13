@@ -4,13 +4,14 @@ const clamp=(n,a=0,b=100)=>Math.max(a,Math.min(b,n));
 function shiftSpec(s,p){const peers=s.crew.filter(q=>q.job===p.job).map(q=>q.name).sort(),count=Math.min(3,Math.max(1,peers.length)),index=Math.max(0,peers.indexOf(p.name));return {start:(480+(index%count)*Math.floor(1440/count))%1440,minutes:480,rotationDays:7};}
 function shift(s,p){const spec=init(s).people[p.name].shift,elapsed=(s.clock?.elapsed??s.tick??0)+480,day=Math.floor(elapsed/1440),start=(spec.start+Math.floor(day/spec.rotationDays)*480)%1440,minute=((elapsed%1440)+1440)%1440;return {start,minutes:spec.minutes,onDuty:(minute-start+1440)%1440<spec.minutes,day};}
 function init(s){const c=s.crewLife||(s.crewLife={version:1,people:{},conversations:0});for(const p of s.crew){if(c.people[p.name]){if(!c.people[p.name].shift)c.people[p.name].shift=shiftSpec(s,p);continue;}const seed=s.universe?.seed??s.entropy?.seed??1,r=k=>root.ICARUSUniverse.draw(seed,'routine:'+p.name+':'+k);c.people[p.name]={shift:shiftSpec(s,p),preferredWork:Math.floor(r('work')*5),quietRoom:r('room')<.5?'A03':'A09',sociability:r('social'),curiosity:r('curiosity'),lastSocial:-10000,peerAt:{},recent:[],memories:[],decisions:0};}return c;}
-function available(p){return !!p&&(p.vitals?.health??100)>=60&&(p.vitals?.fatigue??0)<75&&(p.energy??100)>=28&&!p.survivalIncapacitated&&!p.expeditionAway&&!p.expeditionId&&!p.emergencyId&&!p.maintenanceRoom&&!p.researchAssignment&&!p.responseAssignment&&!p.rescuePatient&&!p.rescueMedic&&!p.medicalTreatment;}
+function available(p){return !!p&&!p.liftRide&&!p.privateEventId&&(p.vitals?.health??100)>=60&&(p.vitals?.fatigue??0)<75&&(p.energy??100)>=28&&!p.survivalIncapacitated&&!p.expeditionAway&&!p.expeditionId&&!p.emergencyId&&!p.maintenanceRoom&&!p.researchAssignment&&!p.responseAssignment&&!p.rescuePatient&&!p.rescueMedic&&!p.medicalTreatment;}
 function choose(s,p,work,env){if(!available(p)||!work.length)return null;const c=init(s).people[p.name],t=env.traits?.(p)||{},options=work.map((v,i)=>({task:v[0],dest:v[1],weight:1+(i===c.preferredWork%work.length?2:0)}));
  const duty=shift(s,p);if(!duty.onDuty){options.splice(0,options.length,{task:'Resting off shift',dest:c.quietRoom==='A03'?'A05':'A06',weight:1+(p.vitals?.fatigue||0)/20},{task:'Taking a recreation break',dest:'A09',weight:1});}
  if((p.hunger||0)>45)options.push({task:'Eating a meal',dest:'A04',weight:1+(p.hunger||0)/20});
  if((p.vitals?.fatigue||0)>50)options.push({task:'Resting',dest:'A05',weight:1+p.vitals.fatigue/15});
  if((p.stress||0)>35||(p.social??60)<40)options.push({task:c.sociability<.45?'Taking a quiet break':'Seeking a conversation',dest:c.sociability<.45?c.quietRoom:'A09',weight:1+(p.stress||0)/40});
  if(c.curiosity>.6&&(p.energy??80)>50)options.push({task:'Watching the stars',dest:'A03',weight:.5+(t.curiosity??50)/100});
+ root.ICARUSPersonalities?.options(s,p,options);
  const choices=options.filter(o=>env.reachable(p,o.dest));if(!choices.length)return null;
  for(const o of choices){const n=c.recent.filter(x=>x.task===o.task).length;o.weight/=1+n;o.weight*=root.ICARUSCrewSocial?.preference(s,p,o.dest)??1;}
  const total=choices.reduce((n,o)=>n+o.weight,0);let x=env.draw(s.universe?.seed??1,p.name+':choice:'+c.decisions++)*total,selected=choices.at(-1);for(const o of choices){x-=o.weight;if(x<0){selected=o;break;}}
@@ -21,10 +22,10 @@ function talk(s,p,q,env){if(!available(p)||!available(q)||!env.coLocated(p,q)||(
  const offered=env.report?.(p,q),fact=offered?.data?.activity==='conversation'?null:offered,strained=(p.relationships?.[q.name]||0)<-5&&Math.max(p.stress||0,q.stress||0)>60;
  if(strained||!fact&&(p.social??100)>=60&&(q.social??100)>=60)return null;
  const shared=fact?env.share(p,q,fact):false;if(fact&&!shared)return null;
- const topic=shared?'report':(p.stress>45||q.stress>45)?'support':'company';
+ let topic=shared?'report':(p.stress>45||q.stress>45)?'support':'company';topic=root.ICARUSPersonalities?.topic(s,p,q,topic,s.tick+':'+a.memories.length)??topic;
  const text=root.ICARUSCrewEditorial.interaction(s,p,q,a,b,topic,shared?fact:null);
  const r=shared?.record||env.record('social',text,[p.name,q.name],{activity:'conversation',topic,quotedFactId:shared?fact.id:null,quotedSourceId:shared?fact.sourceId:null,confidence:shared?fact.confidence:null,location:env.position(p),publicAcknowledgment:topic==='company'&&a.sociability>.65&&b.sociability>.65},{disclosure:topic==='company'&&a.sociability>.65&&b.sociability>.65?'shareable':'private'});if(!r?.id)return null;
- for(const [person,m,peer] of [[p,a,q],[q,b,p]]){m.lastSocial=s.tick;m.peerAt[peer.name]=s.tick;m.memories.push({sourceId:r.id,at:s.tick,peer:peer.name,topic});m.memories=m.memories.slice(-24);person.social=clamp((person.social??50)+5);person.stress=clamp((person.stress??0)-(topic==='support'?2:.5));person.relationships=person.relationships||{};person.relationships[peer.name]=clamp((person.relationships[peer.name]||0)+.5,-100,100);}
+ for(const [person,m,peer] of [[p,a,q],[q,b,p]]){m.lastSocial=s.tick;m.peerAt[peer.name]=s.tick;m.memories.push({sourceId:r.id,at:s.tick,peer:peer.name,topic});m.memories=m.memories.slice(-24);person.social=clamp((person.social??50)+(topic==='disagreement'?-1:5));person.stress=clamp((person.stress??0)-(topic==='support'?2:topic==='joke'?1:topic==='disagreement'?-1:.5));person.relationships=person.relationships||{};person.relationships[peer.name]=clamp((person.relationships[peer.name]||0)+(topic==='disagreement'?-.5:.5),-100,100);}
  p.conversation={with:q.name,sourceId:r.id,until:s.tick+2};q.conversation={with:p.name,sourceId:r.id,until:s.tick+2};c.conversations++;env.courtship?.(p,q);return r;
 }
 // A private activity ledger observes existing controllers; it never assigns or advances time.
@@ -57,7 +58,7 @@ function observeActivities(s,env){const c=init(s);if(c.activityTick===s.tick)ret
   else if(['working','resting','occupied','logistics','conversation'].includes(phase))activity.activeMinutes+=elapsed;
   const remaining=Math.max(0,p.taskMinutes||0);
   if(activity.status!=='completed'&&activity.remaining>0&&activity.remaining<=elapsed&&remaining===0&&phase!=='waiting'&&phase!=='travelling'&&phase!=='incapacitated'&&phase!=='deceased'&&(!activity.destination||at.node==='R:'+activity.destination)){activity.status='completed';activity.endedAt=s.tick;}
-  activity.remaining=remaining;
+  activity.remaining=remaining;root.ICARUSPersonalities?.completed(s,p,activity);
   if(phase==='deceased'){activity.status='deceased';activity.endedAt=s.tick;activity.reason='Recorded crew death';}
  }
  for(const death of s.living?.deceased||[]){const activity=c.people[death.name]?.activity;if(activity&&activity.status==='active'){activity.status='deceased';activity.phase='deceased';activity.endedAt=Number.isFinite(death.at)?death.at:s.tick;activity.reason='Recorded crew death';}}

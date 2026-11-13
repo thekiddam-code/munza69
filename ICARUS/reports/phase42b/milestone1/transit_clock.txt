@@ -1,0 +1,15 @@
+✔ one shared cabin boards colocated requests and arrives before exit once (3.056481ms)
+✔ lift power loss freezes cabin and exact reload resumes without duplicate occupants (0.477287ms)
+✔ sealed and unpowered hatches block; powered closed hatch opens before crossing and recloses (0.416806ms)
+✔ capacity is enforced and renderer locator never creates passengers (0.413181ms)
+✔ production 20x uses all fixed minute steps with bounded work and no discarded backlog (62.463421ms)
+✔ holiday stays synchronized 1x despite selected 20x, then returns to chosen rate (6.587133ms)
+✔ pausing 20x accrues no simulation minutes and switching rates preserves partial carry (0.646421ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 207.726804

@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "tests_run": 5,
+  "cases": [
+    "test_phase42b_creator_cannot_select_partners_and_presentation_does_not_rewrite_history",
+    "test_phase42b_cross_deck_journey_uses_one_cabin_and_camera_occupancy",
+    "test_phase42b_lift_boarded_save_load_keeps_cabin_and_future",
+    "test_phase42b_private_event_from_seeded_mechanics_fixture_travels_and_reloads",
+    "test_phase42b_topology_doors_and_follow_privacy_persist"
+  ],
+  "errors": [],
+  "failures": []
+}
