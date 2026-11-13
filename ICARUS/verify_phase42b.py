@@ -6,7 +6,7 @@ def main():
  ap=argparse.ArgumentParser();ap.add_argument('evidence',type=Path);ap.add_argument('--report',type=Path,required=True);a=ap.parse_args();b=a.evidence;project=Path(__file__).resolve().parent;final=json.loads((b/'delivery_runtime/BUILD_MANIFEST.json').read_text());frozen=json.loads((b/'final_runtime/BUILD_MANIFEST.json').read_text());different=[]
  for n,h in final['runtime_files'].items():
   raw=(project/n).read_bytes();actual=hashlib.sha256(raw).hexdigest()
-  if n=='web/observation.css':assert raw==(b/'delivery_runtime'/n).read_bytes()+b'\n/* Classic room counters do not describe a pixel corridor/lift feed. */\n.camera-scene.pixel-active .cam-stations{display:none!important}\n'
+  if n=='web/observation.css':assert raw==(b/'delivery_runtime'/n).read_bytes()+b'/* Classic room counters do not describe a pixel corridor/lift feed. */\n.camera-scene.pixel-active .cam-stations{display:none!important}\n'
   else:assert actual==h,n
   if frozen['runtime_files'][n]!=actual:different.append(n)
  assert sorted(different)==['web/icarus.html','web/knowledge.js','web/observation.css','web/ship-schematic.js'],different

@@ -1,0 +1,6 @@
+test_phase42b_pixel_feed_does_not_show_an_unrelated_classic_room_counter (test_personalities_integration.PersonalitiesIntegration.test_phase42b_pixel_feed_does_not_show_an_unrelated_classic_room_counter) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 4.256s
+
+OK

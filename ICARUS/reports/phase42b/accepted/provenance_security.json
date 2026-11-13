@@ -4,12 +4,14 @@
   "final_runtime_commit": "06b15aab4eaf73a2db6ecdb3a7a1a1c3984b3e7a",
   "long_watch_and_full_browser_commit": "06c4c5ae152e6ed47688fad0929d5d5bd77a6e2e",
   "runtime_files": 118,
-  "unchanged_from_long_watch": 115,
+  "unchanged_from_long_watch": 114,
   "post_freeze_files": [
     "web/icarus.html",
     "web/knowledge.js",
+    "web/observation.css",
     "web/ship-schematic.js"
   ],
+  "final_css_only_patch": "Hide legacy room workstation counter in pixel feeds; dedicated browser test passed, classic mode and world unchanged. Source CSS hash f5d6a4c864135a93a2a945ab4e5553c4c133867c6846849b6f5af0394221258a",
   "post_freeze_scope": "Shared cabin occupancy/focus in schematic/hologram; acquired and injury/death source location corrected to actual cabin. Clock/social/transit controllers unchanged. Final Node/focused/remote/clock/20x campaign and shorter actual-time watch cover these fixes.",
   "unchanged_baseline_authorities": [
     "web/economy.js",
@@ -28,8 +30,8 @@
     "Start_Remote_Deck.bat"
   ],
   "native_source_apks_unchanged": true,
-  "accepted_case_executions": 464,
-  "counts_note": "332 Node +69 frozen full browser +34 final remote +4 final clock +6 final focused +1 three-crew +18 service. Inherited/repeated cases, not unique requirements. Failed/superseded attempts excluded.",
+  "accepted_case_executions": 465,
+  "counts_note": "332 Node +69 frozen full browser +34 final remote +4 final clock +6 final focused +1 three-crew +18 service +1 final CSS overlay. Inherited/repeated cases, not unique requirements. Failed/superseded attempts excluded.",
   "protocol": "128 KiB authenticated host request; classified subpayload max24 KiB, never ordinary telemetry. Legacy14000-character/command4KiB bounds retained. Restricted GET requires localhost and host capability; ordinary paired bearer insufficient.",
   "static_review": "Original procedural art, no new dependency. Console is a fixed UI whitelist with no OS execution. New fetches are same-host bootstrap/restricted reads; restricted publication uses existing fenced host channel. No AV disabled or new system modification. Existing Windows dependencies and paired input/TV functionality retained. No AV/penetration certification.",
   "phase_complete": false,
