@@ -1,6 +1,6 @@
 # Phase 4.3 static security and provenance review
 
-Review scope: changes from verified Phase 4.2B d5add5b to frozen runtime 127bda0, plus Lite file selection. This is a source review, not antivirus certification or a full penetration test.
+Review scope: changes from verified Phase 4.2B d5add5b to corrected frozen runtime 13ab447, plus Lite file selection. This is a source review, not antivirus certification or a full penetration test.
 
 The new ship-system/gravity/maintenance modules execute local simulation logic only. They do not invoke operating-system commands, install software, download code, open new network connections or modify system settings. Engineering UI sends fixed string commands through the existing authorized bridge; server-side ranges/zone/component whitelists reject arbitrary payloads. No command is evaluated as JavaScript or shell text. Actual remote tests cover unpaired rejection, invalid values, deduplication and matching host state.
 

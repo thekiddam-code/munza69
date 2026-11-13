@@ -14,3 +14,23 @@ At tick32259 (~day22.4), the generator order opened from measured wear. By the d
 Correction: only actual tasks needing stable support (repair/diagnosis/research/treatment/console/inspection/maintenance) use the anchoring work factor. Ordinary rest/meal/recovery duration progresses normally in low gravity. Physical zero-g movement and anchored engineering penalties remain. Emergency readiness permits genuine preemption while the ordinary-maintenance picker still prevents duplicate assignments. No resources, health, crew identities, clock rates or successful outcomes are reset to achieve recovery.
 
 Regression protection: pure model tests distinguish zero-g rest/meal progression from unsupported repair; an actual browser test checks rest timer3→2→1→0 followed by a new autonomous choice; an emergency-preemption test requires reservation release with paid parts and exact partial progress preserved. The corrected runtime and subsequent campaign results are identified in PHASE43_VALIDATION.md. Full failure source history and comparative campaign outcomes, when available, belong to the evidence bundle; do not treat the two daily samples alone as an exact minute-by-minute death chronology.
+
+## Retained source timeline and corrected comparison
+
+The rejected candidate's complete retained history contains13,242 records. Relevant monotonic ticks below are stored journal `minute -480`; deceased records carry the same actual `at` ticks.
+
+| Tick | Recorded event |
+| --- | --- |
+| 32043 | Frank completed paid Air scrubber maintenance; CHR-1-V1j54z2l-11173. |
+| 32259 | Generator wear crossed70%; inspection requested; CHR-1-V1j54z2l-11237. |
+| 32291 | Jules physically diagnosed generator at C07; CHR-1-V1j54z2l-11249. |
+| 33456 | Fabricator drive fault; automatic safeguards; CHR-1-V1j54z2l-11440. |
+| 33479 | Jules dispatched to Fabrication; CHR-1-V1j54z2l-11447. |
+| 33900 | Air scrubber malfunction; SOL suspended optional work; CHR-1-V1j54z2l-11559/11561. |
+| 33923 | Theo dispatched to life support; CHR-1-V1j54z2l-11570. |
+| 35820 | Cooling controller fault in Reactor; CHR-1-V1j54z2l-12356. |
+| 44160 (day30.6667) | All20 recorded deaths attributed to life-support resource shortage; first CHR-1-V1j54z2l-13010. No encounter or Legendary footage is asserted. |
+
+These wear/fault/resource consequences remain real mechanics. The confirmed recovery timer/preemption defects made this candidate unacceptable; removing danger or resetting inventory was not the remedy.
+
+Corrected frozen runtime13ab447 repeated seed1001, identical start/timezone and selected20× for two real days/40 ship days. All20 remain alive at100 health, no reported resource/world/operational audit errors and exact checkpoint reload. Actual autonomous paid generator repairs completed by Tomas Vale at32596 and50108, source CHR-1-V1j54z2l-11335 and17116, with post-test condition86.1328/86.1768. Final generator79.2092%, in service, no open component order. This is verified recovery in this comparison, not a universal survival guarantee or proof every contributing fault was solely caused by either defect.

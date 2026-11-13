@@ -1,0 +1,6084 @@
+{
+  "seed": 1001,
+  "scenario": "normal",
+  "confirmed_adult_metadata_fixture": false,
+  "selected_rate": 20,
+  "real_days": 2,
+  "start": "2026-10-28T00:00:00Z",
+  "zone": "America/Chicago",
+  "source_commit": "13ab44756314a1e99587c3070914cefbfbe26fe0",
+  "status": "finished",
+  "passed": true,
+  "errors": [],
+  "daily": [
+    {
+      "livingShip": {
+        "registered": 20,
+        "active": 20,
+        "retainedSocialMemories": 632,
+        "retainedBonds": 316,
+        "retainedActivityHistory": 320,
+        "retainedClaims": 0
+      },
+      "cinematic_errors": [],
+      "cinematic": {
+        "recordings": 120,
+        "captured": 1886,
+        "films": 0,
+        "conversations": 382,
+        "notes": 48
+      },
+      "knowledge_errors": [],
+      "creature_errors": [],
+      "knowledge": {
+        "facts": 4007,
+        "sol": 3625,
+        "pending": 0,
+        "delivered": 813
+      },
+      "biology": [
+        {
+          "id": "XENO-INITIAL",
+          "stage": "adult",
+          "location": "asteroid:23",
+          "state": "contained",
+          "energy": 100,
+          "health": 100,
+          "steps": 0
+        },
+        {
+          "id": "EGG-1",
+          "stage": "egg",
+          "location": "asteroid:22",
+          "state": "uninitialized",
+          "steps": 0
+        },
+        {
+          "id": "EGG-2",
+          "stage": "egg",
+          "location": "asteroid:24",
+          "state": "uninitialized",
+          "steps": 0
+        }
+      ],
+      "repairControl": {
+        "version": 1,
+        "stats": {
+          "preventiveStarted": 162,
+          "maintenanceWork": 11516.399999999241,
+          "criticalEscalations": 2,
+          "criticalRecoveries": 2,
+          "preventiveCompleted": 157,
+          "releasedAssignments": 1
+        },
+        "decisions": [
+          {
+            "at": 61,
+            "reason": "Measured life-support fault or reserve forecast below one day; optional research and launches suspended."
+          },
+          {
+            "at": 121,
+            "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+          },
+          {
+            "at": 5641,
+            "reason": "Measured life-support fault or reserve forecast below one day; optional research and launches suspended."
+          },
+          {
+            "at": 5701,
+            "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+          },
+          {
+            "at": 24398,
+            "reason": "Released obsolete maintenance reservation for Theo Moss; current assignment retained.",
+            "person": "Theo Moss"
+          }
+        ],
+        "notices": {
+          "forecast:true": 5641,
+          "forecast:false": 5701,
+          "detach:Theo Moss": 24398
+        },
+        "forecast": {
+          "food": {
+            "at": 28741,
+            "consumption": 0.08066666666666909,
+            "production": 0.08066666666666152,
+            "available": 159.986,
+            "minutes": null
+          },
+          "water": {
+            "at": 28741,
+            "consumption": 0.028000000000001062,
+            "production": 0.028000000000001062,
+            "available": 152.87160000000011,
+            "minutes": null
+          },
+          "oxygen": {
+            "at": 28741,
+            "consumption": 0.020000000000000757,
+            "production": 0.020000000000000757,
+            "available": 110.13600000000095,
+            "minutes": null
+          },
+          "energy": {
+            "at": 28741,
+            "consumption": 0.15832888400000228,
+            "production": 0.15832006999999065,
+            "available": 179.89308144,
+            "minutes": 20409925.255584877
+          }
+        },
+        "sample": {
+          "at": 28741,
+          "consumed": {
+            "energy": 4707.978824431997,
+            "food": 1474.574,
+            "water": 812.748,
+            "oxygen": 574.82,
+            "lab": 429.5,
+            "spares": 158,
+            "tools": 380.294
+          },
+          "produced": {
+            "energy": 4767.8719058720935,
+            "spares": 163.5724072000002,
+            "water": 815.6196000000035,
+            "oxygen": 564.956,
+            "medical": 8,
+            "food": 1449.55999999993,
+            "lab": 413.5000000000004,
+            "tools": 362.2940000000022
+          }
+        },
+        "critical": false,
+        "lastDecision": {
+          "at": 24398,
+          "reason": "Released obsolete maintenance reservation for Theo Moss; current assignment retained.",
+          "person": "Theo Moss"
+        }
+      },
+      "equipment": {
+        "A08": 96,
+        "C05": 100,
+        "C07": 67.40000000000322,
+        "C09": 75.94999999999602,
+        "C06": 73.24999999999322,
+        "B01": 83.94999999998454,
+        "A04": 75.00000000000017,
+        "B07": 71.84999999999708,
+        "C08": 70.89999999999847
+      },
+      "nativeIncidents": {},
+      "anthology": {
+        "arcs": 83,
+        "open": 6,
+        "external": 21,
+        "maxOverlap": 11,
+        "traditions": 7
+      },
+      "day": 20,
+      "tick": 28800,
+      "minute": 29280,
+      "episode": 1,
+      "archives": 0,
+      "crew": [
+        {
+          "name": "Frank Morrow",
+          "health": 100,
+          "fatigue": 11.196000000000055,
+          "morale": 83.70452076613252,
+          "energy": 69.31999999998804
+        },
+        {
+          "name": "Mara Chen",
+          "health": 100,
+          "fatigue": 0.4319999999999881,
+          "morale": 76.79066732641215,
+          "energy": 45.939999999980834
+        },
+        {
+          "name": "Dr. Voss",
+          "health": 100,
+          "fatigue": 0,
+          "morale": 62.373358420281484,
+          "energy": 90.30499999998487
+        },
+        {
+          "name": "Derek Cole",
+          "health": 100,
+          "fatigue": 2.411999999999997,
+          "morale": 54.691777733522066,
+          "energy": 89.1999999999981
+        },
+        {
+          "name": "Linda Park",
+          "health": 100,
+          "fatigue": 8.94599999999997,
+          "morale": 49.02940979239467,
+          "energy": 44.07999999998503
+        },
+        {
+          "name": "Elena Ruiz",
+          "health": 100,
+          "fatigue": 12.186000000000092,
+          "morale": 75.35091078618137,
+          "energy": 54.184999999985266
+        },
+        {
+          "name": "Jules Mercer",
+          "health": 100,
+          "fatigue": 5.68799999999996,
+          "morale": 70.28250144011889,
+          "energy": 54.1999999999817
+        },
+        {
+          "name": "Nadia Kline",
+          "health": 100,
+          "fatigue": 0,
+          "morale": 72.88155469592157,
+          "energy": 54.1749999999831
+        },
+        {
+          "name": "Owen Briggs",
+          "health": 100,
+          "fatigue": 0.21599999999999994,
+          "morale": 73.99623499573052,
+          "energy": 62.18499999998575
+        },
+        {
+          "name": "Priya Shah",
+          "health": 100,
+          "fatigue": 2.231999999999999,
+          "morale": 71.43214000643871,
+          "energy": 93.64499999998007
+        },
+        {
+          "name": "Tomas Vale",
+          "health": 100,
+          "fatigue": 9.79199999999997,
+          "morale": 63.120235804301906,
+          "energy": 49.23499999998592
+        },
+        {
+          "name": "Rhea Ortiz",
+          "health": 100,
+          "fatigue": 0.126,
+          "morale": 68.62037442709666,
+          "energy": 79.51999999998573
+        },
+        {
+          "name": "Milo Grant",
+          "health": 100,
+          "fatigue": 0.16199999999999998,
+          "morale": 68.02944734793292,
+          "energy": 59.47999999998538
+        },
+        {
+          "name": "Sana Okafor",
+          "health": 100,
+          "fatigue": 8.621999999999957,
+          "morale": 46.220734590755676,
+          "energy": 44.499999999985995
+        },
+        {
+          "name": "Iris Bell",
+          "health": 100,
+          "fatigue": 2.5379999999999954,
+          "morale": 69.93099015396197,
+          "energy": 90.55999999998471
+        },
+        {
+          "name": "Caleb Stone",
+          "health": 100,
+          "fatigue": 11.08800000000005,
+          "morale": 71.32103194931754,
+          "energy": 47.72499999998581
+        },
+        {
+          "name": "Yara Finch",
+          "health": 100,
+          "fatigue": 0.7920000000000004,
+          "morale": 70.17615261012494,
+          "energy": 83.33499999998514
+        },
+        {
+          "name": "Theo Moss",
+          "health": 100,
+          "fatigue": 1.0800000000000005,
+          "morale": 70.32680814453309,
+          "energy": 55.054999999980105
+        },
+        {
+          "name": "June Adler",
+          "health": 100,
+          "fatigue": 8.999999999999972,
+          "morale": 73.81941527545884,
+          "energy": 48.859999999986265
+        },
+        {
+          "name": "Ari Novak",
+          "health": 100,
+          "fatigue": 11.538000000000068,
+          "morale": 64.22573830232946,
+          "energy": 34.91999999998557
+        }
+      ],
+      "dead": [],
+      "resource_errors": [],
+      "frontier_errors": [],
+      "destination_ids": [
+        "HOME",
+        "LOCAL-DEBRIS",
+        "LOCAL-ICE",
+        "LOCAL-RELAY",
+        "LOCAL-HULL",
+        "LOCAL-ECHO"
+      ],
+      "visited": 6,
+      "systems": 2,
+      "phase": "orbit",
+      "position": {
+        "x": 0.35000000000000003,
+        "y": 0
+      },
+      "target": null,
+      "arrivals": 5,
+      "fuel": 143.84244604407053,
+      "travel_fuel": 1.9624515496596866,
+      "stores": {
+        "food": 159.98600000000002,
+        "water": 152.87160000000011,
+        "oxygen": 110.13600000000095,
+        "energy": 179.8576326,
+        "medical": 20,
+        "spares": 68.09734119999987,
+        "tools": 69.982,
+        "lab": 80
+      },
+      "acquired": {},
+      "frontier_jobs": [
+        {
+          "id": "F-1",
+          "type": "survey",
+          "status": "completed",
+          "started": 5635
+        },
+        {
+          "id": "F-2",
+          "type": "survey",
+          "status": "completed",
+          "started": 6172
+        },
+        {
+          "id": "F-3",
+          "type": "survey",
+          "status": "completed",
+          "started": 6679
+        },
+        {
+          "id": "F-4",
+          "type": "survey",
+          "status": "completed",
+          "started": 7207
+        },
+        {
+          "id": "F-5",
+          "type": "survey",
+          "status": "completed",
+          "started": 7707
+        }
+      ],
+      "case_ids": [
+        "SCI-0001",
+        "SCI-0002",
+        "SCI-0003",
+        "SCI-0004",
+        "SCI-0005",
+        "SCI-0006",
+        "SCI-0007",
+        "SCI-0008",
+        "SCI-0009",
+        "SCI-0010",
+        "SCI-0011",
+        "SCI-0012",
+        "SCI-0013",
+        "SCI-0014",
+        "SCI-0015",
+        "SCI-0016",
+        "SCI-0017",
+        "SCI-0018",
+        "SCI-0019",
+        "SCI-0020",
+        "SCI-0021"
+      ],
+      "samples": 4,
+      "event_kinds": {
+        "departure": 5,
+        "arrival": 5,
+        "mission_authorized": 5,
+        "encounter": 3,
+        "mission_completed": 5
+      },
+      "entities": 9,
+      "encounters": {
+        "contacts": 3,
+        "trades": 0,
+        "refusals": 0,
+        "misunderstandings": 1,
+        "cooperations": 0
+      },
+      "interaction_count": 3,
+      "emergencies": {
+        "stranded": 0,
+        "fieldRepairs": 0,
+        "rescueAttempts": 0,
+        "rescued": 0,
+        "failed": 0,
+        "external": 0
+      },
+      "open_incidents": [],
+      "memories": 90,
+      "staged_jobs": 5,
+      "team_sizes": [
+        2
+      ],
+      "chronicle_errors": [],
+      "durable_backend": "indexeddb",
+      "phase42b": {
+        "transit_errors": [],
+        "relationship_errors": [],
+        "social_errors": [],
+        "lift_trips": 1056,
+        "lift_queue": 0,
+        "relationships": {},
+        "private_events": [],
+        "confirmed_adults": 0,
+        "habits": {
+          "Frank Morrow": {
+            "Brew actual coffee": {
+              "completed": 22,
+              "lastAt": 5102
+            },
+            "Eat a meal": {
+              "completed": 11,
+              "lastAt": 21616
+            },
+            "Inspecting completed repair": {
+              "completed": 37,
+              "lastAt": 28222
+            },
+            "Recover energy": {
+              "completed": 22,
+              "lastAt": 28177
+            },
+            "Eating a meal": {
+              "completed": 28,
+              "lastAt": 28323
+            },
+            "Taking a recreation break": {
+              "completed": 51,
+              "lastAt": 27552
+            },
+            "Resting off shift": {
+              "completed": 75,
+              "lastAt": 27639
+            },
+            "Watching the stars": {
+              "completed": 53,
+              "lastAt": 28703
+            },
+            "Contact liaison / ARC-12": {
+              "completed": 1,
+              "lastAt": 1064
+            },
+            "Servicing reactor controls": {
+              "completed": 24,
+              "lastAt": 28545
+            },
+            "Resting": {
+              "completed": 3,
+              "lastAt": 7890
+            },
+            "Fabricating replacement parts": {
+              "completed": 14,
+              "lastAt": 28608
+            },
+            "Working on equipment": {
+              "completed": 8,
+              "lastAt": 27362
+            },
+            "Frontier mission staging": {
+              "completed": 2,
+              "lastAt": 7636
+            },
+            "Maintaining life support": {
+              "completed": 5,
+              "lastAt": 28429
+            },
+            "Inspecting distribution circuits": {
+              "completed": 5,
+              "lastAt": 28657
+            },
+            "Contact liaison / ARC-68": {
+              "completed": 1,
+              "lastAt": 19593
+            },
+            "Contact liaison / ARC-71": {
+              "completed": 7,
+              "lastAt": 21438
+            }
+          },
+          "Mara Chen": {
+            "Expedition staging": {
+              "completed": 4,
+              "lastAt": 4329
+            },
+            "Eating a meal": {
+              "completed": 37,
+              "lastAt": 28699
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 28771
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 28610
+            },
+            "Inspecting the airlock": {
+              "completed": 41,
+              "lastAt": 27752
+            },
+            "Monitoring surveillance": {
+              "completed": 50,
+              "lastAt": 27708
+            },
+            "Patrolling the bridge": {
+              "completed": 22,
+              "lastAt": 27854
+            },
+            "Reviewing security reports": {
+              "completed": 31,
+              "lastAt": 27800
+            },
+            "Recover energy": {
+              "completed": 27,
+              "lastAt": 28152
+            },
+            "Eat a meal": {
+              "completed": 3,
+              "lastAt": 4459
+            },
+            "Contact liaison / ARC-21": {
+              "completed": 6,
+              "lastAt": 2986
+            },
+            "Frontier mission staging": {
+              "completed": 2,
+              "lastAt": 8173
+            },
+            "Contact liaison / ARC-50": {
+              "completed": 17,
+              "lastAt": 10654
+            },
+            "Following up on a difficult assignment": {
+              "completed": 7,
+              "lastAt": 28531
+            },
+            "Contact liaison / ARC-51": {
+              "completed": 2,
+              "lastAt": 11533
+            }
+          },
+          "Dr. Voss": {
+            "Analyzing samples": {
+              "completed": 38,
+              "lastAt": 28570
+            },
+            "Eating a meal": {
+              "completed": 32,
+              "lastAt": 28024
+            },
+            "Watching the stars": {
+              "completed": 89,
+              "lastAt": 28130
+            },
+            "Reviewing research": {
+              "completed": 15,
+              "lastAt": 28683
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 28320
+            },
+            "Recover energy": {
+              "completed": 23,
+              "lastAt": 27721
+            },
+            "Taking a recreation break": {
+              "completed": 88,
+              "lastAt": 28254
+            },
+            "Eat a meal": {
+              "completed": 4,
+              "lastAt": 21661
+            },
+            "Expedition staging": {
+              "completed": 3,
+              "lastAt": 5566
+            },
+            "Running experiments": {
+              "completed": 23,
+              "lastAt": 28642
+            },
+            "Monitoring containment": {
+              "completed": 14,
+              "lastAt": 28718
+            },
+            "Contact liaison / ARC-36": {
+              "completed": 10,
+              "lastAt": 6121
+            },
+            "Contact liaison / ARC-41": {
+              "completed": 100,
+              "lastAt": 10174
+            },
+            "Following up on a difficult assignment": {
+              "completed": 9,
+              "lastAt": 26828
+            },
+            "Contact liaison / ARC-43": {
+              "completed": 12,
+              "lastAt": 10294
+            },
+            "Confronting Sana Okafor": {
+              "completed": 3,
+              "lastAt": 17067
+            },
+            "Contact liaison / ARC-72": {
+              "completed": 10,
+              "lastAt": 21813
+            },
+            "Contact liaison / ARC-75": {
+              "completed": 18,
+              "lastAt": 23359
+            }
+          },
+          "Derek Cole": {
+            "Checking manifests": {
+              "completed": 44,
+              "lastAt": 28754
+            },
+            "Preparing shuttle supplies": {
+              "completed": 47,
+              "lastAt": 28538
+            },
+            "Organizing equipment": {
+              "completed": 88,
+              "lastAt": 28723
+            },
+            "Eating a meal": {
+              "completed": 37,
+              "lastAt": 28326
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 28240
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 28168
+            },
+            "Recover energy": {
+              "completed": 30,
+              "lastAt": 28665
+            },
+            "Taking a quiet break": {
+              "completed": 4,
+              "lastAt": 1577
+            },
+            "Expedition staging": {
+              "completed": 1,
+              "lastAt": 2923
+            },
+            "Contact liaison / ARC-50": {
+              "completed": 5,
+              "lastAt": 10654
+            },
+            "Confronting Tomas Vale": {
+              "completed": 7,
+              "lastAt": 27628
+            },
+            "Confronting Sana Okafor": {
+              "completed": 7,
+              "lastAt": 18729
+            },
+            "Contact liaison / ARC-69": {
+              "completed": 100,
+              "lastAt": 23243
+            },
+            "Eat a meal": {
+              "completed": 1,
+              "lastAt": 22696
+            },
+            "Contact liaison / ARC-76": {
+              "completed": 8,
+              "lastAt": 23386
+            },
+            "Following up on a difficult assignment": {
+              "completed": 1,
+              "lastAt": 28780
+            }
+          },
+          "Linda Park": {
+            "Eating a meal": {
+              "completed": 38,
+              "lastAt": 28263
+            },
+            "Processing personnel requests": {
+              "completed": 100,
+              "lastAt": 28775
+            },
+            "Reviewing workplace reports": {
+              "completed": 58,
+              "lastAt": 28698
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 28346
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 28302
+            },
+            "Recover energy": {
+              "completed": 28,
+              "lastAt": 28162
+            },
+            "Expedition staging": {
+              "completed": 1,
+              "lastAt": 1041
+            },
+            "Eat a meal": {
+              "completed": 1,
+              "lastAt": 2993
+            },
+            "Resting": {
+              "completed": 1,
+              "lastAt": 3304
+            },
+            "Following up on a difficult assignment": {
+              "completed": 3,
+              "lastAt": 22432
+            },
+            "Contact liaison / ARC-56": {
+              "completed": 17,
+              "lastAt": 14869
+            },
+            "Contact liaison / ARC-65": {
+              "completed": 13,
+              "lastAt": 18630
+            },
+            "Contact liaison / ARC-77": {
+              "completed": 15,
+              "lastAt": 24109
+            },
+            "Contact liaison / ARC-78": {
+              "completed": 9,
+              "lastAt": 24843
+            }
+          },
+          "Elena Ruiz": {
+            "Reviewing patient records": {
+              "completed": 37,
+              "lastAt": 28795
+            },
+            "Taking a meal break": {
+              "completed": 66,
+              "lastAt": 28757
+            },
+            "Watching the stars": {
+              "completed": 100,
+              "lastAt": 28335
+            },
+            "Checking medical supplies": {
+              "completed": 45,
+              "lastAt": 28651
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 28050
+            },
+            "Contact liaison / ARC-6": {
+              "completed": 6,
+              "lastAt": 618
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 28011
+            },
+            "Recover energy": {
+              "completed": 28,
+              "lastAt": 28122
+            },
+            "Eating a meal": {
+              "completed": 20,
+              "lastAt": 28207
+            },
+            "Contact liaison / ARC-21": {
+              "completed": 10,
+              "lastAt": 2989
+            },
+            "Expedition staging": {
+              "completed": 1,
+              "lastAt": 3738
+            },
+            "Contact liaison / ARC-28": {
+              "completed": 17,
+              "lastAt": 4459
+            },
+            "Following up on a difficult assignment": {
+              "completed": 4,
+              "lastAt": 19191
+            },
+            "Contact liaison / ARC-54": {
+              "completed": 18,
+              "lastAt": 13294
+            },
+            "Contact liaison / ARC-60": {
+              "completed": 11,
+              "lastAt": 17118
+            },
+            "Contact liaison / ARC-61": {
+              "completed": 16,
+              "lastAt": 17254
+            },
+            "Contact liaison / ARC-70": {
+              "completed": 10,
+              "lastAt": 20359
+            }
+          },
+          "Jules Mercer": {
+            "Watching the stars": {
+              "completed": 60,
+              "lastAt": 28641
+            },
+            "Taking a recreation break": {
+              "completed": 84,
+              "lastAt": 28579
+            },
+            "Eating a meal": {
+              "completed": 30,
+              "lastAt": 28406
+            },
+            "Resting off shift": {
+              "completed": 78,
+              "lastAt": 28483
+            },
+            "Expedition staging": {
+              "completed": 3,
+              "lastAt": 3738
+            },
+            "Inspecting distribution circuits": {
+              "completed": 15,
+              "lastAt": 27430
+            },
+            "Servicing reactor controls": {
+              "completed": 28,
+              "lastAt": 27559
+            },
+            "Maintaining life support": {
+              "completed": 18,
+              "lastAt": 27865
+            },
+            "Fabricating replacement parts": {
+              "completed": 14,
+              "lastAt": 26384
+            },
+            "Recover energy": {
+              "completed": 26,
+              "lastAt": 28246
+            },
+            "Eat a meal": {
+              "completed": 8,
+              "lastAt": 27985
+            },
+            "Working on equipment": {
+              "completed": 16,
+              "lastAt": 27487
+            },
+            "Frontier mission staging": {
+              "completed": 1,
+              "lastAt": 6101
+            },
+            "Contact liaison / ARC-49": {
+              "completed": 11,
+              "lastAt": 10575
+            },
+            "Contact liaison / ARC-52": {
+              "completed": 14,
+              "lastAt": 12376
+            },
+            "Contact liaison / ARC-53": {
+              "completed": 1,
+              "lastAt": 12629
+            },
+            "Following up on a difficult assignment": {
+              "completed": 3,
+              "lastAt": 25764
+            },
+            "Following up on a security inspection": {
+              "completed": 1,
+              "lastAt": 19844
+            },
+            "Contact liaison / ARC-71": {
+              "completed": 10,
+              "lastAt": 21438
+            },
+            "Contact liaison / ARC-83": {
+              "completed": 9,
+              "lastAt": 28294
+            }
+          },
+          "Nadia Kline": {
+            "Expedition staging": {
+              "completed": 3,
+              "lastAt": 4555
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 28792
+            },
+            "Eating a meal": {
+              "completed": 35,
+              "lastAt": 28322
+            },
+            "Analyzing samples": {
+              "completed": 30,
+              "lastAt": 27793
+            },
+            "Reviewing research": {
+              "completed": 63,
+              "lastAt": 27737
+            },
+            "Monitoring containment": {
+              "completed": 22,
+              "lastAt": 27845
+            },
+            "Recover energy": {
+              "completed": 26,
+              "lastAt": 28392
+            },
+            "Eat a meal": {
+              "completed": 5,
+              "lastAt": 26552
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 28695
+            },
+            "Running experiments": {
+              "completed": 16,
+              "lastAt": 26141
+            },
+            "Contact liaison / ARC-36": {
+              "completed": 2,
+              "lastAt": 6167
+            },
+            "Frontier mission staging": {
+              "completed": 1,
+              "lastAt": 7136
+            },
+            "Following up on a difficult assignment": {
+              "completed": 2,
+              "lastAt": 25161
+            },
+            "Contact liaison / ARC-68": {
+              "completed": 10,
+              "lastAt": 19589
+            },
+            "Contact liaison / ARC-81": {
+              "completed": 15,
+              "lastAt": 26475
+            }
+          },
+          "Owen Briggs": {
+            "Eating a meal": {
+              "completed": 41,
+              "lastAt": 28613
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 28753
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 28787
+            },
+            "Recover energy": {
+              "completed": 27,
+              "lastAt": 28358
+            },
+            "Patrolling the bridge": {
+              "completed": 31,
+              "lastAt": 26876
+            },
+            "Monitoring surveillance": {
+              "completed": 70,
+              "lastAt": 28215
+            },
+            "Reviewing security reports": {
+              "completed": 26,
+              "lastAt": 28186
+            },
+            "Contact liaison / ARC-15": {
+              "completed": 12,
+              "lastAt": 1967
+            },
+            "Contact liaison / ARC-16": {
+              "completed": 7,
+              "lastAt": 2088
+            },
+            "Inspecting the airlock": {
+              "completed": 26,
+              "lastAt": 28269
+            },
+            "Following up on a difficult assignment": {
+              "completed": 5,
+              "lastAt": 22712
+            },
+            "Expedition staging": {
+              "completed": 1,
+              "lastAt": 5155
+            },
+            "Eat a meal": {
+              "completed": 1,
+              "lastAt": 5249
+            },
+            "Contact liaison / ARC-44": {
+              "completed": 1,
+              "lastAt": 9014
+            },
+            "Contact liaison / ARC-49": {
+              "completed": 11,
+              "lastAt": 10579
+            },
+            "Contact liaison / ARC-52": {
+              "completed": 12,
+              "lastAt": 12378
+            },
+            "Contact liaison / ARC-55": {
+              "completed": 3,
+              "lastAt": 14269
+            },
+            "Contact liaison / ARC-61": {
+              "completed": 1,
+              "lastAt": 17204
+            },
+            "Contact liaison / ARC-79": {
+              "completed": 6,
+              "lastAt": 25744
+            },
+            "Contact liaison / ARC-80": {
+              "completed": 8,
+              "lastAt": 26104
+            }
+          },
+          "Priya Shah": {
+            "Eating a meal": {
+              "completed": 38,
+              "lastAt": 28024
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 28601
+            },
+            "Contact liaison / ARC-1": {
+              "completed": 13,
+              "lastAt": 243
+            },
+            "Expedition staging": {
+              "completed": 5,
+              "lastAt": 5155
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 28548
+            },
+            "Recover energy": {
+              "completed": 27,
+              "lastAt": 28675
+            },
+            "Running experiments": {
+              "completed": 22,
+              "lastAt": 28173
+            },
+            "Monitoring containment": {
+              "completed": 36,
+              "lastAt": 28095
+            },
+            "Reviewing research": {
+              "completed": 22,
+              "lastAt": 28332
+            },
+            "Eat a meal": {
+              "completed": 3,
+              "lastAt": 6700
+            },
+            "Contact liaison / ARC-16": {
+              "completed": 1,
+              "lastAt": 2117
+            },
+            "Following up on a difficult assignment": {
+              "completed": 6,
+              "lastAt": 27639
+            },
+            "Analyzing samples": {
+              "completed": 28,
+              "lastAt": 28290
+            },
+            "Frontier mission staging": {
+              "completed": 2,
+              "lastAt": 7636
+            },
+            "Contact liaison / ARC-58": {
+              "completed": 14,
+              "lastAt": 15708
+            },
+            "Following up on a security inspection": {
+              "completed": 1,
+              "lastAt": 16934
+            },
+            "Contact liaison / ARC-75": {
+              "completed": 11,
+              "lastAt": 23356
+            }
+          },
+          "Tomas Vale": {
+            "Inspecting distribution circuits": {
+              "completed": 34,
+              "lastAt": 28781
+            },
+            "Working on equipment": {
+              "completed": 12,
+              "lastAt": 28518
+            },
+            "Eating a meal": {
+              "completed": 32,
+              "lastAt": 28341
+            },
+            "Servicing reactor controls": {
+              "completed": 17,
+              "lastAt": 27232
+            },
+            "Inspecting completed repair": {
+              "completed": 38,
+              "lastAt": 28219
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 27759
+            },
+            "Resting off shift": {
+              "completed": 84,
+              "lastAt": 28256
+            },
+            "Recover energy": {
+              "completed": 24,
+              "lastAt": 27958
+            },
+            "Maintaining life support": {
+              "completed": 11,
+              "lastAt": 28748
+            },
+            "Fabricating replacement parts": {
+              "completed": 16,
+              "lastAt": 28463
+            },
+            "Eat a meal": {
+              "completed": 7,
+              "lastAt": 17344
+            },
+            "Contact liaison / ARC-31": {
+              "completed": 4,
+              "lastAt": 5218
+            },
+            "Expedition staging": {
+              "completed": 1,
+              "lastAt": 5566
+            },
+            "Contact liaison / ARC-44": {
+              "completed": 1,
+              "lastAt": 9063
+            },
+            "Contact liaison / ARC-48": {
+              "completed": 17,
+              "lastAt": 10079
+            },
+            "Responding to Derek Cole": {
+              "completed": 7,
+              "lastAt": 27628
+            },
+            "Following up on a difficult assignment": {
+              "completed": 1,
+              "lastAt": 26462
+            }
+          },
+          "Rhea Ortiz": {
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 28695
+            },
+            "Watching the stars": {
+              "completed": 100,
+              "lastAt": 28742
+            },
+            "Eating a meal": {
+              "completed": 20,
+              "lastAt": 28657
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 28792
+            },
+            "Following up on a difficult assignment": {
+              "completed": 4,
+              "lastAt": 27265
+            },
+            "Recover energy": {
+              "completed": 28,
+              "lastAt": 28519
+            },
+            "Reviewing patient records": {
+              "completed": 73,
+              "lastAt": 28117
+            },
+            "Taking a meal break": {
+              "completed": 36,
+              "lastAt": 27866
+            },
+            "Checking medical supplies": {
+              "completed": 29,
+              "lastAt": 27957
+            },
+            "Following up on a security inspection": {
+              "completed": 3,
+              "lastAt": 27040
+            },
+            "Contact liaison / ARC-38": {
+              "completed": 100,
+              "lastAt": 10051
+            },
+            "Contact liaison / ARC-43": {
+              "completed": 3,
+              "lastAt": 10214
+            },
+            "Contact liaison / ARC-59": {
+              "completed": 11,
+              "lastAt": 16530
+            },
+            "Contact liaison / ARC-67": {
+              "completed": 2,
+              "lastAt": 18949
+            },
+            "Contact liaison / ARC-73": {
+              "completed": 3,
+              "lastAt": 22304
+            },
+            "Contact liaison / ARC-74": {
+              "completed": 6,
+              "lastAt": 22696
+            },
+            "Contact liaison / ARC-77": {
+              "completed": 15,
+              "lastAt": 24109
+            },
+            "Contact liaison / ARC-79": {
+              "completed": 9,
+              "lastAt": 25741
+            }
+          },
+          "Milo Grant": {
+            "Eating a meal": {
+              "completed": 42,
+              "lastAt": 28578
+            },
+            "Watching the stars": {
+              "completed": 100,
+              "lastAt": 28714
+            },
+            "Contact liaison / ARC-1": {
+              "completed": 14,
+              "lastAt": 240
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 28790
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 28676
+            },
+            "Checking shuttle readiness": {
+              "completed": 33,
+              "lastAt": 26127
+            },
+            "Reviewing waste processing": {
+              "completed": 64,
+              "lastAt": 27779
+            },
+            "Recover energy": {
+              "completed": 28,
+              "lastAt": 28275
+            },
+            "Inspecting cargo": {
+              "completed": 30,
+              "lastAt": 27660
+            },
+            "Following up on a security inspection": {
+              "completed": 2,
+              "lastAt": 16798
+            },
+            "Following up on a difficult assignment": {
+              "completed": 4,
+              "lastAt": 28307
+            },
+            "Contact liaison / ARC-82": {
+              "completed": 14,
+              "lastAt": 27394
+            }
+          },
+          "Sana Okafor": {
+            "Eating a meal": {
+              "completed": 37,
+              "lastAt": 28694
+            },
+            "Analyzing samples": {
+              "completed": 29,
+              "lastAt": 28474
+            },
+            "Monitoring containment": {
+              "completed": 41,
+              "lastAt": 28785
+            },
+            "Running experiments": {
+              "completed": 17,
+              "lastAt": 28583
+            },
+            "Watching the stars": {
+              "completed": 82,
+              "lastAt": 28097
+            },
+            "Reviewing research": {
+              "completed": 28,
+              "lastAt": 28739
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 28320
+            },
+            "Taking a recreation break": {
+              "completed": 88,
+              "lastAt": 28274
+            },
+            "Recover energy": {
+              "completed": 24,
+              "lastAt": 28037
+            },
+            "Expedition staging": {
+              "completed": 1,
+              "lastAt": 1041
+            },
+            "Eat a meal": {
+              "completed": 2,
+              "lastAt": 9728
+            },
+            "Resting": {
+              "completed": 3,
+              "lastAt": 4750
+            },
+            "Responding to Derek Cole": {
+              "completed": 7,
+              "lastAt": 18728
+            },
+            "Responding to Dr. Voss": {
+              "completed": 3,
+              "lastAt": 17067
+            },
+            "Confronting Ari Novak": {
+              "completed": 3,
+              "lastAt": 20742
+            }
+          },
+          "Iris Bell": {
+            "Following up on a difficult assignment": {
+              "completed": 9,
+              "lastAt": 27225
+            },
+            "Monitoring communications": {
+              "completed": 100,
+              "lastAt": 28779
+            },
+            "Reviewing transmissions": {
+              "completed": 77,
+              "lastAt": 28584
+            },
+            "Recover energy": {
+              "completed": 32,
+              "lastAt": 28658
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 28330
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 28271
+            },
+            "Eating a meal": {
+              "completed": 40,
+              "lastAt": 28738
+            },
+            "Contact liaison / ARC-28": {
+              "completed": 8,
+              "lastAt": 4459
+            },
+            "Contact liaison / ARC-59": {
+              "completed": 15,
+              "lastAt": 16531
+            },
+            "Following up on a security inspection": {
+              "completed": 1,
+              "lastAt": 25347
+            }
+          },
+          "Caleb Stone": {
+            "Eating a meal": {
+              "completed": 38,
+              "lastAt": 28553
+            },
+            "Monitoring surveillance": {
+              "completed": 56,
+              "lastAt": 28629
+            },
+            "Inspecting the airlock": {
+              "completed": 28,
+              "lastAt": 28779
+            },
+            "Watching the stars": {
+              "completed": 100,
+              "lastAt": 28585
+            },
+            "Reviewing security reports": {
+              "completed": 29,
+              "lastAt": 28665
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 28183
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 28226
+            },
+            "Recover energy": {
+              "completed": 27,
+              "lastAt": 28037
+            },
+            "Patrolling the bridge": {
+              "completed": 26,
+              "lastAt": 28718
+            },
+            "Following up on a difficult assignment": {
+              "completed": 5,
+              "lastAt": 24036
+            },
+            "Expedition staging": {
+              "completed": 1,
+              "lastAt": 2641
+            },
+            "Contact liaison / ARC-34": {
+              "completed": 100,
+              "lastAt": 8734
+            },
+            "Contact liaison / ARC-70": {
+              "completed": 14,
+              "lastAt": 20356
+            },
+            "Contact liaison / ARC-72": {
+              "completed": 14,
+              "lastAt": 21810
+            },
+            "Contact liaison / ARC-83": {
+              "completed": 6,
+              "lastAt": 28291
+            }
+          },
+          "Yara Finch": {
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 28755
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 28494
+            },
+            "Eating a meal": {
+              "completed": 41,
+              "lastAt": 28307
+            },
+            "Watching the stars": {
+              "completed": 92,
+              "lastAt": 28794
+            },
+            "Taking a quiet break": {
+              "completed": 3,
+              "lastAt": 1596
+            },
+            "Recover energy": {
+              "completed": 27,
+              "lastAt": 28631
+            },
+            "Checking shuttle readiness": {
+              "completed": 27,
+              "lastAt": 28373
+            },
+            "Reviewing waste processing": {
+              "completed": 73,
+              "lastAt": 28188
+            },
+            "Inspecting cargo": {
+              "completed": 33,
+              "lastAt": 28128
+            },
+            "Expedition staging": {
+              "completed": 1,
+              "lastAt": 2164
+            },
+            "Contact liaison / ARC-25": {
+              "completed": 17,
+              "lastAt": 3678
+            },
+            "Contact liaison / ARC-31": {
+              "completed": 1,
+              "lastAt": 5263
+            },
+            "Contact liaison / ARC-39": {
+              "completed": 4,
+              "lastAt": 6974
+            },
+            "Contact liaison / ARC-63": {
+              "completed": 10,
+              "lastAt": 17914
+            },
+            "Following up on a difficult assignment": {
+              "completed": 3,
+              "lastAt": 24687
+            },
+            "Contact liaison / ARC-73": {
+              "completed": 18,
+              "lastAt": 22579
+            }
+          },
+          "Theo Moss": {
+            "Eating a meal": {
+              "completed": 36,
+              "lastAt": 28501
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 28739
+            },
+            "Taking a recreation break": {
+              "completed": 81,
+              "lastAt": 28783
+            },
+            "Recover energy": {
+              "completed": 26,
+              "lastAt": 28195
+            },
+            "Watching the stars": {
+              "completed": 53,
+              "lastAt": 28709
+            },
+            "Inspecting distribution circuits": {
+              "completed": 14,
+              "lastAt": 28348
+            },
+            "Expedition staging": {
+              "completed": 2,
+              "lastAt": 4555
+            },
+            "Fabricating replacement parts": {
+              "completed": 8,
+              "lastAt": 25214
+            },
+            "Eat a meal": {
+              "completed": 4,
+              "lastAt": 28123
+            },
+            "Working on equipment": {
+              "completed": 12,
+              "lastAt": 28307
+            },
+            "Maintaining life support": {
+              "completed": 12,
+              "lastAt": 27949
+            },
+            "Contact liaison / ARC-25": {
+              "completed": 18,
+              "lastAt": 3678
+            },
+            "Servicing reactor controls": {
+              "completed": 31,
+              "lastAt": 28021
+            },
+            "Frontier mission staging": {
+              "completed": 2,
+              "lastAt": 8173
+            },
+            "Contact liaison / ARC-51": {
+              "completed": 10,
+              "lastAt": 11523
+            },
+            "Contact liaison / ARC-55": {
+              "completed": 5,
+              "lastAt": 14040
+            },
+            "Contact liaison / ARC-66": {
+              "completed": 3,
+              "lastAt": 18837
+            },
+            "Following up on a difficult assignment": {
+              "completed": 3,
+              "lastAt": 24922
+            },
+            "Contact liaison / ARC-78": {
+              "completed": 7,
+              "lastAt": 24840
+            }
+          },
+          "June Adler": {
+            "Eating a meal": {
+              "completed": 37,
+              "lastAt": 28257
+            },
+            "Reviewing ship operations": {
+              "completed": 74,
+              "lastAt": 28791
+            },
+            "Meeting with personnel": {
+              "completed": 38,
+              "lastAt": 28490
+            },
+            "Contact liaison / ARC-3": {
+              "completed": 1,
+              "lastAt": 519
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 28334
+            },
+            "Contact liaison / ARC-6": {
+              "completed": 3,
+              "lastAt": 584
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 28299
+            },
+            "Contact liaison / ARC-8": {
+              "completed": 100,
+              "lastAt": 3768
+            },
+            "Recover energy": {
+              "completed": 25,
+              "lastAt": 27889
+            },
+            "Eat a meal": {
+              "completed": 3,
+              "lastAt": 5103
+            },
+            "Contact liaison / ARC-29": {
+              "completed": 24,
+              "lastAt": 5026
+            },
+            "Contact liaison / ARC-39": {
+              "completed": 2,
+              "lastAt": 7015
+            },
+            "Contact liaison / ARC-42": {
+              "completed": 3,
+              "lastAt": 7615
+            },
+            "Contact liaison / ARC-47": {
+              "completed": 7,
+              "lastAt": 10081
+            },
+            "Contact liaison / ARC-54": {
+              "completed": 10,
+              "lastAt": 13294
+            },
+            "Contact liaison / ARC-56": {
+              "completed": 1,
+              "lastAt": 14882
+            },
+            "Contact liaison / ARC-60": {
+              "completed": 4,
+              "lastAt": 17084
+            },
+            "Contact liaison / ARC-62": {
+              "completed": 10,
+              "lastAt": 17869
+            },
+            "Contact liaison / ARC-74": {
+              "completed": 1,
+              "lastAt": 22730
+            },
+            "Contact liaison / ARC-80": {
+              "completed": 7,
+              "lastAt": 26104
+            },
+            "Contact liaison / ARC-81": {
+              "completed": 15,
+              "lastAt": 26479
+            },
+            "Contact liaison / ARC-82": {
+              "completed": 14,
+              "lastAt": 27391
+            }
+          },
+          "Ari Novak": {
+            "Checking shuttle readiness": {
+              "completed": 33,
+              "lastAt": 28593
+            },
+            "Eating a meal": {
+              "completed": 41,
+              "lastAt": 28710
+            },
+            "Reviewing waste processing": {
+              "completed": 32,
+              "lastAt": 27264
+            },
+            "Inspecting cargo": {
+              "completed": 76,
+              "lastAt": 28800
+            },
+            "Watching the stars": {
+              "completed": 100,
+              "lastAt": 28291
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 28158
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 28338
+            },
+            "Recover energy": {
+              "completed": 28,
+              "lastAt": 28006
+            },
+            "Contact liaison / ARC-12": {
+              "completed": 16,
+              "lastAt": 1139
+            },
+            "Contact liaison / ARC-47": {
+              "completed": 3,
+              "lastAt": 9844
+            },
+            "Following up on a difficult assignment": {
+              "completed": 3,
+              "lastAt": 18530
+            },
+            "Contact liaison / ARC-58": {
+              "completed": 13,
+              "lastAt": 15709
+            },
+            "Contact liaison / ARC-63": {
+              "completed": 5,
+              "lastAt": 17910
+            },
+            "Contact liaison / ARC-65": {
+              "completed": 6,
+              "lastAt": 18599
+            },
+            "Responding to Sana Okafor": {
+              "completed": 3,
+              "lastAt": 20742
+            }
+          }
+        }
+      },
+      "phase43": {
+        "systems_errors": [],
+        "gravity_errors": [],
+        "systems": {
+          "version": 1,
+          "installedAt": 0,
+          "lastTick": 28800,
+          "components": {
+            "GRAVITY-CORE": {
+              "id": "GRAVITY-CORE",
+              "name": "Artificial-gravity generator",
+              "room": "C07",
+              "health": 73.21600000009312,
+              "kind": "gravity",
+              "wear": 1209.5999999998417,
+              "history": [],
+              "serviceIsolated": false,
+              "availablePower": 1,
+              "load": 0.04200000000000001,
+              "status": "operational"
+            },
+            "CIRCUIT-habitation": {
+              "id": "CIRCUIT-habitation",
+              "name": "Habitation distribution circuit",
+              "room": "A02",
+              "health": 97.69600000008722,
+              "kind": "circuit",
+              "zone": "habitation",
+              "wear": 2.304000000001178,
+              "history": [],
+              "serviceIsolated": false,
+              "availablePower": 1,
+              "load": 0.005,
+              "status": "operational"
+            },
+            "CIRCUIT-medical": {
+              "id": "CIRCUIT-medical",
+              "name": "Medical distribution circuit",
+              "room": "A08",
+              "health": 97.69600000008722,
+              "kind": "circuit",
+              "zone": "medical",
+              "wear": 2.304000000001178,
+              "history": [],
+              "serviceIsolated": false,
+              "availablePower": 1,
+              "load": 0.005,
+              "status": "operational"
+            },
+            "CIRCUIT-science": {
+              "id": "CIRCUIT-science",
+              "name": "Science distribution circuit",
+              "room": "B08",
+              "health": 97.69600000008722,
+              "kind": "circuit",
+              "zone": "science",
+              "wear": 2.304000000001178,
+              "history": [],
+              "serviceIsolated": false,
+              "availablePower": 1,
+              "load": 0.005,
+              "status": "operational"
+            },
+            "CIRCUIT-cargo": {
+              "id": "CIRCUIT-cargo",
+              "name": "Cargo / storage distribution circuit",
+              "room": "C04",
+              "health": 97.69600000008722,
+              "kind": "circuit",
+              "zone": "cargo",
+              "wear": 2.304000000001178,
+              "history": [],
+              "serviceIsolated": false,
+              "availablePower": 1,
+              "load": 0.005,
+              "status": "operational"
+            },
+            "CIRCUIT-hangar": {
+              "id": "CIRCUIT-hangar",
+              "name": "Hangar / airlock distribution circuit",
+              "room": "C02",
+              "health": 97.69600000008722,
+              "kind": "circuit",
+              "zone": "hangar",
+              "wear": 2.304000000001178,
+              "history": [],
+              "serviceIsolated": false,
+              "availablePower": 1,
+              "load": 0.005,
+              "status": "operational"
+            },
+            "CIRCUIT-engineering": {
+              "id": "CIRCUIT-engineering",
+              "name": "Engineering / lift distribution circuit",
+              "room": "C07",
+              "health": 97.69600000008722,
+              "kind": "circuit",
+              "zone": "engineering",
+              "wear": 2.304000000001178,
+              "history": [],
+              "serviceIsolated": false,
+              "availablePower": 1,
+              "load": 0.005,
+              "status": "operational"
+            }
+          },
+          "zones": {
+            "habitation": {
+              "id": "habitation",
+              "name": "Habitation",
+              "rooms": [
+                "A01",
+                "A02",
+                "A03",
+                "A04",
+                "A05",
+                "A06",
+                "A07",
+                "A09",
+                "A10"
+              ],
+              "targetG": 1,
+              "g": 1,
+              "previousG": 1,
+              "power": 1,
+              "ramp": 0.05,
+              "gravityIsolated": false,
+              "circuitIsolated": false,
+              "authority": "Authorized operators / crew / equipment safeguards",
+              "faults": []
+            },
+            "medical": {
+              "id": "medical",
+              "name": "Medical",
+              "rooms": [
+                "A08"
+              ],
+              "targetG": 1,
+              "g": 1,
+              "previousG": 1,
+              "power": 1,
+              "ramp": 0.05,
+              "gravityIsolated": false,
+              "circuitIsolated": false,
+              "authority": "Authorized operators / crew / equipment safeguards",
+              "faults": []
+            },
+            "science": {
+              "id": "science",
+              "name": "Science",
+              "rooms": [
+                "B01",
+                "B02",
+                "B03",
+                "B04",
+                "B05",
+                "B06",
+                "B07",
+                "B08",
+                "B09",
+                "B10"
+              ],
+              "targetG": 1,
+              "g": 1,
+              "previousG": 1,
+              "power": 1,
+              "ramp": 0.05,
+              "gravityIsolated": false,
+              "circuitIsolated": false,
+              "authority": "Authorized operators / crew / equipment safeguards",
+              "faults": []
+            },
+            "cargo": {
+              "id": "cargo",
+              "name": "Cargo / storage",
+              "rooms": [
+                "C03",
+                "C04",
+                "C10"
+              ],
+              "targetG": 1,
+              "g": 1,
+              "previousG": 1,
+              "power": 1,
+              "ramp": 0.05,
+              "gravityIsolated": false,
+              "circuitIsolated": false,
+              "authority": "Authorized operators / crew / equipment safeguards",
+              "faults": []
+            },
+            "hangar": {
+              "id": "hangar",
+              "name": "Hangar / airlock",
+              "rooms": [
+                "C01",
+                "C02"
+              ],
+              "targetG": 1,
+              "g": 1,
+              "previousG": 1,
+              "power": 1,
+              "ramp": 0.05,
+              "gravityIsolated": false,
+              "circuitIsolated": false,
+              "authority": "Authorized operators / crew / equipment safeguards",
+              "faults": []
+            },
+            "engineering": {
+              "id": "engineering",
+              "name": "Engineering / lift",
+              "rooms": [
+                "C05",
+                "C06",
+                "C07",
+                "C08",
+                "C09"
+              ],
+              "targetG": 1,
+              "g": 1,
+              "previousG": 1,
+              "power": 1,
+              "ramp": 0.05,
+              "gravityIsolated": false,
+              "circuitIsolated": false,
+              "authority": "Authorized operators / crew / equipment safeguards",
+              "faults": []
+            }
+          },
+          "history": [],
+          "bus": 1,
+          "load": 0.04200000000000001,
+          "source": "Installed baseline gravity hardware; existing electrical generation/distribution and finite stores retained",
+          "lastMeasurement": {
+            "version": 1,
+            "tick": 28800,
+            "bus": 1,
+            "load": 0.04200000000000001,
+            "components": [
+              {
+                "id": "GRAVITY-CORE",
+                "name": "Artificial-gravity generator",
+                "room": "C07",
+                "health": 73.21600000009312,
+                "status": "operational",
+                "power": 1,
+                "serviceIsolated": false,
+                "source": "Persistent installed gravity/circuit component"
+              },
+              {
+                "id": "CIRCUIT-habitation",
+                "name": "Habitation distribution circuit",
+                "room": "A02",
+                "health": 97.69600000008722,
+                "status": "operational",
+                "power": 1,
+                "serviceIsolated": false,
+                "source": "Persistent installed gravity/circuit component"
+              },
+              {
+                "id": "CIRCUIT-medical",
+                "name": "Medical distribution circuit",
+                "room": "A08",
+                "health": 97.69600000008722,
+                "status": "operational",
+                "power": 1,
+                "serviceIsolated": false,
+                "source": "Persistent installed gravity/circuit component"
+              },
+              {
+                "id": "CIRCUIT-science",
+                "name": "Science distribution circuit",
+                "room": "B08",
+                "health": 97.69600000008722,
+                "status": "operational",
+                "power": 1,
+                "serviceIsolated": false,
+                "source": "Persistent installed gravity/circuit component"
+              },
+              {
+                "id": "CIRCUIT-cargo",
+                "name": "Cargo / storage distribution circuit",
+                "room": "C04",
+                "health": 97.69600000008722,
+                "status": "operational",
+                "power": 1,
+                "serviceIsolated": false,
+                "source": "Persistent installed gravity/circuit component"
+              },
+              {
+                "id": "CIRCUIT-hangar",
+                "name": "Hangar / airlock distribution circuit",
+                "room": "C02",
+                "health": 97.69600000008722,
+                "status": "operational",
+                "power": 1,
+                "serviceIsolated": false,
+                "source": "Persistent installed gravity/circuit component"
+              },
+              {
+                "id": "CIRCUIT-engineering",
+                "name": "Engineering / lift distribution circuit",
+                "room": "C07",
+                "health": 97.69600000008722,
+                "status": "operational",
+                "power": 1,
+                "serviceIsolated": false,
+                "source": "Persistent installed gravity/circuit component"
+              },
+              {
+                "id": "EQUIPMENT-A08",
+                "name": "Clinical tissue-repair unit",
+                "room": "A08",
+                "health": 96,
+                "power": 1,
+                "status": "operational",
+                "currentLoad": null,
+                "maintenance": null,
+                "source": "Existing equipment.condition and maintenance authority; per-device current unmetered"
+              },
+              {
+                "id": "EQUIPMENT-C05",
+                "name": "Coffee dispenser",
+                "room": "C05",
+                "health": 100,
+                "power": 1,
+                "status": "operational",
+                "currentLoad": null,
+                "maintenance": null,
+                "source": "Existing equipment.condition and maintenance authority; per-device current unmetered"
+              },
+              {
+                "id": "EQUIPMENT-C07",
+                "name": "Power distribution panel",
+                "room": "C07",
+                "health": 67.59000000000322,
+                "power": 1,
+                "status": "operational",
+                "currentLoad": null,
+                "maintenance": "assigned",
+                "source": "Existing equipment.condition and maintenance authority; per-device current unmetered"
+              },
+              {
+                "id": "EQUIPMENT-C09",
+                "name": "Air scrubber",
+                "room": "C09",
+                "health": 76.22999999999602,
+                "power": 1,
+                "status": "operational",
+                "currentLoad": null,
+                "maintenance": null,
+                "source": "Existing equipment.condition and maintenance authority; per-device current unmetered"
+              },
+              {
+                "id": "EQUIPMENT-C06",
+                "name": "Fabricator",
+                "room": "C06",
+                "health": 73.55999999999322,
+                "power": 1,
+                "status": "operational",
+                "currentLoad": null,
+                "maintenance": null,
+                "source": "Existing equipment.condition and maintenance authority; per-device current unmetered"
+              },
+              {
+                "id": "EQUIPMENT-B01",
+                "name": "Research terminal",
+                "room": "B01",
+                "health": 83.65999999998455,
+                "power": 1,
+                "status": "operational",
+                "currentLoad": null,
+                "maintenance": "repairing",
+                "source": "Existing equipment.condition and maintenance authority; per-device current unmetered"
+              },
+              {
+                "id": "EQUIPMENT-A04",
+                "name": "Galley unit",
+                "room": "A04",
+                "health": 75.22000000000017,
+                "power": 1,
+                "status": "operational",
+                "currentLoad": null,
+                "maintenance": null,
+                "source": "Existing equipment.condition and maintenance authority; per-device current unmetered"
+              },
+              {
+                "id": "EQUIPMENT-B07",
+                "name": "Security console",
+                "room": "B07",
+                "health": 71.54999999999708,
+                "power": 1,
+                "status": "operational",
+                "currentLoad": null,
+                "maintenance": "repairing",
+                "source": "Existing equipment.condition and maintenance authority; per-device current unmetered"
+              },
+              {
+                "id": "EQUIPMENT-C08",
+                "name": "Reactor cooling controller",
+                "room": "C08",
+                "health": 71.06999999999847,
+                "power": 1,
+                "status": "operational",
+                "currentLoad": null,
+                "maintenance": null,
+                "source": "Existing equipment.condition and maintenance authority; per-device current unmetered"
+              }
+            ],
+            "zones": [
+              {
+                "id": "habitation",
+                "name": "Habitation",
+                "rooms": [
+                  "A01",
+                  "A02",
+                  "A03",
+                  "A04",
+                  "A05",
+                  "A06",
+                  "A07",
+                  "A09",
+                  "A10"
+                ],
+                "targetG": 1,
+                "g": 1,
+                "power": 1,
+                "gravityIsolated": false,
+                "circuitIsolated": false,
+                "faults": [],
+                "authority": "Authorized operators / crew / equipment safeguards"
+              },
+              {
+                "id": "medical",
+                "name": "Medical",
+                "rooms": [
+                  "A08"
+                ],
+                "targetG": 1,
+                "g": 1,
+                "power": 1,
+                "gravityIsolated": false,
+                "circuitIsolated": false,
+                "faults": [],
+                "authority": "Authorized operators / crew / equipment safeguards"
+              },
+              {
+                "id": "science",
+                "name": "Science",
+                "rooms": [
+                  "B01",
+                  "B02",
+                  "B03",
+                  "B04",
+                  "B05",
+                  "B06",
+                  "B07",
+                  "B08",
+                  "B09",
+                  "B10"
+                ],
+                "targetG": 1,
+                "g": 1,
+                "power": 1,
+                "gravityIsolated": false,
+                "circuitIsolated": false,
+                "faults": [],
+                "authority": "Authorized operators / crew / equipment safeguards"
+              },
+              {
+                "id": "cargo",
+                "name": "Cargo / storage",
+                "rooms": [
+                  "C03",
+                  "C04",
+                  "C10"
+                ],
+                "targetG": 1,
+                "g": 1,
+                "power": 1,
+                "gravityIsolated": false,
+                "circuitIsolated": false,
+                "faults": [],
+                "authority": "Authorized operators / crew / equipment safeguards"
+              },
+              {
+                "id": "hangar",
+                "name": "Hangar / airlock",
+                "rooms": [
+                  "C01",
+                  "C02"
+                ],
+                "targetG": 1,
+                "g": 1,
+                "power": 1,
+                "gravityIsolated": false,
+                "circuitIsolated": false,
+                "faults": [],
+                "authority": "Authorized operators / crew / equipment safeguards"
+              },
+              {
+                "id": "engineering",
+                "name": "Engineering / lift",
+                "rooms": [
+                  "C05",
+                  "C06",
+                  "C07",
+                  "C08",
+                  "C09"
+                ],
+                "targetG": 1,
+                "g": 1,
+                "power": 1,
+                "gravityIsolated": false,
+                "circuitIsolated": false,
+                "faults": [],
+                "authority": "Authorized operators / crew / equipment safeguards"
+              }
+            ],
+            "orders": [],
+            "history": [],
+            "dependencies": {
+              "generation": "Existing C08 reactor and finite fuel/electrical stores",
+              "distribution": "Existing C07 main distribution and local circuit condition",
+              "lifeSupport": "Existing C09 and local supply",
+              "hvac": "Local electrical supply, target21\u00b0C",
+              "carbonDioxide": "No calibrated concentration sensor model; unavailable"
+            }
+          }
+        },
+        "crew_motion": [
+          {
+            "name": "Frank Morrow",
+            "room": "B07",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.4,
+              "lastG": 1,
+              "at": 28800
+            },
+            "order": null
+          },
+          {
+            "name": "Mara Chen",
+            "room": "A06",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.59,
+              "lastG": 1,
+              "at": 28800
+            },
+            "order": null
+          },
+          {
+            "name": "Dr. Voss",
+            "room": "A06",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.79,
+              "lastG": 1,
+              "at": 28800
+            },
+            "order": null
+          },
+          {
+            "name": "Derek Cole",
+            "room": "C04",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.5599999999999999,
+              "lastG": 1,
+              "at": 28800
+            },
+            "order": null
+          },
+          {
+            "name": "Linda Park",
+            "room": "A07",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.28,
+              "lastG": 1,
+              "at": 28800
+            },
+            "order": null
+          },
+          {
+            "name": "Elena Ruiz",
+            "room": "A08",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.25,
+              "lastG": 1,
+              "at": 28800
+            },
+            "order": null
+          },
+          {
+            "name": "Jules Mercer",
+            "room": "B01",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.21,
+              "lastG": 1,
+              "at": 28800
+            },
+            "order": null
+          },
+          {
+            "name": "Nadia Kline",
+            "room": "A05",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.3,
+              "lastG": 1,
+              "at": 28800
+            },
+            "order": null
+          },
+          {
+            "name": "Owen Briggs",
+            "room": "A05",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.81,
+              "lastG": 1,
+              "at": 28800
+            },
+            "order": null
+          },
+          {
+            "name": "Priya Shah",
+            "room": "A04",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.19,
+              "lastG": 1,
+              "at": 28800
+            },
+            "order": null
+          },
+          {
+            "name": "Tomas Vale",
+            "room": "C04",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.28,
+              "lastG": 1,
+              "at": 28800
+            },
+            "order": null
+          },
+          {
+            "name": "Rhea Ortiz",
+            "room": "A05",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.84,
+              "lastG": 1,
+              "at": 28800
+            },
+            "order": null
+          },
+          {
+            "name": "Milo Grant",
+            "room": "A03",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.61,
+              "lastG": 1,
+              "at": 28800
+            },
+            "order": null
+          },
+          {
+            "name": "Sana Okafor",
+            "room": "B05",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.47,
+              "lastG": 1,
+              "at": 28800
+            },
+            "order": null
+          },
+          {
+            "name": "Iris Bell",
+            "room": "A02",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.54,
+              "lastG": 1,
+              "at": 28800
+            },
+            "order": null
+          },
+          {
+            "name": "Caleb Stone",
+            "room": "C02",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.78,
+              "lastG": 1,
+              "at": 28800
+            },
+            "order": null
+          },
+          {
+            "name": "Yara Finch",
+            "room": "A03",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.19,
+              "lastG": 1,
+              "at": 28800
+            },
+            "order": null
+          },
+          {
+            "name": "Theo Moss",
+            "room": "A09",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.18,
+              "lastG": 1,
+              "at": 28800
+            },
+            "order": null
+          },
+          {
+            "name": "June Adler",
+            "room": "A01",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.72,
+              "lastG": 1,
+              "at": 28800
+            },
+            "order": null
+          },
+          {
+            "name": "Ari Novak",
+            "room": "C03",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.63,
+              "lastG": 1,
+              "at": 28800
+            },
+            "order": null
+          }
+        ],
+        "orders": {}
+      },
+      "calendar": {
+        "version": 1,
+        "timeZone": "America/Chicago",
+        "wallCursor": 1793232000000,
+        "displayMs": 1794873600000,
+        "carry": 0,
+        "lastSeen": 1793232000000,
+        "episodeKey": "2026-10-26",
+        "visitedWeeks": {
+          "2026-10-26": true
+        },
+        "occurrences": {},
+        "pending": [],
+        "corrections": [],
+        "recovery": {
+          "discardedMs": 0,
+          "rollbackCount": 0
+        },
+        "mode": "wall",
+        "maxCatchupMs": 21600000,
+        "selectedRate": 20
+      },
+      "snapshot_bytes": 6892454,
+      "storage": {
+        "physical_bytes": 973802,
+        "primary_bytes": 973802,
+        "compressed": true
+      }
+    },
+    {
+      "livingShip": {
+        "registered": 20,
+        "active": 20,
+        "retainedSocialMemories": 640,
+        "retainedBonds": 364,
+        "retainedActivityHistory": 320,
+        "retainedClaims": 0
+      },
+      "cinematic_errors": [],
+      "cinematic": {
+        "recordings": 120,
+        "captured": 3644,
+        "films": 0,
+        "conversations": 794,
+        "notes": 48
+      },
+      "knowledge_errors": [],
+      "creature_errors": [],
+      "knowledge": {
+        "facts": 8016,
+        "sol": 7222,
+        "pending": 0,
+        "delivered": 1586
+      },
+      "biology": [
+        {
+          "id": "XENO-INITIAL",
+          "stage": "adult",
+          "location": "asteroid:23",
+          "state": "contained",
+          "energy": 100,
+          "health": 100,
+          "steps": 0
+        },
+        {
+          "id": "EGG-1",
+          "stage": "egg",
+          "location": "asteroid:22",
+          "state": "uninitialized",
+          "steps": 0
+        },
+        {
+          "id": "EGG-2",
+          "stage": "egg",
+          "location": "asteroid:24",
+          "state": "uninitialized",
+          "steps": 0
+        }
+      ],
+      "repairControl": {
+        "version": 1,
+        "stats": {
+          "preventiveStarted": 326,
+          "maintenanceWork": 23244.48999999457,
+          "criticalEscalations": 2,
+          "criticalRecoveries": 2,
+          "preventiveCompleted": 319,
+          "releasedAssignments": 3
+        },
+        "decisions": [
+          {
+            "at": 61,
+            "reason": "Measured life-support fault or reserve forecast below one day; optional research and launches suspended."
+          },
+          {
+            "at": 121,
+            "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+          },
+          {
+            "at": 5641,
+            "reason": "Measured life-support fault or reserve forecast below one day; optional research and launches suspended."
+          },
+          {
+            "at": 5701,
+            "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+          },
+          {
+            "at": 24398,
+            "reason": "Released obsolete maintenance reservation for Theo Moss; current assignment retained.",
+            "person": "Theo Moss"
+          },
+          {
+            "at": 29329,
+            "reason": "Released obsolete maintenance reservation for Theo Moss; current assignment retained.",
+            "person": "Theo Moss"
+          },
+          {
+            "at": 40952,
+            "reason": "Released obsolete maintenance reservation for Frank Morrow; current assignment retained.",
+            "person": "Frank Morrow"
+          }
+        ],
+        "notices": {
+          "forecast:true": 5641,
+          "forecast:false": 5701,
+          "detach:Theo Moss": 29329,
+          "detach:Frank Morrow": 40952
+        },
+        "forecast": {
+          "food": {
+            "at": 57541,
+            "consumption": 0.04733333333333576,
+            "production": 0.04733333333333576,
+            "available": 159.98600000000002,
+            "minutes": null
+          },
+          "water": {
+            "at": 57541,
+            "consumption": 0.028000000000001062,
+            "production": 0.028000000000001062,
+            "available": 152.87160000000011,
+            "minutes": null
+          },
+          "oxygen": {
+            "at": 57541,
+            "consumption": 0.019999999999996968,
+            "production": 0.020000000000000757,
+            "available": 110.13600000000095,
+            "minutes": null
+          },
+          "energy": {
+            "at": 57541,
+            "consumption": 0.15643001759999606,
+            "production": 0.15641248080000877,
+            "available": 179.893107792,
+            "minutes": 10258034.98485746
+          }
+        },
+        "sample": {
+          "at": 57541,
+          "consumed": {
+            "energy": 9218.560729075962,
+            "food": 2883.474,
+            "water": 1619.1480000000001,
+            "oxygen": 1150.82,
+            "lab": 672.5,
+            "spares": 322,
+            "tools": 751.10724554785
+          },
+          "produced": {
+            "energy": 9278.453836868106,
+            "spares": 327.1630176000009,
+            "water": 1622.0196000000035,
+            "oxygen": 1140.9560000000001,
+            "medical": 8,
+            "food": 2858.459999999809,
+            "lab": 656.5000000000006,
+            "tools": 733.1072455478544
+          }
+        },
+        "critical": false,
+        "lastDecision": {
+          "at": 40952,
+          "reason": "Released obsolete maintenance reservation for Frank Morrow; current assignment retained.",
+          "person": "Frank Morrow"
+        }
+      },
+      "equipment": {
+        "A08": 96,
+        "C05": 100,
+        "C07": 78.4000000000064,
+        "C09": 72.49999999999204,
+        "C06": 69.5899999999864,
+        "B01": 83.54999999996919,
+        "A04": 77.47000000000018,
+        "B07": 80.2999999999941,
+        "C08": 87.187499999996
+      },
+      "nativeIncidents": {},
+      "anthology": {
+        "arcs": 142,
+        "open": 3,
+        "external": 45,
+        "maxOverlap": 11,
+        "traditions": 13
+      },
+      "day": 40,
+      "tick": 57600,
+      "minute": 58080,
+      "episode": 1,
+      "archives": 0,
+      "crew": [
+        {
+          "name": "Frank Morrow",
+          "health": 100,
+          "fatigue": 14.562000000000182,
+          "morale": 70.6884083764993,
+          "energy": 29.50999999997467
+        },
+        {
+          "name": "Mara Chen",
+          "health": 100,
+          "fatigue": 2.1599999999999997,
+          "morale": 75.04401719374962,
+          "energy": 86.49999999996695
+        },
+        {
+          "name": "Dr. Voss",
+          "health": 100,
+          "fatigue": 9.900000000000006,
+          "morale": 67.26227677408879,
+          "energy": 35.79499999997012
+        },
+        {
+          "name": "Derek Cole",
+          "health": 100,
+          "fatigue": 17.514000000000294,
+          "morale": 46.328826992570995,
+          "energy": 43.17999999999328
+        },
+        {
+          "name": "Linda Park",
+          "health": 100,
+          "fatigue": 10.080000000000013,
+          "morale": 47.893169680475495,
+          "energy": 44.799999999970204
+        },
+        {
+          "name": "Elena Ruiz",
+          "health": 100,
+          "fatigue": 7.361999999999941,
+          "morale": 78.78198520288802,
+          "energy": 72.18499999997152
+        },
+        {
+          "name": "Jules Mercer",
+          "health": 100,
+          "fatigue": 3.5819999999999834,
+          "morale": 70.51634373409316,
+          "energy": 79.51999999996774
+        },
+        {
+          "name": "Nadia Kline",
+          "health": 100,
+          "fatigue": 0.26999999999999996,
+          "morale": 74.97129202828492,
+          "energy": 51.534999999967894
+        },
+        {
+          "name": "Owen Briggs",
+          "health": 100,
+          "fatigue": 0.46800000000000014,
+          "morale": 53.035755186294935,
+          "energy": 42.87999999998774
+        },
+        {
+          "name": "Priya Shah",
+          "health": 100,
+          "fatigue": 0.7560000000000003,
+          "morale": 73.4184938952681,
+          "energy": 83.80499999996631
+        },
+        {
+          "name": "Tomas Vale",
+          "health": 100,
+          "fatigue": 6.101999999999955,
+          "morale": 62.313020474010955,
+          "energy": 74.40499999997087
+        },
+        {
+          "name": "Rhea Ortiz",
+          "health": 100,
+          "fatigue": 1.5120000000000011,
+          "morale": 71.0489436965834,
+          "energy": 66.31999999996974
+        },
+        {
+          "name": "Milo Grant",
+          "health": 100,
+          "fatigue": 0.7020000000000003,
+          "morale": 63.70380795340236,
+          "energy": 84.91999999997269
+        },
+        {
+          "name": "Sana Okafor",
+          "health": 100,
+          "fatigue": 10.080000000000013,
+          "morale": 45.54136548088167,
+          "energy": 57.09999999997366
+        },
+        {
+          "name": "Iris Bell",
+          "health": 100,
+          "fatigue": 9.341999999999985,
+          "morale": 65.13011354723685,
+          "energy": 29.65999999996845
+        },
+        {
+          "name": "Caleb Stone",
+          "health": 100,
+          "fatigue": 4.517999999999973,
+          "morale": 71.49157269153541,
+          "energy": 77.7249999999722
+        },
+        {
+          "name": "Yara Finch",
+          "health": 100,
+          "fatigue": 0,
+          "morale": 69.94696612742804,
+          "energy": 63.05499999997206
+        },
+        {
+          "name": "Theo Moss",
+          "health": 100,
+          "fatigue": 0.6300000000000002,
+          "morale": 62.86274284708407,
+          "energy": 79.20499999996638
+        },
+        {
+          "name": "June Adler",
+          "health": 100,
+          "fatigue": 8.747999999999962,
+          "morale": 69.43303712575842,
+          "energy": 54.19999999997226
+        },
+        {
+          "name": "Ari Novak",
+          "health": 100,
+          "fatigue": 0.6480000000000002,
+          "morale": 58.61795517824425,
+          "energy": 94.91999999997196
+        }
+      ],
+      "dead": [],
+      "resource_errors": [],
+      "frontier_errors": [],
+      "destination_ids": [
+        "HOME",
+        "LOCAL-DEBRIS",
+        "LOCAL-ICE",
+        "LOCAL-RELAY",
+        "LOCAL-HULL",
+        "LOCAL-ECHO"
+      ],
+      "visited": 6,
+      "systems": 2,
+      "phase": "orbit",
+      "position": {
+        "x": 0.35000000000000003,
+        "y": 0
+      },
+      "target": null,
+      "arrivals": 5,
+      "fuel": 141.703585918227,
+      "travel_fuel": 1.9624515496596866,
+      "stores": {
+        "food": 159.986,
+        "water": 152.87160000000011,
+        "oxygen": 110.13600000000095,
+        "energy": 179.815658952,
+        "medical": 20,
+        "spares": 69.66203879999988,
+        "tools": 69.991,
+        "lab": 80
+      },
+      "acquired": {},
+      "frontier_jobs": [
+        {
+          "id": "F-1",
+          "type": "survey",
+          "status": "completed",
+          "started": 5635
+        },
+        {
+          "id": "F-2",
+          "type": "survey",
+          "status": "completed",
+          "started": 6172
+        },
+        {
+          "id": "F-3",
+          "type": "survey",
+          "status": "completed",
+          "started": 6679
+        },
+        {
+          "id": "F-4",
+          "type": "survey",
+          "status": "completed",
+          "started": 7207
+        },
+        {
+          "id": "F-5",
+          "type": "survey",
+          "status": "completed",
+          "started": 7707
+        }
+      ],
+      "case_ids": [
+        "SCI-0001",
+        "SCI-0002",
+        "SCI-0003",
+        "SCI-0004",
+        "SCI-0005",
+        "SCI-0006",
+        "SCI-0007",
+        "SCI-0008",
+        "SCI-0009",
+        "SCI-0010",
+        "SCI-0011",
+        "SCI-0012",
+        "SCI-0013",
+        "SCI-0014",
+        "SCI-0015",
+        "SCI-0016",
+        "SCI-0017",
+        "SCI-0018",
+        "SCI-0019",
+        "SCI-0020",
+        "SCI-0021"
+      ],
+      "samples": 4,
+      "event_kinds": {
+        "departure": 5,
+        "arrival": 5,
+        "mission_authorized": 5,
+        "encounter": 3,
+        "mission_completed": 5
+      },
+      "entities": 14,
+      "encounters": {
+        "contacts": 3,
+        "trades": 0,
+        "refusals": 0,
+        "misunderstandings": 1,
+        "cooperations": 0
+      },
+      "interaction_count": 3,
+      "emergencies": {
+        "stranded": 0,
+        "fieldRepairs": 0,
+        "rescueAttempts": 0,
+        "rescued": 0,
+        "failed": 0,
+        "external": 0
+      },
+      "open_incidents": [],
+      "memories": 170,
+      "staged_jobs": 5,
+      "team_sizes": [
+        2
+      ],
+      "chronicle_errors": [],
+      "durable_backend": "indexeddb",
+      "phase42b": {
+        "transit_errors": [],
+        "relationship_errors": [],
+        "social_errors": [],
+        "lift_trips": 2129,
+        "lift_queue": 0,
+        "relationships": {},
+        "private_events": [],
+        "confirmed_adults": 0,
+        "habits": {
+          "Frank Morrow": {
+            "Brew actual coffee": {
+              "completed": 22,
+              "lastAt": 5102
+            },
+            "Eat a meal": {
+              "completed": 19,
+              "lastAt": 51868
+            },
+            "Inspecting completed repair": {
+              "completed": 72,
+              "lastAt": 57321
+            },
+            "Recover energy": {
+              "completed": 47,
+              "lastAt": 56592
+            },
+            "Eating a meal": {
+              "completed": 59,
+              "lastAt": 56684
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 56482
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 56790
+            },
+            "Watching the stars": {
+              "completed": 100,
+              "lastAt": 57087
+            },
+            "Contact liaison / ARC-12": {
+              "completed": 1,
+              "lastAt": 1064
+            },
+            "Servicing reactor controls": {
+              "completed": 52,
+              "lastAt": 57550
+            },
+            "Resting": {
+              "completed": 3,
+              "lastAt": 7890
+            },
+            "Fabricating replacement parts": {
+              "completed": 31,
+              "lastAt": 57389
+            },
+            "Working on equipment": {
+              "completed": 17,
+              "lastAt": 56006
+            },
+            "Frontier mission staging": {
+              "completed": 2,
+              "lastAt": 7636
+            },
+            "Maintaining life support": {
+              "completed": 12,
+              "lastAt": 55943
+            },
+            "Inspecting distribution circuits": {
+              "completed": 17,
+              "lastAt": 57428
+            },
+            "Contact liaison / ARC-68": {
+              "completed": 1,
+              "lastAt": 19593
+            },
+            "Contact liaison / ARC-71": {
+              "completed": 7,
+              "lastAt": 21438
+            },
+            "Following up on a difficult assignment": {
+              "completed": 3,
+              "lastAt": 52413
+            },
+            "Contact liaison / ARC-101": {
+              "completed": 1,
+              "lastAt": 38079
+            },
+            "Following up on a security inspection": {
+              "completed": 2,
+              "lastAt": 52781
+            },
+            "Contact liaison / ARC-120": {
+              "completed": 100,
+              "lastAt": 50733
+            },
+            "Contact liaison / ARC-128": {
+              "completed": 6,
+              "lastAt": 52484
+            }
+          },
+          "Mara Chen": {
+            "Expedition staging": {
+              "completed": 4,
+              "lastAt": 4329
+            },
+            "Eating a meal": {
+              "completed": 78,
+              "lastAt": 57086
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 57579
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 57479
+            },
+            "Inspecting the airlock": {
+              "completed": 74,
+              "lastAt": 56587
+            },
+            "Monitoring surveillance": {
+              "completed": 100,
+              "lastAt": 56633
+            },
+            "Patrolling the bridge": {
+              "completed": 50,
+              "lastAt": 56698
+            },
+            "Reviewing security reports": {
+              "completed": 67,
+              "lastAt": 56392
+            },
+            "Recover energy": {
+              "completed": 56,
+              "lastAt": 57448
+            },
+            "Eat a meal": {
+              "completed": 3,
+              "lastAt": 4459
+            },
+            "Contact liaison / ARC-21": {
+              "completed": 6,
+              "lastAt": 2986
+            },
+            "Frontier mission staging": {
+              "completed": 2,
+              "lastAt": 8173
+            },
+            "Contact liaison / ARC-50": {
+              "completed": 17,
+              "lastAt": 10654
+            },
+            "Following up on a difficult assignment": {
+              "completed": 16,
+              "lastAt": 57545
+            },
+            "Contact liaison / ARC-51": {
+              "completed": 2,
+              "lastAt": 11533
+            },
+            "Contact liaison / ARC-85": {
+              "completed": 36,
+              "lastAt": 29686
+            },
+            "Contact liaison / ARC-87": {
+              "completed": 9,
+              "lastAt": 30108
+            },
+            "Contact liaison / ARC-99": {
+              "completed": 14,
+              "lastAt": 36165
+            },
+            "Contact liaison / ARC-116": {
+              "completed": 17,
+              "lastAt": 46515
+            },
+            "Contact liaison / ARC-126": {
+              "completed": 4,
+              "lastAt": 50984
+            },
+            "Confronting Derek Cole": {
+              "completed": 3,
+              "lastAt": 51042
+            },
+            "Following up on a security inspection": {
+              "completed": 1,
+              "lastAt": 55811
+            },
+            "Confronting Sana Okafor": {
+              "completed": 3,
+              "lastAt": 56967
+            }
+          },
+          "Dr. Voss": {
+            "Analyzing samples": {
+              "completed": 84,
+              "lastAt": 57519
+            },
+            "Eating a meal": {
+              "completed": 70,
+              "lastAt": 57440
+            },
+            "Watching the stars": {
+              "completed": 100,
+              "lastAt": 57362
+            },
+            "Reviewing research": {
+              "completed": 40,
+              "lastAt": 56093
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 57049
+            },
+            "Recover energy": {
+              "completed": 51,
+              "lastAt": 56673
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 57089
+            },
+            "Eat a meal": {
+              "completed": 5,
+              "lastAt": 51831
+            },
+            "Expedition staging": {
+              "completed": 3,
+              "lastAt": 5566
+            },
+            "Running experiments": {
+              "completed": 48,
+              "lastAt": 57262
+            },
+            "Monitoring containment": {
+              "completed": 41,
+              "lastAt": 55780
+            },
+            "Contact liaison / ARC-36": {
+              "completed": 10,
+              "lastAt": 6121
+            },
+            "Contact liaison / ARC-41": {
+              "completed": 100,
+              "lastAt": 10174
+            },
+            "Following up on a difficult assignment": {
+              "completed": 18,
+              "lastAt": 52626
+            },
+            "Contact liaison / ARC-43": {
+              "completed": 12,
+              "lastAt": 10294
+            },
+            "Confronting Sana Okafor": {
+              "completed": 6,
+              "lastAt": 31092
+            },
+            "Contact liaison / ARC-72": {
+              "completed": 10,
+              "lastAt": 21813
+            },
+            "Contact liaison / ARC-75": {
+              "completed": 18,
+              "lastAt": 23359
+            },
+            "Following up on a security inspection": {
+              "completed": 2,
+              "lastAt": 47603
+            },
+            "Contact liaison / ARC-113": {
+              "completed": 22,
+              "lastAt": 44928
+            },
+            "Contact liaison / ARC-142": {
+              "completed": 13,
+              "lastAt": 57597
+            }
+          },
+          "Derek Cole": {
+            "Checking manifests": {
+              "completed": 88,
+              "lastAt": 55865
+            },
+            "Preparing shuttle supplies": {
+              "completed": 91,
+              "lastAt": 55922
+            },
+            "Organizing equipment": {
+              "completed": 100,
+              "lastAt": 56174
+            },
+            "Eating a meal": {
+              "completed": 75,
+              "lastAt": 56084
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 56516
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 56553
+            },
+            "Recover energy": {
+              "completed": 59,
+              "lastAt": 56626
+            },
+            "Taking a quiet break": {
+              "completed": 4,
+              "lastAt": 1577
+            },
+            "Expedition staging": {
+              "completed": 1,
+              "lastAt": 2923
+            },
+            "Contact liaison / ARC-50": {
+              "completed": 5,
+              "lastAt": 10654
+            },
+            "Confronting Tomas Vale": {
+              "completed": 13,
+              "lastAt": 44442
+            },
+            "Confronting Sana Okafor": {
+              "completed": 13,
+              "lastAt": 54193
+            },
+            "Contact liaison / ARC-69": {
+              "completed": 100,
+              "lastAt": 23243
+            },
+            "Eat a meal": {
+              "completed": 2,
+              "lastAt": 57153
+            },
+            "Contact liaison / ARC-76": {
+              "completed": 8,
+              "lastAt": 23386
+            },
+            "Following up on a difficult assignment": {
+              "completed": 3,
+              "lastAt": 44899
+            },
+            "Contact liaison / ARC-87": {
+              "completed": 7,
+              "lastAt": 30074
+            },
+            "Confronting Milo Grant": {
+              "completed": 1,
+              "lastAt": 31153
+            },
+            "Contact liaison / ARC-97": {
+              "completed": 12,
+              "lastAt": 35114
+            },
+            "Contact liaison / ARC-98": {
+              "completed": 1,
+              "lastAt": 35815
+            },
+            "Contact liaison / ARC-105": {
+              "completed": 14,
+              "lastAt": 40503
+            },
+            "Contact liaison / ARC-106": {
+              "completed": 4,
+              "lastAt": 41234
+            },
+            "Contact liaison / ARC-108": {
+              "completed": 12,
+              "lastAt": 41897
+            },
+            "Responding to Mara Chen": {
+              "completed": 3,
+              "lastAt": 51042
+            },
+            "Contact liaison / ARC-137": {
+              "completed": 100,
+              "lastAt": 57586
+            }
+          },
+          "Linda Park": {
+            "Eating a meal": {
+              "completed": 79,
+              "lastAt": 56881
+            },
+            "Processing personnel requests": {
+              "completed": 100,
+              "lastAt": 57543
+            },
+            "Reviewing workplace reports": {
+              "completed": 100,
+              "lastAt": 57393
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 57120
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 57039
+            },
+            "Recover energy": {
+              "completed": 58,
+              "lastAt": 57007
+            },
+            "Expedition staging": {
+              "completed": 1,
+              "lastAt": 1041
+            },
+            "Eat a meal": {
+              "completed": 1,
+              "lastAt": 2993
+            },
+            "Resting": {
+              "completed": 1,
+              "lastAt": 3304
+            },
+            "Following up on a difficult assignment": {
+              "completed": 13,
+              "lastAt": 55431
+            },
+            "Contact liaison / ARC-56": {
+              "completed": 17,
+              "lastAt": 14869
+            },
+            "Contact liaison / ARC-65": {
+              "completed": 13,
+              "lastAt": 18630
+            },
+            "Contact liaison / ARC-77": {
+              "completed": 15,
+              "lastAt": 24109
+            },
+            "Contact liaison / ARC-78": {
+              "completed": 9,
+              "lastAt": 24843
+            },
+            "Following up on a security inspection": {
+              "completed": 2,
+              "lastAt": 37468
+            },
+            "Contact liaison / ARC-84": {
+              "completed": 11,
+              "lastAt": 28920
+            },
+            "Contact liaison / ARC-102": {
+              "completed": 14,
+              "lastAt": 38835
+            },
+            "Contact liaison / ARC-105": {
+              "completed": 4,
+              "lastAt": 40306
+            },
+            "Contact liaison / ARC-125": {
+              "completed": 9,
+              "lastAt": 50550
+            },
+            "Document the disagreement": {
+              "completed": 2,
+              "lastAt": 54743
+            },
+            "Contact liaison / ARC-134": {
+              "completed": 3,
+              "lastAt": 54509
+            },
+            "Contact liaison / ARC-130": {
+              "completed": 8,
+              "lastAt": 55455
+            },
+            "Contact liaison / ARC-133": {
+              "completed": 5,
+              "lastAt": 55579
+            },
+            "Contact liaison / ARC-136": {
+              "completed": 2,
+              "lastAt": 56180
+            }
+          },
+          "Elena Ruiz": {
+            "Reviewing patient records": {
+              "completed": 66,
+              "lastAt": 57312
+            },
+            "Taking a meal break": {
+              "completed": 100,
+              "lastAt": 57532
+            },
+            "Watching the stars": {
+              "completed": 100,
+              "lastAt": 57571
+            },
+            "Checking medical supplies": {
+              "completed": 72,
+              "lastAt": 57332
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 56986
+            },
+            "Contact liaison / ARC-6": {
+              "completed": 6,
+              "lastAt": 618
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 57024
+            },
+            "Recover energy": {
+              "completed": 54,
+              "lastAt": 57190
+            },
+            "Eating a meal": {
+              "completed": 39,
+              "lastAt": 57121
+            },
+            "Contact liaison / ARC-21": {
+              "completed": 10,
+              "lastAt": 2989
+            },
+            "Expedition staging": {
+              "completed": 1,
+              "lastAt": 3738
+            },
+            "Contact liaison / ARC-28": {
+              "completed": 17,
+              "lastAt": 4459
+            },
+            "Following up on a difficult assignment": {
+              "completed": 5,
+              "lastAt": 34020
+            },
+            "Contact liaison / ARC-54": {
+              "completed": 18,
+              "lastAt": 13294
+            },
+            "Contact liaison / ARC-60": {
+              "completed": 11,
+              "lastAt": 17118
+            },
+            "Contact liaison / ARC-61": {
+              "completed": 16,
+              "lastAt": 17254
+            },
+            "Contact liaison / ARC-70": {
+              "completed": 10,
+              "lastAt": 20359
+            },
+            "Contact liaison / ARC-86": {
+              "completed": 37,
+              "lastAt": 29749
+            },
+            "Contact liaison / ARC-89": {
+              "completed": 100,
+              "lastAt": 33974
+            },
+            "Following up on a security inspection": {
+              "completed": 1,
+              "lastAt": 34049
+            },
+            "Contact liaison / ARC-97": {
+              "completed": 21,
+              "lastAt": 35146
+            },
+            "Contact liaison / ARC-104": {
+              "completed": 24,
+              "lastAt": 39826
+            },
+            "Contact liaison / ARC-117": {
+              "completed": 5,
+              "lastAt": 47129
+            },
+            "Contact liaison / ARC-118": {
+              "completed": 9,
+              "lastAt": 47251
+            },
+            "Contact liaison / ARC-132": {
+              "completed": 100,
+              "lastAt": 56395
+            }
+          },
+          "Jules Mercer": {
+            "Watching the stars": {
+              "completed": 100,
+              "lastAt": 57428
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 57482
+            },
+            "Eating a meal": {
+              "completed": 62,
+              "lastAt": 56849
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 57400
+            },
+            "Expedition staging": {
+              "completed": 3,
+              "lastAt": 3738
+            },
+            "Inspecting distribution circuits": {
+              "completed": 30,
+              "lastAt": 52211
+            },
+            "Servicing reactor controls": {
+              "completed": 53,
+              "lastAt": 56507
+            },
+            "Maintaining life support": {
+              "completed": 33,
+              "lastAt": 53735
+            },
+            "Fabricating replacement parts": {
+              "completed": 24,
+              "lastAt": 53549
+            },
+            "Recover energy": {
+              "completed": 53,
+              "lastAt": 57362
+            },
+            "Eat a meal": {
+              "completed": 14,
+              "lastAt": 47511
+            },
+            "Working on equipment": {
+              "completed": 31,
+              "lastAt": 56563
+            },
+            "Frontier mission staging": {
+              "completed": 1,
+              "lastAt": 6101
+            },
+            "Contact liaison / ARC-49": {
+              "completed": 11,
+              "lastAt": 10575
+            },
+            "Contact liaison / ARC-52": {
+              "completed": 14,
+              "lastAt": 12376
+            },
+            "Contact liaison / ARC-53": {
+              "completed": 1,
+              "lastAt": 12629
+            },
+            "Following up on a difficult assignment": {
+              "completed": 6,
+              "lastAt": 47566
+            },
+            "Following up on a security inspection": {
+              "completed": 2,
+              "lastAt": 34761
+            },
+            "Contact liaison / ARC-71": {
+              "completed": 10,
+              "lastAt": 21438
+            },
+            "Contact liaison / ARC-83": {
+              "completed": 9,
+              "lastAt": 28294
+            },
+            "Contact liaison / ARC-90": {
+              "completed": 2,
+              "lastAt": 31021
+            },
+            "Contact liaison / ARC-99": {
+              "completed": 12,
+              "lastAt": 36168
+            },
+            "Contact liaison / ARC-115": {
+              "completed": 2,
+              "lastAt": 45715
+            },
+            "Contact liaison / ARC-127": {
+              "completed": 9,
+              "lastAt": 51394
+            }
+          },
+          "Nadia Kline": {
+            "Expedition staging": {
+              "completed": 3,
+              "lastAt": 4555
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 57584
+            },
+            "Eating a meal": {
+              "completed": 72,
+              "lastAt": 57381
+            },
+            "Analyzing samples": {
+              "completed": 62,
+              "lastAt": 56584
+            },
+            "Reviewing research": {
+              "completed": 100,
+              "lastAt": 56394
+            },
+            "Monitoring containment": {
+              "completed": 49,
+              "lastAt": 56310
+            },
+            "Recover energy": {
+              "completed": 55,
+              "lastAt": 57058
+            },
+            "Eat a meal": {
+              "completed": 8,
+              "lastAt": 54938
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 57514
+            },
+            "Running experiments": {
+              "completed": 36,
+              "lastAt": 56465
+            },
+            "Contact liaison / ARC-36": {
+              "completed": 2,
+              "lastAt": 6167
+            },
+            "Frontier mission staging": {
+              "completed": 1,
+              "lastAt": 7136
+            },
+            "Following up on a difficult assignment": {
+              "completed": 9,
+              "lastAt": 55881
+            },
+            "Contact liaison / ARC-68": {
+              "completed": 10,
+              "lastAt": 19589
+            },
+            "Contact liaison / ARC-81": {
+              "completed": 15,
+              "lastAt": 26475
+            },
+            "Following up on a security inspection": {
+              "completed": 2,
+              "lastAt": 51807
+            },
+            "Contact liaison / ARC-100": {
+              "completed": 11,
+              "lastAt": 37367
+            },
+            "Contact liaison / ARC-102": {
+              "completed": 10,
+              "lastAt": 38838
+            },
+            "Contact liaison / ARC-110": {
+              "completed": 1,
+              "lastAt": 43394
+            },
+            "Contact liaison / ARC-129": {
+              "completed": 100,
+              "lastAt": 55159
+            },
+            "Contact liaison / ARC-130": {
+              "completed": 4,
+              "lastAt": 55459
+            },
+            "Contact liaison / ARC-133": {
+              "completed": 13,
+              "lastAt": 55576
+            }
+          },
+          "Owen Briggs": {
+            "Eating a meal": {
+              "completed": 76,
+              "lastAt": 57456
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 57531
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 57573
+            },
+            "Recover energy": {
+              "completed": 50,
+              "lastAt": 56827
+            },
+            "Patrolling the bridge": {
+              "completed": 59,
+              "lastAt": 55699
+            },
+            "Monitoring surveillance": {
+              "completed": 100,
+              "lastAt": 57080
+            },
+            "Reviewing security reports": {
+              "completed": 47,
+              "lastAt": 57127
+            },
+            "Contact liaison / ARC-15": {
+              "completed": 12,
+              "lastAt": 1967
+            },
+            "Contact liaison / ARC-16": {
+              "completed": 7,
+              "lastAt": 2088
+            },
+            "Inspecting the airlock": {
+              "completed": 51,
+              "lastAt": 57029
+            },
+            "Following up on a difficult assignment": {
+              "completed": 12,
+              "lastAt": 56461
+            },
+            "Expedition staging": {
+              "completed": 1,
+              "lastAt": 5155
+            },
+            "Eat a meal": {
+              "completed": 2,
+              "lastAt": 34474
+            },
+            "Contact liaison / ARC-44": {
+              "completed": 1,
+              "lastAt": 9014
+            },
+            "Contact liaison / ARC-49": {
+              "completed": 11,
+              "lastAt": 10579
+            },
+            "Contact liaison / ARC-52": {
+              "completed": 12,
+              "lastAt": 12378
+            },
+            "Contact liaison / ARC-55": {
+              "completed": 3,
+              "lastAt": 14269
+            },
+            "Contact liaison / ARC-61": {
+              "completed": 1,
+              "lastAt": 17204
+            },
+            "Contact liaison / ARC-79": {
+              "completed": 6,
+              "lastAt": 25744
+            },
+            "Contact liaison / ARC-80": {
+              "completed": 8,
+              "lastAt": 26104
+            },
+            "Contact liaison / ARC-84": {
+              "completed": 5,
+              "lastAt": 28921
+            },
+            "Fatigue recovery": {
+              "completed": 2,
+              "lastAt": 34385
+            },
+            "Resting": {
+              "completed": 3,
+              "lastAt": 34826
+            },
+            "Contact liaison / ARC-108": {
+              "completed": 14,
+              "lastAt": 41899
+            },
+            "Contact liaison / ARC-135": {
+              "completed": 11,
+              "lastAt": 55354
+            }
+          },
+          "Priya Shah": {
+            "Eating a meal": {
+              "completed": 77,
+              "lastAt": 56992
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 57477
+            },
+            "Contact liaison / ARC-1": {
+              "completed": 13,
+              "lastAt": 243
+            },
+            "Expedition staging": {
+              "completed": 5,
+              "lastAt": 5155
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 57557
+            },
+            "Recover energy": {
+              "completed": 54,
+              "lastAt": 57422
+            },
+            "Running experiments": {
+              "completed": 48,
+              "lastAt": 57076
+            },
+            "Monitoring containment": {
+              "completed": 84,
+              "lastAt": 56836
+            },
+            "Reviewing research": {
+              "completed": 56,
+              "lastAt": 56729
+            },
+            "Eat a meal": {
+              "completed": 3,
+              "lastAt": 6700
+            },
+            "Contact liaison / ARC-16": {
+              "completed": 1,
+              "lastAt": 2117
+            },
+            "Following up on a difficult assignment": {
+              "completed": 15,
+              "lastAt": 57298
+            },
+            "Analyzing samples": {
+              "completed": 67,
+              "lastAt": 56904
+            },
+            "Frontier mission staging": {
+              "completed": 2,
+              "lastAt": 7636
+            },
+            "Contact liaison / ARC-58": {
+              "completed": 14,
+              "lastAt": 15708
+            },
+            "Following up on a security inspection": {
+              "completed": 3,
+              "lastAt": 54824
+            },
+            "Contact liaison / ARC-75": {
+              "completed": 11,
+              "lastAt": 23356
+            },
+            "Contact liaison / ARC-103": {
+              "completed": 16,
+              "lastAt": 39630
+            },
+            "Contact liaison / ARC-107": {
+              "completed": 26,
+              "lastAt": 41685
+            },
+            "Contact liaison / ARC-110": {
+              "completed": 2,
+              "lastAt": 43517
+            },
+            "Contact liaison / ARC-131": {
+              "completed": 30,
+              "lastAt": 53384
+            },
+            "Contact liaison / ARC-136": {
+              "completed": 1,
+              "lastAt": 56132
+            },
+            "Contact liaison / ARC-141": {
+              "completed": 33,
+              "lastAt": 57513
+            }
+          },
+          "Tomas Vale": {
+            "Inspecting distribution circuits": {
+              "completed": 62,
+              "lastAt": 57546
+            },
+            "Working on equipment": {
+              "completed": 24,
+              "lastAt": 55875
+            },
+            "Eating a meal": {
+              "completed": 66,
+              "lastAt": 57027
+            },
+            "Servicing reactor controls": {
+              "completed": 27,
+              "lastAt": 54767
+            },
+            "Inspecting completed repair": {
+              "completed": 73,
+              "lastAt": 57489
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 56898
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 56941
+            },
+            "Recover energy": {
+              "completed": 51,
+              "lastAt": 57260
+            },
+            "Maintaining life support": {
+              "completed": 20,
+              "lastAt": 54437
+            },
+            "Fabricating replacement parts": {
+              "completed": 35,
+              "lastAt": 55974
+            },
+            "Eat a meal": {
+              "completed": 13,
+              "lastAt": 51972
+            },
+            "Contact liaison / ARC-31": {
+              "completed": 4,
+              "lastAt": 5218
+            },
+            "Expedition staging": {
+              "completed": 1,
+              "lastAt": 5566
+            },
+            "Contact liaison / ARC-44": {
+              "completed": 1,
+              "lastAt": 9063
+            },
+            "Contact liaison / ARC-48": {
+              "completed": 17,
+              "lastAt": 10079
+            },
+            "Responding to Derek Cole": {
+              "completed": 13,
+              "lastAt": 44442
+            },
+            "Following up on a difficult assignment": {
+              "completed": 7,
+              "lastAt": 52503
+            },
+            "Following up on a security inspection": {
+              "completed": 2,
+              "lastAt": 52656
+            },
+            "Contact liaison / ARC-116": {
+              "completed": 10,
+              "lastAt": 46518
+            }
+          },
+          "Rhea Ortiz": {
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 57297
+            },
+            "Watching the stars": {
+              "completed": 100,
+              "lastAt": 57586
+            },
+            "Eating a meal": {
+              "completed": 43,
+              "lastAt": 57423
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 57482
+            },
+            "Following up on a difficult assignment": {
+              "completed": 13,
+              "lastAt": 57443
+            },
+            "Recover energy": {
+              "completed": 58,
+              "lastAt": 57208
+            },
+            "Reviewing patient records": {
+              "completed": 100,
+              "lastAt": 56913
+            },
+            "Taking a meal break": {
+              "completed": 73,
+              "lastAt": 56736
+            },
+            "Checking medical supplies": {
+              "completed": 71,
+              "lastAt": 56574
+            },
+            "Following up on a security inspection": {
+              "completed": 5,
+              "lastAt": 34394
+            },
+            "Contact liaison / ARC-38": {
+              "completed": 100,
+              "lastAt": 10051
+            },
+            "Contact liaison / ARC-43": {
+              "completed": 3,
+              "lastAt": 10214
+            },
+            "Contact liaison / ARC-59": {
+              "completed": 11,
+              "lastAt": 16530
+            },
+            "Contact liaison / ARC-67": {
+              "completed": 2,
+              "lastAt": 18949
+            },
+            "Contact liaison / ARC-73": {
+              "completed": 3,
+              "lastAt": 22304
+            },
+            "Contact liaison / ARC-74": {
+              "completed": 6,
+              "lastAt": 22696
+            },
+            "Contact liaison / ARC-77": {
+              "completed": 15,
+              "lastAt": 24109
+            },
+            "Contact liaison / ARC-79": {
+              "completed": 9,
+              "lastAt": 25741
+            },
+            "Contact liaison / ARC-88": {
+              "completed": 1,
+              "lastAt": 30704
+            },
+            "Contact liaison / ARC-94": {
+              "completed": 16,
+              "lastAt": 33903
+            },
+            "Contact liaison / ARC-95": {
+              "completed": 10,
+              "lastAt": 34246
+            }
+          },
+          "Milo Grant": {
+            "Eating a meal": {
+              "completed": 79,
+              "lastAt": 57254
+            },
+            "Watching the stars": {
+              "completed": 100,
+              "lastAt": 57512
+            },
+            "Contact liaison / ARC-1": {
+              "completed": 14,
+              "lastAt": 240
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 57560
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 57401
+            },
+            "Checking shuttle readiness": {
+              "completed": 66,
+              "lastAt": 56280
+            },
+            "Reviewing waste processing": {
+              "completed": 100,
+              "lastAt": 56647
+            },
+            "Recover energy": {
+              "completed": 56,
+              "lastAt": 57475
+            },
+            "Inspecting cargo": {
+              "completed": 63,
+              "lastAt": 56478
+            },
+            "Following up on a security inspection": {
+              "completed": 3,
+              "lastAt": 31916
+            },
+            "Following up on a difficult assignment": {
+              "completed": 15,
+              "lastAt": 54155
+            },
+            "Contact liaison / ARC-82": {
+              "completed": 14,
+              "lastAt": 27394
+            },
+            "Responding to Derek Cole": {
+              "completed": 1,
+              "lastAt": 31153
+            },
+            "Eat a meal": {
+              "completed": 2,
+              "lastAt": 50962
+            },
+            "Contact liaison / ARC-112": {
+              "completed": 18,
+              "lastAt": 44164
+            },
+            "Contact liaison / ARC-124": {
+              "completed": 14,
+              "lastAt": 49713
+            },
+            "Contact liaison / ARC-125": {
+              "completed": 14,
+              "lastAt": 50553
+            }
+          },
+          "Sana Okafor": {
+            "Eating a meal": {
+              "completed": 75,
+              "lastAt": 57124
+            },
+            "Analyzing samples": {
+              "completed": 60,
+              "lastAt": 57471
+            },
+            "Monitoring containment": {
+              "completed": 76,
+              "lastAt": 57546
+            },
+            "Running experiments": {
+              "completed": 41,
+              "lastAt": 53168
+            },
+            "Watching the stars": {
+              "completed": 100,
+              "lastAt": 57404
+            },
+            "Reviewing research": {
+              "completed": 63,
+              "lastAt": 57597
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 56917
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 56815
+            },
+            "Recover energy": {
+              "completed": 50,
+              "lastAt": 57039
+            },
+            "Expedition staging": {
+              "completed": 1,
+              "lastAt": 1041
+            },
+            "Eat a meal": {
+              "completed": 2,
+              "lastAt": 9728
+            },
+            "Resting": {
+              "completed": 3,
+              "lastAt": 4750
+            },
+            "Responding to Derek Cole": {
+              "completed": 13,
+              "lastAt": 54193
+            },
+            "Responding to Dr. Voss": {
+              "completed": 6,
+              "lastAt": 31092
+            },
+            "Confronting Ari Novak": {
+              "completed": 9,
+              "lastAt": 42267
+            },
+            "Contact liaison / ARC-91": {
+              "completed": 17,
+              "lastAt": 31726
+            },
+            "Confronting Caleb Stone": {
+              "completed": 10,
+              "lastAt": 55628
+            },
+            "Contact liaison / ARC-109": {
+              "completed": 1,
+              "lastAt": 42665
+            },
+            "Contact liaison / ARC-112": {
+              "completed": 4,
+              "lastAt": 44144
+            },
+            "Confronting June Adler": {
+              "completed": 4,
+              "lastAt": 45728
+            },
+            "Contact liaison / ARC-118": {
+              "completed": 10,
+              "lastAt": 47258
+            },
+            "Contact liaison / ARC-121": {
+              "completed": 4,
+              "lastAt": 48288
+            },
+            "Contact liaison / ARC-127": {
+              "completed": 6,
+              "lastAt": 51394
+            },
+            "Responding to Mara Chen": {
+              "completed": 4,
+              "lastAt": 56978
+            }
+          },
+          "Iris Bell": {
+            "Following up on a difficult assignment": {
+              "completed": 18,
+              "lastAt": 54669
+            },
+            "Monitoring communications": {
+              "completed": 100,
+              "lastAt": 57539
+            },
+            "Reviewing transmissions": {
+              "completed": 100,
+              "lastAt": 57380
+            },
+            "Recover energy": {
+              "completed": 63,
+              "lastAt": 56792
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 57045
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 57080
+            },
+            "Eating a meal": {
+              "completed": 80,
+              "lastAt": 56886
+            },
+            "Contact liaison / ARC-28": {
+              "completed": 8,
+              "lastAt": 4459
+            },
+            "Contact liaison / ARC-59": {
+              "completed": 15,
+              "lastAt": 16531
+            },
+            "Following up on a security inspection": {
+              "completed": 2,
+              "lastAt": 54857
+            },
+            "Contact liaison / ARC-91": {
+              "completed": 16,
+              "lastAt": 31728
+            },
+            "Contact liaison / ARC-93": {
+              "completed": 17,
+              "lastAt": 33063
+            },
+            "Contact liaison / ARC-94": {
+              "completed": 10,
+              "lastAt": 33903
+            },
+            "Contact liaison / ARC-95": {
+              "completed": 2,
+              "lastAt": 34037
+            },
+            "Contact liaison / ARC-96": {
+              "completed": 16,
+              "lastAt": 34651
+            },
+            "Taking a quiet break": {
+              "completed": 5,
+              "lastAt": 42897
+            },
+            "Contact liaison / ARC-114": {
+              "completed": 8,
+              "lastAt": 45018
+            },
+            "Contact liaison / ARC-134": {
+              "completed": 1,
+              "lastAt": 54524
+            },
+            "Contact liaison / ARC-141": {
+              "completed": 39,
+              "lastAt": 57513
+            }
+          },
+          "Caleb Stone": {
+            "Eating a meal": {
+              "completed": 78,
+              "lastAt": 57101
+            },
+            "Monitoring surveillance": {
+              "completed": 100,
+              "lastAt": 57455
+            },
+            "Inspecting the airlock": {
+              "completed": 53,
+              "lastAt": 57258
+            },
+            "Watching the stars": {
+              "completed": 100,
+              "lastAt": 57593
+            },
+            "Reviewing security reports": {
+              "completed": 63,
+              "lastAt": 57407
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 56857
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 57149
+            },
+            "Recover energy": {
+              "completed": 55,
+              "lastAt": 57348
+            },
+            "Patrolling the bridge": {
+              "completed": 58,
+              "lastAt": 57558
+            },
+            "Following up on a difficult assignment": {
+              "completed": 11,
+              "lastAt": 54270
+            },
+            "Expedition staging": {
+              "completed": 1,
+              "lastAt": 2641
+            },
+            "Contact liaison / ARC-34": {
+              "completed": 100,
+              "lastAt": 8734
+            },
+            "Contact liaison / ARC-70": {
+              "completed": 14,
+              "lastAt": 20356
+            },
+            "Contact liaison / ARC-72": {
+              "completed": 14,
+              "lastAt": 21810
+            },
+            "Contact liaison / ARC-83": {
+              "completed": 6,
+              "lastAt": 28291
+            },
+            "Responding to Sana Okafor": {
+              "completed": 9,
+              "lastAt": 55617
+            },
+            "Following up on a security inspection": {
+              "completed": 1,
+              "lastAt": 33991
+            },
+            "Contact liaison / ARC-100": {
+              "completed": 16,
+              "lastAt": 37366
+            },
+            "Contact liaison / ARC-109": {
+              "completed": 1,
+              "lastAt": 42650
+            },
+            "Contact liaison / ARC-115": {
+              "completed": 2,
+              "lastAt": 45708
+            },
+            "Contact liaison / ARC-128": {
+              "completed": 3,
+              "lastAt": 52489
+            },
+            "Contact liaison / ARC-140": {
+              "completed": 13,
+              "lastAt": 57004
+            }
+          },
+          "Yara Finch": {
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 57445
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 57555
+            },
+            "Eating a meal": {
+              "completed": 81,
+              "lastAt": 57334
+            },
+            "Watching the stars": {
+              "completed": 100,
+              "lastAt": 56802
+            },
+            "Taking a quiet break": {
+              "completed": 3,
+              "lastAt": 1596
+            },
+            "Recover energy": {
+              "completed": 53,
+              "lastAt": 56621
+            },
+            "Checking shuttle readiness": {
+              "completed": 56,
+              "lastAt": 57100
+            },
+            "Reviewing waste processing": {
+              "completed": 100,
+              "lastAt": 56856
+            },
+            "Inspecting cargo": {
+              "completed": 65,
+              "lastAt": 57135
+            },
+            "Expedition staging": {
+              "completed": 1,
+              "lastAt": 2164
+            },
+            "Contact liaison / ARC-25": {
+              "completed": 17,
+              "lastAt": 3678
+            },
+            "Contact liaison / ARC-31": {
+              "completed": 1,
+              "lastAt": 5263
+            },
+            "Contact liaison / ARC-39": {
+              "completed": 4,
+              "lastAt": 6974
+            },
+            "Contact liaison / ARC-63": {
+              "completed": 10,
+              "lastAt": 17914
+            },
+            "Following up on a difficult assignment": {
+              "completed": 12,
+              "lastAt": 57240
+            },
+            "Contact liaison / ARC-73": {
+              "completed": 18,
+              "lastAt": 22579
+            },
+            "Contact liaison / ARC-92": {
+              "completed": 29,
+              "lastAt": 32026
+            },
+            "Following up on a security inspection": {
+              "completed": 3,
+              "lastAt": 49741
+            },
+            "Contact liaison / ARC-123": {
+              "completed": 7,
+              "lastAt": 48900
+            },
+            "Contact liaison / ARC-124": {
+              "completed": 11,
+              "lastAt": 49713
+            },
+            "Contact liaison / ARC-139": {
+              "completed": 32,
+              "lastAt": 57048
+            }
+          },
+          "Theo Moss": {
+            "Eating a meal": {
+              "completed": 73,
+              "lastAt": 57424
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 57564
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 57174
+            },
+            "Recover energy": {
+              "completed": 51,
+              "lastAt": 57338
+            },
+            "Watching the stars": {
+              "completed": 100,
+              "lastAt": 57534
+            },
+            "Inspecting distribution circuits": {
+              "completed": 33,
+              "lastAt": 56711
+            },
+            "Expedition staging": {
+              "completed": 2,
+              "lastAt": 4555
+            },
+            "Fabricating replacement parts": {
+              "completed": 15,
+              "lastAt": 57049
+            },
+            "Eat a meal": {
+              "completed": 7,
+              "lastAt": 46733
+            },
+            "Working on equipment": {
+              "completed": 31,
+              "lastAt": 56767
+            },
+            "Maintaining life support": {
+              "completed": 26,
+              "lastAt": 54013
+            },
+            "Contact liaison / ARC-25": {
+              "completed": 18,
+              "lastAt": 3678
+            },
+            "Servicing reactor controls": {
+              "completed": 55,
+              "lastAt": 57119
+            },
+            "Frontier mission staging": {
+              "completed": 2,
+              "lastAt": 8173
+            },
+            "Contact liaison / ARC-51": {
+              "completed": 10,
+              "lastAt": 11523
+            },
+            "Contact liaison / ARC-55": {
+              "completed": 5,
+              "lastAt": 14040
+            },
+            "Contact liaison / ARC-66": {
+              "completed": 3,
+              "lastAt": 18837
+            },
+            "Following up on a difficult assignment": {
+              "completed": 7,
+              "lastAt": 54350
+            },
+            "Contact liaison / ARC-78": {
+              "completed": 7,
+              "lastAt": 24840
+            },
+            "Contact liaison / ARC-101": {
+              "completed": 12,
+              "lastAt": 38040
+            },
+            "Contact liaison / ARC-111": {
+              "completed": 6,
+              "lastAt": 43784
+            }
+          },
+          "June Adler": {
+            "Eating a meal": {
+              "completed": 76,
+              "lastAt": 57199
+            },
+            "Reviewing ship operations": {
+              "completed": 100,
+              "lastAt": 57588
+            },
+            "Meeting with personnel": {
+              "completed": 75,
+              "lastAt": 57409
+            },
+            "Contact liaison / ARC-3": {
+              "completed": 1,
+              "lastAt": 519
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 57061
+            },
+            "Contact liaison / ARC-6": {
+              "completed": 3,
+              "lastAt": 584
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 57113
+            },
+            "Contact liaison / ARC-8": {
+              "completed": 100,
+              "lastAt": 3768
+            },
+            "Recover energy": {
+              "completed": 52,
+              "lastAt": 56859
+            },
+            "Eat a meal": {
+              "completed": 4,
+              "lastAt": 54874
+            },
+            "Contact liaison / ARC-29": {
+              "completed": 24,
+              "lastAt": 5026
+            },
+            "Contact liaison / ARC-39": {
+              "completed": 2,
+              "lastAt": 7015
+            },
+            "Contact liaison / ARC-42": {
+              "completed": 3,
+              "lastAt": 7615
+            },
+            "Contact liaison / ARC-47": {
+              "completed": 7,
+              "lastAt": 10081
+            },
+            "Contact liaison / ARC-54": {
+              "completed": 10,
+              "lastAt": 13294
+            },
+            "Contact liaison / ARC-56": {
+              "completed": 1,
+              "lastAt": 14882
+            },
+            "Contact liaison / ARC-60": {
+              "completed": 4,
+              "lastAt": 17084
+            },
+            "Contact liaison / ARC-62": {
+              "completed": 10,
+              "lastAt": 17869
+            },
+            "Contact liaison / ARC-74": {
+              "completed": 1,
+              "lastAt": 22730
+            },
+            "Contact liaison / ARC-80": {
+              "completed": 7,
+              "lastAt": 26104
+            },
+            "Contact liaison / ARC-81": {
+              "completed": 15,
+              "lastAt": 26479
+            },
+            "Contact liaison / ARC-82": {
+              "completed": 14,
+              "lastAt": 27391
+            },
+            "Contact liaison / ARC-88": {
+              "completed": 10,
+              "lastAt": 30736
+            },
+            "Following up on a difficult assignment": {
+              "completed": 6,
+              "lastAt": 52370
+            },
+            "Following up on a security inspection": {
+              "completed": 1,
+              "lastAt": 38888
+            },
+            "Contact liaison / ARC-103": {
+              "completed": 4,
+              "lastAt": 39599
+            },
+            "Contact liaison / ARC-114": {
+              "completed": 5,
+              "lastAt": 45018
+            },
+            "Responding to Sana Okafor": {
+              "completed": 3,
+              "lastAt": 45717
+            },
+            "Contact liaison / ARC-123": {
+              "completed": 4,
+              "lastAt": 48904
+            },
+            "Contact liaison / ARC-132": {
+              "completed": 100,
+              "lastAt": 56356
+            }
+          },
+          "Ari Novak": {
+            "Checking shuttle readiness": {
+              "completed": 75,
+              "lastAt": 57473
+            },
+            "Eating a meal": {
+              "completed": 81,
+              "lastAt": 56863
+            },
+            "Reviewing waste processing": {
+              "completed": 66,
+              "lastAt": 57389
+            },
+            "Inspecting cargo": {
+              "completed": 100,
+              "lastAt": 57437
+            },
+            "Watching the stars": {
+              "completed": 100,
+              "lastAt": 57146
+            },
+            "Resting off shift": {
+              "completed": 100,
+              "lastAt": 56943
+            },
+            "Taking a recreation break": {
+              "completed": 100,
+              "lastAt": 57101
+            },
+            "Recover energy": {
+              "completed": 57,
+              "lastAt": 57563
+            },
+            "Contact liaison / ARC-12": {
+              "completed": 16,
+              "lastAt": 1139
+            },
+            "Contact liaison / ARC-47": {
+              "completed": 3,
+              "lastAt": 9844
+            },
+            "Following up on a difficult assignment": {
+              "completed": 10,
+              "lastAt": 57081
+            },
+            "Contact liaison / ARC-58": {
+              "completed": 13,
+              "lastAt": 15709
+            },
+            "Contact liaison / ARC-63": {
+              "completed": 5,
+              "lastAt": 17910
+            },
+            "Contact liaison / ARC-65": {
+              "completed": 6,
+              "lastAt": 18599
+            },
+            "Responding to Sana Okafor": {
+              "completed": 9,
+              "lastAt": 42267
+            },
+            "Contact liaison / ARC-90": {
+              "completed": 2,
+              "lastAt": 31035
+            },
+            "Contact liaison / ARC-96": {
+              "completed": 6,
+              "lastAt": 34650
+            },
+            "Contact liaison / ARC-104": {
+              "completed": 23,
+              "lastAt": 39825
+            },
+            "Contact liaison / ARC-106": {
+              "completed": 7,
+              "lastAt": 41268
+            },
+            "Contact liaison / ARC-107": {
+              "completed": 22,
+              "lastAt": 41686
+            },
+            "Contact liaison / ARC-121": {
+              "completed": 5,
+              "lastAt": 48269
+            },
+            "Contact liaison / ARC-140": {
+              "completed": 10,
+              "lastAt": 57003
+            }
+          }
+        }
+      },
+      "phase43": {
+        "systems_errors": [],
+        "gravity_errors": [],
+        "systems": {
+          "version": 1,
+          "installedAt": 0,
+          "lastTick": 57600,
+          "components": {
+            "GRAVITY-CORE": {
+              "id": "GRAVITY-CORE",
+              "name": "Artificial-gravity generator",
+              "room": "C07",
+              "health": 79.2092139251701,
+              "kind": "gravity",
+              "wear": 2402.063999997466,
+              "history": [
+                {
+                  "at": 32596,
+                  "engineer": "Tomas Vale",
+                  "condition": 86.1327820750952,
+                  "reason": "Paid repair and powered post-repair test complete",
+                  "sourceId": "CHR-1-V1j54z2l-11335"
+                },
+                {
+                  "at": 50108,
+                  "engineer": "Tomas Vale",
+                  "condition": 86.17677392514588,
+                  "reason": "Paid repair and powered post-repair test complete",
+                  "sourceId": "CHR-1-V1j54z2l-17116"
+                }
+              ],
+              "serviceIsolated": false,
+              "availablePower": 1,
+              "load": 0.04200000000000001,
+              "status": "operational",
+              "diagnosticFactId": "FACT-6956"
+            },
+            "CIRCUIT-habitation": {
+              "id": "CIRCUIT-habitation",
+              "name": "Habitation distribution circuit",
+              "room": "A02",
+              "health": 95.39200000017445,
+              "kind": "circuit",
+              "zone": "habitation",
+              "wear": 4.608000000000107,
+              "history": [],
+              "serviceIsolated": false,
+              "availablePower": 1,
+              "load": 0.005,
+              "status": "operational"
+            },
+            "CIRCUIT-medical": {
+              "id": "CIRCUIT-medical",
+              "name": "Medical distribution circuit",
+              "room": "A08",
+              "health": 95.39200000017445,
+              "kind": "circuit",
+              "zone": "medical",
+              "wear": 4.608000000000107,
+              "history": [],
+              "serviceIsolated": false,
+              "availablePower": 1,
+              "load": 0.005,
+              "status": "operational"
+            },
+            "CIRCUIT-science": {
+              "id": "CIRCUIT-science",
+              "name": "Science distribution circuit",
+              "room": "B08",
+              "health": 95.39200000017445,
+              "kind": "circuit",
+              "zone": "science",
+              "wear": 4.608000000000107,
+              "history": [],
+              "serviceIsolated": false,
+              "availablePower": 1,
+              "load": 0.005,
+              "status": "operational"
+            },
+            "CIRCUIT-cargo": {
+              "id": "CIRCUIT-cargo",
+              "name": "Cargo / storage distribution circuit",
+              "room": "C04",
+              "health": 95.39200000017445,
+              "kind": "circuit",
+              "zone": "cargo",
+              "wear": 4.608000000000107,
+              "history": [],
+              "serviceIsolated": false,
+              "availablePower": 1,
+              "load": 0.005,
+              "status": "operational"
+            },
+            "CIRCUIT-hangar": {
+              "id": "CIRCUIT-hangar",
+              "name": "Hangar / airlock distribution circuit",
+              "room": "C02",
+              "health": 95.39200000017445,
+              "kind": "circuit",
+              "zone": "hangar",
+              "wear": 4.608000000000107,
+              "history": [],
+              "serviceIsolated": false,
+              "availablePower": 1,
+              "load": 0.005,
+              "status": "operational"
+            },
+            "CIRCUIT-engineering": {
+              "id": "CIRCUIT-engineering",
+              "name": "Engineering / lift distribution circuit",
+              "room": "C07",
+              "health": 95.39200000017445,
+              "kind": "circuit",
+              "zone": "engineering",
+              "wear": 4.608000000000107,
+              "history": [],
+              "serviceIsolated": false,
+              "availablePower": 1,
+              "load": 0.005,
+              "status": "operational"
+            }
+          },
+          "zones": {
+            "habitation": {
+              "id": "habitation",
+              "name": "Habitation",
+              "rooms": [
+                "A01",
+                "A02",
+                "A03",
+                "A04",
+                "A05",
+                "A06",
+                "A07",
+                "A09",
+                "A10"
+              ],
+              "targetG": 1,
+              "g": 1,
+              "previousG": 1,
+              "power": 1,
+              "ramp": 0.05,
+              "gravityIsolated": false,
+              "circuitIsolated": false,
+              "authority": "Authorized operators / crew / equipment safeguards",
+              "faults": []
+            },
+            "medical": {
+              "id": "medical",
+              "name": "Medical",
+              "rooms": [
+                "A08"
+              ],
+              "targetG": 1,
+              "g": 1,
+              "previousG": 1,
+              "power": 1,
+              "ramp": 0.05,
+              "gravityIsolated": false,
+              "circuitIsolated": false,
+              "authority": "Authorized operators / crew / equipment safeguards",
+              "faults": []
+            },
+            "science": {
+              "id": "science",
+              "name": "Science",
+              "rooms": [
+                "B01",
+                "B02",
+                "B03",
+                "B04",
+                "B05",
+                "B06",
+                "B07",
+                "B08",
+                "B09",
+                "B10"
+              ],
+              "targetG": 1,
+              "g": 1,
+              "previousG": 1,
+              "power": 1,
+              "ramp": 0.05,
+              "gravityIsolated": false,
+              "circuitIsolated": false,
+              "authority": "Authorized operators / crew / equipment safeguards",
+              "faults": []
+            },
+            "cargo": {
+              "id": "cargo",
+              "name": "Cargo / storage",
+              "rooms": [
+                "C03",
+                "C04",
+                "C10"
+              ],
+              "targetG": 1,
+              "g": 1,
+              "previousG": 1,
+              "power": 1,
+              "ramp": 0.05,
+              "gravityIsolated": false,
+              "circuitIsolated": false,
+              "authority": "Authorized operators / crew / equipment safeguards",
+              "faults": []
+            },
+            "hangar": {
+              "id": "hangar",
+              "name": "Hangar / airlock",
+              "rooms": [
+                "C01",
+                "C02"
+              ],
+              "targetG": 1,
+              "g": 1,
+              "previousG": 1,
+              "power": 1,
+              "ramp": 0.05,
+              "gravityIsolated": false,
+              "circuitIsolated": false,
+              "authority": "Authorized operators / crew / equipment safeguards",
+              "faults": []
+            },
+            "engineering": {
+              "id": "engineering",
+              "name": "Engineering / lift",
+              "rooms": [
+                "C05",
+                "C06",
+                "C07",
+                "C08",
+                "C09"
+              ],
+              "targetG": 1,
+              "g": 1,
+              "previousG": 1,
+              "power": 1,
+              "ramp": 0.05,
+              "gravityIsolated": false,
+              "circuitIsolated": false,
+              "authority": "Authorized operators / crew / equipment safeguards",
+              "faults": []
+            }
+          },
+          "history": [
+            {
+              "at": 32259,
+              "kind": "maintenance",
+              "message": "Artificial-gravity generator condition 70.0%; physical inspection requested.",
+              "component": "GRAVITY-CORE",
+              "room": "C07",
+              "health": 69.9991300001043,
+              "sourceId": "CHR-1-V1j54z2l-11237"
+            },
+            {
+              "at": 49944,
+              "kind": "maintenance",
+              "message": "Artificial-gravity generator condition 70.0%; physical inspection requested.",
+              "component": "GRAVITY-CORE",
+              "room": "C07",
+              "health": 69.99914207515128,
+              "sourceId": "CHR-1-V1j54z2l-17071"
+            }
+          ],
+          "bus": 1,
+          "load": 0.04200000000000001,
+          "source": "Installed baseline gravity hardware; existing electrical generation/distribution and finite stores retained",
+          "lastMeasurement": {
+            "version": 1,
+            "tick": 57600,
+            "bus": 1,
+            "load": 0.04200000000000001,
+            "components": [
+              {
+                "id": "GRAVITY-CORE",
+                "name": "Artificial-gravity generator",
+                "room": "C07",
+                "health": 79.2092139251701,
+                "status": "operational",
+                "power": 1,
+                "serviceIsolated": false,
+                "source": "Persistent installed gravity/circuit component"
+              },
+              {
+                "id": "CIRCUIT-habitation",
+                "name": "Habitation distribution circuit",
+                "room": "A02",
+                "health": 95.39200000017445,
+                "status": "operational",
+                "power": 1,
+                "serviceIsolated": false,
+                "source": "Persistent installed gravity/circuit component"
+              },
+              {
+                "id": "CIRCUIT-medical",
+                "name": "Medical distribution circuit",
+                "room": "A08",
+                "health": 95.39200000017445,
+                "status": "operational",
+                "power": 1,
+                "serviceIsolated": false,
+                "source": "Persistent installed gravity/circuit component"
+              },
+              {
+                "id": "CIRCUIT-science",
+                "name": "Science distribution circuit",
+                "room": "B08",
+                "health": 95.39200000017445,
+                "status": "operational",
+                "power": 1,
+                "serviceIsolated": false,
+                "source": "Persistent installed gravity/circuit component"
+              },
+              {
+                "id": "CIRCUIT-cargo",
+                "name": "Cargo / storage distribution circuit",
+                "room": "C04",
+                "health": 95.39200000017445,
+                "status": "operational",
+                "power": 1,
+                "serviceIsolated": false,
+                "source": "Persistent installed gravity/circuit component"
+              },
+              {
+                "id": "CIRCUIT-hangar",
+                "name": "Hangar / airlock distribution circuit",
+                "room": "C02",
+                "health": 95.39200000017445,
+                "status": "operational",
+                "power": 1,
+                "serviceIsolated": false,
+                "source": "Persistent installed gravity/circuit component"
+              },
+              {
+                "id": "CIRCUIT-engineering",
+                "name": "Engineering / lift distribution circuit",
+                "room": "C07",
+                "health": 95.39200000017445,
+                "status": "operational",
+                "power": 1,
+                "serviceIsolated": false,
+                "source": "Persistent installed gravity/circuit component"
+              },
+              {
+                "id": "EQUIPMENT-A08",
+                "name": "Clinical tissue-repair unit",
+                "room": "A08",
+                "health": 96,
+                "power": 1,
+                "status": "operational",
+                "currentLoad": null,
+                "maintenance": null,
+                "source": "Existing equipment.condition and maintenance authority; per-device current unmetered"
+              },
+              {
+                "id": "EQUIPMENT-C05",
+                "name": "Coffee dispenser",
+                "room": "C05",
+                "health": 100,
+                "power": 1,
+                "status": "operational",
+                "currentLoad": null,
+                "maintenance": null,
+                "source": "Existing equipment.condition and maintenance authority; per-device current unmetered"
+              },
+              {
+                "id": "EQUIPMENT-C07",
+                "name": "Power distribution panel",
+                "room": "C07",
+                "health": 78.0400000000064,
+                "power": 1,
+                "status": "operational",
+                "currentLoad": null,
+                "maintenance": "repairing",
+                "source": "Existing equipment.condition and maintenance authority; per-device current unmetered"
+              },
+              {
+                "id": "EQUIPMENT-C09",
+                "name": "Air scrubber",
+                "room": "C09",
+                "health": 72.77999999999204,
+                "power": 1,
+                "status": "operational",
+                "currentLoad": null,
+                "maintenance": null,
+                "source": "Existing equipment.condition and maintenance authority; per-device current unmetered"
+              },
+              {
+                "id": "EQUIPMENT-C06",
+                "name": "Fabricator",
+                "room": "C06",
+                "health": 69.8999999999864,
+                "power": 1,
+                "status": "operational",
+                "currentLoad": null,
+                "maintenance": null,
+                "source": "Existing equipment.condition and maintenance authority; per-device current unmetered"
+              },
+              {
+                "id": "EQUIPMENT-B01",
+                "name": "Research terminal",
+                "room": "B01",
+                "health": 83.8099999999692,
+                "power": 1,
+                "status": "operational",
+                "currentLoad": null,
+                "maintenance": null,
+                "source": "Existing equipment.condition and maintenance authority; per-device current unmetered"
+              },
+              {
+                "id": "EQUIPMENT-A04",
+                "name": "Galley unit",
+                "room": "A04",
+                "health": 77.69000000000018,
+                "power": 1,
+                "status": "operational",
+                "currentLoad": null,
+                "maintenance": null,
+                "source": "Existing equipment.condition and maintenance authority; per-device current unmetered"
+              },
+              {
+                "id": "EQUIPMENT-B07",
+                "name": "Security console",
+                "room": "B07",
+                "health": 80.5499999999941,
+                "power": 1,
+                "status": "operational",
+                "currentLoad": null,
+                "maintenance": null,
+                "source": "Existing equipment.condition and maintenance authority; per-device current unmetered"
+              },
+              {
+                "id": "EQUIPMENT-C08",
+                "name": "Reactor cooling controller",
+                "room": "C08",
+                "health": 86.957499999996,
+                "power": 1,
+                "status": "operational",
+                "currentLoad": null,
+                "maintenance": null,
+                "source": "Existing equipment.condition and maintenance authority; per-device current unmetered"
+              }
+            ],
+            "zones": [
+              {
+                "id": "habitation",
+                "name": "Habitation",
+                "rooms": [
+                  "A01",
+                  "A02",
+                  "A03",
+                  "A04",
+                  "A05",
+                  "A06",
+                  "A07",
+                  "A09",
+                  "A10"
+                ],
+                "targetG": 1,
+                "g": 1,
+                "power": 1,
+                "gravityIsolated": false,
+                "circuitIsolated": false,
+                "faults": [],
+                "authority": "Authorized operators / crew / equipment safeguards"
+              },
+              {
+                "id": "medical",
+                "name": "Medical",
+                "rooms": [
+                  "A08"
+                ],
+                "targetG": 1,
+                "g": 1,
+                "power": 1,
+                "gravityIsolated": false,
+                "circuitIsolated": false,
+                "faults": [],
+                "authority": "Authorized operators / crew / equipment safeguards"
+              },
+              {
+                "id": "science",
+                "name": "Science",
+                "rooms": [
+                  "B01",
+                  "B02",
+                  "B03",
+                  "B04",
+                  "B05",
+                  "B06",
+                  "B07",
+                  "B08",
+                  "B09",
+                  "B10"
+                ],
+                "targetG": 1,
+                "g": 1,
+                "power": 1,
+                "gravityIsolated": false,
+                "circuitIsolated": false,
+                "faults": [],
+                "authority": "Authorized operators / crew / equipment safeguards"
+              },
+              {
+                "id": "cargo",
+                "name": "Cargo / storage",
+                "rooms": [
+                  "C03",
+                  "C04",
+                  "C10"
+                ],
+                "targetG": 1,
+                "g": 1,
+                "power": 1,
+                "gravityIsolated": false,
+                "circuitIsolated": false,
+                "faults": [],
+                "authority": "Authorized operators / crew / equipment safeguards"
+              },
+              {
+                "id": "hangar",
+                "name": "Hangar / airlock",
+                "rooms": [
+                  "C01",
+                  "C02"
+                ],
+                "targetG": 1,
+                "g": 1,
+                "power": 1,
+                "gravityIsolated": false,
+                "circuitIsolated": false,
+                "faults": [],
+                "authority": "Authorized operators / crew / equipment safeguards"
+              },
+              {
+                "id": "engineering",
+                "name": "Engineering / lift",
+                "rooms": [
+                  "C05",
+                  "C06",
+                  "C07",
+                  "C08",
+                  "C09"
+                ],
+                "targetG": 1,
+                "g": 1,
+                "power": 1,
+                "gravityIsolated": false,
+                "circuitIsolated": false,
+                "faults": [],
+                "authority": "Authorized operators / crew / equipment safeguards"
+              }
+            ],
+            "orders": [],
+            "history": [
+              {
+                "at": 32259,
+                "kind": "maintenance",
+                "message": "Artificial-gravity generator condition 70.0%; physical inspection requested.",
+                "component": "GRAVITY-CORE",
+                "room": "C07",
+                "health": 69.9991300001043,
+                "sourceId": "CHR-1-V1j54z2l-11237"
+              },
+              {
+                "at": 49944,
+                "kind": "maintenance",
+                "message": "Artificial-gravity generator condition 70.0%; physical inspection requested.",
+                "component": "GRAVITY-CORE",
+                "room": "C07",
+                "health": 69.99914207515128,
+                "sourceId": "CHR-1-V1j54z2l-17071"
+              }
+            ],
+            "dependencies": {
+              "generation": "Existing C08 reactor and finite fuel/electrical stores",
+              "distribution": "Existing C07 main distribution and local circuit condition",
+              "lifeSupport": "Existing C09 and local supply",
+              "hvac": "Local electrical supply, target21\u00b0C",
+              "carbonDioxide": "No calibrated concentration sensor model; unavailable"
+            }
+          }
+        },
+        "crew_motion": [
+          {
+            "name": "Frank Morrow",
+            "room": "A04",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.4,
+              "lastG": 1,
+              "at": 57600,
+              "fallEnergy": 0,
+              "rapidFall": false
+            },
+            "order": null
+          },
+          {
+            "name": "Mara Chen",
+            "room": "A04",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.59,
+              "lastG": 1,
+              "at": 57600,
+              "fallEnergy": 0,
+              "rapidFall": false
+            },
+            "order": null
+          },
+          {
+            "name": "Dr. Voss",
+            "room": "B05",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.79,
+              "lastG": 1,
+              "at": 57600,
+              "fallEnergy": 0,
+              "rapidFall": false
+            },
+            "order": null
+          },
+          {
+            "name": "Derek Cole",
+            "room": "A04",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.5599999999999999,
+              "lastG": 1,
+              "at": 57600,
+              "fallEnergy": 0,
+              "rapidFall": false
+            },
+            "order": null
+          },
+          {
+            "name": "Linda Park",
+            "room": "A04",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.28,
+              "lastG": 1,
+              "at": 57600,
+              "fallEnergy": 0,
+              "rapidFall": false
+            },
+            "order": null
+          },
+          {
+            "name": "Elena Ruiz",
+            "room": "A08",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.25,
+              "lastG": 1,
+              "at": 57600,
+              "fallEnergy": 0,
+              "rapidFall": false
+            },
+            "order": null
+          },
+          {
+            "name": "Jules Mercer",
+            "room": "C07",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.21,
+              "lastG": 1,
+              "at": 57600,
+              "fallEnergy": 0,
+              "rapidFall": false
+            },
+            "order": null
+          },
+          {
+            "name": "Nadia Kline",
+            "room": "A09",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.3,
+              "lastG": 1,
+              "at": 57600,
+              "fallEnergy": 0,
+              "rapidFall": false
+            },
+            "order": null
+          },
+          {
+            "name": "Owen Briggs",
+            "room": "A09",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.81,
+              "lastG": 1,
+              "at": 57600,
+              "fallEnergy": 0,
+              "rapidFall": false
+            },
+            "order": null
+          },
+          {
+            "name": "Priya Shah",
+            "room": "C04",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.19,
+              "lastG": 1,
+              "at": 57600,
+              "fallEnergy": 0,
+              "rapidFall": false
+            },
+            "order": null
+          },
+          {
+            "name": "Tomas Vale",
+            "room": "C08",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.28,
+              "lastG": 1,
+              "at": 57600,
+              "fallEnergy": 0,
+              "rapidFall": false
+            },
+            "order": null
+          },
+          {
+            "name": "Rhea Ortiz",
+            "room": "A05",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.84,
+              "lastG": 1,
+              "at": 57600,
+              "fallEnergy": 0,
+              "rapidFall": false
+            },
+            "order": null
+          },
+          {
+            "name": "Milo Grant",
+            "room": "A09",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.61,
+              "lastG": 1,
+              "at": 57600,
+              "fallEnergy": 0,
+              "rapidFall": false
+            },
+            "order": null
+          },
+          {
+            "name": "Sana Okafor",
+            "room": "B06",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.47,
+              "lastG": 1,
+              "at": 57600,
+              "fallEnergy": 0,
+              "rapidFall": false
+            },
+            "order": null
+          },
+          {
+            "name": "Iris Bell",
+            "room": "A04",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.54,
+              "lastG": 1,
+              "at": 57600,
+              "fallEnergy": 0,
+              "rapidFall": false
+            },
+            "order": null
+          },
+          {
+            "name": "Caleb Stone",
+            "room": "A03",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.78,
+              "lastG": 1,
+              "at": 57600,
+              "fallEnergy": 0,
+              "rapidFall": false
+            },
+            "order": null
+          },
+          {
+            "name": "Yara Finch",
+            "room": "A06",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.19,
+              "lastG": 1,
+              "at": 57600,
+              "fallEnergy": 0,
+              "rapidFall": false
+            },
+            "order": null
+          },
+          {
+            "name": "Theo Moss",
+            "room": "A09",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.18,
+              "lastG": 1,
+              "at": 57600,
+              "fallEnergy": 0,
+              "rapidFall": false
+            },
+            "order": null
+          },
+          {
+            "name": "June Adler",
+            "room": "A01",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.72,
+              "lastG": 1,
+              "at": 57600,
+              "fallEnergy": 0,
+              "rapidFall": false
+            },
+            "order": null
+          },
+          {
+            "name": "Ari Novak",
+            "room": "A03",
+            "motion": {
+              "mode": "grounded",
+              "height": 0,
+              "secured": false,
+              "anchorProgress": 0,
+              "x": 0.63,
+              "lastG": 1,
+              "at": 57600,
+              "fallEnergy": 0,
+              "rapidFall": false
+            },
+            "order": null
+          }
+        ],
+        "orders": {}
+      },
+      "calendar": {
+        "version": 1,
+        "timeZone": "America/Chicago",
+        "wallCursor": 1793318400000,
+        "displayMs": 1796601600000,
+        "carry": 0,
+        "lastSeen": 1793318400000,
+        "episodeKey": "2026-10-26",
+        "visitedWeeks": {
+          "2026-10-26": true
+        },
+        "occurrences": {},
+        "pending": [],
+        "corrections": [],
+        "recovery": {
+          "discardedMs": 0,
+          "rollbackCount": 0
+        },
+        "mode": "wall",
+        "maxCatchupMs": 21600000,
+        "selectedRate": 20
+      },
+      "snapshot_bytes": 10903930,
+      "storage": {
+        "physical_bytes": 2353976,
+        "primary_bytes": 1380174,
+        "compressed": true
+      }
+    }
+  ],
+  "checkpoints": [
+    {
+      "real_day": 2,
+      "sim_days": 40.0,
+      "episode": 1,
+      "exact_reload": true,
+      "crew": 20,
+      "dead": 0,
+      "stories": 142,
+      "resources": {
+        "food": 159.986,
+        "water": 152.87160000000011,
+        "oxygen": 110.13600000000095,
+        "energy": 179.815658952,
+        "medical": 20,
+        "spares": 69.66203879999988,
+        "tools": 69.991,
+        "lab": 80
+      },
+      "arrivals": 5,
+      "calendar_occurrences": [],
+      "organisms": {
+        "XENO-INITIAL": {
+          "id": "XENO-INITIAL",
+          "stage": "adult",
+          "dormant": true,
+          "location": "asteroid:23",
+          "origin": "initial concealed chamber",
+          "sealed": true,
+          "behavior": {
+            "version": 1,
+            "state": "contained",
+            "energy": 100,
+            "stamina": 100,
+            "health": 100,
+            "lastTick": 57600,
+            "lastAttack": -100,
+            "steps": 0,
+            "meals": 0,
+            "trace": [
+              {
+                "at": 5,
+                "from": "dormant",
+                "to": "contained",
+                "location": "asteroid:23"
+              }
+            ]
+          }
+        },
+        "EGG-1": {
+          "id": "EGG-1",
+          "stage": "egg",
+          "dormant": true,
+          "location": "asteroid:22"
+        },
+        "EGG-2": {
+          "id": "EGG-2",
+          "stage": "egg",
+          "dormant": true,
+          "location": "asteroid:24"
+        }
+      }
+    }
+  ],
+  "initialization": "Fixed seed and explicit wall clock. Simulation uses production step+field controllers; per-step autosave disabled in deterministic test driver; save/reload checked explicitly.",
+  "runtime_sha256": {
+    "server.py": "6fd95cf6c6dbac52e77e37561841ee84d50cc7a3d4082d6b64274d390de758f8",
+    "requirements.txt": "3dd40988330002f37cd1f2b2b80e65ee3919798dc38771b00fed572a4d659f9e",
+    "config.json": "54a4ac908d2fe82e9c58fb942134327cf0562665e47b170b5d9b0b085ce8b865",
+    "Start_Remote_Deck.bat": "ffbd4b2e6d561ad162547e4f32c0de891915a6d3876ba6d2bff427ec06df368b",
+    "web/animation.js": "c175a0c4a97d49f27905a78a130be66ef0c768a95395b51b7fbab6a1ace4c766",
+    "web/anthology-ui.js": "f4aa4b5536287853abdd32b68dd0e2f87f113a79e0674cad3c6fa10b59f4e6b5",
+    "web/anthology.js": "e2621ab0e567e85a9a4b25b11968df7480e69f6abe311e547fddea412a224bb2",
+    "web/backup-codec.js": "5055483368e3ec04a5a006945273a7e232cb2de9a83361fc10c707fde391b974",
+    "web/backup-transfer.js": "0ca533a1f6bbbc3ddfbe1e7ea6791fa187aa265eacb884b6a48c8d1273cedbec",
+    "web/backup-ui.js": "922e41162b7330aafef1f250996fb30cd1b7dbf3d3866f9933c3113b0d900a98",
+    "web/bridge-mode.js": "cf36ff049a504d633fec91e7a7b89842ca5c6fd5a1ba55cf7a6d5374dde1215e",
+    "web/bridge-workspace.css": "39c9d5662cf52b015efcdb42d6390a72a6be25cbabda22803a98bf1858b2ad14",
+    "web/calendar.js": "824268e050a88539b5f9eacb313f5e69ad0266fc0bd510ba1ea2a43c81338f92",
+    "web/camera-sprites.js": "f2023435f73a66ee1041f0cb8430374ed248d561ca43ec3e3263d80905b844f1",
+    "web/chronicle-evidence.js": "e72ae182f7d6cc00e600ca5d185f03d63257a5cda0baba22cbbf0ee2e37f8488",
+    "web/chronicle-film.js": "38aadf29719bd900b2c3d501a6feb6a2a744b3691411b3624a9dee554cea3bdc",
+    "web/chronicles.js": "a7823ad26e86f65249561ccbf29d0e70d46d0679ed3c0f98cb06457886902456",
+    "web/cinema-ui.js": "310c9d0feaf26089e37ee26652b8f38c81962f93b0421a8288aea52eb1b82b6f",
+    "web/cinema.js": "374a91d08fe98d21d3288ca0247df70e2f4af0bc85331b93efe7d035e7e2da77",
+    "web/cinematic.css": "d93ccc7ce667944024f3efb1a425c97bc9a18781ae1b5bfedd14baf865a5b369",
+    "web/classified-ops.js": "7944b36f52ab2005b17fed7d7342854f8b4779db72fa977649307153dfb0ba20",
+    "web/classified-terminal.js": "e6cfa09bb8bad59b188403ca5f347af08d97f9600f94ebe79686f91a94c8d0d0",
+    "web/command-ui.css": "f6cc605cc44cc68a5694d59a5689c97bb3f61ce2124b7b85c4d9a3b5eb5ebd35",
+    "web/command-ui.js": "1edab52bb03dfa00d274144c164e8f59ca9e8ae76b25f4b73d11f0775e7b812c",
+    "web/companion-view.js": "9f96855bc344c24b7bc05bfcd34547ab8c04fdcdbe017ccefd35467b7e5cd3cd",
+    "web/core-context.js": "984feae5ab86359013cfad335c7fd2cfc398c6515a69ebf90add78969424d0d2",
+    "web/creatures.js": "729bede3b4c59c139fb5e703fd4b12c151ccf4c4e9c2e103d99e3881effc90d9",
+    "web/crew-communications.js": "2a6aea6e8ea4993a38a182d4404724bab4c1031953e848764916f6203423e8ec",
+    "web/crew-decisions.js": "36c8bb7ed781449042bb662264fe3712a7bb4b42ce72e760114b8cb3c90ea88f",
+    "web/crew-editorial.js": "e222e95ac6a03247225eb48af5f851db3a1492924c16de1ba75fdbc6e5058cb2",
+    "web/crew-life-ui.js": "e46929b46f90f744354d1a6d51d5576a7203d3b5012adc6f58942d0b31727c00",
+    "web/crew-life.js": "d6167b0d668602c0101f19690e2749e8035cd956ef68c5095f18fc70c744c258",
+    "web/crew-observation.js": "26c4bfa1fc977cfe12144b9565da6eb0cb14d9b02c72d50c56dfb3707f17de7b",
+    "web/crew-social.js": "3f326be6de370870a91920c9d75ba4e7ef544495fc3f4a1e7dc7d94926a714a2",
+    "web/diagnostics.js": "8309e72b7178a24fb8e8e0d76baa7b20b98f7f9843ee866a07a371d34fd4e24f",
+    "web/discovery.js": "e950ac6b0f3aff732995b5adc1991b2d6fd935538a879e93c5f90f778cfa8b98",
+    "web/durable-store.js": "fec39ec1ea1716b7f7917dcf8fe9c2d82a3fd947e8acbe079c196898df6c69e4",
+    "web/economy.js": "58ff1f2de7cf1f9881290e2d8765f7bb57e1e8e3a1a923769fb7ebe7567465dd",
+    "web/edition.js": "33f4c281646bb8baa8f45b015c82dd5cabb780e69383448f3390f64566e5331f",
+    "web/embodiment.js": "ff2134e9ac7cfd73effc62b848a9e1e0ea9d7256072cd697dc1bfc558f4e5581",
+    "web/emergency-ops.js": "405de452acf28d5635c3e7f51ce3c239b54c1e868f2a0d619fee36e78fa7f3c9",
+    "web/engineering-ui.js": "b1f833707505a899f8b1665d97253adb59f57ee099e706e0adea8b01e4e57444",
+    "web/entities.js": "c8fe473a604345d7543c6f545909dcf734eb2a8ef2d3a6f62aa48bbf0f9305d1",
+    "web/expeditions.js": "729ad659e78636b42b6a743619bc0c0f7f80d9c8480912ec006115a26ee783ef",
+    "web/experiences.js": "2b39dd4736704bd1619d0f7d25b285d090ab0193eacbc424cdc8f25508ab4b14",
+    "web/film-ui.js": "6d9d5d9b400cd707960a9e7aa83fd43771a72e5d0768dbe38b1b16abaeaac679",
+    "web/frontier-ui.js": "8b11361b26cd23b57c4418a404ffc1c7472c8af5f93057d4c08a10c79b61548e",
+    "web/frontier.js": "6c7d042baab0cc7f3f33c67c5c281f6e4a3d83dc5bef9c4935d8ece0652b7de8",
+    "web/gravity-motion.js": "2faab1ad7263dff317bc1f96637298683125f5514ee9abc36157d30ff6d6d4c0",
+    "web/host-authority.js": "df5bb2d26e95d58b0dd9b4172492cbc28429db2adc876199e136ba367b37444d",
+    "web/host.html": "f9b0e4636a252318ac6af566f4b4e9c38001e23b144dd9c7b98c7dd570deb791",
+    "web/icarus.html": "91a98aa7b3ac43bbfa2d6e2ad813e975067e795a982a5afd7a554cb5eed17fc5",
+    "web/index.html": "065554c2ec32303dac1bd791a488825c780a4e833b2e405d71da138abf43ae88",
+    "web/knowledge-runtime.js": "c9e9bfd8ca6137ff6a09abcf4a2e3280b891138ff9d649271043d266aa861970",
+    "web/knowledge.js": "870e8d50f1c29a4b8ede1dcf58d987e082b663403b3515f5184034d38b81eef3",
+    "web/living-frontier-ui.js": "b134f15f266ee4293a41ce6a1b99ab9f76da8ebb7bb5f25dfa9575d453dca634",
+    "web/living.js": "421a73f5ff1c5b317ab78476692abf3a0fe5e54f2017c88a96b38d19aaf8cdbb",
+    "web/logistics.js": "260d8684db9b0bccc5bbd6c60186fd50e973bbba5c0507ead7b5ad9a712f50ff",
+    "web/lunar.js": "7fe249230562a6d6eb3b6633381a4cddaff56bf90de1676a9ed6c0908c661d51",
+    "web/manifest.webmanifest": "7b5257d9da54490f6f3e53ff30db5a7a36533c08c46fe859ce61eeb4579d6980",
+    "web/navigation.js": "17f4736e379e2878eea4a855caa9a76a0305063bb8dc8788a9999deeacbaccfb",
+    "web/observation-model.js": "923185f7ebf3c43a1368ee10dd1f3d6f8a869596ffeea92fac64d35efd333b8e",
+    "web/observation-ui.js": "23880ee47bef3cecb2b700b56d2c6086c012731cec68361b4fcce63772638af7",
+    "web/observation.css": "f5d6a4c864135a93a2a945ab4e5553c4c133867c6846849b6f5af0394221258a",
+    "web/operational-ui.js": "158d48d2f3c4abec56311c47b5f9950a2ecd3b81ee2221b104bb78bae4b1831c",
+    "web/operational-view.js": "f2461a8a1d6fe1b67d7d819d49ff38bedbef08723830992397382780f323ff5f",
+    "web/operations.js": "8711fc4ed9e2e6937c4a1f600ef873f15efceef5c22690f0f3d04f96c9719a12",
+    "web/personalities.js": "e4017a3be335d9244b02a1c16fe7e0ac1f9b753c815cfc2d1aa9786ef7897c0c",
+    "web/pixel-camera.js": "501963bbca7d42e2e08b9be73191109e18ab31abc7acbbfec262556e7dfafda8",
+    "web/relationships.js": "75edc36154001770dcde1868316510502858f161acf96195a8508d1465de458b",
+    "web/remote-sync.js": "620fb8ba508bef9cd88f8591d152a37ac3cce7356f812c572b222a4b31b78eba",
+    "web/repair-policy.js": "1f4a5ab9a651bdf46663026f8077fdb9ffd35c0d85f20d4761debae563284097",
+    "web/research.js": "c1a1fdb649d35c23a6d0f0d2091a7a82290efdf748dd0690e7f8619b92193aa6",
+    "web/save-store.js": "77f0bbb42ad82da9bcbcebd25d1de3e12d0989f1dea0087e1ad4ca28678150fe",
+    "web/ship-schematic.js": "386ee69cacfd09344063510698b1f14628ae85022f64ff7b122294d4a96e3352",
+    "web/ship-systems.js": "583635ce01072e0cbc6855a292023a93ee438520130d5b0783d0bc55dd474714",
+    "web/sol-voice.js": "a0dc1ef7833b79ebfd2ff66f6d0c85a3469c9c217c0ed74ea24d4211945d1d66",
+    "web/spatial.js": "6166deb743c107b3aecd09a64279d1403bbe2d8a2e5c3e02d7bd9558b21bc7c5",
+    "web/stability-diagnostics.js": "d3faeaf4fce68e04960938928ef1729dbe717579ed6b2cb31f0d07972c0732bb",
+    "web/story.js": "2b0464ee7ac4be2409506c7a162ddd8003be6d0df70f47f252641e97c90bb19d",
+    "web/systems-maintenance.js": "6438fc528ceb84c2b7add71cddf7b80efb8b9188f9ba07c0a72f0dc8becd3abb",
+    "web/tablet-frontier.js": "64a55c921541c9587ae2c511aecb1bb836bd025201e5e51a9f1a70a5fa48d7dd",
+    "web/teams.js": "144760463b379c1aa285155917406f52c454aec9bfa3e0388b582cf45333050e",
+    "web/transit.js": "ecfbd4657987a5298a52c1a1ca0927b20462cc04625f20f284140c4e95738fe4",
+    "web/ui-continuity.js": "25e7693129ab4ff39b98963b26f9b86c348a1a41e1aec56c951de168f3b01b85",
+    "web/umbra/app-icon-192.png": "02917bdc8aabce0b61cac4f46d1a9d46bc3b035d10ba5ede737e59de1d420291",
+    "web/umbra/app-icon-512.png": "0b2f8aba2d75383ff2f13571196b8ee2f54e1a13d92df5c7928342a058cd5e99",
+    "web/umbra/app-icon.svg": "514cf89420c872bd595847fbdd06e7aa7806b7ec96f1e20ba8f79c23a8f100b4",
+    "web/umbra/app.js": "45b6e48e7e53110052d601abac9223e48716257926cf1ecb118fa6da67590922",
+    "web/umbra/arcade/corporate-cleanup.gif": "0b405fa8a95526b21da9d482d7d4e9880fb0b9d89e57eed0e2c74fbe560689d2",
+    "web/umbra/arcade/corporate-cleanup.png": "442b901108a1a96f74e97a0518b7e23bbad2742e6b29ebd1f30a9974fcd4238f",
+    "web/umbra/arcade/corridor-chase.gif": "520e5e8028fac8a29abaac59f61d9be10cba6057ef6fed1775b773e60049651c",
+    "web/umbra/arcade/corridor-chase.png": "06933bd34dec81e3599edd937e7785648066b548128c2fdcc20b89dcd02a7894",
+    "web/umbra/arcade/facehugger-surprise.gif": "fa579aea196eeaa87f32d2c2e965298c3c495b47b127266e60e684d9e6037566",
+    "web/umbra/arcade/facehugger-surprise.png": "ef878e6fc47aa7f9a3baaddaa535a716c6b262ae9c959ffbf4c2cacbfff19a41",
+    "web/umbra/arcade/manifest.json": "a0f84c3277da36d0dbc2d90a780acee8da75059e341509d1054affc1f370c6b4",
+    "web/umbra/arcade/motion-tracker.gif": "35a6cb95da204feae26abed11f839ee441ff1cfd5e04ada0d05bbe21b2812ec7",
+    "web/umbra/arcade/motion-tracker.png": "50beb6bf39c3d816bb05751cc47aeb45ffc11b31efa2f18a59317a17525e3202",
+    "web/umbra/arcade/tail-strike.gif": "c93708093cfcbf2b7643cba638e56b5600f9d097dbbcff8855834dcb2eea0aa8",
+    "web/umbra/arcade/tail-strike.png": "03cb6732da92beb25085ba079a2da039af252fbfcc8a55528646350d79c6a6aa",
+    "web/umbra/arcade/vent-ambush.gif": "cc43ce5acb51c5bee5c302b2e394de4537f5f5f329cc09c3a2ee28ea4a48d189",
+    "web/umbra/arcade/vent-ambush.png": "c70de7aed43e243e16f4565f30d21f8fd39de56aff82867d90b2d942dc0fbb70",
+    "web/umbra/bridge.css": "0ce201e74f0535a30161b00a94c4602ef3cc5cedd20fdffa67d8a4570742da50",
+    "web/umbra/bridge.js": "6125873c57a3110ae003cc432f1aaf7da2b81dc802ab8ec6e66add60e12ed0ea",
+    "web/umbra/icons.js": "939fb21a8f18482f9b5a4d82f5a64f560479345cba85202596ab668d58c49428",
+    "web/umbra/layout.js": "293fd9684f48c021a7554f75530301e77417de3b3b115cf2eb1587a6a225c927",
+    "web/umbra/lounge.js": "c059f16b3499b5d5cc378abf511af277565e2ae004ae2084933d5ae466dc39fb",
+    "web/umbra/sol.js": "44fd8dd29faa501a02b71fad157eec12d4d1b536ecb82a3f1dccedda501b0f8c",
+    "web/umbra/umbra.css": "c3248d61f82d944b4f671ddc2aa6aeb864103930885670d8bc211c8d29f7041b",
+    "web/unified-ui.js": "91ced43f8005a4578855b453ab158f47454cb414bf6b8f6f582fdf8fa64bd209",
+    "web/unified-world.js": "35e2a8ad0717a19b795f03bc55de0852450766279b17db527f8cf9b9e755fb38",
+    "web/universe.js": "7a3f83170de63739706445cc992c560583e913b577d87087115dfb8cbfae06d4",
+    "web/vendor/LZ_STRING_LICENSE.txt": "433fc9dfe659dbfb1e91eed8351f13651e97bfa3ac6d03394c3d63f61d4bbc80",
+    "web/vendor/astronomy.js": "a2cfab19cab1a15843e4c8cc7410b6cbaafd0907122a8698c25d63d00c2774e4",
+    "web/vendor/lz-string.min.js": "95f4d1cbf099f57161b664bc048426ec3df92637801a4c79116e83315aa787e7",
+    "web/voyage-clock.js": "4565bf40b23d281ec6501709e8c6d06b6ffd54182ea6225787933d5b3536de9a",
+    "web/voyage.js": "a70b7bff458052b1ba68713c3a2971ce110a3b169e4e7fe90c9e71cabc90eeda",
+    "web/workspace.js": "82e12ad745fa4f97afc8e38a7cf6e83ae0788df50013a75e4a52e7f1942340e9",
+    "web/world-schema.js": "3692ac39772e71912b12214f316cd844bdb292a1bd91626ed1c3d037084d58bb",
+    "web/writer-ui.js": "2f1d64a2a1163dd6076425117ae0bcef167fb6fcb24689796f99c847152eff94"
+  },
+  "elapsed_seconds": 369.7262751579983
+}

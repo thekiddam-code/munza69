@@ -296,4 +296,4 @@ Refinement backlog: dedicated affectionate/seated/turning/alert/creature art; fu
 - Support authentic engineering work: diagnose, travel, collect tools, isolate/repair/test equipment, restore systems, log outcomes. Crew autonomy and permissions govern actions. Preserve persistence, sim time acceleration, reconnect and desktop/Android authoritative synchronization.
 - SOL takeover/presence interface is a separate requested backlog item; integrate only where scoped and avoid making the new systems depend on an AI being alive.
 - **Scope discipline:** asteroid drones, expeditions, new creature incidents, and large lore systems remain later-phase backlog items. No fabricated sensor values, forced failures, or fake AI actions.
-- **Status:** user approved Phase 4.3 direction and gravity zone feature; implementation not yet verified.
+- **Status:** implemented in the dedicated Phase4.3 branch; corrected runtime13ab447 has deterministic model/browser/remote tests and a verified40-day recovery replay. See PHASE43_VALIDATION.md for complete executed evidence and remaining hardware/physics/recovery gates. Not final-game or physical-device certification.

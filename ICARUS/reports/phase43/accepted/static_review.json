@@ -1,0 +1,19 @@
+{
+  "runtime_freeze": "13ab44756314a1e99587c3070914cefbfbe26fe0",
+  "baseline": "d5add5be146872cfa9a43e0abacc0fba660c51f5",
+  "unchanged_boundaries": {
+    "UMBRA": true,
+    "ICARUS/web/calendar.js": true,
+    "ICARUS/web/host-authority.js": true,
+    "ICARUS/web/durable-store.js": true,
+    "ICARUS/web/backup-codec.js": true,
+    "ICARUS/web/backup-transfer.js": true,
+    "ICARUS/tv_service.py": true,
+    "ICARUS/bridge_service.py": true,
+    "ICARUS/Start_Remote_Deck.bat": true,
+    "ICARUS/web/voyage-clock.js": true
+  },
+  "native_vs_main_unchanged": true,
+  "runtime_files": 122,
+  "working_runtime_matches_freeze": true
+}

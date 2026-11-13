@@ -1,0 +1,319 @@
+{
+  "passed": true,
+  "source_commit": "13ab44756314a1e99587c3070914cefbfbe26fe0",
+  "phases": [
+    {
+      "name": "normal",
+      "elapsed_seconds": 181.70788973699382,
+      "start_tick": 0,
+      "end_tick": 12,
+      "effective_rate": 3.9624036195794066,
+      "requested_rate": 4,
+      "conversations_before": 0,
+      "conversations_after": 0,
+      "lift_trips": 0,
+      "crew_alive": 20,
+      "dead": 0
+    },
+    {
+      "name": "accelerated",
+      "elapsed_seconds": 180.44224858199595,
+      "start_tick": 12,
+      "end_tick": 73,
+      "effective_rate": 20.283498065237396,
+      "requested_rate": 20,
+      "conversations_before": 0,
+      "conversations_after": 1,
+      "lift_trips": 6,
+      "crew_alive": 20,
+      "dead": 0
+    }
+  ],
+  "samples": [
+    {
+      "tick": 0,
+      "selected": "C05",
+      "following": "Frank Morrow",
+      "stats": {
+        "mainFrames": 86,
+        "previewFrames": 160,
+        "totalMs": 621.2000000178814,
+        "maxMs": 56.70000000298023,
+        "received": 11
+      },
+      "heap": 11126665,
+      "clock": "4\u00d7 authoritative pacing",
+      "phase": "normal",
+      "phase_seconds": 1.038874115998624
+    },
+    {
+      "tick": 2,
+      "selected": "C05",
+      "following": "Frank Morrow",
+      "stats": {
+        "mainFrames": 383,
+        "previewFrames": 624,
+        "totalMs": 1771.7999999970198,
+        "maxMs": 56.70000000298023,
+        "received": 40
+      },
+      "heap": 14892376,
+      "clock": "4\u00d7 authoritative pacing",
+      "phase": "normal",
+      "phase_seconds": 30.281099138999707
+    },
+    {
+      "tick": 4,
+      "selected": "C05",
+      "following": "Frank Morrow",
+      "stats": {
+        "mainFrames": 662,
+        "previewFrames": 1088,
+        "totalMs": 2554.199999883771,
+        "maxMs": 62.1000000089407,
+        "received": 71
+      },
+      "heap": 8151672,
+      "clock": "4\u00d7 authoritative pacing",
+      "phase": "normal",
+      "phase_seconds": 60.69854676698742
+    },
+    {
+      "tick": 6,
+      "selected": "C05",
+      "following": "Frank Morrow",
+      "stats": {
+        "mainFrames": 956,
+        "previewFrames": 1560,
+        "totalMs": 3186.099999561906,
+        "maxMs": 62.1000000089407,
+        "received": 101
+      },
+      "heap": 21659487,
+      "clock": "4\u00d7 authoritative pacing",
+      "phase": "normal",
+      "phase_seconds": 90.88509714500105
+    },
+    {
+      "tick": 8,
+      "selected": "C05",
+      "following": "Frank Morrow",
+      "stats": {
+        "mainFrames": 1246,
+        "previewFrames": 2016,
+        "totalMs": 4142.3999994546175,
+        "maxMs": 122.29999999701977,
+        "received": 130
+      },
+      "heap": 19995088,
+      "clock": "4\u00d7 authoritative pacing",
+      "phase": "normal",
+      "phase_seconds": 120.16411935999349
+    },
+    {
+      "tick": 10,
+      "selected": "C05",
+      "following": "Frank Morrow",
+      "stats": {
+        "mainFrames": 1552,
+        "previewFrames": 2492,
+        "totalMs": 4892.799999266863,
+        "maxMs": 122.29999999701977,
+        "received": 160
+      },
+      "heap": 10716200,
+      "clock": "4\u00d7 authoritative pacing",
+      "phase": "normal",
+      "phase_seconds": 150.43799876599223
+    },
+    {
+      "tick": 12,
+      "selected": "C05",
+      "following": "Frank Morrow",
+      "stats": {
+        "mainFrames": 1855,
+        "previewFrames": 2968,
+        "totalMs": 5837.099999129772,
+        "maxMs": 122.29999999701977,
+        "received": 191
+      },
+      "heap": 29518812,
+      "clock": "4\u00d7 authoritative pacing",
+      "phase": "normal",
+      "phase_seconds": 180.88496162299998
+    },
+    {
+      "tick": 13,
+      "selected": "C05",
+      "following": "Frank Morrow",
+      "stats": {
+        "mainFrames": 1856,
+        "previewFrames": 2968,
+        "totalMs": 5837.899999126792,
+        "maxMs": 122.29999999701977,
+        "received": 194
+      },
+      "heap": 30310225,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 1.0034131029970013
+    },
+    {
+      "tick": 22,
+      "selected": "C05",
+      "following": "Frank Morrow",
+      "stats": {
+        "mainFrames": 1856,
+        "previewFrames": 2968,
+        "totalMs": 5837.899999126792,
+        "maxMs": 122.29999999701977,
+        "received": 223
+      },
+      "heap": 29392878,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 30.14029713399941
+    },
+    {
+      "tick": 33,
+      "selected": "COR-C-2",
+      "following": "Frank Morrow",
+      "stats": {
+        "mainFrames": 1856,
+        "previewFrames": 2968,
+        "totalMs": 5837.899999126792,
+        "maxMs": 122.29999999701977,
+        "received": 254
+      },
+      "heap": 12726514,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 60.75866207400395
+    },
+    {
+      "tick": 44,
+      "selected": "COR-C-1",
+      "following": "Frank Morrow",
+      "stats": {
+        "mainFrames": 2,
+        "previewFrames": 4,
+        "totalMs": 16.099999994039536,
+        "maxMs": 8.299999997019768,
+        "received": 2
+      },
+      "heap": 17692977,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 90.04776329599554
+    },
+    {
+      "tick": 53,
+      "selected": "C06",
+      "following": "Frank Morrow",
+      "stats": {
+        "mainFrames": 263,
+        "previewFrames": 428,
+        "totalMs": 782.3999998271465,
+        "maxMs": 43.8999999910593,
+        "received": 29
+      },
+      "heap": 10963974,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 120.61873962299433
+    },
+    {
+      "tick": 63,
+      "selected": "C06",
+      "following": "Frank Morrow",
+      "stats": {
+        "mainFrames": 539,
+        "previewFrames": 912,
+        "totalMs": 1426.299999549985,
+        "maxMs": 51,
+        "received": 59
+      },
+      "heap": 25793506,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 150.9276810769952
+    },
+    {
+      "tick": 72,
+      "selected": "C06",
+      "following": "Frank Morrow",
+      "stats": {
+        "mainFrames": 789,
+        "previewFrames": 1380,
+        "totalMs": 1838.4999991357327,
+        "maxMs": 51,
+        "received": 88
+      },
+      "heap": 30207209,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 180.07186014699982
+    }
+  ],
+  "reloads": [
+    {
+      "saved_tick": 42,
+      "resumed_tick": 42,
+      "rate": 20
+    }
+  ],
+  "errors": [],
+  "limits": "Actual monotonic/wall time and real server. Linux Chromium, desktop/TV I/O stubbed. Emulated phone is not a physical Android. No incidents/relationships/needs/adulthood injected.",
+  "final": {
+    "tick": 73,
+    "alive": 20,
+    "dead": 0,
+    "conversations": 1,
+    "private_events": 0,
+    "confirmed_adults": 0,
+    "lift": {
+      "id": "LIFT-01",
+      "deck": "C",
+      "phase": "boarding",
+      "from": "C",
+      "to": "A",
+      "remaining": 1,
+      "passengers": [
+        "Mara Chen",
+        "Elena Ruiz",
+        "Rhea Ortiz",
+        "Yara Finch"
+      ],
+      "queue": [],
+      "capacity": 4,
+      "completed": 6,
+      "fault": null,
+      "stalled": false
+    },
+    "calendar": {
+      "version": 1,
+      "timeZone": "America/Chicago",
+      "wallCursor": 1794611126512,
+      "displayMs": 1794615134881.998,
+      "carry": 1847.998046875,
+      "lastSeen": 1794611126512,
+      "episodeKey": "2026-11-09",
+      "visitedWeeks": {
+        "2026-11-09": true
+      },
+      "occurrences": {},
+      "pending": [],
+      "corrections": [],
+      "recovery": {
+        "discardedMs": 0,
+        "rollbackCount": 0
+      },
+      "mode": "wall",
+      "maxCatchupMs": 21600000,
+      "selectedRate": 20
+    },
+    "unique_sources": 44
+  },
+  "phone_reconnected": true,
+  "elapsed_seconds": 376.5616430960072
+}
