@@ -28,3 +28,9 @@ class PersonalitiesIntegration(ObservationIntegration):
     before=s;p.evaluate('__icarusSoak.save()');p.reload();self.assertEqual(self.snap(p),before)
    if event['status']!='active':break
   self.assertIn('private',phases);self.assertEqual(event['status'],'completed');self.assertTrue(event['effectsApplied']);self.assertEqual(s['relationshipAudit'],[]);self.assertNotIn('privacy',s['world']['physicalWorld']['rooms'][event['room']]);before=s;p.evaluate('__icarusSoak.save()');p.reload();self.assertEqual(self.snap(p),before);self.advance(p,1);self.assertEqual(self.snap(p)['crewSocial']['privateEvents'][-1]['completionSourceId'],event['completionSourceId'])
+ def test_phase42b_schematic_lift_matches_camera_and_focus_is_readonly(self):
+  p=self.page();self.configure(p,"s.remoteCore.autonomyEnabled=false;const q=s.crew[0];q.room='C05';q.target='A04';q.task=q.goal='Eating a meal';q.route=['A04'];q.nav=null;q.taskMinutes=100;q.energy=95;")
+  for i in range(40):
+   self.advance(p,1)
+   if self.snap(p)['crew'][0].get('liftRide'):break
+  before=self.snap(p);self.assertIsNotNone(before['crew'][0].get('liftRide'));self.deck(p,'ship','overview');p.locator('.schematic-lift').click();self.assertIn('observed occupants',p.locator('.schematic-detail').inner_text());self.assertIn(str(len(before['transit']['lift']['passengers'])),p.locator('.schematic-detail').inner_text());p.locator('.schematic-detail button').click();self.assertEqual(p.evaluate('ICARUSObservationLive.camera.selected'),'LIFT-01');self.assertEqual(self.snap(p),before)
