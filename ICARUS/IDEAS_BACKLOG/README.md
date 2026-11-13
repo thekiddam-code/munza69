@@ -216,3 +216,84 @@ Implementation branch: `codex/observation-protocol-phase4-2a`, engine baseline P
 Implemented: shared saved cabin/corridor thresholds and ordinary corridor/lift cameras, privacy-aware Follow Crew, persistent production 20×, traits/habits/sourced social responses, autonomous confirmed-adult scoped invitations/private-time consequences, optional non-explicit presentation, separately gated local SOL console and classified sensor provenance. Original quarter-camera privacy remains in ordinary UMBRA. See PHASE42B_VALIDATION.md for executed evidence; seeded contact fixtures are not organic voyage claims.
 
 Refinement backlog: dedicated affectionate/seated/turning/alert/creature art; furniture/crowd pathing and threshold occlusion; full cabin medical rescue; multi-stop lift optimization; human accessibility and physical Windows/Android/TV/Tailscale validation; separately scoped remote classified roles and later surveillance consequences. Optional non-sexual nudity/shared-blanket/dressing art is incomplete. No broad secret mission or universe system in this batch. Native UMBRA source/APKs remain untouched.
+## UMBRA Simulator — microphone-integrated soundboard (proposed)
+- Add a reusable **Soundboard** panel available across UMBRA's **Simulator** game tabs, not a separate ICARUS ship simulation feature.
+- Provide customizable buttons that play assigned short audio clips into **game voice chat** via the user's microphone input path, while retaining normal live microphone speech.
+- Investigate a Windows companion-server implementation with a **virtual microphone / audio mixing device** (for example, a virtual audio cable or suitable virtual mixer); browser audio playback alone does not automatically reach game voice chat. Verify per-game input-device selection and compatibility.
+- Support per-game button layouts/profiles, clip import, naming, icons, volume, stop-all, optional hotkeys, and an easily accessible mute/disable toggle. Persist settings without embedding copyrighted clips in the repository.
+- Provide optional push-to-talk coordination, avoid feedback/echo by monitoring output routing, and do not silently capture or transmit microphone audio. Explicitly distinguish playback-to-speakers from routing-to-game-chat.
+- Preserve UMBRA's existing PC/Android remote-control architecture: buttons on tablet/phone can trigger authorized playback on the Windows host, while the Windows audio routing delivers the mixed signal to the selected game microphone device.
+- Keep latency low, make clipping/overlap behavior predictable, and test with at least one game using voice-chat microphone selection. Account for games that restrict virtual audio devices or require manual input configuration.
+- Status: **backlog idea only; not yet implemented**. Decide audio routing and UI details during a future Simulator/UMBRA development phase.
+
+## UMBRA Simulator — hybrid macros and automatic game profiles (approved)
+- Use a **hybrid Macros interface**: always-available shared Windows/system controls and live host telemetry plus game-specific command layouts within Simulator tabs.
+- Detect the Windows foreground application/game on the companion host and automatically select its associated macro profile, with a clear active-profile indicator, manual override, and safe fallback when no profile matches. Avoid surprising switches while a macro is running.
+- Shared controls: common Windows shortcuts, microphone/audio routing status, soundboard controls, stop-all/cancel, power/performance state where available, and user-selected pinned commands.
+- Per-game profiles: editable hotkeys, sequences, soundboard clip buttons, push-to-talk configuration, contextual information, and customizable layout. Persist profiles across reconnects; sync tablet/phone views with the host's active profile.
+- Macro engine should support single hotkeys and bounded multi-step sequences with configurable delays, visible running status, cancellation, key-release cleanup, and safeguards against triggering in the wrong foreground app. Optional recorder only with explicit activation and exclusion of sensitive typing.
+- Telemetry should display only verified host data (e.g., CPU/GPU/RAM, microphone device/state, active app, power mode, macro status); mark unavailable metrics instead of fabricating values. Game-specific stats require a supported integration.
+- Integrate with the separately proposed microphone-mixed soundboard; avoid implementing a second audio engine.
+- **Status: approved design/backlog, not implemented.** Keep separate from ICARUS ship simulation and avoid disturbing existing remote deck functionality.
+
+## UMBRA Simulator — Discord COMMS integration (proposed)
+- Add a shared **COMMS** panel in UMBRA Simulator, accessible from every game tab, with a compact always-available microphone / soundboard control strip. Integrate with the approved hybrid Macros system and auto-selected game profiles.
+- **Stage 1: Windows Discord desktop bridge.** Use user-configured Discord keybinds triggered by the existing Windows companion for mute, deafen, push-to-talk and other supported actions. Show control feedback only when verified; don't mistake sent keystrokes for confirmed Discord state. Support manual keybind configuration and prevent shortcuts going to the wrong app.
+- **Stage 2: investigate richer Discord integration** through officially supported Discord APIs/SDKs and permissions: voice settings, current voice connection/channel, participants/speaking indicators, activity and server/channel navigation **only where actually supported and authorized**. Do not rely on unsupported private Discord client APIs, self-bots, token extraction, or invasive automation. Clearly distinguish available telemetry from unavailable data.
+- **Shared soundboard:** reuse the proposed Windows-host microphone-mixed soundboard with routing targets Discord only, game chat only, both, or local speakers, where configured virtual devices/mixer support them. Avoid duplicate audio engines; prevent feedback and accidental broadcasting.
+- Tablet/phone UMBRA buttons remotely control the Windows companion; audio routing happens on Windows. Provide visible microphone status, output destination, stop-all, and a fast disable/mute option.
+- **Open design choice:** whether to include full authorized server/channel/friend browsing or focus initially on voice-chat controls; do not treat the deeper integration as approved or technically guaranteed yet.
+- **Status:** backlog concept, not implemented. Implement separately from ICARUS Phase 4.2B and preserve existing Simulator functions.
+
+## UMBRA Discord COMMS — priority update
+- **Priority: LOWEST / PARKED.** User rarely uses Discord and explicitly wants all Discord COMMS integration ideas deferred behind other UMBRA and ICARUS work. Keep prior Discord concepts for possible future use, but do not schedule or implement unless reprioritized.
+
+## Future world modules — fantasy adaptation (exploration, not approved implementation)
+- Once ICARUS has a stable working simulation, explore reusing its autonomous agents, relationships, memories, schedules, event engine, persistence and observation systems for a separate **fantasy world**.
+- Architect future changes with a clean distinction between core simulation mechanics and setting-specific presentation/data. Potential mappings: ship rooms to buildings, decks to districts/regions, crew to villagers, jobs to trades, security cameras to an appropriate fantasy observation metaphor.
+- A full fantasy simulation requires new domain mechanics (economy, factions, travel, combat, magic, creatures, quests) and is not merely a visual reskin. Preserve the existing ICARUS universe and saves.
+- **Status:** exploratory future possibility only; no active development priority or implementation commitment.
+
+## Fantasy world — offline player protection (approved)
+- Future D&D-style autonomous fantasy simulation includes Spectator, Dungeon Master, and directly playable Adventurer modes (concept; not currently implemented).
+- **User-approved offline adventurer policy: Player Protection.** When the user leaves Adventurer Mode or disconnects, the player character remains in a designated safe location and does not autonomously embark on quests, enter combat, or take avoidable dangerous actions. The rest of the world continues evolving autonomously.
+- Handle disconnection safely: finish/resolve in-progress actions consistently; do not teleport out of combat or grant retroactive invulnerability. If offline in an unsafe location, define a fair safe-transition/checkpoint rule during implementation rather than exploiting the simulation.
+- On return, resume direct control from the persisted location and state; retain world events, relationships, inventory, and consequences. This is a future design preference, not an implementation claim.
+
+## ICARUS — asteroid exploration drones, cameras and sensors (proposed)
+- **Status: backlog idea, not implemented.** Add autonomous and optionally manually directed reconnaissance drones for asteroid 8847-A and nearby exploration zones.
+- **Drone camera feeds:** selectable live-style pixel-camera views consistent with Phase 4.2B's improved detailed pixel presentation; drone POV, optional follow mode, multi-feed surveillance, timestamps, position and signal quality. Render only what the drone can actually see; preserve fog of war.
+- **Sensor payloads:** configurable terrain/depth mapping (LiDAR/sonar/radar as appropriate), thermal imaging, radiation, atmospheric/gas analysis where relevant, mineral/ore spectroscopy, structural integrity, motion/vibration, electromagnetic anomalies, and power/communications telemetry. Measurements should reflect modeled world state, with uncertainty and range limits, not fabricated omniscience.
+- **Exploration:** drones can map tunnels, craters, wrecks, boreholes and unstable areas; inspect the military ship and derelict from safe distances; identify hazards and points of interest, and generate persistent survey maps/logs. Respect existing 8847-A canon and discovery pacing, including rare temporal anomalies and dormant threats.
+- **Operational constraints:** battery/power, payload weight, line-of-sight or relay signal, latency, navigation obstacles, damage, recovery, loss and repair; potential stationary relay beacons and return-to-base behavior. Autonomous missions obey permissions and risk tolerances, and should not force discoveries or release dormant threats by fiat.
+- **Integration:** UMBRA observation console to dispatch, monitor, switch cameras, review sensor overlays, and compare archived surveys. Sensor findings feed the Cascade Engine and crew decisions with provenance, while keeping classified information access controlled.
+- **Open design questions:** flying vs crawling drones, fleet size, which sensors are standard vs upgrades, and whether drones can physically manipulate objects. No active implementation commitment.
+
+## UMBRA — SOL symbiotic takeover and AI presence-driven interface (requested)
+- Replace the literal **“You are SOL”** wording in both desktop and Android UMBRA with an in-universe, symbiotic SOL presence/takeover treatment. Preserve existing layout, controls and visual identity; do not rebuild the UI or grant authority through visual state changes.
+- **Human command, SOL alive but not in charge:** retain the interface with **amber** command accents; SOL may exist as an advisory/present intelligence without implying control.
+- **SOL in charge:** same interface, with a restrained, organic/symbiotic SOL takeover treatment (e.g. cyan AI accents, subtle circuit/pulse transitions, identity/presence cues). Actual authority comes only from authoritative simulation state, not client-side animation or a cosmetic toggle.
+- **No in-game AIs surviving:** if all in-game AI entities have been terminated, remove AI identity/presence UI entirely and show a neutral, non-AI ship interface. Do not falsely display SOL as active. Distinguish terminated from temporarily offline, unreachable, dormant or disconnected.
+- **Cross-platform parity:** desktop and UMBRA Android may have different layouts, but use the same state model, labels, colors and transitions. Persist/recover state across reconnects; avoid stale takeover badges or contradictory indications.
+- **Other AIs:** model AI identity and authority explicitly so a different surviving AI is not mistaken for SOL; clarify takeover styling per AI later.
+- **Implementation checks:** inspect current desktop and Android surfaces for literal wording, identify authoritative AI roster/control state, ensure the UI never changes underlying simulation permissions, provide reduced-motion support, and test human command / SOL takeover / all AI terminated / disconnected states.
+- **Status:** requested design change; not yet implemented.
+
+## Phase 4.3 candidate — artificial gravity generator and crew interaction
+- **User-proposed feature, candidate for Phase 4.3 Living Ship Operations:** ICARUS has an artificial-gravity generator so crew and objects remain grounded during normal operation. Treat gravity as a real ship subsystem, not a purely cosmetic label.
+- Model generator condition, power draw, control state, fault conditions, repair tasks and gravity levels per ship zone where feasible. Normal ~1g, partial gravity, and zero gravity should have observable effects on movement, crew behavior, loose objects and engineering work.
+- Crew can inspect, service, diagnose, and repair the gravity system; authorized controls can isolate/restore zones. Gravity failures should be causal, not forced scripted incidents.
+- **Camera presentation:** Phase 4.2B detailed pixel cameras show appropriate walking, hopping, floating, handrail use and loose-object motion, subject to performance and rendering limits. Gravity restoration should affect unsecured objects and crew safely and consistently with simulated state.
+- **Gameplay consequences:** low/zero-g mobility, access constraints, repair difficulties, injuries and damage when warranted; no automatic catastrophic outcomes. Equipment must not magically work without power or repair.
+- **Engineering scope:** implement a tractable zone-based gravity model before expensive full rigid-body physics. Respect persistence, pause/time acceleration, telemetry, authority permissions and host-to-Android synchronization.
+- **Status:** design idea captured; Phase 4.3 scope not yet finalized or implemented.
+
+## Phase 4.3 — Living Ship Operations (approved scope, 2026-11-13)
+- **Approved to proceed:** implement Phase 4.3 after verifying the actual Phase 4.2B code baseline. Prioritize real ship systems and autonomous engineering interactions over new lore or forced incidents.
+- **Artificial gravity is included, with independent gravity zones/sections.** Normal 1g operation, adjustable/isolatable zone gravity when authorized, reduced and zero-g behavior, generator and distribution equipment, power/fault/maintenance dependencies, realistic crew movement/handholds and unsecured object behavior where feasible. Gravity restoration has consequences; do not grant invulnerability or teleport crew. Start with zone-based state and lightweight visual physics, not a full physics engine.
+- Implement coherent power circuits, life support/atmosphere, lighting, HVAC, equipment condition/wear, maintenance and repair tasks, crew logistics and telemetry. Power and faults should propagate through modeled dependencies and Cascade Engine, not scripted drama.
+- Phase 4.2B detailed pixel cameras should visibly reflect actual tasks and environmental states; ship schematic remains telemetry/control, not surveillance. Preserve quarters privacy, room/door/lift topology and follow-crew behavior.
+- Support authentic engineering work: diagnose, travel, collect tools, isolate/repair/test equipment, restore systems, log outcomes. Crew autonomy and permissions govern actions. Preserve persistence, sim time acceleration, reconnect and desktop/Android authoritative synchronization.
+- SOL takeover/presence interface is a separate requested backlog item; integrate only where scoped and avoid making the new systems depend on an AI being alive.
+- **Scope discipline:** asteroid drones, expeditions, new creature incidents, and large lore systems remain later-phase backlog items. No fabricated sensor values, forced failures, or fake AI actions.
+- **Status:** user approved Phase 4.3 direction and gravity zone feature; implementation not yet verified.
