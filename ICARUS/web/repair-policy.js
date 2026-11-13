@@ -4,7 +4,7 @@ const wear={C07:.19/12,C09:.28/12,C06:.31/12,B01:.26/12,A04:.22/12,B07:.25/12,C0
 function init(s){return s.repairControl||(s.repairControl={version:1,stats:{},decisions:[],notices:{},forecast:{},sample:null});}
 function count(s,key,n=1){const c=init(s);c.stats[key]=(c.stats[key]||0)+n;}
 function note(s,key,reason,env,data={}){const c=init(s);c.lastDecision={at:s.tick,reason,...data};if(s.tick-(c.notices[key]??-1e9)<120)return;c.notices[key]=s.tick;c.decisions.push(c.lastDecision);c.decisions=c.decisions.slice(-80);env?.emit?.('SOL: '+reason,'system',data);}
-function ready(p,life,minEnergy=35){return p.job==='Engineer'&&!p.systemAssignment&&!p.expeditionId&&!p.expeditionAway&&!p.responseAssignment&&!p.researchAssignment&&!p.rescuePatient&&!p.medicalTreatment&&p.energy>=minEnergy&&life.ready(p);}
+function ready(p,life,minEnergy=35){return p.job==='Engineer'&&!p.expeditionId&&!p.expeditionAway&&!p.responseAssignment&&!p.researchAssignment&&!p.rescuePatient&&!p.medicalTreatment&&p.energy>=minEnergy&&life.ready(p);}
 function safe(a){return !a.fire&&!a.breach&&a.pressure>=68&&a.oxygen>=15&&a.smoke<=29&&a.temperature<=49;}
 function access(s,p,id,env,atmospheric=false){const r=env.room(id),a=env.air(id),from=p.nav?.at||'R:'+p.room;if(r.door==='sealed'&&from!=='R:'+id)return {ok:false,reason:'Captain/safety seal retained'};const jam=r.door==='jammed';if(jam&&!safe(a))return {ok:false,reason:'Jammed hatch has unsafe pressure/fire conditions'};
  if(!jam&&!safe(a)&&(!atmospheric||a.pressure<40||a.oxygen<10||a.smoke>65||a.temperature>85))return {ok:false,reason:'Unsafe repair atmosphere'};

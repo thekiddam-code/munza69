@@ -22,3 +22,6 @@ class OperationsIntegration(PersonalitiesIntegration):
    self.advance(p,1);s=self.snap(p);order=s['world']['maintenance']['systemOrders'].get('GRAVITY-CORE')
    if order and order['phase']=='repairing' and order['progress']>1:break
   self.assertIsNotNone(order);self.assertEqual(order['phase'],'repairing');before=s;p.evaluate('__icarusSoak.save()');p.reload();self.assertEqual(self.snap(p),before);self.advance(p,200);s=self.snap(p);self.assertTrue(s['shipSystems']['components']['GRAVITY-CORE']['history']);self.assertEqual(s['resourceAudit'],[])
+
+ def test_ops_zero_g_recovery_timer_finishes_instead_of_permanent_rest(self):
+  p=self.page();self.configure(p,"""s.remoteCore.autonomyEnabled=false;const q=s.crew[0];q.room=q.target='C03';q.nav=null;q.route=[];q.task=q.goal='Resting';q.taskMinutes=3;q.energy=45;q.maintenanceRoom=null;q.systemAssignment=null;s.shipSystems.zones.cargo.targetG=0;s.shipSystems.zones.cargo.g=0;""");self.advance(p,1);self.assertEqual(self.snap(p)['crew'][0]['taskMinutes'],2);self.advance(p,1);self.assertEqual(self.snap(p)['crew'][0]['taskMinutes'],1);self.advance(p,1);self.assertEqual(self.snap(p)['crew'][0]['taskMinutes'],0);self.advance(p,1);self.assertGreater(self.snap(p)['crew'][0]['taskMinutes'],0);self.assertEqual(self.snap(p)['resourceAudit'],[])

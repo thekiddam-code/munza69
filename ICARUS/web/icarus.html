@@ -1508,7 +1508,7 @@ function maintenanceTick(){
  }
 }
 function maintenanceJob(p){
- if(!ICARUSRepairPolicy.ready(p,ICARUSLife)||p.emergencyId)return null;
+ if(p.systemAssignment||!ICARUSRepairPolicy.ready(p,ICARUSLife)||p.emergencyId)return null;
  const orders=Object.values(maintenanceLedger().orders).filter(o=>!o.assigned&&!state.emergencies[o.room]?.status?.includes('active')&&!ICARUSRepairPolicy.access(state,p,o.room,repairEnvironment()).jam&&ICARUSRepairPolicy.access(state,p,o.room,repairEnvironment()).ok&&ICARUSEconomy.available(state).tools>=.005&&(o.sparePaid||ICARUSEconomy.available(state).spares>=1));
  orders.sort((a,b)=>ICARUSRepairPolicy.priority(state,b.room)-ICARUSRepairPolicy.priority(state,a.room)||a.created-b.created);
  const systemJob=!orders.length||!orders.some(o=>['C07','C08','C09'].includes(o.room)&&equipmentFor(o.room).condition<48)?ICARUSSystemsMaintenance.job(state,p,systemsWorkEnvironment()):null;if(systemJob)return systemJob;
