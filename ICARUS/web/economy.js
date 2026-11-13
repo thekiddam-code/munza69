@@ -29,7 +29,7 @@ function audit(s){const e=init(s),actual=totals(s),errors=[];for(const k of keys
  for(const k of Object.keys(e.feedstock)){const expected=(e.feedstockInitial[k]||0)+(e.feedstockImported[k]||0)-(e.feedstockUsed[k]||0);if(e.feedstock[k]<-1e-7||Math.abs(expected-e.feedstock[k])>1e-6)errors.push({feedstock:k,expected,actual:e.feedstock[k]});}if(s.teamLog){const suits=s.teamLog.suits+s.teamLog.lostSuits+Object.values(s.remoteCore?.missions||{}).reduce((n,m)=>n+(m?.suits||0),0);if(suits!==6||s.teamLog.suits<0||s.teamLog.lostSuits<0)errors.push({key:'expedition suits',expected:6,actual:suits});}return errors;}
 function creditFeed(s,key,amount,source){const e=init(s);e.feedstock[key]=(e.feedstock[key]||0)+amount;add(e,'feedstockImported',key,amount);note(s,'recover',key,amount,source);}
 function tick(s,env){const e=init(s);if(e.lastTick===s.tick)return;e.lastTick=s.tick;
- const eq=id=>Math.max(0,Math.min(1,(s.equipment?.[id]?.condition??0)/100));
+ const eq=id=>Math.max(0,Math.min(1,(s.equipment?.[id]?.condition??0)/100))*(id==='C07'||id==='C08'?1:root.ICARUSShipSystems?.power(s,id)??1);
  // Reactor converts carried fuel; solar input is an explicit external energy source.
  const wanted=Math.max(0,e.capacity.energy-e.stock.energy);
  const solar=Math.min(wanted,.20*eq('C07'));produce(s,'energy',solar,'incident starlight / installed collector');

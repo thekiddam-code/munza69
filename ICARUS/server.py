@@ -211,6 +211,10 @@ def action(d):
   raise ValueError('Unknown action')
 
 def valid_icarus_command(command):
+ if isinstance(command,str) and re.fullmatch(r'systems:(inspect|maintain):(GRAVITY-CORE|CIRCUIT-(habitation|medical|science|cargo|hangar|engineering))',command):return True
+ if isinstance(command,str) and re.fullmatch(r'systems:(isolate-gravity|circuit):(habitation|medical|science|cargo|hangar|engineering):[01]',command):return True
+ if isinstance(command,str) and re.fullmatch(r'systems:restore:(habitation|medical|science|cargo|hangar|engineering):(gradual|rapid)',command):return True
+ if isinstance(command,str) and re.fullmatch(r'systems:gravity:(habitation|medical|science|cargo|hangar|engineering):[01](\.\d{1,2})?',command):return 0<=float(command.rsplit(':',1)[1])<=1.2
  if command in ('pause','resume','speed1','speed5','speed20','save','nav:hold','nav:resume','nav:recall'): return True
  if isinstance(command,str) and re.fullmatch(r'room:light:[ABC](0[1-9]|10):(0|0\.25|0\.5|0\.75|1)',command):return True
  if isinstance(command,str) and re.fullmatch(r'frontier:(rescue|shelter):SOS-\d+',command): return True

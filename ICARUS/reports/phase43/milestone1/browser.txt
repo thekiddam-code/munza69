@@ -1,0 +1,8 @@
+test_ops_engineer_real_diagnose_collect_repair_test (test_operations_integration.OperationsIntegration.test_ops_engineer_real_diagnose_collect_repair_test) ... ok
+test_ops_float_actual_loose_objects_and_local_power (test_operations_integration.OperationsIntegration.test_ops_float_actual_loose_objects_and_local_power) ... ok
+test_ops_independent_gravity_and_saved_controls (test_operations_integration.OperationsIntegration.test_ops_independent_gravity_and_saved_controls) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 26.209s
+
+OK
