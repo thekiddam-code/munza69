@@ -4,7 +4,7 @@ function tick(s,env){if(s.observationTick===s.tick)return;s.observationTick=s.ti
  if(!/seeking.*(conversation|company)|searching.*conversation/i.test(p.goal||p.task||'')){if(a&&a.phase!=='interrupted'){a.phase='finished';a.at=s.tick;}continue;}
  if(!a||['finished','interrupted'].includes(a.phase)||a.activity!==p.goal)a=p.socialSearch={activity:p.goal,startedAt:s.tick,phaseAt:s.tick,phase:'looking',at:s.tick};a.at=s.tick;
  if(p.conversation?.until>s.tick){a.phase='talking';a.sourceId=p.conversation.sourceId;continue;}
- if(a.phase==='talking'){a.phase='finished';continue;}
+ if(a.phase==='talking'){a.phase='finished';p.taskMinutes=0;continue;}
  const present=s.crew.filter(q=>q!==p&&root.ICARUSCrewLife.available(q)&&env.coLocated(p,q));const q=present.find(q=>q.name===a.target)||present.sort((x,y)=>(p.relationships?.[y.name]||0)-(p.relationships?.[x.name]||0)||x.name.localeCompare(y.name))[0];
  if(s.tick-a.startedAt>=14){a.phase='giving-up';a.target=null;a.targetPoint=null;if(s.tick-a.startedAt>=16)p.taskMinutes=0;continue;}
  if(s.tick-a.startedAt<2)continue;
