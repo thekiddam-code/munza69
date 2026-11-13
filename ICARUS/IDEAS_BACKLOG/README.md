@@ -175,3 +175,15 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - Sock-on-the-door marker signals privacy to other crew; ordinary bridge/security camera feeds exclude crew quarters.
 - **Important user clarification:** SOL **can** access a separate concealed camera feed in crew quarters through a future classified SOL Operations terminal. SOL knowledge is grounded in actual covert camera observations, not omniscience. Keep this feed out of ordinary security monitors and respect its access restrictions. Private intimacy is still presented non-explicitly, using fade-to-black rather than depicting acts.
 - Defer implementation until Phase 4.2A watchable crew/camera foundations are working; do not expose classified camera access in Creator Mode as a substitute for the in-universe terminal.
+
+## Phase 4.2A delivery record — 2026-11-12
+
+Implementation branch: `codex/observation-protocol-phase4-2a`, engine baseline Phase 4.2 `7f3fb0d` with main's backlog/native-launcher additions preserved. Current frozen observation runtime: `490a25c`. See [architecture](../PHASE42A_ARCHITECTURE.md), [executed validation](../PHASE42A_VALIDATION.md) and [unfinished items](../PHASE42A_LIMITATIONS.md).
+
+- **Implemented, automated tests executed:** original Canvas pixel room/crew renderer; task/source-backed Iris look/approach/wait/talk/listen and failure/interruption; four rotating previews, pins, promotion/manual-primary hold, private-room camera exclusion, instrumented schematic, saved lighting, received-record crew menus, header-click/keyboard collapse, compact status/Focus access, themed scrollbars and normal Bridge Pause.
+- **Automated observation subset verified:** 430 case executions +26 emulation checks; large-save migration, normal/adverse seven-day campaigns, source audits and a 1,800.9-second normal-time watch passed. Use the validation report for exact provenance and open scope; physical/artistic/full-physics completion is not claimed.
+- **Confirmed defect fixed:** richer projection duplicated into legacy telemetry and exceeded host packet limits on a real late-voyage fixture. Legacy remains 14 KB; authenticated host publications are bounded at 128 KiB. Command/pairing/fencing restrictions remain.
+- **Partial / next refinement:** unique room tilemaps, full sitting/turn/fear/alert/creature animation sets and stronger sub-room furniture/crowd avoidance. Current anchors/interpolation do not claim a new physical collision engine.
+- **Unavailable model / deferred:** biological scan returns, CO₂/HVAC setpoint/circuit/suppression controls; no working-looking fake controls or hidden-creature counts.
+- **Explicitly deferred:** classified SOL Operations/covert quarters access and optional non-explicit adult relationship presentation (Phase 4.2B). Ordinary cameras remain excluded from quarters even in Creator Mode. The separate 4.1.1 clock issue is untouched.
+- **Native boundary:** main's S24+ Compose launcher/source/APKs retained unchanged. It is separate from the original Tab S5e project; no native/device rebuild/test claim in this browser/server batch.

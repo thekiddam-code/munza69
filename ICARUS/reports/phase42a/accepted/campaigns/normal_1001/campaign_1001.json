@@ -1,0 +1,3487 @@
+{
+  "seed": 1001,
+  "scenario": "normal",
+  "real_days": 7,
+  "start": "2026-10-28T00:00:00Z",
+  "zone": "America/Chicago",
+  "source_commit": "490a25cef03c35d437b2bfd2a93e9bc525e5774a",
+  "status": "finished",
+  "passed": true,
+  "errors": [],
+  "daily": [
+    {
+      "livingShip": {
+        "registered": 20,
+        "active": 20,
+        "retainedSocialMemories": 130,
+        "retainedBonds": 102,
+        "retainedActivityHistory": 320,
+        "retainedClaims": 0
+      },
+      "cinematic_errors": [],
+      "cinematic": {
+        "recordings": 120,
+        "captured": 441,
+        "films": 0,
+        "conversations": 55,
+        "notes": 48
+      },
+      "knowledge_errors": [],
+      "creature_errors": [],
+      "knowledge": {
+        "facts": 244,
+        "sol": 189,
+        "pending": 0,
+        "delivered": 237
+      },
+      "biology": [
+        {
+          "id": "XENO-INITIAL",
+          "stage": "adult",
+          "location": "asteroid:23",
+          "state": "contained",
+          "energy": 100,
+          "health": 100,
+          "steps": 0
+        },
+        {
+          "id": "EGG-1",
+          "stage": "egg",
+          "location": "asteroid:22",
+          "state": "uninitialized",
+          "steps": 0
+        },
+        {
+          "id": "EGG-2",
+          "stage": "egg",
+          "location": "asteroid:24",
+          "state": "uninitialized",
+          "steps": 0
+        }
+      ],
+      "repairControl": {
+        "version": 1,
+        "stats": {
+          "preventiveStarted": 33,
+          "maintenanceWork": 2383.1999999999975,
+          "criticalEscalations": 1,
+          "criticalRecoveries": 1,
+          "preventiveCompleted": 33
+        },
+        "decisions": [
+          {
+            "at": 61,
+            "reason": "Measured life-support fault or reserve forecast below one day; optional research and launches suspended."
+          },
+          {
+            "at": 121,
+            "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+          }
+        ],
+        "notices": {
+          "forecast:true": 61,
+          "forecast:false": 121
+        },
+        "forecast": {
+          "food": {
+            "at": 5701,
+            "consumption": 0.06397666666666738,
+            "production": 0.06400000000000526,
+            "available": 158.8672,
+            "minutes": null
+          },
+          "water": {
+            "at": 5701,
+            "consumption": 0.02795333333333332,
+            "production": 0.029526666666668196,
+            "available": 150,
+            "minutes": null
+          },
+          "oxygen": {
+            "at": 5701,
+            "consumption": 0.019966666666666556,
+            "production": 0.018099999999999974,
+            "available": 110.04000000000073,
+            "minutes": 58950.00000000305
+          },
+          "energy": {
+            "at": 5701,
+            "consumption": 0.1163067266666682,
+            "production": 0.1908576325066747,
+            "available": 179.89816,
+            "minutes": null
+          }
+        },
+        "sample": {
+          "at": 5701,
+          "consumed": {
+            "energy": 811.7027600000017,
+            "food": 322.81260000000003,
+            "water": 167.6252,
+            "oxygen": 114.01800000000001,
+            "lab": 167.2,
+            "spares": 33,
+            "tools": 68.916
+          },
+          "produced": {
+            "energy": 871.6009200000412,
+            "spares": 38.99999999999986,
+            "water": 171.4656000000033,
+            "oxygen": 106.34400000000001,
+            "medical": 8,
+            "food": 297.80000000001576,
+            "lab": 151.2,
+            "tools": 50.91600000000048
+          }
+        },
+        "critical": false,
+        "lastDecision": {
+          "at": 121,
+          "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+        }
+      },
+      "equipment": {
+        "A08": 96,
+        "C05": 45.39999999999992,
+        "C07": 69.70000000000067,
+        "C09": 74.59999999999917,
+        "C06": 73.64999999999843,
+        "B01": 80.74999999999686,
+        "A04": 77.05,
+        "B07": 68.19999999999945,
+        "C08": 75.64999999999951
+      },
+      "nativeIncidents": {},
+      "anthology": {
+        "arcs": 33,
+        "open": 10,
+        "external": 6,
+        "maxOverlap": 10,
+        "traditions": 2
+      },
+      "day": 4,
+      "tick": 5760,
+      "minute": 6240,
+      "episode": 1,
+      "archives": 0,
+      "crew": [
+        {
+          "name": "Frank Morrow",
+          "health": 100,
+          "fatigue": 1.4220000000000008,
+          "morale": 81.7640718063778,
+          "energy": 66.41999999999739
+        },
+        {
+          "name": "Mara Chen",
+          "health": 100,
+          "fatigue": 1.0440000000000005,
+          "morale": 77.69788460079477,
+          "energy": 83.39499999999668
+        },
+        {
+          "name": "Dr. Voss",
+          "health": 84.239081639098,
+          "fatigue": 22.284000000000216,
+          "morale": 58.11292502183358,
+          "energy": 40.00999999999387
+        },
+        {
+          "name": "Derek Cole",
+          "health": 100,
+          "fatigue": 2.663999999999994,
+          "morale": 62.74989335900159,
+          "energy": 51.4799999999969
+        },
+        {
+          "name": "Linda Park",
+          "health": 100,
+          "fatigue": 0.7740000000000005,
+          "morale": 75.87073045748141,
+          "energy": 51.55999999999639
+        },
+        {
+          "name": "Elena Ruiz",
+          "health": 100,
+          "fatigue": 17.028000000000617,
+          "morale": 65.56812279876038,
+          "energy": 59.88999999999768
+        },
+        {
+          "name": "Jules Mercer",
+          "health": 100,
+          "fatigue": 14.850000000000566,
+          "morale": 55.04986499349111,
+          "energy": 61.22999999999647
+        },
+        {
+          "name": "Nadia Kline",
+          "health": 100,
+          "fatigue": 16.569000000002738,
+          "morale": 69.42877856528206,
+          "energy": 66.26999999999359
+        },
+        {
+          "name": "Owen Briggs",
+          "health": 100,
+          "fatigue": 1.656000000000001,
+          "morale": 66.13664519404685,
+          "energy": 92.69499999999688
+        },
+        {
+          "name": "Priya Shah",
+          "health": 100,
+          "fatigue": 5.8859999999999575,
+          "morale": 68.79467625653884,
+          "energy": 89.03499999999386
+        },
+        {
+          "name": "Tomas Vale",
+          "health": 81.37384997680783,
+          "fatigue": 28.74600000000094,
+          "morale": 69.38947782651046,
+          "energy": 74.16999999999318
+        },
+        {
+          "name": "Rhea Ortiz",
+          "health": 100,
+          "fatigue": 3.9959999999999947,
+          "morale": 59.36669690372921,
+          "energy": 32.32999999999733
+        },
+        {
+          "name": "Milo Grant",
+          "health": 100,
+          "fatigue": 0.26999999999999996,
+          "morale": 61.09058702166186,
+          "energy": 96.07999999999751
+        },
+        {
+          "name": "Sana Okafor",
+          "health": 100,
+          "fatigue": 8.739000000000495,
+          "morale": 70.379731939296,
+          "energy": 82.60499999999543
+        },
+        {
+          "name": "Iris Bell",
+          "health": 100,
+          "fatigue": 0,
+          "morale": 69.01435151927869,
+          "energy": 93.67999999999753
+        },
+        {
+          "name": "Caleb Stone",
+          "health": 100,
+          "fatigue": 14.184000000000886,
+          "morale": 72.46562582441584,
+          "energy": 66.49999999999669
+        },
+        {
+          "name": "Yara Finch",
+          "health": 100,
+          "fatigue": 4.715999999999971,
+          "morale": 73.1909867132807,
+          "energy": 80.2799999999964
+        },
+        {
+          "name": "Theo Moss",
+          "health": 100,
+          "fatigue": 9.008999999999974,
+          "morale": 66.29097397809412,
+          "energy": 86.06999999999404
+        },
+        {
+          "name": "June Adler",
+          "health": 100,
+          "fatigue": 1.0080000000000005,
+          "morale": 78.78885190450956,
+          "energy": 77.27999999999645
+        },
+        {
+          "name": "Ari Novak",
+          "health": 100,
+          "fatigue": 0,
+          "morale": 64.16860222537133,
+          "energy": 98.75999999999787
+        }
+      ],
+      "dead": [],
+      "resource_errors": [],
+      "frontier_errors": [],
+      "destination_ids": [
+        "HOME",
+        "LOCAL-DEBRIS",
+        "LOCAL-ICE",
+        "LOCAL-RELAY",
+        "LOCAL-HULL",
+        "LOCAL-ECHO"
+      ],
+      "visited": 5,
+      "systems": 2,
+      "phase": "orbit",
+      "position": {
+        "x": 0.28,
+        "y": 0.04
+      },
+      "target": null,
+      "arrivals": 4,
+      "fuel": 147.1522719705309,
+      "travel_fuel": 1.559338662244769,
+      "stores": {
+        "food": 159.986,
+        "water": 153.67240000000004,
+        "oxygen": 112.20600000000076,
+        "energy": 179.80346999999998,
+        "medical": 20,
+        "spares": 70,
+        "tools": 70,
+        "lab": 78.97159999999997
+      },
+      "acquired": {},
+      "frontier_jobs": [
+        {
+          "id": "F-1",
+          "type": "survey",
+          "status": "completed",
+          "started": 3574
+        },
+        {
+          "id": "F-2",
+          "type": "survey",
+          "status": "completed",
+          "started": 4118
+        },
+        {
+          "id": "F-3",
+          "type": "survey",
+          "status": "completed",
+          "started": 4652
+        },
+        {
+          "id": "F-4",
+          "type": "survey",
+          "status": "failed",
+          "started": 5188
+        },
+        {
+          "id": "F-5",
+          "type": "survey",
+          "status": "active",
+          "started": 5618
+        }
+      ],
+      "case_ids": [
+        "SCI-0001",
+        "SCI-0002",
+        "SCI-0003",
+        "SCI-0004",
+        "SCI-0005",
+        "SCI-0006",
+        "SCI-0007",
+        "SCI-0008",
+        "SCI-0009",
+        "SCI-0010",
+        "SCI-0011",
+        "SCI-0012",
+        "SCI-0013",
+        "SCI-0014",
+        "SCI-0015",
+        "SCI-0016",
+        "SCI-0017",
+        "SCI-0018",
+        "SCI-0019",
+        "SCI-0020",
+        "SCI-0021"
+      ],
+      "samples": 4,
+      "event_kinds": {
+        "departure": 4,
+        "arrival": 4,
+        "mission_authorized": 5,
+        "encounter": 3,
+        "mission_completed": 3,
+        "injury": 2,
+        "mission_failed": 1
+      },
+      "entities": 5,
+      "encounters": {
+        "contacts": 3,
+        "trades": 0,
+        "refusals": 0,
+        "misunderstandings": 1,
+        "cooperations": 0
+      },
+      "interaction_count": 3,
+      "emergencies": {
+        "stranded": 0,
+        "fieldRepairs": 0,
+        "rescueAttempts": 0,
+        "rescued": 0,
+        "failed": 0,
+        "external": 0
+      },
+      "open_incidents": [],
+      "memories": 22,
+      "staged_jobs": 5,
+      "team_sizes": [
+        2
+      ],
+      "chronicle_errors": [],
+      "durable_backend": "indexeddb",
+      "calendar": {
+        "version": 1,
+        "timeZone": "America/Chicago",
+        "wallCursor": 1793232000000,
+        "displayMs": 1793491200000,
+        "carry": 0,
+        "lastSeen": 1793232000000,
+        "episodeKey": "2026-10-26",
+        "visitedWeeks": {
+          "2026-10-26": true
+        },
+        "occurrences": {},
+        "pending": [],
+        "corrections": [],
+        "recovery": {
+          "discardedMs": 0,
+          "rollbackCount": 0
+        },
+        "mode": "wall",
+        "maxCatchupMs": 21600000
+      },
+      "snapshot_bytes": 2041824,
+      "storage": {
+        "physical_bytes": 403436,
+        "primary_bytes": 403436,
+        "compressed": true
+      }
+    },
+    {
+      "livingShip": {
+        "registered": 20,
+        "active": 20,
+        "retainedSocialMemories": 290,
+        "retainedBonds": 196,
+        "retainedActivityHistory": 320,
+        "retainedClaims": 0
+      },
+      "cinematic_errors": [],
+      "cinematic": {
+        "recordings": 120,
+        "captured": 833,
+        "films": 0,
+        "conversations": 120,
+        "notes": 48
+      },
+      "knowledge_errors": [],
+      "creature_errors": [],
+      "knowledge": {
+        "facts": 363,
+        "sol": 243,
+        "pending": 0,
+        "delivered": 353
+      },
+      "biology": [
+        {
+          "id": "XENO-INITIAL",
+          "stage": "adult",
+          "location": "asteroid:23",
+          "state": "contained",
+          "energy": 100,
+          "health": 100,
+          "steps": 0
+        },
+        {
+          "id": "EGG-1",
+          "stage": "egg",
+          "location": "asteroid:22",
+          "state": "uninitialized",
+          "steps": 0
+        },
+        {
+          "id": "EGG-2",
+          "stage": "egg",
+          "location": "asteroid:24",
+          "state": "uninitialized",
+          "steps": 0
+        }
+      ],
+      "repairControl": {
+        "version": 1,
+        "stats": {
+          "preventiveStarted": 66,
+          "maintenanceWork": 4681.800000000229,
+          "criticalEscalations": 1,
+          "criticalRecoveries": 1,
+          "preventiveCompleted": 65
+        },
+        "decisions": [
+          {
+            "at": 61,
+            "reason": "Measured life-support fault or reserve forecast below one day; optional research and launches suspended."
+          },
+          {
+            "at": 121,
+            "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+          }
+        ],
+        "notices": {
+          "forecast:true": 61,
+          "forecast:false": 121
+        },
+        "forecast": {
+          "food": {
+            "at": 11461,
+            "consumption": 0.06399999999999864,
+            "production": 0.06399999999999485,
+            "available": 159.98600000000002,
+            "minutes": null
+          },
+          "water": {
+            "at": 11461,
+            "consumption": 0.028000000000000115,
+            "production": 0.028000000000000115,
+            "available": 152.79600000000016,
+            "minutes": null
+          },
+          "oxygen": {
+            "at": 11461,
+            "consumption": 0.020000000000000285,
+            "production": 0.01999999999999981,
+            "available": 110.73800000000092,
+            "minutes": null
+          },
+          "energy": {
+            "at": 11461,
+            "consumption": 0.12183552400000129,
+            "production": 0.12185370999999728,
+            "available": 179.8930638,
+            "minutes": null
+          }
+        },
+        "sample": {
+          "at": 11461,
+          "consumed": {
+            "energy": 1505.1778794400009,
+            "food": 599.454,
+            "water": 328.908,
+            "oxygen": 229.22000000000003,
+            "lab": 298.8,
+            "spares": 65,
+            "tools": 163.373
+          },
+          "produced": {
+            "energy": 1565.0709432400488,
+            "spares": 69.69232400000024,
+            "water": 331.7040000000034,
+            "oxygen": 219.958,
+            "medical": 8,
+            "food": 574.4399999999998,
+            "lab": 282.7999999999998,
+            "tools": 145.37300000000104
+          }
+        },
+        "critical": false,
+        "lastDecision": {
+          "at": 121,
+          "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+        }
+      },
+      "equipment": {
+        "A08": 96,
+        "C05": 84.60000000000015,
+        "C07": 85.30000000000123,
+        "C09": 72.19999999999845,
+        "C06": 75.69999999999732,
+        "B01": 71.09999999999386,
+        "A04": 84.95,
+        "B07": 84.24999999999879,
+        "C08": 69.64999999999934
+      },
+      "nativeIncidents": {},
+      "anthology": {
+        "arcs": 52,
+        "open": 4,
+        "external": 10,
+        "maxOverlap": 10,
+        "traditions": 3
+      },
+      "day": 8,
+      "tick": 11520,
+      "minute": 12000,
+      "episode": 1,
+      "archives": 0,
+      "crew": [
+        {
+          "name": "Frank Morrow",
+          "health": 100,
+          "fatigue": 0,
+          "morale": 83.22471484175819,
+          "energy": 93.02999999999541
+        },
+        {
+          "name": "Mara Chen",
+          "health": 100,
+          "fatigue": 3.9959999999999787,
+          "morale": 78.63514597928184,
+          "energy": 87.83499999999376
+        },
+        {
+          "name": "Dr. Voss",
+          "health": 89.97908163909278,
+          "fatigue": 0,
+          "morale": 66.45272585862224,
+          "energy": 91.66999999999139
+        },
+        {
+          "name": "Derek Cole",
+          "health": 100,
+          "fatigue": 0,
+          "morale": 58.65949109582181,
+          "energy": 56.519999999994226
+        },
+        {
+          "name": "Linda Park",
+          "health": 100,
+          "fatigue": 0,
+          "morale": 76.34932424974414,
+          "energy": 80.95999999999327
+        },
+        {
+          "name": "Elena Ruiz",
+          "health": 100,
+          "fatigue": 0.5400000000000001,
+          "morale": 72.01664735201686,
+          "energy": 86.85999999999416
+        },
+        {
+          "name": "Jules Mercer",
+          "health": 100,
+          "fatigue": 9.125999999999976,
+          "morale": 66.02485314541649,
+          "energy": 46.104999999993396
+        },
+        {
+          "name": "Nadia Kline",
+          "health": 100,
+          "fatigue": 1.2960000000000007,
+          "morale": 71.55894672638783,
+          "energy": 92.42999999999142
+        },
+        {
+          "name": "Owen Briggs",
+          "health": 100,
+          "fatigue": 2.5919999999999948,
+          "morale": 70.08183476323684,
+          "energy": 82.73499999999345
+        },
+        {
+          "name": "Priya Shah",
+          "health": 100,
+          "fatigue": 0.17999999999999997,
+          "morale": 72.78866209202447,
+          "energy": 59.26999999999009
+        },
+        {
+          "name": "Tomas Vale",
+          "health": 85.79384997680381,
+          "fatigue": 5.994000000000081,
+          "morale": 63.89331053581167,
+          "energy": 27.069999999990625
+        },
+        {
+          "name": "Rhea Ortiz",
+          "health": 100,
+          "fatigue": 5.849999999999958,
+          "morale": 69.47498152266235,
+          "energy": 77.35999999999332
+        },
+        {
+          "name": "Milo Grant",
+          "health": 100,
+          "fatigue": 2.8619999999999846,
+          "morale": 57.77584959508466,
+          "energy": 66.55999999999437
+        },
+        {
+          "name": "Sana Okafor",
+          "health": 100,
+          "fatigue": 0.018,
+          "morale": 64.2163934810873,
+          "energy": 95.92499999999173
+        },
+        {
+          "name": "Iris Bell",
+          "health": 100,
+          "fatigue": 0,
+          "morale": 65.78156390736686,
+          "energy": 36.3199999999938
+        },
+        {
+          "name": "Caleb Stone",
+          "health": 100,
+          "fatigue": 0,
+          "morale": 74.3512395364341,
+          "energy": 52.879999999993736
+        },
+        {
+          "name": "Yara Finch",
+          "health": 100,
+          "fatigue": 2.7179999999999933,
+          "morale": 75.03997039675643,
+          "energy": 75.05999999999307
+        },
+        {
+          "name": "Theo Moss",
+          "health": 100,
+          "fatigue": 0,
+          "morale": 65.46351134719842,
+          "energy": 40.52999999998964
+        },
+        {
+          "name": "June Adler",
+          "health": 100,
+          "fatigue": 0,
+          "morale": 74.28077669754927,
+          "energy": 31.079999999994094
+        },
+        {
+          "name": "Ari Novak",
+          "health": 100,
+          "fatigue": 1.9620000000000013,
+          "morale": 64.81359245398987,
+          "energy": 89.63999999999452
+        }
+      ],
+      "dead": [],
+      "resource_errors": [],
+      "frontier_errors": [],
+      "destination_ids": [
+        "HOME",
+        "LOCAL-DEBRIS",
+        "LOCAL-ICE",
+        "LOCAL-RELAY",
+        "LOCAL-HULL",
+        "LOCAL-ECHO"
+      ],
+      "visited": 6,
+      "systems": 2,
+      "phase": "orbit",
+      "position": {
+        "x": 0.35000000000000003,
+        "y": 0
+      },
+      "target": null,
+      "arrivals": 5,
+      "fuel": 146.6217182743146,
+      "travel_fuel": 1.9624515496596866,
+      "stores": {
+        "food": 159.986,
+        "water": 152.79600000000016,
+        "oxygen": 110.73800000000092,
+        "energy": 179.89361496,
+        "medical": 20,
+        "spares": 69.23460399999993,
+        "tools": 70,
+        "lab": 80
+      },
+      "acquired": {},
+      "frontier_jobs": [
+        {
+          "id": "F-1",
+          "type": "survey",
+          "status": "completed",
+          "started": 3574
+        },
+        {
+          "id": "F-2",
+          "type": "survey",
+          "status": "completed",
+          "started": 4118
+        },
+        {
+          "id": "F-3",
+          "type": "survey",
+          "status": "completed",
+          "started": 4652
+        },
+        {
+          "id": "F-4",
+          "type": "survey",
+          "status": "failed",
+          "started": 5188
+        },
+        {
+          "id": "F-5",
+          "type": "survey",
+          "status": "completed",
+          "started": 5618
+        },
+        {
+          "id": "F-6",
+          "type": "survey",
+          "status": "completed",
+          "started": 6155
+        }
+      ],
+      "case_ids": [
+        "SCI-0001",
+        "SCI-0002",
+        "SCI-0003",
+        "SCI-0004",
+        "SCI-0005",
+        "SCI-0006",
+        "SCI-0007",
+        "SCI-0008",
+        "SCI-0009",
+        "SCI-0010",
+        "SCI-0011",
+        "SCI-0012",
+        "SCI-0013",
+        "SCI-0014",
+        "SCI-0015",
+        "SCI-0016",
+        "SCI-0017",
+        "SCI-0018",
+        "SCI-0019",
+        "SCI-0020",
+        "SCI-0021",
+        "SCI-0022"
+      ],
+      "samples": 5,
+      "event_kinds": {
+        "departure": 5,
+        "arrival": 5,
+        "mission_authorized": 6,
+        "encounter": 3,
+        "mission_completed": 5,
+        "injury": 2,
+        "mission_failed": 1
+      },
+      "entities": 6,
+      "encounters": {
+        "contacts": 3,
+        "trades": 0,
+        "refusals": 0,
+        "misunderstandings": 1,
+        "cooperations": 0
+      },
+      "interaction_count": 3,
+      "emergencies": {
+        "stranded": 0,
+        "fieldRepairs": 0,
+        "rescueAttempts": 0,
+        "rescued": 0,
+        "failed": 0,
+        "external": 0
+      },
+      "open_incidents": [],
+      "memories": 44,
+      "staged_jobs": 6,
+      "team_sizes": [
+        2
+      ],
+      "chronicle_errors": [],
+      "durable_backend": "indexeddb",
+      "calendar": {
+        "version": 1,
+        "timeZone": "America/Chicago",
+        "wallCursor": 1793318400000,
+        "displayMs": 1793836800000,
+        "carry": 0,
+        "lastSeen": 1793318400000,
+        "episodeKey": "2026-10-26",
+        "visitedWeeks": {
+          "2026-10-26": true
+        },
+        "occurrences": {},
+        "pending": [],
+        "corrections": [],
+        "recovery": {
+          "discardedMs": 0,
+          "rollbackCount": 0
+        },
+        "mode": "wall",
+        "maxCatchupMs": 21600000
+      },
+      "snapshot_bytes": 2950946,
+      "storage": {
+        "physical_bytes": 934482,
+        "primary_bytes": 531046,
+        "compressed": true
+      }
+    },
+    {
+      "livingShip": {
+        "registered": 20,
+        "active": 20,
+        "retainedSocialMemories": 428,
+        "retainedBonds": 252,
+        "retainedActivityHistory": 320,
+        "retainedClaims": 0
+      },
+      "cinematic_errors": [],
+      "cinematic": {
+        "recordings": 120,
+        "captured": 1190,
+        "films": 0,
+        "conversations": 177,
+        "notes": 48
+      },
+      "knowledge_errors": [],
+      "creature_errors": [],
+      "knowledge": {
+        "facts": 472,
+        "sol": 295,
+        "pending": 0,
+        "delivered": 461
+      },
+      "biology": [
+        {
+          "id": "XENO-INITIAL",
+          "stage": "adult",
+          "location": "asteroid:23",
+          "state": "contained",
+          "energy": 100,
+          "health": 100,
+          "steps": 0
+        },
+        {
+          "id": "EGG-1",
+          "stage": "egg",
+          "location": "asteroid:22",
+          "state": "uninitialized",
+          "steps": 0
+        },
+        {
+          "id": "EGG-2",
+          "stage": "egg",
+          "location": "asteroid:24",
+          "state": "uninitialized",
+          "steps": 0
+        }
+      ],
+      "repairControl": {
+        "version": 1,
+        "stats": {
+          "preventiveStarted": 98,
+          "maintenanceWork": 6883.200000000452,
+          "criticalEscalations": 1,
+          "criticalRecoveries": 1,
+          "preventiveCompleted": 96,
+          "releasedAssignments": 1
+        },
+        "decisions": [
+          {
+            "at": 61,
+            "reason": "Measured life-support fault or reserve forecast below one day; optional research and launches suspended."
+          },
+          {
+            "at": 121,
+            "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+          },
+          {
+            "at": 16169,
+            "reason": "Released obsolete maintenance reservation for Frank Morrow; current assignment retained.",
+            "person": "Frank Morrow"
+          }
+        ],
+        "notices": {
+          "forecast:true": 61,
+          "forecast:false": 121,
+          "detach:Frank Morrow": 16169
+        },
+        "forecast": {
+          "food": {
+            "at": 17221,
+            "consumption": 0.04733333333333197,
+            "production": 0.041649999999996606,
+            "available": 159.64500000000004,
+            "minutes": 28090.02932550316
+          },
+          "water": {
+            "at": 17221,
+            "consumption": 0.027999999999999168,
+            "production": 0.028000000000000115,
+            "available": 152.79600000000016,
+            "minutes": null
+          },
+          "oxygen": {
+            "at": 17221,
+            "consumption": 0.01999999999999981,
+            "production": 0.01999999999999981,
+            "available": 110.73800000000092,
+            "minutes": null
+          },
+          "energy": {
+            "at": 17221,
+            "consumption": 0.11291872400000405,
+            "production": 0.11245320999999725,
+            "available": 179.86515528,
+            "minutes": 386379.69057294197
+          }
+        },
+        "sample": {
+          "at": 17221,
+          "consumed": {
+            "energy": 2162.1900629439997,
+            "food": 884.194,
+            "water": 490.188,
+            "oxygen": 344.42,
+            "lab": 349.8,
+            "spares": 96,
+            "tools": 262.416
+          },
+          "produced": {
+            "energy": 2222.0552182240476,
+            "spares": 101.47970240000012,
+            "water": 492.9840000000034,
+            "oxygen": 335.158,
+            "medical": 8,
+            "food": 858.8389999999758,
+            "lab": 333.79999999999984,
+            "tools": 244.2896800000013
+          }
+        },
+        "critical": false,
+        "lastDecision": {
+          "at": 16169,
+          "reason": "Released obsolete maintenance reservation for Frank Morrow; current assignment retained.",
+          "person": "Frank Morrow"
+        }
+      },
+      "equipment": {
+        "A08": 96,
+        "C05": 100,
+        "C07": 81.5000000000019,
+        "C09": 85.99999999999793,
+        "C06": 71.04999999999622,
+        "B01": 84.29999999999072,
+        "A04": 67.60000000000011,
+        "B07": 74.64999999999823,
+        "C08": 85.09999999999914
+      },
+      "nativeIncidents": {},
+      "anthology": {
+        "arcs": 62,
+        "open": 4,
+        "external": 13,
+        "maxOverlap": 10,
+        "traditions": 5
+      },
+      "day": 12,
+      "tick": 17280,
+      "minute": 17760,
+      "episode": 1,
+      "archives": 0,
+      "crew": [
+        {
+          "name": "Frank Morrow",
+          "health": 100,
+          "fatigue": 0.6480000000000002,
+          "morale": 80.39665119640972,
+          "energy": 61.67999999999161
+        },
+        {
+          "name": "Mara Chen",
+          "health": 100,
+          "fatigue": 0.36000000000000004,
+          "morale": 74.5172311257268,
+          "energy": 98.03499999999113
+        },
+        {
+          "name": "Dr. Voss",
+          "health": 95,
+          "fatigue": 1.7820000000000011,
+          "morale": 65.04690277287847,
+          "energy": 41.509999999988
+        },
+        {
+          "name": "Derek Cole",
+          "health": 100,
+          "fatigue": 0,
+          "morale": 66.30200794144532,
+          "energy": 70.3799999999902
+        },
+        {
+          "name": "Linda Park",
+          "health": 100,
+          "fatigue": 0,
+          "morale": 76.92203245670886,
+          "energy": 49.39999999998997
+        },
+        {
+          "name": "Elena Ruiz",
+          "health": 100,
+          "fatigue": 0.6120000000000002,
+          "morale": 65.76126674967672,
+          "energy": 97.65999999999147
+        },
+        {
+          "name": "Jules Mercer",
+          "health": 100,
+          "fatigue": 8.44199999999995,
+          "morale": 63.31909822944554,
+          "energy": 67.13499999998992
+        },
+        {
+          "name": "Nadia Kline",
+          "health": 100,
+          "fatigue": 0.5760000000000002,
+          "morale": 68.47226025855043,
+          "energy": 95.66999999998843
+        },
+        {
+          "name": "Owen Briggs",
+          "health": 100,
+          "fatigue": 0,
+          "morale": 74.31815035791463,
+          "energy": 71.33499999998988
+        },
+        {
+          "name": "Priya Shah",
+          "health": 100,
+          "fatigue": 1.512000000000001,
+          "morale": 74.87864224606146,
+          "energy": 63.10999999998694
+        },
+        {
+          "name": "Tomas Vale",
+          "health": 89.62384997680033,
+          "fatigue": 9.053999999999974,
+          "morale": 66.93729756077576,
+          "energy": 61.62999999998664
+        },
+        {
+          "name": "Rhea Ortiz",
+          "health": 100,
+          "fatigue": 7.37999999999994,
+          "morale": 68.31107795373455,
+          "energy": 60.85999999998983
+        },
+        {
+          "name": "Milo Grant",
+          "health": 100,
+          "fatigue": 1.656000000000001,
+          "morale": 65.58983226827597,
+          "energy": 94.51999999999131
+        },
+        {
+          "name": "Sana Okafor",
+          "health": 100,
+          "fatigue": 0.36000000000000004,
+          "morale": 54.91675619125954,
+          "energy": 98.6849999999886
+        },
+        {
+          "name": "Iris Bell",
+          "health": 100,
+          "fatigue": 0.3960000000000001,
+          "morale": 69.84455912279513,
+          "energy": 51.079999999990335
+        },
+        {
+          "name": "Caleb Stone",
+          "health": 100,
+          "fatigue": 1.4040000000000008,
+          "morale": 72.33260550074787,
+          "energy": 52.75999999999088
+        },
+        {
+          "name": "Yara Finch",
+          "health": 100,
+          "fatigue": 1.710000000000001,
+          "morale": 73.68009524774256,
+          "energy": 78.89999999999003
+        },
+        {
+          "name": "Theo Moss",
+          "health": 100,
+          "fatigue": 0.6839999999999749,
+          "morale": 71.02426051560897,
+          "energy": 77.39999999998652
+        },
+        {
+          "name": "June Adler",
+          "health": 100,
+          "fatigue": 0,
+          "morale": 79.04248118977225,
+          "energy": 59.87999999999047
+        },
+        {
+          "name": "Ari Novak",
+          "health": 100,
+          "fatigue": 0,
+          "morale": 61.23128013703196,
+          "energy": 80.99999999999113
+        }
+      ],
+      "dead": [],
+      "resource_errors": [],
+      "frontier_errors": [],
+      "destination_ids": [
+        "HOME",
+        "LOCAL-DEBRIS",
+        "LOCAL-ICE",
+        "LOCAL-RELAY",
+        "LOCAL-HULL",
+        "LOCAL-ECHO"
+      ],
+      "visited": 6,
+      "systems": 2,
+      "phase": "orbit",
+      "position": {
+        "x": 0.35000000000000003,
+        "y": 0
+      },
+      "target": null,
+      "arrivals": 5,
+      "fuel": 146.61408060311467,
+      "travel_fuel": 1.9624515496596866,
+      "stores": {
+        "food": 159.986,
+        "water": 152.79600000000016,
+        "oxygen": 110.73800000000092,
+        "energy": 179.89216644,
+        "medical": 20,
+        "spares": 69.98906039999976,
+        "tools": 70,
+        "lab": 80
+      },
+      "acquired": {},
+      "frontier_jobs": [
+        {
+          "id": "F-1",
+          "type": "survey",
+          "status": "completed",
+          "started": 3574
+        },
+        {
+          "id": "F-2",
+          "type": "survey",
+          "status": "completed",
+          "started": 4118
+        },
+        {
+          "id": "F-3",
+          "type": "survey",
+          "status": "completed",
+          "started": 4652
+        },
+        {
+          "id": "F-4",
+          "type": "survey",
+          "status": "failed",
+          "started": 5188
+        },
+        {
+          "id": "F-5",
+          "type": "survey",
+          "status": "completed",
+          "started": 5618
+        },
+        {
+          "id": "F-6",
+          "type": "survey",
+          "status": "completed",
+          "started": 6155
+        }
+      ],
+      "case_ids": [
+        "SCI-0001",
+        "SCI-0002",
+        "SCI-0003",
+        "SCI-0004",
+        "SCI-0005",
+        "SCI-0006",
+        "SCI-0007",
+        "SCI-0008",
+        "SCI-0009",
+        "SCI-0010",
+        "SCI-0011",
+        "SCI-0012",
+        "SCI-0013",
+        "SCI-0014",
+        "SCI-0015",
+        "SCI-0016",
+        "SCI-0017",
+        "SCI-0018",
+        "SCI-0019",
+        "SCI-0020",
+        "SCI-0021",
+        "SCI-0022"
+      ],
+      "samples": 5,
+      "event_kinds": {
+        "departure": 5,
+        "arrival": 5,
+        "mission_authorized": 6,
+        "encounter": 3,
+        "mission_completed": 5,
+        "injury": 2,
+        "mission_failed": 1
+      },
+      "entities": 8,
+      "encounters": {
+        "contacts": 3,
+        "trades": 0,
+        "refusals": 0,
+        "misunderstandings": 1,
+        "cooperations": 0
+      },
+      "interaction_count": 3,
+      "emergencies": {
+        "stranded": 0,
+        "fieldRepairs": 0,
+        "rescueAttempts": 0,
+        "rescued": 0,
+        "failed": 0,
+        "external": 0
+      },
+      "open_incidents": [],
+      "memories": 60,
+      "staged_jobs": 6,
+      "team_sizes": [
+        2
+      ],
+      "chronicle_errors": [],
+      "durable_backend": "indexeddb",
+      "calendar": {
+        "version": 1,
+        "timeZone": "America/Chicago",
+        "wallCursor": 1793404800000,
+        "displayMs": 1794182400000,
+        "carry": 0,
+        "lastSeen": 1793404800000,
+        "episodeKey": "2026-10-26",
+        "visitedWeeks": {
+          "2026-10-26": true
+        },
+        "occurrences": {},
+        "pending": [],
+        "corrections": [],
+        "recovery": {
+          "discardedMs": 0,
+          "rollbackCount": 0
+        },
+        "mode": "wall",
+        "maxCatchupMs": 21600000
+      },
+      "snapshot_bytes": 3605543,
+      "storage": {
+        "physical_bytes": 1145016,
+        "primary_bytes": 613970,
+        "compressed": true
+      }
+    },
+    {
+      "livingShip": {
+        "registered": 20,
+        "active": 20,
+        "retainedSocialMemories": 495,
+        "retainedBonds": 274,
+        "retainedActivityHistory": 320,
+        "retainedClaims": 0
+      },
+      "cinematic_errors": [],
+      "cinematic": {
+        "recordings": 120,
+        "captured": 1335,
+        "films": 0,
+        "conversations": 207,
+        "notes": 48
+      },
+      "knowledge_errors": [],
+      "creature_errors": [],
+      "knowledge": {
+        "facts": 559,
+        "sol": 352,
+        "pending": 0,
+        "delivered": 548
+      },
+      "biology": [
+        {
+          "id": "XENO-INITIAL",
+          "stage": "adult",
+          "location": "asteroid:23",
+          "state": "contained",
+          "energy": 100,
+          "health": 100,
+          "steps": 0
+        },
+        {
+          "id": "EGG-1",
+          "stage": "egg",
+          "location": "asteroid:22",
+          "state": "uninitialized",
+          "steps": 0
+        },
+        {
+          "id": "EGG-2",
+          "stage": "egg",
+          "location": "asteroid:24",
+          "state": "uninitialized",
+          "steps": 0
+        }
+      ],
+      "repairControl": {
+        "version": 1,
+        "stats": {
+          "preventiveStarted": 110,
+          "maintenanceWork": 7729.200000000537,
+          "criticalEscalations": 1,
+          "criticalRecoveries": 1,
+          "preventiveCompleted": 107,
+          "releasedAssignments": 1
+        },
+        "decisions": [
+          {
+            "at": 61,
+            "reason": "Measured life-support fault or reserve forecast below one day; optional research and launches suspended."
+          },
+          {
+            "at": 121,
+            "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+          },
+          {
+            "at": 16169,
+            "reason": "Released obsolete maintenance reservation for Frank Morrow; current assignment retained.",
+            "person": "Frank Morrow"
+          }
+        ],
+        "notices": {
+          "forecast:true": 61,
+          "forecast:false": 121,
+          "detach:Frank Morrow": 16169
+        },
+        "forecast": {
+          "food": {
+            "at": 19561,
+            "consumption": 0.047333333333333866,
+            "production": 0.04733333333333008,
+            "available": 159.986,
+            "minutes": null
+          },
+          "water": {
+            "at": 19561,
+            "consumption": 0.027999999999999168,
+            "production": 0.028000000000001062,
+            "available": 152.79600000000016,
+            "minutes": null
+          },
+          "oxygen": {
+            "at": 19561,
+            "consumption": 0.01999999999999981,
+            "production": 0.01999999999999981,
+            "available": 110.73800000000092,
+            "minutes": null
+          },
+          "energy": {
+            "at": 19561,
+            "consumption": 0.11228840079999523,
+            "production": 0.11227054480000334,
+            "available": 179.89308864,
+            "minutes": 10074657.74651014
+          }
+        },
+        "sample": {
+          "at": 19561,
+          "consumed": {
+            "energy": 2428.955044047999,
+            "food": 995.9540000000001,
+            "water": 555.708,
+            "oxygen": 391.22,
+            "lab": 373.8,
+            "spares": 108,
+            "tools": 299.466
+          },
+          "produced": {
+            "energy": 2488.848132688048,
+            "spares": 113.28540080000009,
+            "water": 558.5040000000034,
+            "oxygen": 381.958,
+            "medical": 8,
+            "food": 970.9399999999661,
+            "lab": 357.7999999999998,
+            "tools": 281.46600000000154
+          }
+        },
+        "critical": false,
+        "lastDecision": {
+          "at": 16169,
+          "reason": "Released obsolete maintenance reservation for Frank Morrow; current assignment retained.",
+          "person": "Frank Morrow"
+        }
+      },
+      "equipment": {
+        "A08": 96,
+        "C05": 100,
+        "C07": 80.20000000000216,
+        "C09": 86.84999999999765,
+        "C06": 72.24999999999577,
+        "B01": 77.59999999998949,
+        "A04": 68.7000000000001,
+        "B07": 72.349999999998,
+        "C08": 80.34999999999921
+      },
+      "nativeIncidents": {},
+      "anthology": {
+        "arcs": 69,
+        "open": 4,
+        "external": 17,
+        "maxOverlap": 10,
+        "traditions": 7
+      },
+      "day": 13,
+      "tick": 19620,
+      "minute": 20100,
+      "episode": 1,
+      "archives": 0,
+      "crew": [
+        {
+          "name": "Frank Morrow",
+          "health": 100,
+          "fatigue": 8.405999999999949,
+          "morale": 82.47799282859407,
+          "energy": 43.16999999999098
+        },
+        {
+          "name": "Mara Chen",
+          "health": 100,
+          "fatigue": 0,
+          "morale": 72.20257264322166,
+          "energy": 48.11499999999024
+        },
+        {
+          "name": "Dr. Voss",
+          "health": 95,
+          "fatigue": 3.347999999999986,
+          "morale": 68.92854781077077,
+          "energy": 84.22999999998746
+        },
+        {
+          "name": "Derek Cole",
+          "health": 100,
+          "fatigue": 0.324,
+          "morale": 57.36350883066258,
+          "energy": 96.17999999998966
+        },
+        {
+          "name": "Linda Park",
+          "health": 100,
+          "fatigue": 4.985999999999968,
+          "morale": 75.92213301839058,
+          "energy": 75.43999999998856
+        },
+        {
+          "name": "Elena Ruiz",
+          "health": 100,
+          "fatigue": 7.757999999999936,
+          "morale": 73.99978313385259,
+          "energy": 61.65999999998924
+        },
+        {
+          "name": "Jules Mercer",
+          "health": 100,
+          "fatigue": 1.1340000000000006,
+          "morale": 63.57392670592117,
+          "energy": 35.244999999989396
+        },
+        {
+          "name": "Nadia Kline",
+          "health": 100,
+          "fatigue": 0.6300000000000002,
+          "morale": 70.99674041259999,
+          "energy": 60.86999999998637
+        },
+        {
+          "name": "Owen Briggs",
+          "health": 100,
+          "fatigue": 0,
+          "morale": 68.8775534377963,
+          "energy": 36.17499999998921
+        },
+        {
+          "name": "Priya Shah",
+          "health": 100,
+          "fatigue": 0,
+          "morale": 66.16470532720973,
+          "energy": 37.18999999998651
+        },
+        {
+          "name": "Tomas Vale",
+          "health": 91.76384997679838,
+          "fatigue": 6.983999999999945,
+          "morale": 66.33173094956634,
+          "energy": 34.35999999998623
+        },
+        {
+          "name": "Rhea Ortiz",
+          "health": 100,
+          "fatigue": 0.8820000000000005,
+          "morale": 59.97538961531256,
+          "energy": 96.97999999998953
+        },
+        {
+          "name": "Milo Grant",
+          "health": 100,
+          "fatigue": 1.2780000000000007,
+          "morale": 66.00404989363028,
+          "energy": 55.039999999989256
+        },
+        {
+          "name": "Sana Okafor",
+          "health": 100,
+          "fatigue": 5.9759999999999565,
+          "morale": 64.26162074565622,
+          "energy": 79.7199999999987
+        },
+        {
+          "name": "Iris Bell",
+          "health": 100,
+          "fatigue": 5.525999999999962,
+          "morale": 64.59280066478959,
+          "energy": 31.63999999999041
+        },
+        {
+          "name": "Caleb Stone",
+          "health": 100,
+          "fatigue": 1.8000000000000012,
+          "morale": 66.73422371369595,
+          "energy": 93.55999999999017
+        },
+        {
+          "name": "Yara Finch",
+          "health": 100,
+          "fatigue": 0.8820000000000005,
+          "morale": 72.62528857109143,
+          "energy": 77.69999999998942
+        },
+        {
+          "name": "Theo Moss",
+          "health": 100,
+          "fatigue": 2.2859999999999983,
+          "morale": 67.00927791044035,
+          "energy": 45.56999999998518
+        },
+        {
+          "name": "June Adler",
+          "health": 100,
+          "fatigue": 7.937999999999934,
+          "morale": 71.98611373242655,
+          "energy": 45.35999999998974
+        },
+        {
+          "name": "Ari Novak",
+          "health": 100,
+          "fatigue": 9.557999999999993,
+          "morale": 59.88915357343578,
+          "energy": 47.03999999998982
+        }
+      ],
+      "dead": [],
+      "resource_errors": [],
+      "frontier_errors": [],
+      "destination_ids": [
+        "HOME",
+        "LOCAL-DEBRIS",
+        "LOCAL-ICE",
+        "LOCAL-RELAY",
+        "LOCAL-HULL",
+        "LOCAL-ECHO"
+      ],
+      "visited": 6,
+      "systems": 2,
+      "phase": "orbit",
+      "position": {
+        "x": 0.35000000000000003,
+        "y": 0
+      },
+      "target": null,
+      "arrivals": 5,
+      "fuel": 146.60816022778135,
+      "travel_fuel": 1.9624515496596866,
+      "stores": {
+        "food": 159.986,
+        "water": 152.79600000000016,
+        "oxygen": 110.73800000000092,
+        "energy": 179.8756398,
+        "medical": 20,
+        "spares": 69.80325479999993,
+        "tools": 69.99099999999999,
+        "lab": 80
+      },
+      "acquired": {},
+      "frontier_jobs": [
+        {
+          "id": "F-1",
+          "type": "survey",
+          "status": "completed",
+          "started": 3574
+        },
+        {
+          "id": "F-2",
+          "type": "survey",
+          "status": "completed",
+          "started": 4118
+        },
+        {
+          "id": "F-3",
+          "type": "survey",
+          "status": "completed",
+          "started": 4652
+        },
+        {
+          "id": "F-4",
+          "type": "survey",
+          "status": "failed",
+          "started": 5188
+        },
+        {
+          "id": "F-5",
+          "type": "survey",
+          "status": "completed",
+          "started": 5618
+        },
+        {
+          "id": "F-6",
+          "type": "survey",
+          "status": "completed",
+          "started": 6155
+        }
+      ],
+      "case_ids": [
+        "SCI-0001",
+        "SCI-0002",
+        "SCI-0003",
+        "SCI-0004",
+        "SCI-0005",
+        "SCI-0006",
+        "SCI-0007",
+        "SCI-0008",
+        "SCI-0009",
+        "SCI-0010",
+        "SCI-0011",
+        "SCI-0012",
+        "SCI-0013",
+        "SCI-0014",
+        "SCI-0015",
+        "SCI-0016",
+        "SCI-0017",
+        "SCI-0018",
+        "SCI-0019",
+        "SCI-0020",
+        "SCI-0021",
+        "SCI-0022"
+      ],
+      "samples": 5,
+      "event_kinds": {
+        "departure": 5,
+        "arrival": 5,
+        "mission_authorized": 6,
+        "encounter": 3,
+        "mission_completed": 5,
+        "injury": 2,
+        "mission_failed": 1
+      },
+      "entities": 8,
+      "encounters": {
+        "contacts": 3,
+        "trades": 0,
+        "refusals": 0,
+        "misunderstandings": 1,
+        "cooperations": 0
+      },
+      "interaction_count": 3,
+      "emergencies": {
+        "stranded": 0,
+        "fieldRepairs": 0,
+        "rescueAttempts": 0,
+        "rescued": 0,
+        "failed": 0,
+        "external": 0
+      },
+      "open_incidents": [],
+      "memories": 66,
+      "staged_jobs": 6,
+      "team_sizes": [
+        2
+      ],
+      "chronicle_errors": [],
+      "durable_backend": "indexeddb",
+      "calendar": {
+        "version": 1,
+        "timeZone": "America/Chicago",
+        "wallCursor": 1793491200000,
+        "displayMs": 1793491200000,
+        "carry": 0,
+        "lastSeen": 1793491200000,
+        "episodeKey": "2026-10-26",
+        "visitedWeeks": {
+          "2026-10-26": true
+        },
+        "occurrences": {
+          "2026-10-31:Halloween": {
+            "id": "2026-10-31:Halloween",
+            "name": "Halloween",
+            "date": "2026-10-31",
+            "synchronized": true,
+            "at": 1793422800000,
+            "simTick": 18479,
+            "status": "observed"
+          }
+        },
+        "pending": [
+          "2026-10-31:Halloween"
+        ],
+        "corrections": [
+          {
+            "at": 1793422800000,
+            "before": 1794254400000,
+            "after": 1793422800000,
+            "id": "2026-10-31:Halloween",
+            "simTick": 18479
+          }
+        ],
+        "recovery": {
+          "discardedMs": 0,
+          "rollbackCount": 0
+        },
+        "mode": "wall",
+        "maxCatchupMs": 21600000
+      },
+      "snapshot_bytes": 3834089,
+      "storage": {
+        "physical_bytes": 1260020,
+        "primary_bytes": 646050,
+        "compressed": true
+      }
+    },
+    {
+      "livingShip": {
+        "registered": 20,
+        "active": 20,
+        "retainedSocialMemories": 578,
+        "retainedBonds": 302,
+        "retainedActivityHistory": 320,
+        "retainedClaims": 0
+      },
+      "cinematic_errors": [],
+      "cinematic": {
+        "recordings": 120,
+        "captured": 1637,
+        "films": 0,
+        "conversations": 261,
+        "notes": 48
+      },
+      "knowledge_errors": [],
+      "creature_errors": [],
+      "knowledge": {
+        "facts": 653,
+        "sol": 392,
+        "pending": 0,
+        "delivered": 638
+      },
+      "biology": [
+        {
+          "id": "XENO-INITIAL",
+          "stage": "adult",
+          "location": "asteroid:23",
+          "state": "contained",
+          "energy": 100,
+          "health": 100,
+          "steps": 0
+        },
+        {
+          "id": "EGG-1",
+          "stage": "egg",
+          "location": "asteroid:22",
+          "state": "uninitialized",
+          "steps": 0
+        },
+        {
+          "id": "EGG-2",
+          "stage": "egg",
+          "location": "asteroid:24",
+          "state": "uninitialized",
+          "steps": 0
+        }
+      ],
+      "repairControl": {
+        "version": 1,
+        "stats": {
+          "preventiveStarted": 137,
+          "maintenanceWork": 9709.199999999972,
+          "criticalEscalations": 1,
+          "criticalRecoveries": 1,
+          "preventiveCompleted": 135,
+          "releasedAssignments": 1
+        },
+        "decisions": [
+          {
+            "at": 61,
+            "reason": "Measured life-support fault or reserve forecast below one day; optional research and launches suspended."
+          },
+          {
+            "at": 121,
+            "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+          },
+          {
+            "at": 16169,
+            "reason": "Released obsolete maintenance reservation for Frank Morrow; current assignment retained.",
+            "person": "Frank Morrow"
+          }
+        ],
+        "notices": {
+          "forecast:true": 61,
+          "forecast:false": 121,
+          "detach:Frank Morrow": 16169
+        },
+        "forecast": {
+          "food": {
+            "at": 24421,
+            "consumption": 0.04733333333333576,
+            "production": 0.04178333333333058,
+            "available": 159.65300000000002,
+            "minutes": 28766.306306279446
+          },
+          "water": {
+            "at": 24421,
+            "consumption": 0.027999999999999168,
+            "production": 0.027999999999999168,
+            "available": 152.79600000000016,
+            "minutes": null
+          },
+          "oxygen": {
+            "at": 24421,
+            "consumption": 0.01999999999999981,
+            "production": 0.01999999999999981,
+            "available": 110.73800000000092,
+            "minutes": null
+          },
+          "energy": {
+            "at": 24421,
+            "consumption": 0.1357532239999955,
+            "production": 0.13541859000000234,
+            "available": 179.87142984000002,
+            "minutes": 537516.8985927011
+          }
+        },
+        "sample": {
+          "at": 24421,
+          "consumed": {
+            "energy": 2988.9345402879976,
+            "food": 1239.094,
+            "water": 691.788,
+            "oxygen": 488.42,
+            "lab": 418.8,
+            "spares": 135,
+            "tools": 376.132
+          },
+          "produced": {
+            "energy": 3048.8059701280486,
+            "spares": 138.1040048000002,
+            "water": 694.5840000000034,
+            "oxygen": 479.158,
+            "medical": 8,
+            "food": 1213.7469999999455,
+            "lab": 402.7999999999998,
+            "tools": 358.1320000000019
+          }
+        },
+        "critical": false,
+        "lastDecision": {
+          "at": 16169,
+          "reason": "Released obsolete maintenance reservation for Frank Morrow; current assignment retained.",
+          "person": "Frank Morrow"
+        }
+      },
+      "equipment": {
+        "A08": 96,
+        "C05": 100,
+        "C07": 74.85000000000274,
+        "C09": 85.5499999999971,
+        "C06": 86.14999999999462,
+        "B01": 84.74999999998685,
+        "A04": 68.40000000000012,
+        "B07": 85.59999999999744,
+        "C08": 81.59999999999911
+      },
+      "nativeIncidents": {},
+      "anthology": {
+        "arcs": 78,
+        "open": 4,
+        "external": 20,
+        "maxOverlap": 10,
+        "traditions": 7
+      },
+      "day": 17,
+      "tick": 24480,
+      "minute": 24960,
+      "episode": 1,
+      "archives": 0,
+      "crew": [
+        {
+          "name": "Frank Morrow",
+          "health": 100,
+          "fatigue": 5.489999999999962,
+          "morale": 79.68561801401123,
+          "energy": 72.4199999999882
+        },
+        {
+          "name": "Mara Chen",
+          "health": 100,
+          "fatigue": 2.142,
+          "morale": 79.7061020593643,
+          "energy": 87.35499999998724
+        },
+        {
+          "name": "Dr. Voss",
+          "health": 95,
+          "fatigue": 8.657999999999959,
+          "morale": 65.51872841404796,
+          "energy": 28.6699999999853
+        },
+        {
+          "name": "Derek Cole",
+          "health": 100,
+          "fatigue": 2.052000000000001,
+          "morale": 56.30509581594918,
+          "energy": 75.6599999999864
+        },
+        {
+          "name": "Linda Park",
+          "health": 100,
+          "fatigue": 9.449999999999989,
+          "morale": 72.9591036028693,
+          "energy": 44.119999999985836
+        },
+        {
+          "name": "Elena Ruiz",
+          "health": 100,
+          "fatigue": 9.107999999999976,
+          "morale": 73.0335441334366,
+          "energy": 54.339999999986695
+        },
+        {
+          "name": "Jules Mercer",
+          "health": 100,
+          "fatigue": 8.802,
+          "morale": 67.87344337127892,
+          "energy": 42.2049999999864
+        },
+        {
+          "name": "Nadia Kline",
+          "health": 100,
+          "fatigue": 0,
+          "morale": 73.64647357493624,
+          "energy": 49.34999999998403
+        },
+        {
+          "name": "Owen Briggs",
+          "health": 100,
+          "fatigue": 0,
+          "morale": 69.02230747992398,
+          "energy": 98.3349999999868
+        },
+        {
+          "name": "Priya Shah",
+          "health": 100,
+          "fatigue": 0,
+          "morale": 66.7860680662616,
+          "energy": 87.70999999998403
+        },
+        {
+          "name": "Tomas Vale",
+          "health": 92.33457496319897,
+          "fatigue": 8.42399999999995,
+          "morale": 69.77545532971348,
+          "energy": 52.17999999998309
+        },
+        {
+          "name": "Rhea Ortiz",
+          "health": 100,
+          "fatigue": 1.9440000000000013,
+          "morale": 65.68403461613717,
+          "energy": 75.01999999998613
+        },
+        {
+          "name": "Milo Grant",
+          "health": 100,
+          "fatigue": 2.3759999999999972,
+          "morale": 64.92959069615189,
+          "energy": 46.879999999986914
+        },
+        {
+          "name": "Sana Okafor",
+          "health": 100,
+          "fatigue": 3.1319999999999886,
+          "morale": 60.6989194642606,
+          "energy": 87.15999999999642
+        },
+        {
+          "name": "Iris Bell",
+          "health": 100,
+          "fatigue": 8.009999999999934,
+          "morale": 68.43357146381868,
+          "energy": 41.359999999988084
+        },
+        {
+          "name": "Caleb Stone",
+          "health": 100,
+          "fatigue": 3.185999999999988,
+          "morale": 68.88258780779918,
+          "energy": 84.43999999998734
+        },
+        {
+          "name": "Yara Finch",
+          "health": 100,
+          "fatigue": 0.7920000000000004,
+          "morale": 74.01132930960736,
+          "energy": 73.4999999999866
+        },
+        {
+          "name": "Theo Moss",
+          "health": 100,
+          "fatigue": 4.067999999999978,
+          "morale": 62.774237131529105,
+          "energy": 53.09999999998229
+        },
+        {
+          "name": "June Adler",
+          "health": 100,
+          "fatigue": 7.883999999999935,
+          "morale": 76.29737261994165,
+          "energy": 75.95999999998755
+        },
+        {
+          "name": "Ari Novak",
+          "health": 100,
+          "fatigue": 8.639999999999958,
+          "morale": 61.783567147749395,
+          "energy": 51.839999999987185
+        }
+      ],
+      "dead": [],
+      "resource_errors": [],
+      "frontier_errors": [],
+      "destination_ids": [
+        "HOME",
+        "LOCAL-DEBRIS",
+        "LOCAL-ICE",
+        "LOCAL-RELAY",
+        "LOCAL-HULL",
+        "LOCAL-ECHO"
+      ],
+      "visited": 6,
+      "systems": 2,
+      "phase": "orbit",
+      "position": {
+        "x": 0.35000000000000003,
+        "y": 0
+      },
+      "target": null,
+      "arrivals": 5,
+      "fuel": 146.56989488578134,
+      "travel_fuel": 1.9624515496596866,
+      "stores": {
+        "food": 159.98600000000002,
+        "water": 152.79600000000016,
+        "oxygen": 110.73800000000092,
+        "energy": 179.89353972,
+        "medical": 20,
+        "spares": 67.6876007999999,
+        "tools": 70,
+        "lab": 80
+      },
+      "acquired": {},
+      "frontier_jobs": [
+        {
+          "id": "F-1",
+          "type": "survey",
+          "status": "completed",
+          "started": 3574
+        },
+        {
+          "id": "F-2",
+          "type": "survey",
+          "status": "completed",
+          "started": 4118
+        },
+        {
+          "id": "F-3",
+          "type": "survey",
+          "status": "completed",
+          "started": 4652
+        },
+        {
+          "id": "F-4",
+          "type": "survey",
+          "status": "failed",
+          "started": 5188
+        },
+        {
+          "id": "F-5",
+          "type": "survey",
+          "status": "completed",
+          "started": 5618
+        },
+        {
+          "id": "F-6",
+          "type": "survey",
+          "status": "completed",
+          "started": 6155
+        }
+      ],
+      "case_ids": [
+        "SCI-0001",
+        "SCI-0002",
+        "SCI-0003",
+        "SCI-0004",
+        "SCI-0005",
+        "SCI-0006",
+        "SCI-0007",
+        "SCI-0008",
+        "SCI-0009",
+        "SCI-0010",
+        "SCI-0011",
+        "SCI-0012",
+        "SCI-0013",
+        "SCI-0014",
+        "SCI-0015",
+        "SCI-0016",
+        "SCI-0017",
+        "SCI-0018",
+        "SCI-0019",
+        "SCI-0020",
+        "SCI-0021",
+        "SCI-0022"
+      ],
+      "samples": 5,
+      "event_kinds": {
+        "departure": 5,
+        "arrival": 5,
+        "mission_authorized": 6,
+        "encounter": 3,
+        "mission_completed": 5,
+        "injury": 2,
+        "mission_failed": 1
+      },
+      "entities": 8,
+      "encounters": {
+        "contacts": 3,
+        "trades": 0,
+        "refusals": 0,
+        "misunderstandings": 1,
+        "cooperations": 0
+      },
+      "interaction_count": 3,
+      "emergencies": {
+        "stranded": 0,
+        "fieldRepairs": 0,
+        "rescueAttempts": 0,
+        "rescued": 0,
+        "failed": 0,
+        "external": 0
+      },
+      "open_incidents": [],
+      "memories": 80,
+      "staged_jobs": 6,
+      "team_sizes": [
+        2
+      ],
+      "chronicle_errors": [],
+      "durable_backend": "indexeddb",
+      "calendar": {
+        "version": 1,
+        "timeZone": "America/Chicago",
+        "wallCursor": 1793577600000,
+        "displayMs": 1793782800000,
+        "carry": 0,
+        "lastSeen": 1793577600000,
+        "episodeKey": "2026-10-26",
+        "visitedWeeks": {
+          "2026-10-26": true
+        },
+        "occurrences": {
+          "2026-10-31:Halloween": {
+            "id": "2026-10-31:Halloween",
+            "name": "Halloween",
+            "date": "2026-10-31",
+            "synchronized": true,
+            "at": 1793422800000,
+            "simTick": 18479,
+            "status": "observed"
+          }
+        },
+        "pending": [],
+        "corrections": [
+          {
+            "at": 1793422800000,
+            "before": 1794254400000,
+            "after": 1793422800000,
+            "id": "2026-10-31:Halloween",
+            "simTick": 18479
+          }
+        ],
+        "recovery": {
+          "discardedMs": 0,
+          "rollbackCount": 0
+        },
+        "mode": "wall",
+        "maxCatchupMs": 21600000
+      },
+      "snapshot_bytes": 4185414,
+      "storage": {
+        "physical_bytes": 1331578,
+        "primary_bytes": 685528,
+        "compressed": true
+      }
+    },
+    {
+      "livingShip": {
+        "registered": 20,
+        "active": 20,
+        "retainedSocialMemories": 623,
+        "retainedBonds": 330,
+        "retainedActivityHistory": 320,
+        "retainedClaims": 0
+      },
+      "cinematic_errors": [],
+      "cinematic": {
+        "recordings": 120,
+        "captured": 1997,
+        "films": 1,
+        "conversations": 339,
+        "notes": 48
+      },
+      "knowledge_errors": [],
+      "creature_errors": [],
+      "knowledge": {
+        "facts": 777,
+        "sol": 438,
+        "pending": 0,
+        "delivered": 758
+      },
+      "biology": [
+        {
+          "id": "XENO-INITIAL",
+          "stage": "adult",
+          "location": "asteroid:23",
+          "state": "contained",
+          "energy": 100,
+          "health": 100,
+          "steps": 0
+        },
+        {
+          "id": "EGG-1",
+          "stage": "egg",
+          "location": "asteroid:22",
+          "state": "uninitialized",
+          "steps": 0
+        },
+        {
+          "id": "EGG-2",
+          "stage": "egg",
+          "location": "asteroid:24",
+          "state": "uninitialized",
+          "steps": 0
+        }
+      ],
+      "repairControl": {
+        "version": 1,
+        "stats": {
+          "preventiveStarted": 165,
+          "maintenanceWork": 11737.799999999152,
+          "criticalEscalations": 1,
+          "criticalRecoveries": 1,
+          "preventiveCompleted": 163,
+          "releasedAssignments": 1
+        },
+        "decisions": [
+          {
+            "at": 61,
+            "reason": "Measured life-support fault or reserve forecast below one day; optional research and launches suspended."
+          },
+          {
+            "at": 121,
+            "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+          },
+          {
+            "at": 16169,
+            "reason": "Released obsolete maintenance reservation for Frank Morrow; current assignment retained.",
+            "person": "Frank Morrow"
+          }
+        ],
+        "notices": {
+          "forecast:true": 61,
+          "forecast:false": 121,
+          "detach:Frank Morrow": 16169
+        },
+        "forecast": {
+          "food": {
+            "at": 30181,
+            "consumption": 0.0806666666666653,
+            "production": 0.0806666666666653,
+            "available": 159.986,
+            "minutes": null
+          },
+          "water": {
+            "at": 30181,
+            "consumption": 0.027999999999999168,
+            "production": 0.028000000000001062,
+            "available": 152.79600000000016,
+            "minutes": null
+          },
+          "oxygen": {
+            "at": 30181,
+            "consumption": 0.019999999999998862,
+            "production": 0.020000000000000757,
+            "available": 110.73800000000092,
+            "minutes": null
+          },
+          "energy": {
+            "at": 30181,
+            "consumption": 0.11014340000000024,
+            "production": 0.1099916999999929,
+            "available": 179.885058,
+            "minutes": 1185794.7131925223
+          }
+        },
+        "sample": {
+          "at": 30181,
+          "consumed": {
+            "energy": 3644.8623039999966,
+            "food": 1519.734,
+            "water": 853.068,
+            "oxygen": 603.62,
+            "lab": 472.8,
+            "spares": 163,
+            "tools": 466.689
+          },
+          "produced": {
+            "energy": 3704.7473620000424,
+            "spares": 169.00000000000017,
+            "water": 855.8640000000034,
+            "oxygen": 594.3580000000001,
+            "medical": 8,
+            "food": 1494.7199999999216,
+            "lab": 456.7999999999998,
+            "tools": 447.9924000000023
+          }
+        },
+        "critical": false,
+        "lastDecision": {
+          "at": 16169,
+          "reason": "Released obsolete maintenance reservation for Frank Morrow; current assignment retained.",
+          "person": "Frank Morrow"
+        }
+      },
+      "equipment": {
+        "A08": 96,
+        "C05": 100,
+        "C07": 70.75000000000342,
+        "C09": 77.94999999999656,
+        "C06": 74.29999999999333,
+        "B01": 72.64999999998385,
+        "A04": 73.30000000000013,
+        "B07": 78.99999999999687,
+        "C08": 71.99999999999932
+      },
+      "nativeIncidents": {},
+      "anthology": {
+        "arcs": 88,
+        "open": 5,
+        "external": 23,
+        "maxOverlap": 10,
+        "traditions": 9
+      },
+      "day": 21,
+      "tick": 30240,
+      "minute": 30720,
+      "episode": 2,
+      "archives": 1,
+      "crew": [
+        {
+          "name": "Frank Morrow",
+          "health": 100,
+          "fatigue": 0,
+          "morale": 80.5366054282272,
+          "energy": 29.129999999986033
+        },
+        {
+          "name": "Mara Chen",
+          "health": 100,
+          "fatigue": 0.8460000000000004,
+          "morale": 74.65709121734912,
+          "energy": 84.47499999998405
+        },
+        {
+          "name": "Dr. Voss",
+          "health": 95,
+          "fatigue": 1.0260000000000005,
+          "morale": 68.54786438936746,
+          "energy": 39.94999999998226
+        },
+        {
+          "name": "Derek Cole",
+          "health": 100,
+          "fatigue": 0.072,
+          "morale": 55.442416548251614,
+          "energy": 46.59999999999647
+        },
+        {
+          "name": "Linda Park",
+          "health": 100,
+          "fatigue": 1.9440000000000013,
+          "morale": 75.64270267332996,
+          "energy": 87.07999999998269
+        },
+        {
+          "name": "Elena Ruiz",
+          "health": 100,
+          "fatigue": 2.2679999999999807,
+          "morale": 69.1636884992379,
+          "energy": 45.87999999998381
+        },
+        {
+          "name": "Jules Mercer",
+          "health": 100,
+          "fatigue": 0,
+          "morale": 66.2632837920949,
+          "energy": 98.60499999998453
+        },
+        {
+          "name": "Nadia Kline",
+          "health": 100,
+          "fatigue": 2.1060000000000003,
+          "morale": 71.25384428956815,
+          "energy": 47.66999999998095
+        },
+        {
+          "name": "Owen Briggs",
+          "health": 100,
+          "fatigue": 6.2820000000002825,
+          "morale": 68.07435502033562,
+          "energy": 97.13499999998359
+        },
+        {
+          "name": "Priya Shah",
+          "health": 100,
+          "fatigue": 18.000000000000313,
+          "morale": 68.83386172427744,
+          "energy": 33.229999999980926
+        },
+        {
+          "name": "Tomas Vale",
+          "health": 92.33457496319897,
+          "fatigue": 1.0260000000000005,
+          "morale": 73.66520723606781,
+          "energy": 79.8099999999801
+        },
+        {
+          "name": "Rhea Ortiz",
+          "health": 100,
+          "fatigue": 0.9000000000000005,
+          "morale": 65.27387529832686,
+          "energy": 67.69999999998288
+        },
+        {
+          "name": "Milo Grant",
+          "health": 100,
+          "fatigue": 0.8099999999999923,
+          "morale": 62.95665238164565,
+          "energy": 46.39999999998391
+        },
+        {
+          "name": "Sana Okafor",
+          "health": 100,
+          "fatigue": 2.6099999999999945,
+          "morale": 58.40287210287437,
+          "energy": 82.83999999999322
+        },
+        {
+          "name": "Iris Bell",
+          "health": 100,
+          "fatigue": 0,
+          "morale": 73.89068719629975,
+          "energy": 74.71999999998441
+        },
+        {
+          "name": "Caleb Stone",
+          "health": 100,
+          "fatigue": 2.0880000000000005,
+          "morale": 71.01098315046127,
+          "energy": 69.3799999999841
+        },
+        {
+          "name": "Yara Finch",
+          "health": 100,
+          "fatigue": 6.012000000000213,
+          "morale": 69.83890683707926,
+          "energy": 93.17999999998429
+        },
+        {
+          "name": "Theo Moss",
+          "health": 100,
+          "fatigue": 8.946000000000216,
+          "morale": 65.45654127725321,
+          "energy": 81.74999999997956
+        },
+        {
+          "name": "June Adler",
+          "health": 100,
+          "fatigue": 0.629999999999999,
+          "morale": 71.85355656799206,
+          "energy": 90.11999999998503
+        },
+        {
+          "name": "Ari Novak",
+          "health": 100,
+          "fatigue": 0,
+          "morale": 55.943931376517085,
+          "energy": 32.87999999998452
+        }
+      ],
+      "dead": [],
+      "resource_errors": [],
+      "frontier_errors": [],
+      "destination_ids": [
+        "HOME",
+        "LOCAL-DEBRIS",
+        "LOCAL-ICE",
+        "LOCAL-RELAY",
+        "LOCAL-HULL",
+        "LOCAL-ECHO"
+      ],
+      "visited": 6,
+      "systems": 2,
+      "phase": "orbit",
+      "position": {
+        "x": 0.35000000000000003,
+        "y": 0
+      },
+      "target": null,
+      "arrivals": 5,
+      "fuel": 146.56130152771465,
+      "travel_fuel": 1.9624515496596866,
+      "stores": {
+        "food": 159.986,
+        "water": 152.79600000000016,
+        "oxygen": 110.73800000000092,
+        "energy": 179.855244,
+        "medical": 20,
+        "spares": 70,
+        "tools": 69.89469999999992,
+        "lab": 80
+      },
+      "acquired": {},
+      "frontier_jobs": [
+        {
+          "id": "F-1",
+          "type": "survey",
+          "status": "completed",
+          "started": 3574
+        },
+        {
+          "id": "F-2",
+          "type": "survey",
+          "status": "completed",
+          "started": 4118
+        },
+        {
+          "id": "F-3",
+          "type": "survey",
+          "status": "completed",
+          "started": 4652
+        },
+        {
+          "id": "F-4",
+          "type": "survey",
+          "status": "failed",
+          "started": 5188
+        },
+        {
+          "id": "F-5",
+          "type": "survey",
+          "status": "completed",
+          "started": 5618
+        },
+        {
+          "id": "F-6",
+          "type": "survey",
+          "status": "completed",
+          "started": 6155
+        }
+      ],
+      "case_ids": [
+        "SCI-0001",
+        "SCI-0002",
+        "SCI-0003",
+        "SCI-0004",
+        "SCI-0005",
+        "SCI-0006",
+        "SCI-0007",
+        "SCI-0008",
+        "SCI-0009",
+        "SCI-0010",
+        "SCI-0011",
+        "SCI-0012",
+        "SCI-0013",
+        "SCI-0014",
+        "SCI-0015",
+        "SCI-0016",
+        "SCI-0017",
+        "SCI-0018",
+        "SCI-0019",
+        "SCI-0020",
+        "SCI-0021",
+        "SCI-0022"
+      ],
+      "samples": 5,
+      "event_kinds": {
+        "departure": 5,
+        "arrival": 5,
+        "mission_authorized": 6,
+        "encounter": 3,
+        "mission_completed": 5,
+        "injury": 2,
+        "mission_failed": 1
+      },
+      "entities": 9,
+      "encounters": {
+        "contacts": 3,
+        "trades": 0,
+        "refusals": 0,
+        "misunderstandings": 1,
+        "cooperations": 0
+      },
+      "interaction_count": 3,
+      "emergencies": {
+        "stranded": 0,
+        "fieldRepairs": 0,
+        "rescueAttempts": 0,
+        "rescued": 0,
+        "failed": 0,
+        "external": 0
+      },
+      "open_incidents": [],
+      "memories": 94,
+      "staged_jobs": 6,
+      "team_sizes": [
+        2
+      ],
+      "chronicle_errors": [],
+      "durable_backend": "indexeddb",
+      "calendar": {
+        "version": 1,
+        "timeZone": "America/Chicago",
+        "wallCursor": 1793664000000,
+        "displayMs": 1794128400000,
+        "carry": 0,
+        "lastSeen": 1793664000000,
+        "episodeKey": "2026-11-02",
+        "visitedWeeks": {
+          "2026-10-26": true,
+          "2026-11-02": true
+        },
+        "occurrences": {
+          "2026-10-31:Halloween": {
+            "id": "2026-10-31:Halloween",
+            "name": "Halloween",
+            "date": "2026-10-31",
+            "synchronized": true,
+            "at": 1793422800000,
+            "simTick": 18479,
+            "status": "observed"
+          }
+        },
+        "pending": [],
+        "corrections": [
+          {
+            "at": 1793422800000,
+            "before": 1794254400000,
+            "after": 1793422800000,
+            "id": "2026-10-31:Halloween",
+            "simTick": 18479
+          }
+        ],
+        "recovery": {
+          "discardedMs": 0,
+          "rollbackCount": 0
+        },
+        "mode": "wall",
+        "maxCatchupMs": 21600000
+      },
+      "snapshot_bytes": 4667754,
+      "storage": {
+        "physical_bytes": 1442204,
+        "primary_bytes": 756676,
+        "compressed": true
+      }
+    },
+    {
+      "livingShip": {
+        "registered": 20,
+        "active": 20,
+        "retainedSocialMemories": 634,
+        "retainedBonds": 342,
+        "retainedActivityHistory": 320,
+        "retainedClaims": 0
+      },
+      "cinematic_errors": [],
+      "cinematic": {
+        "recordings": 120,
+        "captured": 2363,
+        "films": 1,
+        "conversations": 405,
+        "notes": 48
+      },
+      "knowledge_errors": [],
+      "creature_errors": [],
+      "knowledge": {
+        "facts": 898,
+        "sol": 493,
+        "pending": 0,
+        "delivered": 879
+      },
+      "biology": [
+        {
+          "id": "XENO-INITIAL",
+          "stage": "adult",
+          "location": "asteroid:23",
+          "state": "contained",
+          "energy": 100,
+          "health": 100,
+          "steps": 0
+        },
+        {
+          "id": "EGG-1",
+          "stage": "egg",
+          "location": "asteroid:22",
+          "state": "uninitialized",
+          "steps": 0
+        },
+        {
+          "id": "EGG-2",
+          "stage": "egg",
+          "location": "asteroid:24",
+          "state": "uninitialized",
+          "steps": 0
+        }
+      ],
+      "repairControl": {
+        "version": 1,
+        "stats": {
+          "preventiveStarted": 198,
+          "maintenanceWork": 14090.3999999982,
+          "criticalEscalations": 1,
+          "criticalRecoveries": 1,
+          "preventiveCompleted": 195,
+          "releasedAssignments": 1
+        },
+        "decisions": [
+          {
+            "at": 61,
+            "reason": "Measured life-support fault or reserve forecast below one day; optional research and launches suspended."
+          },
+          {
+            "at": 121,
+            "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+          },
+          {
+            "at": 16169,
+            "reason": "Released obsolete maintenance reservation for Frank Morrow; current assignment retained.",
+            "person": "Frank Morrow"
+          }
+        ],
+        "notices": {
+          "forecast:true": 61,
+          "forecast:false": 121,
+          "detach:Frank Morrow": 16169
+        },
+        "forecast": {
+          "food": {
+            "at": 35941,
+            "consumption": 0.013999999999998635,
+            "production": 0.013999999999994846,
+            "available": 159.986,
+            "minutes": null
+          },
+          "water": {
+            "at": 35941,
+            "consumption": 0.028000000000001062,
+            "production": 0.028000000000001062,
+            "available": 152.79600000000016,
+            "minutes": null
+          },
+          "oxygen": {
+            "at": 35941,
+            "consumption": 0.020000000000000757,
+            "production": 0.019999999999998862,
+            "available": 110.73800000000092,
+            "minutes": null
+          },
+          "energy": {
+            "at": 35941,
+            "consumption": 0.11752333000000968,
+            "production": 0.11751412000000225,
+            "available": 179.8925796,
+            "minutes": 19532310.472833306
+          }
+        },
+        "sample": {
+          "at": 35941,
+          "consumed": {
+            "energy": 4309.813707303995,
+            "food": 1828.674,
+            "water": 1014.3480000000001,
+            "oxygen": 718.82,
+            "lab": 525.8,
+            "spares": 196,
+            "tools": 555.092
+          },
+          "produced": {
+            "energy": 4369.706286904043,
+            "spares": 200.3837883999998,
+            "water": 1017.1440000000034,
+            "oxygen": 709.558,
+            "medical": 8,
+            "food": 1803.659999999897,
+            "lab": 509.7999999999998,
+            "tools": 537.0920000000028
+          }
+        },
+        "critical": false,
+        "lastDecision": {
+          "at": 16169,
+          "reason": "Released obsolete maintenance reservation for Frank Morrow; current assignment retained.",
+          "person": "Frank Morrow"
+        }
+      },
+      "equipment": {
+        "A08": 96,
+        "C05": 100,
+        "C07": 86.050000000004,
+        "C09": 83.44999999999585,
+        "C06": 78.94999999999196,
+        "B01": 84.29999999998074,
+        "A04": 77.65000000000013,
+        "B07": 73.4999999999963,
+        "C08": 70.89999999999924
+      },
+      "nativeIncidents": {},
+      "anthology": {
+        "arcs": 99,
+        "open": 5,
+        "external": 28,
+        "maxOverlap": 10,
+        "traditions": 10
+      },
+      "day": 25,
+      "tick": 36000,
+      "minute": 36480,
+      "episode": 2,
+      "archives": 1,
+      "crew": [
+        {
+          "name": "Frank Morrow",
+          "health": 100,
+          "fatigue": 3.7259999999999818,
+          "morale": 87.79828101153853,
+          "energy": 65.30999999998198
+        },
+        {
+          "name": "Mara Chen",
+          "health": 100,
+          "fatigue": 0.36000000000000004,
+          "morale": 69.29142377046344,
+          "energy": 41.75499999998196
+        },
+        {
+          "name": "Dr. Voss",
+          "health": 95,
+          "fatigue": 0.7740000000000004,
+          "morale": 75.51629582687457,
+          "energy": 69.46999999997884
+        },
+        {
+          "name": "Derek Cole",
+          "health": 100,
+          "fatigue": 0,
+          "morale": 50.40161895276853,
+          "energy": 34.4799999999937
+        },
+        {
+          "name": "Linda Park",
+          "health": 100,
+          "fatigue": 0,
+          "morale": 79.32866135058207,
+          "energy": 60.67999999997885
+        },
+        {
+          "name": "Elena Ruiz",
+          "health": 100,
+          "fatigue": 1.3680000000000008,
+          "morale": 71.36295921332417,
+          "energy": 47.07999999998074
+        },
+        {
+          "name": "Jules Mercer",
+          "health": 100,
+          "fatigue": 11.952000000000083,
+          "morale": 61.82440188552579,
+          "energy": 53.24499999998073
+        },
+        {
+          "name": "Nadia Kline",
+          "health": 100,
+          "fatigue": 0,
+          "morale": 74.51681988063878,
+          "energy": 50.30999999997787
+        },
+        {
+          "name": "Owen Briggs",
+          "health": 100,
+          "fatigue": 1.9440000000000013,
+          "morale": 72.13375096948965,
+          "energy": 89.93499999998018
+        },
+        {
+          "name": "Priya Shah",
+          "health": 100,
+          "fatigue": 9.738,
+          "morale": 68.5301291224817,
+          "energy": 29.209999999977867
+        },
+        {
+          "name": "Tomas Vale",
+          "health": 92.33457496319897,
+          "fatigue": 2.124,
+          "morale": 66.42055574647347,
+          "energy": 28.449999999977145
+        },
+        {
+          "name": "Rhea Ortiz",
+          "health": 100,
+          "fatigue": 2.213999999999999,
+          "morale": 70.02465340991495,
+          "energy": 89.29999999998134
+        },
+        {
+          "name": "Milo Grant",
+          "health": 100,
+          "fatigue": 0,
+          "morale": 59.02045850177964,
+          "energy": 75.19999999998203
+        },
+        {
+          "name": "Sana Okafor",
+          "health": 100,
+          "fatigue": 1.620000000000001,
+          "morale": 50.43549172010462,
+          "energy": 90.03999999999051
+        },
+        {
+          "name": "Iris Bell",
+          "health": 100,
+          "fatigue": 0.46800000000000014,
+          "morale": 70.05328274566887,
+          "energy": 96.19999999998157
+        },
+        {
+          "name": "Caleb Stone",
+          "health": 100,
+          "fatigue": 0.791999999999976,
+          "morale": 72.35404504758426,
+          "energy": 69.73999999998111
+        },
+        {
+          "name": "Yara Finch",
+          "health": 100,
+          "fatigue": 11.268000000000058,
+          "morale": 68.33436073383251,
+          "energy": 55.01999999998133
+        },
+        {
+          "name": "Theo Moss",
+          "health": 100,
+          "fatigue": 11.394000000000062,
+          "morale": 64.73296639417543,
+          "energy": 57.53999999997633
+        },
+        {
+          "name": "June Adler",
+          "health": 100,
+          "fatigue": 1.0800000000000005,
+          "morale": 51.0070156148075,
+          "energy": 35.51999999998277
+        },
+        {
+          "name": "Ari Novak",
+          "health": 100,
+          "fatigue": 2.393999999999997,
+          "morale": 58.18624021616677,
+          "energy": 46.559999999981116
+        }
+      ],
+      "dead": [],
+      "resource_errors": [],
+      "frontier_errors": [],
+      "destination_ids": [
+        "HOME",
+        "LOCAL-DEBRIS",
+        "LOCAL-ICE",
+        "LOCAL-RELAY",
+        "LOCAL-HULL",
+        "LOCAL-ECHO"
+      ],
+      "visited": 6,
+      "systems": 2,
+      "phase": "orbit",
+      "position": {
+        "x": 0.35000000000000003,
+        "y": 0
+      },
+      "target": null,
+      "arrivals": 5,
+      "fuel": 146.53766120791482,
+      "travel_fuel": 1.9624515496596866,
+      "stores": {
+        "food": 159.98600000000002,
+        "water": 152.79600000000016,
+        "oxygen": 110.73800000000092,
+        "energy": 179.85759552,
+        "medical": 20,
+        "spares": 68.90881839999983,
+        "tools": 69.982,
+        "lab": 80
+      },
+      "acquired": {},
+      "frontier_jobs": [
+        {
+          "id": "F-1",
+          "type": "survey",
+          "status": "completed",
+          "started": 3574
+        },
+        {
+          "id": "F-2",
+          "type": "survey",
+          "status": "completed",
+          "started": 4118
+        },
+        {
+          "id": "F-3",
+          "type": "survey",
+          "status": "completed",
+          "started": 4652
+        },
+        {
+          "id": "F-4",
+          "type": "survey",
+          "status": "failed",
+          "started": 5188
+        },
+        {
+          "id": "F-5",
+          "type": "survey",
+          "status": "completed",
+          "started": 5618
+        },
+        {
+          "id": "F-6",
+          "type": "survey",
+          "status": "completed",
+          "started": 6155
+        }
+      ],
+      "case_ids": [
+        "SCI-0001",
+        "SCI-0002",
+        "SCI-0003",
+        "SCI-0004",
+        "SCI-0005",
+        "SCI-0006",
+        "SCI-0007",
+        "SCI-0008",
+        "SCI-0009",
+        "SCI-0010",
+        "SCI-0011",
+        "SCI-0012",
+        "SCI-0013",
+        "SCI-0014",
+        "SCI-0015",
+        "SCI-0016",
+        "SCI-0017",
+        "SCI-0018",
+        "SCI-0019",
+        "SCI-0020",
+        "SCI-0021",
+        "SCI-0022"
+      ],
+      "samples": 5,
+      "event_kinds": {
+        "departure": 5,
+        "arrival": 5,
+        "mission_authorized": 6,
+        "encounter": 3,
+        "mission_completed": 5,
+        "injury": 2,
+        "mission_failed": 1
+      },
+      "entities": 11,
+      "encounters": {
+        "contacts": 3,
+        "trades": 0,
+        "refusals": 0,
+        "misunderstandings": 1,
+        "cooperations": 0
+      },
+      "interaction_count": 3,
+      "emergencies": {
+        "stranded": 0,
+        "fieldRepairs": 0,
+        "rescueAttempts": 0,
+        "rescued": 0,
+        "failed": 0,
+        "external": 0
+      },
+      "open_incidents": [],
+      "memories": 112,
+      "staged_jobs": 6,
+      "team_sizes": [
+        2
+      ],
+      "chronicle_errors": [],
+      "durable_backend": "indexeddb",
+      "calendar": {
+        "version": 1,
+        "timeZone": "America/Chicago",
+        "wallCursor": 1793750400000,
+        "displayMs": 1794474000000,
+        "carry": 0,
+        "lastSeen": 1793750400000,
+        "episodeKey": "2026-11-02",
+        "visitedWeeks": {
+          "2026-10-26": true,
+          "2026-11-02": true
+        },
+        "occurrences": {
+          "2026-10-31:Halloween": {
+            "id": "2026-10-31:Halloween",
+            "name": "Halloween",
+            "date": "2026-10-31",
+            "synchronized": true,
+            "at": 1793422800000,
+            "simTick": 18479,
+            "status": "observed"
+          }
+        },
+        "pending": [],
+        "corrections": [
+          {
+            "at": 1793422800000,
+            "before": 1794254400000,
+            "after": 1793422800000,
+            "id": "2026-10-31:Halloween",
+            "simTick": 18479
+          }
+        ],
+        "recovery": {
+          "discardedMs": 0,
+          "rollbackCount": 0
+        },
+        "mode": "wall",
+        "maxCatchupMs": 21600000
+      },
+      "snapshot_bytes": 5046632,
+      "storage": {
+        "physical_bytes": 1563958,
+        "primary_bytes": 807282,
+        "compressed": true
+      }
+    }
+  ],
+  "checkpoints": [
+    {
+      "real_day": 7,
+      "sim_days": 25.0,
+      "episode": 2,
+      "exact_reload": true,
+      "crew": 20,
+      "dead": 0,
+      "stories": 99,
+      "resources": {
+        "food": 159.98600000000002,
+        "water": 152.79600000000016,
+        "oxygen": 110.73800000000092,
+        "energy": 179.85759552,
+        "medical": 20,
+        "spares": 68.90881839999983,
+        "tools": 69.982,
+        "lab": 80
+      },
+      "arrivals": 5,
+      "calendar_occurrences": [
+        "2026-10-31:Halloween"
+      ],
+      "organisms": {
+        "XENO-INITIAL": {
+          "id": "XENO-INITIAL",
+          "stage": "adult",
+          "dormant": true,
+          "location": "asteroid:23",
+          "origin": "initial concealed chamber",
+          "sealed": true,
+          "behavior": {
+            "version": 1,
+            "state": "contained",
+            "energy": 100,
+            "stamina": 100,
+            "health": 100,
+            "lastTick": 36000,
+            "lastAttack": -100,
+            "steps": 0,
+            "meals": 0,
+            "trace": [
+              {
+                "at": 5,
+                "from": "dormant",
+                "to": "contained",
+                "location": "asteroid:23"
+              }
+            ]
+          }
+        },
+        "EGG-1": {
+          "id": "EGG-1",
+          "stage": "egg",
+          "dormant": true,
+          "location": "asteroid:22"
+        },
+        "EGG-2": {
+          "id": "EGG-2",
+          "stage": "egg",
+          "dormant": true,
+          "location": "asteroid:24"
+        }
+      }
+    }
+  ],
+  "initialization": "Fixed seed and explicit wall clock. Simulation uses production step+field controllers; per-step autosave disabled in deterministic test driver; save/reload checked explicitly.",
+  "runtime_sha256": {
+    "server.py": "fed9330fd2381faf975363a1bcfab6ea50a463139229132117ea922480599eaf",
+    "requirements.txt": "3dd40988330002f37cd1f2b2b80e65ee3919798dc38771b00fed572a4d659f9e",
+    "config.json": "54a4ac908d2fe82e9c58fb942134327cf0562665e47b170b5d9b0b085ce8b865",
+    "Start_Remote_Deck.bat": "ffbd4b2e6d561ad162547e4f32c0de891915a6d3876ba6d2bff427ec06df368b",
+    "web/animation.js": "c175a0c4a97d49f27905a78a130be66ef0c768a95395b51b7fbab6a1ace4c766",
+    "web/anthology-ui.js": "f4aa4b5536287853abdd32b68dd0e2f87f113a79e0674cad3c6fa10b59f4e6b5",
+    "web/anthology.js": "e2621ab0e567e85a9a4b25b11968df7480e69f6abe311e547fddea412a224bb2",
+    "web/backup-codec.js": "5055483368e3ec04a5a006945273a7e232cb2de9a83361fc10c707fde391b974",
+    "web/backup-transfer.js": "0ca533a1f6bbbc3ddfbe1e7ea6791fa187aa265eacb884b6a48c8d1273cedbec",
+    "web/backup-ui.js": "922e41162b7330aafef1f250996fb30cd1b7dbf3d3866f9933c3113b0d900a98",
+    "web/bridge-mode.js": "cf36ff049a504d633fec91e7a7b89842ca5c6fd5a1ba55cf7a6d5374dde1215e",
+    "web/bridge-workspace.css": "39c9d5662cf52b015efcdb42d6390a72a6be25cbabda22803a98bf1858b2ad14",
+    "web/calendar.js": "69de37387e887f162417011d1607dc386f2bba9f08fa3f4ae8e066e765a5f072",
+    "web/camera-sprites.js": "f2023435f73a66ee1041f0cb8430374ed248d561ca43ec3e3263d80905b844f1",
+    "web/chronicle-evidence.js": "e72ae182f7d6cc00e600ca5d185f03d63257a5cda0baba22cbbf0ee2e37f8488",
+    "web/chronicle-film.js": "38aadf29719bd900b2c3d501a6feb6a2a744b3691411b3624a9dee554cea3bdc",
+    "web/chronicles.js": "a7823ad26e86f65249561ccbf29d0e70d46d0679ed3c0f98cb06457886902456",
+    "web/cinema-ui.js": "310c9d0feaf26089e37ee26652b8f38c81962f93b0421a8288aea52eb1b82b6f",
+    "web/cinema.js": "c4ac70172d6d1b8f89640bae22ef5e11adca15efe69e456da1e75460a9e7f7c9",
+    "web/cinematic.css": "d93ccc7ce667944024f3efb1a425c97bc9a18781ae1b5bfedd14baf865a5b369",
+    "web/command-ui.css": "f6cc605cc44cc68a5694d59a5689c97bb3f61ce2124b7b85c4d9a3b5eb5ebd35",
+    "web/command-ui.js": "1edab52bb03dfa00d274144c164e8f59ca9e8ae76b25f4b73d11f0775e7b812c",
+    "web/companion-view.js": "313334f16e0dded21c2ab3aa5b1de93af09eb037072f425d262f85d0462b0174",
+    "web/core-context.js": "984feae5ab86359013cfad335c7fd2cfc398c6515a69ebf90add78969424d0d2",
+    "web/creatures.js": "729bede3b4c59c139fb5e703fd4b12c151ccf4c4e9c2e103d99e3881effc90d9",
+    "web/crew-communications.js": "789c992b932b5bc2dd6777215f1b58ec63404498bd09f9dad81f3e31c0b9be7f",
+    "web/crew-decisions.js": "36c8bb7ed781449042bb662264fe3712a7bb4b42ce72e760114b8cb3c90ea88f",
+    "web/crew-editorial.js": "f12b127e1a217a1afbde3c5f37e2b3a63433ddada4f9b3834944e9a7ac763490",
+    "web/crew-life-ui.js": "383ce287edffd4c3886e84c32becebf87233a52a5301fd689f5c06a903faf170",
+    "web/crew-life.js": "c0190be654fbf051bc02a1776589b829930716f169f1dae47f3897511ff601ee",
+    "web/crew-observation.js": "26c4bfa1fc977cfe12144b9565da6eb0cb14d9b02c72d50c56dfb3707f17de7b",
+    "web/crew-social.js": "fa96f0568ad6787f3dd18717af23976e583c12d5a156d0dc3c8a5d08b81ad511",
+    "web/diagnostics.js": "8309e72b7178a24fb8e8e0d76baa7b20b98f7f9843ee866a07a371d34fd4e24f",
+    "web/discovery.js": "e950ac6b0f3aff732995b5adc1991b2d6fd935538a879e93c5f90f778cfa8b98",
+    "web/durable-store.js": "fec39ec1ea1716b7f7917dcf8fe9c2d82a3fd947e8acbe079c196898df6c69e4",
+    "web/economy.js": "919fcfdef54d30b6320d8886d4eff43273bb9642763eeaad179bb7607ab3e292",
+    "web/edition.js": "33f4c281646bb8baa8f45b015c82dd5cabb780e69383448f3390f64566e5331f",
+    "web/embodiment.js": "ff2134e9ac7cfd73effc62b848a9e1e0ea9d7256072cd697dc1bfc558f4e5581",
+    "web/emergency-ops.js": "405de452acf28d5635c3e7f51ce3c239b54c1e868f2a0d619fee36e78fa7f3c9",
+    "web/entities.js": "c8fe473a604345d7543c6f545909dcf734eb2a8ef2d3a6f62aa48bbf0f9305d1",
+    "web/expeditions.js": "729ad659e78636b42b6a743619bc0c0f7f80d9c8480912ec006115a26ee783ef",
+    "web/experiences.js": "2b39dd4736704bd1619d0f7d25b285d090ab0193eacbc424cdc8f25508ab4b14",
+    "web/film-ui.js": "6d9d5d9b400cd707960a9e7aa83fd43771a72e5d0768dbe38b1b16abaeaac679",
+    "web/frontier-ui.js": "8b11361b26cd23b57c4418a404ffc1c7472c8af5f93057d4c08a10c79b61548e",
+    "web/frontier.js": "afdec19b117520eeb9a40d330104b8154bd6ffc879dca4164c81e7c2f2a3a4b7",
+    "web/host-authority.js": "df5bb2d26e95d58b0dd9b4172492cbc28429db2adc876199e136ba367b37444d",
+    "web/host.html": "f9b0e4636a252318ac6af566f4b4e9c38001e23b144dd9c7b98c7dd570deb791",
+    "web/icarus.html": "4c8eb427b25d85ff307d87d053e1b5eb49607af8cd16419466ef1218ab3bca71",
+    "web/index.html": "2db8c35d521ea8867d80e122d9ac362d5a2207b6457781834b96e5c50d6eb3fb",
+    "web/knowledge-runtime.js": "c9e9bfd8ca6137ff6a09abcf4a2e3280b891138ff9d649271043d266aa861970",
+    "web/knowledge.js": "bd21c044137a62cb2eab437de142221333595c71c4dd5615a5c8dc2ac429fb05",
+    "web/living-frontier-ui.js": "b134f15f266ee4293a41ce6a1b99ab9f76da8ebb7bb5f25dfa9575d453dca634",
+    "web/living.js": "421a73f5ff1c5b317ab78476692abf3a0fe5e54f2017c88a96b38d19aaf8cdbb",
+    "web/logistics.js": "260d8684db9b0bccc5bbd6c60186fd50e973bbba5c0507ead7b5ad9a712f50ff",
+    "web/lunar.js": "7fe249230562a6d6eb3b6633381a4cddaff56bf90de1676a9ed6c0908c661d51",
+    "web/manifest.webmanifest": "7b5257d9da54490f6f3e53ff30db5a7a36533c08c46fe859ce61eeb4579d6980",
+    "web/navigation.js": "eb85891ed5c84a3b8cdc6f700b2a21ceb021e18ee4f415a9119ac0bde648a35d",
+    "web/observation-model.js": "27e1dbacd89105ebf876773e10614df03a1a2bc31ad61dfe2878a17cc1534500",
+    "web/observation-ui.js": "92323b036a5db52403fb67812714388ed87cdda541fdc38054d3f327fcfb585b",
+    "web/observation.css": "ed7c6d08f791f7b72232d0fa0c80a99bae681fe61e4ccee1f2eb87b08cc9b6ad",
+    "web/operational-ui.js": "dd9e061123016e5eda9b83150e066f42f9b1f2c105580279ddac660c1a9c4fdd",
+    "web/operational-view.js": "59a19298191edd37bddb0fd57188144b344ed9cdd552692416dae04f1b54fa5e",
+    "web/operations.js": "8711fc4ed9e2e6937c4a1f600ef873f15efceef5c22690f0f3d04f96c9719a12",
+    "web/pixel-camera.js": "7423b4ccfba134c884b6aa1747064b077f4a728acefc0890aa2fb7c763b3bde3",
+    "web/remote-sync.js": "620fb8ba508bef9cd88f8591d152a37ac3cce7356f812c572b222a4b31b78eba",
+    "web/repair-policy.js": "a1d3b6a64fa3561563b369a49cb30718c015dea79a47c0486d3954560c19de1d",
+    "web/research.js": "ca4de958ed72b3a6404e792abc24b9821b7fc44190a57444f48e69b61e91a3cd",
+    "web/save-store.js": "77f0bbb42ad82da9bcbcebd25d1de3e12d0989f1dea0087e1ad4ca28678150fe",
+    "web/ship-schematic.js": "f670a7f28e7d9bfaa7cd7e9dfecd6b478aea20e13fd6e9e02e6d8d9ecc2f13c4",
+    "web/sol-voice.js": "1ba25d53457274f26fcdd0cc39203cdac52a2babc572df633b27eb7f69bc4efa",
+    "web/spatial.js": "6b4ce51759665185fa558b653e27e2514362d692deb4117ee371f8182b5ae750",
+    "web/stability-diagnostics.js": "d3faeaf4fce68e04960938928ef1729dbe717579ed6b2cb31f0d07972c0732bb",
+    "web/story.js": "2b0464ee7ac4be2409506c7a162ddd8003be6d0df70f47f252641e97c90bb19d",
+    "web/tablet-frontier.js": "64a55c921541c9587ae2c511aecb1bb836bd025201e5e51a9f1a70a5fa48d7dd",
+    "web/teams.js": "69817c50c92ae5edcdc880b28c904665e6117df25e71a8edabd6ba426597c71b",
+    "web/ui-continuity.js": "25e7693129ab4ff39b98963b26f9b86c348a1a41e1aec56c951de168f3b01b85",
+    "web/umbra/app-icon-192.png": "02917bdc8aabce0b61cac4f46d1a9d46bc3b035d10ba5ede737e59de1d420291",
+    "web/umbra/app-icon-512.png": "0b2f8aba2d75383ff2f13571196b8ee2f54e1a13d92df5c7928342a058cd5e99",
+    "web/umbra/app-icon.svg": "514cf89420c872bd595847fbdd06e7aa7806b7ec96f1e20ba8f79c23a8f100b4",
+    "web/umbra/app.js": "45b6e48e7e53110052d601abac9223e48716257926cf1ecb118fa6da67590922",
+    "web/umbra/arcade/corporate-cleanup.gif": "0b405fa8a95526b21da9d482d7d4e9880fb0b9d89e57eed0e2c74fbe560689d2",
+    "web/umbra/arcade/corporate-cleanup.png": "442b901108a1a96f74e97a0518b7e23bbad2742e6b29ebd1f30a9974fcd4238f",
+    "web/umbra/arcade/corridor-chase.gif": "520e5e8028fac8a29abaac59f61d9be10cba6057ef6fed1775b773e60049651c",
+    "web/umbra/arcade/corridor-chase.png": "06933bd34dec81e3599edd937e7785648066b548128c2fdcc20b89dcd02a7894",
+    "web/umbra/arcade/facehugger-surprise.gif": "fa579aea196eeaa87f32d2c2e965298c3c495b47b127266e60e684d9e6037566",
+    "web/umbra/arcade/facehugger-surprise.png": "ef878e6fc47aa7f9a3baaddaa535a716c6b262ae9c959ffbf4c2cacbfff19a41",
+    "web/umbra/arcade/manifest.json": "a0f84c3277da36d0dbc2d90a780acee8da75059e341509d1054affc1f370c6b4",
+    "web/umbra/arcade/motion-tracker.gif": "35a6cb95da204feae26abed11f839ee441ff1cfd5e04ada0d05bbe21b2812ec7",
+    "web/umbra/arcade/motion-tracker.png": "50beb6bf39c3d816bb05751cc47aeb45ffc11b31efa2f18a59317a17525e3202",
+    "web/umbra/arcade/tail-strike.gif": "c93708093cfcbf2b7643cba638e56b5600f9d097dbbcff8855834dcb2eea0aa8",
+    "web/umbra/arcade/tail-strike.png": "03cb6732da92beb25085ba079a2da039af252fbfcc8a55528646350d79c6a6aa",
+    "web/umbra/arcade/vent-ambush.gif": "cc43ce5acb51c5bee5c302b2e394de4537f5f5f329cc09c3a2ee28ea4a48d189",
+    "web/umbra/arcade/vent-ambush.png": "c70de7aed43e243e16f4565f30d21f8fd39de56aff82867d90b2d942dc0fbb70",
+    "web/umbra/bridge.css": "0ce201e74f0535a30161b00a94c4602ef3cc5cedd20fdffa67d8a4570742da50",
+    "web/umbra/bridge.js": "6125873c57a3110ae003cc432f1aaf7da2b81dc802ab8ec6e66add60e12ed0ea",
+    "web/umbra/icons.js": "939fb21a8f18482f9b5a4d82f5a64f560479345cba85202596ab668d58c49428",
+    "web/umbra/layout.js": "293fd9684f48c021a7554f75530301e77417de3b3b115cf2eb1587a6a225c927",
+    "web/umbra/lounge.js": "c059f16b3499b5d5cc378abf511af277565e2ae004ae2084933d5ae466dc39fb",
+    "web/umbra/sol.js": "44fd8dd29faa501a02b71fad157eec12d4d1b536ecb82a3f1dccedda501b0f8c",
+    "web/umbra/umbra.css": "c3248d61f82d944b4f671ddc2aa6aeb864103930885670d8bc211c8d29f7041b",
+    "web/unified-ui.js": "91ced43f8005a4578855b453ab158f47454cb414bf6b8f6f582fdf8fa64bd209",
+    "web/unified-world.js": "35e2a8ad0717a19b795f03bc55de0852450766279b17db527f8cf9b9e755fb38",
+    "web/universe.js": "7a3f83170de63739706445cc992c560583e913b577d87087115dfb8cbfae06d4",
+    "web/vendor/LZ_STRING_LICENSE.txt": "433fc9dfe659dbfb1e91eed8351f13651e97bfa3ac6d03394c3d63f61d4bbc80",
+    "web/vendor/astronomy.js": "a2cfab19cab1a15843e4c8cc7410b6cbaafd0907122a8698c25d63d00c2774e4",
+    "web/vendor/lz-string.min.js": "95f4d1cbf099f57161b664bc048426ec3df92637801a4c79116e83315aa787e7",
+    "web/voyage.js": "a70b7bff458052b1ba68713c3a2971ce110a3b169e4e7fe90c9e71cabc90eeda",
+    "web/workspace.js": "82e12ad745fa4f97afc8e38a7cf6e83ae0788df50013a75e4a52e7f1942340e9",
+    "web/world-schema.js": "3692ac39772e71912b12214f316cd844bdb292a1bd91626ed1c3d037084d58bb",
+    "web/writer-ui.js": "2f1d64a2a1163dd6076425117ae0bcef167fb6fcb24689796f99c847152eff94"
+  },
+  "elapsed_seconds": 138.34771634199933
+}

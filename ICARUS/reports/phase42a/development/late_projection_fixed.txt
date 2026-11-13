@@ -1,0 +1,7 @@
+test_real_late_voyage_projection_fits_existing_telemetry_budget (test_command_bridge.CommandBridge.test_real_late_voyage_projection_fits_existing_telemetry_budget) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 10.465s
+
+OK
+sys:1: ResourceWarning: unclosed <socket.socket fd=3, family=2, type=1, proto=0, laddr=('127.0.0.1', 43439)>

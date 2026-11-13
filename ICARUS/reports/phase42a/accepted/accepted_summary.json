@@ -1,0 +1,488 @@
+{
+  "passed": true,
+  "watch_runtime_commit": "490a25cef03c35d437b2bfd2a93e9bc525e5774a",
+  "runtime_files": 112,
+  "post_watch_ui_patch": {
+    "file": "web/icarus.html",
+    "scope": "Only the existing Home Crew Location tileUpdate line. All other lines and 111 runtime files match the watched runtime. Original Home quick-menu wiring separately passed; physics, calendar, pixel renderer, camera array and protocol unchanged."
+  },
+  "node_cases": 317,
+  "browser_cases": {
+    "observation_inherited_and_protocol": 62,
+    "pin_and_classic": 1,
+    "home_location_menu": 1,
+    "host_and_remote": 32,
+    "production_clock": 2
+  },
+  "service_cases": 15,
+  "case_executions_total": 430,
+  "counts_note": "Executions include inherited/repeated cases, not unique requirements. Functional checks and benchmarks separate.",
+  "functional_emulation_checks": {
+    "phone": 15,
+    "tablet": 11
+  },
+  "watch": {
+    "elapsed_seconds": 1800.9461569270006,
+    "final_tick": 120,
+    "alive": 20,
+    "dead": [],
+    "natural_conversations": 2,
+    "actual_reload": [
+      {
+        "at_seconds": 900.5666794089993,
+        "saved_tick": 60,
+        "resumed_tick": 60,
+        "saved_names": [
+          "Frank Morrow",
+          "Mara Chen",
+          "Dr. Voss",
+          "Derek Cole",
+          "Linda Park",
+          "Elena Ruiz",
+          "Jules Mercer",
+          "Nadia Kline",
+          "Owen Briggs",
+          "Priya Shah",
+          "Tomas Vale",
+          "Rhea Ortiz",
+          "Milo Grant",
+          "Sana Okafor",
+          "Iris Bell",
+          "Caleb Stone",
+          "Yara Finch",
+          "Theo Moss",
+          "June Adler",
+          "Ari Novak"
+        ]
+      }
+    ],
+    "errors": [],
+    "observed_main_fps_range": [
+      8.451715103425895,
+      10.315655752710866
+    ],
+    "observed_main_fps_mean": 8.95723713132242,
+    "combined_preview_fps_mean": 16.09252059692259,
+    "js_heap_sample_range": [
+      7014664,
+      18713042
+    ]
+  },
+  "canvas_cpu_benchmark": {
+    "mainFrames": 240,
+    "previewFrames": 960,
+    "mainTotalMs": 177,
+    "mainMeanMs": 0.7375,
+    "fourPreviewsMeanMs": 1.4879166666651145,
+    "heapBefore": 10807523,
+    "heapAfter": 8653625,
+    "pixelMetrics": {
+      "frames": 1205,
+      "totalMs": 539.2000000029802,
+      "maxMs": 59.59999999962747,
+      "sprites": 65
+    },
+    "actualActors": [
+      {
+        "room": "A04",
+        "count": 9
+      },
+      {
+        "room": "NAV-A",
+        "count": 3
+      },
+      {
+        "room": "A09",
+        "count": 1
+      },
+      {
+        "room": "C06",
+        "count": 1
+      },
+      {
+        "room": "NAV-B",
+        "count": 1
+      }
+    ],
+    "logicalResolution": [
+      384,
+      216
+    ],
+    "worldTick": 120,
+    "passed": true,
+    "runtime": "/workspace/work/phase42a/frozen_runtime",
+    "world_unchanged": true,
+    "limit": "Synchronous Canvas CPU microbenchmark under Linux headless Chromium. No GPU, physical Samsung or real-network performance certification."
+  },
+  "campaigns": {
+    "passed": true,
+    "campaigns": {
+      "compound_4807": {
+        "passed": true,
+        "seed": 4807,
+        "scenario": "compound",
+        "real_days": 7,
+        "ship_days": 25.0,
+        "ticks": 36000,
+        "episode": 2,
+        "alive": 20,
+        "deaths": [],
+        "arrivals": 5,
+        "field_missions": 10,
+        "science_cases": 21,
+        "conversations": 417,
+        "source_activities": {
+          "conversation": 417,
+          "assistance-request": 13,
+          "repair-complete": 199,
+          "inspection": 87
+        },
+        "source_kinds": {
+          "system": 172,
+          "injury": 2,
+          "anthology": 416,
+          "medical": 2,
+          "emergency": 14,
+          "little": 5214,
+          "crew_memory": 108,
+          "social": 636,
+          "relationship": 1207,
+          "operation": 13,
+          "maintenance": 296,
+          "observation": 148,
+          "research": 104,
+          "mission": 36,
+          "encounter": 4,
+          "mission_history": 5,
+          "encounter_history": 3
+        },
+        "retained_social": {
+          "registered": 20,
+          "active": 20,
+          "retainedSocialMemories": 633,
+          "retainedBonds": 320,
+          "retainedActivityHistory": 320,
+          "retainedClaims": 0
+        },
+        "weekly_films": 1,
+        "legendary_segments": 0,
+        "maintenance_statistics": {
+          "version": 1,
+          "stats": {
+            "nativeFaults": 2,
+            "dispatches": 2,
+            "emergencyWork": 200.00000000000048,
+            "preventiveStarted": 207,
+            "maintenanceWork": 14345.199999998096,
+            "emergencyCompleted": 2,
+            "criticalRecoveries": 2,
+            "criticalEscalations": 1,
+            "preventiveCompleted": 199,
+            "releasedAssignments": 6
+          },
+          "decisions": [
+            {
+              "at": 146,
+              "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+            },
+            {
+              "at": 181,
+              "reason": "Measured life-support fault or reserve forecast below one day; optional research and launches suspended."
+            },
+            {
+              "at": 6449,
+              "reason": "Released obsolete maintenance reservation for Frank Morrow; current assignment retained.",
+              "person": "Frank Morrow"
+            },
+            {
+              "at": 10012,
+              "reason": "Released obsolete maintenance reservation for Frank Morrow; current assignment retained.",
+              "person": "Frank Morrow"
+            },
+            {
+              "at": 25917,
+              "reason": "Released obsolete maintenance reservation for Tomas Vale; current assignment retained.",
+              "person": "Tomas Vale"
+            },
+            {
+              "at": 31961,
+              "reason": "Released obsolete maintenance reservation for Frank Morrow; current assignment retained.",
+              "person": "Frank Morrow"
+            },
+            {
+              "at": 33700,
+              "reason": "Released obsolete maintenance reservation for Frank Morrow; current assignment retained.",
+              "person": "Frank Morrow"
+            },
+            {
+              "at": 34687,
+              "reason": "Released obsolete maintenance reservation for Tomas Vale; current assignment retained.",
+              "person": "Tomas Vale"
+            }
+          ],
+          "notices": {
+            "forecast:false": 146,
+            "forecast:true": 181,
+            "detach:Frank Morrow": 33700,
+            "detach:Tomas Vale": 34687
+          },
+          "forecast": {
+            "food": {
+              "at": 35941,
+              "consumption": 0.04733333333333197,
+              "production": 0.04733333333332818,
+              "available": 159.98600000000002,
+              "minutes": null
+            },
+            "water": {
+              "at": 35941,
+              "consumption": 0.028000000000001062,
+              "production": 0.028000000000001062,
+              "available": 152.91640000000012,
+              "minutes": null
+            },
+            "oxygen": {
+              "at": 35941,
+              "consumption": 0.020000000000000757,
+              "production": 0.020000000000000757,
+              "available": 111.33200000000141,
+              "minutes": null
+            },
+            "energy": {
+              "at": 35941,
+              "consumption": 0.11594838000000891,
+              "production": 0.1158090300000064,
+              "available": 179.88476975999998,
+              "minutes": 1290884.6053588954
+            }
+          },
+          "sample": {
+            "at": 35941,
+            "consumed": {
+              "energy": 4344.983948943995,
+              "food": 1864.174,
+              "water": 1015.3480000000001,
+              "oxygen": 718.82,
+              "medical": 1,
+              "tools": 524.555,
+              "lab": 504.5,
+              "spares": 202
+            },
+            "produced": {
+              "energy": 4404.86871870403,
+              "spares": 206.70292240000123,
+              "water": 1018.2644000000009,
+              "oxygen": 710.152,
+              "medical": 9,
+              "food": 1839.1599999998934,
+              "lab": 488.2425599999997,
+              "tools": 506.55500000000274
+            }
+          },
+          "critical": false,
+          "lastDecision": {
+            "at": 34687,
+            "reason": "Released obsolete maintenance reservation for Tomas Vale; current assignment retained.",
+            "person": "Tomas Vale"
+          }
+        },
+        "resources_final": {
+          "food": 159.986,
+          "water": 152.91640000000012,
+          "oxygen": 111.33200000000141,
+          "energy": 179.87560163999999,
+          "medical": 20,
+          "spares": 69.22206639999968,
+          "tools": 69.99099999999999,
+          "lab": 80
+        },
+        "acquisition": {},
+        "fuel_used": 1.9624515496596866,
+        "history_records": 8900,
+        "snapshot_bytes_first": 2034728,
+        "snapshot_bytes_last": 5078265,
+        "checkpoint_reload_days": [
+          7
+        ],
+        "audit_errors": [],
+        "simulation_errors": [],
+        "backup_sha256": "7eead1f77149f8ecd7c63818550658353270a525e69d3075344abfedc7f3db09",
+        "source_commit": "490a25cef03c35d437b2bfd2a93e9bc525e5774a",
+        "elapsed_seconds": 117.67519403700135,
+        "evidence_note": "Only actual campaign results. No generated extra crew; romances/claims need not occur. Checkpoint time is measured using unchanged production calendar including synchronized holidays."
+      },
+      "normal_1001": {
+        "passed": true,
+        "seed": 1001,
+        "scenario": "normal",
+        "real_days": 7,
+        "ship_days": 25.0,
+        "ticks": 36000,
+        "episode": 2,
+        "alive": 20,
+        "deaths": [],
+        "arrivals": 5,
+        "field_missions": 9,
+        "science_cases": 22,
+        "conversations": 405,
+        "source_activities": {
+          "conversation": 405,
+          "assistance-request": 12,
+          "repair-complete": 195,
+          "inspection": 91
+        },
+        "source_kinds": {
+          "system": 168,
+          "little": 5118,
+          "relationship": 1197,
+          "maintenance": 289,
+          "social": 633,
+          "operation": 12,
+          "observation": 136,
+          "research": 111,
+          "emergency": 7,
+          "anthology": 388,
+          "crew_memory": 112,
+          "mission": 41,
+          "encounter": 3,
+          "encounter_history": 3,
+          "mission_history": 6,
+          "injury": 2
+        },
+        "retained_social": {
+          "registered": 20,
+          "active": 20,
+          "retainedSocialMemories": 634,
+          "retainedBonds": 342,
+          "retainedActivityHistory": 320,
+          "retainedClaims": 0
+        },
+        "weekly_films": 1,
+        "legendary_segments": 0,
+        "maintenance_statistics": {
+          "version": 1,
+          "stats": {
+            "preventiveStarted": 198,
+            "maintenanceWork": 14090.3999999982,
+            "criticalEscalations": 1,
+            "criticalRecoveries": 1,
+            "preventiveCompleted": 195,
+            "releasedAssignments": 1
+          },
+          "decisions": [
+            {
+              "at": 61,
+              "reason": "Measured life-support fault or reserve forecast below one day; optional research and launches suspended."
+            },
+            {
+              "at": 121,
+              "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+            },
+            {
+              "at": 16169,
+              "reason": "Released obsolete maintenance reservation for Frank Morrow; current assignment retained.",
+              "person": "Frank Morrow"
+            }
+          ],
+          "notices": {
+            "forecast:true": 61,
+            "forecast:false": 121,
+            "detach:Frank Morrow": 16169
+          },
+          "forecast": {
+            "food": {
+              "at": 35941,
+              "consumption": 0.013999999999998635,
+              "production": 0.013999999999994846,
+              "available": 159.986,
+              "minutes": null
+            },
+            "water": {
+              "at": 35941,
+              "consumption": 0.028000000000001062,
+              "production": 0.028000000000001062,
+              "available": 152.79600000000016,
+              "minutes": null
+            },
+            "oxygen": {
+              "at": 35941,
+              "consumption": 0.020000000000000757,
+              "production": 0.019999999999998862,
+              "available": 110.73800000000092,
+              "minutes": null
+            },
+            "energy": {
+              "at": 35941,
+              "consumption": 0.11752333000000968,
+              "production": 0.11751412000000225,
+              "available": 179.8925796,
+              "minutes": 19532310.472833306
+            }
+          },
+          "sample": {
+            "at": 35941,
+            "consumed": {
+              "energy": 4309.813707303995,
+              "food": 1828.674,
+              "water": 1014.3480000000001,
+              "oxygen": 718.82,
+              "lab": 525.8,
+              "spares": 196,
+              "tools": 555.092
+            },
+            "produced": {
+              "energy": 4369.706286904043,
+              "spares": 200.3837883999998,
+              "water": 1017.1440000000034,
+              "oxygen": 709.558,
+              "medical": 8,
+              "food": 1803.659999999897,
+              "lab": 509.7999999999998,
+              "tools": 537.0920000000028
+            }
+          },
+          "critical": false,
+          "lastDecision": {
+            "at": 16169,
+            "reason": "Released obsolete maintenance reservation for Frank Morrow; current assignment retained.",
+            "person": "Frank Morrow"
+          }
+        },
+        "resources_final": {
+          "food": 159.98600000000002,
+          "water": 152.79600000000016,
+          "oxygen": 110.73800000000092,
+          "energy": 179.85759552,
+          "medical": 20,
+          "spares": 68.90881839999983,
+          "tools": 69.982,
+          "lab": 80
+        },
+        "acquisition": {},
+        "fuel_used": 1.9624515496596866,
+        "history_records": 8714,
+        "snapshot_bytes_first": 2041824,
+        "snapshot_bytes_last": 5046632,
+        "checkpoint_reload_days": [
+          7
+        ],
+        "audit_errors": [],
+        "simulation_errors": [],
+        "backup_sha256": "3de811137893cf7f1380e583e9e99dc70836798b754bfe8fb362edfe80bae61f",
+        "source_commit": "490a25cef03c35d437b2bfd2a93e9bc525e5774a",
+        "elapsed_seconds": 138.34771634199933,
+        "evidence_note": "Only actual campaign results. No generated extra crew; romances/claims need not occur. Checkpoint time is measured using unchanged production calendar including synchronized holidays."
+      }
+    }
+  },
+  "native_tree_matches_main": true,
+  "not_run": [
+    "Physical Windows",
+    "Physical Samsung Android/TV",
+    "Real LAN/Tailscale",
+    "Native APK rebuild",
+    "Antivirus",
+    "Human visual/readability/screen-reader/GPU validation"
+  ],
+  "scope_status": "Functional observation build. Full requested art/state sets and furniture/crowd routing remain partial; see PHASE42A_LIMITATIONS.md."
+}
