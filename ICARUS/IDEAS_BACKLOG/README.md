@@ -189,3 +189,12 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - For long corridors, diagnose condensed perspective and split into contiguous camera coverage segments where useful, keeping all room entrances represented and preserving travel distance/time.
 - Crew quarters retain normal camera privacy; classified SOL-only covert feeds remain separate.
 - Acceptance: choose several crew with different destinations, follow their route in corridor cameras, verify each uses the correct labeled door and appears in the correct room; test blocked doors and save/reload.
+
+## Phase 4.2B — personnel lift cameras and continuous deck transitions (2026-11-12)
+- Add an interior security camera to every operational personnel lift in the existing ship topology. Use the same authoritative simulation and camera array as corridors/rooms; do not invent lifts or duplicate worlds.
+- Crew visibly approach the correct lift, wait if necessary, board when doors open, stand or interact while riding, and exit at the correct deck. Support multiple passengers and different destinations if modeled.
+- Camera metadata: lift ID, current deck, target deck/direction, door state, occupant count, and faults where real telemetry exists (e.g., LIFT-02 | DECK 03 → 05 | 2 OCCUPANTS).
+- Offer optional follow-person camera handoff: origin corridor → lift interior → destination corridor → destination room (only where ordinary camera coverage is authorized). Respect privacy and camera access restrictions.
+- Lift door opening, motion, arrival, and failure states must reflect actual travel mechanics, power, locks and service status. Never animate a lift arriving before the authoritative simulation does.
+- Keep preview rotation and manual camera selection functional; lift cameras are included among normal authorized feeds. Optimize to avoid multiplying world updates.
+- Acceptance: follow a crew member across two decks via labeled corridor doors and lift cameras, verify passenger occupancy and arrival against cutaway, and test blocked/stalled lift and save/reload.
