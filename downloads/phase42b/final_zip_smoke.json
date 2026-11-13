@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "tests_run": 4,
+  "source_commit": "38c01b75549a162370dba476d7aacce3519eb115",
+  "runtime_root": "/workspace/work/phase42b/zip_test/ICARUS_Phase4_2B_Living_Personalities_Lite",
+  "failures": [],
+  "errors": [],
+  "scope": "Exact final extracted ZIP. Cross-deck camera/cabin, schematic occupancy, pixel/classic counter purity, production20x/pause/reload. External source harness; runtime unmodified."
+}
