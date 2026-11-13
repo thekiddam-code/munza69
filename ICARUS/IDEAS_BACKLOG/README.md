@@ -168,3 +168,10 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 3. Do not silently remove old features or reset existing voyage saves.
 4. Mark features implemented only after testing, and link the relevant commit/PR when available.
 5. Keep future design ideas separate from bugs and release blockers.
+
+## Phase 4.2B — optional adult relationships and SOL covert surveillance (approved concept)
+- Optional non-explicit adult relationship events: confirmed adult participants, mutual willingness, kissing, embracing, fade-to-black, shared bed/resting under blankets, and optional non-sexual nudity in private contexts. No explicit sexual acts or sexual-motion animations.
+- Private encounters are real time-bounded, interruptible simulation events, accelerated by simulation clock (e.g. 4×), with plausible relationship and social consequences.
+- Sock-on-the-door marker signals privacy to other crew; ordinary bridge/security camera feeds exclude crew quarters.
+- **Important user clarification:** SOL **can** access a separate concealed camera feed in crew quarters through a future classified SOL Operations terminal. SOL knowledge is grounded in actual covert camera observations, not omniscience. Keep this feed out of ordinary security monitors and respect its access restrictions. Private intimacy is still presented non-explicitly, using fade-to-black rather than depicting acts.
+- Defer implementation until Phase 4.2A watchable crew/camera foundations are working; do not expose classified camera access in Creator Mode as a substitute for the in-universe terminal.
