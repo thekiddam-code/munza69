@@ -208,3 +208,13 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - Preserve UMBRA's existing PC/Android remote-control architecture: buttons on tablet/phone can trigger authorized playback on the Windows host, while the Windows audio routing delivers the mixed signal to the selected game microphone device.
 - Keep latency low, make clipping/overlap behavior predictable, and test with at least one game using voice-chat microphone selection. Account for games that restrict virtual audio devices or require manual input configuration.
 - Status: **backlog idea only; not yet implemented**. Decide audio routing and UI details during a future Simulator/UMBRA development phase.
+
+## UMBRA Simulator — hybrid macros and automatic game profiles (approved)
+- Use a **hybrid Macros interface**: always-available shared Windows/system controls and live host telemetry plus game-specific command layouts within Simulator tabs.
+- Detect the Windows foreground application/game on the companion host and automatically select its associated macro profile, with a clear active-profile indicator, manual override, and safe fallback when no profile matches. Avoid surprising switches while a macro is running.
+- Shared controls: common Windows shortcuts, microphone/audio routing status, soundboard controls, stop-all/cancel, power/performance state where available, and user-selected pinned commands.
+- Per-game profiles: editable hotkeys, sequences, soundboard clip buttons, push-to-talk configuration, contextual information, and customizable layout. Persist profiles across reconnects; sync tablet/phone views with the host's active profile.
+- Macro engine should support single hotkeys and bounded multi-step sequences with configurable delays, visible running status, cancellation, key-release cleanup, and safeguards against triggering in the wrong foreground app. Optional recorder only with explicit activation and exclusion of sensitive typing.
+- Telemetry should display only verified host data (e.g., CPU/GPU/RAM, microphone device/state, active app, power mode, macro status); mark unavailable metrics instead of fabricating values. Game-specific stats require a supported integration.
+- Integrate with the separately proposed microphone-mixed soundboard; avoid implementing a second audio engine.
+- **Status: approved design/backlog, not implemented.** Keep separate from ICARUS ship simulation and avoid disturbing existing remote deck functionality.
