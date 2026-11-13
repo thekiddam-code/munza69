@@ -1,0 +1,15 @@
+# Observation Protocol limits and unfinished work
+
+This is a working integrated observation build, not a finished production-art release. Actual test results and the elapsed watch duration are PHASE42A_VALIDATION.md.
+
+- Original procedural pixel art is functional, not proprietary game art or a promise of matching the production quality of the references. Rooms share functional recipes rather than unique authored tilemaps for every compartment. Artist/human readability review remains necessary.
+- Shared primitives cover ordinary work, inspection, console/research/care, search/approach, talking/listening, walking, eating/rest and reduced-mobility cues. Dedicated sitting, multi-frame turning, fear/alert/emergency and creature sprite sets are not all complete; several currently reuse existing pose/work primitives. No new cinematic/audio/relationship presentation was added.
+- Sub-room anchors/interpolation are presentation coordinates. Existing room/route/capacity authorities remain; there is no new full furniture pathfinder, crowd physics or perfect overlap prevention for crowded rooms. This portion of the requested movement polish remains partial.
+- Corridor follow is a navigation reconstruction, not a recorded camera stream. Scenes are live procedural simulation views; snapshots/replays retain their source/reconstruction labels. No video encoder or real footage was created.
+- Biological detection/unknown-return counts, CO₂, HVAC setpoints, circuit switching, suppression and detailed access-history controls have no adequate existing backing model here and remain explicitly unavailable/read-only. Hidden creatures are not counted from raw state. Lighting changes persistent illumination, not thermodynamics or a new electricity cost model.
+- Bridge crew/profile shortcuts expose received records only. Missing biographies/psychological assessments are reported missing rather than invented. Private psychology remains Creator-only. Classified SOL/covert quarters access and Phase 4.2B adult relationships are deferred.
+- Modern telemetry can reach approximately 79 KB per publication on the tested late-voyage fixture. The bounded 128 KiB authenticated-host cap and existing ~1.2-second update cadence should be considered on constrained links. This is state telemetry, not streamed pixels; actual Tailscale/mobile bandwidth is unmeasured.
+- Native S24+ launcher project/downloads are preserved unchanged. No new native APK build, original Tab S5e recovery confirmation, physical Windows/Android/Samsung TV, real LAN/Tailscale, antivirus or human screen-reader/GPU/FPS testing is claimed.
+- The known 20× clock issue stays deferred; no incidental time fix. Long history retains legitimate source data; this batch does not prove unbounded save growth is solved.
+
+Core A–H automation and the normal-time watch must be reported individually. Do not call all of Phase 4.2A complete while the named art, crowd/furniture and physical validation items remain open. Next batch should refine those existing observation features, not expand the universe.

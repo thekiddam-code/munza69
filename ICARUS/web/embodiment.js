@@ -5,6 +5,7 @@ function pose(p,spatial,alarm=false,now=Infinity){const moving=['corridor','vert
  else if(p.survivalIncapacitated){kind='treatment';label='AWAITING ASSISTANCE';}
  else if(moving){kind='walk';label=spatial.kind==='vertical'?'DECK TRANSFER':'IN TRANSIT';}
  else if(p.conversation?.until>now){kind='talk';label='CONVERSATION';}
+ else if(p.socialSearch?.at===now&&['looking','approaching','waiting','giving-up','finished'].includes(p.socialSearch.phase)){kind=p.socialSearch.phase==='approaching'?'walk':p.socialSearch.phase==='waiting'?'listen':'search';label=({looking:'LOOKING FOR CONVERSATION',approaching:'APPROACHING AVAILABLE PARTNER',waiting:'WAITING FOR AVAILABLE PARTNER','giving-up':'ENDING UNSUCCESSFUL SEARCH',finished:'AWAITING NEXT DUTY'})[p.socialSearch.phase];}
  else if(p.rescuePatient){kind='treatment';label='ASSISTING PATIENT';prop='+';}
  else if(p.vitals?.treatmentPaid&&p.room==='A08'){kind='treatment';label='MEDICAL RECOVERY';prop='+';}
  else if(/waiting|blocked/i.test(p.interaction||'')||/waiting for/.test(t)){label='WAITING';}

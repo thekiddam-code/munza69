@@ -41,7 +41,7 @@ class BridgeService:
     if r['command']!=command:raise BridgeError(409,'Request ID reused for a different command')
     return {'queued':r['id'],'duplicate':True}
    if not self.active() or self.updated is None or now-self.updated>8:raise BridgeError(409,'No fresh authoritative host; command not queued')
-   if command.startswith('speed') or command in ('pause','resume'):
+   if command.startswith('speed'):
     if not self.data.get('creator',False):raise BridgeError(403,'Creator Mode required on the authoritative host')
    self.queue=[x for x in self.queue if x['expires']>now]
    if len(self.queue)>=25:raise BridgeError(429,'Command queue full')

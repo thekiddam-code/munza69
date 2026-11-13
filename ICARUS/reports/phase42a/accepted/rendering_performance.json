@@ -1,0 +1,46 @@
+{
+  "mainFrames": 240,
+  "previewFrames": 960,
+  "mainTotalMs": 177,
+  "mainMeanMs": 0.7375,
+  "fourPreviewsMeanMs": 1.4879166666651145,
+  "heapBefore": 10807523,
+  "heapAfter": 8653625,
+  "pixelMetrics": {
+    "frames": 1205,
+    "totalMs": 539.2000000029802,
+    "maxMs": 59.59999999962747,
+    "sprites": 65
+  },
+  "actualActors": [
+    {
+      "room": "A04",
+      "count": 9
+    },
+    {
+      "room": "NAV-A",
+      "count": 3
+    },
+    {
+      "room": "A09",
+      "count": 1
+    },
+    {
+      "room": "C06",
+      "count": 1
+    },
+    {
+      "room": "NAV-B",
+      "count": 1
+    }
+  ],
+  "logicalResolution": [
+    384,
+    216
+  ],
+  "worldTick": 120,
+  "passed": true,
+  "runtime": "/workspace/work/phase42a/frozen_runtime",
+  "world_unchanged": true,
+  "limit": "Synchronous Canvas CPU microbenchmark under Linux headless Chromium. No GPU, physical Samsung or real-network performance certification."
+}

@@ -1,0 +1,6 @@
+test_protocol_preview_pin_and_classic_camera_controls_preserve_world (test_observation_integration.ObservationIntegration.test_protocol_preview_pin_and_classic_camera_controls_preserve_world) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 4.172s
+
+OK

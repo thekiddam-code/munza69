@@ -1,0 +1,13 @@
+✔ private quarters never occur in camera banks or scene actors; room telemetry remains separate (3.951693ms)
+✔ lighting controls are bounded persistent state, unavailable instruments remain unknown (0.746271ms)
+✔ Iris searches, approaches actual available partner, and never fabricates successful contact (0.708053ms)
+✔ real accepted interaction records a source and listening role; emergencies interrupt the search (0.437156ms)
+✔ disconnected physical nodes cannot start searches using an old room label (0.212219ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 78.343109

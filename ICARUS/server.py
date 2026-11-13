@@ -212,6 +212,7 @@ def action(d):
 
 def valid_icarus_command(command):
  if command in ('pause','resume','speed1','speed5','speed20','save','nav:hold','nav:resume','nav:recall'): return True
+ if isinstance(command,str) and re.fullmatch(r'room:light:[ABC](0[1-9]|10):(0|0\.25|0\.5|0\.75|1)',command):return True
  if isinstance(command,str) and re.fullmatch(r'frontier:(rescue|shelter):SOS-\d+',command): return True
  return isinstance(command,str) and len(command)<=100 and re.fullmatch(r'nav:course:(HOME|LOCAL-(DEBRIS|ICE|RELAY|HULL|ECHO)|SYS:-?\d+:-?\d+/\d+)',command) is not None
 
@@ -290,7 +291,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
  def do_POST(self):
   try:
    if self.headers.get('Content-Type','').split(';')[0]!='application/json': return self.respond(415,{'error':'JSON required'})
-   if int(self.headers.get('Content-Length','0'))>(65536 if self.path=='/api/icarus/host/publish' else 16384 if self.path=='/api/icarus/telemetry' else 4096): return self.respond(413,{'error':'Too large'})
+   if int(self.headers.get('Content-Length','0'))>(131072 if self.path=='/api/icarus/host/publish' else 16384 if self.path=='/api/icarus/telemetry' else 4096): return self.respond(413,{'error':'Too large'})
    origin=self.headers.get('Origin','')
    host=self.headers.get('Host','')
    if origin and origin not in ('http://'+host,'https://'+host): return self.respond(403,{'error':'Invalid origin'})

@@ -1,0 +1,68 @@
+{
+  "page_errors": [],
+  "tick": 6,
+  "scene": {
+    "id": "C05",
+    "name": "Frank\u2019s Workshop",
+    "kind": "engineering",
+    "private": false,
+    "camera": true,
+    "available": true,
+    "actors": [
+      {
+        "name": "Frank Morrow",
+        "job": "Engineer",
+        "state": "listen",
+        "task": "CONVERSATION",
+        "phase": null,
+        "x": 286,
+        "y": 161,
+        "facing": -1,
+        "moving": false,
+        "injured": false,
+        "carrying": null,
+        "body": {
+          "build": "medium",
+          "locomotion": "walk"
+        },
+        "node": "R:C05"
+      },
+      {
+        "name": "Iris Bell",
+        "job": "Comms",
+        "state": "talk",
+        "task": "CONVERSATION",
+        "phase": "talking",
+        "x": 249,
+        "y": 161,
+        "facing": 1,
+        "moving": false,
+        "injured": false,
+        "carrying": null,
+        "body": {
+          "build": "medium",
+          "locomotion": "walk"
+        },
+        "node": "R:C05"
+      }
+    ],
+    "lighting": 1,
+    "temperature": 21,
+    "pressure": 100,
+    "oxygen": 21,
+    "visibility": 100,
+    "door": "open",
+    "equipment": {
+      "name": "Coffee dispenser",
+      "condition": 23
+    },
+    "hazard": null,
+    "registeredCrew": 2,
+    "biologicalReturns": null,
+    "bioSource": "No biological sensor model installed",
+    "source": "Existing engineering/atmospheric instrumentation",
+    "recording": false
+  },
+  "resource_audit": [],
+  "knowledge_audit": []
+}

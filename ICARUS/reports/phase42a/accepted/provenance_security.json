@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "baseline": "7f3fb0d",
+  "watch_runtime_commit": "490a25cef03c35d437b2bfd2a93e9bc525e5774a",
+  "runtime_files": 112,
+  "post_watch_changed_files": [
+    "web/icarus.html"
+  ],
+  "post_watch_change": "Only original Home roster tileUpdate wiring; all other main-file lines and 111 runtime files unchanged. Separate Home menu browser test passed.",
+  "unchanged_authorities": [
+    "web/calendar.js",
+    "web/voyage.js",
+    "web/host-authority.js",
+    "web/durable-store.js",
+    "web/save-store.js",
+    "web/backup-codec.js",
+    "web/backup-transfer.js",
+    "web/knowledge.js",
+    "web/knowledge-runtime.js",
+    "web/creatures.js",
+    "web/economy.js",
+    "web/repair-policy.js",
+    "web/teams.js",
+    "tv_service.py",
+    "requirements.txt",
+    "Start_Remote_Deck.bat"
+  ],
+  "clock_pause_rate_handler_bytes_preserved": true,
+  "bridge_pause_permission": "Now explicitly operational per approved Phase 4.2A request; Creator still required for speed/debug/reset",
+  "new_protocol_bounds": "128 KiB host publication, legacy 14,000 serialized characters, command requests 4 KiB; pairing/fencing retained",
+  "native_source_and_apks_unchanged": true,
+  "asset_origin": "Original procedural Canvas art; no rendering library or external game asset imported",
+  "system_modifications": "None added. Existing Windows launcher installs retained Python runtime dependencies; existing paired desktop/game and TV controls remain. No AV disabled; no AV/penetration certification.",
+  "known_limitations": "Dedicated state/art sets, furniture/crowd routing, physical-device validation incomplete; see PHASE42A_LIMITATIONS.md"
+}
