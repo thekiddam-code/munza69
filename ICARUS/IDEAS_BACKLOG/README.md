@@ -1,0 +1,177 @@
+# ICARUS / UMBRA — Ideas Backlog
+
+Persistent parking lot for approved concepts, future enhancements, bugs, and experiments. **An idea recorded here is not a claim that it has been implemented.** Review before each phase; move ideas into a phase only when scope and dependencies allow. Preserve old ideas rather than deleting them.
+
+## How to use
+- **Proposed**: idea captured, not scheduled.
+- **Approved direction**: user likes the concept; implementation not yet promised.
+- **Deferred**: known issue or feature deliberately postponed.
+- **In progress**: only mark when development actually starts.
+- **Implemented**: only mark after code and behavior are verified.
+- Add new ideas under a heading, with date, dependencies, and a target phase if known.
+- For Codex: consult this backlog during planning, but do not implement every item automatically.
+
+## Visual design language — approved direction (2026-11-11)
+Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *Prometheus* bridge/science/medical screen schemes, and a touch-operated sci-fi display. Original reference images were supplied in chat; they are **not stored in this repository**.
+
+- Near-black/charcoal backgrounds; luminous cyan, blue-green and mint accents.
+- Restrained amber for cautions/physical console controls; red for actual danger.
+- Thin geometric instrument outlines, compact technical typography, legible numeric readouts.
+- Dense but purposeful displays: diagrams, wireframes, scans, waveforms, subsystem telemetry.
+- Distinct functional layouts for bridge, engineering, navigation, science, medical, security.
+- Animations should communicate scanning, measurement or state changes; adjustable/reduced motion.
+- Keep the customizable Phase 4.1 modular bridge, not a return to fixed layouts.
+- Suggested *starting* palette (not a hard specification): #080D10 background, #12313A panel, #25DCCB cyan, #7CE9A9 mint, #FFAC48 amber.
+- Inspiration only: develop original interface assets, not copies of film graphics.
+
+## Maintenance / deferred
+### 4.1.1 — simulation clock and acceleration (deferred 2026-11-11)
+- Verify that TEST 20× actually advances **processed simulation time** at 20 simulated seconds per real second, not merely the display.
+- Compare simulation ticks, clock progression and any processing backlog.
+- Unify ship clock and calendar time sources; add seconds and effective rate indication.
+- Preserve automatic 4× normal / 1× holiday behavior.
+- Ensure pause/resume remains accessible in Bridge Mode; creator-only speed overrides remain hidden.
+- Do not change simulation timing incidentally during Phase 4.2.
+
+### Remote bridge reliability
+- Verify that phone UMBRA observes the authoritative laptop simulation, never starts a separate world.
+- Host heartbeat, reconnect, stale telemetry labels, command deduplication, save safety.
+- Test on LAN and Tailscale. Status requires verification in the installed build.
+
+## Phase 4.2 — Living Ship (planned, not yet verified)
+- Task-driven crew movement and animations: tools, repairs, consoles, medical, science, eating, sleeping.
+- Persistent routines, needs, habits, shift schedules, task completion and interruptions.
+- Friendships, rivalries, romance, gossip, mentorship, conflict, reconciliation and memory.
+- Information must travel via actual observation, communication and records; SOL not omniscient.
+- Causal incident cascades, realistic containment, and quiet days without forced disasters.
+- Real camera observation and evidence for future recaps; no fabricated live footage.
+- ~100 registered crew with a smaller active population; performance and save compatibility.
+
+## Observation notes — 2026-11-12 (user testing)
+**Current priority: watchable simulation, not expanding lore.** Observations are user-reported and not yet verified in source.
+
+### Next visual/UX pass — prioritize
+- **Camera fidelity / observable intent:** Iris Bell was reported as “searching for a conversation” but appeared stationary with minimal detail, movement, or expression. Show intention through plausible motion: orient/look around, walk toward an available person, pause, gesture, begin an interaction, or give up; do not animate actions unsupported by state. Improve poses, expression cues and detail at camera scale. Test with real crew tasks and camera coverage.
+- **Crew Location quick actions:** add accessible `⋯` (horizontal or vertical) per-character menu linking to available live camera, psychological profile, assignments/duty history, relationships and other existing relevant records. No fabricated feeds; show unavailable/uncaptured states.
+- **Home widgets:** collapse/expand by clicking the widget header; remove separate collapse buttons. Keep keyboard accessibility and avoid triggering collapse from embedded buttons.
+- **Overlay collision:** user reports “Locked Autonomous” header blocks the Focus button. Remove unnecessary overlay or reposition it without obscuring controls; screenshot pending.
+- **Themed scrollbars:** standard scrollbars returned. Restore dark, slim, cyan/green styled scrollbars with usable contrast, hover/focus and browser fallbacks. Preserve scroll chaining.
+
+### World privacy / camera coverage — design direction
+- Crew quarters should be designated **private** and should **not** have ordinary security cameras in cutaway or standard security views.
+- Distinguish official surveillance, privacy boundaries, and any later covert SOL capabilities. Do not quietly give standard SOL/crew views omniscient access.
+
+### Deferred lore feature — classified SOL Operations
+- Preserve/revive the Linux-style hidden terminal idea as a **secret SOL Operations** menu for covert missions, investigations, and possibly concealed surveillance, including in private quarters.
+- Separate from out-of-universe **Creator Mode**. In-universe covert actions should have constraints, detection risks, consequences and clear provenance; not simply omniscient debug controls.
+- **Do not implement in the next visual milestone** if it slows watchable crew movement and camera fidelity. Existing lore/implementation status unverified.
+- Consider how hidden access is discovered, what evidence exists, and whether it creates meaningful crew privacy/conflict.
+
+### Screenshot evidence — 2026-11-12
+- User supplied screenshot of local ICARUS Ship Overview (`/icarus.html#/deck/ship/overview`). The broad **AUTONOMOUS** command strip occupies a full row near the top, containing Release to autonomy, Explain decision, Pause, Automatic 4×, and Incidents controls. The 3-deck cutaway starts substantially below it.
+- **UI recommendation:** condense routine simulation state and Pause into an unobtrusive always-accessible header; move debug/autonomy overrides into Creator Mode while retaining any valid in-universe commands. Do not hide essential Pause.
+- **Reported defect:** “Locked Autonomous” header obstructs Focus, but the Focus button itself is not visible in this screenshot; inspect actual stacking, sticky positioning, hitboxes, responsive layout before coding the fix.
+- Increase usable vertical room for the cutaway without losing important status indicators.
+
+### Acceptance tests for next visual milestone
+1. Observe a character seeking conversation: movement or meaningful idle searching must correspond to their state, and a real conversation should animate participants when it happens.
+2. Follow a crew member from Crew Location to their camera and psychological profile using `⋯`.
+3. Collapse/expand home widgets by header without losing Focus actions.
+4. Verify overlay does not block Focus at typical desktop widths.
+5. Verify custom scrollbars and natural scroll chaining.
+6. Confirm crew quarters have no **official** camera feed; document any covert-camera concept as deferred.
+
+## Cutaway redesign — ship systems schematic (approved direction, 2026-11-12)
+**Priority:** design for next visual milestone if feasible; otherwise defer implementation without losing concept.
+
+- The ship cutaway should **not** look like a live security-camera feed. It is a deck/room schematic displaying telemetry, controls, and operational state. Cameras remain a separate system.
+- **At-a-glance room overlay:** room name/ID, lighting state, ambient temperature, atmosphere/pressure, power status, occupancy or biological returns, access/door state, hazards and camera coverage indicator. Keep overlays legible; choose compact per-room controls rather than overcrowding the map.
+- **Quick controls directly on cutaway:** select room, toggle/adjust lighting where authorized, choose room focus, inspect warnings. Actual changes must flow through ship system state and permissions.
+- **Focused room view:** richer light presets and brightness, HVAC target temperature, oxygen/CO2/pressure/contaminants, power circuits, doors/locks, sensor logs, biological classification confidence, security coverage, equipment health. Only implement controls supported by actual simulation state; otherwise show read-only or unavailable.
+- **Biological sensing:** distinguish registered crew from detected life signs and unclassified/unknown biological signatures. Count and confidence depend on sensor capabilities, interference, coverage, and actual simulated entities. Do not infer creature identity from a heartbeat alone or expose omniscient world state.
+- **Privacy:** crew quarters have no ordinary security cameras. Room environment and occupancy readings can exist without live video; any covert SOL surveillance is a separately deferred in-universe feature, not standard access.
+- **Visual standard:** near-black ship blueprint with thin cyan/green room outlines, restrained amber/red alerts, schematic corridors, and responsive zoom/focus interactions.
+- **Acceptance:** choosing a room reveals correct room state; authorized controls affect real simulation; no fake readings or video; biological discrepancies can be reported without omniscience; quarters remain camera-private.
+
+## Live Camera module — rotating preview bank (approved direction, 2026-11-12)
+**Goal:** watchable surveillance interface; candidate for next visual phase.
+- Retain the existing large primary live camera feed.
+- Add **3–4 smaller live preview monitors** alongside or below the main feed, adapting to screen size.
+- Preview slots automatically rotate through all authorized/available security cameras on a configurable interval (initial design suggestion: 10–15 seconds); include pause and manual next/previous bank.
+- Clicking/tapping any preview **promotes that exact camera** into the primary monitor. Main monitor remains pinned until the user selects another feed; preview cycling must not interrupt it.
+- Optionally pin one or more preview slots; avoid starving other feeds of rotation.
+- Camera names, room identifiers, online/offline/coverage status and actual simulation footage must be consistent across primary and preview monitors. No synthetic footage passed off as live.
+- Exclude ordinary crew quarters from standard security camera list and rotation. Covert SOL cameras, if ever implemented, belong to separate classified in-universe interface.
+- Keep preview rendering efficient: shared simulation state, lower-resolution previews, no separate world instances; account for bandwidth/performance on UMBRA mobile/Tailscale.
+- Future option: prioritize feeds with motion, hazards or incidents without losing coverage of quiet rooms.
+- Acceptance: 4 previews cycle independently; tapping a preview switches main feed; main selection stays stable; pausing previews works; private rooms never appear in normal rotation.
+
+## Phase 4.2A camera graphics — detailed 16-bit pixel art (approved, 2026-11-12)
+- **Decision:** Use detailed 16-bit-era pixel art inside the security camera feeds. Keep the surrounding UMBRA UI in its near-black, cyan/green Prometheus-inspired technical style.
+- **Core milestone requirement**, not just future polish. Characters must be readable, distinguishable, and visibly animated according to real crew state.
+- Initial sprite design targets: approximately 32×48 to 48×64 pixels per character, adjustable after testing actual camera scale. Directional walking, idle/turning, talking/gesturing, equipment operation, eating, sitting/resting, reactions.
+- Room art: readable silhouettes, appropriate furniture/equipment, industrial ship details and distinct bridge, engineering, medical, mess, corridors, etc.; preserve real ship layout.
+- Renderer: nearest-neighbor crisp scaling; restrained lighting, console activity and emergency effects; no blurry scaling. Shared authoritative world for one primary feed and four rotating previews; lower-resolution or lower-frequency previews where needed.
+- Implementation order: inspect existing renderer → one fully functional room with two animated crew and equipment → validate real walking/conversation/task animations → integrate camera wall → expand reusable art across rooms.
+- Preserve privacy (no ordinary crew quarters security cameras), saves, UMBRA mobile performance, and reduced-motion settings.
+- Acceptance: watch real crew actions for an extended shift, identify people and activities visually, and switch between matching live feeds without spawning duplicate simulations.
+
+## Pixel-art research references — approved for study (2026-11-12)
+- **Aliens: Infestation (Nintendo DS):** primary reference for detailed 16-bit-era sci-fi ship interiors, smaller character scale, corridor lighting, and environmental detail.
+- **Alien vs. Predator (Super Nintendo, 1993):** additional reference for larger character and creature silhouettes, readable poses, animation timing, and enemy visual states.
+- Public references identified: https://www.spriters-resource.com/snes/alienvspredator/ (sprite sheets); https://github.com/FitzRoyX/nesrip (SNES/NES tile extraction tool); https://github.com/bogaa/dizProjects (general SNES disassembly research; this title not confirmed). A specific complete SNES AVP source/assets repository was **not verified**.
+- Study art direction, palette organization, tile construction, sprite proportions, frame timing, and layering. Create **original** ICARUS art and animations; do not import copyrighted game sprites, ripped backgrounds, ROM content, or proprietary code into the project without appropriate rights.
+- Keep scope anchored to Phase 4.2A watchable crew, one-room/two-character prototype, and camera preview consistency. No requirement to reverse-engineer either game before development.
+
+## Open-source 2D/16-bit rendering research (2026-11-12)
+**Research only. No engine replacement or code integration approved yet.** Review existing ICARUS renderer before selecting any dependency.
+
+### Highest practical fit for browser-based UMBRA
+- LittleJS — https://github.com/KilledByAPixel/LittleJS — MIT; small JS engine, sprite/tilemap/rendering examples. Candidate for low-overhead browser pixel rendering.
+- Phaser examples — https://github.com/phaserjs/examples — MIT **code**, but example artwork/audio have separate restrictions. Study camera, sprite animation, tilemap, scene and scaling patterns.
+- Excalibur.js — https://github.com/excaliburjs/Excalibur — BSD-2-Clause; TypeScript HTML5 Canvas actors, animations, scenes.
+- Pixelorama — https://github.com/Orama-Interactive/Pixelorama — MIT; sprite editing/export tool, not game runtime.
+
+### Other reference engines (less direct to web architecture)
+- Tilengine — https://github.com/megamarc/Tilengine — MPL-2.0; retro tile/sprite/layer/raster rendering in native C. Study ideas before attempting integration.
+- Flare engine/game — https://github.com/flareteam/flare-engine and https://github.com/flareteam/flare-game — GPL-3.0 engine; CC-BY-SA 3.0 art. Study animation/data-driven entities, beware license obligations.
+- Solarus — https://gitlab.com/solarus-games/solarus — GPL-3.0; C++/Lua, maps and interactions.
+
+### Decision criteria
+- Prefer smallest proven change that improves observable crew movement, sprite animation, pixel scaling and five-feed camera performance.
+- Prototype one room with two actors first; compare frame time, memory and mobile performance against current renderer.
+- Maintain one authoritative simulation; rendering libraries may never create independent world state.
+- Check license of every code and asset file separately before importing; do not use proprietary Alien game sprites or extracted ROM assets.
+
+## Future phases / unscheduled
+### Cinematic surveillance and weekly Sunday recap
+- Configurable security wall, focused cameras, real incident clips and labeled reconstructions.
+- Seven-real-day anthology, 3–5 minute Sunday recap, notable events, character fates, relationships, awards and SOL assessment.
+- Optional **Legendary Kill Cam** only for genuinely extraordinary events, with evidence and rarity thresholds; never force one.
+- Optional anthology-style ending variants: absurd closing gag, eerie ending, anthology vignette. These are creative directions, not requests to reproduce copyrighted footage.
+
+### Expedition intelligence / world
+- Mission-based autonomous expeditions with opportunities for user intervention.
+- Three linked environments: ICARUS, irregular asteroid with pressurized caverns, nearby derelict.
+- Temporal anomalies and arrivals, discoveries, local ecosystems, persistent consequences.
+- Cascade Engine must propagate only through actual dependencies.
+
+### UMBRA cross-device experience
+- Separate responsive phone/tablet layouts, remote drawer that does not obstruct panels.
+- Android-native possibilities, desktop companion integration, TV remote and gaming modules.
+- Adjustable animations, subtle ship-themed visual effects and optional infestation Easter eggs.
+- Keep device remote-control functions separate from the authoritative simulation.
+
+## Process reminders
+1. Before starting a new phase, review this file and select a manageable scope.
+2. Record ideas that do not fit in the next phase here, with their rationale.
+3. Do not silently remove old features or reset existing voyage saves.
+4. Mark features implemented only after testing, and link the relevant commit/PR when available.
+5. Keep future design ideas separate from bugs and release blockers.
+
+## Phase 4.2B — optional adult relationships and SOL covert surveillance (approved concept)
+- Optional non-explicit adult relationship events: confirmed adult participants, mutual willingness, kissing, embracing, fade-to-black, shared bed/resting under blankets, and optional non-sexual nudity in private contexts. No explicit sexual acts or sexual-motion animations.
+- Private encounters are real time-bounded, interruptible simulation events, accelerated by simulation clock (e.g. 4×), with plausible relationship and social consequences.
+- Sock-on-the-door marker signals privacy to other crew; ordinary bridge/security camera feeds exclude crew quarters.
+- **Important user clarification:** SOL **can** access a separate concealed camera feed in crew quarters through a future classified SOL Operations terminal. SOL knowledge is grounded in actual covert camera observations, not omniscience. Keep this feed out of ordinary security monitors and respect its access restrictions. Private intimacy is still presented non-explicitly, using fade-to-black rather than depicting acts.
+- Defer implementation until Phase 4.2A watchable crew/camera foundations are working; do not expose classified camera access in Creator Mode as a substitute for the in-universe terminal.
