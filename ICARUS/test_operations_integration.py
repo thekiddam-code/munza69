@@ -14,3 +14,11 @@ class OperationsIntegration(PersonalitiesIntegration):
     if worker and worker['room']=='C07' and not worker['route'] and worker.get('interaction')=='working':poses+=p.evaluate('__icarusSoak.observation().rooms.find(r=>r.id==="C07").actors.map(a=>a.state)')
    if c['history']:break
   self.assertTrue(c['history'],'Real engineering work did not complete');self.assertGreaterEqual(c['health'],85);self.assertTrue({'diagnosing','waiting-parts','repairing','testing'}.issubset(seen));self.assertIn('repair',poses);self.assertEqual(s['resourceAudit'],[]);self.assertEqual(s['systemsAudit'],[]);self.assertTrue(c['history'][0]['sourceId'])
+ def test_ops_power_loss_waits_and_recovery_preserves_world_without_sol_gate(self):
+  p=self.page();self.deck(p,'ship','systems');p.locator('.systems-zone').select_option('cargo');p.locator('[data-op="circuit"]').click();self.advance(p,2);s=self.snap(p);self.assertEqual(s['shipSystems']['zones']['cargo']['power'],0);self.assertEqual(s['shipSystems']['zones']['medical']['power'],1);self.assertFalse(p.evaluate('__icarusSoak.observation().rooms.find(r=>r.id==="C03").available'));self.deck(p,'ship','systems');p.locator('[data-op="circuit"]').click();self.advance(p,25);s=self.snap(p);self.assertGreater(s['shipSystems']['zones']['cargo']['g'],.99);self.assertEqual(s['resourceAudit'],[]);self.assertEqual(s['systemsAudit'],[])
+ def test_ops_repair_and_float_survive_mid_activity_reload(self):
+  p=self.page();self.configure(p,"""s.remoteCore.autonomyEnabled=false;s.shipSystems.components['GRAVITY-CORE'].health=64;for(const q of s.crew.filter(q=>q.job==='Engineer')){q.taskMinutes=0;q.energy=95;q.emergencyId=null;q.maintenanceRoom=null;}""")
+  for i in range(300):
+   self.advance(p,1);s=self.snap(p);order=s['world']['maintenance']['systemOrders'].get('GRAVITY-CORE')
+   if order and order['phase']=='repairing' and order['progress']>1:break
+  self.assertIsNotNone(order);self.assertEqual(order['phase'],'repairing');before=s;p.evaluate('__icarusSoak.save()');p.reload();self.assertEqual(self.snap(p),before);self.advance(p,200);s=self.snap(p);self.assertTrue(s['shipSystems']['components']['GRAVITY-CORE']['history']);self.assertEqual(s['resourceAudit'],[])

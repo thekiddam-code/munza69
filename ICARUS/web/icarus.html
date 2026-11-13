@@ -2481,7 +2481,7 @@ function step(){if(!canWriteWorld()||ICARUSBackupUI.busy())return;ICARUSVoyage.a
  environmentalTick();
  atmosphereTick();
  autonomousAtmosphereResponse();
- economyTick();ICARUSRepairPolicy.observe(state,ICARUSEconomy,repairEnvironment());if(state.repairControl?.critical){state.economy.allowResearch=false;state.economy.allowLaunch=false;}
+ economyTick();if(ICARUSShipSystems.power(state,'C01')<.4||ICARUSShipSystems.gravity(state,'C01')<.2){state.economy.allowLaunch=false;}if(ICARUSShipSystems.power(state,'B01')<.2)state.economy.allowResearch=false;ICARUSRepairPolicy.observe(state,ICARUSEconomy,repairEnvironment());if(state.repairControl?.critical){state.economy.allowResearch=false;state.economy.allowLaunch=false;}
  livingTick();
  if(!state.crew.length){
   if(ICARUSEdition.core){ICARUSCrewLife.observeActivities(state,{position:ICARUSSpatial.position});ICARUSCrewSocial.tick(state);ICARUSCrewDecisions.concerns(state,{record:unifiedRecord,critical:()=>state.repairControl?.critical,release:p=>ICARUSRepairPolicy.release(state,p,repairEnvironment(),'Crew requested exhaustion relief')});}

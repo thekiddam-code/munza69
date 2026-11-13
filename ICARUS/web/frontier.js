@@ -22,7 +22,7 @@ function opportunities(s,env){const n=s.navigation;if(n.phase!=='orbit'||n.curre
 }
 function begin(s,op,env){const f=s.frontier;if(env.emergencyOps&&(s.emergencyOps.transport.unrecovered||s.emergencyOps.transport.condition<65)){s.navigation.lastDecision={at:s.tick,reason:'No return-capable primary transport; field launch withheld'};return false;}if(env.operations?.criticalShip(s))return false;if(Object.values(s.remoteCore.missions).some(Boolean)||s.economy.allowLaunch===false)return false;
  if(op.resource&&env.logistics.cargoMass(s)>=s.logistics.capacity-.01)return false;
- const available=s.crew.filter(p=>!p.expeditionId&&!p.expeditionAway&&!p.researchAssignment&&!p.maintenanceRoom&&!p.emergencyId&&p.energy>=55+(1-(env.experiences?.willingness(p)||1))*20&&p.stress<68&&(s.remoteCore.director.crewReadyAt?.[p.name]||0)<=s.tick);
+ const available=s.crew.filter(p=>!p.expeditionId&&!p.expeditionAway&&!p.researchAssignment&&!p.systemAssignment&&!p.maintenanceRoom&&!p.emergencyId&&p.energy>=55+(1-(env.experiences?.willingness(p)||1))*20&&p.stress<68&&(s.remoteCore.director.crewReadyAt?.[p.name]||0)<=s.tick);
  const profile=env.expeditions?.profile(op,env.universe.find(s,op.destination)),type=op.resource?'resource':'survey',members=env.teams.select(s,{type,location:op.destination,teamSize:profile?.teamSize},available,env.life);if(members.length<(profile?.teamSize||2))return false;
  const id='F-'+f.nextJob,result=env.teams.launch(s,{id,location:op.destination,loadout:profile?.loadout},members,env.economy);if(!result.allowed)return false;
  f.nextJob++;const job={...op,id,episode:s.episode??null,location:op.destination,status:'active',started:s.tick,members:members.map(p=>p.name),evidence:[],progress:0};
