@@ -1,0 +1,100 @@
+{
+  "source_commit": "13ab44756314a1e99587c3070914cefbfbe26fe0",
+  "fixture": "Explicit generator wear at64%; source-backed engineer chooses, travels, collects actual tools/parts and works. Separate cargo0g loose-object fixture. These are technical examples, not natural campaign events.",
+  "repair": {
+    "tick": 106,
+    "engineer": "Frank Morrow",
+    "order": {
+      "id": "GRAVITY-CORE",
+      "component": "GRAVITY-CORE",
+      "room": "C07",
+      "created": 1,
+      "phase": "repairing",
+      "progress": 0.30359999999999965,
+      "status": "assigned",
+      "assigned": "Frank Morrow",
+      "lastAttempt": 27,
+      "toolsPaid": true,
+      "diagnosis": 3,
+      "diagnosisSourceId": "CHR-1-V1rmcwde-28",
+      "blocker": null,
+      "partsPaid": true
+    },
+    "component": {
+      "id": "GRAVITY-CORE",
+      "name": "Artificial-gravity generator",
+      "room": "C07",
+      "health": 64.2459400000002,
+      "kind": "gravity",
+      "wear": 2.6039999999999988,
+      "history": [],
+      "serviceIsolated": true,
+      "availablePower": 1,
+      "load": 0,
+      "status": "service-isolated",
+      "diagnosticFactId": "FACT-3",
+      "reportedBand": 3
+    }
+  },
+  "zero_g": {
+    "id": "C03",
+    "name": "Cargo Bay",
+    "kind": "engineering",
+    "components": [],
+    "gravity": 0,
+    "zone": "cargo",
+    "objects": [
+      {
+        "name": "sample container",
+        "x": 0.1649999999999998,
+        "height": 1.3200000000000003,
+        "secured": false
+      }
+    ],
+    "private": false,
+    "camera": true,
+    "available": true,
+    "actors": [
+      {
+        "name": "Frank Morrow",
+        "job": "Engineer",
+        "state": "float",
+        "gravity": {
+          "mode": "floating",
+          "height": 0.8799999999999999,
+          "secured": false
+        },
+        "affection": null,
+        "task": "RESTING",
+        "phase": null,
+        "x": 158,
+        "y": 183,
+        "facing": -1,
+        "moving": true,
+        "injured": false,
+        "carrying": null,
+        "body": {
+          "build": "medium",
+          "locomotion": "walk"
+        },
+        "node": "R:C03"
+      }
+    ],
+    "lighting": 1,
+    "temperature": 21,
+    "pressure": 100,
+    "oxygen": 21,
+    "visibility": 100,
+    "door": "closed",
+    "privacyMarker": null,
+    "equipment": null,
+    "hazard": null,
+    "registeredCrew": 1,
+    "biologicalReturns": null,
+    "bioSource": "No biological sensor model installed",
+    "source": "Existing engineering/atmospheric instrumentation",
+    "recording": false
+  },
+  "errors": [],
+  "passed": true
+}

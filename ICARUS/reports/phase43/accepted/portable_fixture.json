@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "tests_run": 1,
+  "passed_cases": [
+    "test_real_late_voyage_projection_fits_existing_telemetry_budget (test_operations_remote.OperationsRemote.test_real_late_voyage_projection_fits_existing_telemetry_budget)"
+  ],
+  "runtime_root": "/workspace/work/phase43/corrected_runtime",
+  "source_commit": "13ab44756314a1e99587c3070914cefbfbe26fe0",
+  "errors": [],
+  "failures": []
+}

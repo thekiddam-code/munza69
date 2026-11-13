@@ -1,5 +1,6 @@
 (function(root){'use strict';
 function init(s){if(!s.navigation)s.navigation={version:1,current:'HOME',position:{x:0,y:0},phase:'orbit',target:null,leg:null,nextLeg:1,hold:false,arrivals:0,fuelUsed:0,history:[],lastDecision:null};return s.navigation;}
+function controlPower(s){const x=s.shipSystems;if(!x)return 1;return Math.min(x.bus??0,x.zones.engineering.power??0,x.zones.habitation.power??0);}
 function distance(a,b){return Math.hypot(a.x-b.x,a.y-b.y);}
 function plan(s,id,env,override=false){
  const n=init(s),reject=reason=>{n.lastDecision={at:s.tick,reason,requested:id};return {ok:false,reason};},d=env.universe.find(s,id);if(!d)return reject('Destination is not a sensor contact');
@@ -7,14 +8,14 @@ function plan(s,id,env,override=false){
  if(n.current===id&&n.phase==='orbit')return reject('Already in orbit');
  const dist=distance(n.position,d),cost=Math.max(.15,dist*5),fuel=s.economy.feedstock.fuel;
  if(fuel+1e-9<cost+(override?0:8))return reject('Insufficient fuel plus safety reserve');
- if(s.power<40||(s.equipment?.C08?.condition||0)<35)return reject('Drive or ship power unavailable');
+ if(s.power<40||(s.equipment?.C08?.condition||0)<35||controlPower(s)<.2)return reject('Drive or ship power unavailable');
  const leg={id:'NAV-'+n.nextLeg++,from:{...n.position},to:{x:d.x,y:d.y},target:id,start:s.tick,duration:Math.max(90,Math.ceil(dist*800)),cost,elapsed:0,burned:0};
  n.leg=leg;n.target=id;n.current=null;n.phase='transit';n.hold=false;
  n.lastDecision={at:s.tick,reason:override?(env.operatorDirected?'SOL operator course directive':'Captain course override'):'Selected observed contact by scientific value, fuel need and risk',target:id,cost,duration:leg.duration};
  if(env.emit)env.emit('departure','ICARUS departed toward '+d.name+'; '+leg.duration+' minutes and '+cost.toFixed(2)+' fuel budget.',{legId:leg.id,destination:id});return {ok:true,leg};
 }
 function step(s,env){const n=init(s);if(n.phase!=='transit'||n.lastTick===s.tick)return;n.lastTick=s.tick;
- if(s.power<20||(s.equipment.C08?.condition||0)<25){n.phase='drift';n.lastDecision={at:s.tick,reason:'Propulsion hardware unsafe; stopped at actual coordinate'};if(env.emit)env.emit('drive_failure','Propulsion interrupted by measured ship damage.',{});return;}
+ if(s.power<20||(s.equipment.C08?.condition||0)<25||controlPower(s)<.15){n.phase='drift';n.lastDecision={at:s.tick,reason:'Propulsion hardware unsafe; stopped at actual coordinate'};if(env.emit)env.emit('drive_failure','Propulsion interrupted by measured ship damage.',{});return;}
  const l=n.leg;if(!l||!env.universe.find(s,l.target)){n.phase='drift';n.lastDecision={at:s.tick,reason:'Invalid navigation solution; engines stopped'};return;}
  const needed=Math.min(l.cost-l.burned,l.cost/l.duration),burned=env.economy.burnFeed(s,'fuel',needed,'navigation '+l.id);
  if(burned<needed-1e-10){n.phase='drift';n.lastDecision={at:s.tick,reason:'Fuel exhausted; no arrival asserted'};if(env.emit)env.emit('fuel_shortage','Ship propulsion halted: insufficient fuel.',{legId:l.id});return;}

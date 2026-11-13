@@ -1,0 +1,7 @@
+test_ops_paired_controls_match_host_and_no_remote_world (test_operations_remote.OperationsRemote.test_ops_paired_controls_match_host_and_no_remote_world) ... ok
+test_ops_validation_dedup_and_independent_local_outage (test_operations_remote.OperationsRemote.test_ops_validation_dedup_and_independent_local_outage) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 11.971s
+
+OK

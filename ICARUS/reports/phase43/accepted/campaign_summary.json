@@ -1,0 +1,759 @@
+{
+  "passed": true,
+  "campaigns": {
+    "adverse_4807": {
+      "passed": true,
+      "seed": 4807,
+      "scenario": "compound",
+      "real_days": 7,
+      "ship_days": 25.0,
+      "ticks": 36000,
+      "episode": 2,
+      "alive": 20,
+      "deaths": [],
+      "arrivals": 5,
+      "field_missions": 8,
+      "science_cases": 25,
+      "conversations": 427,
+      "source_activities": {
+        "conversation": 427,
+        "assistance-request": 12,
+        "repair-complete": 201,
+        "inspection": 101,
+        "systems-diagnosis": 1,
+        "systems-repair-complete": 1
+      },
+      "source_kinds": {
+        "system": 178,
+        "injury": 3,
+        "anthology": 412,
+        "medical": 3,
+        "emergency": 12,
+        "little": 4893,
+        "crew_memory": 113,
+        "relationship": 1185,
+        "social": 614,
+        "observation": 4047,
+        "operation": 19,
+        "maintenance": 310,
+        "research": 120,
+        "mission": 36,
+        "mission_history": 5,
+        "encounter": 3,
+        "encounter_history": 3
+      },
+      "retained_social": {
+        "registered": 20,
+        "active": 20,
+        "retainedSocialMemories": 624,
+        "retainedBonds": 332,
+        "retainedActivityHistory": 320,
+        "retainedClaims": 0
+      },
+      "weekly_films": 1,
+      "legendary_segments": 0,
+      "maintenance_statistics": {
+        "version": 1,
+        "stats": {
+          "nativeFaults": 2,
+          "dispatches": 2,
+          "emergencyWork": 200.00000000000048,
+          "preventiveStarted": 201,
+          "maintenanceWork": 14623.389999997986,
+          "emergencyCompleted": 2,
+          "criticalRecoveries": 2,
+          "preventiveCompleted": 201,
+          "criticalEscalations": 1
+        },
+        "decisions": [
+          {
+            "at": 182,
+            "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+          },
+          {
+            "at": 4021,
+            "reason": "Measured life-support fault or reserve forecast below one day; optional research and launches suspended."
+          },
+          {
+            "at": 4081,
+            "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+          }
+        ],
+        "notices": {
+          "forecast:false": 4081,
+          "forecast:true": 4021
+        },
+        "forecast": {
+          "food": {
+            "at": 35941,
+            "consumption": 0.014000000000002425,
+            "production": 0.013999999999994846,
+            "available": 159.98600000000002,
+            "minutes": null
+          },
+          "water": {
+            "at": 35941,
+            "consumption": 0.028000000000001062,
+            "production": 0.027999999999999168,
+            "available": 153.24199999999988,
+            "minutes": null
+          },
+          "oxygen": {
+            "at": 35941,
+            "consumption": 0.020000000000000757,
+            "production": 0.020000000000000757,
+            "available": 111.70100000000167,
+            "minutes": null
+          },
+          "energy": {
+            "at": 35941,
+            "consumption": 0.1525151240000014,
+            "production": 0.15252431000000494,
+            "available": 179.8936542,
+            "minutes": null
+          }
+        },
+        "sample": {
+          "at": 35941,
+          "consumed": {
+            "energy": 5829.845436214082,
+            "food": 1768.2740000000001,
+            "water": 1016.3480000000001,
+            "oxygen": 718.82,
+            "lab": 555.5,
+            "tools": 479.1496187548,
+            "medical": 2,
+            "spares": 204
+          },
+          "produced": {
+            "energy": 5889.73909041418,
+            "spares": 209.16377599999865,
+            "water": 1019.5900000000003,
+            "oxygen": 710.5210000000001,
+            "medical": 10,
+            "food": 1743.2599999998854,
+            "lab": 539.4999999999999,
+            "tools": 461.14961875480276
+          }
+        },
+        "critical": false,
+        "lastDecision": {
+          "at": 4081,
+          "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+        }
+      },
+      "resources_final": {
+        "food": 159.98600000000002,
+        "water": 153.24199999999988,
+        "oxygen": 111.70100000000167,
+        "energy": 179.88542136,
+        "medical": 20,
+        "spares": 69.65649599999958,
+        "tools": 69.41343999999995,
+        "lab": 80
+      },
+      "acquisition": {},
+      "fuel_used": 1.9624515496596866,
+      "history_records": 12463,
+      "snapshot_bytes_first": 2627364,
+      "snapshot_bytes_last": 7760356,
+      "checkpoint_reload_days": [
+        7
+      ],
+      "audit_errors": [],
+      "simulation_errors": [],
+      "backup_sha256": "d74981f479abf8823b98485c3271e490dc61be3c2359a2db587c4503908287cb",
+      "source_commit": "13ab44756314a1e99587c3070914cefbfbe26fe0",
+      "elapsed_seconds": 170.04020284600847,
+      "evidence_note": "Only actual campaign results. No generated extra crew; romances/claims need not occur. Checkpoint time is measured using unchanged production calendar including synchronized holidays.",
+      "operational": {
+        "generator_condition": 82.9427274001128,
+        "generator_service_isolated": false,
+        "component_conditions": {
+          "GRAVITY-CORE": 82.9427274001128,
+          "CIRCUIT-habitation": 97.12000000010903,
+          "CIRCUIT-medical": 97.12000000010903,
+          "CIRCUIT-science": 97.12000000010903,
+          "CIRCUIT-cargo": 97.12000000010903,
+          "CIRCUIT-hangar": 97.12000000010903,
+          "CIRCUIT-engineering": 97.12000000010903
+        },
+        "component_repairs": 1,
+        "component_history": {
+          "GRAVITY-CORE": [
+            {
+              "at": 32406,
+              "engineer": "Jules Mercer",
+              "condition": 86.28514740010118,
+              "reason": "Paid repair and powered post-repair test complete",
+              "sourceId": "CHR-2-V2o3ai1-11168"
+            }
+          ]
+        },
+        "gravity_actual": {
+          "habitation": 1,
+          "medical": 1,
+          "science": 1,
+          "cargo": 1,
+          "hangar": 1,
+          "engineering": 1
+        },
+        "gravity_targets": {
+          "habitation": 1,
+          "medical": 1,
+          "science": 1,
+          "cargo": 1,
+          "hangar": 1,
+          "engineering": 1
+        },
+        "main_bus": 1,
+        "open_orders": {},
+        "component_energy_ledger": [
+          {
+            "kind": "consume",
+            "key": "energy",
+            "source": "gravity fields / zoned environmental electrical load",
+            "amount": 1509.7200000000003,
+            "count": 36000,
+            "first": 1,
+            "last": 36000,
+            "compensation": -8.835987497235465e-14
+          },
+          {
+            "kind": "consume",
+            "key": "tools",
+            "source": "physical systems work GRAVITY-CORE",
+            "amount": 0.032668754799993364,
+            "count": 53,
+            "first": 32349,
+            "last": 32401,
+            "compensation": -7.589415207398531e-19
+          },
+          {
+            "kind": "consume",
+            "key": "energy",
+            "source": "physical systems work GRAVITY-CORE",
+            "amount": 0.1960125287999602,
+            "count": 53,
+            "first": 32349,
+            "last": 32401,
+            "compensation": 8.673617379884035e-18
+          }
+        ],
+        "new_summary_entries": 1
+      }
+    },
+    "normal_1001": {
+      "passed": true,
+      "seed": 1001,
+      "scenario": "normal",
+      "real_days": 7,
+      "ship_days": 25.0,
+      "ticks": 36000,
+      "episode": 2,
+      "alive": 20,
+      "deaths": [],
+      "arrivals": 5,
+      "field_missions": 14,
+      "science_cases": 21,
+      "conversations": 470,
+      "source_activities": {
+        "conversation": 470,
+        "assistance-request": 10,
+        "repair-complete": 199,
+        "inspection": 92,
+        "systems-diagnosis": 1,
+        "systems-repair-complete": 1
+      },
+      "source_kinds": {
+        "system": 193,
+        "observation": 4191,
+        "little": 4902,
+        "maintenance": 299,
+        "research": 107,
+        "social": 703,
+        "relationship": 1171,
+        "operation": 17,
+        "anthology": 369,
+        "emergency": 10,
+        "crew_memory": 114,
+        "mission": 36,
+        "encounter": 3,
+        "encounter_history": 3,
+        "mission_history": 5
+      },
+      "retained_social": {
+        "registered": 20,
+        "active": 20,
+        "retainedSocialMemories": 640,
+        "retainedBonds": 346,
+        "retainedActivityHistory": 320,
+        "retainedClaims": 0
+      },
+      "weekly_films": 1,
+      "legendary_segments": 0,
+      "maintenance_statistics": {
+        "version": 1,
+        "stats": {
+          "preventiveStarted": 203,
+          "maintenanceWork": 14531.399999998022,
+          "criticalEscalations": 2,
+          "criticalRecoveries": 2,
+          "preventiveCompleted": 199,
+          "releasedAssignments": 1
+        },
+        "decisions": [
+          {
+            "at": 61,
+            "reason": "Measured life-support fault or reserve forecast below one day; optional research and launches suspended."
+          },
+          {
+            "at": 121,
+            "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+          },
+          {
+            "at": 5641,
+            "reason": "Measured life-support fault or reserve forecast below one day; optional research and launches suspended."
+          },
+          {
+            "at": 5701,
+            "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+          },
+          {
+            "at": 25421,
+            "reason": "Released obsolete maintenance reservation for Tomas Vale; current assignment retained.",
+            "person": "Tomas Vale"
+          }
+        ],
+        "notices": {
+          "forecast:true": 5641,
+          "forecast:false": 5701,
+          "detach:Tomas Vale": 25421
+        },
+        "forecast": {
+          "food": {
+            "at": 35941,
+            "consumption": 0.0306666666666653,
+            "production": 0.030666666666661513,
+            "available": 159.98600000000002,
+            "minutes": null
+          },
+          "water": {
+            "at": 35941,
+            "consumption": 0.028000000000001062,
+            "production": 0.028000000000001062,
+            "available": 152.87160000000011,
+            "minutes": null
+          },
+          "oxygen": {
+            "at": 35941,
+            "consumption": 0.020000000000000757,
+            "production": 0.020000000000000757,
+            "available": 110.13600000000095,
+            "minutes": null
+          },
+          "energy": {
+            "at": 35941,
+            "consumption": 0.16140888400000222,
+            "production": 0.16140007000000575,
+            "available": 179.89256844,
+            "minutes": 20409867.087818015
+          }
+        },
+        "sample": {
+          "at": 35941,
+          "consumed": {
+            "energy": 5837.033871705724,
+            "food": 1819.474,
+            "water": 1014.3480000000001,
+            "oxygen": 718.82,
+            "lab": 486.5,
+            "spares": 201,
+            "tools": 475.4286143488
+          },
+          "produced": {
+            "energy": 5896.926440145832,
+            "spares": 205.86047920000016,
+            "water": 1017.2196000000035,
+            "oxygen": 708.956,
+            "medical": 8,
+            "food": 1794.4599999999002,
+            "lab": 470.50000000000074,
+            "tools": 457.42861434880274
+          }
+        },
+        "critical": false,
+        "lastDecision": {
+          "at": 25421,
+          "reason": "Released obsolete maintenance reservation for Tomas Vale; current assignment retained.",
+          "person": "Tomas Vale"
+        }
+      },
+      "resources_final": {
+        "food": 159.986,
+        "water": 152.87160000000011,
+        "oxygen": 110.13600000000095,
+        "energy": 179.8756596,
+        "medical": 20,
+        "spares": 69.35886319999983,
+        "tools": 69.991,
+        "lab": 80
+      },
+      "acquisition": {},
+      "fuel_used": 1.9624515496596866,
+      "history_records": 12647,
+      "snapshot_bytes_first": 2729809,
+      "snapshot_bytes_last": 8034021,
+      "checkpoint_reload_days": [
+        7
+      ],
+      "audit_errors": [],
+      "simulation_errors": [],
+      "backup_sha256": "9d3d0f02bd66c9a618dc674519165dd9a63ead133b0fd34d1bc0a4229a7c7dd4",
+      "source_commit": "13ab44756314a1e99587c3070914cefbfbe26fe0",
+      "elapsed_seconds": 258.5128663659998,
+      "evidence_note": "Only actual campaign results. No generated extra crew; romances/claims need not occur. Checkpoint time is measured using unchanged production calendar including synchronized holidays.",
+      "operational": {
+        "generator_condition": 82.91180440011253,
+        "generator_service_isolated": false,
+        "component_conditions": {
+          "GRAVITY-CORE": 82.91180440011253,
+          "CIRCUIT-habitation": 97.12000000010903,
+          "CIRCUIT-medical": 97.12000000010903,
+          "CIRCUIT-science": 97.12000000010903,
+          "CIRCUIT-cargo": 97.12000000010903,
+          "CIRCUIT-hangar": 97.12000000010903,
+          "CIRCUIT-engineering": 97.12000000010903
+        },
+        "component_repairs": 1,
+        "component_history": {
+          "GRAVITY-CORE": [
+            {
+              "at": 32410,
+              "engineer": "Theo Moss",
+              "condition": 86.25050440010092,
+              "reason": "Paid repair and powered post-repair test complete",
+              "sourceId": "CHR-2-V1j54z2l-11287"
+            }
+          ]
+        },
+        "gravity_actual": {
+          "habitation": 1,
+          "medical": 1,
+          "science": 1,
+          "cargo": 1,
+          "hangar": 1,
+          "engineering": 1
+        },
+        "gravity_targets": {
+          "habitation": 1,
+          "medical": 1,
+          "science": 1,
+          "cargo": 1,
+          "hangar": 1,
+          "engineering": 1
+        },
+        "main_bus": 1,
+        "open_orders": {},
+        "component_energy_ledger": [
+          {
+            "kind": "consume",
+            "key": "energy",
+            "source": "gravity fields / zoned environmental electrical load",
+            "amount": 1509.8160000000003,
+            "count": 36000,
+            "first": 1,
+            "last": 36000,
+            "compensation": -8.475165014232289e-14
+          },
+          {
+            "kind": "consume",
+            "key": "tools",
+            "source": "physical systems work GRAVITY-CORE",
+            "amount": 0.03261434879999281,
+            "count": 48,
+            "first": 32358,
+            "last": 32405,
+            "compensation": -1.1926223897340549e-18
+          },
+          {
+            "kind": "consume",
+            "key": "energy",
+            "source": "physical systems work GRAVITY-CORE",
+            "amount": 0.19568609279995686,
+            "count": 48,
+            "first": 32358,
+            "last": 32405,
+            "compensation": -2.6020852139652106e-18
+          }
+        ],
+        "new_summary_entries": 1
+      }
+    },
+    "recovery_1001": {
+      "passed": true,
+      "seed": 1001,
+      "scenario": "normal",
+      "real_days": 2,
+      "ship_days": 40.0,
+      "ticks": 57600,
+      "episode": 1,
+      "alive": 20,
+      "deaths": [],
+      "arrivals": 5,
+      "field_missions": 14,
+      "science_cases": 21,
+      "conversations": 794,
+      "source_activities": {
+        "conversation": 794,
+        "assistance-request": 20,
+        "repair-complete": 319,
+        "inspection": 145,
+        "systems-diagnosis": 2,
+        "systems-repair-complete": 2
+      },
+      "source_kinds": {
+        "system": 223,
+        "observation": 6698,
+        "little": 7782,
+        "maintenance": 477,
+        "research": 107,
+        "social": 1131,
+        "relationship": 1957,
+        "operation": 34,
+        "anthology": 559,
+        "emergency": 10,
+        "crew_memory": 170,
+        "mission": 36,
+        "encounter": 3,
+        "encounter_history": 3,
+        "mission_history": 5
+      },
+      "retained_social": {
+        "registered": 20,
+        "active": 20,
+        "retainedSocialMemories": 640,
+        "retainedBonds": 364,
+        "retainedActivityHistory": 320,
+        "retainedClaims": 0
+      },
+      "weekly_films": 0,
+      "legendary_segments": 0,
+      "maintenance_statistics": {
+        "version": 1,
+        "stats": {
+          "preventiveStarted": 326,
+          "maintenanceWork": 23244.48999999457,
+          "criticalEscalations": 2,
+          "criticalRecoveries": 2,
+          "preventiveCompleted": 319,
+          "releasedAssignments": 3
+        },
+        "decisions": [
+          {
+            "at": 61,
+            "reason": "Measured life-support fault or reserve forecast below one day; optional research and launches suspended."
+          },
+          {
+            "at": 121,
+            "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+          },
+          {
+            "at": 5641,
+            "reason": "Measured life-support fault or reserve forecast below one day; optional research and launches suspended."
+          },
+          {
+            "at": 5701,
+            "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+          },
+          {
+            "at": 24398,
+            "reason": "Released obsolete maintenance reservation for Theo Moss; current assignment retained.",
+            "person": "Theo Moss"
+          },
+          {
+            "at": 29329,
+            "reason": "Released obsolete maintenance reservation for Theo Moss; current assignment retained.",
+            "person": "Theo Moss"
+          },
+          {
+            "at": 40952,
+            "reason": "Released obsolete maintenance reservation for Frank Morrow; current assignment retained.",
+            "person": "Frank Morrow"
+          }
+        ],
+        "notices": {
+          "forecast:true": 5641,
+          "forecast:false": 5701,
+          "detach:Theo Moss": 29329,
+          "detach:Frank Morrow": 40952
+        },
+        "forecast": {
+          "food": {
+            "at": 57541,
+            "consumption": 0.04733333333333576,
+            "production": 0.04733333333333576,
+            "available": 159.98600000000002,
+            "minutes": null
+          },
+          "water": {
+            "at": 57541,
+            "consumption": 0.028000000000001062,
+            "production": 0.028000000000001062,
+            "available": 152.87160000000011,
+            "minutes": null
+          },
+          "oxygen": {
+            "at": 57541,
+            "consumption": 0.019999999999996968,
+            "production": 0.020000000000000757,
+            "available": 110.13600000000095,
+            "minutes": null
+          },
+          "energy": {
+            "at": 57541,
+            "consumption": 0.15643001759999606,
+            "production": 0.15641248080000877,
+            "available": 179.893107792,
+            "minutes": 10258034.98485746
+          }
+        },
+        "sample": {
+          "at": 57541,
+          "consumed": {
+            "energy": 9218.560729075962,
+            "food": 2883.474,
+            "water": 1619.1480000000001,
+            "oxygen": 1150.82,
+            "lab": 672.5,
+            "spares": 322,
+            "tools": 751.10724554785
+          },
+          "produced": {
+            "energy": 9278.453836868106,
+            "spares": 327.1630176000009,
+            "water": 1622.0196000000035,
+            "oxygen": 1140.9560000000001,
+            "medical": 8,
+            "food": 2858.459999999809,
+            "lab": 656.5000000000006,
+            "tools": 733.1072455478544
+          }
+        },
+        "critical": false,
+        "lastDecision": {
+          "at": 40952,
+          "reason": "Released obsolete maintenance reservation for Frank Morrow; current assignment retained.",
+          "person": "Frank Morrow"
+        }
+      },
+      "resources_final": {
+        "food": 159.986,
+        "water": 152.87160000000011,
+        "oxygen": 110.13600000000095,
+        "energy": 179.815658952,
+        "medical": 20,
+        "spares": 69.66203879999988,
+        "tools": 69.991,
+        "lab": 80
+      },
+      "acquisition": {},
+      "fuel_used": 1.9624515496596866,
+      "history_records": 19884,
+      "snapshot_bytes_first": 6892454,
+      "snapshot_bytes_last": 10903930,
+      "checkpoint_reload_days": [
+        2
+      ],
+      "audit_errors": [],
+      "simulation_errors": [],
+      "backup_sha256": "d970a031257cf559ad1e738926eb321e00558492e98bfd49ccbed7bc3a0b6acf",
+      "source_commit": "13ab44756314a1e99587c3070914cefbfbe26fe0",
+      "elapsed_seconds": 369.7262751579983,
+      "evidence_note": "Only actual campaign results. No generated extra crew; romances/claims need not occur. Checkpoint time is measured using unchanged production calendar including synchronized holidays.",
+      "operational": {
+        "generator_condition": 79.2092139251701,
+        "generator_service_isolated": false,
+        "component_conditions": {
+          "GRAVITY-CORE": 79.2092139251701,
+          "CIRCUIT-habitation": 95.39200000017445,
+          "CIRCUIT-medical": 95.39200000017445,
+          "CIRCUIT-science": 95.39200000017445,
+          "CIRCUIT-cargo": 95.39200000017445,
+          "CIRCUIT-hangar": 95.39200000017445,
+          "CIRCUIT-engineering": 95.39200000017445
+        },
+        "component_repairs": 2,
+        "component_history": {
+          "GRAVITY-CORE": [
+            {
+              "at": 32596,
+              "engineer": "Tomas Vale",
+              "condition": 86.1327820750952,
+              "reason": "Paid repair and powered post-repair test complete",
+              "sourceId": "CHR-1-V1j54z2l-11335"
+            },
+            {
+              "at": 50108,
+              "engineer": "Tomas Vale",
+              "condition": 86.17677392514588,
+              "reason": "Paid repair and powered post-repair test complete",
+              "sourceId": "CHR-1-V1j54z2l-17116"
+            }
+          ]
+        },
+        "gravity_actual": {
+          "habitation": 1,
+          "medical": 1,
+          "science": 1,
+          "cargo": 1,
+          "hangar": 1,
+          "engineering": 1
+        },
+        "gravity_targets": {
+          "habitation": 1,
+          "medical": 1,
+          "science": 1,
+          "cargo": 1,
+          "hangar": 1,
+          "engineering": 1
+        },
+        "main_bus": 1,
+        "open_orders": {},
+        "component_energy_ledger": [
+          {
+            "kind": "consume",
+            "key": "energy",
+            "source": "gravity fields / zoned environmental electrical load",
+            "amount": 2409.4080000000004,
+            "count": 57600,
+            "first": 1,
+            "last": 57600,
+            "compensation": -1.9040324872321435e-13
+          },
+          {
+            "kind": "consume",
+            "key": "tools",
+            "source": "physical systems work GRAVITY-CORE",
+            "amount": 0.06479554784997044,
+            "count": 201,
+            "first": 32335,
+            "last": 50103,
+            "compensation": 6.396792817664476e-18
+          },
+          {
+            "kind": "consume",
+            "key": "energy",
+            "source": "physical systems work GRAVITY-CORE",
+            "amount": 0.38877328709982256,
+            "count": 201,
+            "first": 32335,
+            "last": 50103,
+            "compensation": -1.951563910473908e-17
+          }
+        ],
+        "new_summary_entries": 2
+      }
+    }
+  }
+}

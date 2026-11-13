@@ -86,7 +86,7 @@ function tick(sc,items,env){
    return;
   }
   delete active.analystMissingTicks;
-  active.blocker=null;p.blocker=null;p.status='running';active.progress++;
+  active.blocker=null;p.blocker=null;p.status='running';active.progress+=env.workFactor?Math.max(0,Math.min(1,env.workFactor(analyst))):1;
   if(active.progress<active.duration)return;
   active.completed=env.now;
   active.observations={caseId:c.id,specimenId:item.id,recordedAt:env.now,integrity:item.integrity,contamination:item.contamination,volatile:Boolean(item.volatile),sourceKey:item.source?item.source.location+':'+item.source.cell:null};

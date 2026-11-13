@@ -1,0 +1,6 @@
+test_real_late_voyage_projection_fits_existing_telemetry_budget (test_operations_remote.OperationsRemote.test_real_late_voyage_projection_fits_existing_telemetry_budget) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 8.458s
+
+OK

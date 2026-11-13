@@ -1,0 +1,15 @@
+# Phase 4.3 limits and remaining verification
+
+This is an integrated operational extension, not final-game or physical-device certification. PHASE43_VALIDATION.md distinguishes executed checks from open gates.
+
+- Compartment gravity, object descent and graph-constrained handhold motion are a lightweight deterministic model. No full rigid-body dynamics, measured inertia, room-wide collision solver, decorative-object simulation, decompression fluid model or general incapacitated lift-cabin rescue was added. Existing fine furniture/crowd/door-leaf occlusion limits remain.
+- New gravity components have explicit healthy installed baseline assumptions for old saves. Existing equipment/power/resources remain intact; historical operation is not resimulated. Normalized electrical load is not a measured kW/current reading. CO2 concentration remains unavailable.
+- Repairs can block for genuine missing parts, tools, breathable access, exhausted staff or unavailable powered post-tests. Unrecoverable emergencies and death remain possible. There is no guaranteed survival or automatic repair. Existing legacy fault sampling remains; the new components use causal wear rather than scheduled disasters.
+- New systems have no SOL-presence dependency, and a SOL-absent model test is included. A complete all-AI termination/takeover lifecycle is a separate approved future design, not implemented or globally certified here. Existing SOL personality/commentary remains.
+- Independent circuits do not imply independent central hardware. B07 camera receiver power loss can disable otherwise powered room feeds. Engineering instrumentation runs on the upstream control bus, with stale measured snapshots during actual bus loss.
+- Genuine event history continues to grow under the existing durable-history policy. New summaries are bounded; this does not prove arbitrary multi-year save growth solved.
+- No physical Windows laptop, Samsung Android/tablet/TV, native APK rebuild, real LAN/Tailscale, antivirus, human accessibility or GPU validation is claimed. Protocol/browser emulation is separate from hardware testing. Original native Android source/APKs and Android-compatible endpoints are preserved. The earlier installed Tab S5e native source remains pending recovery, not permanently unsupported.
+- No antivirus protection was disabled. The existing launcher starts Python; the user installs the listed runtime dependencies when needed. The companion server binds for authorized local-network access; use pairing, a trusted network and the existing configuration.
+- Prior 4.2B detailed artwork, romance/personal boundaries, transit/cabin rescue and optional classified-access limits remain documented. This phase does not redesign or claim those unfinished refinements complete.
+
+Next work should address demonstrated engineering balance/blocked-recovery cases and actual Windows/tablet usability before adding unrelated scope. Keep hardware validation, deeper compartment physics and final visual polish as explicit release gates.

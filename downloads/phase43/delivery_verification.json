@@ -1,0 +1,51 @@
+{
+  "passed": true,
+  "source_commit": "790d994aa34cdb6c8ad8d26047b30feee87b69a0",
+  "tested_runtime_commit": "13ab44756314a1e99587c3070914cefbfbe26fe0",
+  "main_and_legacy_executions": 501,
+  "additional_portable_fixture_execution": 1,
+  "extracted_zip_smoke_executions": 8,
+  "exact_zip_smoke": {
+    "focused": {
+      "passed": true,
+      "tests_run": 6,
+      "passed_cases": [
+        "test_ops_engineer_real_diagnose_collect_repair_test (test_operations_integration.OperationsIntegration.test_ops_engineer_real_diagnose_collect_repair_test)",
+        "test_ops_float_actual_loose_objects_and_local_power (test_operations_integration.OperationsIntegration.test_ops_float_actual_loose_objects_and_local_power)",
+        "test_ops_independent_gravity_and_saved_controls (test_operations_integration.OperationsIntegration.test_ops_independent_gravity_and_saved_controls)",
+        "test_ops_power_loss_waits_and_recovery_preserves_world_without_sol_gate (test_operations_integration.OperationsIntegration.test_ops_power_loss_waits_and_recovery_preserves_world_without_sol_gate)",
+        "test_ops_repair_and_float_survive_mid_activity_reload (test_operations_integration.OperationsIntegration.test_ops_repair_and_float_survive_mid_activity_reload)",
+        "test_ops_zero_g_recovery_timer_finishes_instead_of_permanent_rest (test_operations_integration.OperationsIntegration.test_ops_zero_g_recovery_timer_finishes_instead_of_permanent_rest)"
+      ],
+      "runtime_root": "/workspace/work/phase43/extracted/ICARUS_Phase4_3_Living_Ship_Operations_Lite",
+      "source_commit": "790d994aa34cdb6c8ad8d26047b30feee87b69a0",
+      "errors": [],
+      "failures": []
+    },
+    "remote_match": {
+      "passed": true,
+      "tests_run": 1,
+      "passed_cases": [
+        "test_ops_paired_controls_match_host_and_no_remote_world (test_operations_remote.OperationsRemote.test_ops_paired_controls_match_host_and_no_remote_world)"
+      ],
+      "runtime_root": "/workspace/work/phase43/extracted/ICARUS_Phase4_3_Living_Ship_Operations_Lite",
+      "source_commit": "790d994aa34cdb6c8ad8d26047b30feee87b69a0",
+      "errors": [],
+      "failures": []
+    },
+    "remote_validation": {
+      "passed": true,
+      "tests_run": 1,
+      "passed_cases": [
+        "test_ops_validation_dedup_and_independent_local_outage (test_operations_remote.OperationsRemote.test_ops_validation_dedup_and_independent_local_outage)"
+      ],
+      "runtime_root": "/workspace/work/phase43/extracted/ICARUS_Phase4_3_Living_Ship_Operations_Lite",
+      "source_commit": "790d994aa34cdb6c8ad8d26047b30feee87b69a0",
+      "errors": [],
+      "failures": []
+    }
+  },
+  "all_runtime_hashes_match": true,
+  "physical_hardware_tests_run": false,
+  "unconditional_phase_complete": false
+}
