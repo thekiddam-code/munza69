@@ -43,3 +43,5 @@ class PersonalitiesIntegration(ObservationIntegration):
    self.assertEqual(s['transitAudit'],[])
    if len(arrived)==3:break
   self.assertEqual(arrived,{0,1,2});self.assertEqual(s['resourceAudit'],[])
+ def test_phase42b_pixel_feed_does_not_show_an_unrelated_classic_room_counter(self):
+  p=self.page();self.operations(p);before=self.snap(p);p.locator('.obs-select').select_option('COR-A-1');p.wait_for_timeout(1100);self.assertTrue(p.locator('#camera-scene .cam-stations').is_hidden());p.locator('.pixel-style').click();self.assertTrue(p.locator('#camera-scene .cam-stations').is_visible());p.locator('.pixel-style').click();self.assertTrue(p.locator('#camera-scene .cam-stations').is_hidden());self.assertEqual(self.snap(p),before)

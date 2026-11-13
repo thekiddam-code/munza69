@@ -4,7 +4,7 @@
 
 ## Runtime provenance
 
-Baseline: verified Phase 4.2A 6332248. Frozen integrated runtime **06c4c5a** ran the full 69-case browser suite, adverse campaign and 677-second real-time watch. Three final files then changed: ship-schematic.js adds cabin occupancy/focus; icarus.html projects shared lift progress in the old hologram and gives cabin injuries/deaths their actual source node; knowledge.js gives cabin passengers the actual LIFT-01 location instead of the departure corridor. All other **115/118 runtime files** are identical. The final runtime **06b15aa** was independently exported and used for the final Node, remote, clock, focused, three-crew, 40-ship-day 20× campaign and additional actual-time watch. No claim that the three final files were loaded during the earlier watch. The source/package verifier enforces hashes.
+Baseline: verified Phase 4.2A 6332248. Frozen integrated runtime **06c4c5a** ran the full 69-case browser suite, adverse campaign and 677-second real-time watch. Three final files then changed: ship-schematic.js adds cabin occupancy/focus; icarus.html projects shared lift progress in the old hologram and gives cabin injuries/deaths their actual source node; knowledge.js gives cabin passengers the actual LIFT-01 location instead of the departure corridor. All other **115/118 runtime files** are identical. The final runtime **06b15aa** was independently exported and used for the final Node, remote, clock, focused, three-crew, 40-ship-day 20× campaign and additional actual-time watch. No claim that the three final files were loaded during the earlier watch. A subsequent CSS-only correction hides an unrelated legacy room-workstation counter in pixel corridor/lift feeds. Its separate browser test passed with classic visibility and exact world-state purity retained. Thus 114/118 final files match the long-watch runtime, while 117/118 match the additional final-runtime watch. The source/package verifier enforces this exact extra CSS suffix and every other runtime hash.
 
 The first normal campaign used d4bc3b2, before the two walking-renderer refinements. Its authoritative controllers are unchanged except the subsequent explicitly tested cabin knowledge/source correction. Every campaign/report records its actual source commit, not the latest branch label.
 
@@ -19,8 +19,9 @@ The first normal campaign used d4bc3b2, before the two walking-renderer refineme
 | Focused movement/follow/relationship/save | 6 | Final export |
 | Three independent crew destinations | 1 | Final export |
 | Bridge/TV/classified service | 18 | Byte-identical final services |
+| Pixel/classic workstation-counter isolation | 1 | Final CSS-only patch |
 
-**464 accepted case executions**, including inherited/repeated regressions, not 464 unique requirements. Failed, aborted and superseded attempts are not included. Prior milestone passes are not added again. Phone/tablet cases use Chromium emulation and real local HTTP with desktop/TV I/O stubbed, not physical devices.
+**465 accepted case executions**, including inherited/repeated regressions, not 464 unique requirements. Failed, aborted and superseded attempts are not included. Prior milestone passes are not added again. Phone/tablet cases use Chromium emulation and real local HTTP with desktop/TV I/O stubbed, not physical devices.
 
 The 69-case suite includes the genuine complete large Phase 4.1 backup import, prior v1.3 explicit import, backup round-trip/history, durable failure retention, identity/memorial/weekly continuity, dormant registries, source-backed knowledge and radio isolation, creatures/containment, finite extraction, navigation/mission logic, clinical rescue access, camera privacy and rendering purity. It took 843.6 seconds in the shared environment; this is not a Windows startup-speed certification.
 

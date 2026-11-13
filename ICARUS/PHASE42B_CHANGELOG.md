@@ -23,6 +23,7 @@
 - Locked console could be repainted by an in-flight reply: response capability must still match; lock clears selection and restricted output.
 - Classified source observations cannot first be admitted as shareable facts; the canonical classification is enforced at acquisition.
 - Actual cabin passengers no longer use the departure corridor as their knowledge or injury/death observation location.
+- Hidden the unrelated legacy room-workstation counter only in pixel camera mode; classic mode retains it and a separate purity regression passes.
 - Test-only missing browser/repository adapters, an unavailable navigation helper and fixture import timing were corrected in the harness. Aborted/superseded runs are retained separately and never counted as completed passes.
 
 ## Boundaries
