@@ -270,3 +270,13 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - **Gameplay consequences:** low/zero-g mobility, access constraints, repair difficulties, injuries and damage when warranted; no automatic catastrophic outcomes. Equipment must not magically work without power or repair.
 - **Engineering scope:** implement a tractable zone-based gravity model before expensive full rigid-body physics. Respect persistence, pause/time acceleration, telemetry, authority permissions and host-to-Android synchronization.
 - **Status:** design idea captured; Phase 4.3 scope not yet finalized or implemented.
+
+## Phase 4.3 — Living Ship Operations (approved scope, 2026-11-13)
+- **Approved to proceed:** implement Phase 4.3 after verifying the actual Phase 4.2B code baseline. Prioritize real ship systems and autonomous engineering interactions over new lore or forced incidents.
+- **Artificial gravity is included, with independent gravity zones/sections.** Normal 1g operation, adjustable/isolatable zone gravity when authorized, reduced and zero-g behavior, generator and distribution equipment, power/fault/maintenance dependencies, realistic crew movement/handholds and unsecured object behavior where feasible. Gravity restoration has consequences; do not grant invulnerability or teleport crew. Start with zone-based state and lightweight visual physics, not a full physics engine.
+- Implement coherent power circuits, life support/atmosphere, lighting, HVAC, equipment condition/wear, maintenance and repair tasks, crew logistics and telemetry. Power and faults should propagate through modeled dependencies and Cascade Engine, not scripted drama.
+- Phase 4.2B detailed pixel cameras should visibly reflect actual tasks and environmental states; ship schematic remains telemetry/control, not surveillance. Preserve quarters privacy, room/door/lift topology and follow-crew behavior.
+- Support authentic engineering work: diagnose, travel, collect tools, isolate/repair/test equipment, restore systems, log outcomes. Crew autonomy and permissions govern actions. Preserve persistence, sim time acceleration, reconnect and desktop/Android authoritative synchronization.
+- SOL takeover/presence interface is a separate requested backlog item; integrate only where scoped and avoid making the new systems depend on an AI being alive.
+- **Scope discipline:** asteroid drones, expeditions, new creature incidents, and large lore systems remain later-phase backlog items. No fabricated sensor values, forced failures, or fake AI actions.
+- **Status:** user approved Phase 4.3 direction and gravity zone feature; implementation not yet verified.
