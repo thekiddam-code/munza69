@@ -261,3 +261,12 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - **Other AIs:** model AI identity and authority explicitly so a different surviving AI is not mistaken for SOL; clarify takeover styling per AI later.
 - **Implementation checks:** inspect current desktop and Android surfaces for literal wording, identify authoritative AI roster/control state, ensure the UI never changes underlying simulation permissions, provide reduced-motion support, and test human command / SOL takeover / all AI terminated / disconnected states.
 - **Status:** requested design change; not yet implemented.
+
+## Phase 4.3 candidate — artificial gravity generator and crew interaction
+- **User-proposed feature, candidate for Phase 4.3 Living Ship Operations:** ICARUS has an artificial-gravity generator so crew and objects remain grounded during normal operation. Treat gravity as a real ship subsystem, not a purely cosmetic label.
+- Model generator condition, power draw, control state, fault conditions, repair tasks and gravity levels per ship zone where feasible. Normal ~1g, partial gravity, and zero gravity should have observable effects on movement, crew behavior, loose objects and engineering work.
+- Crew can inspect, service, diagnose, and repair the gravity system; authorized controls can isolate/restore zones. Gravity failures should be causal, not forced scripted incidents.
+- **Camera presentation:** Phase 4.2B detailed pixel cameras show appropriate walking, hopping, floating, handrail use and loose-object motion, subject to performance and rendering limits. Gravity restoration should affect unsecured objects and crew safely and consistently with simulated state.
+- **Gameplay consequences:** low/zero-g mobility, access constraints, repair difficulties, injuries and damage when warranted; no automatic catastrophic outcomes. Equipment must not magically work without power or repair.
+- **Engineering scope:** implement a tractable zone-based gravity model before expensive full rigid-body physics. Respect persistence, pause/time acceleration, telemetry, authority permissions and host-to-Android synchronization.
+- **Status:** design idea captured; Phase 4.3 scope not yet finalized or implemented.
