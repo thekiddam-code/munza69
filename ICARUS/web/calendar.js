@@ -20,18 +20,18 @@ function sync(s,c,at,env){const p=parts(at,c.timeZone),h=holiday(p),wk=week(p);
  if(h.id&&!c.occurrences[h.id]){c.occurrences[h.id]={id:h.id,name:h.name,date:key(p),synchronized:h.synchronized,at,simTick:s.tick,status:'observed'};c.pending.push(h.id);if(h.synchronized){c.corrections.push({at,before:c.displayMs,after:at,id:h.id,simTick:s.tick});c.corrections=c.corrections.slice(-64);c.displayMs=at;}env.observance?.(c.occurrences[h.id]);}
  return h;
 }
-function advance(s,now,env={},options={}){const c=init(s,now,options.timeZone);if(!Number.isFinite(now))throw new Error('Finite real timestamp required');const override=options.rateOverride;if(override!==undefined&&![1,5,20].includes(override))throw new Error('Invalid test rate');const max=options.maxTicks??120;if(!Number.isInteger(max)||max<0)throw new Error('Invalid work budget');
+function advance(s,now,env={},options={}){const c=init(s,now,options.timeZone);if(!Number.isFinite(now))throw new Error('Finite real timestamp required');const override=options.rateOverride;if(override!==undefined&&![1,4,5,10,20].includes(override))throw new Error('Invalid test rate');const max=options.maxTicks??120;if(!Number.isInteger(max)||max<0)throw new Error('Invalid work budget');
  if(now<c.lastSeen){c.recovery.rollbackCount++;return {ticks:0,rollback:true,backlogMs:Math.max(0,c.lastSeen-c.wallCursor)};}c.lastSeen=now;
  if(now-c.wallCursor>c.maxCatchupMs){const skipped=now-c.wallCursor-c.maxCatchupMs;c.wallCursor=now-c.maxCatchupMs;c.recovery.discardedMs+=skipped;env.gap?.(skipped);}
  let ticks=0;sync(s,c,c.wallCursor,env);
  if(options.paused){c.wallCursor=now;sync(s,c,now,env);return {ticks:0,paused:true,backlogMs:0};}
- while(c.wallCursor<now&&ticks<max){const h=holiday(parts(c.wallCursor,c.timeZone)),end=Math.min(now,nextMidnight(c.wallCursor,c.timeZone)),needed=(MINUTE-c.carry)/(override||h.rate),dt=Math.min(end-c.wallCursor,needed);
-  c.displayMs+=dt*(override||h.rate);c.carry+=dt*(override||h.rate);c.wallCursor+=dt;sync(s,c,c.wallCursor,env);
+ while(c.wallCursor<now&&ticks<max){const h=holiday(parts(c.wallCursor,c.timeZone)),rate=override||(h.synchronized?1:c.selectedRate||h.rate),end=Math.min(now,nextMidnight(c.wallCursor,c.timeZone)),needed=(MINUTE-c.carry)/rate,dt=Math.min(end-c.wallCursor,needed);
+  c.displayMs+=dt*rate;c.carry+=dt*rate;c.wallCursor+=dt;sync(s,c,c.wallCursor,env);
   if(c.carry>=MINUTE-1e-5){c.carry=Math.max(0,c.carry-MINUTE);env.step?.();ticks++;}
  }
- return {ticks,backlogMs:Math.max(0,now-c.wallCursor),rate:holiday(parts(c.wallCursor,c.timeZone)).rate};
+ return {ticks,backlogMs:Math.max(0,now-c.wallCursor),rate:override||(holiday(parts(c.wallCursor,c.timeZone)).synchronized?1:c.selectedRate||4)};
 }
 function configure(s,z,now,env={}){zone(z);const c=init(s,now,z);if(c.wallCursor<now)throw new Error('Drain pending wall time before changing timezone');c.timeZone=z;sync(s,c,now,env);return c;}
-function view(s,now){const c=s.calendar;if(!c)return null;const h=holiday(parts(now,c.timeZone));return {date:key(parts(c.displayMs,c.timeZone)),time:parts(c.displayMs,c.timeZone),timeZone:c.timeZone,rate:h.rate,holiday:h.name,week:week(parts(now,c.timeZone)),archiveWeek:c.episodeKey,atmosphere:atmosphere(now,c.timeZone),recovery:c.recovery};}
+function view(s,now){const c=s.calendar;if(!c)return null;const h=holiday(parts(now,c.timeZone));return {date:key(parts(c.displayMs,c.timeZone)),time:parts(c.displayMs,c.timeZone),timeZone:c.timeZone,rate:h.synchronized?1:c.selectedRate||h.rate,selectedRate:c.selectedRate||0,holiday:h.name,week:week(parts(now,c.timeZone)),archiveWeek:c.episodeKey,atmosphere:atmosphere(now,c.timeZone),recovery:c.recovery};}
 const api={parts,key,week,holiday,easter,atmosphere,nextMidnight,init,advance,configure,view};if(typeof module==='object'&&module.exports)module.exports=api;else root.ICARUSCalendar=api;
 })(globalThis);

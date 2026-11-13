@@ -1,0 +1,8 @@
+test_phase42b_cross_deck_journey_uses_one_cabin_and_camera_occupancy (test_personalities_integration.PersonalitiesIntegration.test_phase42b_cross_deck_journey_uses_one_cabin_and_camera_occupancy) ... ok
+test_phase42b_lift_boarded_save_load_keeps_cabin_and_future (test_personalities_integration.PersonalitiesIntegration.test_phase42b_lift_boarded_save_load_keeps_cabin_and_future) ... ok
+test_phase42b_topology_doors_and_follow_privacy_persist (test_personalities_integration.PersonalitiesIntegration.test_phase42b_topology_doors_and_follow_privacy_persist) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 11.782s
+
+OK
