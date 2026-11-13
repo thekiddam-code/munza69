@@ -227,3 +227,12 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - Tablet/phone UMBRA buttons remotely control the Windows companion; audio routing happens on Windows. Provide visible microphone status, output destination, stop-all, and a fast disable/mute option.
 - **Open design choice:** whether to include full authorized server/channel/friend browsing or focus initially on voice-chat controls; do not treat the deeper integration as approved or technically guaranteed yet.
 - **Status:** backlog concept, not implemented. Implement separately from ICARUS Phase 4.2B and preserve existing Simulator functions.
+
+## UMBRA Discord COMMS — priority update
+- **Priority: LOWEST / PARKED.** User rarely uses Discord and explicitly wants all Discord COMMS integration ideas deferred behind other UMBRA and ICARUS work. Keep prior Discord concepts for possible future use, but do not schedule or implement unless reprioritized.
+
+## Future world modules — fantasy adaptation (exploration, not approved implementation)
+- Once ICARUS has a stable working simulation, explore reusing its autonomous agents, relationships, memories, schedules, event engine, persistence and observation systems for a separate **fantasy world**.
+- Architect future changes with a clean distinction between core simulation mechanics and setting-specific presentation/data. Potential mappings: ship rooms to buildings, decks to districts/regions, crew to villagers, jobs to trades, security cameras to an appropriate fantasy observation metaphor.
+- A full fantasy simulation requires new domain mechanics (economy, factions, travel, combat, magic, creatures, quests) and is not merely a visual reskin. Preserve the existing ICARUS universe and saves.
+- **Status:** exploratory future possibility only; no active development priority or implementation commitment.
