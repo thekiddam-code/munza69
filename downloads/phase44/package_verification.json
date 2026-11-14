@@ -1,0 +1,23 @@
+{
+  "zip": "ICARUS_Phase4_4_Expedition_Operations_Lite.zip",
+  "source_commit": "8cb19b2cc71561569c59aceb2d38af31235835a4",
+  "sha256": "c99136da402f6238ce934e6742a58e9bce6963d9ca0fb0ca0035a499edf86338",
+  "bytes": 854111,
+  "runtime_files": 128,
+  "all_files": 191,
+  "crc_and_hashes_passed": true,
+  "tested_runtime_commit": "34fd122280a9ffd91330bb0fa3e2d702c886ad57",
+  "all128_runtime_hashes_match": true,
+  "no_tests_reports_tools_or_test_worlds_in_lite": true,
+  "extraction_crc_and_all_manifest_hashes_passed": true,
+  "extracted_package_tests": {
+    "field_cases": 9,
+    "paired_remote_cases": 3,
+    "passed": true,
+    "failures": 0,
+    "skips": 0,
+    "field_seconds": 133.605,
+    "remote_seconds": 25.321,
+    "results": "ICARUS/reports/phase44/accepted/package_field.json and package_remote.json"
+  }
+}

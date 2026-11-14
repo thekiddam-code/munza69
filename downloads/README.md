@@ -1,3 +1,7 @@
+# Current build: Phase 4.4 Expedition Operations
+
+[Phase 4.4 downloads, checksums and verification](phase44/README.md) preserve the existing Phase4.3 voyage and UMBRA. Back up before upgrading. Older distributions below are retained unchanged.
+
 # ICARUS Phase 2 Living World downloads
 
 Use **ICARUS_Living_World_Phase2_Lite.zip** for the existing Windows/Android setup. Export a complete backup before updating; keep the same browser profile/host/port and follow README_PHASE2.md in the ZIP. The host launcher, Python dependencies and configuration remain unchanged.
