@@ -1,0 +1,60 @@
+test_100_registered_20_active_crew_registry_remains_dormant_across_week_and_reload (test_drone_integration.DroneIntegration.test_100_registered_20_active_crew_registry_remains_dormant_across_week_and_reload) ... ok
+test_aborted_boarding_returns_paid_cargo_without_exhausting_an_unvisited_field_objective (test_drone_integration.DroneIntegration.test_aborted_boarding_returns_paid_cargo_without_exhausting_an_unvisited_field_objective) ... ok
+test_actual_body_and_waiting_pose_on_tablet_and_readonly_docked_render (test_drone_integration.DroneIntegration.test_actual_body_and_waiting_pose_on_tablet_and_readonly_docked_render) ... ok
+test_actual_relay_chain_restoration_delivers_once_and_survives_reload (test_drone_integration.DroneIntegration.test_actual_relay_chain_restoration_delivers_once_and_survives_reload) ... ok
+test_actual_reserve_deficit_triggers_finite_local_extraction (test_drone_integration.DroneIntegration.test_actual_reserve_deficit_triggers_finite_local_extraction) ... ok
+test_adjacent_barrier_observation_is_local_then_delivered_by_actual_relay (test_drone_integration.DroneIntegration.test_adjacent_barrier_observation_is_local_then_delivered_by_actual_relay) ... ok
+test_broken_ship_receiver_blocks_good_field_relays (test_drone_integration.DroneIntegration.test_broken_ship_receiver_blocks_good_field_relays) ... ok
+test_completed_delivered_surveys_allow_autonomous_navigation_without_a_mission_quota (test_drone_integration.DroneIntegration.test_completed_delivered_surveys_allow_autonomous_navigation_without_a_mission_quota) ... Traceback (most recent call last):
+  File "/workspace/work/munza69/ICARUS/verify_operations.py", line 23, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ^^^^^^
+  File "/workspace/work/munza69/ICARUS/verify_operations.py", line 22, in main
+    result=unittest.TextTestRunner(verbosity=2,resultclass=RecordedResult).run(unittest.TestSuite(cls(n) for n in names));manifest=root/'BUILD_MANIFEST.json';r={'passed':result.wasSuccessful(),'tests_run':result.testsRun,'passed_cases':result.successes,'runtime_root':str(root),'source_commit':json.loads(manifest.read_text())['source_commit'] if manifest.exists() else None,'errors':[{'test':str(t),'detail':d} for t,d in result.errors],'failures':[{'test':str(t),'detail':d} for t,d in result.failures]};a.report.parent.mkdir(parents=True,exist_ok=True);a.report.write_text(json.dumps(r,indent=2));return not result.wasSuccessful()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/runner.py", line 240, in run
+    test(result)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/suite.py", line 122, in run
+    test(result)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py", line 690, in __call__
+    return self.run(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py", line 634, in run
+    self._callTestMethod(testMethod)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py", line 589, in _callTestMethod
+    if method() is not None:
+       ^^^^^^^^
+  File "/workspace/work/munza69/ICARUS/test_living_world_integration.py", line 31, in test_completed_delivered_surveys_allow_autonomous_navigation_without_a_mission_quota
+    for hour in range(1,169):p.evaluate('t=>__icarusSoak.realAdvance(t)',start+hour*3600000)
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/sync_api/_generated.py", line 9385, in evaluate
+    self._sync(
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_sync_base.py", line 113, in _sync
+    self._dispatcher_fiber.switch()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/sync_api/_context_manager.py", line 56, in greenlet_main
+    self._loop.run_until_complete(self._connection.run_as_sync())
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 678, in run_until_complete
+    self.run_forever()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 645, in run_forever
+    self._run_once()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 1961, in _run_once
+    event_list = self._selector.select(timeout)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/selectors.py", line 468, in select
+    fd_event_list = self._selector.poll(timeout, max_ev)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Exception ignored in: <function BaseSubprocessTransport.__del__ at 0x7f155703ba60>
+Traceback (most recent call last):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_subprocess.py", line 126, in __del__
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_subprocess.py", line 104, in close
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/unix_events.py", line 767, in close
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/unix_events.py", line 753, in write_eof
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 799, in call_soon
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 545, in _check_closed
+RuntimeError: Event loop is closed
+Task was destroyed but it is pending!
+task: <Task pending name='Task-326' coro=<Page.evaluate() running at /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_page.py:472> wait_for=<Future pending cb=[Task.task_wakeup()]> cb=[SyncBase._sync.<locals>.<lambda>() at /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_sync_base.py:111, ProtocolCallback.__init__.<locals>.cb() at /opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_connection.py:264]>
