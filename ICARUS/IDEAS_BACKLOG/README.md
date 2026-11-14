@@ -312,3 +312,11 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - Display ICARUS ONLINE only after required readiness checks pass; distinguish simulation ready from command authorization granted and optional cameras still warming up. Transition to main UI once ready and authorized, with appropriate read-only access where applicable. Avoid forced waits, fake status, or bypassing security.
 - Keep startup lightweight and compatible with Windows host, desktop web, Android and remote Tailscale clients. Include recovery from connection loss and test refresh/reconnect and multiple clients.
 - **Status:** user-approved feature request; not yet implemented.
+
+## Phase sequencing update — Phase 4.5 visual differentiation and boot UX
+- **User correction:** Phase 4.4 is already running. Do not alter or interrupt the in-progress Codex run. Schedule the ICARUS/UMBRA boot screen for the NEXT phase, 4.5.
+- **User feedback:** current visuals still look very much the same. Next phase must require unmistakably different room silhouettes/layouts, furniture arrangements, camera composition, layered depth, and better character anatomy and wheelchair construction, not superficial recoloring or minor props. Preserve existing side-view pixel aesthetic and simulation fidelity.
+- Require exact-camera before/after screenshots and visual acceptance checks on engineering, medical, recreation, corridors and wheelchair user; verify actual implementation and report unchanged areas honestly.
+- Boot UX: immediate truthful loading stages, early code entry, distinct authorization/read-only/ready states, real host readiness, unambiguous ICARUS ONLINE transition, security preserved.
+- **Sequencing caution:** Phase 4.5 was previously proposed for drones. Reconcile phase numbering with actual in-progress Codex implementation; do not silently drop drone reconnaissance from the roadmap.
+- **Status:** queued for next phase; no code implementation verified.
