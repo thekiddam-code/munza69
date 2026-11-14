@@ -347,3 +347,9 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - Prefer adding a properly connected gym if ship topology and layout allow. Otherwise inspect actual room registry and functional dependencies, propose safe consolidation of nonessential/underused rooms. Preserve Recreation Room and Observation Lounge unless user explicitly approves replacing one; preserve critical systems, cameras, doors, access, crew assignments and save compatibility.
 - Include cardio, resistance equipment, mats, lockers, hydration and accessible workout space, scaled to actual room geometry. Crew should physically navigate to equipment and exercise only as a real autonomous task; defer unsupported physiology effects rather than invent values.
 - **Status:** approved design direction for future implementation, no verified room modification yet.
+
+## Loopback-only automatic host authorization
+- User requests no manual host key when ICARUS runs locally on the same PC at 127.0.0.1:8765 / ::1. Implement automatic authorization for verified loopback-origin requests only, based on server-observed peer address and validated Host/Origin; never trust client-supplied headers or a UI localhost label alone.
+- Keep authentication for LAN/Tailscale/remote clients, with trusted-device pairing optional. Avoid broad CORS/CSRF bypass or exposing a loopback trust token to remote pages; reject cross-origin requests and protect state-changing endpoints. Preserve single authoritative voyage writer lock independently of host authorization.
+- Boot screen should skip key entry on genuine local access and report local authorization complete; remote key entry remains available. Test loopback, LAN, Tailscale, forged forwarded headers, cross-origin attempts, and competing tabs.
+- Coordinate with confirmed HTTP 413 errors on POST /api/icarus/host/publish; fixing local authorization alone does not fix oversized publications or writer flapping.
