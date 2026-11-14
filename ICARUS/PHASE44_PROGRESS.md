@@ -1,0 +1,7 @@
+# Phase 4.4 progress
+
+Baseline67399a5 (Phase4.3 delivery), runtime13ab447 verified by frozen manifest and regression. Main6a67441 contains only two approved backlog additions relative to prior f5d63a4; merge preserves current implementation and updated status. Full uploaded brief retained in PHASE44_EXPEDITION_PLAN.md.
+
+Plan: A baseline/compatibility and actual existing25-node asteroid graph; B additive industrial/natural geometry, actual edge condition and actor-known maps; C reuse Teams, Economy, existing manifests/registry and ship Transit for staged collection/protection/departure; D deterministic edge-duration navigation, conservative field decisions, physical return and finite objectives/resources; E body camera/source-grounded bounded event snapshots with local-device custody; F existing mission/Engineering/Remote Deck extensions and validated controls; G unit/integration/remote/clock/save/campaign/package checks. No drones, new creature incidents, opened military containment, generic lore replacement or second clock/scheduler. Existing voyages/missions migrate in place; legacy in-flight missions retain their progress until naturally returned.
+
+Boundaries to verify: existing ship maintenance/zero-g recovery, true-world versus received Knowledge, fixed physical reachability, local evidence during signal loss, inventory conservation and once-per-tick advancement. Actual Windows/Android/TV/native/AV tests remain distinct/unavailable unless real hardware is accessed.
