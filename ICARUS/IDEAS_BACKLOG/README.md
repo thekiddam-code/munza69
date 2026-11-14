@@ -328,3 +328,10 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - Exercise behaviors should use actual simulation tasks/states, not invented camera activity. Advanced fitness/rehabilitation effects may be deferred if not supported by existing systems.
 - Require exact-camera before/after comparisons, verify active renderer integration, preserve wheelchair representation, authoritative simulation, camera privacy, navigation and saves.
 - **Status:** approved for next phase, not verified implemented.
+
+## Boot UX correction — persist until actual readiness and authorization
+- User reports writer lock **eventually** changes from read-only after a long wait; do not assume permanently stale lock. Boot screen appears only for a few seconds then disappears before the user can enter the Remote Deck key.
+- **Approved behavior:** boot screen remains until the actual host/world/writer state is ready and authorization is resolved, rather than dismissing after a timer. Clearly display LOADING/WAITING FOR WRITER/KEY REQUIRED/ICARUS ONLINE with truthful status and elapsed time.
+- Key entry must remain accessible and persist through loading/re-rendering; never automatically hide the input while the user is typing. Separate Remote Deck Bridge key authorization from browser authoritative-writer ownership; don't conflate their readiness states.
+- If simulation is ready but remote bridge is offline, show that explicitly and permit appropriate local read-only access or continued connection flow. Do not force users to wait for optional camera feeds. Protect secrets, preserve writer exclusivity and saved world state.
+- Status: user-requested correction to existing boot implementation, not yet verified fixed.
