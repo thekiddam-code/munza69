@@ -15,3 +15,5 @@ Actual tests: **595 final-source case executions and 26 extracted-ZIP checks pas
 Lite source/documentation commit: `11c49af03292a5ab2dc62d8cb2c1625e69cf8aa5`. All137 runtime files match tested runtime `a22f2aca871e988a94cdd5083f8c99022da53460`. The ZIP retains runtime dependencies and instructions, excludes tests/tools/reports/credentials/test worlds, and does not bundle Python or an installer. Do not disable antivirus protection. This is a tested development increment, not final-game certification.
 
 [Architecture](../../ICARUS/PHASE46_ARCHITECTURE.md) · [Changelog](../../ICARUS/PHASE46_CHANGELOG.md) · [Limitations](../../ICARUS/PHASE46_LIMITATIONS.md) · [Security review](../../ICARUS/SECURITY_PHASE46.md). Main, previous downloads and existing releases remain unchanged.
+
+[Draft review PR #10](https://github.com/thekiddam-code/munza69/pull/10) · [Verified public download hashes](GITHUB_DOWNLOAD_VERIFICATION.json). Both public ZIPs returned HTTP200 and matched the published SHA-256 checksums.
