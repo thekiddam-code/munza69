@@ -29,7 +29,7 @@ class Integration(unittest.TestCase):
         for c in self.contexts:c.close()
         self.assertEqual(self.errors,[])
     def page(self):
-        c=self.browser.new_context();self.contexts.append(c);c.add_init_script(self.codec+';window.__icarusSeed=10101;')
+        c=self.browser.new_context();self.contexts.append(c);c.add_init_script("document.addEventListener('DOMContentLoaded',()=>{const enter=()=>{const b=document.querySelector('#icarus-boot .boot-observe');if(window.ICARUSBoot?.complete&&ICARUSBoot.states.connection.state==='ready'&&b&&!b.disabled){b.click();obs.disconnect();}};const obs=new MutationObserver(enter);obs.observe(document.body,{subtree:true,attributes:true,childList:true});enter();},{once:true});");c.add_init_script(self.codec+';window.__icarusSeed=10101;')
         p=c.new_page();p.on('pageerror',lambda e:self.errors.append(str(e)));p.goto(self.url);p.wait_for_function('!!window.__icarusSoak');return p
     def snap(self,p):
         p.wait_for_function('!!window.__icarusSoak');return p.evaluate('window.__icarusSoak.snapshot()')

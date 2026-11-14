@@ -1,0 +1,62 @@
+test_arcade_loads_local_gifs_reduced_motion_and_separate_off_defaults (test_drone_remote.DroneRemote.test_arcade_loads_local_gifs_reduced_motion_and_separate_off_defaults) ... ok
+test_auto_local_bootstrap_and_single_server_authority_without_manual_key (test_drone_remote.DroneRemote.test_auto_local_bootstrap_and_single_server_authority_without_manual_key) ... ok
+test_bridge_observed_crew_follow_and_creator_route_recovery (test_drone_remote.DroneRemote.test_bridge_observed_crew_follow_and_creator_route_recovery) ... ok
+test_camera_wall_profiles_keep_dom_and_source_labels (test_drone_remote.DroneRemote.test_camera_wall_profiles_keep_dom_and_source_labels) ... ok
+test_classified_capability_never_leaks_into_paired_views (test_drone_remote.DroneRemote.test_classified_capability_never_leaks_into_paired_views) ... ok
+test_creator_psychological_profile_retains_disclosure_and_scroll_on_live_refresh (test_drone_remote.DroneRemote.test_creator_psychological_profile_retains_disclosure_and_scroll_on_live_refresh) ... ok
+test_creator_shortcut_hides_controls_and_returns_to_bridge_after_reload (test_drone_remote.DroneRemote.test_creator_shortcut_hides_controls_and_returns_to_bridge_after_reload) ... ok
+test_dispatch_ack_dedup_and_world_is_authoritative (test_drone_remote.DroneRemote.test_dispatch_ack_dedup_and_world_is_authoritative) ... ok
+test_drone_boot_remains_until_explicit_entry_even_after_unattended_ready (test_drone_remote.DroneRemote.test_drone_boot_remains_until_explicit_entry_even_after_unattended_ready) ... ok
+test_drone_live_and_recovered_frames_cross_real_http_without_second_world (test_drone_remote.DroneRemote.test_drone_live_and_recovered_frames_cross_real_http_without_second_world) ... ok
+test_drone_paired_remote_is_receive_only_commands_deduplicate_and_unknowns_stay_hidden (test_drone_remote.DroneRemote.test_drone_paired_remote_is_receive_only_commands_deduplicate_and_unknowns_stay_hidden) ... ok
+test_drone_slow_initialization_keeps_key_and_does_not_declare_online_early (test_drone_remote.DroneRemote.test_drone_slow_initialization_keeps_key_and_does_not_declare_online_early) ... ok
+test_duplicate_tab_with_cloned_session_identity_is_still_a_spectator (test_drone_remote.DroneRemote.test_duplicate_tab_with_cloned_session_identity_is_still_a_spectator) ... ok
+test_every_gif_and_static_frame_loads_on_phone_and_tablet_without_external_assets (test_drone_remote.DroneRemote.test_every_gif_and_static_frame_loads_on_phone_and_tablet_without_external_assets) ... ok
+test_existing_authenticated_tv_commands_and_managed_timer_cancel (test_drone_remote.DroneRemote.test_existing_authenticated_tv_commands_and_managed_timer_cancel) ... ok
+test_field_paired_request_and_follow_use_one_authoritative_world (test_drone_remote.DroneRemote.test_field_paired_request_and_follow_use_one_authoritative_world) ... ok
+test_field_remote_recall_attempts_real_return_and_receives_evidence (test_drone_remote.DroneRemote.test_field_remote_recall_attempts_real_return_and_receives_evidence) ... ok
+test_field_unpaired_and_invalid_requests_rejected_and_duplicate_request_runs_once (test_drone_remote.DroneRemote.test_field_unpaired_and_invalid_requests_rejected_and_duplicate_request_runs_once) ... ok
+test_hologram_wheel_does_not_trap_page_and_select_keeps_its_dom (test_drone_remote.DroneRemote.test_hologram_wheel_does_not_trap_page_and_select_keeps_its_dom) ... ok
+test_installed_android_legacy_responses_remain_unchanged_with_opt_in_camera (test_drone_remote.DroneRemote.test_installed_android_legacy_responses_remain_unchanged_with_opt_in_camera) ... ok
+test_live_phone_matches_host_and_recovers_without_creating_a_world (test_drone_remote.DroneRemote.test_live_phone_matches_host_and_recovers_without_creating_a_world) ... Traceback (most recent call last):
+  File "/workspace/work/munza69/ICARUS/verify_operations.py", line 23, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ^^^^^^
+  File "/workspace/work/munza69/ICARUS/verify_operations.py", line 22, in main
+    result=unittest.TextTestRunner(verbosity=2,resultclass=RecordedResult).run(unittest.TestSuite(cls(n) for n in names));manifest=root/'BUILD_MANIFEST.json';r={'passed':result.wasSuccessful(),'tests_run':result.testsRun,'passed_cases':result.successes,'runtime_root':str(root),'source_commit':json.loads(manifest.read_text())['source_commit'] if manifest.exists() else None,'errors':[{'test':str(t),'detail':d} for t,d in result.errors],'failures':[{'test':str(t),'detail':d} for t,d in result.failures]};a.report.parent.mkdir(parents=True,exist_ok=True);a.report.write_text(json.dumps(r,indent=2));return not result.wasSuccessful()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/runner.py", line 240, in run
+    test(result)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/suite.py", line 84, in __call__
+    return self.run(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/suite.py", line 122, in run
+    test(result)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py", line 690, in __call__
+    return self.run(*args, **kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py", line 634, in run
+    self._callTestMethod(testMethod)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/case.py", line 589, in _callTestMethod
+    if method() is not None:
+       ^^^^^^^^
+  File "/workspace/work/munza69/ICARUS/test_command_bridge.py", line 31, in test_live_phone_matches_host_and_recovers_without_creating_a_world
+    pc=self.page(pc=True);phone=self.page(width=393,height=851);self.tab(phone,'icarus');phone.wait_for_function("UmbraLive.state==='SIMULATION PAUSED'");self.assertEqual(phone.evaluate('typeof __icarusSoak'),'undefined');self.assertIsNone(phone.evaluate("localStorage.getItem('icarus-anthology-v14')"));pc.evaluate('__icarusSoak.advance(3)');tick=pc.evaluate('__icarusSoak.time()');phone.wait_for_function('(tick)=>UmbraLive.current.telemetry.tick===tick',arg=tick);phone.evaluate("Object.defineProperty(crypto,'randomUUID',{value:undefined,configurable:true})");phone.locator('[data-tablet-nav=hold]').click();pc.wait_for_function('__icarusSoak.snapshot().navigation.hold');before=pc.evaluate('__icarusSoak.snapshot()');phone.context.set_offline(True);phone.wait_for_function("UmbraLive.state==='RECONNECTING'",timeout=20000);self.assertIn('RECONNECTING',phone.locator('#icarusLink').inner_text());self.assertTrue(phone.locator('[data-tablet-nav=hold]').is_disabled());phone.context.set_offline(False);phone.wait_for_function("UmbraLive.state==='SIMULATION PAUSED'",timeout=30000);self.assertEqual(pc.evaluate('__icarusSoak.snapshot()'),before);self.assertEqual(phone.evaluate('UmbraLive.current.telemetry.tick'),before['tick']);self.assertLessEqual(phone.evaluate('document.documentElement.scrollWidth'),393)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/sync_api/_generated.py", line 12761, in wait_for_function
+    self._sync(
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/_impl/_sync_base.py", line 113, in _sync
+    self._dispatcher_fiber.switch()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/playwright/sync_api/_context_manager.py", line 56, in greenlet_main
+    self._loop.run_until_complete(self._connection.run_as_sync())
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 678, in run_until_complete
+    self.run_forever()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 645, in run_forever
+    self._run_once()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/asyncio/base_events.py", line 1961, in _run_once
+    event_list = self._selector.select(timeout)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/selectors.py", line 468, in select
+    fd_event_list = self._selector.poll(timeout, max_ev)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

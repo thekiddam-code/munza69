@@ -1,0 +1,24 @@
+{
+  "baseline": "a996a6b",
+  "tested_runtime": "a22f2aca871e988a94cdd5083f8c99022da53460",
+  "unchanged_runtime_files": {
+    "ICARUS/web/calendar.js": "824268e050a88539b5f9eacb313f5e69ad0266fc0bd510ba1ea2a43c81338f92",
+    "ICARUS/web/voyage-clock.js": "4565bf40b23d281ec6501709e8c6d06b6ffd54182ea6225787933d5b3536de9a",
+    "ICARUS/web/durable-store.js": "fec39ec1ea1716b7f7917dcf8fe9c2d82a3fd947e8acbe079c196898df6c69e4",
+    "ICARUS/web/backup-codec.js": "5055483368e3ec04a5a006945273a7e232cb2de9a83361fc10c707fde391b974",
+    "ICARUS/web/backup-transfer.js": "0ca533a1f6bbbc3ddfbe1e7ea6791fa187aa265eacb884b6a48c8d1273cedbec",
+    "ICARUS/web/backup-ui.js": "922e41162b7330aafef1f250996fb30cd1b7dbf3d3866f9933c3113b0d900a98",
+    "ICARUS/web/spatial.js": "0aac58b660c63a4af8ec9925f3ffdcc91f755ef382992bc2459ababef4c90856",
+    "ICARUS/web/transit.js": "ecfbd4657987a5298a52c1a1ca0927b20462cc04625f20f284140c4e95738fe4",
+    "ICARUS/web/unified-world.js": "ea9a330e6f74991332df0d15f6e2e50f73c8091e2c5d30bb815bdcc05065f40f",
+    "ICARUS/web/creatures.js": "729bede3b4c59c139fb5e703fd4b12c151ccf4c4e9c2e103d99e3881effc90d9",
+    "ICARUS/web/classified-ops.js": "36ebb7f255a65dc6af0ec09dc91e99ee33956deabbf7721f649a46f4cd311b8d",
+    "ICARUS/tv_service.py": "7fe512950c3b4de0419960b08fb484b949377bbc97c1b3f93aa4da7626b5fb62",
+    "ICARUS/Start_Remote_Deck.bat": "ffbd4b2e6d561ad162547e4f32c0de891915a6d3876ba6d2bff427ec06df368b",
+    "ICARUS/requirements.txt": "3dd40988330002f37cd1f2b2b80e65ee3919798dc38771b00fed572a4d659f9e"
+  },
+  "rooms_identity_registry_unchanged": true,
+  "names_identity_registry_unchanged": true,
+  "ASTEROID_NAMES_identity_registry_unchanged": true,
+  "DERELICT_NAMES_identity_registry_unchanged": true
+}

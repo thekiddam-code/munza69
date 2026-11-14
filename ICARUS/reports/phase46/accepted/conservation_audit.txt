@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "campaigns": [
+    {
+      "snapshot": "snapshot_4807_7.json",
+      "passed": true,
+      "errors": [],
+      "tick": 36000,
+      "episode": 2,
+      "crew": 20,
+      "drones": 1,
+      "completed_drone_missions": 7,
+      "received_sectors": 20,
+      "received_records": 20,
+      "received_frame_images": 98,
+      "battery": [
+        {
+          "id": "DRONE-1",
+          "charged": 366.89999999999975,
+          "used": 266.9000000000003,
+          "battery": 100,
+          "condition": 98.64399999999395,
+          "missions": 7
+        }
+      ],
+      "independent_resource_totals": {
+        "food": 159.98600000000002,
+        "water": 153.16639999999975,
+        "oxygen": 110.98500000000156,
+        "energy": 179.88558,
+        "medical": 20,
+        "spares": 70.0,
+        "tools": 70.0,
+        "lab": 80.0
+      },
+      "history_records": 12429,
+      "snapshot_bytes": 8756099
+    },
+    {
+      "snapshot": "snapshot_1001_7.json",
+      "passed": true,
+      "errors": [],
+      "tick": 36000,
+      "episode": 2,
+      "crew": 20,
+      "drones": 1,
+      "completed_drone_missions": 7,
+      "received_sectors": 20,
+      "received_records": 20,
+      "received_frame_images": 98,
+      "battery": [
+        {
+          "id": "DRONE-1",
+          "charged": 366.89999999999975,
+          "used": 266.9000000000003,
+          "battery": 100,
+          "condition": 98.64399999999395,
+          "missions": 7
+        }
+      ],
+      "independent_resource_totals": {
+        "food": 159.98600000000002,
+        "water": 152.91080000000014,
+        "oxygen": 111.72000000000067,
+        "energy": 179.82758571,
+        "medical": 20,
+        "spares": 68.69829919999998,
+        "tools": 69.982,
+        "lab": 80
+      },
+      "history_records": 12355,
+      "snapshot_bytes": 9071499
+    }
+  ]
+}

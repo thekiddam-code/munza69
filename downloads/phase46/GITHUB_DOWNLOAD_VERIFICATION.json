@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "downloads": [
+    {
+      "url": "https://raw.githubusercontent.com/thekiddam-code/munza69/refs/heads/codex/autonomous-exploration-phase4-6/downloads/phase46/ICARUS_Phase4_6_Autonomous_Exploration_and_Drone_Reconnaissance_Lite.zip",
+      "http_status": 200,
+      "bytes": 946603,
+      "sha256": "eae56476450a826825cdfecfe6a4303ab8b71de31fe3d15d6c3eae2fdde3d960",
+      "matches_published_checksum": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/thekiddam-code/munza69/refs/heads/codex/autonomous-exploration-phase4-6/downloads/phase46/ICARUS_Phase4_6_Verification_Evidence.zip",
+      "http_status": 200,
+      "bytes": 7828472,
+      "sha256": "2273da08cb64a67b867e7c87a61325500a946e68f9dd984ee3b403ab6a0fb234",
+      "matches_published_checksum": true
+    }
+  ]
+}

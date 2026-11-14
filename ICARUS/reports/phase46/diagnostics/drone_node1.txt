@@ -1,0 +1,47 @@
+✔ legacy additive migration preserves voyage and canon, no free drone (7.860514ms)
+✔ physical assembly pays components only after actual collection and requires engineering (2.41101ms)
+✔ assembly cannot consume absent components or create unlimited chassis (1.739843ms)
+✔ autonomous paid launch physically surveys connected unknown area and returns persistent evidence (11.535652ms)
+✔ battery charging is finite paid and tick idempotent (2.007875ms)
+✔ no power means no charging or launch (1.67784ms)
+✔ radio outage hides map, clips, images and live cameras until actual receipt (7.524129ms)
+✔ mid-segment obstruction reverses elapsed movement without teleportation (1.914295ms)
+✔ save/reload during actual traversal preserves deterministic future exactly (7.152982ms)
+✔ drained battery strands at actual location; no artificial survival or live image (3.019585ms)
+✔ recovery requires co-location and capacity then actual expedition return before data ingestion (2.687345ms)
+✔ sensor readings respect availability and report actual conditions without invented chemistry (2.6574ms)
+✖ deep rock loses direct signal; powered connected relay changes actual availability (1.686252ms)
+✔ captured event buffers are bounded and never expose local-only recordings (25.219111ms)
+✔ malformed/future state and negative or unaccounted batteries are rejected (0.354012ms)
+✔ captain unknown target is rejected and recall waits for radio (3.380476ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 15
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 179.094326
+
+✖ failing tests:
+
+test at ICARUS/test_drone_ops.js:18:1
+✖ deep rock loses direct signal; powered connected relay changes actual availability (1.686252ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'LOST' !== 'RELAYED'
+  
+      at TestContext.<anonymous> (/workspace/work/munza69/ICARUS/test_drone_ops.js:18:278)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'LOST',
+    expected: 'RELAYED',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

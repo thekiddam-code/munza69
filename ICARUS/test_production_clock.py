@@ -14,7 +14,7 @@ class ProductionClock(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):cls.browser.close();cls.pw.stop();cls.server.shutdown()
     def start(self,date,fixed=False):
-        self.context=self.browser.new_context(timezone_id='America/Chicago');p=self.context.new_page();self.errors=[];p.on('pageerror',lambda e:self.errors.append(str(e)));target=datetime.fromisoformat(date).replace(tzinfo=timezone.utc);p.clock.install(time=target-timedelta(minutes=1) if fixed else target); # No page loaded: approach the exact target from the past, never rewind elapsed clock-install latency.
+        self.context=self.browser.new_context(timezone_id='America/Chicago');self.context.add_init_script("document.addEventListener('DOMContentLoaded',()=>{const enter=()=>{const b=document.querySelector('#icarus-boot .boot-observe');if(window.ICARUSBoot?.complete&&ICARUSBoot.states.connection.state==='ready'&&b&&!b.disabled){b.click();obs.disconnect();}};const obs=new MutationObserver(enter);obs.observe(document.body,{subtree:true,attributes:true,childList:true});enter();},{once:true});");p=self.context.new_page();self.errors=[];p.on('pageerror',lambda e:self.errors.append(str(e)));target=datetime.fromisoformat(date).replace(tzinfo=timezone.utc);p.clock.install(time=target-timedelta(minutes=1) if fixed else target); # No page loaded: approach the exact target from the past, never rewind elapsed clock-install latency.
         
         if fixed:p.clock.pause_at(datetime.fromisoformat(date).replace(tzinfo=timezone.utc))
         p.goto(f'http://127.0.0.1:{self.server.server_port}/icarus.html');p.wait_for_function('document.querySelector("#status").textContent.includes("LIVE")');self.assertEqual(p.evaluate('typeof __icarusSoak'),'undefined');return p

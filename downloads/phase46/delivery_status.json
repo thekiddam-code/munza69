@@ -1,0 +1,15 @@
+{
+  "branch": "codex/autonomous-exploration-phase4-6",
+  "draft_pr": "https://github.com/thekiddam-code/munza69/pull/10",
+  "runtime_commit": "a22f2aca871e988a94cdd5083f8c99022da53460",
+  "lite_source_commit": "11c49af03292a5ab2dc62d8cb2c1625e69cf8aa5",
+  "all137_runtime_hashes_unchanged": true,
+  "source_case_executions_passed": 595,
+  "extracted_package_checks_passed": 26,
+  "public_download_hashes_verified": true,
+  "core_autonomous_return_and_restart_criterion_verified": true,
+  "boot_explicit_entry_verified": true,
+  "physical_device_native_and_antivirus_gates_verified": false,
+  "gym": "Deferred; A03 and A09 retained",
+  "final_game_certified": false
+}

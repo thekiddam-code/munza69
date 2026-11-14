@@ -4,6 +4,7 @@ function controlPower(s){const x=s.shipSystems;if(!x)return 1;return Math.min(x.
 function distance(a,b){return Math.hypot(a.x-b.x,a.y-b.y);}
 function plan(s,id,env,override=false){
  const n=init(s),reject=reason=>{n.lastDecision={at:s.tick,reason,requested:id};return {ok:false,reason};},d=env.universe.find(s,id);if(!d)return reject('Destination is not a sensor contact');
+ if(Object.values(s.droneOperations?.drones||{}).some(d=>['outbound','field','homebound'].includes(d.stage)))return reject('Active drones must return before ship departure');
  if(Object.values(s.remoteCore?.missions||{}).some(Boolean))return reject('Expeditions must return before departure');
  if(n.current===id&&n.phase==='orbit')return reject('Already in orbit');
  const dist=distance(n.position,d),cost=Math.max(.15,dist*5),fuel=s.economy.feedstock.fuel;

@@ -1,0 +1,14 @@
+{
+  "passed": false,
+  "tests_run": 1,
+  "passed_cases": [],
+  "runtime_root": "/workspace/work/munza69/ICARUS",
+  "source_commit": null,
+  "errors": [],
+  "failures": [
+    {
+      "test": "test_drone_autonomous_physical_survey_return_reload_and_actual_captured_frames (test_drone_integration.DroneIntegration.test_drone_autonomous_physical_survey_return_reload_and_actual_captured_frames)",
+      "detail": "Traceback (most recent call last):\n  File \"/workspace/work/munza69/ICARUS/test_drone_integration.py\", line 14, in test_drone_autonomous_physical_survey_return_reload_and_actual_captured_frames\n    p=self.page();before=self.snap(p);self.setup_drone(p);s=self.until(p,lambda s:bool(s['droneOperations']['history']));o=s['droneOperations'];self.assertGreater(len(o['known']),1);self.assertTrue(o['archive']);self.assertGreater(o['drones']['DRONE-1']['charged'],90);self.assertTrue(any(f.get('image','').startswith('data:image/png;base64,') for c in o['archive'] for f in c['frames']));self.assertEqual(s['droneAudit'],[]);self.assertEqual(s['resourceAudit'],[]);self.assertTrue(s['unifiedWorld']['organisms']['XENO-INITIAL']['dormant']);self.assertEqual(s['unifiedWorld']['military']['doors']['23'],'sealed');self.assertEqual([c['name'] for c in s['crew']],[c['name'] for c in before['crew']]);p.evaluate('__icarusSoak.save()');p.reload();self.assertEqual(self.snap(p),s)\n                                                                                                                                                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 90 not greater than 90\n"
+    }
+  ]
+}

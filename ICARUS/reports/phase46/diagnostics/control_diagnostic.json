@@ -1,0 +1,14 @@
+{
+  "passed": false,
+  "tests_run": 1,
+  "passed_cases": [],
+  "runtime_root": "/workspace/work/munza69/ICARUS",
+  "source_commit": null,
+  "errors": [],
+  "failures": [
+    {
+      "test": "test_drone_management_controls_are_optional_and_no_unknown_target (test_drone_integration.DroneIntegration.test_drone_management_controls_are_optional_and_no_unknown_target)",
+      "detail": "Traceback (most recent call last):\n  File \"/workspace/work/munza69/ICARUS/test_drone_integration.py\", line 22, in test_drone_management_controls_are_optional_and_no_unknown_target\n    p=self.page();self.setup_drone(p);self.deck(p,'missions','active');p.locator('.drone-auto').click();self.assertFalse(self.snap(p)['droneOperations']['enabled']);p.locator('.drone-build').click();self.assertTrue(self.snap(p)['droneOperations']['buildRequested']);self.until(p,lambda s:bool(s['droneOperations']['drones']));self.advance(p,220);self.deck(p,'missions','active');p.locator('.drone-launch').click();self.assertIn(self.snap(p)['droneOperations']['drones']['DRONE-1']['stage'],['outbound','field'],p.locator('.drone-feedback').inner_text()+' / '+str(self.snap(p)['droneOperations']['drones']['DRONE-1']));p.locator('.drone-recall').click();self.assertTrue(self.snap(p)['droneOperations']['drones']['DRONE-1']['pendingRecall']);self.advance(p,1);self.assertTrue(self.snap(p)['droneOperations']['drones']['DRONE-1']['mission']['returning']);self.assertEqual(s:=self.snap(p)['droneAudit'],[])\n                                                                                                                                                                                                                                                                                                                                                                                                                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 'docked' not found in ['outbound', 'field'] : refreshObservation is not defined / {'id': 'DRONE-1', 'stage': 'docked', 'node': None, 'edge': None, 'battery': 80, 'capacity': 100, 'charged': 80, 'used': 0, 'condition': 100, 'sensors': {'optical': 100, 'thermal': 100, 'mineral': 100, 'radiation': 100, 'structural': 100, 'environment': 100, 'radio': 100, 'light': 100}, 'map': {}, 'clips': [], 'ring': [], 'pendingEvents': [], 'nextRecord': 1, 'lastReport': {'at': 243, 'stage': 'docked', 'node': None, 'edge': None, 'battery': 80, 'condition': 100, 'signal': 'DOCK', 'sensors': {'optical': 100, 'thermal': 100, 'mineral': 100, 'radiation': 100, 'structural': 100, 'environment': 100, 'radio': 100, 'light': 100}, 'missionId': None}, 'source': 'Physically assembled at C01 from paid C04 components', 'missions': 0, 'signal': 'DOCK'}\n"
+    }
+  ]
+}
