@@ -280,3 +280,11 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - SOL takeover/presence interface is a separate requested backlog item; integrate only where scoped and avoid making the new systems depend on an AI being alive.
 - **Scope discipline:** asteroid drones, expeditions, new creature incidents, and large lore systems remain later-phase backlog items. No fabricated sensor values, forced failures, or fake AI actions.
 - **Status:** user approved Phase 4.3 direction and gravity zone feature; implementation not yet verified.
+
+## Asteroid 8847-A — mixed industrial complex and natural exploration (approved)
+- **Approved direction for future Phase 4.4 expeditions:** asteroid 8847-A contains BOTH substantial pre-existing abandoned mining/industrial infrastructure AND large areas of natural, initially unexplored terrain. Neither should replace the other.
+- Industrial areas may include tunnels, mining lifts, machinery, maintenance shafts, sealed installations and damaged utilities. Natural areas may include caverns, fissures, mineral formations, unstable rock and unexplored passages. Make the transition between built and natural environments spatially continuous and navigable.
+- Exploration should reveal persistent geography and evidence gradually through crew expeditions and later drone surveys, not omniscient map unlocks. Industrial repairs and access restoration should open plausible routes; geological obstacles may require surveying, equipment or excavation.
+- Preserve established asteroid canon: deep borehole, mining planet history, derelict/military vessel, rare temporal anomalies and dormant threat conditions. Do not introduce active Xenomorphs or forced scripted discoveries.
+- Support meaningful mission variety: salvage/repair in built spaces, surveying in natural spaces, and combined expeditions across both. Maintain persistent maps, route hazards, and return logistics.
+- **Status:** approved world-design direction; Phase 4.4 implementation not yet started or verified.
