@@ -1,0 +1,23 @@
+{
+  "tested_runtime_commit": "20001c00ffaf6538cf7bb3dbbcf3c1b2dad69a06",
+  "test_source_commit": "5abc0fa7a5744eaae8fa8f9684444c72e92c8087",
+  "original_uploaded_zip_sha256": "6d36ddab8be110fac078af8fe8a6e89423ee9409bc75ef53bf22656c4a60f0a6",
+  "original_zip_crc_and_all_manifest_hashes_valid": true,
+  "runtime_files": 138,
+  "unchanged_runtime_files": 132,
+  "changed_or_added_runtime_files": [
+    "server.py",
+    "web/drone-ops.js",
+    "web/drone-ui.js",
+    "web/icarus.html",
+    "web/operational-ui.js",
+    "web/telemetry-packet.js"
+  ],
+  "boot_host_authority_durable_and_server_fence_unchanged": true,
+  "server_publish_limit_unchanged_bytes": 131072,
+  "wire_budget_bytes": 110000,
+  "new_dependencies": [],
+  "new_external_endpoints": [],
+  "new_shell_commands_or_system_modifications": [],
+  "private_backup_in_distribution": false
+}

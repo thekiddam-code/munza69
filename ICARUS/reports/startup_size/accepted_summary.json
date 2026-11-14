@@ -1,0 +1,51 @@
+{
+  "runtime_commit": "20001c00ffaf6538cf7bb3dbbcf3c1b2dad69a06",
+  "test_source_commit": "5abc0fa7a5744eaae8fa8f9684444c72e92c8087",
+  "passed": true,
+  "source_case_executions": 509,
+  "note": "Case executions, not unique assertions; inherited browser cases overlap across suites. Extracted-package verification is reported separately.",
+  "suites": {
+    "node": {
+      "passed": true,
+      "cases": 413,
+      "elapsed_seconds": 19.200594262
+    },
+    "services": {
+      "passed": true,
+      "cases": 18,
+      "elapsed_seconds": 0.003
+    },
+    "boot": {
+      "passed": true,
+      "cases": 8,
+      "elapsed_seconds": 45.963
+    },
+    "remote": {
+      "passed": true,
+      "cases": 49,
+      "elapsed_seconds": 269.624
+    },
+    "drone": {
+      "passed": true,
+      "cases": 7,
+      "elapsed_seconds": 57.783
+    },
+    "clock": {
+      "passed": true,
+      "cases": 4,
+      "elapsed_seconds": 13.487
+    },
+    "visual": {
+      "passed": true,
+      "cases": 6,
+      "elapsed_seconds": 14.226
+    },
+    "user_voyage": {
+      "passed": true,
+      "cases": 4,
+      "elapsed_seconds": 170.075
+    }
+  },
+  "private_backup_unchanged": true,
+  "physical_windows_android_tv_tailscale_or_antivirus_tests_run": false
+}
