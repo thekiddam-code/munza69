@@ -335,3 +335,9 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - Key entry must remain accessible and persist through loading/re-rendering; never automatically hide the input while the user is typing. Separate Remote Deck Bridge key authorization from browser authoritative-writer ownership; don't conflate their readiness states.
 - If simulation is ready but remote bridge is offline, show that explicitly and permit appropriate local read-only access or continued connection flow. Do not force users to wait for optional camera feeds. Protect secrets, preserve writer exclusivity and saved world state.
 - Status: user-requested correction to existing boot implementation, not yet verified fixed.
+
+## Phase 4.5 outcome — recreation vs observation lounge; gym deferred
+- User confirms **Phase 4.5 completed and is running; visual upgrade looks great.** Gym was NOT implemented: existing rooms are one Recreation Room and one Observation Lounge, not two recreation rooms.
+- Preserve both existing rooms and their distinct functions: recreation for games/social activities; observation lounge for quiet viewing/relaxation, with actual supported ship geometry and view, not fabricated windows.
+- **Future gym request:** add a separate, physically connected Fitness Center rather than repurposing the Observation Lounge. Inspect ship layout and expansion constraints before choosing a location; preserve topology, room IDs, doors, cameras, saves and accessible circulation. Ground workout animations in actual tasks and support accessible equipment.
+- Do not mark gym as implemented. Prior conditional 'convert second recreation room' instructions do not apply because the assumed second recreation room does not exist.
