@@ -296,3 +296,11 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - When communication is lost, locally captured important clips may remain on device storage and become accessible only if the drone/device is recovered and storage survives. Do not grant SOL omniscient access to unreachable recordings.
 - Important recorded clips can feed the evidence archive and Sunday cinematic recap. Respect existing privacy boundaries and authorized access.
 - **Status:** user-approved future expedition/drone feature; not yet implemented.
+
+## Phase 4.4V — Visual Evolution (approved next phase)
+- **Approved next implementation phase, before expedition expansion:** improve existing detailed side-view pixel surveillance renderer without replacing it. The current rooms look too similar; crew sprites have rigid anatomy; wheelchair user appears perched over wheels without a complete chair.
+- Give room types distinctive authored layouts and functional furniture: engineering, medical, science, recreation, quarters, corridors, bridge, cargo, security. Use coherent background/midground/character/foreground layering, meaningful variation, lighting and wear. Preserve actual room topology, camera identity, access, collisions and ship system dependencies.
+- Improve character silhouettes, anatomy, varied proportions/clothes/hair, articulated walk/turn/sit/work/carry animations; maintain identity across cameras and save/load. Respect performance and existing pixel scale.
+- Wheelchair character uses proper seated posture and complete chair geometry (frame, seat, backrest, large rear wheels, front casters, footrests), dedicated propulsion/turn animations and accessible pathing/interactions. Do not remove the character or treat the chair as decorative wheels.
+- Make visual interactions grounded in actual simulation state; no fake activity or fabricated rooms. Preserve 4.2B detailed cameras, 4.3 ship operations, and upcoming 4.4 expeditions. Add before/after screenshots, regression tests and performance checks.
+- **Status:** user approved as the next phase; implementation not yet verified.
