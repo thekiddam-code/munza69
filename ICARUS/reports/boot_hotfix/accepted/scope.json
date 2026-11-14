@@ -1,0 +1,13 @@
+{
+  "source_commit": "fc8ce280689fda785a34d046f1187d5fcd6aee55",
+  "baseline": "a22f2aca871e988a94cdd5083f8c99022da53460",
+  "changed_runtime_files": [
+    "web/boot-screen.css",
+    "web/boot-screen.js",
+    "web/host-authority.js",
+    "web/icarus.html"
+  ],
+  "unchanged_runtime_files": 133,
+  "durable_lock_and_server_generation_fences_unchanged": true,
+  "drone_exploration_modules_unchanged": true
+}

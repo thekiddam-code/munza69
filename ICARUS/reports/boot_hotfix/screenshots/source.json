@@ -1,0 +1,75 @@
+{
+  "source_commit": "fc8ce280689fda785a34d046f1187d5fcd6aee55",
+  "scope": "Actual running host with delayed native IndexedDB open success callback; no writer override. Isolated test credentials masked, no physical hardware claim.",
+  "waiting": {
+    "status": "WAITING FOR WRITER",
+    "stages": {
+      "connection": {
+        "state": "ready",
+        "detail": "Authorization service responded"
+      },
+      "kernel": {
+        "state": "pending",
+        "detail": "Awaiting actual readiness event"
+      },
+      "storage": {
+        "state": "loading",
+        "detail": "Opening protected storage and restoring the existing voyage"
+      },
+      "systems": {
+        "state": "pending",
+        "detail": "Awaiting actual readiness event"
+      },
+      "writer": {
+        "state": "waiting",
+        "detail": "Waiting for protected voyage storage to finish opening/restoring"
+      },
+      "authorization": {
+        "state": "ready",
+        "detail": "Host key verified independently of writer ownership"
+      },
+      "cameras": {
+        "state": "pending",
+        "detail": "Awaiting actual readiness event"
+      }
+    },
+    "initialized": false,
+    "writer": false
+  },
+  "online": {
+    "status": "ICARUS ONLINE",
+    "stages": {
+      "connection": {
+        "state": "ready",
+        "detail": "Companion server responded"
+      },
+      "kernel": {
+        "state": "ready",
+        "detail": "Simulation modules loaded; no time advanced by startup"
+      },
+      "storage": {
+        "state": "ready",
+        "detail": "indexeddb \u00b7 persistent world restored and migrated"
+      },
+      "systems": {
+        "state": "ready",
+        "detail": "Existing world, ship systems, knowledge and expedition state initialized"
+      },
+      "writer": {
+        "state": "ready",
+        "detail": "Exclusive storage and server ownership confirmed"
+      },
+      "authorization": {
+        "state": "ready",
+        "detail": "Host key verified independently of writer ownership"
+      },
+      "cameras": {
+        "state": "ready",
+        "detail": "Live surveillance UI installed; feed availability still depends on actual power/privacy"
+      }
+    },
+    "initialized": true,
+    "writer": true
+  },
+  "explicit_entry_without_world_change": true
+}

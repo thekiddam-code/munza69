@@ -1,0 +1,1 @@
+Actual failing-before and candidate regression evidence, not accepted passes. A candidate full remote run timed out waiting for a stubbed TV key response; the unchanged original test passed in isolation and the complete final49-case run. No TV code/test assertions were changed. See the root-cause/test-fixture discussion in BOOT_HOTFIX_REPORT.md.

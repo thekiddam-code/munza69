@@ -4273,6 +4273,7 @@ if(new URLSearchParams(location.search).get('icarus_soak')==='1'){
  async function sync(){if(busy||!ICARUSDurable.canWrite()||ICARUSBackupUI.busy())return;busy=true;
   try{if(!ICARUSHost.standalone){
    if(ICARUSHost.lost){status.textContent='OWNERSHIP LOST · reload to observe the current host';return;}
+   if(!ICARUSHost.generation){status.textContent='● WAITING FOR WRITER';return;} // Initial claim retries remain fenced in Host; never publish before ownership.
    const data=snapshot(),classified=ICARUSClassified.project(state,Date.now()),{exploration:droneProjectionRemoved,expeditions:expeditionProjectionRemoved,shipSystems:systemsProjection,operations,observation:observationProjection,...legacy}=data;data.creator=!!window.ICARUSBridgeMode?.creator;
    await ICARUSHost.request('host/publish',ICARUSDroneOps.fitTelemetry({telemetry:data,classified,legacy,acks:[...applied]}));ICARUSHost.renewed();
    const pending=await ICARUSHost.request('host/commands');

@@ -1,3 +1,7 @@
+# Phase 4.6 boot hotfix
+
+[Download the tested boot hotfix](phase46-boot-hotfix/README.md). This fixes protected writer waiting, independent authorization and explicit ENTER; it does not introduce a new phase. Original Phase4.6 downloads remain below.
+
 # Current build: Phase 4.6 Autonomous Exploration & Drone Reconnaissance
 
 [Phase 4.6 Lite, actual screenshots, checksums and verification](phase46/README.md). Back up your voyage before upgrading; boot now waits for explicit ENTER. Older distributions remain unchanged.
