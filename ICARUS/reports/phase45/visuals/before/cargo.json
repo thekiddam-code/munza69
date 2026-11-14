@@ -1,0 +1,79 @@
+{
+  "label": "Actual active camera; isolated technical placement fixture, not natural event/video",
+  "viewport": [
+    1440,
+    1000
+  ],
+  "canvas": [
+    384,
+    216
+  ],
+  "camera": {
+    "id": "C03",
+    "name": "Cargo Bay",
+    "kind": "engineering",
+    "components": [],
+    "gravity": 1,
+    "zone": "cargo",
+    "objects": [],
+    "private": false,
+    "camera": true,
+    "available": true,
+    "actors": [
+      {
+        "name": "Frank Morrow",
+        "job": "Engineer",
+        "state": "console",
+        "gravity": null,
+        "affection": null,
+        "task": "AT CONSOLE",
+        "phase": null,
+        "x": 88,
+        "y": 161,
+        "facing": -1,
+        "moving": false,
+        "injured": false,
+        "carrying": null,
+        "body": {
+          "build": "medium",
+          "locomotion": "walk"
+        },
+        "node": "R:C03"
+      },
+      {
+        "name": "Derek Cole",
+        "job": "Cargo",
+        "state": "idle",
+        "gravity": null,
+        "affection": null,
+        "task": "ON DUTY",
+        "phase": null,
+        "x": 132,
+        "y": 190,
+        "facing": -1,
+        "moving": false,
+        "injured": false,
+        "carrying": null,
+        "body": {
+          "build": "medium",
+          "locomotion": "walk"
+        },
+        "node": "R:C03"
+      }
+    ],
+    "lighting": 1,
+    "temperature": 21,
+    "pressure": 100,
+    "oxygen": 21,
+    "visibility": 100,
+    "door": "open",
+    "privacyMarker": null,
+    "equipment": null,
+    "hazard": null,
+    "registeredCrew": 2,
+    "biologicalReturns": null,
+    "bioSource": "No biological sensor model installed",
+    "source": "Existing engineering/atmospheric instrumentation",
+    "recording": false
+  }
+}

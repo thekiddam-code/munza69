@@ -1,0 +1,11 @@
+# Phase 4.5 static security and source review
+
+New art/character/interaction modules execute local drawing/model logic; they do not spawn OS commands, fetch external code, change system settings or grant agents network/OS access. The boot module uses existing first-party host transport. New `/api/icarus/host/auth` checks localhost and the existing host key, returns only a verification result, and cannot claim ownership or write/publish a world. Authority still requires existing Host generation/heartbeat plus Durable storage lease. Wrong-code, early-code, service-outage/retry, pairing and private-feed tests are separate from real hardware certification.
+
+The restricted-quarters renderer uses the room ID already provided by the existing local classified channel. Physical appearance/seated posture are added inside that restricted whitelist; private feeds remain unavailable to ordinary telemetry and paired UMBRA. No source/text is evaluated as JavaScript or shell commands. Caches and saved descriptors are bounded/validated; visual projection never advances the world.
+
+Retained sensitive capabilities: LAN/Tailscale server listener, paired PC input/media controls, configured TV networking, local private/classified console and browser storage/export. Use the existing pairing/security configuration. The unchanged Windows launcher runs Python; optional pip installation downloads existing pyautogui/psutil/websocket-client packages into the selected Python environment. No administrator request, service installation, firewall modification, antivirus disabling or new cloud simulation is added.
+
+Static HTML/JS/CSS now carries cache revalidation and the pixel script is versioned. No service-worker cache, external art/font/analytics request or native APK replacement. Source-based Lite manifest pins the committed source and every retained file; tests, raw reports/worlds, generated credentials and development/packaging tools are excluded. ZIP CRC/SHA and executed extracted-runtime tests are reported separately.
+
+Limits: no physical Windows Defender/third-party AV scan, native APK rebuild/analysis, real TV/LAN/Tailscale penetration test or independent security audit. No antivirus protection was disabled or circumvented.

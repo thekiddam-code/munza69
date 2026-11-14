@@ -1,0 +1,75 @@
+{
+  "label": "Actual active camera; isolated technical placement fixture, not natural event/video",
+  "viewport": [
+    1440,
+    1000
+  ],
+  "canvas": [
+    384,
+    216
+  ],
+  "camera": {
+    "id": "C07",
+    "name": "Power Distribution",
+    "kind": "engineering",
+    "components": [
+      {
+        "id": "GRAVITY-CORE",
+        "name": "Artificial-gravity generator",
+        "health": 100,
+        "status": null
+      },
+      {
+        "id": "CIRCUIT-engineering",
+        "name": "Engineering / lift distribution circuit",
+        "health": 100,
+        "status": null
+      }
+    ],
+    "gravity": 1,
+    "zone": "engineering",
+    "objects": [],
+    "private": false,
+    "camera": true,
+    "available": true,
+    "actors": [
+      {
+        "name": "Frank Morrow",
+        "job": "Engineer",
+        "state": "repair",
+        "gravity": null,
+        "affection": null,
+        "task": "EQUIPMENT WORK",
+        "phase": null,
+        "x": 286,
+        "y": 161,
+        "facing": 1,
+        "moving": false,
+        "injured": false,
+        "carrying": null,
+        "body": {
+          "build": "medium",
+          "locomotion": "walk"
+        },
+        "node": "R:C07"
+      }
+    ],
+    "lighting": 1,
+    "temperature": 21,
+    "pressure": 100,
+    "oxygen": 21,
+    "visibility": 100,
+    "door": "open",
+    "privacyMarker": null,
+    "equipment": {
+      "name": "Power distribution panel",
+      "condition": 75
+    },
+    "hazard": null,
+    "registeredCrew": 1,
+    "biologicalReturns": null,
+    "bioSource": "No biological sensor model installed",
+    "source": "Existing engineering/atmospheric instrumentation",
+    "recording": false
+  }
+}

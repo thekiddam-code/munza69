@@ -248,12 +248,18 @@ class Handler(http.server.SimpleHTTPRequestHandler):
   with LOCK:data=ICARUS_BRIDGE['telemetry'];age=time.time()-ICARUS_BRIDGE['updated'] if data else None
   online=bool(data and age<8)
   return {**view,'protocol':1,'online':online,'stale':not online,'age':age,'telemetry':data,'state':'SIMULATION PAUSED' if online and data.get('paused') else 'HOST CONNECTED' if online else 'HOST OFFLINE'}
+ def end_headers(self):
+  if not self.path.startswith('/api/') and urllib.parse.urlsplit(self.path).path.endswith(('.html','.js','.css')):self.send_header('Cache-Control','no-cache')
+  super().end_headers()
  def do_GET(self):
   if posixpath.normpath(urllib.parse.unquote(urllib.parse.urlsplit(self.path).path))=='/icarus.html' and not self.local_host():
    self.send_response(302);self.send_header('Location','/?terminal=icarus');self.send_header('Cache-Control','no-store');self.end_headers();return
   if self.path=='/api/icarus/bootstrap':
    if not self.local_host():return self.respond(403,{'error':'Open the host on this PC at http://127.0.0.1:8765/icarus.html'})
    return self.respond(200,{'key':ICARUS_KEY,'protocol':2})
+  if self.path=='/api/icarus/host/auth':
+   if not self.local_host() or not self.host_auth():return self.respond(403,{'error':'Local host authorization required'})
+   return self.respond(200,{'authorized':True,'protocol':2})
   if self.path=='/api/icarus/classified':
    if not self.local_host() or not self.host_auth():return self.respond(403,{'error':'Local SOL console capability required'})
    return self.respond(200,BRIDGE_SERVICE.classified_view())

@@ -1,0 +1,11 @@
+test_visual_boot_ready_is_real_and_ordinary_clock_remains_separate (test_visual45_integration.VisualIntegration.test_visual_boot_ready_is_real_and_ordinary_clock_remains_separate) ... ok
+test_visual_live_primary_and_previews_use_new_art_without_mutating_world (test_visual45_integration.VisualIntegration.test_visual_live_primary_and_previews_use_new_art_without_mutating_world) ... ok
+test_visual_lounge_approach_seating_and_rise_are_actual_tasks (test_visual45_integration.VisualIntegration.test_visual_lounge_approach_seating_and_rise_are_actual_tasks) ... ok
+test_visual_power_sensitive_art_cache_and_private_rooms_are_preserved (test_visual45_integration.VisualIntegration.test_visual_power_sensitive_art_cache_and_private_rooms_are_preserved) ... ok
+test_visual_saved_appearance_and_old_voyage_fields_migrate_exactly (test_visual45_integration.VisualIntegration.test_visual_saved_appearance_and_old_voyage_fields_migrate_exactly) ... ok
+test_visual_wheelchair_real_approach_turn_and_seated_geometry (test_visual45_integration.VisualIntegration.test_visual_wheelchair_real_approach_turn_and_seated_geometry) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 26.599s
+
+OK

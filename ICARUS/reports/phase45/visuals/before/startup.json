@@ -1,0 +1,6 @@
+{
+  "label": "Actual startup with test-held bootstrap response; no readiness fabricated",
+  "bootstrap_responses_held": 1,
+  "boot": 0,
+  "writer": []
+}

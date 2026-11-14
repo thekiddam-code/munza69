@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "runtime_commit": "4bd2dadbd6e6541ef118e04b50b30ddbf561ae19",
+  "runtime_files": 134,
+  "case_executions": 563,
+  "suites": {
+    "node": 384,
+    "full_browser": 93,
+    "real_http_remote": 45,
+    "production_clock": 4,
+    "legacy_continuity": 19,
+    "services": 18
+  },
+  "all_final_cases_passed_no_skips": true,
+  "case_policy": "Execution counts, including separately run inherited overlap; focused development reruns are not added again. All final suites/campaigns/watch use runtime4bd2dad. Extracted ZIP results are separate.",
+  "campaigns_passed": [
+    "normal1001 7real/25ship days",
+    "explicit-adverse4807 7real/25ship days"
+  ],
+  "actual_time_watch_passed": true,
+  "before_after_comparison_pairs": 12,
+  "gym": "Deferred by explicit user choice; A03 retained",
+  "unconditional_final_game_ready": false,
+  "not_run": [
+    "Physical Windows laptop",
+    "physical Samsung phone/Tab S5e/TV",
+    "native APK rebuild",
+    "real LAN/Tailscale",
+    "human GPU/touch/accessibility/visual review",
+    "antivirus scan"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "baseline": "fd70501",
+  "final_runtime": "4bd2dadbd6e6541ef118e04b50b30ddbf561ae19",
+  "unchanged_paths": [
+    "ICARUS/web/calendar.js",
+    "ICARUS/web/voyage-clock.js",
+    "ICARUS/web/durable-store.js",
+    "ICARUS/web/backup-codec.js",
+    "ICARUS/web/backup-transfer.js",
+    "ICARUS/bridge_service.py",
+    "ICARUS/tv_service.py",
+    "UMBRA"
+  ],
+  "exit_code": 0,
+  "all134_current_runtime_hashes_match_frozen": true
+}

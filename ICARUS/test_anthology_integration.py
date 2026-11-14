@@ -50,7 +50,19 @@ class CoreIntegration(Integration):
         p=self.page();p.goto(self.url.replace('/icarus.html?','/extended/icarus.html?'));p.wait_for_function('!!window.__icarusSoak');self.advance(p,720);p.evaluate('__icarusSoak.save()');p.evaluate('ICARUSDurable.flush()');old=self.snap(p);oldraw=p.evaluate("localStorage['icarus-v02']");payload=p.evaluate("JSON.stringify({format:'ICARUS_SAVE',formatVersion:1,appVersion:'1.3',state:JSON.parse(localStorage.getItem('icarus-v02')),ideas:[]})")
         p.goto(self.url);p.wait_for_function('!!window.__icarusSoak');self.assertEqual(self.snap(p)['tick'],0);self.assertEqual(p.evaluate("localStorage['icarus-v02']"),oldraw)
         p.on('dialog',lambda d:d.accept());p.locator('#backupfile').set_input_files({'name':'v13.json','mimeType':'application/json','buffer':payload.encode()});p.wait_for_function("document.querySelector('#backupmessage').textContent.includes('Restored')");p.evaluate('ICARUSDurable.flush()');new=self.snap(p)
-        for key in ['crew','navigation','economy','director','missions','experiences','emergencyOps']:self.assertEqual(new[key],old[key],key)
+        # Phase4.5 explicitly adds a validated public appearance descriptor. Every pre-existing
+        # crew field must still match exactly; no arbitrary normalization or ignored state.
+        migrated_crew=json.loads(json.dumps(new['crew']))
+        if p.evaluate('typeof ICARUSCharacterDesign!=="undefined"'):
+            self.assertEqual(len(migrated_crew),len(old['crew']))
+            for person,previous in zip(migrated_crew,old['crew']):
+                self.assertIn('visualAppearance',person)
+                self.assertTrue(p.evaluate('a=>ICARUSCharacterDesign.valid(a)',person['visualAppearance']))
+                expected=p.evaluate('p=>{const q={...p};delete q.visualAppearance;return ICARUSCharacterDesign.appearance(q);}',previous)
+                self.assertEqual(person['visualAppearance'],previous.get('visualAppearance',expected))
+                if 'visualAppearance' not in previous:person.pop('visualAppearance')
+        self.assertEqual(migrated_crew,old['crew'],'All original crew fields and ordering preserved')
+        for key in ['navigation','economy','director','missions','experiences','emergencyOps']:self.assertEqual(new[key],old[key],key)
         for key,sys in old['universe']['systems'].items():self.assertEqual(new['universe']['systems'][key],sys)
         self.assertEqual(p.evaluate("localStorage['icarus-v02']"),oldraw);self.advance(p,1500);self.assertEqual(len(self.snap(p)['universe']['systems']),len(new['universe']['systems']));self.assertEqual(self.snap(p)['frontierAudit'],[])
     def test_sealed_hatch_blocks_medical_retrieval_without_crash_or_teleportation(self):

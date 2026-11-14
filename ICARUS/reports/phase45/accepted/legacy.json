@@ -1,0 +1,29 @@
+{
+  "passed": true,
+  "tests_run": 19,
+  "passed_cases": [
+    "test_captain_can_cancel_staging_without_teleporting_or_duplicating_supplies (test_continuity.Continuous.test_captain_can_cancel_staging_without_teleporting_or_duplicating_supplies)",
+    "test_clinical_hardware_can_be_repaired_through_actual_engineer_work (test_continuity.Continuous.test_clinical_hardware_can_be_repaired_through_actual_engineer_work)",
+    "test_containment_incident_produces_actual_injury_and_recorded_failed_measurement (test_continuity.Continuous.test_containment_incident_produces_actual_injury_and_recorded_failed_measurement)",
+    "test_critical_atmosphere_emergency_blocks_new_launches (test_continuity.Continuous.test_critical_atmosphere_emergency_blocks_new_launches)",
+    "test_exhausted_reserves_cannot_fund_research (test_continuity.Continuous.test_exhausted_reserves_cannot_fund_research)",
+    "test_explicit_new_voyage_initializes_new_systems_and_saves_without_stock_duplication (test_continuity.Continuous.test_explicit_new_voyage_initializes_new_systems_and_saves_without_stock_duplication)",
+    "test_extinction_remains_saved_and_does_not_repopulate_next_week (test_continuity.Continuous.test_extinction_remains_saved_and_does_not_repopulate_next_week)",
+    "test_interrupted_research_releases_analyst_without_duplicate_payment (test_continuity.Continuous.test_interrupted_research_releases_analyst_without_duplicate_payment)",
+    "test_legacy_clock_migration_preserves_remaining_cooldown_and_is_idempotent (test_continuity.Continuous.test_legacy_clock_migration_preserves_remaining_cooldown_and_is_idempotent)",
+    "test_legacy_save_migrates_without_losing_research (test_continuity.Continuous.test_legacy_save_migrates_without_losing_research)",
+    "test_mid_simulation_reload_then_future_is_identical (test_continuity.Continuous.test_mid_simulation_reload_then_future_is_identical)",
+    "test_natural_samples_and_teams_have_real_field_provenance (test_continuity.Continuous.test_natural_samples_and_teams_have_real_field_provenance)",
+    "test_recap_options_have_real_sources_and_survive_reload (test_continuity.Continuous.test_recap_options_have_real_sources_and_survive_reload)",
+    "test_resource_failure_injures_real_crew_and_suspends_optional_operations (test_continuity.Continuous.test_resource_failure_injures_real_crew_and_suspends_optional_operations)",
+    "test_seeded_full_engine_reproduces (test_continuity.Continuous.test_seeded_full_engine_reproduces)",
+    "test_team_loss_records_failed_mission_and_disposes_cargo_without_duplication (test_continuity.Continuous.test_team_loss_records_failed_mission_and_disposes_cargo_without_duplication)",
+    "test_transition_during_mission_research_treatment_and_emergency (test_continuity.Continuous.test_transition_during_mission_research_treatment_and_emergency)",
+    "test_unsafe_medbay_cannot_heal_injuries_or_spend_cartridges (test_continuity.Continuous.test_unsafe_medbay_cannot_heal_injuries_or_spend_cartridges)",
+    "test_weekly_casualty_and_personality_continuity (test_continuity.Continuous.test_weekly_casualty_and_personality_continuity)"
+  ],
+  "runtime_root": "/workspace/work/phase45/frozen_package",
+  "source_commit": "4bd2dadbd6e6541ef118e04b50b30ddbf561ae19",
+  "errors": [],
+  "failures": []
+}

@@ -1,0 +1,22 @@
+{
+  "zip": "ICARUS_Phase4_5_Visual_Overhaul_and_System_Boot_Lite.zip",
+  "source_commit": "4592a904561e6325edd79176231f66c38312093e",
+  "sha256": "5395c11cd8db4c421a089f042f31d54fadc203fd02ad7898eef231a4dd129efe",
+  "bytes": 904369,
+  "runtime_files": 134,
+  "all_files": 205,
+  "crc_and_hashes_passed": true,
+  "tested_runtime_commit": "4bd2dadbd6e6541ef118e04b50b30ddbf561ae19",
+  "all134_runtime_hashes_match": true,
+  "all204_source_hashes_and205_entry_crc_passed": true,
+  "tests_reports_tools_credentials_and_test_worlds_excluded": true,
+  "extracted_package_checks": {
+    "passed": true,
+    "cases": {
+      "visual": 6,
+      "remote": 6,
+      "field": 9
+    },
+    "total": 21
+  }
+}

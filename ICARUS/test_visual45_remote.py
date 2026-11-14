@@ -1,0 +1,32 @@
+"""Actual host-auth and early boot HTTP tests; hardware I/O remains stubbed."""
+from test_expedition_remote import ExpeditionRemote
+import time
+class VisualRemote(ExpeditionRemote):
+ def test_visual_auth_checks_code_without_granting_a_lease(self):
+  self.assertEqual(self.req('/api/icarus/host/auth',headers={'X-Icarus-Key':'wrong'})[0],403);self.assertEqual(self.req('/api/icarus/host/auth',headers={'X-Icarus-Key':'test-host'})[1]['authorized'],True);self.assertIsNone(self.m.BRIDGE_SERVICE.owner)
+ def test_visual_early_auth_while_bootstrap_pending_and_no_fake_progress(self):
+  c=self.browser.new_context();self.contexts.append(c);p=c.new_page();held=[];p.route('**/api/icarus/bootstrap',lambda r:held.append(r));p.goto(self.url+'/icarus.html?icarus_soak=1',wait_until='domcontentloaded');self.assertTrue(p.locator('#boot-auth-code').is_visible());self.assertFalse(p.evaluate('ICARUSBoot.complete'));self.assertEqual(p.evaluate('ICARUSBoot.states.kernel.state'),'pending');p.locator('#boot-auth-code').fill('wrong');p.locator('.boot-auth button').click();p.wait_for_function('document.querySelector(".boot-auth-result").textContent.includes("rejected")');self.assertFalse(p.evaluate('ICARUSHost.canWrite()'));p.locator('#boot-auth-code').fill('test-host');p.locator('.boot-auth button').click();p.wait_for_function('document.querySelector(".boot-auth-result").textContent.includes("Verified")');self.assertEqual(p.evaluate('ICARUSBoot.states.kernel.state'),'pending');self.assertFalse(p.evaluate('typeof __icarusSoak!=="undefined"'));self.assertLess(p.locator('#icarus-boot progress').evaluate('p=>p.value'),6)
+  for r in held:r.continue_()
+  p.wait_for_function('ICARUSBoot.complete');self.assertTrue(p.locator('#icarus-boot').is_hidden());self.assertTrue(p.evaluate('ICARUSHost.canWrite()&&ICARUSDurable.canWrite()'));self.assertEqual(p.evaluate('__icarusSoak.snapshot().tick'),0)
+ def test_visual_phone_gets_same_new_renderer_without_loading_a_kernel(self):
+  pc=self.page(pc=True);pc.wait_for_function('document.querySelector("#rd-bridge-status").textContent.includes("LINKED")');p=self.page(width=390,height=844);self.tab(p,'icarus');p.wait_for_selector('.obs-select');p.locator('.obs-select').select_option('A09');p.locator('.obs-main canvas').first.scroll_into_view_if_needed();p.wait_for_function('ICARUSRoomArt.metrics.builds>0');self.assertEqual(p.evaluate('ICARUSPixelCamera.version'),2);self.assertEqual(p.evaluate('typeof ICARUSRoomInteractions'),'undefined');self.assertEqual(p.evaluate('typeof __icarusSoak'),'undefined');self.assertLessEqual(p.evaluate('document.documentElement.scrollWidth'),392)
+ def test_visual_bootstrap_failure_is_readonly_and_retry_preserves_voyage(self):
+  pc=self.page(pc=True);before=pc.evaluate('__icarusSoak.snapshot()');pc.evaluate('__icarusSoak.save()');pc.route('**/api/icarus/bootstrap',lambda r:r.fulfill(status=503,content_type='application/json',body='{"error":"Explicit service outage fixture"}'));pc.reload();pc.wait_for_function('ICARUSBoot.complete');self.assertTrue(pc.locator('#icarus-boot').is_visible());self.assertIn('DISCONNECTED',pc.locator('.boot-status').inner_text());self.assertFalse(pc.evaluate('ICARUSHost.canWrite()&&ICARUSDurable.canWrite()'));self.assertEqual(pc.evaluate('__icarusSoak.snapshot().crew.map(p=>p.name)'),[p['name'] for p in before['crew']]);self.assertEqual(pc.evaluate('__icarusSoak.snapshot().tick'),before['tick']);pc.unroute('**/api/icarus/bootstrap');pc.locator('.boot-retry').click();pc.wait_for_function('ICARUSBoot.complete&&ICARUSHost.canWrite()');self.assertEqual(pc.evaluate('__icarusSoak.snapshot().tick'),before['tick']);self.assertTrue(pc.locator('#icarus-boot').is_hidden())
+ def test_visual_restricted_quarters_use_their_real_room_and_observable_appearance(self):
+  pc=self.page(pc=True);pc.wait_for_function('document.querySelector("#rd-bridge-status").textContent.includes("LINKED")');pc.evaluate('__icarusSoak.advance(1)');data=self.wait_classified(pc);code=200;self.assertEqual(code,200);rooms=data['telemetry']['rooms'];self.assertTrue(rooms);self.assertTrue(all(r['room'] in ['A05','A06'] and r['id'].startswith('COV-') for r in rooms));self.assertTrue(all('visualAppearance' in a for r in rooms for a in r['actors']));self.assertFalse(any(r['available'] for r in pc.evaluate('__icarusSoak.observation().rooms.filter(r=>["A05","A06"].includes(r.id))')));self.assertNotIn('COV-',str(self.m.BRIDGE_SERVICE.view()['telemetry']));result=pc.evaluate('''r=>{const a=document.createElement('canvas'),b=document.createElement('canvas');ICARUSPixelCamera.draw(a,r,{paused:true});ICARUSPixelCamera.draw(b,{...r,room:'A09'},{paused:true});return {same:a.toDataURL()===b.toDataURL(),kind:ICARUSRoomDesign.kind(r.room)};}''',rooms[0]);self.assertEqual(result['kind'],'quarters');self.assertFalse(result['same'])
+
+ def wait_classified(self,pc):
+  deadline=time.monotonic()+30
+  while time.monotonic()<deadline:
+   code,data=self.req('/api/icarus/classified',headers={'X-Icarus-Key':'test-host'})
+   if code==200 and (data.get('telemetry') or {}).get('tick',-1)>=1 and data['telemetry']['rooms']:return data
+   pc.wait_for_timeout(100)
+  self.fail('Actual classified publication did not commission expected sensors: '+str(data))
+ def test_visual_authorization_is_usable_before_camera_asset_finishes_loading(self):
+  c=self.browser.new_context();self.contexts.append(c);p=c.new_page();held=[];p.route('**/pixel-camera.js*',lambda r:held.append(r));p.goto(self.url+'/icarus.html?icarus_soak=1',wait_until='commit');p.locator('#boot-auth-code').wait_for();p.wait_for_function('!!window.ICARUSHost?.authorize&&!document.querySelector(".boot-auth button").disabled');
+  for _ in range(3000):
+   if held:break
+   p.wait_for_timeout(10)
+  self.assertTrue(held);self.assertEqual(p.evaluate('typeof __icarusSoak'),'undefined');p.locator('#boot-auth-code').fill('test-host');p.locator('.boot-auth button').click();p.wait_for_function('document.querySelector(".boot-auth-result").textContent.startsWith("Verified")||document.querySelector(".boot-auth-result").textContent.startsWith("Code verified")');self.assertFalse(p.evaluate('ICARUSBoot.complete'));self.assertEqual(p.evaluate('typeof __icarusSoak'),'undefined');
+  for r in held:r.continue_()
+  p.wait_for_function('ICARUSBoot.complete');self.assertTrue(p.evaluate('ICARUSHost.canWrite()&&ICARUSDurable.canWrite()'));self.assertFalse(p.evaluate('document.getElementById("icarus-main").inert'))

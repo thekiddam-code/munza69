@@ -1,0 +1,3950 @@
+{
+  "passed": true,
+  "campaigns": {
+    "adverse_4807": {
+      "passed": true,
+      "seed": 4807,
+      "scenario": "compound",
+      "real_days": 7,
+      "ship_days": 25.0,
+      "ticks": 36000,
+      "episode": 2,
+      "alive": 20,
+      "deaths": [],
+      "arrivals": 5,
+      "field_missions": 10,
+      "science_cases": 17,
+      "conversations": 456,
+      "source_activities": {
+        "conversation": 456,
+        "assistance-request": 10,
+        "repair-complete": 200,
+        "inspection": 88,
+        "systems-diagnosis": 1,
+        "systems-repair-complete": 1
+      },
+      "source_kinds": {
+        "system": 145,
+        "injury": 1,
+        "anthology": 403,
+        "medical": 2,
+        "emergency": 13,
+        "little": 4941,
+        "crew_memory": 110,
+        "relationship": 1202,
+        "social": 674,
+        "observation": 4054,
+        "operation": 17,
+        "maintenance": 302,
+        "research": 86,
+        "mission": 45,
+        "mission_history": 5,
+        "encounter": 3,
+        "encounter_history": 3
+      },
+      "retained_social": {
+        "registered": 20,
+        "active": 20,
+        "retainedSocialMemories": 636,
+        "retainedBonds": 342,
+        "retainedActivityHistory": 320,
+        "retainedClaims": 0
+      },
+      "weekly_films": 1,
+      "legendary_segments": 0,
+      "maintenance_statistics": {
+        "version": 1,
+        "stats": {
+          "nativeFaults": 2,
+          "dispatches": 2,
+          "emergencyWork": 200.00000000000048,
+          "preventiveStarted": 205,
+          "maintenanceWork": 14644.749999997994,
+          "emergencyCompleted": 2,
+          "criticalRecoveries": 4,
+          "preventiveCompleted": 200,
+          "criticalEscalations": 3,
+          "releasedAssignments": 1
+        },
+        "decisions": [
+          {
+            "at": 182,
+            "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+          },
+          {
+            "at": 5401,
+            "reason": "Measured life-support fault or reserve forecast below one day; optional research and launches suspended."
+          },
+          {
+            "at": 5461,
+            "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+          },
+          {
+            "at": 5941,
+            "reason": "Measured life-support fault or reserve forecast below one day; optional research and launches suspended."
+          },
+          {
+            "at": 6001,
+            "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+          },
+          {
+            "at": 7021,
+            "reason": "Measured life-support fault or reserve forecast below one day; optional research and launches suspended."
+          },
+          {
+            "at": 7081,
+            "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+          },
+          {
+            "at": 34287,
+            "reason": "Released obsolete maintenance reservation for Frank Morrow; current assignment retained.",
+            "person": "Frank Morrow"
+          }
+        ],
+        "notices": {
+          "forecast:false": 7081,
+          "forecast:true": 7021,
+          "detach:Frank Morrow": 34287
+        },
+        "forecast": {
+          "food": {
+            "at": 35941,
+            "consumption": 0.0306666666666653,
+            "production": 0.030666666666661513,
+            "available": 159.98600000000002,
+            "minutes": null
+          },
+          "water": {
+            "at": 35941,
+            "consumption": 0.028000000000001062,
+            "production": 0.027999999999999168,
+            "available": 152.90520000000012,
+            "minutes": null
+          },
+          "oxygen": {
+            "at": 35941,
+            "consumption": 0.020000000000000757,
+            "production": 0.019999999999998862,
+            "available": 107.57600000000166,
+            "minutes": null
+          },
+          "energy": {
+            "at": 35941,
+            "consumption": 0.1547083040000113,
+            "production": 0.15484808999999586,
+            "available": 179.8936686,
+            "minutes": null
+          }
+        },
+        "sample": {
+          "at": 35941,
+          "consumed": {
+            "energy": 5852.407990057379,
+            "food": 1814.346,
+            "water": 1019.292,
+            "oxygen": 722.7800000000001,
+            "lab": 471.4,
+            "tools": 465.5389293164,
+            "medical": 1,
+            "spares": 203.805
+          },
+          "produced": {
+            "energy": 5912.301658657482,
+            "spares": 208.90663999999884,
+            "water": 1022.1972000000007,
+            "oxygen": 710.356,
+            "medical": 9,
+            "food": 1789.3319999998932,
+            "lab": 455.40000000000003,
+            "tools": 447.53892931640286
+          }
+        },
+        "critical": false,
+        "lastDecision": {
+          "at": 34287,
+          "reason": "Released obsolete maintenance reservation for Frank Morrow; current assignment retained.",
+          "person": "Frank Morrow"
+        }
+      },
+      "resources_final": {
+        "food": 159.986,
+        "water": 152.90520000000012,
+        "oxygen": 107.57600000000166,
+        "energy": 179.89367976,
+        "medical": 20,
+        "spares": 68.58019999999965,
+        "tools": 70,
+        "lab": 80
+      },
+      "acquisition": {},
+      "fuel_used": 1.9624515496596866,
+      "history_records": 12504,
+      "snapshot_bytes_first": 2773629,
+      "snapshot_bytes_last": 7930244,
+      "checkpoint_reload_days": [
+        7
+      ],
+      "audit_errors": [],
+      "simulation_errors": [],
+      "backup_sha256": "0a0e475689843b6d970564d8264e024aa742598ee473177f0c83f02a7cf3b3d8",
+      "source_commit": "4bd2dadbd6e6541ef118e04b50b30ddbf561ae19",
+      "elapsed_seconds": 444.1251258160046,
+      "evidence_note": "Only actual campaign results. No generated extra crew; romances/claims need not occur. Checkpoint time is measured using unchanged production calendar including synchronized holidays.",
+      "operational": {
+        "generator_condition": 82.75659820011101,
+        "generator_service_isolated": false,
+        "component_conditions": {
+          "GRAVITY-CORE": 82.75659820011101,
+          "CIRCUIT-habitation": 97.12000000010903,
+          "CIRCUIT-medical": 97.12000000010903,
+          "CIRCUIT-science": 97.12000000010903,
+          "CIRCUIT-cargo": 97.12000000010903,
+          "CIRCUIT-hangar": 97.12000000010903,
+          "CIRCUIT-engineering": 97.12000000010903
+        },
+        "component_repairs": 1,
+        "component_history": {
+          "GRAVITY-CORE": [
+            {
+              "at": 32485,
+              "engineer": "Frank Morrow",
+              "condition": 86.02554820009965,
+              "reason": "Paid repair and powered post-repair test complete",
+              "sourceId": "CHR-2-V2o3ai1-11223"
+            }
+          ]
+        },
+        "gravity_actual": {
+          "habitation": 1,
+          "medical": 1,
+          "science": 1,
+          "cargo": 1,
+          "hangar": 1,
+          "engineering": 1
+        },
+        "gravity_targets": {
+          "habitation": 1,
+          "medical": 1,
+          "science": 1,
+          "cargo": 1,
+          "hangar": 1,
+          "engineering": 1
+        },
+        "main_bus": 1,
+        "open_orders": {},
+        "component_energy_ledger": [
+          {
+            "kind": "consume",
+            "key": "energy",
+            "source": "gravity fields / zoned environmental electrical load",
+            "amount": 1508.2080000000003,
+            "count": 36000,
+            "first": 1,
+            "last": 36000,
+            "compensation": -3.1502578323738817e-14
+          },
+          {
+            "kind": "consume",
+            "key": "tools",
+            "source": "physical systems work GRAVITY-CORE",
+            "amount": 0.03217931639999025,
+            "count": 116,
+            "first": 32365,
+            "last": 32480,
+            "compensation": 2.710505431213761e-19
+          },
+          {
+            "kind": "consume",
+            "key": "energy",
+            "source": "physical systems work GRAVITY-CORE",
+            "amount": 0.1930758983999415,
+            "count": 116,
+            "first": 32365,
+            "last": 32480,
+            "compensation": 1.734723475976807e-18
+          }
+        ],
+        "new_summary_entries": 1
+      },
+      "expeditions": {
+        "history": [
+          {
+            "id": "M-0002",
+            "at": 793,
+            "category": "survey",
+            "objective": "Establish an initial field survey and report observable evidence",
+            "visited": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              8,
+              7
+            ],
+            "newCells": [
+              1,
+              2,
+              3,
+              4,
+              8,
+              7
+            ],
+            "reason": "objective_met",
+            "devices": [
+              "BODY-1",
+              "BODY-2"
+            ],
+            "decisions": [
+              {
+                "at": 656,
+                "key": "landing",
+                "message": "Completed physical preparation, pressure cycle and shuttle travel to Landing Shelf.",
+                "node": 0
+              },
+              {
+                "at": 664,
+                "key": "discovery:1",
+                "message": "The expedition physically surveyed Basalt Ridge and its visible passages.",
+                "node": 1
+              },
+              {
+                "at": 672,
+                "key": "discovery:2",
+                "message": "The expedition physically surveyed Survey Outpost and its visible passages.",
+                "node": 2
+              },
+              {
+                "at": 680,
+                "key": "discovery:3",
+                "message": "The expedition physically surveyed Windcut Gorge and its visible passages.",
+                "node": 3
+              },
+              {
+                "at": 680,
+                "key": "hazard:3:unstable terrain",
+                "message": "Local observation reported unstable terrain at Windcut Gorge.",
+                "node": 3
+              },
+              {
+                "at": 688,
+                "key": "discovery:4",
+                "message": "The expedition physically surveyed Processor Approach and its visible passages.",
+                "node": 4
+              },
+              {
+                "at": 706,
+                "key": "discovery:8",
+                "message": "The expedition physically surveyed Waste Conduit and its visible passages.",
+                "node": 8
+              },
+              {
+                "at": 706,
+                "key": "hazard:8:residual radiation",
+                "message": "Local observation reported residual radiation at Waste Conduit.",
+                "node": 8
+              },
+              {
+                "at": 712,
+                "key": "discovery:7",
+                "message": "The expedition physically surveyed Control Annex and its visible passages.",
+                "node": 7
+              },
+              {
+                "at": 713,
+                "key": "return:objective_met",
+                "message": "Expedition elected a physical return: objective_met.",
+                "node": 7
+              }
+            ],
+            "airlockCycles": true
+          },
+          {
+            "id": "M-0004",
+            "at": 1603,
+            "category": "survey",
+            "objective": "Map at least six additional accessible sectors or document a safety withdrawal",
+            "visited": [
+              0,
+              5,
+              6,
+              11,
+              10,
+              12,
+              13,
+              8,
+              7,
+              2,
+              1
+            ],
+            "newCells": [
+              5,
+              6,
+              11,
+              10,
+              12,
+              13
+            ],
+            "reason": "objective_met",
+            "devices": [
+              "BODY-1",
+              "BODY-2"
+            ],
+            "decisions": [
+              {
+                "at": 1450,
+                "key": "landing",
+                "message": "Completed physical preparation, pressure cycle and shuttle travel to Landing Shelf.",
+                "node": 0
+              },
+              {
+                "at": 1459,
+                "key": "discovery:5",
+                "message": "The expedition physically surveyed Atmospheric Processor and its visible passages.",
+                "node": 5
+              },
+              {
+                "at": 1465,
+                "key": "discovery:6",
+                "message": "The expedition physically surveyed Turbine Hall and its visible passages.",
+                "node": 6
+              },
+              {
+                "at": 1474,
+                "key": "discovery:11",
+                "message": "The expedition physically surveyed Upper Grotto and its visible passages.",
+                "node": 11
+              },
+              {
+                "at": 1482,
+                "key": "discovery:10",
+                "message": "The expedition physically surveyed Cavern Mouth and its visible passages.",
+                "node": 10
+              },
+              {
+                "at": 1498,
+                "key": "discovery:12",
+                "message": "The expedition physically surveyed Crystal Gallery and its visible passages.",
+                "node": 12
+              },
+              {
+                "at": 1498,
+                "key": "hazard:12:unknown atmospheric contamination",
+                "message": "Local observation reported unknown atmospheric contamination at Crystal Gallery.",
+                "node": 12
+              },
+              {
+                "at": 1506,
+                "key": "discovery:13",
+                "message": "The expedition physically surveyed Subsurface Lake and its visible passages.",
+                "node": 13
+              },
+              {
+                "at": 1506,
+                "key": "hazard:13:unstable terrain",
+                "message": "Local observation reported unstable terrain at Subsurface Lake.",
+                "node": 13
+              },
+              {
+                "at": 1507,
+                "key": "return:objective_met",
+                "message": "Expedition elected a physical return: objective_met.",
+                "node": 13
+              },
+              {
+                "at": 1517,
+                "key": "hazard:8:residual radiation",
+                "message": "Local observation reported residual radiation at Waste Conduit.",
+                "node": 8
+              }
+            ],
+            "airlockCycles": true
+          },
+          {
+            "id": "M-0006",
+            "at": 2554,
+            "category": "repair",
+            "objective": "Repair and powered-test the observed lift supply, then return",
+            "visited": [
+              0,
+              5
+            ],
+            "newCells": [],
+            "reason": "objective_met",
+            "devices": [
+              "BODY-1",
+              "BODY-2"
+            ],
+            "decisions": [
+              {
+                "at": 2351,
+                "key": "landing",
+                "message": "Completed physical preparation, pressure cycle and shuttle travel to Landing Shelf.",
+                "node": 0
+              },
+              {
+                "at": 2490,
+                "key": "repair:5",
+                "message": "Paid repair, finite power transfer and powered post-test restored Atmospheric Processor.",
+                "node": 5
+              },
+              {
+                "at": 2490,
+                "key": "return:objective_met",
+                "message": "Expedition elected a physical return: objective_met.",
+                "node": 5
+              }
+            ],
+            "airlockCycles": true
+          },
+          {
+            "id": "M-0008",
+            "at": 3369,
+            "category": "survey",
+            "objective": "Map at least six additional accessible sectors or document a safety withdrawal",
+            "visited": [
+              0,
+              1,
+              6,
+              11,
+              16,
+              17,
+              18,
+              13,
+              14,
+              22,
+              21
+            ],
+            "newCells": [
+              16,
+              17,
+              18,
+              14,
+              22,
+              21
+            ],
+            "reason": "objective_met",
+            "devices": [
+              "BODY-1",
+              "BODY-2"
+            ],
+            "decisions": [
+              {
+                "at": 3161,
+                "key": "landing",
+                "message": "Completed physical preparation, pressure cycle and shuttle travel to Landing Shelf.",
+                "node": 0
+              },
+              {
+                "at": 3196,
+                "key": "discovery:16",
+                "message": "The expedition physically surveyed Buried Structure and its visible passages.",
+                "node": 16
+              },
+              {
+                "at": 3204,
+                "key": "discovery:17",
+                "message": "The expedition physically surveyed Sealed Vault and its visible passages.",
+                "node": 17
+              },
+              {
+                "at": 3204,
+                "key": "hazard:17:unknown atmospheric contamination",
+                "message": "Local observation reported unknown atmospheric contamination at Sealed Vault.",
+                "node": 17
+              },
+              {
+                "at": 3212,
+                "key": "discovery:18",
+                "message": "The expedition physically surveyed Temporal Chamber and its visible passages.",
+                "node": 18
+              },
+              {
+                "at": 3221,
+                "key": "hazard:13:unstable terrain",
+                "message": "Local observation reported unstable terrain at Subsurface Lake.",
+                "node": 13
+              },
+              {
+                "at": 3229,
+                "key": "discovery:14",
+                "message": "The expedition physically surveyed Echo Chamber and its visible passages.",
+                "node": 14
+              },
+              {
+                "at": 3263,
+                "key": "discovery:22",
+                "message": "The expedition physically surveyed Military Cargo and its visible passages.",
+                "node": 22
+              },
+              {
+                "at": 3269,
+                "key": "discovery:21",
+                "message": "The expedition physically surveyed Military Wreck Airlock and its visible passages.",
+                "node": 21
+              },
+              {
+                "at": 3270,
+                "key": "return:objective_met",
+                "message": "Expedition elected a physical return: objective_met.",
+                "node": 21
+              }
+            ],
+            "airlockCycles": true
+          },
+          {
+            "id": "M-0010",
+            "at": 4758,
+            "category": "sampling",
+            "objective": "Survey unvisited sectors for independent comparison samples",
+            "visited": [
+              0,
+              1,
+              6,
+              11,
+              16,
+              21,
+              20
+            ],
+            "newCells": [
+              20
+            ],
+            "reason": "objective_met",
+            "devices": [
+              "BODY-1",
+              "BODY-2"
+            ],
+            "decisions": [
+              {
+                "at": 4598,
+                "key": "landing",
+                "message": "Completed physical preparation, pressure cycle and shuttle travel to Landing Shelf.",
+                "node": 0
+              },
+              {
+                "at": 4650,
+                "key": "discovery:20",
+                "message": "The expedition physically surveyed Impact Field and its visible passages.",
+                "node": 20
+              },
+              {
+                "at": 4651,
+                "key": "return:objective_met",
+                "message": "Expedition elected a physical return: objective_met.",
+                "node": 20
+              }
+            ],
+            "airlockCycles": true
+          }
+        ],
+        "visited": [
+          {
+            "id": 0,
+            "kind": "surface"
+          },
+          {
+            "id": 1,
+            "kind": "surface"
+          },
+          {
+            "id": 2,
+            "kind": "industrial"
+          },
+          {
+            "id": 3,
+            "kind": "surface"
+          },
+          {
+            "id": 4,
+            "kind": "industrial"
+          },
+          {
+            "id": 5,
+            "kind": "industrial"
+          },
+          {
+            "id": 6,
+            "kind": "industrial"
+          },
+          {
+            "id": 7,
+            "kind": "industrial"
+          },
+          {
+            "id": 8,
+            "kind": "industrial"
+          },
+          {
+            "id": 10,
+            "kind": "cavern"
+          },
+          {
+            "id": 11,
+            "kind": "cavern"
+          },
+          {
+            "id": 12,
+            "kind": "cavern"
+          },
+          {
+            "id": 13,
+            "kind": "cavern"
+          },
+          {
+            "id": 14,
+            "kind": "cavern"
+          },
+          {
+            "id": 16,
+            "kind": "industrial"
+          },
+          {
+            "id": 17,
+            "kind": "cavern"
+          },
+          {
+            "id": 18,
+            "kind": "cavern"
+          },
+          {
+            "id": 20,
+            "kind": "surface"
+          },
+          {
+            "id": 21,
+            "kind": "industrial"
+          },
+          {
+            "id": 22,
+            "kind": "industrial"
+          }
+        ],
+        "records_received": 37,
+        "frames_received": 175,
+        "devices": [
+          {
+            "id": "BODY-1",
+            "condition": 99.70449999999859,
+            "status": "stored",
+            "clips": [],
+            "ring": [],
+            "instruments": {
+              "camera": true,
+              "radio": true,
+              "light": true,
+              "pressure": true,
+              "temperature": true,
+              "radiation": true
+            },
+            "source": "Modular suit pack physically assembled at C04 from paid spare modules, tools and energy",
+            "dockConnected": true,
+            "missionId": "M-0010",
+            "carrier": null,
+            "signalGaps": 66
+          },
+          {
+            "id": "BODY-2",
+            "condition": 99.70449999999859,
+            "status": "stored",
+            "clips": [],
+            "ring": [],
+            "instruments": {
+              "camera": true,
+              "radio": true,
+              "light": true,
+              "pressure": true,
+              "temperature": true,
+              "radiation": true
+            },
+            "source": "Modular suit pack physically assembled at C04 from paid spare modules, tools and energy",
+            "dockConnected": true,
+            "missionId": "M-0010",
+            "carrier": null,
+            "signalGaps": 66
+          }
+        ],
+        "utilities": [
+          {
+            "cell": 5,
+            "condition": 86,
+            "battery": 1,
+            "totalTransferred": 1,
+            "totalDrawn": 0,
+            "transfers": [
+              {
+                "at": 2487,
+                "missionId": "M-0006",
+                "amount": 1,
+                "source": "Paid carried electrical inventory"
+              }
+            ],
+            "source": "Abandoned installed industrial machinery; no free utility power"
+          },
+          {
+            "cell": 6,
+            "condition": 25,
+            "battery": 0,
+            "totalTransferred": 0,
+            "totalDrawn": 0,
+            "transfers": [],
+            "source": "Abandoned installed industrial machinery; no free utility power"
+          },
+          {
+            "cell": 7,
+            "condition": 25,
+            "battery": 0,
+            "totalTransferred": 0,
+            "totalDrawn": 0,
+            "transfers": [],
+            "source": "Abandoned installed industrial machinery; no free utility power"
+          }
+        ],
+        "suits": {
+          "SUIT-1": {
+            "id": "SUIT-1",
+            "condition": 99.81040000000044,
+            "status": "stored",
+            "source": "Existing suit token; legacy condition registered, no historical wear invented",
+            "missionId": "M-0008"
+          },
+          "SUIT-2": {
+            "id": "SUIT-2",
+            "condition": 99.81040000000044,
+            "status": "stored",
+            "source": "Existing suit token; legacy condition registered, no historical wear invented",
+            "missionId": "M-0008"
+          },
+          "SUIT-3": {
+            "id": "SUIT-3",
+            "condition": 99.83600000000038,
+            "status": "stored",
+            "source": "Existing suit token; legacy condition registered, no historical wear invented",
+            "missionId": "M-0010"
+          },
+          "SUIT-4": {
+            "id": "SUIT-4",
+            "condition": 99.83600000000038,
+            "status": "stored",
+            "source": "Existing suit token; legacy condition registered, no historical wear invented",
+            "missionId": "M-0010"
+          },
+          "SUIT-5": {
+            "id": "SUIT-5",
+            "condition": 99.88080000000028,
+            "status": "stored",
+            "source": "Existing suit token; legacy condition registered, no historical wear invented",
+            "missionId": "M-0006"
+          },
+          "SUIT-6": {
+            "id": "SUIT-6",
+            "condition": 99.88080000000028,
+            "status": "stored",
+            "source": "Existing suit token; legacy condition registered, no historical wear invented",
+            "missionId": "M-0006"
+          }
+        },
+        "ledger": [
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "ship to expedition cargo",
+            "amount": 18,
+            "count": 15,
+            "first": 271,
+            "last": 7018,
+            "compensation": 6.661338147750939e-16
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "ship to expedition cargo",
+            "amount": 60,
+            "count": 15,
+            "first": 271,
+            "last": 7018,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "ship to expedition cargo",
+            "amount": 36,
+            "count": 15,
+            "first": 271,
+            "last": 7018,
+            "compensation": 1.3322676295501878e-15
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition M-0001",
+            "amount": 0.9242000000000182,
+            "count": 1,
+            "first": 506,
+            "last": 506,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition M-0001",
+            "amount": 3.4484000000000607,
+            "count": 1,
+            "first": 506,
+            "last": 506,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition M-0001",
+            "amount": 2.0060000000000433,
+            "count": 1,
+            "first": 506,
+            "last": 506,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "ore",
+            "source": "recovered bulk FIELD-1",
+            "amount": 4,
+            "count": 1,
+            "first": 506,
+            "last": 506,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "waterIce",
+            "source": "recovered bulk FIELD-1",
+            "amount": 2,
+            "count": 1,
+            "first": 506,
+            "last": 506,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "ore",
+            "source": "recovered bulk FIELD-2",
+            "amount": 4,
+            "count": 1,
+            "first": 506,
+            "last": 506,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "waterIce",
+            "source": "recovered bulk FIELD-2",
+            "amount": 2,
+            "count": 1,
+            "first": 506,
+            "last": 506,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "ore",
+            "source": "recovered bulk FIELD-3",
+            "amount": 4,
+            "count": 1,
+            "first": 506,
+            "last": 506,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "waterIce",
+            "source": "recovered bulk FIELD-3",
+            "amount": 2,
+            "count": 1,
+            "first": 506,
+            "last": 506,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "tools",
+            "source": "ship to expedition cargo",
+            "amount": 9,
+            "count": 10,
+            "first": 541,
+            "last": 7018,
+            "compensation": -2.220446049250313e-16
+          },
+          {
+            "kind": "transfer",
+            "key": "spares",
+            "source": "ship to expedition cargo",
+            "amount": 15,
+            "count": 10,
+            "first": 541,
+            "last": 7018,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "lab",
+            "source": "ship to expedition cargo",
+            "amount": 12.5,
+            "count": 10,
+            "first": 541,
+            "last": 7018,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "medical",
+            "source": "ship to expedition cargo",
+            "amount": 5,
+            "count": 5,
+            "first": 541,
+            "last": 4501,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "energy",
+            "source": "ship to expedition cargo",
+            "amount": 30,
+            "count": 5,
+            "first": 541,
+            "last": 4501,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition M-0002",
+            "amount": 0.9382000000000189,
+            "count": 1,
+            "first": 793,
+            "last": 793,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition M-0002",
+            "amount": 3.4764000000000577,
+            "count": 1,
+            "first": 793,
+            "last": 793,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition M-0002",
+            "amount": 1.2260000000000408,
+            "count": 1,
+            "first": 793,
+            "last": 793,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "tools",
+            "source": "returned expedition M-0002",
+            "amount": 0.7,
+            "count": 1,
+            "first": 793,
+            "last": 793,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "spares",
+            "source": "returned expedition M-0002",
+            "amount": 0.5,
+            "count": 1,
+            "first": 793,
+            "last": 793,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "lab",
+            "source": "returned expedition M-0002",
+            "amount": 1.3999999999999995,
+            "count": 1,
+            "first": 793,
+            "last": 793,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "medical",
+            "source": "returned expedition M-0002",
+            "amount": 1,
+            "count": 1,
+            "first": 793,
+            "last": 793,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "energy",
+            "source": "returned expedition M-0002",
+            "amount": 3.9240000000000346,
+            "count": 1,
+            "first": 793,
+            "last": 793,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition M-0003",
+            "amount": 0.9438000000000192,
+            "count": 1,
+            "first": 1295,
+            "last": 1295,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition M-0003",
+            "amount": 3.4876000000000564,
+            "count": 1,
+            "first": 1295,
+            "last": 1295,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition M-0003",
+            "amount": 2.03400000000004,
+            "count": 1,
+            "first": 1295,
+            "last": 1295,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "ore",
+            "source": "recovered bulk FIELD-7",
+            "amount": 4,
+            "count": 1,
+            "first": 1295,
+            "last": 1295,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "waterIce",
+            "source": "recovered bulk FIELD-7",
+            "amount": 2,
+            "count": 1,
+            "first": 1295,
+            "last": 1295,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition M-0004",
+            "amount": 0.9158000000000178,
+            "count": 1,
+            "first": 1603,
+            "last": 1603,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition M-0004",
+            "amount": 3.4316000000000626,
+            "count": 1,
+            "first": 1603,
+            "last": 1603,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition M-0004",
+            "amount": 1.1940000000000444,
+            "count": 1,
+            "first": 1603,
+            "last": 1603,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "tools",
+            "source": "returned expedition M-0004",
+            "amount": 0.8,
+            "count": 1,
+            "first": 1603,
+            "last": 1603,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "spares",
+            "source": "returned expedition M-0004",
+            "amount": 1,
+            "count": 1,
+            "first": 1603,
+            "last": 1603,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "lab",
+            "source": "returned expedition M-0004",
+            "amount": 1.3999999999999995,
+            "count": 1,
+            "first": 1603,
+            "last": 1603,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "medical",
+            "source": "returned expedition M-0004",
+            "amount": 1,
+            "count": 1,
+            "first": 1603,
+            "last": 1603,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "energy",
+            "source": "returned expedition M-0004",
+            "amount": 4.732000000000045,
+            "count": 1,
+            "first": 1603,
+            "last": 1603,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "ore",
+            "source": "recovered bulk FIELD-9",
+            "amount": 4,
+            "count": 1,
+            "first": 1603,
+            "last": 1603,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "waterIce",
+            "source": "recovered bulk FIELD-9",
+            "amount": 2,
+            "count": 1,
+            "first": 1603,
+            "last": 1603,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition M-0005",
+            "amount": 0.8066000000000125,
+            "count": 1,
+            "first": 2201,
+            "last": 2201,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition M-0005",
+            "amount": 3.2132000000000867,
+            "count": 1,
+            "first": 2201,
+            "last": 2201,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition M-0005",
+            "amount": 1.8380000000000618,
+            "count": 1,
+            "first": 2201,
+            "last": 2201,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "ore",
+            "source": "recovered bulk FIELD-11",
+            "amount": 4,
+            "count": 1,
+            "first": 2201,
+            "last": 2201,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "waterIce",
+            "source": "recovered bulk FIELD-11",
+            "amount": 2,
+            "count": 1,
+            "first": 2201,
+            "last": 2201,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition M-0006",
+            "amount": 0.8458000000000144,
+            "count": 1,
+            "first": 2554,
+            "last": 2554,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition M-0006",
+            "amount": 3.291600000000078,
+            "count": 1,
+            "first": 2554,
+            "last": 2554,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition M-0006",
+            "amount": 1.0940000000000554,
+            "count": 1,
+            "first": 2554,
+            "last": 2554,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "tools",
+            "source": "returned expedition M-0006",
+            "amount": 0.617,
+            "count": 1,
+            "first": 2554,
+            "last": 2554,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "spares",
+            "source": "returned expedition M-0006",
+            "amount": 0.695,
+            "count": 1,
+            "first": 2554,
+            "last": 2554,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "lab",
+            "source": "returned expedition M-0006",
+            "amount": 2,
+            "count": 1,
+            "first": 2554,
+            "last": 2554,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "medical",
+            "source": "returned expedition M-0006",
+            "amount": 1,
+            "count": 1,
+            "first": 2554,
+            "last": 2554,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "energy",
+            "source": "returned expedition M-0006",
+            "amount": 2.629000000000056,
+            "count": 1,
+            "first": 2554,
+            "last": 2554,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition M-0007",
+            "amount": 0.9830000000000211,
+            "count": 1,
+            "first": 2890,
+            "last": 2890,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition M-0007",
+            "amount": 3.566000000000048,
+            "count": 1,
+            "first": 2890,
+            "last": 2890,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition M-0007",
+            "amount": 2.090000000000034,
+            "count": 1,
+            "first": 2890,
+            "last": 2890,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "ore",
+            "source": "recovered bulk FIELD-12",
+            "amount": 4,
+            "count": 1,
+            "first": 2890,
+            "last": 2890,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "waterIce",
+            "source": "recovered bulk FIELD-12",
+            "amount": 2,
+            "count": 1,
+            "first": 2890,
+            "last": 2890,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition M-0008",
+            "amount": 0.8388000000000141,
+            "count": 1,
+            "first": 3369,
+            "last": 3369,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition M-0008",
+            "amount": 3.2776000000000796,
+            "count": 1,
+            "first": 3369,
+            "last": 3369,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition M-0008",
+            "amount": 1.0840000000000565,
+            "count": 1,
+            "first": 3369,
+            "last": 3369,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "tools",
+            "source": "returned expedition M-0008",
+            "amount": 0.8,
+            "count": 1,
+            "first": 3369,
+            "last": 3369,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "spares",
+            "source": "returned expedition M-0008",
+            "amount": 1,
+            "count": 1,
+            "first": 3369,
+            "last": 3369,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "lab",
+            "source": "returned expedition M-0008",
+            "amount": 1.3999999999999995,
+            "count": 1,
+            "first": 3369,
+            "last": 3369,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "medical",
+            "source": "returned expedition M-0008",
+            "amount": 1,
+            "count": 1,
+            "first": 3369,
+            "last": 3369,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "energy",
+            "source": "returned expedition M-0008",
+            "amount": 4.0720000000000685,
+            "count": 1,
+            "first": 3369,
+            "last": 3369,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "ore",
+            "source": "recovered bulk FIELD-14",
+            "amount": 4,
+            "count": 1,
+            "first": 3369,
+            "last": 3369,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "waterIce",
+            "source": "recovered bulk FIELD-14",
+            "amount": 2,
+            "count": 1,
+            "first": 3369,
+            "last": 3369,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition M-0009",
+            "amount": 0.9060000000000173,
+            "count": 1,
+            "first": 3750,
+            "last": 3750,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition M-0009",
+            "amount": 3.4120000000000648,
+            "count": 1,
+            "first": 3750,
+            "last": 3750,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition M-0009",
+            "amount": 1.9800000000000462,
+            "count": 1,
+            "first": 3750,
+            "last": 3750,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition M-0010",
+            "amount": 0.9060000000000173,
+            "count": 1,
+            "first": 4758,
+            "last": 4758,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition M-0010",
+            "amount": 3.4120000000000648,
+            "count": 1,
+            "first": 4758,
+            "last": 4758,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition M-0010",
+            "amount": 1.180000000000046,
+            "count": 1,
+            "first": 4758,
+            "last": 4758,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "tools",
+            "source": "returned expedition M-0010",
+            "amount": 0.8,
+            "count": 1,
+            "first": 4758,
+            "last": 4758,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "spares",
+            "source": "returned expedition M-0010",
+            "amount": 1,
+            "count": 1,
+            "first": 4758,
+            "last": 4758,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "lab",
+            "source": "returned expedition M-0010",
+            "amount": 1.9,
+            "count": 1,
+            "first": 4758,
+            "last": 4758,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "medical",
+            "source": "returned expedition M-0010",
+            "amount": 1,
+            "count": 1,
+            "first": 4758,
+            "last": 4758,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "energy",
+            "source": "returned expedition M-0010",
+            "amount": 4.648000000000048,
+            "count": 1,
+            "first": 4758,
+            "last": 4758,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition F-1",
+            "amount": 0.6064000000000028,
+            "count": 1,
+            "first": 5306,
+            "last": 5306,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition F-1",
+            "amount": 2.8128000000001308,
+            "count": 1,
+            "first": 5306,
+            "last": 5306,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition F-1",
+            "amount": 1.5520000000000933,
+            "count": 1,
+            "first": 5306,
+            "last": 5306,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "tools",
+            "source": "returned expedition F-1",
+            "amount": 1,
+            "count": 1,
+            "first": 5306,
+            "last": 5306,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "spares",
+            "source": "returned expedition F-1",
+            "amount": 2,
+            "count": 1,
+            "first": 5306,
+            "last": 5306,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "lab",
+            "source": "returned expedition F-1",
+            "amount": 0.20000000000000004,
+            "count": 1,
+            "first": 5306,
+            "last": 5306,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition F-2",
+            "amount": 0.6148000000000032,
+            "count": 1,
+            "first": 5849,
+            "last": 5849,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition F-2",
+            "amount": 2.829600000000129,
+            "count": 1,
+            "first": 5849,
+            "last": 5849,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition F-2",
+            "amount": 1.564000000000092,
+            "count": 1,
+            "first": 5849,
+            "last": 5849,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "tools",
+            "source": "returned expedition F-2",
+            "amount": 1,
+            "count": 1,
+            "first": 5849,
+            "last": 5849,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "spares",
+            "source": "returned expedition F-2",
+            "amount": 2,
+            "count": 1,
+            "first": 5849,
+            "last": 5849,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "lab",
+            "source": "returned expedition F-2",
+            "amount": 0.20000000000000004,
+            "count": 1,
+            "first": 5849,
+            "last": 5849,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition F-3",
+            "amount": 0.6260000000000038,
+            "count": 1,
+            "first": 6390,
+            "last": 6390,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition F-3",
+            "amount": 2.8520000000001264,
+            "count": 1,
+            "first": 6390,
+            "last": 6390,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition F-3",
+            "amount": 1.5800000000000902,
+            "count": 1,
+            "first": 6390,
+            "last": 6390,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "tools",
+            "source": "returned expedition F-3",
+            "amount": 1,
+            "count": 1,
+            "first": 6390,
+            "last": 6390,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "spares",
+            "source": "returned expedition F-3",
+            "amount": 2,
+            "count": 1,
+            "first": 6390,
+            "last": 6390,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "lab",
+            "source": "returned expedition F-3",
+            "amount": 0.20000000000000004,
+            "count": 1,
+            "first": 6390,
+            "last": 6390,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition F-4",
+            "amount": 0.609200000000003,
+            "count": 1,
+            "first": 6927,
+            "last": 6927,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition F-4",
+            "amount": 2.81840000000013,
+            "count": 1,
+            "first": 6927,
+            "last": 6927,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition F-4",
+            "amount": 1.5560000000000929,
+            "count": 1,
+            "first": 6927,
+            "last": 6927,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "tools",
+            "source": "returned expedition F-4",
+            "amount": 1,
+            "count": 1,
+            "first": 6927,
+            "last": 6927,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "spares",
+            "source": "returned expedition F-4",
+            "amount": 2,
+            "count": 1,
+            "first": 6927,
+            "last": 6927,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "lab",
+            "source": "returned expedition F-4",
+            "amount": 0.20000000000000004,
+            "count": 1,
+            "first": 6927,
+            "last": 6927,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition F-5",
+            "amount": 0.6526000000000051,
+            "count": 1,
+            "first": 7445,
+            "last": 7445,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition F-5",
+            "amount": 2.9052000000001206,
+            "count": 1,
+            "first": 7445,
+            "last": 7445,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition F-5",
+            "amount": 1.618000000000086,
+            "count": 1,
+            "first": 7445,
+            "last": 7445,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "tools",
+            "source": "returned expedition F-5",
+            "amount": 1,
+            "count": 1,
+            "first": 7445,
+            "last": 7445,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "spares",
+            "source": "returned expedition F-5",
+            "amount": 2,
+            "count": 1,
+            "first": 7445,
+            "last": 7445,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "lab",
+            "source": "returned expedition F-5",
+            "amount": 0.20000000000000004,
+            "count": 1,
+            "first": 7445,
+            "last": 7445,
+            "compensation": 0
+          }
+        ],
+        "military_visited": [
+          22,
+          21
+        ],
+        "dormant": true
+      }
+    },
+    "normal_1001": {
+      "passed": true,
+      "seed": 1001,
+      "scenario": "normal",
+      "real_days": 7,
+      "ship_days": 25.0,
+      "ticks": 36000,
+      "episode": 2,
+      "alive": 20,
+      "deaths": [],
+      "arrivals": 5,
+      "field_missions": 13,
+      "science_cases": 17,
+      "conversations": 449,
+      "source_activities": {
+        "conversation": 449,
+        "assistance-request": 17,
+        "repair-complete": 199,
+        "inspection": 90,
+        "systems-diagnosis": 1,
+        "systems-repair-complete": 1
+      },
+      "source_kinds": {
+        "system": 164,
+        "observation": 4177,
+        "little": 4656,
+        "maintenance": 297,
+        "research": 86,
+        "social": 677,
+        "relationship": 1155,
+        "operation": 24,
+        "emergency": 9,
+        "anthology": 355,
+        "mission": 43,
+        "crew_memory": 110,
+        "encounter": 3,
+        "encounter_history": 3,
+        "mission_history": 5
+      },
+      "retained_social": {
+        "registered": 20,
+        "active": 20,
+        "retainedSocialMemories": 636,
+        "retainedBonds": 342,
+        "retainedActivityHistory": 320,
+        "retainedClaims": 0
+      },
+      "weekly_films": 1,
+      "legendary_segments": 0,
+      "maintenance_statistics": {
+        "version": 1,
+        "stats": {
+          "preventiveStarted": 205,
+          "maintenanceWork": 14778.009999997934,
+          "criticalEscalations": 1,
+          "criticalRecoveries": 1,
+          "preventiveCompleted": 199,
+          "releasedAssignments": 3
+        },
+        "decisions": [
+          {
+            "at": 61,
+            "reason": "Measured life-support fault or reserve forecast below one day; optional research and launches suspended."
+          },
+          {
+            "at": 121,
+            "reason": "Measured life-support recovery; routine activity can resume under resource rules."
+          },
+          {
+            "at": 19647,
+            "reason": "Released obsolete maintenance reservation for Jules Mercer; current assignment retained.",
+            "person": "Jules Mercer"
+          },
+          {
+            "at": 27281,
+            "reason": "Released obsolete maintenance reservation for Tomas Vale; current assignment retained.",
+            "person": "Tomas Vale"
+          },
+          {
+            "at": 35682,
+            "reason": "Released obsolete maintenance reservation for Jules Mercer; current assignment retained.",
+            "person": "Jules Mercer"
+          }
+        ],
+        "notices": {
+          "forecast:true": 61,
+          "forecast:false": 121,
+          "detach:Jules Mercer": 35682,
+          "detach:Tomas Vale": 27281
+        },
+        "forecast": {
+          "food": {
+            "at": 35941,
+            "consumption": 0.013999999999998635,
+            "production": 0.013999999999994846,
+            "available": 159.98600000000002,
+            "minutes": null
+          },
+          "water": {
+            "at": 35941,
+            "consumption": 0.028000000000001062,
+            "production": 0.027999999999999168,
+            "available": 152.9304000000001,
+            "minutes": null
+          },
+          "oxygen": {
+            "at": 35941,
+            "consumption": 0.020000000000000757,
+            "production": 0.020000000000000757,
+            "available": 108.18800000000086,
+            "minutes": null
+          },
+          "energy": {
+            "at": 35941,
+            "consumption": 0.16218038399999082,
+            "production": 0.16217110799999926,
+            "available": 179.89258284,
+            "minutes": 19393335.813237008
+          }
+        },
+        "sample": {
+          "at": 35941,
+          "consumed": {
+            "energy": 5831.796888662555,
+            "food": 1714.5516,
+            "water": 1017.3032000000001,
+            "oxygen": 721.988,
+            "lab": 458.4,
+            "spares": 202.5,
+            "tools": 435.662286776
+          },
+          "produced": {
+            "energy": 5891.689471502646,
+            "spares": 206.6155799999999,
+            "water": 1020.2336000000039,
+            "oxygen": 710.176,
+            "medical": 8,
+            "food": 1689.5375999998928,
+            "lab": 442.4000000000003,
+            "tools": 417.6622867760027
+          }
+        },
+        "critical": false,
+        "lastDecision": {
+          "at": 35682,
+          "reason": "Released obsolete maintenance reservation for Jules Mercer; current assignment retained.",
+          "person": "Jules Mercer"
+        }
+      },
+      "resources_final": {
+        "food": 159.986,
+        "water": 152.9304000000001,
+        "oxygen": 108.18800000000086,
+        "energy": 179.82759876,
+        "medical": 20,
+        "spares": 68.63742399999974,
+        "tools": 69.982,
+        "lab": 80
+      },
+      "acquisition": {},
+      "fuel_used": 1.9624515496596866,
+      "history_records": 12269,
+      "snapshot_bytes_first": 2859820,
+      "snapshot_bytes_last": 8026288,
+      "checkpoint_reload_days": [
+        7
+      ],
+      "audit_errors": [],
+      "simulation_errors": [],
+      "backup_sha256": "71b58b9396d2a012380a3b1c8ccfc893340358395bbc750d1161821892920b00",
+      "source_commit": "4bd2dadbd6e6541ef118e04b50b30ddbf561ae19",
+      "elapsed_seconds": 441.24163971300004,
+      "evidence_note": "Only actual campaign results. No generated extra crew; romances/claims need not occur. Checkpoint time is measured using unchanged production calendar including synchronized holidays.",
+      "operational": {
+        "generator_condition": 82.73882800011171,
+        "generator_service_isolated": false,
+        "component_conditions": {
+          "GRAVITY-CORE": 82.73882800011171,
+          "CIRCUIT-habitation": 97.12000000010903,
+          "CIRCUIT-medical": 97.12000000010903,
+          "CIRCUIT-science": 97.12000000010903,
+          "CIRCUIT-cargo": 97.12000000010903,
+          "CIRCUIT-hangar": 97.12000000010903,
+          "CIRCUIT-engineering": 97.12000000010903
+        },
+        "component_repairs": 1,
+        "component_history": {
+          "GRAVITY-CORE": [
+            {
+              "at": 32433,
+              "engineer": "Tomas Vale",
+              "condition": 86.05613800010018,
+              "reason": "Paid repair and powered post-repair test complete",
+              "sourceId": "CHR-2-V1j54z2l-11006"
+            }
+          ]
+        },
+        "gravity_actual": {
+          "habitation": 1,
+          "medical": 1,
+          "science": 1,
+          "cargo": 1,
+          "hangar": 1,
+          "engineering": 1
+        },
+        "gravity_targets": {
+          "habitation": 1,
+          "medical": 1,
+          "science": 1,
+          "cargo": 1,
+          "hangar": 1,
+          "engineering": 1
+        },
+        "main_bus": 1,
+        "open_orders": {},
+        "component_energy_ledger": [
+          {
+            "kind": "consume",
+            "key": "energy",
+            "source": "gravity fields / zoned environmental electrical load",
+            "amount": 1509.4080000000004,
+            "count": 36000,
+            "first": 1,
+            "last": 36000,
+            "compensation": 1.3600232051658168e-14
+          },
+          {
+            "kind": "consume",
+            "key": "tools",
+            "source": "physical systems work GRAVITY-CORE",
+            "amount": 0.03223677599999129,
+            "count": 65,
+            "first": 32364,
+            "last": 32428,
+            "compensation": -3.2526065174565133e-18
+          },
+          {
+            "kind": "consume",
+            "key": "energy",
+            "source": "physical systems work GRAVITY-CORE",
+            "amount": 0.1934206559999478,
+            "count": 65,
+            "first": 32364,
+            "last": 32428,
+            "compensation": 5.637851296924623e-18
+          }
+        ],
+        "new_summary_entries": 1
+      },
+      "expeditions": {
+        "history": [
+          {
+            "id": "M-0002",
+            "at": 512,
+            "category": "survey",
+            "objective": "Establish an initial field survey and report observable evidence",
+            "visited": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              8
+            ],
+            "newCells": [
+              1,
+              2,
+              3,
+              4,
+              8
+            ],
+            "reason": "carrying_capacity",
+            "devices": [
+              "BODY-1",
+              "BODY-2"
+            ],
+            "decisions": [
+              {
+                "at": 374,
+                "key": "landing",
+                "message": "Completed physical preparation, pressure cycle and shuttle travel to Landing Shelf.",
+                "node": 0
+              },
+              {
+                "at": 382,
+                "key": "discovery:1",
+                "message": "The expedition physically surveyed Basalt Ridge and its visible passages.",
+                "node": 1
+              },
+              {
+                "at": 390,
+                "key": "discovery:2",
+                "message": "The expedition physically surveyed Survey Outpost and its visible passages.",
+                "node": 2
+              },
+              {
+                "at": 398,
+                "key": "discovery:3",
+                "message": "The expedition physically surveyed Windcut Gorge and its visible passages.",
+                "node": 3
+              },
+              {
+                "at": 398,
+                "key": "hazard:3:unstable terrain",
+                "message": "Local observation reported unstable terrain at Windcut Gorge.",
+                "node": 3
+              },
+              {
+                "at": 406,
+                "key": "discovery:4",
+                "message": "The expedition physically surveyed Processor Approach and its visible passages.",
+                "node": 4
+              },
+              {
+                "at": 424,
+                "key": "discovery:8",
+                "message": "The expedition physically surveyed Waste Conduit and its visible passages.",
+                "node": 8
+              },
+              {
+                "at": 424,
+                "key": "hazard:8:residual radiation",
+                "message": "Local observation reported residual radiation at Waste Conduit.",
+                "node": 8
+              },
+              {
+                "at": 425,
+                "key": "return:carrying_capacity",
+                "message": "Expedition elected a physical return: carrying_capacity.",
+                "node": 8
+              }
+            ],
+            "airlockCycles": true
+          },
+          {
+            "id": "M-0006",
+            "at": 2127,
+            "category": "survey",
+            "objective": "Map at least six additional accessible sectors or document a safety withdrawal",
+            "visited": [
+              0,
+              5,
+              6,
+              7,
+              12,
+              11,
+              10,
+              1
+            ],
+            "newCells": [
+              5,
+              6,
+              7,
+              12,
+              11,
+              10
+            ],
+            "reason": "objective_met",
+            "devices": [
+              "BODY-1",
+              "BODY-2"
+            ],
+            "decisions": [
+              {
+                "at": 1991,
+                "key": "landing",
+                "message": "Completed physical preparation, pressure cycle and shuttle travel to Landing Shelf.",
+                "node": 0
+              },
+              {
+                "at": 2000,
+                "key": "discovery:5",
+                "message": "The expedition physically surveyed Atmospheric Processor and its visible passages.",
+                "node": 5
+              },
+              {
+                "at": 2006,
+                "key": "discovery:6",
+                "message": "The expedition physically surveyed Turbine Hall and its visible passages.",
+                "node": 6
+              },
+              {
+                "at": 2012,
+                "key": "discovery:7",
+                "message": "The expedition physically surveyed Control Annex and its visible passages.",
+                "node": 7
+              },
+              {
+                "at": 2021,
+                "key": "discovery:12",
+                "message": "The expedition physically surveyed Crystal Gallery and its visible passages.",
+                "node": 12
+              },
+              {
+                "at": 2021,
+                "key": "hazard:12:unknown atmospheric contamination",
+                "message": "Local observation reported unknown atmospheric contamination at Crystal Gallery.",
+                "node": 12
+              },
+              {
+                "at": 2029,
+                "key": "discovery:11",
+                "message": "The expedition physically surveyed Upper Grotto and its visible passages.",
+                "node": 11
+              },
+              {
+                "at": 2037,
+                "key": "discovery:10",
+                "message": "The expedition physically surveyed Cavern Mouth and its visible passages.",
+                "node": 10
+              },
+              {
+                "at": 2038,
+                "key": "return:objective_met",
+                "message": "Expedition elected a physical return: objective_met.",
+                "node": 10
+              }
+            ],
+            "airlockCycles": true
+          },
+          {
+            "id": "M-0010",
+            "at": 4180,
+            "category": "survey",
+            "objective": "Map at least six additional accessible sectors or document a safety withdrawal",
+            "visited": [
+              0,
+              1,
+              6,
+              11,
+              16,
+              17,
+              18,
+              13,
+              14,
+              22
+            ],
+            "newCells": [
+              16,
+              17,
+              18,
+              13,
+              14,
+              22
+            ],
+            "reason": "objective_met",
+            "devices": [
+              "BODY-1",
+              "BODY-2"
+            ],
+            "decisions": [
+              {
+                "at": 3970,
+                "key": "landing",
+                "message": "Completed physical preparation, pressure cycle and shuttle travel to Landing Shelf.",
+                "node": 0
+              },
+              {
+                "at": 4005,
+                "key": "discovery:16",
+                "message": "The expedition physically surveyed Buried Structure and its visible passages.",
+                "node": 16
+              },
+              {
+                "at": 4013,
+                "key": "discovery:17",
+                "message": "The expedition physically surveyed Sealed Vault and its visible passages.",
+                "node": 17
+              },
+              {
+                "at": 4013,
+                "key": "hazard:17:unknown atmospheric contamination",
+                "message": "Local observation reported unknown atmospheric contamination at Sealed Vault.",
+                "node": 17
+              },
+              {
+                "at": 4021,
+                "key": "discovery:18",
+                "message": "The expedition physically surveyed Temporal Chamber and its visible passages.",
+                "node": 18
+              },
+              {
+                "at": 4030,
+                "key": "discovery:13",
+                "message": "The expedition physically surveyed Subsurface Lake and its visible passages.",
+                "node": 13
+              },
+              {
+                "at": 4030,
+                "key": "hazard:13:unstable terrain",
+                "message": "Local observation reported unstable terrain at Subsurface Lake.",
+                "node": 13
+              },
+              {
+                "at": 4038,
+                "key": "discovery:14",
+                "message": "The expedition physically surveyed Echo Chamber and its visible passages.",
+                "node": 14
+              },
+              {
+                "at": 4072,
+                "key": "discovery:22",
+                "message": "The expedition physically surveyed Military Cargo and its visible passages.",
+                "node": 22
+              },
+              {
+                "at": 4073,
+                "key": "return:objective_met",
+                "message": "Expedition elected a physical return: objective_met.",
+                "node": 22
+              }
+            ],
+            "airlockCycles": true
+          },
+          {
+            "id": "M-0012",
+            "at": 4941,
+            "category": "sampling",
+            "objective": "Survey unvisited sectors for independent comparison samples",
+            "visited": [
+              0,
+              1,
+              6,
+              11,
+              16,
+              21,
+              20
+            ],
+            "newCells": [
+              21,
+              20
+            ],
+            "reason": "observed_frontier_exhausted",
+            "devices": [
+              "BODY-1",
+              "BODY-2"
+            ],
+            "decisions": [
+              {
+                "at": 4781,
+                "key": "landing",
+                "message": "Completed physical preparation, pressure cycle and shuttle travel to Landing Shelf.",
+                "node": 0
+              },
+              {
+                "at": 4825,
+                "key": "discovery:21",
+                "message": "The expedition physically surveyed Military Wreck Airlock and its visible passages.",
+                "node": 21
+              },
+              {
+                "at": 4833,
+                "key": "discovery:20",
+                "message": "The expedition physically surveyed Impact Field and its visible passages.",
+                "node": 20
+              },
+              {
+                "at": 4834,
+                "key": "return:observed_frontier_exhausted",
+                "message": "Expedition elected a physical return: observed_frontier_exhausted.",
+                "node": 20
+              }
+            ],
+            "airlockCycles": true
+          }
+        ],
+        "visited": [
+          {
+            "id": 0,
+            "kind": "surface"
+          },
+          {
+            "id": 1,
+            "kind": "surface"
+          },
+          {
+            "id": 2,
+            "kind": "industrial"
+          },
+          {
+            "id": 3,
+            "kind": "surface"
+          },
+          {
+            "id": 4,
+            "kind": "industrial"
+          },
+          {
+            "id": 5,
+            "kind": "industrial"
+          },
+          {
+            "id": 6,
+            "kind": "industrial"
+          },
+          {
+            "id": 7,
+            "kind": "industrial"
+          },
+          {
+            "id": 8,
+            "kind": "industrial"
+          },
+          {
+            "id": 10,
+            "kind": "cavern"
+          },
+          {
+            "id": 11,
+            "kind": "cavern"
+          },
+          {
+            "id": 12,
+            "kind": "cavern"
+          },
+          {
+            "id": 13,
+            "kind": "cavern"
+          },
+          {
+            "id": 14,
+            "kind": "cavern"
+          },
+          {
+            "id": 16,
+            "kind": "industrial"
+          },
+          {
+            "id": 17,
+            "kind": "cavern"
+          },
+          {
+            "id": 18,
+            "kind": "cavern"
+          },
+          {
+            "id": 20,
+            "kind": "surface"
+          },
+          {
+            "id": 21,
+            "kind": "industrial"
+          },
+          {
+            "id": 22,
+            "kind": "industrial"
+          }
+        ],
+        "records_received": 32,
+        "frames_received": 152,
+        "devices": [
+          {
+            "id": "BODY-1",
+            "condition": 99.78599999999898,
+            "status": "stored",
+            "clips": [],
+            "ring": [],
+            "instruments": {
+              "camera": true,
+              "radio": true,
+              "light": true,
+              "pressure": true,
+              "temperature": true,
+              "radiation": true
+            },
+            "source": "Modular suit pack physically assembled at C04 from paid spare modules, tools and energy",
+            "dockConnected": true,
+            "missionId": "M-0012",
+            "carrier": null,
+            "signalGaps": 67
+          },
+          {
+            "id": "BODY-2",
+            "condition": 99.78599999999898,
+            "status": "stored",
+            "clips": [],
+            "ring": [],
+            "instruments": {
+              "camera": true,
+              "radio": true,
+              "light": true,
+              "pressure": true,
+              "temperature": true,
+              "radiation": true
+            },
+            "source": "Modular suit pack physically assembled at C04 from paid spare modules, tools and energy",
+            "dockConnected": true,
+            "missionId": "M-0012",
+            "carrier": null,
+            "signalGaps": 67
+          }
+        ],
+        "utilities": [
+          {
+            "cell": 5,
+            "condition": 25,
+            "battery": 0,
+            "totalTransferred": 0,
+            "totalDrawn": 0,
+            "transfers": [],
+            "source": "Abandoned installed industrial machinery; no free utility power"
+          },
+          {
+            "cell": 6,
+            "condition": 25,
+            "battery": 0,
+            "totalTransferred": 0,
+            "totalDrawn": 0,
+            "transfers": [],
+            "source": "Abandoned installed industrial machinery; no free utility power"
+          },
+          {
+            "cell": 7,
+            "condition": 25,
+            "battery": 0,
+            "totalTransferred": 0,
+            "totalDrawn": 0,
+            "transfers": [],
+            "source": "Abandoned installed industrial machinery; no free utility power"
+          }
+        ],
+        "suits": {
+          "SUIT-1": {
+            "id": "SUIT-1",
+            "condition": 99.93280000000016,
+            "status": "stored",
+            "source": "Existing suit token; legacy condition registered, no historical wear invented",
+            "missionId": "M-0002"
+          },
+          "SUIT-2": {
+            "id": "SUIT-2",
+            "condition": 99.93280000000016,
+            "status": "stored",
+            "source": "Existing suit token; legacy condition registered, no historical wear invented",
+            "missionId": "M-0002"
+          },
+          "SUIT-3": {
+            "id": "SUIT-3",
+            "condition": 99.84960000000035,
+            "status": "stored",
+            "source": "Existing suit token; legacy condition registered, no historical wear invented",
+            "missionId": "M-0012"
+          },
+          "SUIT-4": {
+            "id": "SUIT-4",
+            "condition": 99.84960000000035,
+            "status": "stored",
+            "source": "Existing suit token; legacy condition registered, no historical wear invented",
+            "missionId": "M-0012"
+          },
+          "SUIT-5": {
+            "id": "SUIT-5",
+            "condition": 99.87520000000029,
+            "status": "stored",
+            "source": "Existing suit token; legacy condition registered, no historical wear invented",
+            "missionId": "M-0010"
+          },
+          "SUIT-6": {
+            "id": "SUIT-6",
+            "condition": 99.87520000000029,
+            "status": "stored",
+            "source": "Existing suit token; legacy condition registered, no historical wear invented",
+            "missionId": "M-0010"
+          }
+        },
+        "ledger": [
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "ship to expedition cargo",
+            "amount": 21.599999999999998,
+            "count": 18,
+            "first": 1,
+            "last": 7562,
+            "compensation": -1.3322676295501878e-15
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "ship to expedition cargo",
+            "amount": 72,
+            "count": 18,
+            "first": 1,
+            "last": 7562,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "ship to expedition cargo",
+            "amount": 43.199999999999996,
+            "count": 18,
+            "first": 1,
+            "last": 7562,
+            "compensation": -2.6645352591003757e-15
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition M-0001",
+            "amount": 0.9242000000000182,
+            "count": 1,
+            "first": 220,
+            "last": 220,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition M-0001",
+            "amount": 3.4484000000000607,
+            "count": 1,
+            "first": 220,
+            "last": 220,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition M-0001",
+            "amount": 2.0060000000000433,
+            "count": 1,
+            "first": 220,
+            "last": 220,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "ore",
+            "source": "recovered bulk FIELD-1",
+            "amount": 4,
+            "count": 1,
+            "first": 220,
+            "last": 220,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "waterIce",
+            "source": "recovered bulk FIELD-1",
+            "amount": 2,
+            "count": 1,
+            "first": 220,
+            "last": 220,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "ore",
+            "source": "recovered bulk FIELD-3",
+            "amount": 4,
+            "count": 1,
+            "first": 220,
+            "last": 220,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "waterIce",
+            "source": "recovered bulk FIELD-3",
+            "amount": 2,
+            "count": 1,
+            "first": 220,
+            "last": 220,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "tools",
+            "source": "ship to expedition cargo",
+            "amount": 9.8,
+            "count": 11,
+            "first": 271,
+            "last": 7562,
+            "compensation": 4.440892098500626e-16
+          },
+          {
+            "kind": "transfer",
+            "key": "spares",
+            "source": "ship to expedition cargo",
+            "amount": 16,
+            "count": 11,
+            "first": 271,
+            "last": 7562,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "lab",
+            "source": "ship to expedition cargo",
+            "amount": 14.5,
+            "count": 11,
+            "first": 271,
+            "last": 7562,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "medical",
+            "source": "ship to expedition cargo",
+            "amount": 6,
+            "count": 6,
+            "first": 271,
+            "last": 4681,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "energy",
+            "source": "ship to expedition cargo",
+            "amount": 36,
+            "count": 6,
+            "first": 271,
+            "last": 4681,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition M-0002",
+            "amount": 0.9368000000000188,
+            "count": 1,
+            "first": 512,
+            "last": 512,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition M-0002",
+            "amount": 3.473600000000058,
+            "count": 1,
+            "first": 512,
+            "last": 512,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition M-0002",
+            "amount": 1.224000000000041,
+            "count": 1,
+            "first": 512,
+            "last": 512,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "tools",
+            "source": "returned expedition M-0002",
+            "amount": 0.7,
+            "count": 1,
+            "first": 512,
+            "last": 512,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "spares",
+            "source": "returned expedition M-0002",
+            "amount": 0.5,
+            "count": 1,
+            "first": 512,
+            "last": 512,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "lab",
+            "source": "returned expedition M-0002",
+            "amount": 1.4999999999999996,
+            "count": 1,
+            "first": 512,
+            "last": 512,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "medical",
+            "source": "returned expedition M-0002",
+            "amount": 1,
+            "count": 1,
+            "first": 512,
+            "last": 512,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "energy",
+            "source": "returned expedition M-0002",
+            "amount": 3.9120000000000346,
+            "count": 1,
+            "first": 512,
+            "last": 512,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "ore",
+            "source": "recovered bulk FIELD-4",
+            "amount": 4,
+            "count": 1,
+            "first": 512,
+            "last": 512,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "waterIce",
+            "source": "recovered bulk FIELD-4",
+            "amount": 2,
+            "count": 1,
+            "first": 512,
+            "last": 512,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "ore",
+            "source": "recovered bulk FIELD-5",
+            "amount": 4,
+            "count": 1,
+            "first": 512,
+            "last": 512,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "waterIce",
+            "source": "recovered bulk FIELD-5",
+            "amount": 2,
+            "count": 1,
+            "first": 512,
+            "last": 512,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition M-0003",
+            "amount": 0.9438000000000192,
+            "count": 1,
+            "first": 1006,
+            "last": 1006,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition M-0003",
+            "amount": 3.4876000000000564,
+            "count": 1,
+            "first": 1006,
+            "last": 1006,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition M-0003",
+            "amount": 2.03400000000004,
+            "count": 1,
+            "first": 1006,
+            "last": 1006,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "ore",
+            "source": "recovered bulk FIELD-7",
+            "amount": 4,
+            "count": 1,
+            "first": 1006,
+            "last": 1006,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "waterIce",
+            "source": "recovered bulk FIELD-7",
+            "amount": 2,
+            "count": 1,
+            "first": 1006,
+            "last": 1006,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition M-0004",
+            "amount": 1.2,
+            "count": 1,
+            "first": 1562,
+            "last": 1562,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition M-0004",
+            "amount": 4,
+            "count": 1,
+            "first": 1562,
+            "last": 1562,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition M-0004",
+            "amount": 2.4,
+            "count": 1,
+            "first": 1562,
+            "last": 1562,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "tools",
+            "source": "returned expedition M-0004",
+            "amount": 0.8,
+            "count": 1,
+            "first": 1562,
+            "last": 1562,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "spares",
+            "source": "returned expedition M-0004",
+            "amount": 1,
+            "count": 1,
+            "first": 1562,
+            "last": 1562,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "lab",
+            "source": "returned expedition M-0004",
+            "amount": 2,
+            "count": 1,
+            "first": 1562,
+            "last": 1562,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "medical",
+            "source": "returned expedition M-0004",
+            "amount": 1,
+            "count": 1,
+            "first": 1562,
+            "last": 1562,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "energy",
+            "source": "returned expedition M-0004",
+            "amount": 6,
+            "count": 1,
+            "first": 1562,
+            "last": 1562,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition M-0005",
+            "amount": 0.9046000000000173,
+            "count": 1,
+            "first": 1868,
+            "last": 1868,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition M-0005",
+            "amount": 3.409200000000065,
+            "count": 1,
+            "first": 1868,
+            "last": 1868,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition M-0005",
+            "amount": 1.9780000000000464,
+            "count": 1,
+            "first": 1868,
+            "last": 1868,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition M-0006",
+            "amount": 0.939600000000019,
+            "count": 1,
+            "first": 2127,
+            "last": 2127,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition M-0006",
+            "amount": 3.4792000000000574,
+            "count": 1,
+            "first": 2127,
+            "last": 2127,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition M-0006",
+            "amount": 1.2280000000000406,
+            "count": 1,
+            "first": 2127,
+            "last": 2127,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "tools",
+            "source": "returned expedition M-0006",
+            "amount": 0.8,
+            "count": 1,
+            "first": 2127,
+            "last": 2127,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "spares",
+            "source": "returned expedition M-0006",
+            "amount": 1,
+            "count": 1,
+            "first": 2127,
+            "last": 2127,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "lab",
+            "source": "returned expedition M-0006",
+            "amount": 1.3999999999999995,
+            "count": 1,
+            "first": 2127,
+            "last": 2127,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "medical",
+            "source": "returned expedition M-0006",
+            "amount": 1,
+            "count": 1,
+            "first": 2127,
+            "last": 2127,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "energy",
+            "source": "returned expedition M-0006",
+            "amount": 4.936000000000037,
+            "count": 1,
+            "first": 2127,
+            "last": 2127,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition M-0007",
+            "amount": 0.9634000000000201,
+            "count": 1,
+            "first": 2627,
+            "last": 2627,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition M-0007",
+            "amount": 3.526800000000052,
+            "count": 1,
+            "first": 2627,
+            "last": 2627,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition M-0007",
+            "amount": 2.062000000000037,
+            "count": 1,
+            "first": 2627,
+            "last": 2627,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "ore",
+            "source": "recovered bulk FIELD-11",
+            "amount": 4,
+            "count": 1,
+            "first": 2627,
+            "last": 2627,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "waterIce",
+            "source": "recovered bulk FIELD-11",
+            "amount": 2,
+            "count": 1,
+            "first": 2627,
+            "last": 2627,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition M-0008",
+            "amount": 1.2,
+            "count": 1,
+            "first": 3046,
+            "last": 3046,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition M-0008",
+            "amount": 4,
+            "count": 1,
+            "first": 3046,
+            "last": 3046,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition M-0008",
+            "amount": 2.4,
+            "count": 1,
+            "first": 3046,
+            "last": 3046,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "tools",
+            "source": "returned expedition M-0008",
+            "amount": 0.8,
+            "count": 1,
+            "first": 3046,
+            "last": 3046,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "spares",
+            "source": "returned expedition M-0008",
+            "amount": 1,
+            "count": 1,
+            "first": 3046,
+            "last": 3046,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "lab",
+            "source": "returned expedition M-0008",
+            "amount": 2,
+            "count": 1,
+            "first": 3046,
+            "last": 3046,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "medical",
+            "source": "returned expedition M-0008",
+            "amount": 1,
+            "count": 1,
+            "first": 3046,
+            "last": 3046,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "energy",
+            "source": "returned expedition M-0008",
+            "amount": 6,
+            "count": 1,
+            "first": 3046,
+            "last": 3046,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition M-0009",
+            "amount": 0.9242000000000182,
+            "count": 1,
+            "first": 3467,
+            "last": 3467,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition M-0009",
+            "amount": 3.4484000000000607,
+            "count": 1,
+            "first": 3467,
+            "last": 3467,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition M-0009",
+            "amount": 2.0060000000000433,
+            "count": 1,
+            "first": 3467,
+            "last": 3467,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "ore",
+            "source": "recovered bulk FIELD-12",
+            "amount": 4,
+            "count": 1,
+            "first": 3467,
+            "last": 3467,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "waterIce",
+            "source": "recovered bulk FIELD-12",
+            "amount": 2,
+            "count": 1,
+            "first": 3467,
+            "last": 3467,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition M-0010",
+            "amount": 0.836000000000014,
+            "count": 1,
+            "first": 4180,
+            "last": 4180,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition M-0010",
+            "amount": 3.27200000000008,
+            "count": 1,
+            "first": 4180,
+            "last": 4180,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition M-0010",
+            "amount": 1.080000000000057,
+            "count": 1,
+            "first": 4180,
+            "last": 4180,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "tools",
+            "source": "returned expedition M-0010",
+            "amount": 0.8,
+            "count": 1,
+            "first": 4180,
+            "last": 4180,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "spares",
+            "source": "returned expedition M-0010",
+            "amount": 1,
+            "count": 1,
+            "first": 4180,
+            "last": 4180,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "lab",
+            "source": "returned expedition M-0010",
+            "amount": 1.3999999999999995,
+            "count": 1,
+            "first": 4180,
+            "last": 4180,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "medical",
+            "source": "returned expedition M-0010",
+            "amount": 1,
+            "count": 1,
+            "first": 4180,
+            "last": 4180,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "energy",
+            "source": "returned expedition M-0010",
+            "amount": 4.048000000000069,
+            "count": 1,
+            "first": 4180,
+            "last": 4180,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "ore",
+            "source": "recovered bulk FIELD-13",
+            "amount": 4,
+            "count": 1,
+            "first": 4180,
+            "last": 4180,
+            "compensation": 0
+          },
+          {
+            "kind": "recover",
+            "key": "waterIce",
+            "source": "recovered bulk FIELD-13",
+            "amount": 2,
+            "count": 1,
+            "first": 4180,
+            "last": 4180,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition M-0011",
+            "amount": 0.9242000000000182,
+            "count": 1,
+            "first": 4462,
+            "last": 4462,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition M-0011",
+            "amount": 3.4484000000000607,
+            "count": 1,
+            "first": 4462,
+            "last": 4462,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition M-0011",
+            "amount": 2.0060000000000433,
+            "count": 1,
+            "first": 4462,
+            "last": 4462,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition M-0012",
+            "amount": 0.9060000000000173,
+            "count": 1,
+            "first": 4941,
+            "last": 4941,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition M-0012",
+            "amount": 3.4120000000000648,
+            "count": 1,
+            "first": 4941,
+            "last": 4941,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition M-0012",
+            "amount": 1.180000000000046,
+            "count": 1,
+            "first": 4941,
+            "last": 4941,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "tools",
+            "source": "returned expedition M-0012",
+            "amount": 0.8,
+            "count": 1,
+            "first": 4941,
+            "last": 4941,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "spares",
+            "source": "returned expedition M-0012",
+            "amount": 1,
+            "count": 1,
+            "first": 4941,
+            "last": 4941,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "lab",
+            "source": "returned expedition M-0012",
+            "amount": 1.7999999999999998,
+            "count": 1,
+            "first": 4941,
+            "last": 4941,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "medical",
+            "source": "returned expedition M-0012",
+            "amount": 1,
+            "count": 1,
+            "first": 4941,
+            "last": 4941,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "energy",
+            "source": "returned expedition M-0012",
+            "amount": 4.648000000000048,
+            "count": 1,
+            "first": 4941,
+            "last": 4941,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition M-0013",
+            "amount": 0.8472000000000145,
+            "count": 1,
+            "first": 5318,
+            "last": 5318,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition M-0013",
+            "amount": 3.2944000000000777,
+            "count": 1,
+            "first": 5318,
+            "last": 5318,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition M-0013",
+            "amount": 1.8960000000000554,
+            "count": 1,
+            "first": 5318,
+            "last": 5318,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition F-1",
+            "amount": 0.6036000000000027,
+            "count": 1,
+            "first": 5867,
+            "last": 5867,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition F-1",
+            "amount": 2.8072000000001314,
+            "count": 1,
+            "first": 5867,
+            "last": 5867,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition F-1",
+            "amount": 1.5480000000000937,
+            "count": 1,
+            "first": 5867,
+            "last": 5867,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "tools",
+            "source": "returned expedition F-1",
+            "amount": 1,
+            "count": 1,
+            "first": 5867,
+            "last": 5867,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "spares",
+            "source": "returned expedition F-1",
+            "amount": 2,
+            "count": 1,
+            "first": 5867,
+            "last": 5867,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "lab",
+            "source": "returned expedition F-1",
+            "amount": 0.20000000000000004,
+            "count": 1,
+            "first": 5867,
+            "last": 5867,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition F-2",
+            "amount": 0.6246000000000037,
+            "count": 1,
+            "first": 6400,
+            "last": 6400,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition F-2",
+            "amount": 2.8492000000001267,
+            "count": 1,
+            "first": 6400,
+            "last": 6400,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition F-2",
+            "amount": 1.5780000000000904,
+            "count": 1,
+            "first": 6400,
+            "last": 6400,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "tools",
+            "source": "returned expedition F-2",
+            "amount": 1,
+            "count": 1,
+            "first": 6400,
+            "last": 6400,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "spares",
+            "source": "returned expedition F-2",
+            "amount": 2,
+            "count": 1,
+            "first": 6400,
+            "last": 6400,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "lab",
+            "source": "returned expedition F-2",
+            "amount": 0.20000000000000004,
+            "count": 1,
+            "first": 6400,
+            "last": 6400,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition F-3",
+            "amount": 0.631600000000004,
+            "count": 1,
+            "first": 6931,
+            "last": 6931,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition F-3",
+            "amount": 2.863200000000125,
+            "count": 1,
+            "first": 6931,
+            "last": 6931,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition F-3",
+            "amount": 1.5880000000000893,
+            "count": 1,
+            "first": 6931,
+            "last": 6931,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "tools",
+            "source": "returned expedition F-3",
+            "amount": 1,
+            "count": 1,
+            "first": 6931,
+            "last": 6931,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "spares",
+            "source": "returned expedition F-3",
+            "amount": 2,
+            "count": 1,
+            "first": 6931,
+            "last": 6931,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "lab",
+            "source": "returned expedition F-3",
+            "amount": 0.20000000000000004,
+            "count": 1,
+            "first": 6931,
+            "last": 6931,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition F-4",
+            "amount": 0.610600000000003,
+            "count": 1,
+            "first": 7471,
+            "last": 7471,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition F-4",
+            "amount": 2.82120000000013,
+            "count": 1,
+            "first": 7471,
+            "last": 7471,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition F-4",
+            "amount": 1.5580000000000926,
+            "count": 1,
+            "first": 7471,
+            "last": 7471,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "tools",
+            "source": "returned expedition F-4",
+            "amount": 1,
+            "count": 1,
+            "first": 7471,
+            "last": 7471,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "spares",
+            "source": "returned expedition F-4",
+            "amount": 2,
+            "count": 1,
+            "first": 7471,
+            "last": 7471,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "lab",
+            "source": "returned expedition F-4",
+            "amount": 0.20000000000000004,
+            "count": 1,
+            "first": 7471,
+            "last": 7471,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "food",
+            "source": "returned expedition F-5",
+            "amount": 0.6652000000000057,
+            "count": 1,
+            "first": 7983,
+            "last": 7983,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "water",
+            "source": "returned expedition F-5",
+            "amount": 2.930400000000118,
+            "count": 1,
+            "first": 7983,
+            "last": 7983,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "oxygen",
+            "source": "returned expedition F-5",
+            "amount": 1.636000000000084,
+            "count": 1,
+            "first": 7983,
+            "last": 7983,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "tools",
+            "source": "returned expedition F-5",
+            "amount": 1,
+            "count": 1,
+            "first": 7983,
+            "last": 7983,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "spares",
+            "source": "returned expedition F-5",
+            "amount": 2,
+            "count": 1,
+            "first": 7983,
+            "last": 7983,
+            "compensation": 0
+          },
+          {
+            "kind": "transfer",
+            "key": "lab",
+            "source": "returned expedition F-5",
+            "amount": 0.20000000000000004,
+            "count": 1,
+            "first": 7983,
+            "last": 7983,
+            "compensation": 0
+          }
+        ],
+        "military_visited": [
+          22,
+          21
+        ],
+        "dormant": true
+      }
+    }
+  }
+}

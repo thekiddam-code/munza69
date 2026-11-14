@@ -3,6 +3,12 @@
 const object=x=>!!x&&typeof x==='object'&&!Array.isArray(x),array=Array.isArray,finiteMap=x=>object(x)&&Object.values(x).every(n=>Number.isFinite(n)&&n>=-1e-7);
 function valid(s,requireModern=false,requireAnthology=false,requireUnified=false){
  if(!object(s)||!array(s.crew)||!Number.isFinite(s.tick)||s.tick<0||!Number.isInteger(s.episode)||s.episode<1)return false;
+ for(const p of s.crew){
+  if(p.visualAppearance!==undefined&&(!root.ICARUSCharacterDesign||!root.ICARUSCharacterDesign.valid(p.visualAppearance)))return false;
+  for(const key of ['roomPlacement','roomInteraction']){const x=p[key];if(x===undefined)continue;if(!object(x)||!/^([ABC])(0[1-9]|10)$/.test(x.room)||!Number.isFinite(x.x)||x.x<0||x.x>384||!Number.isFinite(x.y)||x.y<120||x.y>216)return false;
+   if(key==='roomInteraction'&&(x.version!==1||!['approaching','turning','seating','working','rising'].includes(x.phase)||!Number.isFinite(x.lastTick)||x.lastTick>s.tick||![-1,1].includes(x.facing)||typeof x.signature!=='string'||x.signature.length>500||typeof x.task!=='string'||typeof x.fixture!=='string'))return false;
+  }
+ }
  if(root.ICARUSExpeditionSchema&&!root.ICARUSExpeditionSchema.valid(s))return false;
  if(requireAnthology&&s.anthology===undefined)return false;
  if(requireUnified&&!s.unifiedWorld)return false;
@@ -27,5 +33,5 @@ function valid(s,requireModern=false,requireAnthology=false,requireUnified=false
  if(!object(s.universe?.systems)||!array(s.frontier?.jobs)||!array(s.logistics?.receipts)||!finiteMap(s.economy?.stock)||!finiteMap(s.economy?.feedstock))return false;
  return true;
 }
-const api={valid};if(typeof module==='object'&&module.exports){root.ICARUSExpeditionSchema=require('./expedition-schema');module.exports=api;}else root.ICARUSWorldSchema=api;
+const api={valid};if(typeof module==='object'&&module.exports){root.ICARUSCharacterDesign=require('./character-design');root.ICARUSExpeditionSchema=require('./expedition-schema');module.exports=api;}else root.ICARUSWorldSchema=api;
 })(globalThis);

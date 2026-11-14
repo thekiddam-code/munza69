@@ -1,3 +1,7 @@
+# ICARUS — Phase 4.5 Visual Overhaul & System Boot
+
+Start with [README_PHASE45.md](README_PHASE45.md) for installation, pairing/configuration, backups and rollback. [PHASE45_ARCHITECTURE.md](PHASE45_ARCHITECTURE.md), [PHASE45_VALIDATION.md](PHASE45_VALIDATION.md), [actual camera comparisons](reports/phase45/VISUAL_COMPARISONS.md) and [limitations](PHASE45_LIMITATIONS.md) distinguish implemented visuals/boot from deferred gym/physics/hardware scope. Preserve your own voyage; test worlds are not user saves. Earlier notes below are historical.
+
 # ICARUS — Phase 4.4 Expedition Operations
 
 Start with [README_PHASE44.md](README_PHASE44.md) for installation, backups, migration and rollback. [PHASE44_ARCHITECTURE.md](PHASE44_ARCHITECTURE.md), [PHASE44_VALIDATION.md](PHASE44_VALIDATION.md) and [PHASE44_LIMITATIONS.md](PHASE44_LIMITATIONS.md) distinguish implemented expeditions from deferred rescue/art/hardware scope. Preserve your own voyage; test worlds are not user saves. Earlier version notes below remain historical.
