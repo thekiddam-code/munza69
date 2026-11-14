@@ -320,3 +320,11 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - Boot UX: immediate truthful loading stages, early code entry, distinct authorization/read-only/ready states, real host readiness, unambiguous ICARUS ONLINE transition, security preserved.
 - **Sequencing caution:** Phase 4.5 was previously proposed for drones. Reconcile phase numbering with actual in-progress Codex implementation; do not silently drop drone reconnaissance from the roadmap.
 - **Status:** queued for next phase; no code implementation verified.
+
+## Phase 4.5 visual decisions — taller crew and distinct recreation rooms
+- **Approved:** make pixel crew sprites slightly taller with improved natural proportions, articulated limbs, more leg/torso detail, and coherent wheelchair proportions. Suggested initial visual prototype around 10–15% taller, subject to collision/camera/accessibility testing; don't just scale existing sprites vertically.
+- **User believes there are two recreation rooms:** inspect the authoritative room registry and topology to confirm. If two exist, retain one as a crew lounge and convert the other into a functional gym/fitness center without changing physical topology, door links, IDs, or save compatibility. If the room count differs, report and seek confirmation before changing assignments.
+- Lounge: seating, communal tables, food/entertainment facilities, lived-in atmosphere. Gym: resistance equipment, bikes or treadmills where spatially appropriate, mats, lockers, accessible circulation and exercise options. Use distinct architecture, furniture, flooring, and lighting, not just labels or palette swaps.
+- Exercise behaviors should use actual simulation tasks/states, not invented camera activity. Advanced fitness/rehabilitation effects may be deferred if not supported by existing systems.
+- Require exact-camera before/after comparisons, verify active renderer integration, preserve wheelchair representation, authoritative simulation, camera privacy, navigation and saves.
+- **Status:** approved for next phase, not verified implemented.
