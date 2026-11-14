@@ -1,0 +1,30 @@
+✔ existing25 identities, sealed chambers and additive stable geography survive migration/reload (12.146358ms)
+✔ known-map routes cannot use hidden geography or sealed/closed observed entrances (4.087157ms)
+✔ camera/light devices require real paid parts; no fabrication from empty manifest (0.570747ms)
+✔ actual preparation, pressure cycle, timed flight, connected survey and return use finite stores (44.317984ms)
+✔ duplicate ticks cannot consume equipment, advance pressure or create duplicate field evidence (2.887195ms)
+✔ disconnected local device evidence cannot appear centrally until received or physically recovered (0.841584ms)
+✔ quiet local sampling stays bounded and never manufactures event clips (1.214734ms)
+✔ observed field frames exclude remote rooms and preserve source labels on reconstruction (0.57262ms)
+✔ an already received event fact cannot upload a later recording through a broken link (0.655384ms)
+✔ shuttle transit never masquerades as a live camera at the last surface node (1.401665ms)
+✔ persistent suit wear and normalized carried load affect subsequent readiness (1.062546ms)
+✔ lost field devices require co-located physical recovery before central debrief transfer (0.498578ms)
+✔ a damaged persistent suit postpones physical departure instead of granting protection (0.240571ms)
+✔ render snapshots cannot change retrospectively when a living character body changes (1.398901ms)
+✔ failed instruments cannot survey unseen dark compartments or expose their equipment (0.481804ms)
+✔ external utility batteries cannot acquire unaccounted power outside paid transfer receipts (1.12555ms)
+✔ return hatch safety can hold a team without teleporting or creating vestibule oxygen (0.602194ms)
+✔ airlock oxygen arithmetic and ongoing phase survive exact JSON persistence (0.662765ms)
+✔ physical return during receiver outage retains unread records until actual powered dock ingestion (0.421553ms)
+✔ malformed operational save domains are rejected without modifying legacy saves (0.776676ms)
+✔ route choice uses reported hazards and cannot consult hidden destination hazards (0.24624ms)
+✔ physical wreck observation cannot energize a sealed interlock or activate dormant biology (1.450588ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 305.775684

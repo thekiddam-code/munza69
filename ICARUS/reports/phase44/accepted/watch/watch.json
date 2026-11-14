@@ -1,0 +1,483 @@
+{
+  "passed": true,
+  "source_commit": "34fd122280a9ffd91330bb0fa3e2d702c886ad57",
+  "phases": [
+    {
+      "name": "normal",
+      "elapsed_seconds": 123.43438634299673,
+      "start_tick": 0,
+      "end_tick": 8,
+      "effective_rate": 3.8887056858385205,
+      "requested_rate": 4,
+      "conversations_before": 0,
+      "conversations_after": 0,
+      "lift_trips": 0,
+      "crew_alive": 20,
+      "dead": 0
+    },
+    {
+      "name": "accelerated",
+      "elapsed_seconds": 541.7194760269922,
+      "start_tick": 8,
+      "end_tick": 189,
+      "effective_rate": 20.04727627599433,
+      "requested_rate": 20,
+      "conversations_before": 0,
+      "conversations_after": 4,
+      "lift_trips": 15,
+      "crew_alive": 20,
+      "dead": 0
+    }
+  ],
+  "samples": [
+    {
+      "tick": 0,
+      "selected": "B01",
+      "following": "Sana Okafor",
+      "stats": {
+        "mainFrames": 99,
+        "previewFrames": 164,
+        "totalMs": 419.4000001102686,
+        "maxMs": 57,
+        "received": 13
+      },
+      "heap": 10834502,
+      "clock": "4\u00d7 authoritative pacing",
+      "phase": "normal",
+      "phase_seconds": 1.0164274650014704
+    },
+    {
+      "tick": 2,
+      "selected": "COR-B-0",
+      "following": "Sana Okafor",
+      "stats": {
+        "mainFrames": 377,
+        "previewFrames": 604,
+        "totalMs": 1949.6000002026558,
+        "maxMs": 108.09999999403954,
+        "received": 43
+      },
+      "heap": 9588616,
+      "clock": "4\u00d7 authoritative pacing",
+      "phase": "normal",
+      "phase_seconds": 30.390095189999556
+    },
+    {
+      "tick": 4,
+      "selected": "COR-B-0",
+      "following": "Sana Okafor",
+      "stats": {
+        "mainFrames": 676,
+        "previewFrames": 1064,
+        "totalMs": 3322.7000001966953,
+        "maxMs": 108.09999999403954,
+        "received": 73
+      },
+      "heap": 16253375,
+      "clock": "4\u00d7 authoritative pacing",
+      "phase": "normal",
+      "phase_seconds": 60.67707764499937
+    },
+    {
+      "tick": 6,
+      "selected": "COR-B-1",
+      "following": "Sana Okafor",
+      "stats": {
+        "mainFrames": 942,
+        "previewFrames": 1492,
+        "totalMs": 5034.2000003010035,
+        "maxMs": 108.09999999403954,
+        "received": 102
+      },
+      "heap": 9311364,
+      "clock": "4\u00d7 authoritative pacing",
+      "phase": "normal",
+      "phase_seconds": 90.23555496199697
+    },
+    {
+      "tick": 8,
+      "selected": "COR-B-1",
+      "following": "Sana Okafor",
+      "stats": {
+        "mainFrames": 1209,
+        "previewFrames": 1940,
+        "totalMs": 6836.3000002503395,
+        "maxMs": 175.70000000298023,
+        "received": 132
+      },
+      "heap": 23410594,
+      "clock": "4\u00d7 authoritative pacing",
+      "phase": "normal",
+      "phase_seconds": 120.24531286300044
+    },
+    {
+      "tick": 9,
+      "selected": "COR-B-1",
+      "following": "Sana Okafor",
+      "stats": {
+        "mainFrames": 1219,
+        "previewFrames": 1964,
+        "totalMs": 7029.40000025928,
+        "maxMs": 175.70000000298023,
+        "received": 140
+      },
+      "heap": 32551376,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 1.066045273997588
+    },
+    {
+      "tick": 19,
+      "selected": "C04",
+      "following": "Sana Okafor",
+      "stats": {
+        "mainFrames": 1219,
+        "previewFrames": 1964,
+        "totalMs": 7029.40000025928,
+        "maxMs": 175.70000000298023,
+        "received": 169
+      },
+      "heap": 27909353,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 30.423638701002346
+    },
+    {
+      "tick": 29,
+      "selected": "C01",
+      "following": "Sana Okafor",
+      "stats": {
+        "mainFrames": 1219,
+        "previewFrames": 1964,
+        "totalMs": 7029.40000025928,
+        "maxMs": 175.70000000298023,
+        "received": 200
+      },
+      "heap": 9244802,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 60.8873473249987
+    },
+    {
+      "tick": 39,
+      "selected": null,
+      "following": "Sana Okafor",
+      "stats": {
+        "mainFrames": 1219,
+        "previewFrames": 1964,
+        "totalMs": 7029.40000025928,
+        "maxMs": 175.70000000298023,
+        "received": 229
+      },
+      "heap": 15351271,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 90.10093068599235
+    },
+    {
+      "tick": 49,
+      "selected": null,
+      "following": "Sana Okafor",
+      "stats": {
+        "mainFrames": 1219,
+        "previewFrames": 1964,
+        "totalMs": 7029.40000025928,
+        "maxMs": 175.70000000298023,
+        "received": 259
+      },
+      "heap": 23721772,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 120.60681916099566
+    },
+    {
+      "tick": 59,
+      "selected": null,
+      "following": "Sana Okafor",
+      "stats": {
+        "mainFrames": 1219,
+        "previewFrames": 1964,
+        "totalMs": 7029.40000025928,
+        "maxMs": 175.70000000298023,
+        "received": 289
+      },
+      "heap": 14359560,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 150.1967996369931
+    },
+    {
+      "tick": 69,
+      "selected": null,
+      "following": "Sana Okafor",
+      "stats": {
+        "mainFrames": 1219,
+        "previewFrames": 1964,
+        "totalMs": 7029.40000025928,
+        "maxMs": 175.70000000298023,
+        "received": 319
+      },
+      "heap": 24821671,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 180.50645080499817
+    },
+    {
+      "tick": 79,
+      "selected": null,
+      "following": "Sana Okafor",
+      "stats": {
+        "mainFrames": 1219,
+        "previewFrames": 1964,
+        "totalMs": 7029.40000025928,
+        "maxMs": 175.70000000298023,
+        "received": 350
+      },
+      "heap": 15022459,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 210.7395606909995
+    },
+    {
+      "tick": 89,
+      "selected": null,
+      "following": "Sana Okafor",
+      "stats": {
+        "mainFrames": 1219,
+        "previewFrames": 1964,
+        "totalMs": 7029.40000025928,
+        "maxMs": 175.70000000298023,
+        "received": 380
+      },
+      "heap": 11603478,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 240.83235832500213
+    },
+    {
+      "tick": 101,
+      "selected": "BODY-2",
+      "following": "Sana Okafor",
+      "stats": {
+        "mainFrames": 2,
+        "previewFrames": 4,
+        "totalMs": 12.200000002980232,
+        "maxMs": 8.799999997019768,
+        "received": 2
+      },
+      "heap": 28905937,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 270.92852359300014
+    },
+    {
+      "tick": 109,
+      "selected": "BODY-2",
+      "following": "Sana Okafor",
+      "stats": {
+        "mainFrames": 253,
+        "previewFrames": 408,
+        "totalMs": 610.9999999701977,
+        "maxMs": 32.79999999701977,
+        "received": 28
+      },
+      "heap": 45107407,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 300.22309416999633
+    },
+    {
+      "tick": 119,
+      "selected": "BODY-2",
+      "following": "Sana Okafor",
+      "stats": {
+        "mainFrames": 522,
+        "previewFrames": 892,
+        "totalMs": 1055.800000101328,
+        "maxMs": 32.79999999701977,
+        "received": 58
+      },
+      "heap": 22752399,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 330.2982187220041
+    },
+    {
+      "tick": 129,
+      "selected": "BODY-2",
+      "following": "Sana Okafor",
+      "stats": {
+        "mainFrames": 790,
+        "previewFrames": 1388,
+        "totalMs": 1470.3000001758337,
+        "maxMs": 32.79999999701977,
+        "received": 88
+      },
+      "heap": 15446241,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 360.3603729769966
+    },
+    {
+      "tick": 139,
+      "selected": "BODY-2",
+      "following": "Sana Okafor",
+      "stats": {
+        "mainFrames": 1059,
+        "previewFrames": 1848,
+        "totalMs": 2348.300000280142,
+        "maxMs": 94.20000000298023,
+        "received": 118
+      },
+      "heap": 29460869,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 390.8656308070058
+    },
+    {
+      "tick": 149,
+      "selected": null,
+      "following": "Sana Okafor",
+      "stats": {
+        "mainFrames": 1322,
+        "previewFrames": 2308,
+        "totalMs": 3285.500000163913,
+        "maxMs": 176.40000000596046,
+        "received": 148
+      },
+      "heap": 28677571,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 420.05783262600016
+    },
+    {
+      "tick": 159,
+      "selected": null,
+      "following": "Sana Okafor",
+      "stats": {
+        "mainFrames": 1591,
+        "previewFrames": 2780,
+        "totalMs": 3892.800000011921,
+        "maxMs": 176.40000000596046,
+        "received": 178
+      },
+      "heap": 23818468,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 450.1413759059942
+    },
+    {
+      "tick": 169,
+      "selected": null,
+      "following": "Sana Okafor",
+      "stats": {
+        "mainFrames": 1863,
+        "previewFrames": 3252,
+        "totalMs": 4609.400000169873,
+        "maxMs": 176.40000000596046,
+        "received": 208
+      },
+      "heap": 33876735,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 480.31424074999813
+    },
+    {
+      "tick": 179,
+      "selected": null,
+      "following": "Sana Okafor",
+      "stats": {
+        "mainFrames": 2134,
+        "previewFrames": 3736,
+        "totalMs": 5101.100000232458,
+        "maxMs": 176.40000000596046,
+        "received": 238
+      },
+      "heap": 12338415,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 510.4054940089991
+    },
+    {
+      "tick": 189,
+      "selected": null,
+      "following": "Sana Okafor",
+      "stats": {
+        "mainFrames": 2420,
+        "previewFrames": 4216,
+        "totalMs": 5830.7000002115965,
+        "maxMs": 176.40000000596046,
+        "received": 268
+      },
+      "heap": 15042818,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 540.5287116840045
+    }
+  ],
+  "reloads": [
+    {
+      "saved_tick": 99,
+      "resumed_tick": 99,
+      "rate": 20
+    }
+  ],
+  "errors": [],
+  "limits": "Actual monotonic/wall time and real server. Linux Chromium, desktop/TV I/O stubbed. Emulated phone is not a physical Android. One real authorized mission request through normal UI; no incidents/relationships/needs/adulthood injected.",
+  "authorized_operator_request": {
+    "id": "M-0001",
+    "members": [
+      "Sana Okafor",
+      "Frank Morrow"
+    ],
+    "at": 0
+  },
+  "field_camera_samples": 5,
+  "final": {
+    "tick": 189,
+    "alive": 20,
+    "dead": 0,
+    "conversations": 4,
+    "private_events": 0,
+    "confirmed_adults": 0,
+    "lift": {
+      "id": "LIFT-01",
+      "deck": "C",
+      "phase": "idle",
+      "from": "A",
+      "to": "C",
+      "remaining": 0,
+      "passengers": [],
+      "queue": [],
+      "capacity": 4,
+      "completed": 15,
+      "fault": null,
+      "stalled": false
+    },
+    "calendar": {
+      "version": 1,
+      "timeZone": "America/Chicago",
+      "wallCursor": 1794628132165,
+      "displayMs": 1794638846545,
+      "carry": 55160,
+      "lastSeen": 1794628132165,
+      "episodeKey": "2026-11-09",
+      "visitedWeeks": {
+        "2026-11-09": true
+      },
+      "occurrences": {},
+      "pending": [],
+      "corrections": [],
+      "recovery": {
+        "discardedMs": 0,
+        "rollbackCount": 0
+      },
+      "mode": "wall",
+      "maxCatchupMs": 21600000,
+      "selectedRate": 20
+    },
+    "unique_sources": 139
+  },
+  "phone_reconnected": true,
+  "elapsed_seconds": 684.8792509289924
+}

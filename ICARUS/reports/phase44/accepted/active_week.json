@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "tests_run": 1,
+  "passed_cases": [
+    "test_field_active_segment_and_local_devices_survive_real_monday (test_expedition_integration.ExpeditionIntegration.test_field_active_segment_and_local_devices_survive_real_monday)"
+  ],
+  "runtime_root": "/workspace/work/phase44/frozen_corrected",
+  "source_commit": "34fd122280a9ffd91330bb0fa3e2d702c886ad57",
+  "errors": [],
+  "failures": []
+}

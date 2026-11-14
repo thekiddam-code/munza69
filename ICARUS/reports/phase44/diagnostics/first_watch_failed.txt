@@ -1,0 +1,5 @@
+normal real seconds 1.1 tick 0 camera C05
+normal real seconds 30.5 tick 2 camera C05
+normal real seconds 60.7 tick 4 camera C05
+normal real seconds 90.8 tick 6 camera C05
+normal real seconds 120.9 tick 8 camera C05

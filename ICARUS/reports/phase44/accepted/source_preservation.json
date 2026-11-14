@@ -1,0 +1,17 @@
+{
+  "baseline": "67399a5096d92530057645eba80e4f74af75b604",
+  "runtime": "34fd122280a9ffd91330bb0fa3e2d702c886ad57",
+  "unchanged_paths": [
+    "ICARUS/web/calendar.js",
+    "ICARUS/web/voyage-clock.js",
+    "ICARUS/web/host-authority.js",
+    "ICARUS/web/durable-store.js",
+    "ICARUS/web/backup-codec.js",
+    "ICARUS/web/backup-transfer.js",
+    "ICARUS/bridge_service.py",
+    "ICARUS/tv_service.py",
+    "UMBRA"
+  ],
+  "git_diff_exit_code": 0,
+  "all128_runtime_hashes_unchanged_after_freeze": true
+}
