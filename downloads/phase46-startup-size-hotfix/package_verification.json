@@ -1,0 +1,40 @@
+{
+  "zip": "ICARUS_Phase4_6_Startup_Size_Hotfix_Lite.zip",
+  "source_commit": "6884b7594c391cf2c4677ea8d2a9b0cc12432a74",
+  "tested_runtime_commit": "20001c00ffaf6538cf7bb3dbbcf3c1b2dad69a06",
+  "sha256": "bd8ddb8a14cdd370dc3c3c52ece22fdbf721716293223a6b304b58533dea8abf",
+  "bytes": 948927,
+  "runtime_files": 138,
+  "unchanged_runtime_files_from_boot_hotfix": 132,
+  "changed_or_added_runtime_files": [
+    "server.py",
+    "web/drone-ops.js",
+    "web/drone-ui.js",
+    "web/icarus.html",
+    "web/operational-ui.js",
+    "web/telemetry-packet.js"
+  ],
+  "retained_source_files": 220,
+  "zip_entries": 221,
+  "all_crcs_and_source_hashes_passed": true,
+  "runtime_identical_to_tested_freeze": true,
+  "original_boot_hotfix_zip_unchanged": true,
+  "private_backup_included": false,
+  "extracted_package_verification": {
+    "user_voyage": {
+      "passed": true,
+      "tests_run": 4,
+      "seconds": 160.665
+    },
+    "boot": {
+      "passed": true,
+      "tests_run": 8,
+      "seconds": 49.131
+    }
+  },
+  "extracted_package_case_executions": 12,
+  "source_case_executions": 509,
+  "total_accepted_case_executions": 521,
+  "private_backup_unchanged": true,
+  "physical_windows_android_tv_tailscale_antivirus_tests_run": false
+}

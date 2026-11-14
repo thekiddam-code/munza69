@@ -1,0 +1,13 @@
+test_boot_authorization_failure_and_retry_are_separate_from_writer_ownership (__main__.BootHotfix.test_boot_authorization_failure_and_retry_are_separate_from_writer_ownership) ... ok
+test_boot_bootstrap_error_is_actual_and_valid_key_recovers_without_reset (__main__.BootHotfix.test_boot_bootstrap_error_is_actual_and_valid_key_recovers_without_reset) ... ok
+test_boot_delayed_asset_keeps_input_until_actual_initialization_and_explicit_entry (__main__.BootHotfix.test_boot_delayed_asset_keeps_input_until_actual_initialization_and_explicit_entry) ... ok
+test_boot_departed_server_lease_waits_then_resolves_without_reloading_or_bypassing (__main__.BootHotfix.test_boot_departed_server_lease_waits_then_resolves_without_reloading_or_bypassing) ... ok
+test_boot_initialization_error_retry_keeps_existing_voyage (__main__.BootHotfix.test_boot_initialization_error_retry_keeps_existing_voyage) ... ok
+test_boot_live_owner_is_never_stolen_and_lost_generation_never_reclaims (__main__.BootHotfix.test_boot_live_owner_is_never_stolen_and_lost_generation_never_reclaims) ... ok
+test_boot_lost_held_generation_is_fenced_even_after_other_owner_expires (__main__.BootHotfix.test_boot_lost_held_generation_is_fenced_even_after_other_owner_expires) ... ok
+test_boot_real_storage_completion_delay_keeps_key_and_writer_pending (__main__.BootHotfix.test_boot_real_storage_completion_delay_keeps_key_and_writer_pending) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 45.963s
+
+OK

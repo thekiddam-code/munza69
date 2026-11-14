@@ -1,0 +1,9 @@
+test_size_existing_user_world_restart_keeps_crew_maps_history_and_every_recording (__main__.StartupSize.test_size_existing_user_world_restart_keeps_crew_maps_history_and_every_recording) ... ok
+test_size_paired_terminal_receives_existing_world_without_stream_size_failure (__main__.StartupSize.test_size_paired_terminal_receives_existing_world_without_stream_size_failure) ... ok
+test_size_payload_rejection_is_not_a_writer_failure_and_reports_exact_operation (__main__.StartupSize.test_size_payload_rejection_is_not_a_writer_failure_and_reports_exact_operation) ... ok
+test_size_record_frames_load_on_selection_and_never_mutate_saved_media (__main__.StartupSize.test_size_record_frames_load_on_selection_and_never_mutate_saved_media) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 170.075s
+
+OK

@@ -1,0 +1,114 @@
+{
+  "before": {
+    "publish": [
+      {
+        "phase": "initial",
+        "status": 200,
+        "bytes": 63896
+      },
+      {
+        "phase": "restore_existing",
+        "status": 413,
+        "bytes": 132757
+      },
+      {
+        "phase": "reload_existing",
+        "status": 413,
+        "bytes": 132757
+      },
+      {
+        "phase": "reload_existing",
+        "status": 413,
+        "bytes": 132755
+      },
+      {
+        "phase": "reload_existing",
+        "status": 413,
+        "bytes": 132757
+      }
+    ],
+    "boot": "DISCONNECTED \u00b7 READ ONLY",
+    "bridge": "\u25cf Too large",
+    "tick": 46035,
+    "writer": false,
+    "storage": {
+      "backend": "indexeddb",
+      "ready": true,
+      "warning": null
+    },
+    "uncaught_page_errors": [],
+    "console_errors": [
+      {
+        "phase": "initial",
+        "text": "Failed to load resource: the server responded with a status of 404 (File not found)"
+      },
+      {
+        "phase": "restore_existing",
+        "text": "Failed to load resource: the server responded with a status of 413 (Request Entity Too Large)"
+      },
+      {
+        "phase": "reload_existing",
+        "text": "Failed to load resource: the server responded with a status of 413 (Request Entity Too Large)"
+      },
+      {
+        "phase": "reload_existing",
+        "text": "Failed to load resource: the server responded with a status of 413 (Request Entity Too Large)"
+      },
+      {
+        "phase": "reload_existing",
+        "text": "Failed to load resource: the server responded with a status of 413 (Request Entity Too Large)"
+      }
+    ],
+    "http_failures": "Not collected separately in the earlier trace; publish status and console failures were captured"
+  },
+  "after": {
+    "publish": [
+      {
+        "phase": "initial",
+        "status": 200,
+        "bytes": 63896
+      },
+      {
+        "phase": "restore_existing",
+        "status": 200,
+        "bytes": 109918
+      },
+      {
+        "phase": "reload_existing",
+        "status": 200,
+        "bytes": 109920
+      },
+      {
+        "phase": "reload_existing",
+        "status": 200,
+        "bytes": 109920
+      },
+      {
+        "phase": "reload_existing",
+        "status": 200,
+        "bytes": 109920
+      }
+    ],
+    "boot": "ICARUS ONLINE",
+    "bridge": "\u25cf LINKED \u00b7 authoritative host",
+    "tick": 46035,
+    "writer": true,
+    "storage": {
+      "backend": "indexeddb",
+      "ready": true,
+      "warning": null
+    },
+    "uncaught_page_errors": [],
+    "console_errors": [
+      {
+        "phase": "initial",
+        "text": "Failed to load resource: the server responded with a status of 404 (File not found)"
+      }
+    ],
+    "http_failures": []
+  },
+  "first_original_observed_publish_bytes": 132753,
+  "same_user_backup_used": true,
+  "original_backup_sha256": "888ea1574d2b24ae6e4f7911b29dbf2c22079fbbaa4f34cd64f350afbbff7d75",
+  "private_world_or_png_payloads_in_report": false
+}
