@@ -11,8 +11,8 @@ try:
   if data.get('telemetry') and data['telemetry'].get('tick',-1)>=1 and data['telemetry']['rooms']:break
   p.wait_for_timeout(100)
  assert data.get('telemetry',{}).get('rooms'),data
- p.set_viewport_size({'width':1440,'height':1000});p.locator('#icarus-menu [data-page="settings"]').click();p.locator('#page-settings [data-subtab="general"]').click();p.locator('.classified-terminal summary').click();p.locator('.classified-unlock').click();p.wait_for_function('document.querySelector(".classified-status").textContent.includes("CLASSIFIED HOST CONNECTED")')
+ p.set_viewport_size({'width':1440,'height':1000});p.locator('#icarus-menu [data-page="settings"]').click();p.locator('#page-settings [data-subtab="general"]').click();p.evaluate("()=>{const draw=ICARUSPixelCamera.draw;ICARUSPixelCamera.draw=(c,r,o)=>{const ms=draw(c,r,o);if(c.matches('.classified-terminal canvas'))c.dataset.sourceCamera=r?.id||'';return ms;};}");p.locator('.classified-terminal summary').click();p.locator('.classified-unlock').click();p.wait_for_function('document.querySelector(".classified-status").textContent.includes("CLASSIFIED HOST CONNECTED")')
  for room in ['COV-A05','COV-A06']:
-  p.locator('.classified-camera').select_option(room);p.wait_for_function('r=>document.querySelector(".classified-camera").value===r',arg=room);p.locator('.classified-terminal canvas').scroll_into_view_if_needed();p.locator('.classified-terminal canvas').screenshot(path=str(a.output/(room+'.png')))
+  p.locator('.classified-camera').select_option(room);p.wait_for_function('r=>document.querySelector(".classified-terminal canvas").dataset.sourceCamera===r',arg=room);p.locator('.classified-terminal canvas').scroll_into_view_if_needed();p.locator('.classified-terminal canvas').screenshot(path=str(a.output/(room+'.png')))
  data=p.evaluate("ICARUSHost.request('classified')");(a.output/'restricted_sources.json').write_text(json.dumps({'label':'Actual localhost restricted non-explicit procedural sensors in isolated test voyage. No ordinary public/private camera policy change; not recorded footage.','telemetry':data},indent=2))
 finally:t.tearDown();T.tearDownClass()
