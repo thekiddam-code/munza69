@@ -211,6 +211,9 @@ def action(d):
   raise ValueError('Unknown action')
 
 def valid_icarus_command(command):
+ if isinstance(command,str) and re.fullmatch(r'expedition:recall:M-\d{4,8}',command):return True
+ if isinstance(command,str) and re.fullmatch(r'expedition:sensitivity:[23]',command):return True
+ if isinstance(command,str) and re.fullmatch(r'expedition:request:(survey|inspection|repair|salvage|reconnaissance|sampling|anomaly|retrieval):(auto|[0-9]|1[0-9]|2[0-4])',command):return True
  if isinstance(command,str) and re.fullmatch(r'systems:(inspect|maintain):(GRAVITY-CORE|CIRCUIT-(habitation|medical|science|cargo|hangar|engineering))',command):return True
  if isinstance(command,str) and re.fullmatch(r'systems:(isolate-gravity|circuit):(habitation|medical|science|cargo|hangar|engineering):[01]',command):return True
  if isinstance(command,str) and re.fullmatch(r'systems:restore:(habitation|medical|science|cargo|hangar|engineering):(gradual|rapid)',command):return True
