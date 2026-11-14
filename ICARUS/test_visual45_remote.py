@@ -22,3 +22,11 @@ class VisualRemote(ExpeditionRemote):
    if code==200 and (data.get('telemetry') or {}).get('tick',-1)>=1 and data['telemetry']['rooms']:return data
    pc.wait_for_timeout(100)
   self.fail('Actual classified publication did not commission expected sensors: '+str(data))
+ def test_visual_authorization_is_usable_before_camera_asset_finishes_loading(self):
+  c=self.browser.new_context();self.contexts.append(c);p=c.new_page();held=[];p.route('**/pixel-camera.js*',lambda r:held.append(r));p.goto(self.url+'/icarus.html?icarus_soak=1',wait_until='commit');p.locator('#boot-auth-code').wait_for();p.wait_for_function('!!window.ICARUSHost?.authorize&&!document.querySelector(".boot-auth button").disabled');
+  for _ in range(3000):
+   if held:break
+   p.wait_for_timeout(10)
+  self.assertTrue(held);self.assertEqual(p.evaluate('typeof __icarusSoak'),'undefined');p.locator('#boot-auth-code').fill('test-host');p.locator('.boot-auth button').click();p.wait_for_function('document.querySelector(".boot-auth-result").textContent.startsWith("Verified")||document.querySelector(".boot-auth-result").textContent.startsWith("Code verified")');self.assertFalse(p.evaluate('ICARUSBoot.complete'));self.assertEqual(p.evaluate('typeof __icarusSoak'),'undefined');
+  for r in held:r.continue_()
+  p.wait_for_function('ICARUSBoot.complete');self.assertTrue(p.evaluate('ICARUSHost.canWrite()&&ICARUSDurable.canWrite()'));self.assertFalse(p.evaluate('document.getElementById("icarus-main").inert'))
