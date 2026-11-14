@@ -1,0 +1,6 @@
+test_field_active_segment_and_local_devices_survive_real_monday (test_expedition_integration.ExpeditionIntegration.test_field_active_segment_and_local_devices_survive_real_monday) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 25.216s
+
+OK

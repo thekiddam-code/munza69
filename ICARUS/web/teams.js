@@ -46,7 +46,7 @@ function field(s,m,job,env){
  for(const p of members){
   p.expeditionAway=job.location;p.energy=Math.max(0,p.energy-.025);
   for(const [k,rate] of [['food',.0007],['water',.0014],['oxygen',.001]])if(m.cargo&&env.economy.cargoUse(s,m,k,rate)<rate-1e-9)emergency=true;
-  if(m.phase==='onsite'&&s.tick%60===0&&env.random()<env.life.risk(p,members.filter(q=>q!==p))*.12)env.life.hurt(s,p,8+env.random()*12,'team field accident at '+job.location,env.emit);
+  if(!env.groundedHazards&&m.phase==='onsite'&&s.tick%60===0&&env.random()<env.life.risk(p,members.filter(q=>q!==p))*.12)env.life.hurt(s,p,8+env.random()*12,'team field accident at '+job.location,env.emit);
   if(p.vitals.health<60||p.vitals.fatigue>85||p.energy<25)emergency=true;
   m.conditions[p.name]={health:p.vitals.health,fatigue:p.vitals.fatigue,morale:p.vitals.morale,energy:p.energy,at:s.tick};
  }
@@ -61,7 +61,7 @@ function returned(s,m,job,env){
  if(m.returnedAt!==undefined)return;m.returnedAt=s.tick;s.remoteCore.director.crewReadyAt=s.remoteCore.director.crewReadyAt||{};
  env.economy.returnCargo(s,m);s.teamLog=s.teamLog||{suits:0,lostSuits:0,launches:0,decisions:[]};s.teamLog.suits+=m.suits||0;m.suits=0;
  const returns=[];
- for(const name of names(m)){const p=s.crew.find(p=>p.name===name);if(!p)continue;p.expeditionAway=false;p.room=m.transfer==='collar'?'C02':'C01';p.route=[];p.taskMinutes=20;p.task='Returned with expedition team';p.vitals.missions++;p.energy=Math.max(0,p.energy-5);returns.push({...m.conditions?.[name],name,health:p.vitals.health});if(job)s.remoteCore.director.crewReadyAt[name]=s.tick+180;}
+ for(const name of names(m)){const p=s.crew.find(p=>p.name===name);if(!p)continue;p.expeditionAway=false;p.room=m.returnRoom||(m.transfer==='collar'?'C02':'C01');p.route=[];p.taskMinutes=20;p.task='Returned with expedition team';p.vitals.missions++;p.energy=Math.max(0,p.energy-5);returns.push({...m.conditions?.[name],name,health:p.vitals.health});if(job)s.remoteCore.director.crewReadyAt[name]=s.tick+180;}
  if(job){job.members=[...names(m)];job.teamDebrief={members:returns,decisions:m.decisions||[],rescue:m.rescue||null,casualties:m.casualties||[],cargoReturned:true};}
 }
 const api={migrate,names,select,stage,launch,field,returned};if(typeof module==='object'&&module.exports)module.exports=api;else root.ICARUSTeams=api;

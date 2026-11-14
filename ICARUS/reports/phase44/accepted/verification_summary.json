@@ -1,0 +1,29 @@
+{
+  "runtime_source_commit": "34fd122280a9ffd91330bb0fa3e2d702c886ad57",
+  "passed": true,
+  "case_executions": 536,
+  "suites": {
+    "node": 369,
+    "full_expedition_and_inherited_browser": 86,
+    "additional_active_expedition_real_week": 1,
+    "http_remote_browser": 39,
+    "production_clock": 4,
+    "legacy_continuity": 19,
+    "bridge_tv_classified_services": 18
+  },
+  "count_policy": "Case executions, including separately executed inherited overlap; focused development reruns are not added again. Extracted ZIP checks reported separately.",
+  "campaigns_passed": [
+    "normal_1001:7real/25ship days",
+    "adverse_4807:7real/25ship days"
+  ],
+  "actual_time_watch_passed": true,
+  "hardware_not_run": [
+    "Windows laptop",
+    "physical Android phone/tablet and installed native APK",
+    "Samsung TV",
+    "real LAN/Tailscale",
+    "Windows/third-party antivirus",
+    "human visual/accessibility/GPU review"
+  ],
+  "limits": "No original video encoder, independent casualty rescue, fine optical/collision simulation or365-day acceptance. Native Android source recovery pending; no antivirus bypass."
+}

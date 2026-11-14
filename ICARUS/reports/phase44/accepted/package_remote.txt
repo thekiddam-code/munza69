@@ -1,0 +1,8 @@
+test_field_paired_request_and_follow_use_one_authoritative_world (test_expedition_remote.ExpeditionRemote.test_field_paired_request_and_follow_use_one_authoritative_world) ... ok
+test_field_remote_recall_attempts_real_return_and_receives_evidence (test_expedition_remote.ExpeditionRemote.test_field_remote_recall_attempts_real_return_and_receives_evidence) ... ok
+test_field_unpaired_and_invalid_requests_rejected_and_duplicate_request_runs_once (test_expedition_remote.ExpeditionRemote.test_field_unpaired_and_invalid_requests_rejected_and_duplicate_request_runs_once) ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 25.321s
+
+OK

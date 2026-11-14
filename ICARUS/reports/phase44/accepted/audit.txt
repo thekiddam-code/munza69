@@ -1,0 +1,56 @@
+{
+  "adverse_4807": {
+    "passed": true,
+    "real_days": 7,
+    "ship_days": 25.0,
+    "alive": 20,
+    "deaths": [],
+    "arrivals": 5,
+    "conversations": 440,
+    "weekly_films": 1,
+    "audit_errors": []
+  },
+  "normal_1001": {
+    "passed": true,
+    "real_days": 7,
+    "ship_days": 25.0,
+    "alive": 20,
+    "deaths": [],
+    "arrivals": 5,
+    "conversations": 474,
+    "weekly_films": 1,
+    "audit_errors": []
+  }
+}
+{
+  "adverse_4807": {
+    "alive": 20,
+    "deaths": [],
+    "ship_days": 25.0,
+    "component_repairs": 1,
+    "errors": []
+  },
+  "normal_1001": {
+    "alive": 20,
+    "deaths": [],
+    "ship_days": 25.0,
+    "component_repairs": 1,
+    "errors": []
+  }
+}
+{
+  "adverse_4807": {
+    "passed": true,
+    "arrivals": 5,
+    "sorties": 7,
+    "records": 40,
+    "errors": []
+  },
+  "normal_1001": {
+    "passed": true,
+    "arrivals": 5,
+    "sorties": 9,
+    "records": 46,
+    "errors": []
+  }
+}

@@ -1,3 +1,7 @@
+# ICARUS — Phase 4.4 Expedition Operations
+
+Start with [README_PHASE44.md](README_PHASE44.md) for installation, backups, migration and rollback. [PHASE44_ARCHITECTURE.md](PHASE44_ARCHITECTURE.md), [PHASE44_VALIDATION.md](PHASE44_VALIDATION.md) and [PHASE44_LIMITATIONS.md](PHASE44_LIMITATIONS.md) distinguish implemented expeditions from deferred rescue/art/hardware scope. Preserve your own voyage; test worlds are not user saves. Earlier version notes below remain historical.
+
 # ICARUS — Phase 2 Living World
 
 Current development: [README_PHASE2.md](README_PHASE2.md), [PHASE2_ARCHITECTURE.md](PHASE2_ARCHITECTURE.md), [PHASE2_PROGRESS.md](PHASE2_PROGRESS.md), [PHASE2_LIMITATIONS.md](PHASE2_LIMITATIONS.md) and [PHASE2_VALIDATION.md](PHASE2_VALIDATION.md). Existing Windows/Android runtime and browser save origin are preserved. Historical versions below remain reference.

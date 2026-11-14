@@ -1,0 +1,48 @@
+{
+  "label": "Technical deterministic controller example; legitimate request, actual elapsed controller steps, no injected discoveries/creatures, reconstruction not video",
+  "source_commit": "34fd122280a9ffd91330bb0fa3e2d702c886ad57",
+  "camera": {
+    "id": "BODY-1",
+    "name": "Suit camera \u00b7 Sana Okafor",
+    "kind": "field",
+    "cameraOwner": "Sana Okafor",
+    "camera": true,
+    "available": true,
+    "missionId": "M-0002",
+    "at": 347,
+    "location": 13,
+    "signal": "RELAYED",
+    "terrain": {
+      "kind": "cavern",
+      "seed": 13,
+      "depth": 60,
+      "pressure": 30,
+      "temperature": 4,
+      "visibility": 0.8,
+      "feature": "Subsurface Lake"
+    },
+    "actors": [
+      {
+        "name": "Frank Morrow",
+        "job": "Engineer",
+        "suit": true,
+        "state": "idle",
+        "task": "Traversing slope",
+        "x": 120,
+        "y": 186,
+        "facing": 1,
+        "moving": false,
+        "injured": false,
+        "carrying": "expedition loadout",
+        "body": {
+          "build": "medium",
+          "locomotion": "walk"
+        },
+        "node": "AST:13"
+      }
+    ],
+    "objects": [],
+    "lighting": 0.8,
+    "provenance": "LIVE PROCEDURAL SUIT-CAMERA STATE \u00b7 no video recording"
+  }
+}

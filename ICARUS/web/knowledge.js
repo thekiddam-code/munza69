@@ -16,7 +16,7 @@ function seedCharts(s){const k=s.knowledge;if(!k||k.migration.chartsDone)return;
 function actor(s,name){if(name==='SOL')return {name,sol:true};return (s.crew||[]).find(p=>p.name===name&&(p.vitals?.health??100)>0)||Object.values(s.entities?.registry||{}).find(p=>'NPC:'+p.id===name)||null;}
 function position(s,name){const p=actor(s,name);if(!p)return null;if(p.sol)return {domain:'ship',node:'SOL',stationary:true};if(name.startsWith('NPC:'))return {domain:'contact:'+p.location,node:p.id,stationary:true};
  if(p.liftRide)return {domain:'ship',node:'LIFT-01',stationary:false};
- if(p.expeditionAway){const loc=p.expeditionAway,m=s.remoteCore?.missions?.[loc]||s.remoteCore?.missions?.frontier;if(!m||m.phase!=='onsite')return {domain:'transit:'+loc,node:null,stationary:false};const w=loc==='asteroid'?s.asteroidExploration:loc==='derelict'?s.remoteExploration:null;return {domain:loc,node:p.fieldPosition??w?.position??('mission:'+m.id),stationary:true};}
+ if(p.expeditionAway){const loc=p.expeditionAway,m=s.remoteCore?.missions?.[loc]||s.remoteCore?.missions?.frontier;if(m?.ops44?.edge)return {domain:loc,node:p.fieldPosition??m.ops44.node,stationary:false};if(!m||m.phase!=='onsite')return {domain:'transit:'+loc,node:null,stationary:false};const w=loc==='asteroid'?s.asteroidExploration:loc==='derelict'?s.remoteExploration:null;return {domain:loc,node:p.fieldPosition??w?.position??('mission:'+m.id),stationary:true};}
  return {domain:'ship',node:p.nav?.at||'R:'+p.room,stationary:!p.route?.length};
 }
 function entry(s,name,id){return s.knowledge?.actors[name]?.entries[id]||null;}

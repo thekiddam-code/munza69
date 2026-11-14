@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "tests_run": 3,
+  "passed_cases": [
+    "test_field_paired_request_and_follow_use_one_authoritative_world (test_expedition_remote.ExpeditionRemote.test_field_paired_request_and_follow_use_one_authoritative_world)",
+    "test_field_remote_recall_attempts_real_return_and_receives_evidence (test_expedition_remote.ExpeditionRemote.test_field_remote_recall_attempts_real_return_and_receives_evidence)",
+    "test_field_unpaired_and_invalid_requests_rejected_and_duplicate_request_runs_once (test_expedition_remote.ExpeditionRemote.test_field_unpaired_and_invalid_requests_rejected_and_duplicate_request_runs_once)"
+  ],
+  "runtime_root": "/workspace/work/phase44/extracted/ICARUS_Phase4_4_Expedition_Operations_Lite",
+  "source_commit": "8cb19b2cc71561569c59aceb2d38af31235835a4",
+  "errors": [],
+  "failures": []
+}
