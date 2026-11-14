@@ -23,3 +23,5 @@ Get-FileHash .\ICARUS_Phase4_6_Boot_Hotfix_Lite.zip -Algorithm SHA256
 Not run: physical Windows/Samsung/native APK/LAN/Tailscale, antivirus or new long-duration campaigns. Linux Chromium/local HTTP and device emulation do not establish physical-device validation. No unrelated gameplay changes or lock bypass were introduced.
 
 All **15 extracted-package checks passed** (8 startup +7 exploration). Full package integrity and case counts are in package_verification.json.
+
+[Draft review PR #11](https://github.com/thekiddam-code/munza69/pull/11) · [Verified public download hash](GITHUB_DOWNLOAD_VERIFICATION.json). The public download returned HTTP200 and matched the local checksum.

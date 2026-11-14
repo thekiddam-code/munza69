@@ -1,0 +1,13 @@
+{
+  "kind": "Phase4.6 targeted boot hotfix; not a new phase",
+  "branch": "codex/phase46-boot-hotfix",
+  "draft_pr": "https://github.com/thekiddam-code/munza69/pull/11",
+  "runtime_commit": "fc8ce280689fda785a34d046f1187d5fcd6aee55",
+  "lite_source_commit": "792751141c3f78ffb3ffdd7af728d29bf75b3f7b",
+  "source_case_executions_passed": 497,
+  "extracted_package_checks_passed": 15,
+  "original_phase46_package_preserved": true,
+  "only_four_runtime_files_changed": true,
+  "physical_windows_testing_performed": false,
+  "public_download_checksum_verified": true
+}
