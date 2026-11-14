@@ -2,3 +2,4 @@
 
 /* Startup remains scrollable and key entry stable while protected ownership waits. */
 #icarus-boot{place-items:start center}.boot-shell{margin-block:auto}.boot-shell .boot-observe{display:block;width:100%;min-height:48px;font-size:18px;font-weight:700;letter-spacing:.08em;background:#244b48;border:2px solid #9ed0ba;margin-top:18px}.boot-shell .boot-observe[hidden]{display:none}
+.boot-shell .boot-observe{position:sticky;top:8px;z-index:1}
