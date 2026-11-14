@@ -341,3 +341,9 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - Preserve both existing rooms and their distinct functions: recreation for games/social activities; observation lounge for quiet viewing/relaxation, with actual supported ship geometry and view, not fabricated windows.
 - **Future gym request:** add a separate, physically connected Fitness Center rather than repurposing the Observation Lounge. Inspect ship layout and expansion constraints before choosing a location; preserve topology, room IDs, doors, cameras, saves and accessible circulation. Ground workout animations in actual tasks and support accessible equipment.
 - Do not mark gym as implemented. Prior conditional 'convert second recreation room' instructions do not apply because the assumed second recreation room does not exist.
+
+## Gym layout decision — add room or consolidate underused rooms
+- User considers a gym the main missing room and approves **adding one dedicated Fitness Center**, with consolidation of two underused rooms as an acceptable alternative. Existing ship rooms vary in size; do not assume uniform dimensions.
+- Prefer adding a properly connected gym if ship topology and layout allow. Otherwise inspect actual room registry and functional dependencies, propose safe consolidation of nonessential/underused rooms. Preserve Recreation Room and Observation Lounge unless user explicitly approves replacing one; preserve critical systems, cameras, doors, access, crew assignments and save compatibility.
+- Include cardio, resistance equipment, mats, lockers, hydration and accessible workout space, scaled to actual room geometry. Crew should physically navigate to equipment and exercise only as a real autonomous task; defer unsupported physiology effects rather than invent values.
+- **Status:** approved design direction for future implementation, no verified room modification yet.
