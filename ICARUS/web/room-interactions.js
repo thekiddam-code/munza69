@@ -1,0 +1,17 @@
+/* Existing ordinary-task clock: approach a real lounge/table/bunk before using it. No camera-driven work. */
+(function(root){'use strict';
+function tick(s,p){const old=p.roomInteraction,at=root.ICARUSSpatial.position(p),blocked=p.expeditionId||p.expeditionAway||p.expeditionPreparing||p.emergencyId||p.systemAssignment||p.maintenanceRoom||p.researchAssignment||p.medicalTreatment||p.survivalIncapacitated||p.rescuePatient||p.rescueMedic||p.privateEventId||p.responseAssignment||p.route?.length||p.liftRide||at.kind!=='room'||p.room!==p.target||(p.vitals?.health??100)<60||(p.energy??100)<28||(p.vitals?.fatigue??0)>75||(root.ICARUSShipSystems?.gravity(s,p.room)??1)<.8;
+ if(blocked){delete p.roomInteraction;return false;}
+ const pose=root.ICARUSEmbodiment.pose(p,at,false,s.tick),eligible=['recreation','rest','eat'].includes(pose.kind)&&p.interaction==='working',station=root.ICARUSRoomDesign.station(p.room,pose.kind,p);
+ if(!eligible||!station){delete p.roomInteraction;return false;}
+ const signature=p.room+'|'+p.task+'|'+station.id;
+ if(old&&old.signature===signature&&old.lastTick===s.tick)return old.phase!=='working';
+ if(p.taskMinutes<=0){if(old&&old.signature===signature&&old.phase==='working'&&old.kind==='seat'&&p.body?.locomotion!=='wheelchair'){old.phase='rising';old.y=195;old.lastTick=s.tick;p.roomPlacement={room:p.room,x:old.x,y:195};return true;}delete p.roomInteraction;return false;}
+ if(!old||old.signature!==signature){const occupied=s.crew.some(q=>q!==p&&q.room===p.room&&!q.route?.length&&q.roomInteraction?.fixture===station.id&&q.roomInteraction?.task===q.task);if(occupied){delete p.roomInteraction;return false;}p.roomInteraction={version:1,signature,task:p.task,room:p.room,fixture:station.id,kind:station.kind,phase:'approaching',x:old?.room===p.room?old.x:p.roomPlacement?.room===p.room?p.roomPlacement.x:38,y:195,fromX:old?.room===p.room?old.x:38,fromY:195,lastTick:-1,facing:1};}
+ const a=p.roomInteraction;const store=busy=>{p.roomPlacement={room:p.room,x:a.x,y:a.y};return busy;};a.lastTick=s.tick;a.fromX=a.x;a.fromY=a.y;
+ if(a.phase==='working')return store(false);if(a.phase==='seating'){a.phase='working';a.x=station.contact.x;a.y=station.contact.y;return store(false);}
+ const dest=station.approach,dx=dest.x-a.x,dy=dest.y-a.y,speed=p.body?.locomotion==='wheelchair'?21:28,nextFacing=Math.sign(dx)||a.facing;
+ if(a.facing!==nextFacing){a.facing=nextFacing;a.phase='turning';return store(true);}a.phase='approaching';if(Math.abs(dx)>speed)a.x+=Math.sign(dx)*speed;else{a.x=dest.x;a.y=dest.y;if(p.body?.locomotion==='wheelchair'){a.x=station.contact.x;a.y=station.contact.y;a.phase='working';}else if(['seat','eat','rest'].includes(station.kind))a.phase='seating';else a.phase='working';}return store(a.phase!=='working');}
+function observed(p){const a=p.roomInteraction;if(!a||a.room!==p.room||a.task!==p.task||p.route?.length||p.expeditionAway)return null;return {x:a.x,y:a.y,phase:a.phase,facing:a.facing,fixture:a.fixture,seated:a.phase==='working'&&['seat','eat'].includes(a.kind)&&p.body?.locomotion!=='wheelchair',kind:a.kind};}
+const api={tick,observed};if(typeof module==='object'&&module.exports){root.ICARUSRoomDesign=require('./room-design');root.ICARUSSpatial=require('./spatial');root.ICARUSEmbodiment=require('./embodiment');root.ICARUSShipSystems=require('./ship-systems');module.exports=api;}else root.ICARUSRoomInteractions=api;
+})(globalThis);

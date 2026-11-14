@@ -1,0 +1,34 @@
+/* Articulated original pixel anatomy. No world state changes during drawing. */
+(function(root){'use strict';
+const cache=new Map(),uniforms={Engineer:'#bc9d55',Medic:'#8bbfb6',Scientist:'#d2dcd2',Security:'#688b9f',Command:'#a5b29d',Comms:'#839fb8',HR:'#ac94af',Cargo:'#b69772',Operations:'#a0ab89'};
+function hash(n){return [...String(n)].reduce((h,c)=>(h*31+c.charCodeAt(0))>>>0,7);}
+function valid(a){return !!a&&a.version===1&&[['height',58,68],['skin',0,3],['hair',0,3],['style',0,4],['accessory',0,3],['stance',0,2]].every(([k,lo,hi])=>Number.isInteger(a[k])&&a[k]>=lo&&a[k]<=hi);}
+function appearance(p){if(valid(p.visualAppearance))return Object.fromEntries(['version','height','skin','hair','style','accessory','stance'].map(k=>[k,p.visualAppearance[k]]));const h=hash(p.name);return {version:1,height:60+h%3,skin:h%4,hair:(h>>>2)%4,style:(h>>>4)%5,accessory:(h>>>7)%4,stance:(h>>>9)%3};}
+function migrate(p){if(!p.visualAppearance)p.visualAppearance=appearance(p);return p.visualAppearance;}
+function geometry(p){const a=appearance(p),chair=p.body?.locomotion==='wheelchair',build=p.body?.build||'medium';return {width:chair?48:40,height:chair?49:a.height,bodyWidth:build==='large'?22:build==='small'?16:19,seated:chair||p.seated||['sit','sit-down','stand-up'].includes(p.state),wheelchair:chair,appearance:a};}
+function rect(c,x,y,w,h,color){c.fillStyle=color;c.fillRect(Math.round(x),Math.round(y),Math.max(0,w),Math.max(0,h));}
+function line(c,pts,color,width=2){c.strokeStyle=color;c.lineWidth=width;c.beginPath();pts.forEach(([x,y],i)=>i?c.lineTo(x,y):c.moveTo(x,y));c.stroke();}
+function sprite(p,frame){const g=geometry(p),a=g.appearance,key=JSON.stringify([p.name,p.job,p.state,frame,p.body,p.carrying,p.injured,p.suit,p.seated,p.moving,a]);if(cache.has(key))return cache.get(key);const v=document.createElement('canvas');v.width=g.width;v.height=g.height;const c=v.getContext('2d'),cx=g.width/2,ground=g.height-3,skin=['#e4b18a','#bc825c','#8f5d45','#e8c4a2'][a.skin%4],hair=['#292a30','#755039','#bdbaab','#453534'][a.hair%4],shirt=uniforms[p.job]||'#8da39c',walk=['walk','light-walk'].includes(p.state),roll=g.wheelchair&&p.moving,step=walk?[-3,-1,3,1][frame%4]*(a.stance===2?.75:1):0,seated=g.seated,headY=g.wheelchair?1:p.state==='stand-up'?6:p.state==='sit-down'?9:seated?13:a.stance===1&&p.state==='idle'?1:0,torsoY=headY+18,hipY=torsoY+(seated?15:19),b=g.bodyWidth,work=['repair','research','treatment','clean','inspect','console'].includes(p.state);
+ rect(c,cx-13,ground,27,2,'#030b10');
+ if(g.wheelchair){
+  // Far wheel/backrest and full load-bearing chair frame, before the seated body.
+  c.fillStyle='#15222b';c.beginPath();c.arc(cx-9,ground-10,10,0,Math.PI*2);c.fill();c.strokeStyle='#a9b7ba';c.lineWidth=2;c.stroke();rect(c,cx-14,18,4,17,'#819b9d');rect(c,cx-11,21,18,12,'#344d5b');rect(c,cx-9,31,20,4,'#adc0b8');line(c,[[cx-12,23],[cx-8,ground-5],[cx+15,ground-5],[cx+9,32]],'#829a9d',2);rect(c,cx+10,ground-7,11,3,'#a8b9b6');
+ }
+ // Bent thighs/shins for seats; independent articulated stride for walkers.
+ if(seated){rect(c,cx-7,hipY,19,5,'#364d5b');rect(c,cx+7,hipY+3,5,Math.max(4,ground-hipY-8),'#526674');rect(c,cx+6,ground-6,12,4,'#17252f');}
+ else {line(c,[[cx-5,hipY],[cx-6-step,ground-11],[cx-7+step,ground-3]],'#344a58',6);line(c,[[cx+5,hipY],[cx+6+step,ground-11],[cx+6-step,ground-3]],'#526572',6);rect(c,cx-11+step,ground-4,10,4,'#14232d');rect(c,cx+2-step,ground-4,10,4,'#192a34');}
+ rect(c,cx-b/2-1,torsoY,b+2,hipY-torsoY+2,'#192c37');rect(c,cx-b/2,torsoY+1,b,hipY-torsoY-1,shirt);rect(c,cx-b/2+2,torsoY+2,3,hipY-torsoY-3,'#ffffff20');rect(c,cx+b/2-4,torsoY+2,3,hipY-torsoY-3,'#00000035');rect(c,cx-b/2,hipY-1,b,3,'#243b48');rect(c,cx-3,hipY,5,2,'#c5af73');
+ if(p.job==='Scientist'){rect(c,cx-b/2,torsoY,4,hipY-torsoY+1,'#ecede0');rect(c,cx+b/2-4,torsoY,4,hipY-torsoY+1,'#bbc8c0');}
+ rect(c,cx-4,headY+13,8,6,skin);rect(c,cx-7,headY+2,14,13,skin);rect(c,cx-8,headY+1,16,5,hair);rect(c,cx-7,headY+5,3,6,hair);if(a.style===1){rect(c,cx+6,headY+5,4,12,hair);rect(c,cx+8,headY+16,3,6,hair);}if(a.style===2){rect(c,cx-9,headY,18,4,hair);rect(c,cx-10,headY+3,3,7,hair);}if(a.style===3)rect(c,cx-11,headY+6,5,6,hair);if(a.style===4){rect(c,cx+6,headY+3,4,8,hair);rect(c,cx-5,headY-1,8,3,hair);}rect(c,cx-2,headY+9,2,2,'#192a34');rect(c,cx+5,headY+9,2,2,'#192a34');rect(c,cx+1,headY+14,5,1,'#835a4a');if(a.accessory===0){rect(c,cx-3,headY+8,11,1,'#84b4bc');rect(c,cx-3,headY+9,4,2,'#375d70');}if(p.name==='Frank Morrow'){rect(c,cx-10,headY,20,3,'#be9957');rect(c,cx-4,headY+13,11,2,'#694a39');}
+ const shoulderY=torsoY+3,elbowY=torsoY+10,handY=work?torsoY+8:roll?torsoY+13+(frame%2)*4:torsoY+16,reach=work?12:roll?4:walk?step:['talk','listen','affection','search','float'].includes(p.state)?3+frame%3*3:3;
+ line(c,[[cx-b/2,shoulderY],[cx-b/2-3,elbowY],[cx-b/2+reach/2,handY]],shirt,4);line(c,[[cx+b/2,shoulderY],[cx+b/2+2,elbowY],[cx+b/2+reach,handY]],shirt,4);rect(c,cx-b/2+reach/2-2,handY,4,4,skin);rect(c,cx+b/2+reach-1,handY,4,4,skin);
+ if(a.accessory===1)rect(c,cx-b/2,torsoY+4,3,8,'#b6c8bd');if(a.accessory===2){rect(c,cx+2,torsoY+10,6,5,'#7c9194');rect(c,cx+3,torsoY+11,4,1,'#bdc8ba');}if(a.accessory===3){rect(c,cx-5,torsoY,10,2,'#d3d2b7');rect(c,cx-b/2,torsoY+13,4,2,'#b6c3b3');}rect(c,cx-5,torsoY+4,3,5,'#d7be75');rect(c,cx+1,torsoY+8,5,1,'#42616c');if(p.job==='Medic'){rect(c,cx+3,torsoY+1,2,7,'#bf655c');rect(c,cx+1,torsoY+3,6,2,'#bf655c');}if(work){rect(c,cx+b/2+reach+2,handY-5,2,10,'#b6ccc5');rect(c,cx+b/2+reach,handY-6,6,3,p.state==='research'?'#83c9b8':'#d8b362');}if(p.state==='eat'){rect(c,cx+10,handY,7,5,'#e0d0b0');rect(c,cx+17,handY+1,2,3,'#809c9d');}if(p.carrying)rect(c,cx+5,handY+1,12,9,'#b69a6a');
+ if(g.wheelchair){
+  // Near rear wheel spokes rotate from actual displacement, casters support footrests.
+  const wx=cx-9,wy=ground-10;c.fillStyle='#172a35';c.beginPath();c.arc(wx,wy,10,0,Math.PI*2);c.fill();c.strokeStyle='#9bb3b5';c.lineWidth=2;c.stroke();for(let i=0;i<4;i++){const theta=i*Math.PI/2+(roll?frame*Math.PI/8:0);line(c,[[wx,wy],[wx+Math.cos(theta)*8,wy+Math.sin(theta)*8]],'#617d85',1);}rect(c,cx-14,25,23,3,'#b0c4bd');line(c,[[cx+11,32],[cx+17,ground-5]],'#819a9e',2);for(const x of [cx+15,cx+20]){c.fillStyle='#8ca4a9';c.beginPath();c.arc(x,ground-2,3,0,Math.PI*2);c.fill();}if(roll)rect(c,cx-15+(frame%2)*3,29+(frame%2)*3,4,4,skin);
+ }
+ if(p.injured&&!g.wheelchair){rect(c,cx-7,hipY+7,5,4,'#e3d6b8');rect(c,cx+15,ground-25,2,25,'#8ca5aa');}if(p.suit){c.strokeStyle='#a4bec5';c.lineWidth=2;c.strokeRect(cx-10,headY-1,21,19);rect(c,cx-7,headY+7,16,5,'#78bfc777');rect(c,cx-b/2-5,torsoY+2,5,17,'#68828d');}
+ if(cache.size>=512)cache.delete(cache.keys().next().value);cache.set(key,v);return v;}
+function migrateAll(s){for(const p of s.crew||[])migrate(p);}
+const api={hash,valid,appearance,migrate,migrateAll,geometry,sprite,cache,version:2};if(typeof module==='object'&&module.exports)module.exports=api;else root.ICARUSCharacterDesign=api;
+})(globalThis);
