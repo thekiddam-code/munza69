@@ -9,7 +9,7 @@ function console(c,x,y,w,on){panel(c,x,y,w,35);screen(c,x+3,y+2,w-6,23,on);rect(
 function locker(c,x,y,w=28,h=94){panel(c,x,y,w,h,'#43535b');for(let dy=8;dy<20;dy+=4)rect(c,x+5,y+dy,w-10,1,'#192e39');rect(c,x+w-7,y+h/2,2,9,'#c1b99b');}
 function sofa(c,x,y,w){panel(c,x,y,w,29,'#695b52');rect(c,x+5,y+4,w-10,15,'#937d64');rect(c,x+6,y+20,w-12,11,'#ad9877');rect(c,x+1,y+14,6,20,'#655a51');rect(c,x+w-7,y+14,6,20,'#655a51');rect(c,x+8,y+33,4,6,'#233743');rect(c,x+w-12,y+33,4,6,'#233743');for(let xx=x+15;xx<x+w-8;xx+=24)rect(c,xx,y+5,1,13,'#5e5750');}
 function lamp(c,x,y,w,on,warm=false){rect(c,x,y,w,5,'#1a2d38');rect(c,x+2,y+4,w-4,3,on?(warm?'#dbc08e':'#accdcb'):'#35444b');if(on){c.fillStyle=warm?'#d3a9650a':'#8cd5e20a';c.beginPath();c.moveTo(x+2,y+7);c.lineTo(x+w-2,y+7);c.lineTo(x+w+15,y+85);c.lineTo(x-15,y+85);c.fill();}}
-function build(r){metrics.builds++;const v=document.createElement('canvas');v.width=384;v.height=216;const c=v.getContext('2d'),k=root.ICARUSRoomDesign.kind(r.id)||r.kind,on=(r.lighting??1)>.15,fault=(r.equipment?.condition??100)<50;
+function build(r){metrics.builds++;const v=document.createElement('canvas');v.width=384;v.height=216;const c=v.getContext('2d'),k=root.ICARUSRoomDesign.kind(r.room||r.id)||r.kind,on=(r.lighting??1)>.15,fault=(r.equipment?.condition??100)<50;
  rect(c,0,0,384,216,'#07131d');rect(c,8,17,368,155,['medical','science'].includes(k)?'#41535a':k==='lounge'?'#3c3938':'#293b46');
  // Structural bays differ by category; the front lane195 remains clear.
  const bay=k==='engineering'||k==='reactor'?96:k==='lounge'?128:64;
@@ -45,6 +45,6 @@ function build(r){metrics.builds++;const v=document.createElement('canvas');v.wi
  }else{locker(c,45,55,47,110);locker(c,100,55,47,110);console(c,224,124,93,on);lamp(c,60,18,263,on);}
  // Thin foreground frame gives depth without masking the activity lane.
  rect(c,0,0,8,216,'#06111b');rect(c,376,0,8,216,'#06111b');rect(c,0,0,384,16,'#071b27');rect(c,0,214,384,2,'#819b97');text(c,'ICARUS / '+r.id+' / '+(r.name||'').toUpperCase().slice(0,37),13,11,'#b2c7bd',7);if(r.hazard){rect(c,0,15,384,3,'#b77e4d');text(c,String(r.hazard).toUpperCase().slice(0,35),15,209,'#d5b37e');}return v;}
-function draw(c,r){const key=JSON.stringify([r.id,r.kind,r.name,(r.lighting??1)>.15,(r.equipment?.condition??100)<50,!!r.hazard,r.doors,r.lift,r.components?.map(x=>[x.id,x.health<60])]);let v=cache.get(key);if(!v){v=build(r);if(cache.size>=64)cache.delete(cache.keys().next().value);cache.set(key,v);}else metrics.hits++;c.drawImage(v,0,0);}
+function draw(c,r){const key=JSON.stringify([r.id,r.room,r.kind,r.name,(r.lighting??1)>.15,(r.equipment?.condition??100)<50,!!r.hazard,r.doors,r.lift,r.components?.map(x=>[x.id,x.health<60])]);let v=cache.get(key);if(!v){v=build(r);if(cache.size>=64)cache.delete(cache.keys().next().value);cache.set(key,v);}else metrics.hits++;c.drawImage(v,0,0);}
 root.ICARUSRoomArt={draw,metrics,cache,version:2};
 })(globalThis);
