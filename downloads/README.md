@@ -1,3 +1,7 @@
+# Current build: Phase 4.6 Autonomous Exploration & Drone Reconnaissance
+
+[Phase 4.6 Lite, actual screenshots, checksums and verification](phase46/README.md). Back up your voyage before upgrading; boot now waits for explicit ENTER. Older distributions remain unchanged.
+
 # Current build: Phase 4.5 Visual Overhaul & System Boot
 
 [Phase 4.5 download, before/after gallery, checksums and verification](phase45/README.md). Back up your voyage before upgrading. Older distributions remain unchanged.

@@ -1,0 +1,18 @@
+{
+  "passed": false,
+  "tests_run": 4,
+  "passed_cases": [
+    "test_drone_boot_remains_until_explicit_entry_even_after_unattended_ready (test_drone_remote.DroneRemote.test_drone_boot_remains_until_explicit_entry_even_after_unattended_ready)",
+    "test_drone_paired_remote_is_receive_only_commands_deduplicate_and_unknowns_stay_hidden (test_drone_remote.DroneRemote.test_drone_paired_remote_is_receive_only_commands_deduplicate_and_unknowns_stay_hidden)",
+    "test_drone_slow_initialization_keeps_key_and_does_not_declare_online_early (test_drone_remote.DroneRemote.test_drone_slow_initialization_keeps_key_and_does_not_declare_online_early)"
+  ],
+  "runtime_root": "/workspace/work/munza69/ICARUS",
+  "source_commit": null,
+  "errors": [],
+  "failures": [
+    {
+      "test": "test_drone_live_and_recovered_frames_cross_real_http_without_second_world (test_drone_remote.DroneRemote.test_drone_live_and_recovered_frames_cross_real_http_without_second_world)",
+      "detail": "Traceback (most recent call last):\n  File \"/workspace/work/munza69/ICARUS/test_drone_remote.py\", line 18, in test_drone_live_and_recovered_frames_cross_real_http_without_second_world\n    pc=self.page(pc=True);pc.wait_for_function('document.querySelector(\"#rd-bridge-status\").textContent.includes(\"LINKED\")');pc.evaluate('__icarusSoak.advance(120)');pc.evaluate('__icarusSoak.advance(120)');pc.evaluate('__icarusSoak.advance(120)');pc.evaluate('__icarusSoak.advance(120)');phone=self.page(width=820,height=1180);self.tab(phone,'icarus');phone.wait_for_function('document.querySelector(\".drone-status\").textContent.includes(\"sectors received\")');code,data=self.req('/api/icarus/live',headers={'Authorization':'Bearer test-client'});self.assertEqual(code,200);o=data['telemetry']['exploration'];self.assertTrue(o['drones']);self.assertGreater(len(o['maps']),1);self.assertTrue(o['records']);self.assertTrue(any(f.get('image') for c in o['records'] for f in c['frames']));self.assertEqual(data['telemetry']['tick'],pc.evaluate('__icarusSoak.time()'));self.assertEqual(phone.evaluate('typeof ICARUSDroneOps'),'undefined');self.assertTrue(pc.evaluate('__icarusSoak.snapshot().unifiedWorld.organisms[\"XENO-INITIAL\"].dormant'));self.assertEqual(pc.evaluate('__icarusSoak.snapshot().droneAudit'),[]);self.assertEqual(pc.evaluate('__icarusSoak.snapshot().resourceAudit'),[])\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: [] is not true\n"
+    }
+  ]
+}

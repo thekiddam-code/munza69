@@ -313,3 +313,7 @@ Refinement backlog: dedicated affectionate/seated/turning/alert/creature art; fu
 - When communication is lost, locally captured important clips may remain on device storage and become accessible only if the drone/device is recovered and storage survives. Do not grant SOL omniscient access to unreachable recordings.
 - Important recorded clips can feed the evidence archive and Sunday cinematic recap. Respect existing privacy boundaries and authorized access.
 - **Status:** crew/body event-state recording/custody implemented in Phase4.4 with explicit no-video reconstruction labels and verified bounded buffers. Drone functionality remains future scope; see PHASE44_VALIDATION.md.
+
+## Phase 4.6 scope boundary
+
+Paid persistent recon drones and explicit boot entry are implemented with verification in PHASE46_VALIDATION.md. Do not interpret this as completing every rescue/drone/recording idea above. Gym stays deferred by the user; preserve A03 Observation Lounge and A09 Crew Lounge. Mid-passage salvage, independent rescue craft, dedicated autonomous relay installation and on-demand original captured-media transfer remain future work. Native Android source recovery/build and physical Windows/Samsung/TV testing remain separate gates.

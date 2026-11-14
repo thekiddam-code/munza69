@@ -1,0 +1,32 @@
+{
+  "passed": true,
+  "runtime_commit": "a22f2aca871e988a94cdd5083f8c99022da53460",
+  "runtime_files": 137,
+  "case_executions": 595,
+  "suites": {
+    "node": 405,
+    "services": 18,
+    "browser": 100,
+    "remote": 49,
+    "clock": 4,
+    "legacy": 19
+  },
+  "all_final_cases_passed_no_skips": true,
+  "case_policy": "Executed cases including independent inherited overlap. Earlier candidate failures and focused development reruns are not counted. Extracted-package checks are separate.",
+  "campaigns": [
+    "normal1001 7real/25ship days",
+    "adverse4807 7real/25ship days"
+  ],
+  "independent_export_conservation_passed": true,
+  "core_drone_return_and_exact_reload_verified": true,
+  "boot_requires_explicit_enter_verified": true,
+  "final_game_certified": false,
+  "not_run": [
+    "Physical Windows laptop",
+    "Samsung phone/Tab S5e/TV",
+    "Native APK rebuild; pending original source recovery",
+    "Actual LAN/Tailscale",
+    "Antivirus scan",
+    "Hardware GPU/touch/accessibility and human visual/playability review"
+  ]
+}

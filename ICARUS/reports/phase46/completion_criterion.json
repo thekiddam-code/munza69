@@ -1,0 +1,40 @@
+{
+  "scope": "Actual isolated browser campaign with explicit initial available engineer/navigation hold; no drone/map/evidence injected",
+  "tick": 412,
+  "mission_history": [
+    {
+      "id": "D-1",
+      "at": 263,
+      "objective": "Survey observed reachable frontier",
+      "target": null,
+      "visited": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "returning": true,
+      "elapsed": 149,
+      "newCells": 3,
+      "completed": 412,
+      "outcome": "Survey return complete"
+    }
+  ],
+  "received_sectors": [
+    "0",
+    "1",
+    "2",
+    "3"
+  ],
+  "received_records": 4,
+  "captured_frames": 18,
+  "battery": {
+    "charged": 90,
+    "used": 27.750000000000064,
+    "battery": 62.24999999999985
+  },
+  "drone_audit": [],
+  "resource_audit": [],
+  "initial_xenomorph_dormant": true,
+  "save_reload_exact_verified_by_following_assertion": true
+}

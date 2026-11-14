@@ -211,6 +211,7 @@ def action(d):
   raise ValueError('Unknown action')
 
 def valid_icarus_command(command):
+ if isinstance(command,str) and re.fullmatch(r'drone:(build|autonomy:(on|off)|recall:DRONE-[12]|launch:DRONE-[12]:(auto|[0-9]|1[0-9]|2[0-4]))',command):return True
  if isinstance(command,str) and re.fullmatch(r'expedition:recall:M-\d{4,8}',command):return True
  if isinstance(command,str) and re.fullmatch(r'expedition:sensitivity:[23]',command):return True
  if isinstance(command,str) and re.fullmatch(r'expedition:request:(survey|inspection|repair|salvage|reconnaissance|sampling|anomaly|retrieval):(auto|[0-9]|1[0-9]|2[0-4])',command):return True

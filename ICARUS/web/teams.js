@@ -13,7 +13,7 @@ function select(s,job,candidates,life,preferred){
  const count=Math.max(2,Math.min(4,job.teamSize||2)),chosen=[],roles=job.type==='resource'?['Engineer','Scientist']:job.location==='derelict'?['Scientist','Security']:['Scientist','Engineer'];
  const score=p=>(p.vitals?.health??100)+(p.vitals?.morale??60)*.2-(p.vitals?.fatigue??0)-p.stress*.3+(p.vitals?.missions||0)*2+((p.career?.confidence||0)-(p.career?.caution||0))*2+chosen.reduce((n,q)=>n+(p.relationships?.[q.name]||0),0);
  const canSpare=p=>!['Medic','Engineer'].includes(p.job)||s.crew.filter(q=>q.job===p.job&&!q.expeditionAway&&!chosen.includes(q)&&life.ready(q)).length>1;
- const eligible=candidates.filter(p=>life.ready(p)&&(p.hunger??0)<75&&!p.systemAssignment&&!p.maintenanceRoom&&!p.expeditionAway&&!p.expeditionId&&!p.responseAssignment&&!p.emergencyId&&!p.researchAssignment&&!p.rescuePatient&&!p.rescueMedic);
+ const eligible=candidates.filter(p=>life.ready(p)&&(p.hunger??0)<75&&!p.droneAssignment&&!p.systemAssignment&&!p.maintenanceRoom&&!p.expeditionAway&&!p.expeditionId&&!p.responseAssignment&&!p.emergencyId&&!p.researchAssignment&&!p.rescuePatient&&!p.rescueMedic);
  if(preferred){const p=eligible.find(p=>p.name===preferred);if(p&&canSpare(p))chosen.push(p);}
  for(const role of roles){const list=eligible.filter(p=>!chosen.includes(p)&&p.job===role&&canSpare(p)).sort((a,b)=>score(b)-score(a)||a.name.localeCompare(b.name));if(chosen.length<count&&list.length)chosen.push(list[0]);}
  for(const p of eligible.sort((a,b)=>score(b)-score(a)||a.name.localeCompare(b.name)))if(chosen.length<count&&!chosen.includes(p)){

@@ -1,0 +1,25 @@
+# Phase 4.6 implementation record
+
+Baseline: Phase4.5 a996a6b; branch codex/autonomous-exploration-phase4-6. Read AGENTS/CODEX_START_HERE, Phase44/45 architecture and limits, active source and tests. Existing25-sector asteroid graph, passage gates, military seals, Knowledge receipt, Economy ledger, detailed FieldArt/PixelCamera, minute/catch-up loop and authoritative UMBRA commands are retained. No gym, new world, new clock or native replacement.
+
+Passes: A baseline/boot correction; B paid physical drones/sensors/custody; C actual camera and UMBRA UI; D deterministic/browser/remote/persistence/catch-up verification and screenshots; E package/document/review. Test failures are recorded and fixed, not reclassified as passes.
+
+Design: extend one graph with battery-driven unmanned flight through existing local C01→Landing Shelf transit and connected passages. No navigating through sealed/blocked edges. Independently stored onboard map is unavailable remotely until actual link/dock receipt. Sensors report existing environmental/utility/object conditions; no new biological activation. Build/service jobs use qualified physical crew task/navigation and real supplies; no free default drone. Bounded event frame records distinguish captured procedural images from state reconstruction; no physical video claim.
+
+Passes A–C implemented: explicit ENTER gate, separate writer/Bridge stages, paid C04→C01 engineering work, bounded two-chassis recon fleet, battery/condition/sensors, connected unknown-frontier survey, radio/relay obstruction, reserve return/stranding, co-located crew recovery and powered dock receipt, Knowledge-backed data delivery, source-labeled event frames, shared renderer and received-only UMBRA controls. Navigation holds active drones; public telemetry contains only received findings/status. Known machinery can justify existing repair missions; received stranded reports justify bounded retrieval proposals. No physical/native claims.
+
+Initial failures corrected: relay fixture had an obstructed/out-of-range placement; charge test expected >90 although launch threshold is ≥90; UI refresh reset unknown-cell disabled flags; command referenced a block-scoped UI function; command grammar initially omitted the server's actual validator; offscreen paused camera needed visibility-triggered redraw; tests initially read older published telemetry before the real HTTP update. Captured PNGs exceeded the existing131072-byte publish cap: latest received record is bounded and captured pixels are omitted explicitly when needed, retaining source-state frames labeled reconstruction; the full captured images remain in the host save. No transport limit/security bypass.
+
+Baseline384 Node cases passed. Integrated candidate403 Node cases,7 focused browser cases and focused real-HTTP cases have passed during development; final immutable-source suite results are recorded separately after freeze. Earlier failed/interrupted runs remain diagnostics, never counted as final passes.
+
+Recovery review found two further genuine edge cases before delivery: a stranded mid-passage chassis could be recovered from its endpoint, and a drone carried by a lost team could remain permanently marked carried. Recovery now requires a stationary co-located chassis; carrying-team loss leaves it at its last actual location. Stranded radios draw finite standby battery. Mid-passage salvage awaits a future precise retrieval controller rather than teleporting the chassis. Both cases have deterministic regressions. Runtime f78872d remains a pre-recovery candidate; final runtime below supersedes it.
+
+## Final immutable-source verification
+
+Runtime a22f2aca871e988a94cdd5083f8c99022da53460 passed405 Node,100 full browser,49 real-HTTP remote,4 production-clock,19 continuity and18 service cases (595 executions, no skips/errors/failures). Two7-real/25-ship-day campaigns, normal1001 and explicit-adverse4807, each made5 arrivals and7 finite autonomous drone sorties with20 received sectors/98 captured frames. Both exact checkpoint reloads and the independent exported resource/battery/source audit passed. All137 current runtime hashes match the freeze. No physical/native/AV claims.
+
+Actual screenshots verify the active primary drone pixels against its authoritative DTO, plus early/ready explicit-entry boot states. The native build remains pending source recovery; gym stays deferred. Packaging/extracted checks are recorded in downloads/phase46 separately.
+
+## Distribution verification
+
+Lite source11c49af03292a5ab2dc62d8cb2c1625e69cf8aa5 retains all137 tested runtime hashes. All215 source hashes/216 ZIP-entry CRCs passed. Extracted-package drone7, remote/boot4, expedition9 and visual6 cases passed (26 additional executions). Lite SHA256 eae56476450a826825cdfecfe6a4303ab8b71de31fe3d15d6c3eae2fdde3d960. Final evidence contains verified original isolated campaign exports and per-file manifests, not user saves. Runtime remains unchanged.

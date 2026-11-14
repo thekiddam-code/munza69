@@ -1,0 +1,17 @@
+{
+  "passed": false,
+  "tests_run": 3,
+  "passed_cases": [
+    "test_drone_boot_remains_until_explicit_entry_even_after_unattended_ready (test_drone_remote.DroneRemote.test_drone_boot_remains_until_explicit_entry_even_after_unattended_ready)",
+    "test_drone_slow_initialization_keeps_key_and_does_not_declare_online_early (test_drone_remote.DroneRemote.test_drone_slow_initialization_keeps_key_and_does_not_declare_online_early)"
+  ],
+  "runtime_root": "/workspace/work/munza69/ICARUS",
+  "source_commit": null,
+  "errors": [],
+  "failures": [
+    {
+      "test": "test_drone_paired_remote_is_receive_only_commands_deduplicate_and_unknowns_stay_hidden (test_drone_remote.DroneRemote.test_drone_paired_remote_is_receive_only_commands_deduplicate_and_unknowns_stay_hidden)",
+      "detail": "Traceback (most recent call last):\n  File \"/workspace/work/munza69/ICARUS/test_drone_remote.py\", line 8, in test_drone_paired_remote_is_receive_only_commands_deduplicate_and_unknowns_stay_hidden\n    pc=self.page(pc=True);pc.wait_for_function('document.querySelector(\"#rd-bridge-status\").textContent.includes(\"LINKED\")');phone=self.page(width=390,height=844);self.tab(phone,'icarus');phone.wait_for_selector('.drone-ops');phone.wait_for_function('document.querySelector(\".drone-status\").textContent.includes(\"sectors received\")');self.assertEqual(phone.evaluate('typeof ICARUSDroneOps'),'undefined');self.assertEqual(phone.evaluate('typeof __icarusSoak'),'undefined');self.assertEqual(phone.locator('.drone-map button:disabled').count(),25);phone.locator('.drone-build').click();pc.wait_for_function('__icarusSoak.snapshot().droneOperations.buildRequested');self.assertEqual(pc.evaluate('__icarusSoak.snapshot().tick'),0);self.assertLessEqual(phone.evaluate('document.documentElement.scrollWidth'),392)\n                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 0 != 25\n"
+    }
+  ]
+}

@@ -21,7 +21,7 @@ class UmbraBrowser(unittest.TestCase):
   for c in self.contexts:c.close()
   self.assertEqual(self.errors,[])
  def page(self,width=1280,height=800,pc=False,clock=False):
-  c=self.browser.new_context(viewport={'width':width,'height':height},has_touch=True);self.contexts.append(c);c.add_init_script("localStorage.setItem('remoteDeckToken','test-client');sessionStorage.setItem('icarusHostKey','test-host');window.__icarusSeed=10101;");p=c.new_page();p.on('pageerror',lambda e:self.errors.append(str(e)));
+  c=self.browser.new_context(viewport={'width':width,'height':height},has_touch=True);self.contexts.append(c);c.add_init_script("document.addEventListener('DOMContentLoaded',()=>{const enter=()=>{const b=document.querySelector('#icarus-boot .boot-observe');if(window.ICARUSBoot?.complete&&ICARUSBoot.states.connection.state==='ready'&&b&&!b.disabled){b.click();obs.disconnect();}};const obs=new MutationObserver(enter);obs.observe(document.body,{subtree:true,attributes:true,childList:true});enter();},{once:true});");c.add_init_script("localStorage.setItem('remoteDeckToken','test-client');sessionStorage.setItem('icarusHostKey','test-host');window.__icarusSeed=10101;");p=c.new_page();p.on('pageerror',lambda e:self.errors.append(str(e)));
   if clock:p.clock.install()
   p.goto(self.url+('/icarus.html?icarus_soak=1' if pc else '/'));p.wait_for_function('!!window.__icarusSoak' if pc else '!!window.UmbraApp');
   if not pc:p.wait_for_function('UmbraApp.online');p.wait_for_function('document.querySelector("#umbra-tv-capabilities").textContent.includes("TV configured")')

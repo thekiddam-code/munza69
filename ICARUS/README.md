@@ -1,3 +1,7 @@
+# ICARUS — Phase 4.6 Autonomous Exploration & Drone Reconnaissance
+
+Start with [README_PHASE46.md](README_PHASE46.md) for installation, voyage backups, migration and rollback. [Architecture](PHASE46_ARCHITECTURE.md), [validation](PHASE46_VALIDATION.md), [actual screenshots](reports/phase46/SCREENSHOTS.md) and [limitations](PHASE46_LIMITATIONS.md) explain the paid persistent drone operations and explicit boot entry. Preserve your voyage and original Android integration; gym remains deferred. Earlier notes are historical.
+
 # ICARUS — Phase 4.5 Visual Overhaul & System Boot
 
 Start with [README_PHASE45.md](README_PHASE45.md) for installation, pairing/configuration, backups and rollback. [PHASE45_ARCHITECTURE.md](PHASE45_ARCHITECTURE.md), [PHASE45_VALIDATION.md](PHASE45_VALIDATION.md), [actual camera comparisons](reports/phase45/VISUAL_COMPARISONS.md) and [limitations](PHASE45_LIMITATIONS.md) distinguish implemented visuals/boot from deferred gym/physics/hardware scope. Preserve your own voyage; test worlds are not user saves. Earlier notes below are historical.

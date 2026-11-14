@@ -1,0 +1,9 @@
+test_drone_boot_remains_until_explicit_entry_even_after_unattended_ready (test_drone_remote.DroneRemote.test_drone_boot_remains_until_explicit_entry_even_after_unattended_ready) ... ok
+test_drone_live_and_recovered_frames_cross_real_http_without_second_world (test_drone_remote.DroneRemote.test_drone_live_and_recovered_frames_cross_real_http_without_second_world) ... ok
+test_drone_paired_remote_is_receive_only_commands_deduplicate_and_unknowns_stay_hidden (test_drone_remote.DroneRemote.test_drone_paired_remote_is_receive_only_commands_deduplicate_and_unknowns_stay_hidden) ... ok
+test_drone_slow_initialization_keeps_key_and_does_not_declare_online_early (test_drone_remote.DroneRemote.test_drone_slow_initialization_keeps_key_and_does_not_declare_online_early) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 41.932s
+
+OK
