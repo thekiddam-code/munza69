@@ -28,10 +28,10 @@ function field(s,m,j,env,roomId){
  const w=init(s),v=w.military,members=(m.members||[m.crew]).map(n=>s.crew.find(p=>p.name===n&&p.expeditionAway==='asteroid')).filter(Boolean);if(!members.length||v.visited.includes(roomId))return;
  const room=s.asteroidExploration?.rooms.find(r=>r.id===roomId);if(!room?.visited||s.asteroidExploration.position!==roomId)return;
  v.visited.push(roomId);const source=record(s,env,'observation','The expedition physically surveyed '+room.name+'.',members.map(p=>p.name),{missionId:j.id,roomId});acquire(s,'WRECK-CELL-'+roomId,'Military wreck: '+room.name,source);
- if(roomId===24&&v.reservePower>=5){v.reservePower-=5;v.power=1;record(s,env,'mission','The field team restored local controls using five units from the wreck’s finite battery.',members.map(p=>p.name),{missionId:j.id,remainingPower:v.reservePower});
+ if(!env.passiveField&&roomId===24&&v.reservePower>=5){v.reservePower-=5;v.power=1;record(s,env,'mission','The field team restored local controls using five units from the wreck’s finite battery.',members.map(p=>p.name),{missionId:j.id,remainingPower:v.reservePower});
   if(env.random()<.08){const o=w.organisms['XENO-INITIAL'];v.doors[23]='open';o.sealed=false;o.dormant=false;record(s,env,'observation','Restored power released an unverified isolation interlock in the wreck command compartment.',members.map(p=>p.name),{missionId:j.id,roomId:23});}
  }
- if(roomId===22&&env.random()<.03)infect(s,members[0],'EGG-1',env);
+ if(!env.passiveField&&roomId===22&&env.random()<.03)infect(s,members[0],'EGG-1',env);
  v.interiorComplete=[21,22,23,24].every(id=>v.visited.includes(id));
 }
 
