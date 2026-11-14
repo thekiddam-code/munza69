@@ -1,0 +1,28 @@
+{
+  "zip": "ICARUS_Phase4_6_Boot_Hotfix_Lite.zip",
+  "source_commit": "792751141c3f78ffb3ffdd7af728d29bf75b3f7b",
+  "tested_runtime_commit": "fc8ce280689fda785a34d046f1187d5fcd6aee55",
+  "sha256": "6d36ddab8be110fac078af8fe8a6e89423ee9409bc75ef53bf22656c4a60f0a6",
+  "bytes": 937628,
+  "runtime_files": 137,
+  "unchanged_runtime_files_from_phase46": 133,
+  "changed_runtime_files": [
+    "web/boot-screen.css",
+    "web/boot-screen.js",
+    "web/host-authority.js",
+    "web/icarus.html"
+  ],
+  "retained_source_files": 217,
+  "zip_entries": 218,
+  "all_crcs_and_source_hashes_passed": true,
+  "runtime_identical_to_tested_freeze": true,
+  "original_phase46_zip_unchanged": true,
+  "extracted_package_checks": {
+    "passed": true,
+    "total": 15,
+    "cases": {
+      "boot": 8,
+      "drone": 7
+    }
+  }
+}
