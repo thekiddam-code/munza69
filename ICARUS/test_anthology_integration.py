@@ -18,7 +18,7 @@ class CoreIntegration(Integration):
         import functools
         cls.server.RequestHandlerClass=functools.partial(Editions,directory=str(ROOT/'web'))
     def page(self):
-        c=self.browser.new_context();self.contexts.append(c);c.add_init_script('window.__icarusSeed=10101;');p=c.new_page();p.on('pageerror',lambda e:self.errors.append(str(e)));p.goto(self.url);p.wait_for_function('!!window.__icarusSoak');return p
+        c=self.browser.new_context();self.contexts.append(c);c.add_init_script("document.addEventListener('DOMContentLoaded',()=>{const enter=()=>{const b=document.querySelector('#icarus-boot .boot-observe');if(window.ICARUSBoot?.complete&&ICARUSBoot.states.connection.state==='ready'&&b&&!b.disabled){b.click();obs.disconnect();}};const obs=new MutationObserver(enter);obs.observe(document.body,{subtree:true,attributes:true,childList:true});enter();},{once:true});");c.add_init_script('window.__icarusSeed=10101;');p=c.new_page();p.on('pageerror',lambda e:self.errors.append(str(e)));p.goto(self.url);p.wait_for_function('!!window.__icarusSoak');return p
     def configure(self,p,code):
         self.assertTrue(p.evaluate('__icarusSoak.save()'));p.evaluate('ICARUSDurable.flush()')
         script=(ROOT/'web/vendor/lz-string.min.js').read_text()+";(()=>{if(sessionStorage.getItem('fixture'))return;sessionStorage.setItem('fixture','1');const raw=localStorage.getItem('icarus-anthology-v14');const s=JSON.parse(raw.startsWith('ICARUS-LZ1:')?LZString.decompressFromUTF16(raw.slice(11)):raw);"+code+";if(s.clock){s.clock.elapsed=s.minute-480;s.tick=s.clock.elapsed;}localStorage.setItem('icarus-anthology-v14',JSON.stringify(s));})();"
