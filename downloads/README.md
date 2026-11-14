@@ -1,3 +1,7 @@
+# Current build: Phase 4.5 Visual Overhaul & System Boot
+
+[Phase 4.5 download, before/after gallery, checksums and verification](phase45/README.md). Back up your voyage before upgrading. Older distributions remain unchanged.
+
 # Current build: Phase 4.4 Expedition Operations
 
 [Phase 4.4 downloads, checksums and verification](phase44/README.md) preserve the existing Phase4.3 voyage and UMBRA. Back up before upgrading. Older distributions below are retained unchanged.

@@ -1,0 +1,11 @@
+test_visual_auth_checks_code_without_granting_a_lease (test_visual45_remote.VisualRemote.test_visual_auth_checks_code_without_granting_a_lease) ... ok
+test_visual_authorization_is_usable_before_camera_asset_finishes_loading (test_visual45_remote.VisualRemote.test_visual_authorization_is_usable_before_camera_asset_finishes_loading) ... ok
+test_visual_bootstrap_failure_is_readonly_and_retry_preserves_voyage (test_visual45_remote.VisualRemote.test_visual_bootstrap_failure_is_readonly_and_retry_preserves_voyage) ... ok
+test_visual_early_auth_while_bootstrap_pending_and_no_fake_progress (test_visual45_remote.VisualRemote.test_visual_early_auth_while_bootstrap_pending_and_no_fake_progress) ... ok
+test_visual_phone_gets_same_new_renderer_without_loading_a_kernel (test_visual45_remote.VisualRemote.test_visual_phone_gets_same_new_renderer_without_loading_a_kernel) ... ok
+test_visual_restricted_quarters_use_their_real_room_and_observable_appearance (test_visual45_remote.VisualRemote.test_visual_restricted_quarters_use_their_real_room_and_observable_appearance) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 27.090s
+
+OK

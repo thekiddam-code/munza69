@@ -1,0 +1,14 @@
+test_field_active_segment_and_local_devices_survive_real_monday (test_expedition_integration.ExpeditionIntegration.test_field_active_segment_and_local_devices_survive_real_monday) ... ok
+test_field_lost_recording_requires_physical_recovery_and_powered_ingestion (test_expedition_integration.ExpeditionIntegration.test_field_lost_recording_requires_physical_recovery_and_powered_ingestion) ... ok
+test_field_mid_passage_obstruction_reverses_actual_progress_without_teleport (test_expedition_integration.ExpeditionIntegration.test_field_mid_passage_obstruction_reverses_actual_progress_without_teleport) ... ok
+test_field_paid_repair_tests_actual_lift_power_without_creating_energy (test_expedition_integration.ExpeditionIntegration.test_field_paid_repair_tests_actual_lift_power_without_creating_energy) ... ok
+test_field_physical_preparation_route_return_and_source_records (test_expedition_integration.ExpeditionIntegration.test_field_physical_preparation_route_return_and_source_records) ... ok
+test_field_powered_receiver_loss_hides_live_views_and_local_records (test_expedition_integration.ExpeditionIntegration.test_field_powered_receiver_loss_hides_live_views_and_local_records) ... ok
+test_field_recall_waits_for_actual_communications (test_expedition_integration.ExpeditionIntegration.test_field_recall_waits_for_actual_communications) ... ok
+test_field_save_inside_real_segment_preserves_exact_future (test_expedition_integration.ExpeditionIntegration.test_field_save_inside_real_segment_preserves_exact_future) ... ok
+test_field_two_sorties_physically_link_industrial_and_cavern_terrain (test_expedition_integration.ExpeditionIntegration.test_field_two_sorties_physically_link_industrial_and_cavern_terrain) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 155.984s
+
+OK
