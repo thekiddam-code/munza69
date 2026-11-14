@@ -288,3 +288,11 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - Preserve established asteroid canon: deep borehole, mining planet history, derelict/military vessel, rare temporal anomalies and dormant threat conditions. Do not introduce active Xenomorphs or forced scripted discoveries.
 - Support meaningful mission variety: salvage/repair in built spaces, surveying in natural spaces, and combined expeditions across both. Maintain persistent maps, route hazards, and return logistics.
 - **Status:** approved world-design direction; Phase 4.4 implementation not yet started or verified.
+
+## Expedition field cameras — event-only recording (approved)
+- **Approved recording policy:** drone cameras and expedition crew/body cameras should **save only important moments**, not continuous footage archives. Live feeds can remain available where supported.
+- Event-triggered clips should capture meaningful actual simulation observations: discoveries, hazards, anomalies, equipment failures, encounters, accidents, mission milestones and other significant events. Use a bounded short pre-event buffer and post-event window where feasible, with configurable sensitivity and storage caps; avoid recording ordinary uneventful travel.
+- Preserve authentic provenance: camera/device, mission, simulated timestamp, location, event reason and any recording gaps. Save real observed/rendered footage when available; do not invent video to fill missing coverage or claim a reconstruction is an original recording.
+- When communication is lost, locally captured important clips may remain on device storage and become accessible only if the drone/device is recovered and storage survives. Do not grant SOL omniscient access to unreachable recordings.
+- Important recorded clips can feed the evidence archive and Sunday cinematic recap. Respect existing privacy boundaries and authorized access.
+- **Status:** user-approved future expedition/drone feature; not yet implemented.
