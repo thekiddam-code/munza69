@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "branch": "codex/expedition-operations-phase4-4",
+  "artifact_commit": "04b0611",
+  "downloads": [
+    {
+      "file": "ICARUS_Phase4_4_Expedition_Operations_Lite.zip",
+      "url": "https://raw.githubusercontent.com/thekiddam-code/munza69/refs/heads/codex/expedition-operations-phase4-4/downloads/phase44/ICARUS_Phase4_4_Expedition_Operations_Lite.zip",
+      "http_status": 200,
+      "bytes": 854111,
+      "sha256": "c99136da402f6238ce934e6742a58e9bce6963d9ca0fb0ca0035a499edf86338",
+      "matches_local_verified_zip": true
+    },
+    {
+      "file": "ICARUS_Phase4_4_Verification_Evidence.zip",
+      "url": "https://raw.githubusercontent.com/thekiddam-code/munza69/refs/heads/codex/expedition-operations-phase4-4/downloads/phase44/ICARUS_Phase4_4_Verification_Evidence.zip",
+      "http_status": 200,
+      "bytes": 11854742,
+      "sha256": "8b2eb78bd7bc62b04155ec98359515c09d41077b4164c2cd5bc2e5b0d4b864e1",
+      "matches_local_verified_zip": true
+    }
+  ]
+}

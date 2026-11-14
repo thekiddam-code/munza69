@@ -1,0 +1,15 @@
+{
+  "source_branch": "codex/expedition-operations-phase4-4",
+  "draft_pull_request": "https://github.com/thekiddam-code/munza69/pull/8",
+  "runtime_commit": "34fd122280a9ffd91330bb0fa3e2d702c886ad57",
+  "package_source_commit": "8cb19b2cc71561569c59aceb2d38af31235835a4",
+  "source_case_executions_passed": 536,
+  "exact_extracted_zip_case_executions_passed": 12,
+  "all128_runtime_hashes_match": true,
+  "public_zip_http_and_sha256_passed": true,
+  "unconditional_full_phase_complete": false,
+  "reason": "Physical/native/human gates unverified; independent casualty rescue, fine FOV/physics/final art and original video encoding remain incomplete. This is an integrated tested build within explicit limits.",
+  "main_and_existing_releases_modified": false,
+  "native_android_modified": false,
+  "antivirus_disabled": false
+}
