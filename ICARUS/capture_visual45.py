@@ -19,7 +19,7 @@ def main():
     t.advance(p,11 if label=='seated' else 1)
    t.operations(p);p.locator('.obs-select').select_option(room);p.wait_for_function('id=>ICARUSObservationLive.camera.selected===id',arg=room);p.locator('#camera-scene').scroll_into_view_if_needed();p.evaluate('ICARUSObservationLive.camera.draw(true)');p.locator('#camera-scene').screenshot(path=str(a.output/(label+'.png')));view=p.evaluate('id=>__icarusSoak.observation().rooms.find(r=>r.id===id)',room);
    if chair:assert any(q['body']['locomotion']=='wheelchair' for q in view['actors'])
-   (a.output/(label+'.json')).write_text(json.dumps({'label':'Actual active camera; isolated technical placement fixture, not natural event/video','viewport':[1440,1000],'canvas':[384,216],'camera':view},indent=2))
+   (a.output/(label+'.json')).write_text(json.dumps({'source_commit':json.loads((a.runtime/'BUILD_MANIFEST.json').read_text()).get('source_commit') if (a.runtime/'BUILD_MANIFEST.json').exists() else None,'label':'Actual active camera; isolated technical placement fixture, not natural event/video','viewport':[1440,1000],'canvas':[384,216],'camera':view},indent=2))
   print('Captured live camera comparisons',len(cases),flush=True)
  finally:t.tearDown();T.tearDownClass()
 if __name__=='__main__':main()

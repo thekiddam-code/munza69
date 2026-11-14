@@ -1,7 +1,7 @@
 """Exercise the ordinary page timer, without deterministic simulation hooks."""
 import argparse,functools,http.server,json,os,threading,unittest
 from pathlib import Path
-from datetime import datetime,timezone
+from datetime import datetime,timezone,timedelta
 from playwright.sync_api import sync_playwright
 from test_continuity import RecordedResult
 ROOT=Path(__file__).resolve().parent
@@ -14,7 +14,8 @@ class ProductionClock(unittest.TestCase):
     @classmethod
     def tearDownClass(cls):cls.browser.close();cls.pw.stop();cls.server.shutdown()
     def start(self,date,fixed=False):
-        self.context=self.browser.new_context(timezone_id='America/Chicago');p=self.context.new_page();self.errors=[];p.on('pageerror',lambda e:self.errors.append(str(e)));p.clock.install(time=datetime.fromisoformat(date).replace(tzinfo=timezone.utc));
+        self.context=self.browser.new_context(timezone_id='America/Chicago');p=self.context.new_page();self.errors=[];p.on('pageerror',lambda e:self.errors.append(str(e)));target=datetime.fromisoformat(date).replace(tzinfo=timezone.utc);p.clock.install(time=target-timedelta(minutes=1) if fixed else target); # No page loaded: approach the exact target from the past, never rewind elapsed clock-install latency.
+        
         if fixed:p.clock.pause_at(datetime.fromisoformat(date).replace(tzinfo=timezone.utc))
         p.goto(f'http://127.0.0.1:{self.server.server_port}/icarus.html');p.wait_for_function('document.querySelector("#status").textContent.includes("LIVE")');self.assertEqual(p.evaluate('typeof __icarusSoak'),'undefined');return p
     def creator(self,p):
