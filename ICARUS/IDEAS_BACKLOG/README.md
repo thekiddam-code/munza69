@@ -304,3 +304,11 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - Wheelchair character uses proper seated posture and complete chair geometry (frame, seat, backrest, large rear wheels, front casters, footrests), dedicated propulsion/turn animations and accessible pathing/interactions. Do not remove the character or treat the chair as decorative wheels.
 - Make visual interactions grounded in actual simulation state; no fake activity or fabricated rooms. Preserve 4.2B detailed cameras, 4.3 ship operations, and upcoming 4.4 expeditions. Add before/after screenshots, regression tests and performance checks.
 - **Status:** user approved as the next phase; implementation not yet verified.
+
+## UMBRA / ICARUS — truthful ship boot screen (approved)
+- **Approved UX:** show a dedicated, atmospheric ICARUS/UMBRA boot screen on initial launch, so the user sees real initialization stages and an unambiguous transition when the simulation is ready. Industrial sci-fi terminal styling, consistent with existing UMBRA UI.
+- Boot status must be grounded in actual host events (connecting, initializing simulation, restoring persistent state, synchronizing ship systems, writer authorization, surveillance readiness), not a fabricated countdown or arbitrary progress percentage. Clearly show stalled, failed, disconnected, and retry states; expose useful diagnostics and timings.
+- Make authorization code entry available early when authentication endpoint is ready, without blocking on camera assets/world render; distinguish READ ONLY from not-yet-authorized or loading. Preserve single-authoritative-writer server enforcement and protect credentials.
+- Display ICARUS ONLINE only after required readiness checks pass; distinguish simulation ready from command authorization granted and optional cameras still warming up. Transition to main UI once ready and authorized, with appropriate read-only access where applicable. Avoid forced waits, fake status, or bypassing security.
+- Keep startup lightweight and compatible with Windows host, desktop web, Android and remote Tailscale clients. Include recovery from connection loss and test refresh/reconnect and multiple clients.
+- **Status:** user-approved feature request; not yet implemented.
