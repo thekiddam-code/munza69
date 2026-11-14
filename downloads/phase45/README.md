@@ -15,3 +15,5 @@ Actual verification: **563 passing source case executions plus 21 checks against
 Physical Windows, Samsung phone/Tab S5e/TV, native APK, real LAN/Tailscale, antivirus, human visual/accessibility/touch and device GPU tests were **not run**. Coarse movement, limited interaction coverage and other unfinished work remain documented in [known limitations](../../ICARUS/PHASE45_LIMITATIONS.md). This is a tested development build, not final-game certification. Do not disable antivirus protection.
 
 Source is on `codex/visual-overhaul-system-boot-phase4-5`; main, previous downloads and existing releases are unchanged.
+
+[Draft review PR #9](https://github.com/thekiddam-code/munza69/pull/9) · [Verified public download hashes](GITHUB_DOWNLOAD_VERIFICATION.json). Both public ZIP URLs returned HTTP 200 and matched the local SHA-256 checksums.

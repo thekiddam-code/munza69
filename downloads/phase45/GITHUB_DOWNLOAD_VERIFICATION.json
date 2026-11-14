@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "downloads": [
+    {
+      "url": "https://raw.githubusercontent.com/thekiddam-code/munza69/refs/heads/codex/visual-overhaul-system-boot-phase4-5/downloads/phase45/ICARUS_Phase4_5_Visual_Overhaul_and_System_Boot_Lite.zip",
+      "http_status": 200,
+      "bytes": 904369,
+      "sha256": "5395c11cd8db4c421a089f042f31d54fadc203fd02ad7898eef231a4dd129efe",
+      "matches_published_checksum": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/thekiddam-code/munza69/refs/heads/codex/visual-overhaul-system-boot-phase4-5/downloads/phase45/ICARUS_Phase4_5_Verification_Evidence.zip",
+      "http_status": 200,
+      "bytes": 12830796,
+      "sha256": "9b9d6cbf2c6c7c74ed661893b561e63087ba0591753ec6ab91c28349ef3a9893",
+      "matches_published_checksum": true
+    }
+  ]
+}

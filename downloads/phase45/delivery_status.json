@@ -1,0 +1,13 @@
+{
+  "branch": "codex/visual-overhaul-system-boot-phase4-5",
+  "draft_pr": "https://github.com/thekiddam-code/munza69/pull/9",
+  "runtime_commit": "4bd2dadbd6e6541ef118e04b50b30ddbf561ae19",
+  "lite_source_commit": "4592a904561e6325edd79176231f66c38312093e",
+  "all134_runtime_hashes_unchanged": true,
+  "source_case_executions_passed": 563,
+  "extracted_zip_checks_passed": 21,
+  "public_download_checksums_verified": true,
+  "A03": "Observation Lounge retained; gym deferred by user",
+  "physical_device_and_native_gates_verified": false,
+  "unconditional_final_release_ready": false
+}
