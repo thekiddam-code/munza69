@@ -1,10 +1,11 @@
 /* Adapter over existing radio, custody, maps and event recorder; no external I/O. */
 (function(root){'use strict';
 function create(getState,ctx){const K=root.ICARUSKnowledge;
- function radio(from,to,a,b){if(!ctx.radioHardware())return false;if(a.domain==='ship'&&b.domain==='ship')return true;const loc=a.domain==='ship'?b.domain:b.domain==='ship'?a.domain:null;return !!loc&&['DIRECT','RELAYED'].includes(ctx.signal(loc));}
+ function radio(from,to,a,b){if(!ctx.radioHardware())return false;if(a.domain==='ship'&&b.domain.startsWith('transit:')||b.domain==='ship'&&a.domain.startsWith('transit:'))return ctx.transitLink?.((a.domain==='ship'?b.domain:a.domain).slice(8))===true;if(a.domain==='ship'&&b.domain==='ship')return true;const loc=a.domain==='ship'?b.domain:b.domain==='ship'?a.domain:null;return !!loc&&['DIRECT','RELAYED'].includes(ctx.signal(loc));}
  function recordsAvailable(from,to){const s=getState(),p=s.crew.find(p=>p.name===(from==='SOL'?to:from));return !!p&&!p.expeditionAway&&!p.route?.length&&['C01','C02','A01','A02','B01','B02','B05','B06','B10'].includes(p.room)&&K.position(s,p.name)?.node==='R:'+p.room&&ctx.radioHardware();}
  function delivered(m,f){if(m.to!=='SOL')return;const s=getState();if(!f.publicationSourceId){const r=ctx.publish('Received '+(f.kind==='reported-claim'?'UNVERIFIED CLAIM via ':f.kind==='inference'?'INFERENCE via ':'')+m.channel+' report from '+m.from+': '+f.text,f.kind==='inference'?'observation':f.kind,{...f.data,privateKnowledge:false,knowledgeDelivery:true,sourceFactId:f.id,observedSourceId:f.sourceId,observedAt:f.at,confidence:f.confidence,receivedFrom:m.from},f.witnesses||[]);f.publicationSourceId=r?.id||null;}
   if(f.data.map){s.knowledge.contacts=s.knowledge.contacts||{};s.knowledge.contacts[f.data.map.location]={...f.data.map,observedAt:f.at,receivedAt:s.tick,sourceId:f.publicationSourceId||f.sourceId};}
+  ctx.received?.(f);
  }
  function learned(name,f){root.ICARUSCrewCommunications?.review(getState(),name,f);if(f.kind==='death'&&f.data.deceased)ctx.grieve?.(name,f.data.deceased,f.sourceId);}
  function env(){return {radio,recordsAvailable,delivered,learned};}
