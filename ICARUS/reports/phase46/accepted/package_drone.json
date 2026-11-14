@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "tests_run": 7,
+  "passed_cases": [
+    "test_drone_autonomous_physical_survey_return_reload_and_actual_captured_frames (test_drone_integration.DroneIntegration.test_drone_autonomous_physical_survey_return_reload_and_actual_captured_frames)",
+    "test_drone_management_controls_are_optional_and_no_unknown_target (test_drone_integration.DroneIntegration.test_drone_management_controls_are_optional_and_no_unknown_target)",
+    "test_drone_mid_segment_save_catchup_and_persistent_fog (test_drone_integration.DroneIntegration.test_drone_mid_segment_save_catchup_and_persistent_fog)",
+    "test_drone_observation_ui_uses_real_camera_and_received_map (test_drone_integration.DroneIntegration.test_drone_observation_ui_uses_real_camera_and_received_map)",
+    "test_drone_real_clock_catchup_and_monday_boundary_do_not_reset_active_navigation (test_drone_integration.DroneIntegration.test_drone_real_clock_catchup_and_monday_boundary_do_not_reset_active_navigation)",
+    "test_drone_receiver_outage_withholds_findings_and_clips_then_ingests (test_drone_integration.DroneIntegration.test_drone_receiver_outage_withholds_findings_and_clips_then_ingests)",
+    "test_drone_rendering_and_management_view_do_not_advance_or_reveal_local_state (test_drone_integration.DroneIntegration.test_drone_rendering_and_management_view_do_not_advance_or_reveal_local_state)"
+  ],
+  "runtime_root": "/workspace/work/phase46/extracted/ICARUS_Phase4_6_Autonomous_Exploration_and_Drone_Reconnaissance_Lite",
+  "source_commit": "11c49af03292a5ab2dc62d8cb2c1625e69cf8aa5",
+  "errors": [],
+  "failures": []
+}

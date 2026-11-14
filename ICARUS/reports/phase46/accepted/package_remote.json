@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "tests_run": 4,
+  "passed_cases": [
+    "test_drone_boot_remains_until_explicit_entry_even_after_unattended_ready (test_drone_remote.DroneRemote.test_drone_boot_remains_until_explicit_entry_even_after_unattended_ready)",
+    "test_drone_live_and_recovered_frames_cross_real_http_without_second_world (test_drone_remote.DroneRemote.test_drone_live_and_recovered_frames_cross_real_http_without_second_world)",
+    "test_drone_paired_remote_is_receive_only_commands_deduplicate_and_unknowns_stay_hidden (test_drone_remote.DroneRemote.test_drone_paired_remote_is_receive_only_commands_deduplicate_and_unknowns_stay_hidden)",
+    "test_drone_slow_initialization_keeps_key_and_does_not_declare_online_early (test_drone_remote.DroneRemote.test_drone_slow_initialization_keeps_key_and_does_not_declare_online_early)"
+  ],
+  "runtime_root": "/workspace/work/phase46/extracted/ICARUS_Phase4_6_Autonomous_Exploration_and_Drone_Reconnaissance_Lite",
+  "source_commit": "11c49af03292a5ab2dc62d8cb2c1625e69cf8aa5",
+  "errors": [],
+  "failures": []
+}

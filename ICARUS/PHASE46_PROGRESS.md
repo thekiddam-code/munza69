@@ -19,3 +19,7 @@ Recovery review found two further genuine edge cases before delivery: a stranded
 Runtime a22f2aca871e988a94cdd5083f8c99022da53460 passed405 Node,100 full browser,49 real-HTTP remote,4 production-clock,19 continuity and18 service cases (595 executions, no skips/errors/failures). Two7-real/25-ship-day campaigns, normal1001 and explicit-adverse4807, each made5 arrivals and7 finite autonomous drone sorties with20 received sectors/98 captured frames. Both exact checkpoint reloads and the independent exported resource/battery/source audit passed. All137 current runtime hashes match the freeze. No physical/native/AV claims.
 
 Actual screenshots verify the active primary drone pixels against its authoritative DTO, plus early/ready explicit-entry boot states. The native build remains pending source recovery; gym stays deferred. Packaging/extracted checks are recorded in downloads/phase46 separately.
+
+## Distribution verification
+
+Lite source11c49af03292a5ab2dc62d8cb2c1625e69cf8aa5 retains all137 tested runtime hashes. All215 source hashes/216 ZIP-entry CRCs passed. Extracted-package drone7, remote/boot4, expedition9 and visual6 cases passed (26 additional executions). Lite SHA256 eae56476450a826825cdfecfe6a4303ab8b71de31fe3d15d6c3eae2fdde3d960. Final evidence contains verified original isolated campaign exports and per-file manifests, not user saves. Runtime remains unchanged.

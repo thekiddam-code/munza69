@@ -1,0 +1,23 @@
+{
+  "zip": "ICARUS_Phase4_6_Autonomous_Exploration_and_Drone_Reconnaissance_Lite.zip",
+  "source_commit": "11c49af03292a5ab2dc62d8cb2c1625e69cf8aa5",
+  "sha256": "eae56476450a826825cdfecfe6a4303ab8b71de31fe3d15d6c3eae2fdde3d960",
+  "bytes": 946603,
+  "runtime_files": 137,
+  "all_files": 216,
+  "crc_and_hashes_passed": true,
+  "tested_runtime_commit": "a22f2aca871e988a94cdd5083f8c99022da53460",
+  "all137_runtime_hashes_match": true,
+  "all215_source_hashes_and216_entry_crc_passed": true,
+  "tests_reports_tools_credentials_and_test_worlds_excluded": true,
+  "extracted_package_checks": {
+    "passed": true,
+    "cases": {
+      "drone": 7,
+      "remote": 4,
+      "field": 9,
+      "visual": 6
+    },
+    "total": 26
+  }
+}
