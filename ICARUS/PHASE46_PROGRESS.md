@@ -13,3 +13,9 @@ Initial failures corrected: relay fixture had an obstructed/out-of-range placeme
 Baseline384 Node cases passed. Integrated candidate403 Node cases,7 focused browser cases and focused real-HTTP cases have passed during development; final immutable-source suite results are recorded separately after freeze. Earlier failed/interrupted runs remain diagnostics, never counted as final passes.
 
 Recovery review found two further genuine edge cases before delivery: a stranded mid-passage chassis could be recovered from its endpoint, and a drone carried by a lost team could remain permanently marked carried. Recovery now requires a stationary co-located chassis; carrying-team loss leaves it at its last actual location. Stranded radios draw finite standby battery. Mid-passage salvage awaits a future precise retrieval controller rather than teleporting the chassis. Both cases have deterministic regressions. Runtime f78872d remains a pre-recovery candidate; final runtime below supersedes it.
+
+## Final immutable-source verification
+
+Runtime a22f2aca871e988a94cdd5083f8c99022da53460 passed405 Node,100 full browser,49 real-HTTP remote,4 production-clock,19 continuity and18 service cases (595 executions, no skips/errors/failures). Two7-real/25-ship-day campaigns, normal1001 and explicit-adverse4807, each made5 arrivals and7 finite autonomous drone sorties with20 received sectors/98 captured frames. Both exact checkpoint reloads and the independent exported resource/battery/source audit passed. All137 current runtime hashes match the freeze. No physical/native/AV claims.
+
+Actual screenshots verify the active primary drone pixels against its authoritative DTO, plus early/ready explicit-entry boot states. The native build remains pending source recovery; gym stays deferred. Packaging/extracted checks are recorded in downloads/phase46 separately.

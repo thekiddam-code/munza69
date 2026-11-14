@@ -10,7 +10,18 @@ Actual boot tests held real asset/bootstrap responses, retained partially entere
 
 ## Automated results
 
-Final case counts and JSON/logs are published in `reports/phase46/accepted/verification_summary.json` after the complete runs finish. Candidate failures/interrupted runs are diagnostics; they are not reported as passes. Counts are case executions, including separately run inherited overlap, not a claim of that many wholly new unique tests. New deterministic drone cases cover actual paid assembly/reservations, fixed-seed traversal/return, source custody, battery/charge, standby, radio/relay gates, blocked-segment retreat, loss/recovery/transport loss, schema rejection, sensor uncertainty, command receipt, state bounds and pixel-budget fallback.
+All **595 final-source case executions passed**, with no failures, errors or skips. JSON/logs are in `reports/phase46/accepted/verification_summary.json`.
+
+| Suite | Passed | Wall seconds |
+| --- | ---: | ---: |
+| Node deterministic models | 405 | 62.025 |
+| Complete browser integration | 100 | 910.410 |
+| Real-HTTP/emulated remote | 49 | 377.643 |
+| Ordinary production clock/calendar | 4 | 50.603 |
+| Legacy continuity/adverse regressions | 19 | 116.449 |
+| Bridge/TV/service units | 18 | 0.008 |
+
+Every run used the frozen137-file runtime. Node tests ran from the byte-identical source tree. Parallel execution timings are observations of this Linux environment, not Windows/GPU frame-rate guarantees. Candidate failures/interrupted runs are diagnostics; they are not reported as passes. Counts are case executions, including separately run inherited overlap, not a claim of that many wholly new unique tests. New deterministic drone cases cover actual paid assembly/reservations, fixed-seed traversal/return, source custody, battery/charge, standby, radio/relay gates, blocked-segment retreat, loss/recovery/transport loss, schema rejection, sensor uncertainty, command receipt, state bounds and pixel-budget fallback.
 
 Full integration includes inherited save/backup/large-history/writer behavior, crew identity and activity, source-backed knowledge, creature ecology, military dormancy, physical lift/door/zero-g maintenance, expeditions, calendars, camera/privacy/Follow Crew, Sunday archives and remote/TV UI protocols. New cases add autonomous recon, real captured frames, exact mid-segment restart, receiver outage, optional management, pure observation, real Monday/catch-up and remote receipt. Production clock cases use the ordinary page timer, without soak advancement.
 
