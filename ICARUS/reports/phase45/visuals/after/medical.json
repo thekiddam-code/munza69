@@ -1,0 +1,143 @@
+{
+  "source_commit": "4bd2dadbd6e6541ef118e04b50b30ddbf561ae19",
+  "label": "Actual active camera; isolated technical placement fixture, not natural event/video",
+  "viewport": [
+    1440,
+    1000
+  ],
+  "canvas": [
+    384,
+    216
+  ],
+  "camera": {
+    "id": "A08",
+    "name": "Medical Bay",
+    "kind": "medical",
+    "components": [
+      {
+        "id": "CIRCUIT-medical",
+        "name": "Medical distribution circuit",
+        "health": 100,
+        "status": null
+      }
+    ],
+    "gravity": 1,
+    "zone": "medical",
+    "objects": [],
+    "private": false,
+    "camera": true,
+    "available": true,
+    "actors": [
+      {
+        "name": "Frank Morrow",
+        "job": "Engineer",
+        "state": "inspect",
+        "seated": false,
+        "fixture": null,
+        "visualAppearance": {
+          "version": 1,
+          "height": 61,
+          "skin": 3,
+          "hair": 3,
+          "style": 0,
+          "accessory": 1,
+          "stance": 0
+        },
+        "gravity": null,
+        "affection": null,
+        "task": "INSPECTING",
+        "phase": null,
+        "x": 70,
+        "y": 192,
+        "facing": -1,
+        "moving": false,
+        "injured": false,
+        "carrying": null,
+        "body": {
+          "build": "medium",
+          "locomotion": "walk"
+        },
+        "node": "R:A08"
+      },
+      {
+        "name": "Elena Ruiz",
+        "job": "Medic",
+        "state": "idle",
+        "seated": false,
+        "fixture": null,
+        "visualAppearance": {
+          "version": 1,
+          "height": 60,
+          "skin": 2,
+          "hair": 2,
+          "style": 1,
+          "accessory": 0,
+          "stance": 0
+        },
+        "gravity": null,
+        "affection": null,
+        "task": "ON DUTY",
+        "phase": null,
+        "x": 132,
+        "y": 190,
+        "facing": 1,
+        "moving": false,
+        "injured": false,
+        "carrying": null,
+        "body": {
+          "build": "medium",
+          "locomotion": "walk"
+        },
+        "node": "R:A08"
+      },
+      {
+        "name": "Rhea Ortiz",
+        "job": "Medic",
+        "state": "idle",
+        "seated": false,
+        "fixture": null,
+        "visualAppearance": {
+          "version": 1,
+          "height": 60,
+          "skin": 3,
+          "hair": 2,
+          "style": 4,
+          "accessory": 1,
+          "stance": 0
+        },
+        "gravity": null,
+        "affection": null,
+        "task": "ON DUTY",
+        "phase": null,
+        "x": 210,
+        "y": 192,
+        "facing": -1,
+        "moving": false,
+        "injured": false,
+        "carrying": null,
+        "body": {
+          "build": "medium",
+          "locomotion": "walk"
+        },
+        "node": "R:A08"
+      }
+    ],
+    "lighting": 1,
+    "temperature": 21,
+    "pressure": 100,
+    "oxygen": 21,
+    "visibility": 100,
+    "door": "open",
+    "privacyMarker": null,
+    "equipment": {
+      "name": "Clinical tissue-repair unit",
+      "condition": 96
+    },
+    "hazard": null,
+    "registeredCrew": 3,
+    "biologicalReturns": null,
+    "bioSource": "No biological sensor model installed",
+    "source": "Existing engineering/atmospheric instrumentation",
+    "recording": false
+  }
+}

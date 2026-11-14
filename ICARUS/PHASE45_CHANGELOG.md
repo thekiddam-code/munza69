@@ -1,0 +1,15 @@
+# Phase 4.5 engineering changelog
+
+- Audited verified Phase4.4 source and actual384×216 surveillance path. Confirmed field artwork was active while ship rooms remained generic; no service worker. Captured source-backed before scenes in the running application.
+- Replaced active generic detailed ship backgrounds with original structural/wall/furniture/foreground layers for major room categories, plus genuine powered/off states and bounded static caching. Retained cameras, privacy, selection, arrays, Follow Crew and optional classic mode.
+- Rebuilt anatomy into articulated60–62px standing rigs with persistent identity/build/hair/clothing/accessory/posture/gait variation, proper seated poses and complete wheelchair frames/seat/back/wheels/casters/footrests/arms. Shared through actual host/UMBRA/field camera drawing.
+- A09 Recreation is now Crew Lounge with sofas, communal games/table, storage and refill/leisure fixtures. A03 remains Observation Lounge. **Gym conversion deferred per user response.** No fitness score or replacement room.
+- Added saved ordinary lounge/table/bunk approach/turn/seat/work/rise through existing task minutes. Preserved urgent/operational preemption, rest/meal consequences and existing route/lift/wheelchair gates. Corrected ledger/social availability to recognize actual within-room travel.
+- Added validated persistent appearance/room-interaction fields without changing save envelope, origin, history, crew identities or random seed. Initial load/restore explicitly migrates; drawing/routine preference projections remain pure.
+- Added real-event boot, status/diagnostics/retry/read-only states, early local host-key verification and safe background-control/focus handling. New auth endpoint checks existing key/locality only; Host+Durable fencing still governs writes. Existing UMBRA pairing stays independent and early.
+- Added static cache revalidation and a versioned pixel import. No new external assets, cloud/agent execution or native/TV replacement.
+- Added deterministic model, real browser and HTTP/phone-emulation tests, reusable actual-camera/startup comparison tools and final source-based packaging/validation evidence.
+
+New runtime: room-design.js, room-art.js, character-design.js, room-interactions.js, boot-screen.js, boot-screen.css. Modified runtime: icarus.html, index.html, pixel-camera.js, observation-model.js, observation-ui.js, crew-life.js, field-evidence.js, world-schema.js, writer-ui.js, host-authority.js and server.py. Full-source additions/changes: capture_visual45.py, capture_boot45.py, test_visual45.js, test_visual45_integration.py, test_visual45_remote.py, verify_operations.py and Phase4.5 packaging/report documentation. No change to calendar, voyage-clock, BridgeService, TV service, durable/backup codecs or native UMBRA.
+
+This advances FINAL_DESIGN through clearer rooms, recognizable persistent people, honest system startup and cohesive existing camera presentation. It does not expand the universe or declare the final game finished.

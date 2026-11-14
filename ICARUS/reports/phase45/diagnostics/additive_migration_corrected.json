@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "tests_run": 1,
+  "passed_cases": [
+    "test_true_v13_import_is_explicit_preserves_active_world_and_does_not_overwrite_extended_save (test_visual45_integration.VisualIntegration.test_true_v13_import_is_explicit_preserves_active_world_and_does_not_overwrite_extended_save)"
+  ],
+  "runtime_root": "/workspace/work/phase45/frozen_package",
+  "source_commit": "4bd2dadbd6e6541ef118e04b50b30ddbf561ae19",
+  "errors": [],
+  "failures": []
+}

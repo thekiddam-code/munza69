@@ -1,0 +1,59 @@
+{
+  "label": "Actual active camera; isolated technical placement fixture, not natural event/video",
+  "viewport": [
+    1440,
+    1000
+  ],
+  "canvas": [
+    384,
+    216
+  ],
+  "camera": {
+    "id": "A09",
+    "name": "Recreation",
+    "kind": "common",
+    "components": [],
+    "gravity": 1,
+    "zone": "habitation",
+    "objects": [],
+    "private": false,
+    "camera": true,
+    "available": true,
+    "actors": [
+      {
+        "name": "Frank Morrow",
+        "job": "Engineer",
+        "state": "recreation",
+        "gravity": null,
+        "affection": null,
+        "task": "RECREATION BREAK",
+        "phase": null,
+        "x": 70,
+        "y": 192,
+        "facing": -1,
+        "moving": false,
+        "injured": false,
+        "carrying": null,
+        "body": {
+          "build": "medium",
+          "locomotion": "walk"
+        },
+        "node": "R:A09"
+      }
+    ],
+    "lighting": 1,
+    "temperature": 21,
+    "pressure": 100,
+    "oxygen": 21,
+    "visibility": 100,
+    "door": "open",
+    "privacyMarker": null,
+    "equipment": null,
+    "hazard": null,
+    "registeredCrew": 1,
+    "biologicalReturns": null,
+    "bioSource": "No biological sensor model installed",
+    "source": "Existing engineering/atmospheric instrumentation",
+    "recording": false
+  }
+}

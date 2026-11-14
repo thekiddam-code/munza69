@@ -1,0 +1,64 @@
+{
+  "before": {
+    "active": "",
+    "visible": true,
+    "ancestors": [
+      {
+        "id": "cutawaymode",
+        "inert": false,
+        "hidden": false
+      },
+      {
+        "id": "",
+        "inert": false,
+        "hidden": false
+      },
+      {
+        "id": "",
+        "inert": false,
+        "hidden": false
+      },
+      {
+        "id": "",
+        "inert": false,
+        "hidden": false
+      },
+      {
+        "id": "icarus-main",
+        "inert": true,
+        "hidden": false
+      },
+      {
+        "id": "area-ship-overview",
+        "inert": false,
+        "hidden": false
+      },
+      {
+        "id": "page-ship",
+        "inert": false,
+        "hidden": false
+      },
+      {
+        "id": "icarus-pages",
+        "inert": false,
+        "hidden": false
+      },
+      {
+        "id": "",
+        "inert": false,
+        "hidden": false
+      },
+      {
+        "id": "",
+        "inert": false,
+        "hidden": false
+      }
+    ]
+  },
+  "after": {
+    "active": "",
+    "same": true,
+    "bootHidden": true,
+    "changes": []
+  }
+}

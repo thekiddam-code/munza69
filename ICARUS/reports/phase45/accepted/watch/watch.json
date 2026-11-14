@@ -1,0 +1,486 @@
+{
+  "passed": true,
+  "source_commit": "4bd2dadbd6e6541ef118e04b50b30ddbf561ae19",
+  "phases": [
+    {
+      "name": "normal",
+      "elapsed_seconds": 122.86450134200277,
+      "start_tick": 0,
+      "end_tick": 8,
+      "effective_rate": 3.906742751218948,
+      "requested_rate": 4,
+      "conversations_before": 0,
+      "conversations_after": 0,
+      "lift_trips": 0,
+      "crew_alive": 20,
+      "dead": 0
+    },
+    {
+      "name": "accelerated",
+      "elapsed_seconds": 541.6641290269908,
+      "start_tick": 8,
+      "end_tick": 189,
+      "effective_rate": 20.04932469777568,
+      "requested_rate": 20,
+      "conversations_before": 0,
+      "conversations_after": 2,
+      "lift_trips": 16,
+      "crew_alive": 20,
+      "dead": 0
+    }
+  ],
+  "samples": [
+    {
+      "tick": 0,
+      "selected": "B01",
+      "following": "Dr. Voss",
+      "stats": {
+        "mainFrames": 78,
+        "previewFrames": 164,
+        "totalMs": 610.7000001072884,
+        "maxMs": 58.29999999701977,
+        "received": 15
+      },
+      "heap": 12123066,
+      "clock": "4\u00d7 authoritative pacing",
+      "phase": "normal",
+      "phase_seconds": 1.0409636349941138
+    },
+    {
+      "tick": 2,
+      "selected": "COR-B-0",
+      "following": "Dr. Voss",
+      "stats": {
+        "mainFrames": 373,
+        "previewFrames": 632,
+        "totalMs": 1621.5000002384186,
+        "maxMs": 58.29999999701977,
+        "received": 44
+      },
+      "heap": 14873676,
+      "clock": "4\u00d7 authoritative pacing",
+      "phase": "normal",
+      "phase_seconds": 30.293525999994017
+    },
+    {
+      "tick": 4,
+      "selected": "COR-B-0",
+      "following": "Dr. Voss",
+      "stats": {
+        "mainFrames": 671,
+        "previewFrames": 1116,
+        "totalMs": 2561.2000003010035,
+        "maxMs": 58.29999999701977,
+        "received": 74
+      },
+      "heap": 24315749,
+      "clock": "4\u00d7 authoritative pacing",
+      "phase": "normal",
+      "phase_seconds": 60.49697637200006
+    },
+    {
+      "tick": 6,
+      "selected": "COR-B-1",
+      "following": "Dr. Voss",
+      "stats": {
+        "mainFrames": 988,
+        "previewFrames": 1604,
+        "totalMs": 3399.1000002622604,
+        "maxMs": 58.29999999701977,
+        "received": 105
+      },
+      "heap": 21907989,
+      "clock": "4\u00d7 authoritative pacing",
+      "phase": "normal",
+      "phase_seconds": 90.78775274299551
+    },
+    {
+      "tick": 8,
+      "selected": "COR-B-1",
+      "following": "Dr. Voss",
+      "stats": {
+        "mainFrames": 1286,
+        "previewFrames": 2072,
+        "totalMs": 4405.50000025332,
+        "maxMs": 59.5,
+        "received": 134
+      },
+      "heap": 21999648,
+      "clock": "4\u00d7 authoritative pacing",
+      "phase": "normal",
+      "phase_seconds": 120.06440652499441
+    },
+    {
+      "tick": 9,
+      "selected": "COR-B-1",
+      "following": "Dr. Voss",
+      "stats": {
+        "mainFrames": 1294,
+        "previewFrames": 2088,
+        "totalMs": 4469.400000274181,
+        "maxMs": 59.5,
+        "received": 142
+      },
+      "heap": 30834496,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 1.0051722579955822
+    },
+    {
+      "tick": 19,
+      "selected": "C04",
+      "following": "Dr. Voss",
+      "stats": {
+        "mainFrames": 1294,
+        "previewFrames": 2088,
+        "totalMs": 4469.400000274181,
+        "maxMs": 59.5,
+        "received": 171
+      },
+      "heap": 14085581,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 30.283061493988498
+    },
+    {
+      "tick": 29,
+      "selected": "C01",
+      "following": "Dr. Voss",
+      "stats": {
+        "mainFrames": 1294,
+        "previewFrames": 2088,
+        "totalMs": 4469.400000274181,
+        "maxMs": 59.5,
+        "received": 201
+      },
+      "heap": 17636853,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 60.52660482599458
+    },
+    {
+      "tick": 39,
+      "selected": null,
+      "following": "Dr. Voss",
+      "stats": {
+        "mainFrames": 1294,
+        "previewFrames": 2088,
+        "totalMs": 4469.400000274181,
+        "maxMs": 59.5,
+        "received": 231
+      },
+      "heap": 32150105,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 90.83731557399733
+    },
+    {
+      "tick": 49,
+      "selected": null,
+      "following": "Dr. Voss",
+      "stats": {
+        "mainFrames": 1294,
+        "previewFrames": 2088,
+        "totalMs": 4469.400000274181,
+        "maxMs": 59.5,
+        "received": 261
+      },
+      "heap": 10986014,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 120.41464810998878
+    },
+    {
+      "tick": 59,
+      "selected": null,
+      "following": "Dr. Voss",
+      "stats": {
+        "mainFrames": 1294,
+        "previewFrames": 2088,
+        "totalMs": 4469.400000274181,
+        "maxMs": 59.5,
+        "received": 291
+      },
+      "heap": 27890869,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 150.695280282991
+    },
+    {
+      "tick": 69,
+      "selected": null,
+      "following": "Dr. Voss",
+      "stats": {
+        "mainFrames": 1294,
+        "previewFrames": 2088,
+        "totalMs": 4469.400000274181,
+        "maxMs": 59.5,
+        "received": 321
+      },
+      "heap": 37749027,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 180.84534844999143
+    },
+    {
+      "tick": 79,
+      "selected": null,
+      "following": "Dr. Voss",
+      "stats": {
+        "mainFrames": 1294,
+        "previewFrames": 2088,
+        "totalMs": 4469.400000274181,
+        "maxMs": 59.5,
+        "received": 351
+      },
+      "heap": 21974023,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 210.04529581899988
+    },
+    {
+      "tick": 89,
+      "selected": null,
+      "following": "Dr. Voss",
+      "stats": {
+        "mainFrames": 1294,
+        "previewFrames": 2088,
+        "totalMs": 4469.400000274181,
+        "maxMs": 59.5,
+        "received": 381
+      },
+      "heap": 25053258,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 240.50332994799828
+    },
+    {
+      "tick": 101,
+      "selected": "BODY-2",
+      "following": "Dr. Voss",
+      "stats": {
+        "mainFrames": 2,
+        "previewFrames": 8,
+        "totalMs": 65.70000000298023,
+        "maxMs": 63.20000000298023,
+        "received": 3
+      },
+      "heap": 50165359,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 270.9282546350005
+    },
+    {
+      "tick": 109,
+      "selected": "BODY-2",
+      "following": "Dr. Voss",
+      "stats": {
+        "mainFrames": 223,
+        "previewFrames": 372,
+        "totalMs": 924.6000000685453,
+        "maxMs": 63.20000000298023,
+        "received": 26
+      },
+      "heap": 26522096,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 300.4040675259894
+    },
+    {
+      "tick": 119,
+      "selected": "BODY-2",
+      "following": "Dr. Voss",
+      "stats": {
+        "mainFrames": 490,
+        "previewFrames": 848,
+        "totalMs": 2011.499999910593,
+        "maxMs": 98.70000000298023,
+        "received": 57
+      },
+      "heap": 22445836,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 330.8484105009993
+    },
+    {
+      "tick": 129,
+      "selected": "BODY-2",
+      "following": "Dr. Voss",
+      "stats": {
+        "mainFrames": 760,
+        "previewFrames": 1316,
+        "totalMs": 2517.099999502301,
+        "maxMs": 98.70000000298023,
+        "received": 87
+      },
+      "heap": 13806863,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 360.9365624009952
+    },
+    {
+      "tick": 139,
+      "selected": "BODY-2",
+      "following": "Dr. Voss",
+      "stats": {
+        "mainFrames": 1016,
+        "previewFrames": 1772,
+        "totalMs": 3002.8999990820885,
+        "maxMs": 98.70000000298023,
+        "received": 116
+      },
+      "heap": 21575636,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 390.05676051200135
+    },
+    {
+      "tick": 149,
+      "selected": "BODY-2",
+      "following": "Dr. Voss",
+      "stats": {
+        "mainFrames": 1283,
+        "previewFrames": 2248,
+        "totalMs": 3466.599998921156,
+        "maxMs": 98.70000000298023,
+        "received": 146
+      },
+      "heap": 11458318,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 420.1127215479937
+    },
+    {
+      "tick": 159,
+      "selected": "BODY-2",
+      "following": "Dr. Voss",
+      "stats": {
+        "mainFrames": 1552,
+        "previewFrames": 2720,
+        "totalMs": 4008.9999988377094,
+        "maxMs": 99.1000000089407,
+        "received": 176
+      },
+      "heap": 12264854,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 450.17362576499
+    },
+    {
+      "tick": 169,
+      "selected": "BODY-2",
+      "following": "Dr. Voss",
+      "stats": {
+        "mainFrames": 1827,
+        "previewFrames": 3204,
+        "totalMs": 4573.3999986201525,
+        "maxMs": 99.1000000089407,
+        "received": 206
+      },
+      "heap": 35811457,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 480.3489303589886
+    },
+    {
+      "tick": 179,
+      "selected": null,
+      "following": "Dr. Voss",
+      "stats": {
+        "mainFrames": 2093,
+        "previewFrames": 3684,
+        "totalMs": 5058.49999833107,
+        "maxMs": 99.1000000089407,
+        "received": 236
+      },
+      "heap": 22029875,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 510.5916672429885
+    },
+    {
+      "tick": 189,
+      "selected": null,
+      "following": "Dr. Voss",
+      "stats": {
+        "mainFrames": 2353,
+        "previewFrames": 4156,
+        "totalMs": 5730.49999807775,
+        "maxMs": 156.20000000298023,
+        "received": 267
+      },
+      "heap": 24667714,
+      "clock": "20\u00d7 authoritative pacing",
+      "phase": "accelerated",
+      "phase_seconds": 540.7423786849977
+    }
+  ],
+  "reloads": [
+    {
+      "saved_tick": 99,
+      "resumed_tick": 99,
+      "rate": 20
+    }
+  ],
+  "errors": [],
+  "limits": "Actual monotonic/wall time and real server. Linux Chromium, desktop/TV I/O stubbed. Emulated phone is not a physical Android. One real authorized mission request through normal UI; no incidents/relationships/needs/adulthood injected.",
+  "authorized_operator_request": {
+    "id": "M-0001",
+    "members": [
+      "Dr. Voss",
+      "Jules Mercer"
+    ],
+    "at": 0
+  },
+  "field_camera_samples": 8,
+  "final": {
+    "tick": 189,
+    "alive": 20,
+    "dead": 0,
+    "conversations": 2,
+    "private_events": 0,
+    "confirmed_adults": 0,
+    "lift": {
+      "id": "LIFT-01",
+      "deck": "C",
+      "phase": "travel",
+      "from": "C",
+      "to": "A",
+      "remaining": 1,
+      "passengers": [
+        "Derek Cole",
+        "Yara Finch"
+      ],
+      "queue": [],
+      "capacity": 4,
+      "completed": 16,
+      "fault": null,
+      "stalled": false
+    },
+    "calendar": {
+      "version": 1,
+      "timeZone": "America/Chicago",
+      "wallCursor": 1794635910951,
+      "displayMs": 1794646627842.999,
+      "carry": 59003.9990234375,
+      "lastSeen": 1794635910951,
+      "episodeKey": "2026-11-09",
+      "visitedWeeks": {
+        "2026-11-09": true
+      },
+      "occurrences": {},
+      "pending": [],
+      "corrections": [],
+      "recovery": {
+        "discardedMs": 0,
+        "rollbackCount": 0
+      },
+      "mode": "wall",
+      "maxCatchupMs": 21600000,
+      "selectedRate": 20
+    },
+    "unique_sources": 129
+  },
+  "phone_reconnected": true,
+  "elapsed_seconds": 687.0645957279921
+}

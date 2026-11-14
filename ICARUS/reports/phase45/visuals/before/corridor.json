@@ -1,0 +1,47 @@
+{
+  "label": "Actual active camera; isolated technical placement fixture, not natural event/video",
+  "viewport": [
+    1440,
+    1000
+  ],
+  "canvas": [
+    384,
+    216
+  ],
+  "camera": {
+    "id": "COR-B-0",
+    "name": "Deck B corridor station 0",
+    "kind": "corridor",
+    "camera": true,
+    "available": true,
+    "actors": [],
+    "doors": [
+      {
+        "id": "HATCH-B01",
+        "room": "B01",
+        "name": "Research Lab 1",
+        "side": "port",
+        "x": 94,
+        "state": "open",
+        "privacy": false,
+        "marker": false
+      },
+      {
+        "id": "HATCH-B02",
+        "room": "B02",
+        "name": "Research Lab 2",
+        "side": "starboard",
+        "x": 278,
+        "state": "open",
+        "privacy": false,
+        "marker": false
+      }
+    ],
+    "lighting": 1,
+    "gravity": 1,
+    "deck": "B",
+    "station": 0,
+    "registeredCrew": 0,
+    "provenance": "Live procedural view of authoritative route segment; distances are abstract travel minutes, not measured metres"
+  }
+}

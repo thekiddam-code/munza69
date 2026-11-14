@@ -1,0 +1,198 @@
+{
+  "source_commit": "4bd2dadbd6e6541ef118e04b50b30ddbf561ae19",
+  "label": "Actual active camera; isolated technical placement fixture, not natural event/video",
+  "viewport": [
+    1440,
+    1000
+  ],
+  "canvas": [
+    384,
+    216
+  ],
+  "camera": {
+    "id": "B01",
+    "name": "Research Lab 1",
+    "kind": "science",
+    "components": [],
+    "gravity": 1,
+    "zone": "science",
+    "objects": [],
+    "private": false,
+    "camera": true,
+    "available": true,
+    "actors": [
+      {
+        "name": "Frank Morrow",
+        "job": "Engineer",
+        "state": "research",
+        "seated": false,
+        "fixture": null,
+        "visualAppearance": {
+          "version": 1,
+          "height": 61,
+          "skin": 3,
+          "hair": 3,
+          "style": 0,
+          "accessory": 1,
+          "stance": 0
+        },
+        "gravity": null,
+        "affection": null,
+        "task": "RESEARCH",
+        "phase": null,
+        "x": 260,
+        "y": 190,
+        "facing": 1,
+        "moving": false,
+        "injured": false,
+        "carrying": null,
+        "body": {
+          "build": "medium",
+          "locomotion": "walk"
+        },
+        "node": "R:B01"
+      },
+      {
+        "name": "Dr. Voss",
+        "job": "Scientist",
+        "state": "idle",
+        "seated": false,
+        "fixture": null,
+        "visualAppearance": {
+          "version": 1,
+          "height": 60,
+          "skin": 0,
+          "hair": 0,
+          "style": 0,
+          "accessory": 1,
+          "stance": 2
+        },
+        "gravity": null,
+        "affection": null,
+        "task": "ON DUTY",
+        "phase": null,
+        "x": 132,
+        "y": 190,
+        "facing": 1,
+        "moving": false,
+        "injured": false,
+        "carrying": null,
+        "body": {
+          "build": "medium",
+          "locomotion": "walk"
+        },
+        "node": "R:B01"
+      },
+      {
+        "name": "Nadia Kline",
+        "job": "Scientist",
+        "state": "idle",
+        "seated": false,
+        "fixture": null,
+        "visualAppearance": {
+          "version": 1,
+          "height": 61,
+          "skin": 1,
+          "hair": 0,
+          "style": 0,
+          "accessory": 2,
+          "stance": 2
+        },
+        "gravity": null,
+        "affection": null,
+        "task": "ON DUTY",
+        "phase": null,
+        "x": 210,
+        "y": 192,
+        "facing": -1,
+        "moving": false,
+        "injured": false,
+        "carrying": null,
+        "body": {
+          "build": "medium",
+          "locomotion": "walk"
+        },
+        "node": "R:B01"
+      },
+      {
+        "name": "Priya Shah",
+        "job": "Scientist",
+        "state": "idle",
+        "seated": false,
+        "fixture": null,
+        "visualAppearance": {
+          "version": 1,
+          "height": 62,
+          "skin": 0,
+          "hair": 1,
+          "style": 1,
+          "accessory": 0,
+          "stance": 1
+        },
+        "gravity": null,
+        "affection": null,
+        "task": "ON DUTY",
+        "phase": null,
+        "x": 306,
+        "y": 192,
+        "facing": 1,
+        "moving": false,
+        "injured": false,
+        "carrying": null,
+        "body": {
+          "build": "medium",
+          "locomotion": "walk"
+        },
+        "node": "R:B01"
+      },
+      {
+        "name": "Sana Okafor",
+        "job": "Scientist",
+        "state": "idle",
+        "seated": false,
+        "fixture": null,
+        "visualAppearance": {
+          "version": 1,
+          "height": 60,
+          "skin": 0,
+          "hair": 3,
+          "style": 0,
+          "accessory": 1,
+          "stance": 2
+        },
+        "gravity": null,
+        "affection": null,
+        "task": "ON DUTY",
+        "phase": null,
+        "x": 70,
+        "y": 192,
+        "facing": 1,
+        "moving": false,
+        "injured": false,
+        "carrying": null,
+        "body": {
+          "build": "medium",
+          "locomotion": "walk"
+        },
+        "node": "R:B01"
+      }
+    ],
+    "lighting": 1,
+    "temperature": 21,
+    "pressure": 100,
+    "oxygen": 21,
+    "visibility": 100,
+    "door": "open",
+    "privacyMarker": null,
+    "equipment": {
+      "name": "Research terminal",
+      "condition": 70
+    },
+    "hazard": null,
+    "registeredCrew": 5,
+    "biologicalReturns": null,
+    "bioSource": "No biological sensor model installed",
+    "source": "Existing engineering/atmospheric instrumentation",
+    "recording": false
+  }
+}

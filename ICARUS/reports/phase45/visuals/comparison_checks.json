@@ -1,0 +1,146 @@
+[
+  {
+    "scene": "lounge",
+    "camera_frame": [
+      1384,
+      692
+    ],
+    "changed_pixels": 844540,
+    "total_pixels": 957728,
+    "before_sha256": "3c29df01c995aba5ea0905dcc4e47325abeba5d673bec917bd4b2eff82791fb0",
+    "after_sha256": "5306d8b3459ce16fe038e0abde80b86e3a5975640f5e5c17263e4a4a4b209bd2",
+    "policy": "Difference count verifies distinct captured bytes, not aesthetic acceptance. Room shape/furniture and actual-state rig inspected separately."
+  },
+  {
+    "scene": "observation",
+    "camera_frame": [
+      1384,
+      692
+    ],
+    "changed_pixels": 844567,
+    "total_pixels": 957728,
+    "before_sha256": "31580bd992211271fe4067e500280820fae380702a6493b4ea9bd7c8be60f23e",
+    "after_sha256": "1e353f3c8104938df597494d6a3d977edd78a30d1c8b0d95d669e1b3aa9b57f1",
+    "policy": "Difference count verifies distinct captured bytes, not aesthetic acceptance. Room shape/furniture and actual-state rig inspected separately."
+  },
+  {
+    "scene": "engineering",
+    "camera_frame": [
+      1384,
+      692
+    ],
+    "changed_pixels": 844696,
+    "total_pixels": 957728,
+    "before_sha256": "ff77fe73dc1dc7a5f5ca939c33dcaedd3be21e8840bd437a32ac763273028ae2",
+    "after_sha256": "a6d2d02f81a9e8ee120e73047a709ce0c7482762cafce6d599080d8116c0412a",
+    "policy": "Difference count verifies distinct captured bytes, not aesthetic acceptance. Room shape/furniture and actual-state rig inspected separately."
+  },
+  {
+    "scene": "medical",
+    "camera_frame": [
+      1384,
+      692
+    ],
+    "changed_pixels": 843806,
+    "total_pixels": 957728,
+    "before_sha256": "4d216413d60cca71fb2ea981b8cbccdc5a6649b744550758bf4d312b5aeada9f",
+    "after_sha256": "50273f7903e8751cdf72d5cac7aea50af1ab8875b4b5a511ca7a3253d6c6af9c",
+    "policy": "Difference count verifies distinct captured bytes, not aesthetic acceptance. Room shape/furniture and actual-state rig inspected separately."
+  },
+  {
+    "scene": "science",
+    "camera_frame": [
+      1384,
+      692
+    ],
+    "changed_pixels": 843417,
+    "total_pixels": 957728,
+    "before_sha256": "eaee7d69cc6bcfdcd13e19af7d2094ced656455f066de681b46d4e67c4f2b69a",
+    "after_sha256": "3d53c970e4da868d8e4bed7c8f5456c383646fc810bd8b3c4a6f1fbb5d3ad32e",
+    "policy": "Difference count verifies distinct captured bytes, not aesthetic acceptance. Room shape/furniture and actual-state rig inspected separately."
+  },
+  {
+    "scene": "bridge",
+    "camera_frame": [
+      1384,
+      692
+    ],
+    "changed_pixels": 844290,
+    "total_pixels": 957728,
+    "before_sha256": "5859da5524ca75ec59f2934a2dbc39f3c538f41119ddbce87151b1eaa02161a2",
+    "after_sha256": "4fdae287ba9a5e4c4cd0077b43b297ca5a2b057cd5a9c3df260933fce9638b28",
+    "policy": "Difference count verifies distinct captured bytes, not aesthetic acceptance. Room shape/furniture and actual-state rig inspected separately."
+  },
+  {
+    "scene": "security",
+    "camera_frame": [
+      1384,
+      692
+    ],
+    "changed_pixels": 843666,
+    "total_pixels": 957728,
+    "before_sha256": "14ad2d58051f9de7addca059f9a061c47e2073413887b2294dd9ee05d4bc7eba",
+    "after_sha256": "4a3d1d808cf9dfac94e4b81f2e320d52328473b1987b290f95ff6eaef2ecea15",
+    "policy": "Difference count verifies distinct captured bytes, not aesthetic acceptance. Room shape/furniture and actual-state rig inspected separately."
+  },
+  {
+    "scene": "cargo",
+    "camera_frame": [
+      1384,
+      692
+    ],
+    "changed_pixels": 844323,
+    "total_pixels": 957728,
+    "before_sha256": "dc0885f5751dc11b3863469d5426aad135a40232946272a95219ba47f36b12bf",
+    "after_sha256": "54f33360b50df892c92af742d32b761c497fedd2ba194a3e6c3371a72bb74457",
+    "policy": "Difference count verifies distinct captured bytes, not aesthetic acceptance. Room shape/furniture and actual-state rig inspected separately."
+  },
+  {
+    "scene": "corridor",
+    "camera_frame": [
+      1384,
+      692
+    ],
+    "changed_pixels": 843453,
+    "total_pixels": 957728,
+    "before_sha256": "bb6866c50345f058e07a368a83327e9c2bf4d47932e5276411c561765ec3c6be",
+    "after_sha256": "0f0e230e67e2d6ce19636b2dd547bb5416daff677693cd92ac6d2ab324535a55",
+    "policy": "Difference count verifies distinct captured bytes, not aesthetic acceptance. Room shape/furniture and actual-state rig inspected separately."
+  },
+  {
+    "scene": "character",
+    "camera_frame": [
+      1384,
+      692
+    ],
+    "changed_pixels": 844567,
+    "total_pixels": 957728,
+    "before_sha256": "d573145832832b1a5251670dbd5e59056064617d907b94bf084a1eacc9f7087d",
+    "after_sha256": "5306d8b3459ce16fe038e0abde80b86e3a5975640f5e5c17263e4a4a4b209bd2",
+    "policy": "Difference count verifies distinct captured bytes, not aesthetic acceptance. Room shape/furniture and actual-state rig inspected separately."
+  },
+  {
+    "scene": "wheelchair",
+    "camera_frame": [
+      1384,
+      692
+    ],
+    "changed_pixels": 844201,
+    "total_pixels": 957728,
+    "before_sha256": "b725a51dd35c9512f0a0b8308728c8d21fb96ba7c02d702cab73f078e609566d",
+    "after_sha256": "fc0e1ba2f133524642c491e3d3fb6bbbe50c737e821c6ea17951a987870c11ca",
+    "policy": "Difference count verifies distinct captured bytes, not aesthetic acceptance. Room shape/furniture and actual-state rig inspected separately."
+  },
+  {
+    "scene": "startup",
+    "camera_frame": [
+      1440,
+      1000
+    ],
+    "changed_pixels": 1440000,
+    "total_pixels": 1440000,
+    "before_sha256": "185259b6e89ba1cc2d8be87f457efae41f947b147b46ac22642b1e014410a5d3",
+    "after_sha256": "aae0ece2d79b53a32939e329fe97f836a9add97bf595ff9083064e78cdd034f1",
+    "policy": "Difference count verifies distinct captured bytes, not aesthetic acceptance. Room shape/furniture and actual-state rig inspected separately."
+  }
+]

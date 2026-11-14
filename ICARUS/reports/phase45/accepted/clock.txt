@@ -1,0 +1,9 @@
+test_actual_holiday_timer_is_one_times_and_ignores_old_speed_button (test_personalities_clock.PersonalitiesClock.test_actual_holiday_timer_is_one_times_and_ignores_old_speed_button) ... ok
+test_actual_normal_timer_is_four_times_and_pause_drops_elapsed_time (test_personalities_clock.PersonalitiesClock.test_actual_normal_timer_is_four_times_and_pause_drops_elapsed_time) ... ok
+test_production_twenty_switch_pause_reload_and_unique_sources (test_personalities_clock.PersonalitiesClock.test_production_twenty_switch_pause_reload_and_unique_sources) ... ok
+test_selected_twenty_never_overrides_synchronized_holiday (test_personalities_clock.PersonalitiesClock.test_selected_twenty_never_overrides_synchronized_holiday) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 44.787s
+
+OK

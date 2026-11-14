@@ -1,0 +1,69 @@
+{
+  "label": "Actual localhost restricted non-explicit procedural sensors in isolated test voyage. No ordinary public/private camera policy change; not recorded footage.",
+  "telemetry": {
+    "online": true,
+    "paused": true,
+    "telemetry": {
+      "tick": 1,
+      "publishedAt": 1794634929327,
+      "rooms": [
+        {
+          "id": "COV-A05",
+          "room": "A05",
+          "name": "A05 / concealed sensor",
+          "kind": "common",
+          "available": true,
+          "camera": true,
+          "classified": true,
+          "actors": [],
+          "lighting": 1,
+          "fieldOfView": {
+            "left": 48,
+            "right": 336,
+            "top": 100,
+            "bottom": 210
+          },
+          "fadePrivate": false,
+          "provenance": "CLASSIFIED LIVE PROCEDURAL SENSOR VIEW \u2014 not video or inferred intention"
+        },
+        {
+          "id": "COV-A06",
+          "room": "A06",
+          "name": "A06 / concealed sensor",
+          "kind": "common",
+          "available": true,
+          "camera": true,
+          "classified": true,
+          "actors": [],
+          "lighting": 1,
+          "fieldOfView": {
+            "left": 48,
+            "right": 336,
+            "top": 100,
+            "bottom": 210
+          },
+          "fadePrivate": false,
+          "provenance": "CLASSIFIED LIVE PROCEDURAL SENSOR VIEW \u2014 not video or inferred intention"
+        }
+      ],
+      "observations": [
+        {
+          "sourceId": "CHR-1-V1rmcwde-2",
+          "factId": "FACT-3",
+          "at": 1,
+          "camera": "COV-A05",
+          "text": "Classified visual sensor COV-A05 observed no visible occupants. Intent and activity beyond coverage are unknown."
+        },
+        {
+          "sourceId": "CHR-1-V1rmcwde-3",
+          "factId": "FACT-4",
+          "at": 1,
+          "camera": "COV-A06",
+          "text": "Classified visual sensor COV-A06 observed no visible occupants. Intent and activity beyond coverage are unknown."
+        }
+      ],
+      "provenance": "SOL CLASSIFIED \u2014 not ordinary bridge telemetry"
+    },
+    "age": 0.7132582689955598
+  }
+}
