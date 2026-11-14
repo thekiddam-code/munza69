@@ -1,0 +1,15 @@
+# Phase 4.4 engineering changelog
+
+- Preserved the Phase4.3 voyage and merged only approved main backlog changes. Baseline346 Node cases executed before development.
+- Added persistent connected surface/industrial/natural asteroid geometry on existing25 identities, typed/conditioned passages, independently paid local lift power and known-map route planning.
+- Implemented physical C04 collection/C01 staging/C02 pressure procedures, existing shared50-minute shuttle, timed foot traversal/reversal, reserve/capacity/visibility/hazard decisions and safe physical return.
+- Extended existing mission categories, actual qualified team selection and director; paid repairs with tools/parts/finite battery transfer and real powered post-test. Added persistent suit/device condition, casualty equipment custody and unrecovered transport protection.
+- Added actual body camera observation/FollowCrew handoffs and original irregular cavern/surface pixel presentation without replacing ship cameras. Flight cannot impersonate surface footage.
+- Added bounded significant source-state records, pre/post states, threshold, genuine transmission gating, dropped-device recovery and powered dock ingestion. All playback is labeled reconstruction/no recorded video.
+- Extended existing Missions/Engineering/UMBRA UI with known routes, condition/budgets, requests, explanations, recall, field feed selection and received event-state review. Paired command ranges/deduplication/host fencing remain authoritative.
+- Added optional save-domain validation/migration and deterministic model/browser/HTTP regressions, portable source/runtime verification, campaign/custody/conservation audits and an actual-time operator watch.
+- Corrected bugs found during development: fact receipt falsely allowing transfer despite broken radio; absent physical team map briefing; FollowCrew dropdown mismatch; stale pose on physical field transition; receiver-outage return losing unread local evidence; direct recalls bypassing communication; repair debrief clearing unrelated exploration lead; legacy wreck callbacks activating containment during new passive survey.
+
+Files: new runtime expedition-world.js, expedition-ops.js, field-evidence.js, field-art.js, expedition-ui.js, expedition-schema.js. Existing runtime touched: icarus.html, server.py, world-schema.js, knowledge-runtime.js, knowledge.js, spatial.js, teams.js, gravity-motion.js, observation-model.js, companion-view.js, pixel-camera.js, observation-ui.js, operational-ui.js, index.html, unified-world.js. Full-source tooling/tests: test_expedition_ops.js, test_expedition_integration.py, test_expedition_remote.py, verify_operations.py, expedition_campaign.py, observe_expeditions.py, summarize_expeditions.py and package_phase44.py. Detailed source diff remains available on the development branch.
+
+Calendar, voyage clock, durable/backup codecs, single-authority bridge implementation, TV and native UMBRA sources are retained. No universe expansion, drones, new active creatures, guaranteed incidents, forced laboratory conclusion or fabricated video.

@@ -1,0 +1,13 @@
+# Phase 4.4 static security and provenance review
+
+Scope: runtime source delta from Phase4.3 delivery67399a5 to corrected34fd122 and Lite selection. This is a static review and executed command/authentication regression coverage, not antivirus certification or an independent penetration test.
+
+New expedition-world/ops/evidence/art/schema modules perform local simulation/validation/rendering only. They do not spawn OS commands, modify system settings, download code, open external connections or evaluate command text as shell/JavaScript. The expedition UI uses the existing `/api/icarus/` HTTP interface with the existing pairing header; no new external service or analytics endpoint. Server grammar restricts mission categories, numeric known-target IDs, M-ID recall and significance2/3. Actual remote tests exercise pairing, rejection, deduplication and host authority. Simulation actors receive no OS/network permissions.
+
+Potentially sensitive retained capabilities: the server binds0.0.0.0 for LAN/Tailscale; paired desktop controls can send PC input/media commands and configured TV support connects to the selected TV address. Existing telemetry/commands use HTTP/SSE. Keep pairing credentials private and use a trusted network/access policy. These are retained user-invoked controls, not autonomous crew commands. `config.json` and all runtime web dependencies remain in the package; no generated pairing key, user save or test world is distributed in Lite.
+
+The unchanged Windows launcher changes into its folder, sets the console title and runs `py server.py` or `python server.py`; it does not request administrator privileges, install a service, change firewall rules or disable antivirus. Optional `py -m pip install -r requirements.txt` downloads existing pyautogui/psutil/websocket-client dependencies into that Python environment. These packages support existing desktop/network controls and should not be mistaken for new agent execution rights.
+
+BridgeService/TV/calendar/voyage-clock/host-authority/durable-store/backup implementations and native UMBRA are unchanged. Source-based packaging reads a committed Git tree, selects all128 runtime files plus docs and writes a SHA-256 manifest/ZIP. Development tests/campaigns/security/packaging scripts and raw test worlds are excluded from Lite. Development tools execute local Node/Python/Chromium/Git only for verification; they are not runtime requirements.
+
+No antivirus was disabled or circumvented. Windows Defender/third-party AV scans, native APK analysis/rebuild, physical LAN/Tailscale/TV testing and independent security audit were not available. Report suspicious detections rather than bypassing protection.

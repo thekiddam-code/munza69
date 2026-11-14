@@ -27,6 +27,13 @@ def main():
    if not u:continue
    if abs(u['battery']+u.get('totalDrawn',0)-u.get('totalTransferred',0))>1e-6:errors.append('Unaccounted utility power '+str(r['id']))
    utilities.append({'cell':r['id'],**u})
+  if c['scenario'] in ('normal','compound'):
+   terrain={r['field']['kind'] for r in rooms if r['visited']}
+   if row['arrivals']<=0:errors.append('No autonomous navigation arrivals; clean invariants alone are not acceptance')
+   if len(ops['history'])<2 or not {'industrial','cavern'}.issubset(terrain):errors.append('No demonstrated connected industrial/cavern expedition continuity')
+   new=[v for h in ops['history'] for v in h['newCells']]
+   if len(new)!=len(set(new)):errors.append('Repeated sector claimed as new discovery')
+   if not new or not ev['archive']:errors.append('No real field discoveries or received significant records')
   if not s['unifiedWorld']['organisms']['XENO-INITIAL']['dormant'] or s['unifiedWorld']['military']['doors']['23']!='sealed':errors.append('Unrequested containment activation')
   row['expeditions']={'history':ops['history'],'visited':[{'id':r['id'],'kind':r['field']['kind']} for r in rooms if r['visited']],'records_received':len(ev['archive']),'frames_received':sum(len(x['frames']) for x in ev['archive']),'devices':list(ev['devices'].values()),'utilities':utilities,'suits':s['teamLog'].get('fieldSuits',{}),'ledger':[v for v in s['economy']['ledger'].values() if any(t in v['source'].lower() for t in ['cargo','expedition','recovered bulk'])],'military_visited':s['unifiedWorld']['military']['visited'],'dormant':s['unifiedWorld']['organisms']['XENO-INITIAL']['dormant']}
   row['passed']=not errors and not c['errors'];report['passed']&=row['passed']
