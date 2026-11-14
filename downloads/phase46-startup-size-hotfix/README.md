@@ -6,6 +6,8 @@ Fixes the reproduced “Too large” startup failure using the actual Episode 2 
 
 The patch bounds disposable outgoing previews, preserves archive images, and retrieves local recording frames on selection. Boot remains until explicit ENTER. Writer protections, saves, clock, exploration and installed Android functionality remain. This is a separate download/branch; prior downloads and main are unchanged.
 
+[Review pull request #12](https://github.com/thekiddam-code/munza69/pull/12) · [Verified published download](published_download_verification.json)
+
 ## Install safely
 
 Keep your complete backup and original application folder. Stop the old server and close host tabs. Extract this ZIP into a separate folder and run `Start_Remote_Deck.bat`, keeping the same Windows Python environment, browser profile, hostname and port. Refresh updated assets with Ctrl+F5 if necessary. **Do not clear site data/IndexedDB or select New Voyage.** Wait for actual initialization and writer ownership, then select ENTER ICARUS. The ZIP includes `README_STARTUP_SIZE_FIX.md` with installation, configuration transfer, backup and rollback instructions.
