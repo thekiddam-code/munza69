@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "tests_run": 1,
+  "passed_cases": [
+    "test_existing_authenticated_tv_commands_and_managed_timer_cancel (test_drone_remote.DroneRemote.test_existing_authenticated_tv_commands_and_managed_timer_cancel)"
+  ],
+  "runtime_root": "/workspace/work/boot_hotfix/runtime",
+  "source_commit": "3d05c497446845a28df1e1d6aa08943bcbaca73a",
+  "errors": [],
+  "failures": []
+}

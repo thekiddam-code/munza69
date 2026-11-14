@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "runtime_commit": "fc8ce280689fda785a34d046f1187d5fcd6aee55",
+  "case_executions": 497,
+  "suites": {
+    "boot": 8,
+    "remote": 49,
+    "drone": 7,
+    "visual": 6,
+    "clock": 4,
+    "node": 405,
+    "services": 18
+  },
+  "all_passed_no_skips": true,
+  "runtime_files": 137,
+  "unchanged_from_phase46": 133,
+  "only_four_boot_runtime_files_changed": true,
+  "initial_claim_retry_requires_existing_storage_ownership_and_server_grant": true,
+  "live_owner_and_lost_generation_protections_verified": true,
+  "save_schema_unchanged": true,
+  "no_new_long_campaign_or_physical_hardware_claim": true,
+  "case_policy": "Executed cases including inherited overlap; earlier failed candidates and focused reruns not counted. Package checks separate."
+}

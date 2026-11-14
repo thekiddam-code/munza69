@@ -1,0 +1,12 @@
+{
+  "passed": false,
+  "tests_run": 1,
+  "passed_cases": [],
+  "failures": [
+    {
+      "test": "test_boot_departed_server_lease_waits_then_resolves_without_reloading_or_bypassing (__main__.BootHotfix.test_boot_departed_server_lease_waits_then_resolves_without_reloading_or_bypassing)",
+      "detail": "Traceback (most recent call last):\n  File \"/workspace/work/munza69/ICARUS/test_boot_hotfix.py\", line 10, in test_boot_departed_server_lease_waits_then_resolves_without_reloading_or_bypassing\n    prior=self.m.BRIDGE_SERVICE.claim('departed-host-lease');p=self.raw_page();p.goto(self.url+'/icarus.html?icarus_soak=1');p.wait_for_function('ICARUSBoot.complete');self.assertIn('WAITING FOR WRITER',p.locator('.boot-status').inner_text());self.assertEqual(p.evaluate('ICARUSBoot.states.authorization.state'),'ready');self.assertFalse(p.evaluate('ICARUSHost.canWrite()'));self.assertEqual(self.m.BRIDGE_SERVICE.owner,'departed-host-lease');p.locator('#boot-auth-code').fill('still-entering');before=p.evaluate('__icarusSoak.snapshot()');self.assertEqual(before['tick'],0)\n                                                                                                                                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 'WAITING FOR WRITER' not found in 'ICARUS ONLINE \u00b7 READ-ONLY ACCESS'\n"
+    }
+  ],
+  "errors": []
+}
