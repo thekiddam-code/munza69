@@ -23,6 +23,8 @@ class DeploymentIntegration(DroneIntegration):
    self.advance(p,1);s=self.brief(p);seen.add(s['forward']['vehicle']['stage']);m=s['mission']
    if m and m['ops44'].get('freight') and m['ops44']['freight']['load']==4 and not reload_done:
     full=self.snap(p);p.evaluate('__icarusSoak.save()');p.reload();self.assertEqual(self.snap(p),full);reload_done=True
+   if s['mission'] and s['mission']['ops44'].get('action')=='camp-setup' and s['forward']['vehicle']['stage']=='setting-up':
+    actors=p.evaluate('__icarusSoak.observation().rooms.filter(r=>r.kind==="field"&&r.available).flatMap(r=>r.actors)');self.assertTrue(actors);self.assertTrue(all(q['state']=='repair' for q in actors))
    if s['forward']['vehicle']['stage']=='deployed':
     self.assertEqual(s['forward']['deployment']['camp']['node'],0);self.assertGreater(len(s['forward']['deployment']['camp']['objects']),10);self.assertIsNotNone(m);self.assertEqual(m['ops44']['node'],0);OUT.mkdir(parents=True,exist_ok=True);views=p.evaluate('__icarusSoak.observation().rooms.filter(r=>r.kind==="field"&&r.available)');self.assertTrue(any((v.get('forward') or {}).get('camp') for v in views));p.evaluate('v=>{const c=document.createElement("canvas");c.id="camp-capture";document.body.append(c);ICARUSPixelCamera.draw(c,v,{paused:true,reduced:true});}',next(v for v in views if (v.get('forward') or {}).get('camp')));p.locator('#camp-capture').screenshot(path=str(OUT/'actual_camp_body_camera.png'));break
   else:self.fail(json.dumps(s)[:5000])
