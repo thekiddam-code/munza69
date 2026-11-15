@@ -381,3 +381,10 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - FUC Mobile cabin/dashboard/interior-visible glow and exterior task lights can turn on when occupied or in use, with low-power/off state when vacant as appropriate to real power and operating state.
 - Simulation still tracks real crew entry/exit, occupancy, tasks, resources and consequences; avoid detailed interior geometry, room camera feeds, and unnecessary rendering. Exterior cues must not reveal information unavailable to the observer or ignore power failures.
 - This is an approved FOC visual/simulation constraint, not yet implemented.
+
+## FOC-01 starting condition — aboard ICARUS
+- User decides FOC-01, the crew-nicknamed **FUC Mobile**, **starts aboard ICARUS**, as original ship expedition equipment. No initial salvage, construction, or discovery gate.
+- Spawn as a persistent operational vehicle in an existing physically suitable hangar/vehicle bay, with baseline fuel/charge, medical tents, camp gear, ATVs/four-wheelers, drones, charging/maintenance supplies, communications and deployable perimeter security. Inspect actual ship topology and avoid inventing new rooms or conflicting with existing occupancy.
+- Crew must physically board/load, depart via valid route, travel to a reachable asteroid sector and set up camp; support autonomous deployment, resupply, pack-down, return and relocation based on genuine mission needs.
+- Its location, cargo, condition, resources, damage, deployment state and crew occupancy persist across save/reload. No teleportation or respawning after loss; exterior camera cues only for tents and vehicle, per prior decision.
+- Phase 4.7 planned, not yet implemented. Stabilize Phase 4.6 crew expeditions, event recordings and catch-up first or alongside integration with regression tests.
