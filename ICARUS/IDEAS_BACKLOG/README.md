@@ -388,3 +388,10 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - Crew must physically board/load, depart via valid route, travel to a reachable asteroid sector and set up camp; support autonomous deployment, resupply, pack-down, return and relocation based on genuine mission needs.
 - Its location, cargo, condition, resources, damage, deployment state and crew occupancy persist across save/reload. No teleportation or respawning after loss; exterior camera cues only for tents and vehicle, per prior decision.
 - Phase 4.7 planned, not yet implemented. Stabilize Phase 4.6 crew expeditions, event recordings and catch-up first or alongside integration with regression tests.
+
+## Phase 4.7 FUC Mobile size, cargo bay parking and cameras
+- User confirms **FUC Mobile is larger than a van, approximately box-truck-sized**, carrying a full deployable field camp. Keep its scrappy/improvised visual identity, but scale its footprint and equipment realistically.
+- **Starts aboard ICARUS, fully stocked and deployment-ready, not automatically deployed.** Assign it a proper dedicated parking spot in the existing larger cargo bay. Inspect actual room dimensions, ship topology, cargo door clearance, access routes and existing objects before modifying geometry. Do not invent a separate hangar if existing cargo bay suffices.
+- Update cargo bay surveillance cameras for the larger room and truck: wide establishing view with accurate scale and coverage, optionally a loading/service angle, actual sightlines and consistent crew/vehicle positions. Don't fake room size by stretching backgrounds or shrinking vehicle; ensure cameras and navigation use the same geometry.
+- Parking spot may include floor markings, restraints, service/charging points and nearby supplies; crew visibly prepare, board, load, drive out and return using physically valid routes. Preserve save compatibility, room identities and all existing camera feeds.
+- Vehicle and deployed tents retain exterior-only occupancy indicators, with lights/shadows reflecting real occupants and power. The gym remains deferred. Status: Phase 4.7 planned, not yet verified implemented.
