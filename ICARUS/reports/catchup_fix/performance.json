@@ -1,0 +1,1242 @@
+{
+  "scope": "Same private Episode 2 backup imported into isolated HTTP/Chromium contexts; no live user database or input file edited. Fixed seeded simulation, fixed 16000 wall-second horizon, real performance timer and writer fencing. Sampling adds overhead. Single accepted measurements, not repeated statistical trials.",
+  "configured_rate": 20,
+  "input_sha256": "888ea1574d2b24ae6e4f7911b29dbf2c22079fbbaa4f34cd64f350afbbff7d75",
+  "before_runtime_commit": "58232819cd68a2748d43576a7984e35395f23f39",
+  "fixed_runtime_commit": "ef4f12d4e745aa29de96f0fd6c6b6a6d6cc3bcc8",
+  "runs": {
+    "before120": {
+      "measured_ticks": 120,
+      "simulated_seconds_per_real_second": 248.72528292499652,
+      "pending_wall_seconds_per_real_second": 12.371733753402063,
+      "avg_elapsed_ms_per_tick": 241.2300000000124,
+      "durable_flush_seconds": 2.708496072998969,
+      "before_world_sha256": "c5e052af4b8d35853ef8eab40cbc1b583cc4fa87c0e61dfdf9be8463c3827b2b",
+      "after_world_sha256": "1ce0048b4657630e3383ef4250ed76c6297cadd30a2a2ed55efb998bd0e5e910",
+      "recording_counts": {
+        "records": 20,
+        "original_records_preserved": true
+      },
+      "saved_input_unchanged": true,
+      "console_errors": [],
+      "page_errors": [],
+      "cpu_self_ms": [
+        {
+          "function": "_compress",
+          "file": "lz-string.min.js",
+          "line": 1,
+          "ms": 23053.075
+        },
+        {
+          "function": "(idle)",
+          "file": "",
+          "line": 0,
+          "ms": 1662.763
+        },
+        {
+          "function": "(garbage collector)",
+          "file": "",
+          "line": 0,
+          "ms": 1624.693
+        },
+        {
+          "function": "(program)",
+          "file": "",
+          "line": 0,
+          "ms": 1196.139
+        },
+        {
+          "function": "compressToUTF16",
+          "file": "lz-string.min.js",
+          "line": 1,
+          "ms": 613.376
+        },
+        {
+          "function": "put",
+          "file": "",
+          "line": 0,
+          "ms": 544.169
+        },
+        {
+          "function": "save",
+          "file": "icarus.html",
+          "line": 1128,
+          "ms": 488.381
+        },
+        {
+          "function": "_decompress",
+          "file": "lz-string.min.js",
+          "line": 1,
+          "ms": 302.173
+        },
+        {
+          "function": "(anonymous)",
+          "file": "durable-store.js",
+          "line": 17,
+          "ms": 278.423
+        },
+        {
+          "function": "hash",
+          "file": "durable-store.js",
+          "line": 11,
+          "ms": 221.644
+        },
+        {
+          "function": "valid",
+          "file": "durable-store.js",
+          "line": 12,
+          "ms": 206.561
+        },
+        {
+          "function": "enqueue",
+          "file": "durable-store.js",
+          "line": 17,
+          "ms": 188.68
+        },
+        {
+          "function": "setItem",
+          "file": "",
+          "line": 0,
+          "ms": 166.3
+        },
+        {
+          "function": "querySelectorAll",
+          "file": "",
+          "line": 0,
+          "ms": 154.839
+        },
+        {
+          "function": "(anonymous)",
+          "file": "",
+          "line": 0,
+          "ms": 150.398
+        },
+        {
+          "function": "(anonymous)",
+          "file": "durable-store.js",
+          "line": 19,
+          "ms": 138.407
+        },
+        {
+          "function": "encode",
+          "file": "",
+          "line": 0,
+          "ms": 97.531
+        },
+        {
+          "function": "bytes",
+          "file": "telemetry-packet.js",
+          "line": 3,
+          "ms": 92.393
+        },
+        {
+          "function": "project",
+          "file": "companion-view.js",
+          "line": 3,
+          "ms": 91.779
+        },
+        {
+          "function": "frame",
+          "file": "drone-schema.js",
+          "line": 5,
+          "ms": 88.658
+        },
+        {
+          "function": "(anonymous)",
+          "file": "companion-view.js",
+          "line": 3,
+          "ms": 84.495
+        },
+        {
+          "function": "candidates",
+          "file": "sol-voice.js",
+          "line": 4,
+          "ms": 66.239
+        },
+        {
+          "function": "(anonymous)",
+          "file": "operational-view.js",
+          "line": 4,
+          "ms": 52.795
+        },
+        {
+          "function": "valid",
+          "file": "world-schema.js",
+          "line": 4,
+          "ms": 48.667
+        },
+        {
+          "function": "benchmarkRaw",
+          "file": "icarus.html",
+          "line": 4235,
+          "ms": 36.436
+        },
+        {
+          "function": "getBoundingClientRect",
+          "file": "",
+          "line": 0,
+          "ms": 32.899
+        },
+        {
+          "function": "(anonymous)",
+          "file": "ship-systems.js",
+          "line": 5,
+          "ms": 32.087
+        },
+        {
+          "function": "parts",
+          "file": "calendar.js",
+          "line": 5,
+          "ms": 30.905
+        },
+        {
+          "function": "Storage.setItem",
+          "file": "edition.js",
+          "line": 5,
+          "ms": 27.324
+        },
+        {
+          "function": "zone",
+          "file": "ship-systems.js",
+          "line": 5,
+          "ms": 25.624
+        },
+        {
+          "function": "holoBox",
+          "file": "icarus.html",
+          "line": 2803,
+          "ms": 23.448
+        },
+        {
+          "function": "project",
+          "file": "operational-view.js",
+          "line": 3,
+          "ms": 23.266
+        },
+        {
+          "function": "key",
+          "file": "ui-continuity.js",
+          "line": 3,
+          "ms": 22.764
+        },
+        {
+          "function": "drawHologram",
+          "file": "icarus.html",
+          "line": 2880,
+          "ms": 22.373
+        },
+        {
+          "function": "capture",
+          "file": "ui-continuity.js",
+          "line": 4,
+          "ms": 21.17
+        }
+      ],
+      "elapsed_seconds": 28.94760000000149,
+      "complete": true,
+      "remaining_wall_seconds": 15641.868,
+      "writer_retained": true,
+      "configured_rate_after": 20,
+      "canonical_completion_seconds": 31.65609607300046,
+      "canonical_completion_sim_seconds_per_real_second": 227.44434384443548,
+      "groups": {
+        "ICARUSForwardOps.tick": {
+          "calls": 120,
+          "ms": 1.7999999895691872,
+          "max_ms": 0.7999999970197678
+        },
+        "ICARUSDroneEscort.tick": {
+          "calls": 120,
+          "ms": 0.29999998956918716,
+          "max_ms": 0.19999999552965164
+        },
+        "ICARUSDroneOps.tick": {
+          "calls": 120,
+          "ms": 7.000000007450581,
+          "max_ms": 0.9000000059604645
+        },
+        "ICARUSForwardOps.job": {
+          "calls": 31,
+          "ms": 0.3999999910593033,
+          "max_ms": 0.10000000149011612
+        },
+        "ICARUSDroneOps.job": {
+          "calls": 31,
+          "ms": 0.7000000029802322,
+          "max_ms": 0.4000000059604645
+        },
+        "step": {
+          "calls": 120,
+          "ms": 203.00000002980232,
+          "max_ms": 19.400000005960464
+        },
+        "ICARUSKnowledge.tick": {
+          "calls": 120,
+          "ms": 16.89999996870756,
+          "max_ms": 13.799999997019768
+        },
+        "field": {
+          "calls": 120,
+          "ms": 171.2999999895692,
+          "max_ms": 20.899999998509884
+        },
+        "renderUnifiedClock": {
+          "calls": 17,
+          "ms": 11.200000010430813,
+          "max_ms": 3
+        },
+        "ICARUSObservation.project": {
+          "calls": 75,
+          "ms": 86.09999998658895,
+          "max_ms": 19.69999999552965
+        },
+        "save": {
+          "calls": 8,
+          "ms": 26504.20000000298,
+          "max_ms": 3645.8000000044703
+        },
+        "ICARUSOperationalView.project": {
+          "calls": 10,
+          "ms": 97.39999999850988,
+          "max_ms": 28.399999998509884
+        },
+        "ICARUSClassified.project": {
+          "calls": 3,
+          "ms": 0.6000000089406967,
+          "max_ms": 0.4000000059604645
+        },
+        "ICARUSDroneOps.fitTelemetry": {
+          "calls": 3,
+          "ms": 139.09999999403954,
+          "max_ms": 63.5
+        },
+        "render": {
+          "calls": 6,
+          "ms": 153.40000000596046,
+          "max_ms": 31
+        }
+      },
+      "durable_status": {
+        "schema": 1,
+        "ready": true,
+        "backend": "indexeddb",
+        "revision": 12,
+        "pending": 0,
+        "warning": null,
+        "recoveries": 0,
+        "owner": true,
+        "readOnly": false,
+        "usage": 73728,
+        "quota": 10737491968
+      },
+      "telemetry_publish": {
+        "requests": 8,
+        "statuses": [
+          200
+        ],
+        "max_bytes": 109896
+      }
+    },
+    "final120": {
+      "measured_ticks": 120,
+      "simulated_seconds_per_real_second": 4188.48167539267,
+      "pending_wall_seconds_per_real_second": 208.33740546829551,
+      "avg_elapsed_ms_per_tick": 14.325,
+      "durable_flush_seconds": 0.05920561600214569,
+      "before_world_sha256": "c5e052af4b8d35853ef8eab40cbc1b583cc4fa87c0e61dfdf9be8463c3827b2b",
+      "after_world_sha256": "1ce0048b4657630e3383ef4250ed76c6297cadd30a2a2ed55efb998bd0e5e910",
+      "recording_counts": {
+        "records": 20,
+        "original_records_preserved": true
+      },
+      "saved_input_unchanged": true,
+      "console_errors": [],
+      "page_errors": [],
+      "cpu_self_ms": [
+        {
+          "function": "(idle)",
+          "file": "",
+          "line": 0,
+          "ms": 373.135
+        },
+        {
+          "function": "(program)",
+          "file": "",
+          "line": 0,
+          "ms": 300.325
+        },
+        {
+          "function": "saveSnapshot",
+          "file": "icarus.html",
+          "line": 1130,
+          "ms": 287.498
+        },
+        {
+          "function": "(anonymous)",
+          "file": "durable-store.js",
+          "line": 21,
+          "ms": 233.753
+        },
+        {
+          "function": "hash",
+          "file": "durable-store.js",
+          "line": 11,
+          "ms": 180.896
+        },
+        {
+          "function": "valid",
+          "file": "durable-store.js",
+          "line": 12,
+          "ms": 161.0
+        },
+        {
+          "function": "enqueue",
+          "file": "durable-store.js",
+          "line": 21,
+          "ms": 151.824
+        },
+        {
+          "function": "(anonymous)",
+          "file": "",
+          "line": 0,
+          "ms": 93.182
+        },
+        {
+          "function": "frame",
+          "file": "drone-schema.js",
+          "line": 5,
+          "ms": 61.225
+        },
+        {
+          "function": "querySelectorAll",
+          "file": "",
+          "line": 0,
+          "ms": 55.913
+        },
+        {
+          "function": "put",
+          "file": "",
+          "line": 0,
+          "ms": 49.349
+        },
+        {
+          "function": "candidates",
+          "file": "sol-voice.js",
+          "line": 4,
+          "ms": 47.364
+        },
+        {
+          "function": "record",
+          "file": "durable-store.js",
+          "line": 22,
+          "ms": 45.721
+        },
+        {
+          "function": "benchmarkRaw",
+          "file": "icarus.html",
+          "line": 4243,
+          "ms": 32.477
+        },
+        {
+          "function": "valid",
+          "file": "world-schema.js",
+          "line": 4,
+          "ms": 30.489
+        },
+        {
+          "function": "(garbage collector)",
+          "file": "",
+          "line": 0,
+          "ms": 25.783
+        },
+        {
+          "function": "project",
+          "file": "companion-view.js",
+          "line": 3,
+          "ms": 17.311
+        },
+        {
+          "function": "step",
+          "file": "icarus.html",
+          "line": 2470,
+          "ms": 16.003
+        },
+        {
+          "function": "parts",
+          "file": "calendar.js",
+          "line": 5,
+          "ms": 15.311
+        },
+        {
+          "function": "zone",
+          "file": "ship-systems.js",
+          "line": 5,
+          "ms": 15.041
+        },
+        {
+          "function": "(anonymous)",
+          "file": "ship-systems.js",
+          "line": 5,
+          "ms": 15.031
+        },
+        {
+          "function": "start",
+          "file": "save-cache-queue.js",
+          "line": 7,
+          "ms": 14.04
+        },
+        {
+          "function": "(anonymous)",
+          "file": "companion-view.js",
+          "line": 3,
+          "ms": 13.305
+        },
+        {
+          "function": "totals",
+          "file": "economy.js",
+          "line": 6,
+          "ms": 8.327
+        },
+        {
+          "function": "getBoundingClientRect",
+          "file": "",
+          "line": 0,
+          "ms": 7.608
+        },
+        {
+          "function": "(anonymous)",
+          "file": "companion-view.js",
+          "line": 7,
+          "ms": 7.062
+        },
+        {
+          "function": "copy",
+          "file": "drone-ops.js",
+          "line": 4,
+          "ms": 6.874
+        },
+        {
+          "function": "holoBox",
+          "file": "icarus.html",
+          "line": 2808,
+          "ms": 6.519
+        },
+        {
+          "function": "note",
+          "file": "economy.js",
+          "line": 14,
+          "ms": 6.444
+        },
+        {
+          "function": "routeFromNodeImpl",
+          "file": "icarus.html",
+          "line": 1169,
+          "ms": 6.091
+        },
+        {
+          "function": "search",
+          "file": "expedition-world.js",
+          "line": 11,
+          "ms": 5.929
+        },
+        {
+          "function": "tick",
+          "file": "gravity-motion.js",
+          "line": 8,
+          "ms": 5.843
+        },
+        {
+          "function": "(anonymous)",
+          "file": "operational-view.js",
+          "line": 4,
+          "ms": 5.705
+        },
+        {
+          "function": "collect",
+          "file": "durable-store.js",
+          "line": 20,
+          "ms": 5.522
+        },
+        {
+          "function": "(anonymous)",
+          "file": "ui-continuity.js",
+          "line": 4,
+          "ms": 5.426
+        }
+      ],
+      "elapsed_seconds": 1.719,
+      "complete": true,
+      "remaining_wall_seconds": 15641.868,
+      "writer_retained": true,
+      "configured_rate_after": 20,
+      "canonical_completion_seconds": 1.7782056160021458,
+      "canonical_completion_sim_seconds_per_real_second": 4049.025565551533,
+      "groups": {
+        "ICARUSForwardOps.tick": {
+          "calls": 120,
+          "ms": 0.9999999925494194,
+          "max_ms": 0.10000000149011612
+        },
+        "ICARUSDroneEscort.tick": {
+          "calls": 120,
+          "ms": 0.30000000447034836,
+          "max_ms": 0.20000000298023224
+        },
+        "ICARUSDroneOps.tick": {
+          "calls": 120,
+          "ms": 6.999999970197678,
+          "max_ms": 0.7000000029802322
+        },
+        "ICARUSForwardOps.job": {
+          "calls": 31,
+          "ms": 0.10000000149011612,
+          "max_ms": 0.10000000149011612
+        },
+        "ICARUSDroneOps.job": {
+          "calls": 31,
+          "ms": 1.6000000014901161,
+          "max_ms": 1.5
+        },
+        "step": {
+          "calls": 120,
+          "ms": 164.19999999552965,
+          "max_ms": 17.899999998509884
+        },
+        "ICARUSKnowledge.tick": {
+          "calls": 120,
+          "ms": 2.3999999910593033,
+          "max_ms": 0.20000000298023224
+        },
+        "field": {
+          "calls": 120,
+          "ms": 96.90000002086163,
+          "max_ms": 5.399999998509884
+        },
+        "renderUnifiedClock": {
+          "calls": 5,
+          "ms": 1.599999986588955,
+          "max_ms": 0.3999999985098839
+        },
+        "save": {
+          "calls": 8,
+          "ms": 848.7000000104308,
+          "max_ms": 123.70000000298023
+        },
+        "ICARUSObservation.project": {
+          "calls": 15,
+          "ms": 10.100000008940697,
+          "max_ms": 1.1000000014901161
+        },
+        "render": {
+          "calls": 1,
+          "ms": 24,
+          "max_ms": 24
+        },
+        "ICARUSOperationalView.project": {
+          "calls": 1,
+          "ms": 6,
+          "max_ms": 6
+        }
+      },
+      "durable_status": {
+        "schema": 1,
+        "ready": true,
+        "backend": "indexeddb",
+        "revision": 12,
+        "pending": 0,
+        "warning": null,
+        "recoveries": 0,
+        "historyTransactions": 0,
+        "owner": true,
+        "readOnly": false,
+        "usage": 73728,
+        "quota": 10737491968,
+        "peakPending": 2,
+        "lastCommitMs": 50.599999994039536,
+        "cachePending": 1,
+        "cacheCoalesced": 0,
+        "cacheWorkerMs": 3011,
+        "peakHistoryTransactions": 129,
+        "historyRowsWritten": 8516,
+        "cacheWarning": null,
+        "lastCacheCommitMs": 42.899999998509884
+      },
+      "mirror_flush_seconds": 3.1372973040051875,
+      "canonical_and_mirror_completion_seconds": 4.9155029200073335,
+      "cache_consistency": {
+        "equal": true,
+        "pending": 0,
+        "cachePending": 0,
+        "cacheWarning": null
+      },
+      "runtime_diagnostics": {
+        "configuredRate": 20,
+        "intervalRate": 20,
+        "backlogMs": 15641868,
+        "catchingUp": true,
+        "tick": 46155,
+        "groups": {
+          "telemetry-build": {
+            "calls": 2,
+            "totalMs": 33.70000000298023,
+            "maxMs": 29.200000002980232,
+            "lastMs": 29.200000002980232,
+            "averageMs": 16.850000001490116
+          },
+          "telemetry": {
+            "calls": 6,
+            "totalMs": 33.80000000447035,
+            "maxMs": 29.200000002980232,
+            "lastMs": 0.10000000149011612,
+            "averageMs": 5.633333334078391
+          },
+          "save": {
+            "calls": 10,
+            "totalMs": 997.1000000089407,
+            "maxMs": 145.19999999552965,
+            "lastMs": 104.60000000149012,
+            "averageMs": 99.71000000089407
+          },
+          "observation-ui": {
+            "calls": 11,
+            "totalMs": 85.10000000149012,
+            "maxMs": 28.400000005960464,
+            "lastMs": 7.199999995529652,
+            "averageMs": 7.736363636499101
+          },
+          "vehicle": {
+            "calls": 120,
+            "totalMs": 1.199999988079071,
+            "maxMs": 0.20000000298023224,
+            "lastMs": 0,
+            "averageMs": 0.009999999900658925
+          },
+          "escort": {
+            "calls": 120,
+            "totalMs": 0.5000000074505806,
+            "maxMs": 0.20000000298023224,
+            "lastMs": 0,
+            "averageMs": 0.004166666728754838
+          },
+          "drones": {
+            "calls": 120,
+            "totalMs": 7.199999965727329,
+            "maxMs": 0.7999999970197678,
+            "lastMs": 0,
+            "averageMs": 0.05999999971439441
+          },
+          "pathfinding": {
+            "calls": 253,
+            "totalMs": 14.299999982118607,
+            "maxMs": 0.7000000029802322,
+            "lastMs": 0,
+            "averageMs": 0.05652173905975734
+          },
+          "tick": {
+            "calls": 120,
+            "totalMs": 261.40000001341105,
+            "maxMs": 23.299999997019768,
+            "lastMs": 2,
+            "averageMs": 2.178333333445092
+          },
+          "pump": {
+            "calls": 24,
+            "totalMs": 1137.0999999940395,
+            "maxMs": 132.5,
+            "lastMs": 0.10000000149011612,
+            "averageMs": 47.379166666418314
+          },
+          "render": {
+            "calls": 1,
+            "totalMs": 24.100000001490116,
+            "maxMs": 24.100000001490116,
+            "lastMs": 24.100000001490116,
+            "averageMs": 24.100000001490116
+          }
+        },
+        "throughput": {
+          "simulatedSeconds": 7200,
+          "processedWallSeconds": 358.132,
+          "elapsedSeconds": 1.8710999999940396,
+          "simulatedSecondsPerRealSecond": 3848.0038480161056,
+          "processedWallSecondsPerRealSecond": 191.40184918023667
+        },
+        "storage": {
+          "backend": "indexeddb",
+          "pending": 0,
+          "lastCommitMs": 50.599999994039536,
+          "peakPending": 2,
+          "cachePending": 1,
+          "cacheWorkerMs": 3011,
+          "cacheWarning": null
+        }
+      },
+      "telemetry_publish": {
+        "requests": 7,
+        "statuses": [
+          200
+        ],
+        "max_bytes": 109371
+      }
+    },
+    "final_drain": {
+      "measured_ticks": 5333,
+      "simulated_seconds_per_real_second": 2712.0097841868765,
+      "pending_wall_seconds_per_real_second": 135.60896476964194,
+      "avg_elapsed_ms_per_tick": 22.123813988373715,
+      "durable_flush_seconds": 0.046412534997216426,
+      "before_world_sha256": "c5e052af4b8d35853ef8eab40cbc1b583cc4fa87c0e61dfdf9be8463c3827b2b",
+      "after_world_sha256": "0c7245a9fccd2fe47adbc286d150480979a45c9342d80ab01bdfb5f57c73b1dc",
+      "recording_counts": {
+        "records": 20,
+        "original_records_preserved": true
+      },
+      "saved_input_unchanged": true,
+      "console_errors": [],
+      "page_errors": [],
+      "cpu_self_ms": [
+        {
+          "function": "saveSnapshot",
+          "file": "icarus.html",
+          "line": 1130,
+          "ms": 18291.943
+        },
+        {
+          "function": "(anonymous)",
+          "file": "durable-store.js",
+          "line": 21,
+          "ms": 14969.741
+        },
+        {
+          "function": "hash",
+          "file": "durable-store.js",
+          "line": 11,
+          "ms": 11782.138
+        },
+        {
+          "function": "(program)",
+          "file": "",
+          "line": 0,
+          "ms": 9594.159
+        },
+        {
+          "function": "(idle)",
+          "file": "",
+          "line": 0,
+          "ms": 9445.611
+        },
+        {
+          "function": "valid",
+          "file": "durable-store.js",
+          "line": 12,
+          "ms": 8563.384
+        },
+        {
+          "function": "enqueue",
+          "file": "durable-store.js",
+          "line": 21,
+          "ms": 8437.659
+        },
+        {
+          "function": "put",
+          "file": "",
+          "line": 0,
+          "ms": 6781.169
+        },
+        {
+          "function": "frame",
+          "file": "drone-schema.js",
+          "line": 5,
+          "ms": 2799.093
+        },
+        {
+          "function": "querySelectorAll",
+          "file": "",
+          "line": 0,
+          "ms": 2773.398
+        },
+        {
+          "function": "(garbage collector)",
+          "file": "",
+          "line": 0,
+          "ms": 2329.942
+        },
+        {
+          "function": "record",
+          "file": "durable-store.js",
+          "line": 22,
+          "ms": 2099.442
+        },
+        {
+          "function": "valid",
+          "file": "world-schema.js",
+          "line": 4,
+          "ms": 1876.943
+        },
+        {
+          "function": "candidates",
+          "file": "sol-voice.js",
+          "line": 4,
+          "ms": 1809.113
+        },
+        {
+          "function": "project",
+          "file": "companion-view.js",
+          "line": 3,
+          "ms": 1501.638
+        },
+        {
+          "function": "parts",
+          "file": "calendar.js",
+          "line": 5,
+          "ms": 1020.7
+        },
+        {
+          "function": "(anonymous)",
+          "file": "ship-systems.js",
+          "line": 5,
+          "ms": 691.661
+        },
+        {
+          "function": "(anonymous)",
+          "file": "companion-view.js",
+          "line": 3,
+          "ms": 586.125
+        },
+        {
+          "function": "zone",
+          "file": "ship-systems.js",
+          "line": 5,
+          "ms": 506.14
+        },
+        {
+          "function": "start",
+          "file": "save-cache-queue.js",
+          "line": 7,
+          "ms": 367.788
+        },
+        {
+          "function": "step",
+          "file": "icarus.html",
+          "line": 2470,
+          "ms": 354.27
+        },
+        {
+          "function": "encode",
+          "file": "",
+          "line": 0,
+          "ms": 344.215
+        },
+        {
+          "function": "getBoundingClientRect",
+          "file": "",
+          "line": 0,
+          "ms": 343.755
+        },
+        {
+          "function": "(anonymous)",
+          "file": "operational-view.js",
+          "line": 4,
+          "ms": 332.672
+        },
+        {
+          "function": "(anonymous)",
+          "file": "durable-store.js",
+          "line": 28,
+          "ms": 331.172
+        },
+        {
+          "function": "mapCell",
+          "file": "knowledge.js",
+          "line": 54,
+          "ms": 302.737
+        },
+        {
+          "function": "bytes",
+          "file": "telemetry-packet.js",
+          "line": 3,
+          "ms": 295.0
+        },
+        {
+          "function": "holoBox",
+          "file": "icarus.html",
+          "line": 2808,
+          "ms": 237.492
+        },
+        {
+          "function": "(anonymous)",
+          "file": "",
+          "line": 0,
+          "ms": 221.228
+        },
+        {
+          "function": "stroke",
+          "file": "",
+          "line": 0,
+          "ms": 218.222
+        },
+        {
+          "function": "routeFromNodeImpl",
+          "file": "icarus.html",
+          "line": 1169,
+          "ms": 216.035
+        },
+        {
+          "function": "drawHologram",
+          "file": "icarus.html",
+          "line": 2885,
+          "ms": 210.26
+        },
+        {
+          "function": "fetch",
+          "file": "",
+          "line": 0,
+          "ms": 204.09
+        },
+        {
+          "function": "position",
+          "file": "spatial.js",
+          "line": 3,
+          "ms": 199.501
+        },
+        {
+          "function": "(anonymous)",
+          "file": "icarus.html",
+          "line": 3178,
+          "ms": 177.686
+        }
+      ],
+      "elapsed_seconds": 117.98629999999702,
+      "complete": true,
+      "remaining_wall_seconds": 0.0,
+      "writer_retained": true,
+      "configured_rate_after": 20,
+      "canonical_completion_seconds": 118.03271253499423,
+      "canonical_completion_sim_seconds_per_real_second": 2710.9433743220347,
+      "groups": {
+        "ICARUSForwardOps.tick": {
+          "calls": 5333,
+          "ms": 17.60000003874302,
+          "max_ms": 0.20000000298023224
+        },
+        "ICARUSDroneEscort.tick": {
+          "calls": 5333,
+          "ms": 6.300000011920929,
+          "max_ms": 0.8000000044703484
+        },
+        "ICARUSDroneOps.tick": {
+          "calls": 5333,
+          "ms": 262.6000001132488,
+          "max_ms": 25.5
+        },
+        "ICARUSForwardOps.job": {
+          "calls": 1630,
+          "ms": 3.8000000044703484,
+          "max_ms": 2.100000001490116
+        },
+        "ICARUSDroneOps.job": {
+          "calls": 1630,
+          "ms": 35.299999952316284,
+          "max_ms": 1
+        },
+        "step": {
+          "calls": 5333,
+          "ms": 4925.9999998137355,
+          "max_ms": 53.100000001490116
+        },
+        "ICARUSKnowledge.tick": {
+          "calls": 5333,
+          "ms": 90.2999999448657,
+          "max_ms": 1.5
+        },
+        "field": {
+          "calls": 5333,
+          "ms": 3652.4000001996756,
+          "max_ms": 41.5
+        },
+        "renderUnifiedClock": {
+          "calls": 382,
+          "ms": 134.30000008642673,
+          "max_ms": 13.899999998509884
+        },
+        "ICARUSObservation.project": {
+          "calls": 1213,
+          "ms": 899.3999999985099,
+          "max_ms": 35.099999994039536
+        },
+        "save": {
+          "calls": 355,
+          "ms": 47844.19999998063,
+          "max_ms": 248
+        },
+        "render": {
+          "calls": 47,
+          "ms": 1221.3999999910593,
+          "max_ms": 71.20000000298023
+        },
+        "ICARUSOperationalView.project": {
+          "calls": 91,
+          "ms": 739.9000000059605,
+          "max_ms": 45.69999999552965
+        },
+        "ICARUSClassified.project": {
+          "calls": 32,
+          "ms": 1.5000000074505806,
+          "max_ms": 0.20000000298023224
+        },
+        "ICARUSDroneOps.fitTelemetry": {
+          "calls": 32,
+          "ms": 680.6000000089407,
+          "max_ms": 52.900000005960464
+        }
+      },
+      "durable_status": {
+        "schema": 1,
+        "ready": true,
+        "backend": "indexeddb",
+        "revision": 359,
+        "pending": 0,
+        "warning": null,
+        "recoveries": 0,
+        "historyTransactions": 0,
+        "owner": true,
+        "readOnly": false,
+        "usage": 22343680,
+        "quota": 10759761920,
+        "peakPending": 2,
+        "lastCommitMs": 271.1000000014901,
+        "cachePending": 2,
+        "cacheCoalesced": 166,
+        "cacheWorkerMs": 4639.80000000447,
+        "peakHistoryTransactions": 129,
+        "historyRowsWritten": 64615,
+        "cacheWarning": null,
+        "lastCacheCommitMs": 23.900000005960464
+      },
+      "mirror_flush_seconds": 5.596411899998202,
+      "canonical_and_mirror_completion_seconds": 123.62912443499243,
+      "cache_consistency": {
+        "equal": true,
+        "pending": 0,
+        "cachePending": 0,
+        "cacheWarning": null
+      },
+      "runtime_diagnostics": {
+        "configuredRate": 20,
+        "intervalRate": 20,
+        "backlogMs": 0,
+        "catchingUp": false,
+        "tick": 51368,
+        "groups": {
+          "telemetry-build": {
+            "calls": 36,
+            "totalMs": 1311.2000000104308,
+            "maxMs": 106.40000000596046,
+            "lastMs": 39.600000001490116,
+            "averageMs": 36.42222222251197
+          },
+          "telemetry": {
+            "calls": 40,
+            "totalMs": 1312.6000000163913,
+            "maxMs": 106.40000000596046,
+            "lastMs": 39.600000001490116,
+            "averageMs": 32.81500000040978
+          },
+          "save": {
+            "calls": 357,
+            "totalMs": 47986.80000001192,
+            "maxMs": 247.70000000298023,
+            "lastMs": 184.89999999850988,
+            "averageMs": 134.41680672272247
+          },
+          "observation-ui": {
+            "calls": 59,
+            "totalMs": 566.3999999910593,
+            "maxMs": 26.200000002980232,
+            "lastMs": 10,
+            "averageMs": 9.599999999848462
+          },
+          "vehicle": {
+            "calls": 5333,
+            "totalMs": 30.80000000447035,
+            "maxMs": 0.29999999701976776,
+            "lastMs": 0,
+            "averageMs": 0.005775360960898247
+          },
+          "escort": {
+            "calls": 5333,
+            "totalMs": 11.599999994039536,
+            "maxMs": 0.8999999985098839,
+            "lastMs": 0,
+            "averageMs": 0.002175135944878968
+          },
+          "drones": {
+            "calls": 5333,
+            "totalMs": 267.5000001117587,
+            "maxMs": 25.5,
+            "lastMs": 0,
+            "averageMs": 0.05015938498251617
+          },
+          "pathfinding": {
+            "calls": 10147,
+            "totalMs": 476.4999998882413,
+            "maxMs": 10.200000002980232,
+            "lastMs": 0.09999999403953552,
+            "averageMs": 0.04695969250894267
+          },
+          "tick": {
+            "calls": 5333,
+            "totalMs": 8596.29999999702,
+            "maxMs": 56.20000000298023,
+            "lastMs": 2.2999999970197678,
+            "averageMs": 1.6119069941865778
+          },
+          "pump": {
+            "calls": 1920,
+            "totalMs": 57688.700000062585,
+            "maxMs": 256,
+            "lastMs": 16,
+            "averageMs": 30.046197916699263
+          },
+          "render": {
+            "calls": 47,
+            "totalMs": 1221.9999999850988,
+            "maxMs": 71.29999999701977,
+            "lastMs": 29,
+            "averageMs": 25.999999999682952
+          }
+        },
+        "throughput": {
+          "simulatedSeconds": 319980,
+          "processedWallSeconds": 16000,
+          "elapsedSeconds": 117.98610000000149,
+          "simulatedSecondsPerRealSecond": 2712.0143813550576,
+          "processedWallSecondsPerRealSecond": 135.60919464241803
+        },
+        "storage": {
+          "backend": "indexeddb",
+          "pending": 0,
+          "lastCommitMs": 271.1000000014901,
+          "peakPending": 2,
+          "cachePending": 2,
+          "cacheWorkerMs": 4639.80000000447,
+          "cacheWarning": null
+        }
+      },
+      "telemetry_publish": {
+        "requests": 45,
+        "statuses": [
+          200
+        ],
+        "max_bytes": 109990
+      }
+    }
+  },
+  "matched_world_state_identical": {
+    "initial": true,
+    "final": true
+  },
+  "processing_improvement": 16.839790575917096,
+  "canonical_completion_improvement": 17.80226976460199,
+  "canonical_and_mirror_completion_improvement": 6.440052338114211
+}

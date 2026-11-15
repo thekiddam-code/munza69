@@ -1,0 +1,48 @@
+{
+  "passed": true,
+  "tests_run": 1,
+  "passed_cases": [
+    "test_profile_physical_expedition (__main__.ActiveFieldProfile.test_profile_physical_expedition)"
+  ],
+  "duration_seconds": 43.12819176999619,
+  "scope": "Separate explicitly controlled technical fixture: actual physical preparation, travel, sensor recording and return; not the private-voyage benchmark. Diagnostic counters are CPU call costs, not whole-campaign throughput.",
+  "groups": {
+    "vehicle": {
+      "calls": 227,
+      "totalMs": 2.6000000312924385,
+      "maxMs": 0.20000000298023224,
+      "lastMs": 0,
+      "averageMs": 0.011453744631244222
+    },
+    "escort": {
+      "calls": 227,
+      "totalMs": 2.6000000089406967,
+      "maxMs": 0.20000000298023224,
+      "lastMs": 0,
+      "averageMs": 0.0114537445327784
+    },
+    "drones": {
+      "calls": 227,
+      "totalMs": 1.4999999925494194,
+      "maxMs": 0.19999999552965164,
+      "lastMs": 0.10000000149011612,
+      "averageMs": 0.006607929482596561
+    },
+    "pathfinding": {
+      "calls": 396,
+      "totalMs": 28.499999977648258,
+      "maxMs": 1.5,
+      "lastMs": 0,
+      "averageMs": 0.07196969691325318
+    },
+    "expedition": {
+      "calls": 227,
+      "totalMs": 35.50000001490116,
+      "maxMs": 3.100000001490116,
+      "lastMs": 3.100000001490116,
+      "averageMs": 0.15638766526388176
+    }
+  },
+  "failures": [],
+  "errors": []
+}

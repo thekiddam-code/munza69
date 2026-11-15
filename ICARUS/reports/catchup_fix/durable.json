@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "tests_run": 2,
+  "duration_seconds": 19.726490255998215,
+  "passed_cases": [
+    "test_core_durable_commit_abort_keeps_previous_acknowledged_snapshot (test_anthology_integration.CoreIntegration.test_core_durable_commit_abort_keeps_previous_acknowledged_snapshot)",
+    "test_full_backup_roundtrip_keeps_story_sources_memories_and_preferences (test_anthology_integration.CoreIntegration.test_full_backup_roundtrip_keeps_story_sources_memories_and_preferences)"
+  ],
+  "failures": [],
+  "errors": []
+}

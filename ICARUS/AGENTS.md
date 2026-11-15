@@ -1,3 +1,7 @@
+# Current focused handoff: Phase 4.7A catch-up regression hotfix
+
+Use codex/phase47-catchup-regression for this targeted repair. Read README_CATCHUP_HOTFIX.md, CATCHUP_INVESTIGATION.md and CATCHUP_VALIDATION.md. Keep the selected clock rate and every causal minute; canonical IndexedDB snapshots and history remain durable. Cache compression alone is asynchronous/coalesced and fenced. Do not clear the voyage, bypass writer ownership or raise telemetry limits. Phase4.7 camp/deployment remains incomplete as described below.
+
 # Current handoff: Phase 4.7 development checkpoint — NOT COMPLETE
 
 Use codex/forward-operations-phase4-7. Read PHASE47_IMPLEMENTATION_BRIEF.md, PHASE47_PROGRESS.md, PHASE47_ARCHITECTURE.md and PHASE47_VALIDATION.md. Preserve the Phase4.6 startup-size/boot hotfixes and original voyage. FOC-01 currently has original-equipment registration, C03 parking and physical inspection only; no validated truck departure or persistent camp exists yet. Escort rotations currently use the ship dock, not a fictitious camp. Never claim Phase4.7 complete until deployment, camp, camp-based rotation and live cameras are all actually verified. Retained Records1–12 are real archive data previously hidden by an eight-record UI slice; do not renumber or fabricate pixels. Keep received/onboard custody, explicit ENTER, 110000-byte telemetry budget, lease fencing, existing clocks and causal prerequisites. New field operations and genuine high-rate media transport remain implementation work, not external approval requirements.

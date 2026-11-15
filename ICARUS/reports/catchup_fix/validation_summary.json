@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "runtime_commit": "ef4f12d4e745aa29de96f0fd6c6b6a6d6cc3bcc8",
+  "node": {
+    "tests_run": 440,
+    "passed": 440,
+    "failures": 0
+  },
+  "suites": {
+    "active_field_profile": {
+      "tests_run": 1,
+      "passed": true,
+      "duration_seconds": 43.12819176999619
+    },
+    "boot": {
+      "tests_run": 8,
+      "passed": true,
+      "duration_seconds": 41.783598739995796
+    },
+    "clock": {
+      "tests_run": 4,
+      "passed": true,
+      "duration_seconds": 9.095454335998511
+    },
+    "diagnostics": {
+      "tests_run": 1,
+      "passed": true,
+      "duration_seconds": null
+    },
+    "drone": {
+      "tests_run": 7,
+      "passed": true,
+      "duration_seconds": 39.794686686000205
+    },
+    "durable": {
+      "tests_run": 2,
+      "passed": true,
+      "duration_seconds": 19.726490255998215
+    },
+    "early_records": {
+      "tests_run": 1,
+      "passed": true,
+      "duration_seconds": null
+    },
+    "existing_voyage": {
+      "tests_run": 4,
+      "passed": true,
+      "duration_seconds": null
+    },
+    "features": {
+      "tests_run": 4,
+      "passed": true,
+      "duration_seconds": 21.89481772500585
+    },
+    "reliability": {
+      "tests_run": 6,
+      "passed": true,
+      "duration_seconds": 22.669117735997133
+    },
+    "remote": {
+      "tests_run": 49,
+      "passed": true,
+      "duration_seconds": 238.91703191599663
+    },
+    "services": {
+      "tests_run": 18,
+      "passed": true,
+      "duration_seconds": 0.0012137320009060204
+    },
+    "visual": {
+      "tests_run": 6,
+      "passed": true,
+      "duration_seconds": 10.545503504996304
+    }
+  },
+  "total_case_executions": 551,
+  "overlap": "Inherited suites overlap; counts are executed cases, not unique tests. Only listed source suites were rerun.",
+  "private_input_unchanged": true,
+  "unavailable": [
+    "Physical Windows performance/live browser database",
+    "Physical Samsung phone/tablet/TV",
+    "Native APK rebuild pending source recovery",
+    "Physical Tailscale/network interruption tests",
+    "Antivirus scan"
+  ],
+  "not_rerun": [
+    "Complete historical Python integration matrix",
+    "30/90/365-day campaigns"
+  ]
+}
