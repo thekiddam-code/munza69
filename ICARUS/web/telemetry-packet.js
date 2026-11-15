@@ -12,9 +12,9 @@ function prepare(payload,limit=110000){
  for(const f of images){if(fits())return packet;if(f!==retainedImage)omitImage(f);}
  // Keep identities, live conditions, all known map sectors, commands and receipts.
  // Only reduce duplicated historical previews, in newest-first/oldest-first order as appropriate.
- function trim(holder,key,n,newestFirst=false){const a=holder?.[key];if(!Array.isArray(a)||a.length<=n)return;counts.records+=a.length-n;holder[key]=newestFirst?a.slice(0,n):a.slice(-n);}
+ function trim(holder,key,n,newestFirst=false){const a=holder?.[key];if(!Array.isArray(a)||a.length<=n)return;counts.records+=a.length-n;holder[key]=n===0?[]:newestFirst?a.slice(0,n):a.slice(-n);}
  for(const n of [3,2,1]){
-  for(const person of telemetry.operations?.crew||[]){if(fits())return packet;for(const key of ['reports','assessments','relationships','missions'])trim(person,key,n,['reports','assessments'].includes(key));}
+  for(const person of telemetry.operations?.crew||[]){for(const key of ['reports','assessments','relationships','missions'])trim(person,key,n,['reports','assessments'].includes(key));}
   if(fits())return packet;trim(telemetry.operations,'situation',Math.max(2,n),true);trim(telemetry.operations,'missions',Math.max(2,n));trim(telemetry.operations,'research',Math.max(1,n));
   trim(telemetry.exploration,'history',Math.max(2,n));trim(telemetry.expeditions,'history',Math.max(2,n));
  }
@@ -25,6 +25,8 @@ function prepare(payload,limit=110000){
  // If even bounded source-state evidence is too big, retain record provenance and
  // advertise that this packet is metadata-only; do not delete the actual recording.
  for(const group of [telemetry.exploration?.records,telemetry.expeditions?.records])for(const c of group||[]){if(fits())return packet;if(c.frames?.length){c.frameCount=c.frameCount||c.frames.length;counts.frames+=c.frames.length;c.frames=[];c.previewUnavailable='Preview deferred to the host; original recording is retained';}}
+ if(fits())return packet;
+ for(const person of telemetry.operations?.crew||[]){for(const key of ['reports','assessments','relationships','missions'])trim(person,key,0);person.previewLimited=true;}
  if(fits())return packet;
  const error=Error('Remote telemetry preview exceeds its '+limit+' byte budget ('+bytes(packet)+' bytes); saved voyage and recordings are unchanged');error.name='TelemetryPreviewError';throw error;
 }

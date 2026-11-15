@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "tests_run": 1,
+  "passed_cases": [
+    "test_perf_metrics_show_selected_rate_and_do_not_mutate_the_voyage (__main__.RuntimeDiagnostics.test_perf_metrics_show_selected_rate_and_do_not_mutate_the_voyage)"
+  ],
+  "failures": [],
+  "errors": []
+}
