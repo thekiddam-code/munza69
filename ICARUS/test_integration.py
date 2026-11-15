@@ -37,6 +37,7 @@ class Integration(unittest.TestCase):
         while n:p.evaluate('n=>window.__icarusSoak.advance(n)',min(120,n));n-=min(120,n)
     def configure(self,p,code):
         self.assertTrue(p.evaluate('window.__icarusSoak.save()'))
+        p.evaluate('ICARUSDurable.flush({cache:true})')
         p.add_init_script(self.codec+";"+"""(()=>{if(sessionStorage.getItem('fixture'))return;sessionStorage.setItem('fixture','1');const s=JSON.parse(localStorage.getItem('icarus-v02'));"""+code+";if(s.clock){s.clock.elapsed=s.minute-480;s.tick=s.clock.elapsed;}localStorage.setItem('icarus-v02',JSON.stringify(s));})();")
         p.reload();p.wait_for_function('!!window.__icarusSoak')
     def test_seeded_full_engine_reproduces(self):

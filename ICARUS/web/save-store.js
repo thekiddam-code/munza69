@@ -11,5 +11,7 @@
   Storage.prototype.setItem=function(key,value){return originalSet.call(this,key,keys.has(String(key))?encode(value):value);};return true;
  }
  function stats(){if(!originalGet)return null;try{const values=[...keys].map(k=>originalGet.call(localStorage,k)||'');return {physical_bytes:values.reduce((n,v)=>n+v.length*2,0),primary_bytes:values[0].length*2,compressed:values[0].startsWith(prefix)};}catch{return null;}}
- return {encode,decode,install,stats};
+ function encodedGet(key){return originalGet.call(localStorage,key);}
+ function encodedSet(key,value){return originalSet.call(localStorage,key,value);}
+ return {encode,decode,install,stats,encodedGet,encodedSet};
 });
