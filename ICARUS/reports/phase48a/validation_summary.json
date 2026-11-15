@@ -1,0 +1,52 @@
+{
+  "passed": true,
+  "case_executions": 566,
+  "node_cases": 456,
+  "suites": {
+    "archive_http": {
+      "tests_run": 1,
+      "passed": true
+    },
+    "boot": {
+      "tests_run": 8,
+      "passed": true
+    },
+    "phase47c": {
+      "tests_run": 3,
+      "passed": true
+    },
+    "remote": {
+      "tests_run": 49,
+      "passed": true
+    },
+    "services": {
+      "tests_run": 40,
+      "passed": true
+    },
+    "voyage": {
+      "tests_run": 4,
+      "passed": true
+    },
+    "windows_browser": {
+      "tests_run": 5,
+      "passed": true
+    }
+  },
+  "runtime_commit": "73f5504f618e570169c94ebfcd91a9416491e59b",
+  "overlap": "Selected case executions with inherited overlap; not unique tests. Final passing runs only.",
+  "phase48_complete": false,
+  "physical_windows_acceptance_verified": false,
+  "audio_stages_started": false,
+  "private_backup_unchanged": true,
+  "unavailable": [
+    "Actual Windows 11/Alienware sensor, Shell icon and launcher activation tests",
+    "Physical Samsung phone/tablet/TV and native APK rebuild",
+    "Tailscale hardware routing",
+    "Antivirus scan",
+    "SteelSeries Sonar, microphone and game-chat audio tests"
+  ],
+  "not_run": [
+    "Long-duration campaigns",
+    "Complete historical Python matrix"
+  ]
+}

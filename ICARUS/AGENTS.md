@@ -1,3 +1,7 @@
+# Current handoff: UMBRA Phase 4.8A Windows Command software checkpoint
+
+Use codex/umbra-windows-command-phase4-8. Read PHASE48_IMPLEMENTATION_BRIEF.md, README_PHASE48A.md, PHASE48A_ARCHITECTURE.md and PHASE48A_VALIDATION.md. Preserve the confirmed 4.7C baseline, existing saves/writer/calendar/remote/TV/native paths. New Windows measurements are paired-only, read-only and bounded; commands accept fixed IDs only. Do not add remote arbitrary executable paths/arguments. Unsupported sensors stay Unavailable. Actual Windows hardware/Shell icons/shortcuts/app activation remain pending; mocks are not certification. 4.8B/C sound library/Sonar routing are not started; no microphone/default-device/power/antivirus changes. Earlier handoffs are historical.
+
 # Current handoff: Phase 4.7C surveillance and dispatch
 
 Use codex/phase47c-surveillance. Read README_PHASE47C.md, PHASE47C_ARCHITECTURE.md and PHASE47C_VALIDATION.md. Preserve the original voyage, writer/catch-up/boot safeguards and FOC dimensions/state. Dispatch preferences are UI-only; queued proposals retain the actual preferred specialist. Media transfer reads received archives only, with pairing/host lease fencing and bounded chunks; never publish onboard/private footage. Optional motion frames come from actual displayed events; preserve old PNGs and reconstruction labels. No separate Phase4.7B source was present: do not claim unpublished B compatibility or completed camp services. Earlier handoffs describe historical checkpoints.
