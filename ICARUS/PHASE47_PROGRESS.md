@@ -31,3 +31,7 @@ Vehicle transport, persistent field camp, camp power/maintenance, ATV logistics 
 - Supplied snapshot has no active crew expeditions, no modern expedition-operation completion entries and no currently field-assigned crew. It cannot establish the cause of an earlier attempted assignment. Existing staging/travel/field/return and blocked-mission reporting are preserved and must pass regressions; no crew are inserted into cameras to satisfy visibility.
 
 Pre-freeze milestone:427/427 Node cases passed; three real renderer/engine feature cases passed before final freeze. Final exact-runtime regression and private-backup verification follow. Phase4.7's truck-deployment and camp acceptance gates remain open; do not publish this as a completed Phase4.7 release.
+
+## Accepted checkpoint verification
+
+Frozen141-file runtime58232819cd68a2748d43576a7984e35395f23f39 completed529 selected case executions, including the private voyage and formerly hidden early records. Actual screenshots and exact results are in reports/phase47 and PHASE47_VALIDATION.md. Earlier concurrent runs had a remoteCore snapshot difference and TV tap timeout; unchanged serial/isolated reruns passed. The snapshot finding remains unlocalized and is explicitly tracked. No complete Phase4.7 release is declared. Next is actual truck freight/transport and persistent camp, followed by camp docks/power/rotations and full acceptance; see the validation roadmap.

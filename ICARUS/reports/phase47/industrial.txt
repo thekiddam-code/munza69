@@ -1,0 +1,6 @@
+test_47_industrial_camera_requires_real_connected_arrival (__main__.Phase47Integration.test_47_industrial_camera_requires_real_connected_arrival) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 8.902s
+
+OK

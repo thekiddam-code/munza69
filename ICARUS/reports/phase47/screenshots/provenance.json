@@ -1,0 +1,34 @@
+[
+  {
+    "file": "captured_event_playback.png",
+    "sha256": "f43c86f246d5523a48381a4d90128fe86070f496c6978d3334fe7b591fff45a9",
+    "source": "Actual running PixelCamera canvas in Phase47Integration technical fixture",
+    "runtime_commit": "58232819cd68a2748d43576a7984e35395f23f39",
+    "private_user_voyage": false,
+    "conceptual_mockup": false
+  },
+  {
+    "file": "cargo_foc01.png",
+    "sha256": "2e1dbd0a75029902f0ed39b2edd3062038d69e6b8af560222a1ac19f6f0aff9e",
+    "source": "Actual running PixelCamera canvas in Phase47Integration technical fixture",
+    "runtime_commit": "58232819cd68a2748d43576a7984e35395f23f39",
+    "private_user_voyage": false,
+    "conceptual_mockup": false
+  },
+  {
+    "file": "industrial_drone_camera.png",
+    "sha256": "6e8a6726d7fc9448919f6a1c79ad778ec26e27974de1d06ef8bcd08dd278c437",
+    "source": "Actual running PixelCamera canvas in Phase47Integration technical fixture",
+    "runtime_commit": "58232819cd68a2748d43576a7984e35395f23f39",
+    "private_user_voyage": false,
+    "conceptual_mockup": false
+  },
+  {
+    "file": "live_drone_connected_passage.png",
+    "sha256": "65be0bf3519f22843ae2c22364adbbb6272660d50b2510c69cb05f82fe23b199",
+    "source": "Actual running PixelCamera canvas in Phase47Integration technical fixture",
+    "runtime_commit": "58232819cd68a2748d43576a7984e35395f23f39",
+    "private_user_voyage": false,
+    "conceptual_mockup": false
+  }
+]
