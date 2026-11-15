@@ -1,0 +1,1 @@
+Actual running source-backed procedural renderer in isolated deterministic technical fixtures. The camp appears only after physical freight travel/unloading/setup; the C03 image shows the empty parking position during actual outbound transit. These are not images from the private user voyage, physical camera recordings, or concept mockups. No nonexistent occupants are drawn.

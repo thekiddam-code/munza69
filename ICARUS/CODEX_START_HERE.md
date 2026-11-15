@@ -1,3 +1,7 @@
+# Current handoff: Phase 4.7A freight and camp deployment checkpoint
+
+Use codex/phase47a-field-deployment. Read README_PHASE47A_DEPLOYMENT.md and PHASE47A_DEPLOYMENT_ARCHITECTURE.md, PHASE47A_DEPLOYMENT_PROGRESS.md and PHASE47A_DEPLOYMENT_VALIDATION.md. Extend the existing ExpeditionOps/Teams/Economy/Knowledge controller. One shared transport; C03 freight ratings and physical paid refit; Landing Shelf0 only. Preserve equipment accounting, unknown field status, actual approach checks, partial loading, recall, packing and recovery. Keep the catch-up hotfix, boot/writer fences and original voyage. Camp medical/drone/ATV/overnight/resupply/relocation services remain Phase4.7B; no fake controls, footage or occupants. Earlier handoffs below describe historical checkpoints and must not be mistaken for the final current scope.
+
 # Current focused handoff: Phase 4.7A catch-up regression hotfix
 
 Use codex/phase47-catchup-regression for this targeted repair. Read README_CATCHUP_HOTFIX.md, CATCHUP_INVESTIGATION.md and CATCHUP_VALIDATION.md. Keep the selected clock rate and every causal minute; canonical IndexedDB snapshots and history remain durable. Cache compression alone is asynchronous/coalesced and fenced. Do not clear the voyage, bypass writer ownership or raise telemetry limits. Phase4.7 camp/deployment remains incomplete as described below.

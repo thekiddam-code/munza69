@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "tests_run": 1,
+  "passed_cases": [
+    "test_deployment_autonomous_decision_uses_a_real_completed_sortie (__main__.DeploymentIntegration.test_deployment_autonomous_decision_uses_a_real_completed_sortie)"
+  ],
+  "failures": [],
+  "errors": []
+}
