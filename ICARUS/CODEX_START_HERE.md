@@ -1,3 +1,7 @@
+# Current handoff: Phase 4.7 development checkpoint — NOT COMPLETE
+
+Use codex/forward-operations-phase4-7. Read PHASE47_IMPLEMENTATION_BRIEF.md, PHASE47_PROGRESS.md, PHASE47_ARCHITECTURE.md and PHASE47_VALIDATION.md. Preserve the Phase4.6 startup-size/boot hotfixes and original voyage. FOC-01 currently has original-equipment registration, C03 parking and physical inspection only; no validated truck departure or persistent camp exists yet. Escort rotations currently use the ship dock, not a fictitious camp. Never claim Phase4.7 complete until deployment, camp, camp-based rotation and live cameras are all actually verified. Retained Records1–12 are real archive data previously hidden by an eight-record UI slice; do not renumber or fabricate pixels. Keep received/onboard custody, explicit ENTER, 110000-byte telemetry budget, lease fencing, existing clocks and causal prerequisites. New field operations and genuine high-rate media transport remain implementation work, not external approval requirements.
+
 # Current handoff: Unified World Phase 1
 
 Start with README_UNIFIED_PHASE1.md and UNIFIED_PROGRESS.md. The approved request is preserved in UNIFIED_WORLD_SPEC.md. Read the architecture, limitations, validation and roadmap; distinguish the verified calendar/spatial/lore/biology foundations from the unfinished complete design. Calendar tests use explicit wall timestamps and IANA zones. Legacy fixed-step compatibility tests alone do not prove production pacing. All historical handoffs below are context only.
