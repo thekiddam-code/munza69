@@ -1,0 +1,1 @@
+Actual Chromium UMBRA UI rendered during integration tests. Windows measurement, installed-app icon and input backends are explicit deterministic test fixtures, labeled FIXTURE in the dashboard. These images do not depict readings or icons from the user's Alienware PC, actual Windows hardware or a physical Samsung device.

@@ -2,6 +2,8 @@
 
 This roadmap follows FINAL_DESIGN.md. Status is about demonstrated behavior, not aspiration. v1.4.1 is a focused stabilization batch, not a declaration of final release.
 
+UMBRA Phase 4.8A Engineering/Hotkeys is **implemented but needing refinement** pending actual Windows sensor, Shell icon, launcher and shortcut verification. It is an additive companion stage, not new ICARUS simulation scope. Read PHASE48A_VALIDATION.md. 4.8B sound library and 4.8C independent-microphone Sonar routing remain **not started**; no audio/power/default-device changes.
+
 Phase 4.7C dispatch, rover and surveillance are **implemented but needing refinement** on the available A source: real expedition departure, persistent UI selections, shared industrial rover art, source-backed live/event images and paired on-demand received archives. See PHASE47C_VALIDATION.md. Additional unpublished B compatibility, foreground-only high-rate capture, encoded audiovisual media, human art review and physical devices remain explicit gates; the complete Phase 4.7 release is not certified.
 
 Phase4.7A Field Deployment is a bounded implementation checkpoint: one existing shared transport, paid freight interlocks, physical FOC loading/transit and a persistent/recoverable Landing Shelf camp. It preserves the catch-up hotfix and uses source-limited field reports/exterior cameras. Status remains **implemented but needing refinement** for the final core game: camp drone/medical/ATV/security/resupply services, additional freight-clearance modeling, physical-device verification and final art are open. See PHASE47A_DEPLOYMENT_VALIDATION.md; automated success does not complete Phase4.7 or certify final-release readiness.

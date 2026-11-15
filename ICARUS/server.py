@@ -1,6 +1,8 @@
 import re,posixpath
 from bridge_service import BridgeService,BridgeError
 from record_service import RecordService
+from windows_monitor import MonitorService
+from windows_control import WindowsControl
 import http.server, json, os, secrets, socket, threading, time, urllib.parse, hashlib, ipaddress, ssl, base64
 from pathlib import Path
 
@@ -45,6 +47,8 @@ DEFAULT={'quick':{'Nice shot!':['1','1'],'What a save!':['1','2'],'Great pass!':
 if not CONFIG.exists(): CONFIG.write_text(json.dumps(DEFAULT,indent=2),encoding='utf8')
 pg.FAILSAFE=True
 pg.PAUSE=.07
+WINDOWS_MONITOR=MonitorService()
+WINDOWS_CONTROL=WindowsControl(pg)
 
 def cfg(): return json.loads(CONFIG.read_text(encoding='utf8'))
 def save_custom_messages(messages):
@@ -313,6 +317,14 @@ class Handler(http.server.SimpleHTTPRequestHandler):
   if self.path=='/api/tv/status':
    if not self.authorized(): return self.respond(401,{'error':'Pair first'})
    return self.respond(200,TV_SERVICE.status())
+  if self.path in ('/api/windows/monitor','/api/windows/catalog') or self.path.startswith('/api/windows/icon?'):
+   if not self.authorized():return self.respond(401,{'error':'Pair first'})
+   if self.path=='/api/windows/monitor':return self.respond(200,WINDOWS_MONITOR.view())
+   if self.path=='/api/windows/catalog':return self.respond(200,WINDOWS_CONTROL.view())
+   ident=urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query).get('id',[''])[0]
+   image=WINDOWS_CONTROL.image(ident)
+   if not image:return self.respond(404,{'error':'Installed application icon unavailable'})
+   self.send_response(200);self.send_header('Content-Type','image/png');self.send_header('Cache-Control','no-store');self.send_header('Content-Length',str(len(image)));self.send_header('X-Content-Type-Options','nosniff');self.end_headers();self.wfile.write(image);return
   if self.path=='/api/status':
    if not self.authorized(): return self.respond(401,{'error':'Pair first'})
    self.respond(200,{'cpu':psutil.cpu_percent(interval=.1) if psutil else None,'ram':psutil.virtual_memory().percent if psutil else None,'mining':'mouse_left' in HELD,'quick':list(cfg()['quick']),'macros':list(cfg()['macros']),'custom_messages':cfg().get('custom_messages',[]),'fortnite_emotes':get_fortnite_buttons(),'tv_ip':tv_settings()['ip'],'tv_configured':bool(tv_settings()['ip'])}); return
@@ -369,6 +381,14 @@ class Handler(http.server.SimpleHTTPRequestHandler):
      ICARUS_BRIDGE['updated']=time.time()
     return self.respond(200,{'ok':True})
    if not self.authorized(): return self.respond(401,{'error':'Pair first'})
+   if self.path in ('/api/windows/command','/api/windows/refresh'):
+    if not isinstance(data,dict):return self.respond(400,{'error':'Command object required'})
+    if self.path.endswith('/refresh'):
+     if data:return self.respond(400,{'error':'Discovery accepts no paths or arguments'})
+     WINDOWS_CONTROL.refresh();return self.respond(200,WINDOWS_CONTROL.view())
+    if set(data)!={'kind','id','requestId'}:return self.respond(400,{'error':'Only predefined command IDs and requestId are accepted'})
+    with LOCK:result=WINDOWS_CONTROL.command(token_hash(self.headers.get('Authorization','')),data['requestId'],data['kind'],data['id'])
+    return self.respond(200,result)
    if self.path=='/api/icarus/dispatch':
     command=data.get('command')
     if not valid_icarus_command(command):return self.respond(400,{'error':'Unknown command'})

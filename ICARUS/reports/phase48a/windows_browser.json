@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "tests_run": 5,
+  "passed_cases": [
+    "test_win_authentication_allowlists_and_idempotence (__main__.WindowsIntegration.test_win_authentication_allowlists_and_idempotence)",
+    "test_win_hold_description_never_executes_command (__main__.WindowsIntegration.test_win_hold_description_never_executes_command)",
+    "test_win_hotkeys_launchers_and_legacy_macros (__main__.WindowsIntegration.test_win_hotkeys_launchers_and_legacy_macros)",
+    "test_win_monitor_updates_is_confined_and_responsive (__main__.WindowsIntegration.test_win_monitor_updates_is_confined_and_responsive)",
+    "test_win_unavailable_host_and_reconnect_preserve_preferences (__main__.WindowsIntegration.test_win_unavailable_host_and_reconnect_preserve_preferences)"
+  ],
+  "failures": [],
+  "errors": []
+}

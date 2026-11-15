@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "tests_run": 1,
+  "duration_seconds": 11.597701544000302,
+  "passed_cases": [
+    "test_c_original_archive_loads_on_demand_and_remains_receive_only (test_phase47c_remote.SurveillanceRemote.test_c_original_archive_loads_on_demand_and_remains_receive_only)"
+  ],
+  "failures": [],
+  "errors": []
+}
