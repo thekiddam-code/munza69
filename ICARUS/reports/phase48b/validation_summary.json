@@ -1,0 +1,65 @@
+{
+  "passed": true,
+  "case_executions": 599,
+  "node_cases": 460,
+  "suites": {
+    "easter": {
+      "tests_run": 3,
+      "passed": true
+    },
+    "voyage": {
+      "tests_run": 4,
+      "passed": true
+    },
+    "remote": {
+      "tests_run": 49,
+      "passed": true
+    },
+    "dispatch": {
+      "tests_run": 3,
+      "passed": true
+    },
+    "windows": {
+      "tests_run": 5,
+      "passed": true
+    },
+    "boot": {
+      "tests_run": 8,
+      "passed": true
+    },
+    "services": {
+      "tests_run": 59,
+      "passed": true
+    },
+    "archive_http": {
+      "tests_run": 1,
+      "passed": true
+    },
+    "soundboard": {
+      "tests_run": 7,
+      "passed": true
+    }
+  },
+  "runtime_commit": "73ace07148a73114ff0a5c04fd8db0dd1123117f",
+  "broad_suite_runtime_commit": "7f2c78bc3407f17f30b4e3c139ee6ed02da26ccb",
+  "post_broad_changed_files": [
+    "web/umbra/soundboard.js"
+  ],
+  "lineage": "Broad regressions began at 7f2c78b. Only soundboard.js was then hardened for import reset/cache/unpair edge cases; the final seven soundboard cases passed again. Other 161 runtime file hashes unchanged. Extracted-package validation is additional.",
+  "overlap": "Selected case executions; inherited suites overlap. Expected pre-fix failures are diagnostic, not counted as final passes.",
+  "private_backup_unchanged": true,
+  "phase48_complete": false,
+  "physical_audio_acceptance_verified": false,
+  "phase48c_started": false,
+  "pending": [
+    "Actual Windows waveOut/device playback and driver behavior",
+    "Physical headphones/private loopback/acoustic isolation",
+    "SteelSeries Sonar and microphone before/after/shutdown/forced-kill validation",
+    "Physical Samsung phone/tablet/TV, Tailscale hardware, native APK source recovery/rebuild and antivirus",
+    "Full live copyrighted-audio import with user permission; metadata availability tested, decoder exercised with owned WAV/MP3 fixtures"
+  ],
+  "not_run": [
+    "Long-duration campaigns",
+    "Complete historical Python matrix"
+  ]
+}

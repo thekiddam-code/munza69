@@ -2,7 +2,9 @@
 
 This roadmap follows FINAL_DESIGN.md. Status is about demonstrated behavior, not aspiration. v1.4.1 is a focused stabilization batch, not a declaration of final release.
 
-UMBRA Phase 4.8A Engineering/Hotkeys is **implemented but needing refinement** pending actual Windows sensor, Shell icon, launcher and shortcut verification. It is an additive companion stage, not new ICARUS simulation scope. Read PHASE48A_VALIDATION.md. 4.8B sound library and 4.8C independent-microphone Sonar routing remain **not started**; no audio/power/default-device changes.
+UMBRA Phase 4.8B sound library/private terminal preview and the separate original corporate-motif repair are **implemented but needing refinement** pending physical Windows playback, headphone/loopback isolation and microphone continuity validation. See PHASE48B_VALIDATION.md and EASTER_EGG_VISUAL_INVESTIGATION.md. Existing saves, optional visual preferences and source assets remain. 4.8C Sonar/microphone injection/normalization remains **not started**; no default audio or routing changes.
+
+UMBRA Phase 4.8A Engineering/Hotkeys is **implemented but needing refinement** pending actual Windows sensor, Shell icon, launcher and shortcut verification. It is an additive companion stage, not new ICARUS simulation scope. Read PHASE48A_VALIDATION.md. 4.8B is described above; 4.8C independent-microphone Sonar routing remains **not started**; no audio/power/default-device changes.
 
 Phase 4.7C dispatch, rover and surveillance are **implemented but needing refinement** on the available A source: real expedition departure, persistent UI selections, shared industrial rover art, source-backed live/event images and paired on-demand received archives. See PHASE47C_VALIDATION.md. Additional unpublished B compatibility, foreground-only high-rate capture, encoded audiovisual media, human art review and physical devices remain explicit gates; the complete Phase 4.7 release is not certified.
 
