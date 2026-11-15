@@ -1,0 +1,18 @@
+{
+  "zip": "downloads/phase47-catchup-hotfix/ICARUS_Phase4_7A_Catchup_Hotfix_Lite.zip",
+  "sha256": "a8df639823dd00927ad19403ca30d6f3a03a44286afe71cf93c6d82f22e52230",
+  "bytes": 989164,
+  "source_files": 235,
+  "runtime_files": 145,
+  "source_commit": "cb4f8bbf52fd31e6ed1a271cad1d6fd558d1fcb0",
+  "all_source_hashes_match": true,
+  "zip_crc_ok": true,
+  "package_runtime": "/workspace/work/catchup_fix/package/ICARUS_Phase4_7A_Catchup_Hotfix_Lite",
+  "package_tests": {
+    "boot": 8,
+    "reliability": 6
+  },
+  "all_package_tests_passed": true,
+  "total_selected_case_executions_including_package": 565,
+  "private_backup_excluded": true
+}
