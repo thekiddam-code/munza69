@@ -10,9 +10,11 @@ Baseline: verified catch-up hotfix `588507b19cf4078d81a43ae422059d799acdcde3`. T
 
 ## Verified implementation milestones so far
 
-450 deterministic model cases and six new physical browser lifecycle cases passed. New tests exercise loading/setup/recovery, precise reload, recall, C03 power interruption, Monday transition in transit, and delayed field intelligence. Two defects found by the tests were fixed: completed loading advanced beyond its eight-minute limit during staging checks; an unreported transit condition was formatted as a number during reload. Strict validators and original state assertions remain.
+The first validated pass completed450 deterministic model cases and six physical browser lifecycle cases. A later review added malformed-save protection and source-limited approach checks; seven updated physical lifecycle cases now pass. Final frozen-source model counts are reported separately. New tests exercise loading/setup/recovery, precise reload, recall, C03 power interruption, Monday transition in transit, and delayed field intelligence. Two defects found by the tests were fixed: completed loading advanced beyond its eight-minute limit during staging checks; an unreported transit condition was formatted as a number during reload. Strict validators and original state assertions remain.
 
-The next validation pass checks the paired HTTP client, previous voyage, inherited camera/remote/boot suites and sustained catch-up on the frozen runtime. Final delivery evidence supersedes these intermediate counts.
+Preflight no longer reads hidden site changes: actual approach instruments detect unsafe conditions only after physical transit, and the loaded vehicle returns without landing. A regression demonstrates this. An intermediate frozen validation run was intentionally superseded after this refinement; it is not counted as final acceptance.
+
+The final validation pass checks the paired HTTP client, previous voyage, inherited camera/remote/boot suites and sustained catch-up on the frozen runtime. Final delivery evidence supersedes these intermediate counts.
 
 ## Intentional boundary
 
