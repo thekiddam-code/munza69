@@ -1,5 +1,6 @@
 import re,posixpath
 from bridge_service import BridgeService,BridgeError
+from record_service import RecordService
 import http.server, json, os, secrets, socket, threading, time, urllib.parse, hashlib, ipaddress, ssl, base64
 from pathlib import Path
 
@@ -265,6 +266,20 @@ class Handler(http.server.SimpleHTTPRequestHandler):
   if self.path=='/api/icarus/classified':
    if not self.local_host() or not self.host_auth():return self.respond(403,{'error':'Local SOL console capability required'})
    return self.respond(200,BRIDGE_SERVICE.classified_view())
+  if self.path.startswith('/api/icarus/record?') or self.path=='/api/icarus/host/record-requests':
+   try:
+    with BRIDGE_SERVICE.lock:
+     if not hasattr(BRIDGE_SERVICE,'records'):BRIDGE_SERVICE.records=RecordService()
+     if self.path.endswith('/record-requests'):
+      if not self.host_auth():return self.respond(403,{'error':'Invalid host key'})
+      BRIDGE_SERVICE.check(*self.host_identity());return self.respond(200,{'requests':BRIDGE_SERVICE.records.pending(BRIDGE_SERVICE.generation)})
+     if not self.authorized():return self.respond(401,{'error':'Pair first'})
+     if not BRIDGE_SERVICE.active():return self.respond(503,{'error':'Authoritative host offline'})
+     ident=urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query).get('id',[''])[0]
+     published=(BRIDGE_SERVICE.data or {}).get('exploration',{}).get('records',[])
+     if not any(c.get('id')==ident for c in published):return self.respond(404,{'error':'No received retained archive record with this ID'})
+     return self.respond(200,BRIDGE_SERVICE.records.request(ident,BRIDGE_SERVICE.generation))
+   except BridgeError as e:return self.respond(e.status,{'error':str(e)})
   if self.path=='/api/icarus/host/commands':
    if not self.host_auth():return self.respond(403,{'error':'Invalid host key'})
    try:return self.respond(200,{'commands':BRIDGE_SERVICE.pending(*self.host_identity())})
@@ -309,12 +324,20 @@ class Handler(http.server.SimpleHTTPRequestHandler):
  def do_POST(self):
   try:
    if self.headers.get('Content-Type','').split(';')[0]!='application/json': return self.respond(415,{'error':'JSON required'})
-   received_bytes=int(self.headers.get('Content-Length','0'));limit_bytes=131072 if self.path=='/api/icarus/host/publish' else 16384 if self.path=='/api/icarus/telemetry' else 4096
+   received_bytes=int(self.headers.get('Content-Length','0'));limit_bytes=65536 if self.path=='/api/icarus/host/record-chunk' else 131072 if self.path=='/api/icarus/host/publish' else 16384 if self.path=='/api/icarus/telemetry' else 4096
    if received_bytes>limit_bytes:return self.respond(413,{'error':'Request too large for '+self.path+' ('+str(received_bytes)+' bytes; limit '+str(limit_bytes)+')','operation':self.path,'receivedBytes':received_bytes,'limitBytes':limit_bytes})
    origin=self.headers.get('Origin','')
    host=self.headers.get('Host','')
    if origin and origin not in ('http://'+host,'https://'+host): return self.respond(403,{'error':'Invalid origin'})
    data=json.loads(self.rfile.read(int(self.headers.get('Content-Length','0'))))
+   if self.path=='/api/icarus/host/record-chunk':
+    if not self.host_auth():return self.respond(403,{'error':'Invalid host key'})
+    try:
+     with BRIDGE_SERVICE.lock:
+      BRIDGE_SERVICE.check(*self.host_identity())
+      if not hasattr(BRIDGE_SERVICE,'records'):return self.respond(409,{'error':'No pending archive request'})
+      return self.respond(200,BRIDGE_SERVICE.records.chunk(BRIDGE_SERVICE.generation,data))
+    except BridgeError as e:return self.respond(e.status,{'error':str(e)})
    if self.path in ('/api/icarus/host/claim','/api/icarus/host/publish','/api/icarus/host/heartbeat'):
     if not self.host_auth():return self.respond(403,{'error':'Invalid host key'})
     try:

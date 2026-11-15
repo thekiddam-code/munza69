@@ -15,7 +15,7 @@ function select(s,job,candidates,life,preferred){
  const canSpare=p=>!['Medic','Engineer'].includes(p.job)||s.crew.filter(q=>q.job===p.job&&!q.expeditionAway&&!chosen.includes(q)&&life.ready(q)).length>1;
  const eligible=candidates.filter(p=>life.ready(p)&&(p.hunger??0)<75&&!p.forwardAssignment&&!p.droneAssignment&&!p.systemAssignment&&!p.maintenanceRoom&&!p.expeditionAway&&!p.expeditionId&&!p.responseAssignment&&!p.emergencyId&&!p.researchAssignment&&!p.rescuePatient&&!p.rescueMedic);
  if(preferred){const p=eligible.find(p=>p.name===preferred);if(p&&canSpare(p))chosen.push(p);}
- for(const role of roles){const list=eligible.filter(p=>!chosen.includes(p)&&p.job===role&&canSpare(p)).sort((a,b)=>score(b)-score(a)||a.name.localeCompare(b.name));if(chosen.length<count&&list.length)chosen.push(list[0]);}
+ for(const role of roles){if(chosen.some(p=>p.job===role))continue;const list=eligible.filter(p=>!chosen.includes(p)&&p.job===role&&canSpare(p)).sort((a,b)=>score(b)-score(a)||a.name.localeCompare(b.name));if(chosen.length<count&&list.length)chosen.push(list[0]);}
  for(const p of eligible.sort((a,b)=>score(b)-score(a)||a.name.localeCompare(b.name)))if(chosen.length<count&&!chosen.includes(p)){
   // Never remove the last available clinical or engineering specialist from the ship.
   if(['Medic','Engineer'].includes(p.job)&&s.crew.filter(q=>q.job===p.job&&!q.expeditionAway&&!chosen.includes(q)).length<=1)continue;chosen.push(p);
