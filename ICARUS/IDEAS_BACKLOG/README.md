@@ -450,3 +450,8 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 ## Phase 4.8 — soundboard tap and hold behavior
 - Approved: normal tap on an Instant Buttons sound tile plays immediately through the configured Windows game-chat mix; press-and-hold previews that sound privately on the user's local monitoring output, **not** the microphone/game-chat feed. Keep hold detection reliable on Android touch and mouse, and ensure long-press never triggers public playback on release.
 - Private preview must have separate routing and clear visual feedback, respect user audio output selection, and avoid accidental voice-chat leakage. Preserve microphone fail-safe if UMBRA is offline.
+
+## Phase 4.8B — UMBRA-native soundboard appearance
+- User confirmed: soundboard should **look like UMBRA**, not copy the Myinstants colored circular-button aesthetic. Use dark industrial sci-fi UI, restrained cyan/mint/amber accents, angular/tactile button tiles, consistent spacing and subtle touch/press feedback.
+- Keep manual Add Sound directly in UMBRA (Myinstants link when supported or local audio file), plus rename, rearrange, category, and persistence. Normal tap public playback; press-and-hold private headphone preview without leaking into chat.
+- No need to implement an alternative Myinstants-themed appearance unless user later asks.
