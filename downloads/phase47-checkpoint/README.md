@@ -19,3 +19,5 @@ Before trying a checkpoint, retain a complete pre-upgrade backup and the stable 
 The screenshots are actual running renderer captures from explicit technical fixtures, not events claimed from the user's voyage and not conceptual mockups. The original private backup remains unchanged and is not published.
 
 SHA-256: `4631ea53713175fb84d9535edf439d33c8060b603b5af2a5b480ccf27276b9ab`
+
+[Draft review #13](https://github.com/thekiddam-code/munza69/pull/13) · [Verified public download](published_download_verification.json)
