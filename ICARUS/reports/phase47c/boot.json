@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "tests_run": 8,
+  "duration_seconds": 41.47907615400618,
+  "passed_cases": [
+    "test_boot_authorization_failure_and_retry_are_separate_from_writer_ownership (test_boot_hotfix.BootHotfix.test_boot_authorization_failure_and_retry_are_separate_from_writer_ownership)",
+    "test_boot_bootstrap_error_is_actual_and_valid_key_recovers_without_reset (test_boot_hotfix.BootHotfix.test_boot_bootstrap_error_is_actual_and_valid_key_recovers_without_reset)",
+    "test_boot_delayed_asset_keeps_input_until_actual_initialization_and_explicit_entry (test_boot_hotfix.BootHotfix.test_boot_delayed_asset_keeps_input_until_actual_initialization_and_explicit_entry)",
+    "test_boot_departed_server_lease_waits_then_resolves_without_reloading_or_bypassing (test_boot_hotfix.BootHotfix.test_boot_departed_server_lease_waits_then_resolves_without_reloading_or_bypassing)",
+    "test_boot_initialization_error_retry_keeps_existing_voyage (test_boot_hotfix.BootHotfix.test_boot_initialization_error_retry_keeps_existing_voyage)",
+    "test_boot_live_owner_is_never_stolen_and_lost_generation_never_reclaims (test_boot_hotfix.BootHotfix.test_boot_live_owner_is_never_stolen_and_lost_generation_never_reclaims)",
+    "test_boot_lost_held_generation_is_fenced_even_after_other_owner_expires (test_boot_hotfix.BootHotfix.test_boot_lost_held_generation_is_fenced_even_after_other_owner_expires)",
+    "test_boot_real_storage_completion_delay_keeps_key_and_writer_pending (test_boot_hotfix.BootHotfix.test_boot_real_storage_completion_delay_keeps_key_and_writer_pending)"
+  ],
+  "failures": [],
+  "errors": []
+}

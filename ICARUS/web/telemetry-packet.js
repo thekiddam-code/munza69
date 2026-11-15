@@ -2,7 +2,7 @@
 (function(root){'use strict';
 const bytes=x=>new TextEncoder().encode(JSON.stringify(x)).length;
 function prepare(payload,limit=110000){
- const packet=JSON.parse(JSON.stringify(payload));if(bytes(packet)<=limit)return packet;
+ const packet=JSON.parse(JSON.stringify(payload));for(const c of packet.telemetry?.exploration?.records||[])if(c.motion){c.motionAvailable=true;delete c.motion;c.framesDeferred=true;}if(bytes(packet)<=limit)return packet;
  const telemetry=packet.telemetry||{},counts={images:0,frames:0,records:0};
  const metadata={version:1,limited:true,policy:'Bounded remote preview; complete history and captured recordings remain on the authoritative host',omitted:counts};telemetry.transport=metadata;
  function fits(){return bytes(packet)<=limit;}

@@ -1,0 +1,31 @@
+{
+  "zip": "downloads/phase47c/ICARUS_Phase4_7C_Surveillance_Checkpoint_Lite.zip",
+  "sha256": "6a985089dae7e29d2933cf0b0dddfb54306fae438239a0b3f1355cf678ea932c",
+  "bytes": 1031431,
+  "source_files": 246,
+  "runtime_files": 149,
+  "source_commit": "4a07ffb4491628dc1edd6c145b350c78263af5e5",
+  "tested_runtime_commit": "c3670d0fdb623415202b7888b0cd2dcbce6ac9a8",
+  "all_source_hashes_match": true,
+  "zip_crc_ok": true,
+  "package_checks": {
+    "boot": {
+      "passed": true,
+      "tests_run": 8
+    },
+    "features": {
+      "passed": true,
+      "tests_run": 3
+    },
+    "remote": {
+      "passed": true,
+      "tests_run": 1
+    }
+  },
+  "package_case_executions": 12,
+  "selected_case_executions": 580,
+  "combined_case_executions": 592,
+  "private_backup_unchanged": true,
+  "phase_complete": false,
+  "release_ready": false
+}

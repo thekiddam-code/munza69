@@ -1,0 +1,7 @@
+/* Best-effort event clips from actual displayed live pixels. Never advances the world. */
+(function(root){'use strict';
+function create(done=()=>{}){const rings=new Map(),seen=new Set(),jobs=new Map();return {sample(s,view,canvas,now){if(!view?.available||!view.drone)return;const id=view.id,ring=rings.get(id)||[],frame={tick:view.at??s.tick,location:view.location,capturedMs:now,image:canvas.toDataURL('image/png')};ring.push(frame);while(ring.length>3)ring.shift();rings.set(id,ring);const d=s.droneOperations?.drones[id];for(const c of [...(d?.clips||[]),...(s.droneOperations?.archive||[])].filter(c=>c.camera===id)){if(c.motion||seen.has(c.id)||s.tick-c.at>1||c.at>s.tick||view.location!==c.location||jobs.size>=4)continue;seen.add(c.id);if(seen.size>64)seen.delete(seen.values().next().value);jobs.set(c.id,{clip:c,frames:ring.filter(f=>f.tick<=c.at&&f.location===c.location).slice(),until:now+625});}
+ for(const [key,j] of jobs){if(j.clip.camera!==id)continue;if(j.frames.at(-1)!==frame&&j.frames.length<10)j.frames.push(frame);while(j.frames.length&&j.frames.reduce((n,f)=>n+f.image.length,0)>98304)j.frames.shift();if(now>=j.until||j.frames.length>=10){if(j.frames.length>=2){j.clip.motion={version:1,camera:id,eventId:key,provenance:'CAPTURED LIVE PROCEDURAL FRAMES · sampled display, no inferred world movement',frames:j.frames};done();}jobs.delete(key);}}
+ },get pending(){return jobs.size;}};}
+const api={create};if(typeof module==='object'&&module.exports)module.exports=api;else root.ICARUSEventCamera=api;
+})(globalThis);
