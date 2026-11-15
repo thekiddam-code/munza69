@@ -421,3 +421,9 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - Do not falsely promise closing server reverts persistent virtual-device or OS settings. Prefer zero persistent changes, and snapshot/recover only settings the app itself modified; provide clear recovery instructions for third-party routing changes.
 - Add **Emergency Audio Reset / Disable Injection** accessible from UMBRA; restore prior known-safe configuration where supported. Add startup/shutdown/crash tests, Sonar preview checks, two physical mic switching tests, and fail-safe tests where the injection service dies while voice chat stays active.
 - This is an acceptance criterion for Phase 4.8, not yet implemented.
+
+## Phase 4.7C — FUC Mobile futuristic exterior redesign
+- User approves current Phase 4.7 functionality and requests a **visual-only FUC Mobile redesign in the next phase (4.7C)**: it currently resembles a real-world box truck too closely.
+- Retain rugged, improvised, lived-in industrial personality but redesign as a **futuristic extraterrestrial expedition vehicle**: angular reinforced hull, integrated cockpit, oversized off-road wheels/suspension, modular field-equipment bays, lights, antennas, believable wear and field repairs. Not a pristine luxury rover.
+- Preserve FOC-01 identity and 'FUC Mobile' crew nickname, scale, cargo capacity, starting parking location, navigation footprint, deployable camp, supplies, all persistent state and autonomous behavior. Apply consistent visual assets across cargo bay, asteroid travel, deployment, and field cameras. No new interiors.
+- Integrate into planned 4.7C live drone feeds / surveillance / recordings work; don't rebuild the working systems. Status: requested for next phase, not implemented.
