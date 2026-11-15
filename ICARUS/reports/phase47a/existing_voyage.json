@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "tests_run": 4,
+  "passed_cases": [
+    "test_size_existing_user_world_restart_keeps_crew_maps_history_and_every_recording (__main__.StartupSize.test_size_existing_user_world_restart_keeps_crew_maps_history_and_every_recording)",
+    "test_size_paired_terminal_receives_existing_world_without_stream_size_failure (__main__.StartupSize.test_size_paired_terminal_receives_existing_world_without_stream_size_failure)",
+    "test_size_payload_rejection_is_not_a_writer_failure_and_reports_exact_operation (__main__.StartupSize.test_size_payload_rejection_is_not_a_writer_failure_and_reports_exact_operation)",
+    "test_size_record_frames_load_on_selection_and_never_mutate_saved_media (__main__.StartupSize.test_size_record_frames_load_on_selection_and_never_mutate_saved_media)"
+  ],
+  "backup_sha256": "888ea1574d2b24ae6e4f7911b29dbf2c22079fbbaa4f34cd64f350afbbff7d75",
+  "input_is_private_and_not_bundled": true,
+  "failures": [],
+  "errors": []
+}

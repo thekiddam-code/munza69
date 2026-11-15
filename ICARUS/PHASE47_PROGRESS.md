@@ -1,3 +1,7 @@
+# Current continuation: freight and camp deployment milestone
+
+The previous no-deployment checkpoint below is historical. The next implementation is on codex/phase47a-field-deployment, retaining the catch-up hotfix. Actual paid freight refit, C03 loading, shared-lander transit, Landing Shelf setup, persistent exterior equipment, packing/recovery and partial-work rollback are implemented. Current verification and limits are in PHASE47A_DEPLOYMENT_VALIDATION.md and PHASE47A_DEPLOYMENT_ARCHITECTURE.md. The whole Phase4.7 release remains incomplete: camp-based drone services, ATV/medical/security/resupply and later media work are not yet complete.
+
 # Phase 4.7 progress
 
 Baseline: `31b9ccb` (includes the verified startup-size and boot hotfixes). Authoritative request: PHASE47_IMPLEMENTATION_BRIEF.md. No simulation reset, gym, new universe, second clock or renderer-driven simulation.

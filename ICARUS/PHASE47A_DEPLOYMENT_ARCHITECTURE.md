@@ -37,7 +37,7 @@ Autonomous deployment requires an actual completed long-range expedition, a rece
 
 Field reports are actual crew observations. They can be recorded while radio is unavailable but do not appear in the bridge projection until SOL legitimately receives the source or the crew return/debrief. An unreported condition is labeled unreported, not filled with a guessed value. No hidden field inventory is included merely because the host owns it. The host's C03 camera shows only local parking/transfer state.
 
-Existing suit/drone cameras at the actual site receive the exterior overlay. It draws the real truck, erected tents and power-dependent external lighting; setup/packing use existing work poses tied to actual task state. No actors or silhouettes are added for empty tents. No new omniscient static camp feed or synthetic historical footage is created. Existing event records may capture the new exterior state, retaining their existing provenance labels.
+Existing suit/drone cameras at the actual site receive the exterior overlay. It draws the real truck, erected tents and power-dependent external lighting; setup/packing use existing work poses tied to actual task state. No actors or silhouettes are added for empty tents. No new omniscient static camp feed or synthetic historical footage is created. Existing event recorders may capture the new exterior state, retaining their existing provenance labels. Old frames without a captured camp DTO do not acquire today's camp during playback; the renderer uses the retained frame, not the current global world.
 
 ## Save compatibility and performance
 

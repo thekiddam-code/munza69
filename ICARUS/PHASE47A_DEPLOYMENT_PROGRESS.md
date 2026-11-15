@@ -19,3 +19,7 @@ The final validation pass checks the paired HTTP client, previous voyage, inheri
 ## Intentional boundary
 
 Only the existing Landing Shelf (node0) is freight-rated. Crew still use the existing graph elsewhere; no truck is inserted into tunnels without surveyed clearance. Camp equipment is physically erected and recoverable, with finite relay/floodlight draw, but camp-based drone docks/rotations, medical treatment, overnight occupants, ATV driving/patrols, resupply and relocation remain Phase4.7B. High-rate encoded media remains Phase4.7C. No interiors, phantom occupants, free supplies or guaranteed encounters.
+
+## Accepted frozen checkpoint
+
+Runtime13f5ed7d17182f6923e7e19f9fdbba76564dd5bc contains146 files. The final selected runs passed570 case executions (452 Node models plus listed browser/service suites, with inherited overlap), seven deployment scenarios, one new paired freight scenario and the original private-voyage checks. The16,000-wall-second catch-up workload drained in118.929s with unchanged20× selection, valid writer and all original received recordings intact. Only the additive forwardOperations domain differed from the prior hotfix's equivalent final world. See PHASE47A_DEPLOYMENT_VALIDATION.md and reports/phase47a for exact evidence. Extracted-ZIP verification follows in the download directory. Whole Phase4.7 remains incomplete.

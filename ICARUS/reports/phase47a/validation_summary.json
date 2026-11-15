@@ -1,0 +1,84 @@
+{
+  "passed": true,
+  "runtime_commit": "13f5ed7d17182f6923e7e19f9fdbba76564dd5bc",
+  "runtime_files": 146,
+  "node": {
+    "tests_run": 452,
+    "passed": 452,
+    "failures": 0
+  },
+  "suites": {
+    "boot": {
+      "tests_run": 8,
+      "passed": true
+    },
+    "clock": {
+      "tests_run": 4,
+      "passed": true
+    },
+    "deployment": {
+      "tests_run": 7,
+      "passed": true
+    },
+    "diagnostics": {
+      "tests_run": 1,
+      "passed": true
+    },
+    "drone": {
+      "tests_run": 7,
+      "passed": true
+    },
+    "durable": {
+      "tests_run": 2,
+      "passed": true
+    },
+    "early_records": {
+      "tests_run": 1,
+      "passed": true
+    },
+    "existing_voyage": {
+      "tests_run": 4,
+      "passed": true
+    },
+    "features": {
+      "tests_run": 4,
+      "passed": true
+    },
+    "freight_remote": {
+      "tests_run": 1,
+      "passed": true
+    },
+    "reliability": {
+      "tests_run": 6,
+      "passed": true
+    },
+    "remote": {
+      "tests_run": 49,
+      "passed": true
+    },
+    "services": {
+      "tests_run": 18,
+      "passed": true
+    },
+    "visual": {
+      "tests_run": 6,
+      "passed": true
+    }
+  },
+  "total_case_executions": 570,
+  "overlap": "Inherited suites overlap; counts are selected case executions, not unique tests or the complete historical matrix.",
+  "original_backup_unchanged": true,
+  "phase47_complete": false,
+  "milestone": "Shared-transport freight deployment and recoverable Landing Shelf camp",
+  "unavailable": [
+    "Physical Windows/browser-profile performance",
+    "Physical Samsung phone/tablet/TV",
+    "Native APK rebuild pending source recovery",
+    "Physical Tailscale interruptions",
+    "Antivirus scan"
+  ],
+  "not_rerun": [
+    "Full historical Python test matrix",
+    "30/90/365-day campaigns"
+  ]
+}

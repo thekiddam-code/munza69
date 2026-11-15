@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "tests_run": 1,
+  "passed_cases": [
+    "test_freight_remote_authority_dedup_and_unreported_transit (__main__.FreightRemote.test_freight_remote_authority_dedup_and_unreported_transit)"
+  ],
+  "failures": [],
+  "errors": []
+}

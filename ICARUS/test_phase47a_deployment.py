@@ -18,17 +18,19 @@ class DeploymentIntegration(DroneIntegration):
   self.deck(p,'missions','active');p.locator('.forward-deploy').click();self.assertEqual(self.snap(p)['forwardOperations']['deployment']['requested'],'deployment');return self.wait(p,lambda s:s['forward']['vehicle']['stage']=='deployed')
  def test_deployment_real_loading_travel_setup_and_reload(self):
   p=self.base();before=self.snap(p);self.assertEqual(before['forwardOperations']['vehicle']['room'],'C03')
-  self.deck(p,'missions','active');p.locator('.forward-deploy').click();self.assertEqual(self.snap(p)['forwardOperations']['deployment']['requested'],'deployment');seen=set();reload_done=False
+  self.deck(p,'missions','active');p.locator('.forward-deploy').click();self.assertEqual(self.snap(p)['forwardOperations']['deployment']['requested'],'deployment');seen=set();reload_done=False;empty_captured=False
   for _ in range(1500):
    self.advance(p,1);s=self.brief(p);seen.add(s['forward']['vehicle']['stage']);m=s['mission']
    if m and m['ops44'].get('freight') and m['ops44']['freight']['load']==4 and not reload_done:
     full=self.snap(p);p.evaluate('__icarusSoak.save()');p.reload();self.assertEqual(self.snap(p),full);reload_done=True
+   if s['forward']['vehicle']['stage']=='outbound' and not empty_captured:
+    self.deck(p,'operations','watch');p.wait_for_function('ICARUSObservationLive.camera.tick===__icarusSoak.time()');before_view=self.snap(p);p.evaluate("ICARUSObservationLive.camera.pick('C03');ICARUSObservationLive.camera.draw(true)");OUT.mkdir(parents=True,exist_ok=True);p.locator('#observation-primary').screenshot(path=str(OUT/'actual_empty_cargo_parking.png'));self.assertEqual(self.snap(p),before_view);self.deck(p,'missions','active');empty_captured=True
    if s['mission'] and s['mission']['ops44'].get('action')=='camp-setup' and s['forward']['vehicle']['stage']=='setting-up':
     actors=p.evaluate('__icarusSoak.observation().rooms.filter(r=>r.kind==="field"&&r.available).flatMap(r=>r.actors)');self.assertTrue(actors);self.assertTrue(all(q['state']=='repair' for q in actors))
    if s['forward']['vehicle']['stage']=='deployed':
     self.assertEqual(s['forward']['deployment']['camp']['node'],0);self.assertGreater(len(s['forward']['deployment']['camp']['objects']),10);self.assertIsNotNone(m);self.assertEqual(m['ops44']['node'],0);OUT.mkdir(parents=True,exist_ok=True);views=p.evaluate('__icarusSoak.observation().rooms.filter(r=>r.kind==="field"&&r.available)');self.assertTrue(any((v.get('forward') or {}).get('camp') for v in views));p.evaluate('v=>{const c=document.createElement("canvas");c.id="camp-capture";document.body.append(c);ICARUSPixelCamera.draw(c,v,{paused:true,reduced:true});}',next(v for v in views if (v.get('forward') or {}).get('camp')));p.locator('#camp-capture').screenshot(path=str(OUT/'actual_camp_body_camera.png'));break
   else:self.fail(json.dumps(s)[:5000])
-  self.assertTrue({'parked','loading','loaded','outbound','unloading','setting-up','deployed'}.issubset(seen),seen);self.assertTrue(reload_done);full=self.snap(p);self.assertEqual(full['resourceAudit'],[]);self.assertEqual(full['expeditionAudit'],[]);self.assertTrue(p.evaluate('__icarusSoak.save()'));p.reload();self.assertEqual(self.snap(p),full);self.wait(p,lambda s:not s['mission']);self.assertEqual([q['name'] for q in self.snap(p)['crew']],[q['name'] for q in before['crew']]);self.assertTrue(self.snap(p)['unifiedWorld']['organisms']['XENO-INITIAL']['dormant'])
+  self.assertTrue({'parked','loading','loaded','outbound','unloading','setting-up','deployed'}.issubset(seen),seen);self.assertTrue(reload_done);self.assertTrue(empty_captured);full=self.snap(p);self.assertEqual(full['resourceAudit'],[]);self.assertEqual(full['expeditionAudit'],[]);self.assertTrue(p.evaluate('__icarusSoak.save()'));p.reload();self.assertEqual(self.snap(p),full);self.wait(p,lambda s:not s['mission']);self.assertEqual([q['name'] for q in self.snap(p)['crew']],[q['name'] for q in before['crew']]);self.assertTrue(self.snap(p)['unifiedWorld']['organisms']['XENO-INITIAL']['dormant'])
  def test_deployment_recovery_packing_real_return_and_no_repeat_loop(self):
   p=self.base();initial=self.snap(p)['forwardOperations']['vehicle'];self.deploy(p);self.wait(p,lambda s:not s['mission']);self.deck(p,'missions','active');p.locator('.forward-recover').click();seen=set()
   for _ in range(1400):
