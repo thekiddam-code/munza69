@@ -1,0 +1,81 @@
+{
+  "passed": true,
+  "node_cases": 456,
+  "record_service_cases": 3,
+  "suites": {
+    "boot": {
+      "tests_run": 8,
+      "passed": true
+    },
+    "clock": {
+      "tests_run": 4,
+      "passed": true
+    },
+    "deployment": {
+      "tests_run": 8,
+      "passed": true
+    },
+    "drone": {
+      "tests_run": 7,
+      "passed": true
+    },
+    "durable": {
+      "tests_run": 2,
+      "passed": true
+    },
+    "early_records": {
+      "tests_run": 1,
+      "passed": true
+    },
+    "features": {
+      "tests_run": 4,
+      "passed": true
+    },
+    "features_c": {
+      "tests_run": 3,
+      "passed": true
+    },
+    "media_remote": {
+      "tests_run": 1,
+      "passed": true
+    },
+    "reliability": {
+      "tests_run": 6,
+      "passed": true
+    },
+    "remote": {
+      "tests_run": 49,
+      "passed": true
+    },
+    "services": {
+      "tests_run": 18,
+      "passed": true
+    },
+    "visual": {
+      "tests_run": 6,
+      "passed": true
+    },
+    "voyage": {
+      "tests_run": 4,
+      "passed": true
+    }
+  },
+  "case_executions": 580,
+  "overlap": "Inherited suites overlap; case executions, not unique tests.",
+  "runtime_commit": "c3670d0fdb623415202b7888b0cd2dcbce6ac9a8",
+  "broad_suite_commit": "5038e48323d89a1844e8cdad2c4732735aba42f2",
+  "final_patch_validation": "After broad regressions, event byte bounds/offline read polling were hardened; Node456, C feature3 and authenticated archive1 checks reran on the final modules. Other runtime hashes unchanged. The six reliability checks also passed on the final runtime after correcting a Playwright cleanup callback.",
+  "phase_complete": false,
+  "unpublished_phase47b_compatibility_verified": false,
+  "unavailable": [
+    "Physical Windows/Samsung phone/tablet/TV",
+    "Tailscale hardware routing",
+    "Antivirus scans",
+    "Native APK rebuild (source pending)",
+    "Additional unpublished Phase4.7B source"
+  ],
+  "not_rerun": [
+    "Complete historical Python/campaign matrix",
+    "30/90/365-day soaks"
+  ]
+}

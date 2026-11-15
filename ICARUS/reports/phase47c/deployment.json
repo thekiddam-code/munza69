@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "tests_run": 8,
+  "passed_cases": [
+    "test_deployment_autonomous_decision_uses_a_real_completed_sortie (__main__.DeploymentIntegration.test_deployment_autonomous_decision_uses_a_real_completed_sortie)",
+    "test_deployment_field_report_waits_for_real_radio_or_returned_crew (__main__.DeploymentIntegration.test_deployment_field_report_waits_for_real_radio_or_returned_crew)",
+    "test_deployment_power_interruption_holds_loading_without_teleport_or_free_power (__main__.DeploymentIntegration.test_deployment_power_interruption_holds_loading_without_teleport_or_free_power)",
+    "test_deployment_real_loading_travel_setup_and_reload (__main__.DeploymentIntegration.test_deployment_real_loading_travel_setup_and_reload)",
+    "test_deployment_recall_during_partial_loading_preserves_vehicle_and_cargo (__main__.DeploymentIntegration.test_deployment_recall_during_partial_loading_preserves_vehicle_and_cargo)",
+    "test_deployment_recovery_packing_real_return_and_no_repeat_loop (__main__.DeploymentIntegration.test_deployment_recovery_packing_real_return_and_no_repeat_loop)",
+    "test_deployment_unreported_site_change_is_found_on_approach_without_landing (__main__.DeploymentIntegration.test_deployment_unreported_site_change_is_found_on_approach_without_landing)",
+    "test_deployment_week_transition_preserves_loaded_vehicle_and_active_flight (__main__.DeploymentIntegration.test_deployment_week_transition_preserves_loaded_vehicle_and_active_flight)"
+  ],
+  "failures": [],
+  "errors": []
+}

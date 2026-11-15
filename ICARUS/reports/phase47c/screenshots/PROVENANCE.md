@@ -1,0 +1,1 @@
+Actual running procedural C03 camera in an isolated deterministic technical world. Rover screenshot before/after rendering preserves the complete simulation snapshot. Not physical camera footage or a concept mockup. Original dimensions/state preserved.

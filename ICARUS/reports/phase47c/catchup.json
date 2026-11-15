@@ -1,0 +1,27 @@
+{
+  "measured_ticks": 5333,
+  "simulated_seconds_per_real_second": 2513.062853274235,
+  "pending_wall_seconds_per_real_second": 125.6609964759915,
+  "durable_flush_seconds": 0.06881150401022751,
+  "mirror_flush_seconds": 4.515022239007521,
+  "recording_counts": {
+    "records": 20,
+    "original_records_preserved": true
+  },
+  "saved_input_unchanged": true,
+  "page_errors": [],
+  "console_errors": [],
+  "cache_consistency": {
+    "equal": true,
+    "pending": 0,
+    "cachePending": 0,
+    "cacheWarning": null
+  },
+  "input_sha256": "888ea1574d2b24ae6e4f7911b29dbf2c22079fbbaa4f34cd64f350afbbff7d75",
+  "elapsed_seconds": 127.32670000000299,
+  "configured_rate": 20,
+  "remaining_backlog_ms": 0,
+  "max_publish_bytes": 109961,
+  "publish_requests": 47,
+  "scope": "Fixed supplied voyage/seed/16000-wall-second production-pump workload in isolated Chromium; actual elapsed timer, unchanged writer protections. Not a physical Windows test."
+}

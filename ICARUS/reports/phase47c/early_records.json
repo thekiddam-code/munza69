@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "tests_run": 1,
+  "passed_cases": [
+    "test_47_retained_archive_and_first_twelve_are_accessible_without_mutation (__main__.Voyage47.test_47_retained_archive_and_first_twelve_are_accessible_without_mutation)"
+  ],
+  "private_input_sha256": "888ea1574d2b24ae6e4f7911b29dbf2c22079fbbaa4f34cd64f350afbbff7d75",
+  "failures": [],
+  "errors": []
+}
