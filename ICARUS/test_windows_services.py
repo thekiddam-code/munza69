@@ -60,10 +60,32 @@ class WindowsServices(unittest.TestCase):
  def test_discovery_does_not_execute_remote_input(self):
   with patch('windows_control.platform.system',return_value='Windows'),patch('windows_control.subprocess.run',return_value=Mock(returncode=0,stdout=b'[]')) as run:
    self.assertEqual(discover_windows(),[]);args=run.call_args.args[0];self.assertIn('-NoProfile',args);self.assertNotIn('-ExecutionPolicy',args);self.assertNotIn('shell',run.call_args.kwargs)
+ def test_link_validation_and_fixed_shell_launch_vectors(self):
+  from windows_control import launch_windows
+  with tempfile.TemporaryDirectory() as folder:
+   link=Path(folder)/'Chrome.lnk';target=Path(folder)/'chrome.exe';link.touch();target.touch();row={'kind':'link','path':str(link),'target':str(target)};self.assertTrue(usable(row));target.unlink();self.assertFalse(usable(row))
+   with patch('windows_control.os.startfile',create=True) as start:launch_windows(row);start.assert_called_once_with(str(link))
+  with patch('windows_control.subprocess.Popen') as launch:
+   launch_windows({'kind':'store','app_id':'Microsoft.Minecraft_fixture!App'});self.assertEqual(launch.call_args.args[0][1],'shell:AppsFolder\\Microsoft.Minecraft_fixture!App');self.assertFalse(launch.call_args.kwargs['shell'])
+ def test_lock_uses_windows_api_and_preserves_normal_input(self):
+  import ctypes
+  with patch.object(ctypes,'windll',create=True) as win:
+   win.user32.LockWorkStation.return_value=1;c=self.control();self.assertEqual(c.command('p','request01','hotkey','lock')['status'],'sent');win.user32.LockWorkStation.assert_called_once();c.pg.hotkey.assert_not_called()
  def test_receipt_cache_bounded(self):
   c=self.control()
   for i in range(280):c.command('p','request_%04d'%i,'hotkey','start')
   self.assertLessEqual(len(c.receipts),256)
+ def test_slow_probe_does_not_block_cached_remote_reads(self):
+  import threading
+  entered=threading.Event();release=threading.Event()
+  class Slow:
+   def sample(self):entered.set();release.wait(2);return {'supported':False,'reason':'fixture'}
+  m=MonitorService(Slow(),interval=10)
+  try:
+   first=m.view();self.assertTrue(entered.wait(1));start=time.monotonic()
+   for _ in range(100):self.assertIsNone(m.view()['sample'])
+   self.assertLess(time.monotonic()-start,.3)
+  finally:m.stop_event.set();release.set()
  def test_png_encoder_and_no_fabricated_icon(self):
   self.assertTrue(png(1,1,b'\0\0\0\0').startswith(b'\x89PNG'))
   if not hasattr(__import__('ctypes'),'WinDLL'):self.assertIsNone(installed_icon('not-installed.exe'))
