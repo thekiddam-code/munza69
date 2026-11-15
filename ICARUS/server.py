@@ -3,6 +3,8 @@ from bridge_service import BridgeService,BridgeError
 from record_service import RecordService
 from windows_monitor import MonitorService
 from windows_control import WindowsControl
+from sound_service import SoundService
+from sound_library import SoundError
 import http.server, json, os, secrets, socket, threading, time, urllib.parse, hashlib, ipaddress, ssl, base64
 from pathlib import Path
 
@@ -49,6 +51,7 @@ pg.FAILSAFE=True
 pg.PAUSE=.07
 WINDOWS_MONITOR=MonitorService()
 WINDOWS_CONTROL=WindowsControl(pg)
+SOUND_SERVICE=SoundService(ROOT/'soundboard_data')
 
 def cfg(): return json.loads(CONFIG.read_text(encoding='utf8'))
 def save_custom_messages(messages):
@@ -317,6 +320,13 @@ class Handler(http.server.SimpleHTTPRequestHandler):
   if self.path=='/api/tv/status':
    if not self.authorized(): return self.respond(401,{'error':'Pair first'})
    return self.respond(200,TV_SERVICE.status())
+  if self.path=='/api/sounds/library' or self.path.startswith('/api/sounds/audio?'):
+   if not self.authorized():return self.respond(401,{'error':'Pair first'})
+   try:
+    if self.path=='/api/sounds/library':return self.respond(200,SOUND_SERVICE.view())
+    ident=urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query).get('id',[''])[0];raw,item=SOUND_SERVICE.library.get(ident)
+    self.send_response(200);self.send_header('Content-Type','audio/wav');self.send_header('Cache-Control','no-store');self.send_header('X-Content-Type-Options','nosniff');self.send_header('Content-Length',str(len(raw)));self.end_headers();self.wfile.write(raw);return
+   except SoundError as e:return self.respond(e.status,{'error':str(e)})
   if self.path in ('/api/windows/monitor','/api/windows/catalog') or self.path.startswith('/api/windows/icon?'):
    if not self.authorized():return self.respond(401,{'error':'Pair first'})
    if self.path=='/api/windows/monitor':return self.respond(200,WINDOWS_MONITOR.view())
@@ -336,7 +346,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
  def do_POST(self):
   try:
    if self.headers.get('Content-Type','').split(';')[0]!='application/json': return self.respond(415,{'error':'JSON required'})
-   received_bytes=int(self.headers.get('Content-Length','0'));limit_bytes=65536 if self.path=='/api/icarus/host/record-chunk' else 131072 if self.path=='/api/icarus/host/publish' else 16384 if self.path=='/api/icarus/telemetry' else 4096
+   received_bytes=int(self.headers.get('Content-Length','0'));limit_bytes=2000000 if self.path=='/api/sounds/import' else 65536 if self.path=='/api/icarus/host/record-chunk' else 131072 if self.path=='/api/icarus/host/publish' else 16384 if self.path=='/api/icarus/telemetry' else 4096
    if received_bytes>limit_bytes:return self.respond(413,{'error':'Request too large for '+self.path+' ('+str(received_bytes)+' bytes; limit '+str(limit_bytes)+')','operation':self.path,'receivedBytes':received_bytes,'limitBytes':limit_bytes})
    origin=self.headers.get('Origin','')
    host=self.headers.get('Host','')
@@ -381,6 +391,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
      ICARUS_BRIDGE['updated']=time.time()
     return self.respond(200,{'ok':True})
    if not self.authorized(): return self.respond(401,{'error':'Pair first'})
+   if self.path.startswith('/api/sounds/'):
+    try:return self.respond(200,SOUND_SERVICE.post(self.path.removeprefix('/api/sounds/'),data,token_hash(self.headers.get('Authorization',''))))
+    except SoundError as e:return self.respond(e.status,{'error':str(e)})
    if self.path in ('/api/windows/command','/api/windows/refresh'):
     if not isinstance(data,dict):return self.respond(400,{'error':'Command object required'})
     if self.path.endswith('/refresh'):
@@ -454,4 +467,4 @@ if __name__=='__main__':
  print('Keep this window running. Ctrl+C stops the receiver.')
  try: http.server.ThreadingHTTPServer(('0.0.0.0',PORT),Handler).serve_forever()
  except KeyboardInterrupt: pass
- finally: release();TV_SERVICE.close()
+ finally: release();TV_SERVICE.close();SOUND_SERVICE.player.stop()
