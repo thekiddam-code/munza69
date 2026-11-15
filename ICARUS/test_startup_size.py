@@ -6,7 +6,7 @@ from test_continuity import RecordedResult
 BACKUP=None
 class StartupSize(BootHotfix):
  def existing(self):
-  p=self.raw_page();self.failures_http=[];self.console_errors=[];self.requests=[]
+  p=self.raw_page();p.set_default_timeout(120000);self.failures_http=[];self.console_errors=[];self.requests=[]
   def response(r):
    if r.status>=400:self.failures_http.append({'status':r.status,'operation':r.url.split(self.url)[-1]})
    if r.request.method=='POST' and r.url.endswith('/api/icarus/host/publish'):self.requests.append({'status':r.status,'bytes':len((r.request.post_data or '').encode())})
