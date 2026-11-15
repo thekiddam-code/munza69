@@ -455,3 +455,7 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - User confirmed: soundboard should **look like UMBRA**, not copy the Myinstants colored circular-button aesthetic. Use dark industrial sci-fi UI, restrained cyan/mint/amber accents, angular/tactile button tiles, consistent spacing and subtle touch/press feedback.
 - Keep manual Add Sound directly in UMBRA (Myinstants link when supported or local audio file), plus rename, rearrange, category, and persistence. Normal tap public playback; press-and-hold private headphone preview without leaking into chat.
 - No need to implement an alternative Myinstants-themed appearance unless user later asks.
+
+## Easter egg visual regression review (alongside Phase 4.8B)
+- User reports previously visible ICARUS Easter egg visuals have disappeared. Investigate as a **regression**, not a request to redesign Easter eggs. Identify affected Easter eggs and last known working revision, compare changes, inspect rendering/assets/animation/layering/visibility/discovery conditions/console errors and persistence.
+- Restore original visuals and trigger logic without resetting world state or fabricating activations. Preserve all other simulation and UMBRA features. Add targeted regression tests and report root cause, files changed, and verified/pending tests. Keep work scoped separately from Phase 4.8B soundboard and do not begin 4.8C prematurely.
