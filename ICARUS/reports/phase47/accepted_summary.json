@@ -1,0 +1,76 @@
+{
+  "phase": "4.7 development checkpoint",
+  "phase_complete": false,
+  "release_ready": false,
+  "runtime_commit": "58232819cd68a2748d43576a7984e35395f23f39",
+  "tests_passed_in_final_selected_suites": true,
+  "case_executions": 529,
+  "note": "Executions across overlapping inherited suites, not unique independent scenarios. Passing selected tests does not satisfy the missing phase acceptance gates.",
+  "suites": {
+    "node": {
+      "passed": true,
+      "executions": 428,
+      "seconds": 24.064045585
+    },
+    "services": {
+      "passed": true,
+      "executions": 18,
+      "seconds": 0.003
+    },
+    "features": {
+      "passed": true,
+      "executions": 3,
+      "seconds": 38.628
+    },
+    "industrial": {
+      "passed": true,
+      "executions": 1,
+      "seconds": 8.902
+    },
+    "drone": {
+      "passed": true,
+      "executions": 7,
+      "seconds": 83.718
+    },
+    "clock": {
+      "passed": true,
+      "executions": 4,
+      "seconds": 22.521
+    },
+    "visual": {
+      "passed": true,
+      "executions": 6,
+      "seconds": 19.757
+    },
+    "boot": {
+      "passed": true,
+      "executions": 8,
+      "seconds": 56.52
+    },
+    "existing_voyage": {
+      "passed": true,
+      "executions": 4,
+      "seconds": 139.137
+    },
+    "early_records": {
+      "passed": true,
+      "executions": 1,
+      "seconds": 19.62
+    },
+    "remote": {
+      "passed": true,
+      "executions": 49,
+      "seconds": 240.333
+    }
+  },
+  "earlier_diagnostics_and_open_findings": [
+    "One concurrent full-snapshot comparison reported a remoteCore difference. Two isolated reruns and the final serial four-case suite passed unchanged. Exact field/root cause was not reproduced; path-only diagnostics were added. This remains an investigation item under load.",
+    "One concurrent remote-suite TV tap timed out. Its isolated retry and final serial 49-case suite passed; TV implementation was unchanged. No physical-TV result is implied.",
+    "The earlier oversized archive preview was corrected by compacting historical metadata and exterior-only camera DTOs. A captured-PNG regression was corrected by reducing redundant state frames before removing the last feasible captured image.",
+    "A 19MB import exceeded the old 30-second harness deadline during concurrent suites. The private import fixture now allows120 seconds; all original preservation assertions remain."
+  ],
+  "private_backup_unchanged": true,
+  "private_backup_in_distribution": false,
+  "physical_windows_android_tv_tailscale_av_tests_run": false,
+  "new_long_duration_or_16000_second_production_backlog_benchmark_run": false
+}

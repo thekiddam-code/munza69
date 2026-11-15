@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "tests_run": 3,
+  "passed_cases": [
+    "test_47_live_drone_moves_and_recorded_sequence_plays_without_world_advance (__main__.Phase47Integration.test_47_live_drone_moves_and_recorded_sequence_plays_without_world_advance)",
+    "test_47_received_categories_do_not_reveal_unknown_locations (__main__.Phase47Integration.test_47_received_categories_do_not_reveal_unknown_locations)",
+    "test_47_vehicle_parking_real_camera_and_physical_inspection (__main__.Phase47Integration.test_47_vehicle_parking_real_camera_and_physical_inspection)"
+  ],
+  "failures": [],
+  "errors": []
+}

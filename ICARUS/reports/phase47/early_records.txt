@@ -1,0 +1,6 @@
+test_47_retained_archive_and_first_twelve_are_accessible_without_mutation (__main__.Voyage47.test_47_retained_archive_and_first_twelve_are_accessible_without_mutation) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 19.620s
+
+OK

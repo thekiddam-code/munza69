@@ -1,0 +1,32 @@
+{
+  "zip": "ICARUS_Phase4_7_Development_Checkpoint_Lite.zip",
+  "sha256": "4631ea53713175fb84d9535edf439d33c8060b603b5af2a5b480ccf27276b9ab",
+  "bytes": 976217,
+  "source_commit": "9d9eab0aa1cc245cc94b8c527c6afc49ef6870df",
+  "tested_runtime_commit": "58232819cd68a2748d43576a7984e35395f23f39",
+  "phase_complete": false,
+  "release_ready": false,
+  "source_files": 228,
+  "zip_entries": 229,
+  "runtime_files": 141,
+  "crc_and_all_source_hashes_pass": true,
+  "all_runtime_files_match_tested_freeze": true,
+  "private_voyage_included": false,
+  "previous_stable_zip_unchanged": true,
+  "source_case_executions": 529,
+  "extracted_package_checks": {
+    "features": {
+      "passed": true,
+      "cases": 4,
+      "seconds": 24.426
+    },
+    "boot": {
+      "passed": true,
+      "cases": 8,
+      "seconds": 41.383
+    }
+  },
+  "extracted_package_case_executions": 12,
+  "total_final_case_executions": 541,
+  "physical_windows_android_tv_tailscale_av_tests_run": false
+}

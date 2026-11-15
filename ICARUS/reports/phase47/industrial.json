@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "tests_run": 1,
+  "passed_cases": [
+    "test_47_industrial_camera_requires_real_connected_arrival (__main__.Phase47Integration.test_47_industrial_camera_requires_real_connected_arrival)"
+  ],
+  "failures": [],
+  "errors": []
+}

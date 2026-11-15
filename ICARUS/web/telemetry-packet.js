@@ -18,8 +18,9 @@ function prepare(payload,limit=110000){
   if(fits())return packet;trim(telemetry.operations,'situation',Math.max(2,n),true);trim(telemetry.operations,'missions',Math.max(2,n));trim(telemetry.operations,'research',Math.max(1,n));
   trim(telemetry.exploration,'history',Math.max(2,n));trim(telemetry.expeditions,'history',Math.max(2,n));
  }
- if(!fits()&&retainedImage?.image)omitImage(retainedImage);
- for(const group of [telemetry.exploration?.records,telemetry.expeditions?.records])for(const c of group||[]){if(fits())return packet;const frames=c.frames||[];if(frames.length>1){c.frameCount=c.frameCount||frames.length;counts.frames+=frames.length-1;c.frames=frames.slice(-1);}}
+ for(const group of [telemetry.exploration?.records,telemetry.expeditions?.records])for(const c of group||[]){if(fits())return packet;const frames=c.frames||[];if(frames.length>1){c.frameCount=c.frameCount||frames.length;counts.frames+=frames.length-1;c.frames=frames.includes(retainedImage)?[retainedImage]:frames.slice(-1);}}
+ if(fits())return packet;
+ if(retainedImage?.image)omitImage(retainedImage);
  if(fits())return packet;
  // If even bounded source-state evidence is too big, retain record provenance and
  // advertise that this packet is metadata-only; do not delete the actual recording.

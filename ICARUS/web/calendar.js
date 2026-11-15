@@ -27,7 +27,7 @@ function advance(s,now,env={},options={}){const c=init(s,now,options.timeZone);i
  if(options.paused){c.wallCursor=now;sync(s,c,now,env);return {ticks:0,paused:true,backlogMs:0};}
  while(c.wallCursor<now&&ticks<max){const h=holiday(parts(c.wallCursor,c.timeZone)),rate=override||(h.synchronized?1:c.selectedRate||h.rate),end=Math.min(now,nextMidnight(c.wallCursor,c.timeZone)),needed=(MINUTE-c.carry)/rate,dt=Math.min(end-c.wallCursor,needed);
   c.displayMs+=dt*rate;c.carry+=dt*rate;c.wallCursor+=dt;sync(s,c,c.wallCursor,env);
-  if(c.carry>=MINUTE-1e-5){c.carry=Math.max(0,c.carry-MINUTE);env.step?.();ticks++;}
+  if(c.carry>=MINUTE-1e-5){c.carry=Math.max(0,c.carry-MINUTE);env.step?.();ticks++;if(options.shouldYield?.())break;}
  }
  return {ticks,backlogMs:Math.max(0,now-c.wallCursor),rate:override||(holiday(parts(c.wallCursor,c.timeZone)).synchronized?1:c.selectedRate||4)};
 }
