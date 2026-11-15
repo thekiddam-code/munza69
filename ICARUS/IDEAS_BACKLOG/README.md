@@ -440,3 +440,9 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - For **verified Windows hotkeys**, use recognizable existing/premade icons where available (prefer native OS/app icons, then consistent iconography). For actions without a suitable icon, use a clean **text-labeled action button**. No forced arbitrary icons; no names beneath icon-only controls.
 - Maintain accessible names, tooltip and long-press labels for icon-only actions, keyboard navigation and touch targets. Avoid raster icon backgrounds if true transparent assets are available.
 - Keep Windows performance information exclusively in Engineering, **no global performance overlay**. Other 4.8 plans unchanged; telemetry redesign deferred.
+
+## Phase 4.8 — Myinstants soundboard library integration
+- User's current soundboard source is Myinstants (https://www.myinstants.com/en/index/us/), launched as a Chrome website/shortcut with a Chrome extension. Only one saved sound, so do not prioritize migration/synchronization.
+- Proposed UMBRA-owned sound library: add a sound by pasting its Myinstants page URL (subject to supported access and permission), import permitted audio locally, preserve names, optional artwork/icons, rename/reorder/category controls, open Myinstants for discovery. Avoid dependence on undocumented extension APIs or fragile page automation. Respect licensing and website terms.
+- Play imported clips on Windows through authenticated UMBRA companion; integrate with Sonar microphone/game chat only after validating audio routing; normalize perceived loudness relative to calibrated voice and limit peaks. Existing microphone must work normally if UMBRA stops; support local offline playback of permitted clips.
+- User has not yet confirmed whether additional soundboard UX options are wanted; keep proposal flexible.
