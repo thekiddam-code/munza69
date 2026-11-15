@@ -446,3 +446,7 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - Proposed UMBRA-owned sound library: add a sound by pasting its Myinstants page URL (subject to supported access and permission), import permitted audio locally, preserve names, optional artwork/icons, rename/reorder/category controls, open Myinstants for discovery. Avoid dependence on undocumented extension APIs or fragile page automation. Respect licensing and website terms.
 - Play imported clips on Windows through authenticated UMBRA companion; integrate with Sonar microphone/game chat only after validating audio routing; normalize perceived loudness relative to calibrated voice and limit peaks. Existing microphone must work normally if UMBRA stops; support local offline playback of permitted clips.
 - User has not yet confirmed whether additional soundboard UX options are wanted; keep proposal flexible.
+
+## Phase 4.8 — soundboard tap and hold behavior
+- Approved: normal tap on an Instant Buttons sound tile plays immediately through the configured Windows game-chat mix; press-and-hold previews that sound privately on the user's local monitoring output, **not** the microphone/game-chat feed. Keep hold detection reliable on Android touch and mouse, and ensure long-press never triggers public playback on release.
+- Private preview must have separate routing and clear visual feedback, respect user audio output selection, and avoid accidental voice-chat leakage. Preserve microphone fail-safe if UMBRA is offline.
