@@ -374,3 +374,10 @@ Reference: user-supplied images of *Alien: Covenant* physical bridge consoles, *
 - Autonomous drone rotation: charged replacement launches from deployed FOC, reaches escorted crew and overlaps coverage before low-battery drone returns, when feasible. Honest alerts for gaps, depleted inventory, lost comms or disabled base.
 - Camp roles include triage, shelter, supplies, ATV transport, expedition staging, local drone command and perimeter surveillance. Safety and discoveries emerge from actual simulation causality; no forced danger or fabricated recordings.
 - Preserve optional later permanent outposts and repurposed mining facilities as distinct expansion options, not prerequisites. Keep this as backlog design, not claimed implemented.
+
+## FOC exterior-only occupancy cues — no interior cameras
+- User explicitly decides **no interior views are needed for the FUC Mobile or any deployed tents**. Render exteriors only, with activity/occupancy conveyed by practical lighting and shadow cues.
+- Tent fabric can glow when occupied; occasional silhouettes/shadows should reflect actual occupants and task states, not fabricated activity. Sleeping tents may dim as occupants rest; medical/command tents show appropriate work light only when active.
+- FUC Mobile cabin/dashboard/interior-visible glow and exterior task lights can turn on when occupied or in use, with low-power/off state when vacant as appropriate to real power and operating state.
+- Simulation still tracks real crew entry/exit, occupancy, tasks, resources and consequences; avoid detailed interior geometry, room camera feeds, and unnecessary rendering. Exterior cues must not reveal information unavailable to the observer or ignore power failures.
+- This is an approved FOC visual/simulation constraint, not yet implemented.
