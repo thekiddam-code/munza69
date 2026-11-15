@@ -1,0 +1,36 @@
+{
+  "zip": "downloads/phase48a/UMBRA_Phase4_8A_Windows_Command_Checkpoint_Lite.zip",
+  "sha256": "da8953275b540ef44dec9845208dca644ee97a55bb46f2c5142c95a815a20088",
+  "bytes": 1058574,
+  "source_files": 254,
+  "runtime_files": 154,
+  "source_commit": "04b0231665abf55aa68bb9b2b52743e6dfe1a4ca",
+  "tested_runtime_commit": "73f5504f618e570169c94ebfcd91a9416491e59b",
+  "all_source_hashes_match": true,
+  "zip_crc_ok": true,
+  "package_checks": {
+    "windows": {
+      "passed": true,
+      "tests_run": 5
+    },
+    "archive": {
+      "passed": true,
+      "tests_run": 1
+    },
+    "dispatch_media": {
+      "passed": true,
+      "tests_run": 3
+    },
+    "boot": {
+      "passed": true,
+      "tests_run": 8
+    }
+  },
+  "package_case_executions": 17,
+  "selected_case_executions": 566,
+  "combined_case_executions": 583,
+  "private_backup_unchanged": true,
+  "phase48_complete": false,
+  "physical_windows_acceptance_verified": false,
+  "audio_stages_started": false
+}
