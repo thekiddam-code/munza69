@@ -1,3 +1,7 @@
+# Current handoff: UMBRA 4.8B soundboard and separate Easter egg restoration
+
+Use codex/umbra-soundboard-phase4-8b. Read README_PHASE48B.md, PHASE48B_ARCHITECTURE.md, PHASE48B_VALIDATION.md and EASTER_EGG_VISUAL_INVESTIGATION.md. Keep soundboard_data private and back it up separately while stopped; never clear/reset ICARUS. Normal taps use an explicit Windows render identity; private holds use terminal-only Web Audio and no host-play request. No microphone/Sonar/default-device changes; 4.8C not started. Native/Windows/physical private-isolation/voice-survival checks remain pending. Keep existing master OFF/reduced-motion/Bridge-only fictional-motif gates; original assets unchanged. Earlier handoffs are historical.
+
 # Current handoff: UMBRA Phase 4.8A Windows Command software checkpoint
 
 Use codex/umbra-windows-command-phase4-8. Read PHASE48_IMPLEMENTATION_BRIEF.md, README_PHASE48A.md, PHASE48A_ARCHITECTURE.md and PHASE48A_VALIDATION.md. Preserve the confirmed 4.7C baseline, existing saves/writer/calendar/remote/TV/native paths. New Windows measurements are paired-only, read-only and bounded; commands accept fixed IDs only. Do not add remote arbitrary executable paths/arguments. Unsupported sensors stay Unavailable. Actual Windows hardware/Shell icons/shortcuts/app activation remain pending; mocks are not certification. 4.8B/C sound library/Sonar routing are not started; no microphone/default-device/power/antivirus changes. Earlier handoffs are historical.

@@ -1,0 +1,1 @@
+Actual Chromium UMBRA captures. Soundboard uses an owned generated sine-wave clip and a fixture host output, not real Windows/Sonar hardware. The corporate motif screenshot shows original recovered CSS with the drip paused at a known animation phase for visibility. These are interface captures, not authentic ship-camera footage or simulation events.

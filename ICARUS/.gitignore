@@ -1,3 +1,6 @@
 
 # Local Python test/runtime caches
 __pycache__/
+
+# Private UMBRA audio library and render-output preference
+soundboard_data/
