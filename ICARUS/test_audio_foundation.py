@@ -22,6 +22,12 @@ class AudioFoundation(unittest.TestCase):
  def seed(self):return self.sounds.library.add(F,tone(.5),0,True,'Existing B fixture')
  def test_backup_preserves_metadata_audio_order_and_unknown_files(self):
   d=self.seed();(self.root/'original-notes.txt').write_text('Keep this file too');before=inventory(self.root);r=backup(self.root);self.assertTrue(r['verified']);self.assertEqual(inventory(self.root),before);m=verify_archive(self.root.parent/'soundboard_backups'/r['file']);self.assertEqual(m['source'],before);self.assertEqual(SoundLibrary(self.root).view(),d)
+ def test_standalone_tool_refuses_to_claim_an_empty_folder_is_the_existing_library(self):
+  import subprocess,sys
+  tool=Path(__file__).parent/'sound_backup.py';r=subprocess.run([sys.executable,str(tool),'--root',str(self.root),'--require-existing'],capture_output=True,text=True);self.assertEqual(r.returncode,3);self.assertIn('NOT FOUND',r.stderr);self.assertFalse(self.root.exists())
+ def test_standalone_tool_creates_a_verified_backup_of_populated_existing_library(self):
+  import subprocess,sys
+  self.seed();before=inventory(self.root);tool=Path(__file__).parent/'sound_backup.py';r=subprocess.run([sys.executable,str(tool),'--root',str(self.root),'--require-existing'],capture_output=True,text=True);self.assertEqual(r.returncode,0);d=json.loads(r.stdout);self.assertTrue(d['created'] and d['verified']);self.assertEqual(d['source']['sounds'],1);self.assertEqual(inventory(self.root),before)
  def test_backup_failure_blocks_edits_preserves_all_original_bytes(self):
   d=self.seed();before=inventory(self.root)
   with patch('sound_service.backup',side_effect=OSError('Controlled disk full')):
@@ -84,6 +90,16 @@ class AudioFoundation(unittest.TestCase):
   cancelled=threading.Event();cancelled.set()
   with self.assertRaisesRegex(SoundError,'cancelled'):c.sample(devices[0],5,cancelled)
   self.assertEqual(calls[-4:],['waveInStop','waveInReset','waveInUnprepareHeader','waveInClose'])
+ def test_emergency_during_backup_cannot_start_a_late_microphone_sample(self):
+  self.seed();entered=threading.Event();release=threading.Event();errors=[]
+  def slow():entered.set();release.wait(2);return {'verified':True}
+  self.sounds.preserve_existing=slow
+  def run():
+   try:self.audio.calibrate(self.capture.devices()[0],True)
+   except SoundError as e:errors.append(str(e))
+  t=threading.Thread(target=run);t.start();self.assertTrue(entered.wait(1));self.audio.reset();release.set();t.join(1);self.assertFalse(t.is_alive());self.assertEqual(self.capture.calls,0);self.assertTrue(any('cancelled' in e for e in errors))
+ def test_combined_level_measurement_never_overwrites_speech_calibration(self):
+  self.seed();self.audio.calibrate(self.capture.devices()[0],True);before=self.audio.path.read_bytes();self.capture.sample=lambda *a:tone(5,0);d=self.audio.calibrate(self.capture.devices()[0],True,save=False);self.assertIsNone(d['metrics']['integrated_lufs']);self.assertEqual(self.audio.path.read_bytes(),before)
  def test_shutdown_preserves_enabled_profile_while_emergency_reset_disables_it(self):
   self.seed();self.audio.calibrate(self.capture.devices()[0],True);self.audio.update({'enabled':True,'offset_db':-3,'ceiling_dbfs':-1,'max_boost_db':6});before=self.audio.path.read_bytes();self.audio.close();self.assertEqual(self.audio.path.read_bytes(),before);self.assertTrue(self.audio.profile()['enabled']);self.audio.reset();self.assertFalse(self.audio.profile()['enabled'])
  def test_corrupt_optional_profile_keeps_library_visible_and_exportable(self):

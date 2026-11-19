@@ -421,12 +421,15 @@ class Handler(http.server.SimpleHTTPRequestHandler):
    if self.path.startswith('/api/audio/'):
     try:
      if not isinstance(data,dict):raise SoundError('Audio object required')
+     if self.path=='/api/audio/prepare' and not data:
+      AUDIO_SERVICE.require_library()
+      with SOUND_SERVICE.library.lock:return self.respond(200,SOUND_SERVICE.preserve_existing())
      if self.path=='/api/audio/profile':return self.respond(200,AUDIO_SERVICE.update(data))
      if self.path=='/api/audio/reset' and not data:return self.respond(200,AUDIO_SERVICE.reset())
-     if self.path=='/api/audio/calibrate':
+     if self.path in ('/api/audio/calibrate','/api/audio/measure'):
       if not self.local_host():return self.respond(403,{'error':'Run microphone measurement on the Windows PC for explicit local consent; remote recording is not enabled'})
       if set(data)!={'device','consent'}:raise SoundError('Unknown calibration fields')
-      return self.respond(200,AUDIO_SERVICE.calibrate(data['device'],data['consent']))
+      return self.respond(200,AUDIO_SERVICE.calibrate(data['device'],data['consent'],save=self.path.endswith('/calibrate')))
      raise SoundError('Unknown audio command')
     except SoundError as e:return self.respond(e.status,{'error':str(e)})
    if self.path.startswith('/api/sounds/'):

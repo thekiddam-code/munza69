@@ -22,12 +22,16 @@ class CaptureInput:
   if device not in self.devices():raise SoundError('Selected capture endpoint changed; reselect it',409)
   if seconds!=5:raise SoundError('Calibration uses a fixed five-second sample')
   if getattr(self,'retained',None):raise SoundError('Input driver retained a buffer; restart required',503)
+  if cancel.is_set():raise SoundError('Input measurement cancelled before opening',409)
   a=self.api();handle=W.HANDLE();fmt=Format(1,1,24000,48000,2,16,0);buffer=ctypes.create_string_buffer(seconds*48000);hdr=Header(ctypes.cast(buffer,ctypes.c_void_p),seconds*48000,0,0,0,0,None,0);prepared=False
   def check(code):
    if code:raise SoundError('Windows input sampling failed ('+str(code)+'); existing voice settings were not changed',503)
   check(a.waveInOpen(ctypes.byref(handle),device['id'],ctypes.byref(fmt),0,0,0))
   try:
-   check(a.waveInPrepareHeader(handle,ctypes.byref(hdr),ctypes.sizeof(hdr)));prepared=True;check(a.waveInAddBuffer(handle,ctypes.byref(hdr),ctypes.sizeof(hdr)));check(a.waveInStart(handle));deadline=time.monotonic()+seconds+2
+   if cancel.is_set():raise SoundError('Input measurement cancelled',409)
+   check(a.waveInPrepareHeader(handle,ctypes.byref(hdr),ctypes.sizeof(hdr)));prepared=True;check(a.waveInAddBuffer(handle,ctypes.byref(hdr),ctypes.sizeof(hdr)));
+   if cancel.is_set():raise SoundError('Input measurement cancelled',409)
+   check(a.waveInStart(handle));deadline=time.monotonic()+seconds+2
    while not hdr.flags&1:
     if cancel.wait(.02):raise SoundError('Input measurement cancelled; voice sample discarded',409)
     if time.monotonic()>deadline:raise SoundError('Input measurement timed out',503)

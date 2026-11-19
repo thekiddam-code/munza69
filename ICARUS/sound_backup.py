@@ -62,9 +62,11 @@ def backup(root,destination=None):
   tmp.unlink(missing_ok=True);raise
 
 if __name__=='__main__':
- ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--root',type=Path,default=Path(__file__).parent/'soundboard_data');ap.add_argument('--destination',type=Path);ap.add_argument('--verify',type=Path);args=ap.parse_args()
+ ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--root',type=Path,default=Path(__file__).parent/'soundboard_data');ap.add_argument('--destination',type=Path);ap.add_argument('--verify',type=Path);ap.add_argument('--require-existing',action='store_true',help='Fail if imported sounds were not found; never call an empty folder a verified library backup');args=ap.parse_args()
  try:
   if args.verify:print(json.dumps({'verified':True,'manifest':verify_archive(args.verify)},indent=2))
   else:
-   result=backup(args.root,args.destination);print(json.dumps(result,indent=2));sys.exit(2 if result['source']['errors'] else 0)
+   result=backup(args.root,args.destination);print(json.dumps(result,indent=2))
+   if args.require_existing and (not result['created'] or result['source']['sounds']==0):print('EXISTING IMPORTED LIBRARY NOT FOUND: stop and locate the original soundboard_data folder; do not upgrade.',file=sys.stderr);sys.exit(3)
+   sys.exit(2 if result['source']['errors'] else 0)
  except Exception as e:print('BACKUP FAILED: '+str(e),file=sys.stderr);sys.exit(1)

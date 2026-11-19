@@ -40,14 +40,17 @@ class AudioService:
   if set(data)!={'enabled','offset_db','ceiling_dbfs','max_boost_db'}:raise SoundError('Unknown profile fields')
   with self.lock:
    p=self.profile();p.update(data);self.validate(p);self.save(p);self.memory_disabled=False;return self.profile()
- def calibrate(self,device,consent):
+ def calibrate(self,device,consent,save=True):
   if consent is not True:raise SoundError('Explicit local consent to a five-second microphone sample is required')
   self.require_library()
   if not self.capture_lock.acquire(blocking=False):raise SoundError('An input sample is already active',409)
+  self.cancel=threading.Event()
   try:
    with self.sounds.library.lock:self.sounds.preserve_existing()
-   self.cancel=threading.Event();raw=self.capture.sample(device,5,self.cancel);metrics=measure(raw);del raw
+   if self.cancel.is_set():raise SoundError('Measurement cancelled before microphone opened',409)
+   raw=self.capture.sample(device,5,self.cancel);metrics=measure(raw);del raw
    if self.cancel.is_set():raise SoundError('Measurement cancelled; no profile saved',409)
+   if not save:return {'profile':self.profile(),'metrics':metrics,'privacy':'Level-only input/mix measurement. Calibration unchanged; samples discarded. A nonzero signal alone does not prove both voice and clips reached game chat.'}
    level=metrics['integrated_lufs']
    if level is None or level<-60 or level>-5 or metrics['gated_blocks']<5 or metrics['clipped_samples']>120:raise SoundError('Sample is silent, too quiet, clipped or unrepresentative. Speak normally and retry; previous calibration retained.',409)
    with self.lock:
