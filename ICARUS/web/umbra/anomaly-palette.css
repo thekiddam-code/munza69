@@ -1,0 +1,8 @@
+/* Original component palettes from 65e68f1 parent; no global OS theme or trigger changes. */
+body[data-anomalies=on][data-umbra-tab=home] .umbra-card.umbra-specimen{opacity:1;background:linear-gradient(155deg,#172a31dd,#101c26ee);border-color:#304e4d}
+body[data-anomalies=on][data-umbra-tab=home][data-growth=on]:is([data-infestation=active],[data-infestation=outbreak]) .umbra-card.umbra-specimen{background:radial-gradient(ellipse at 95% 95%,#3b643d55,transparent 45%),linear-gradient(155deg,#172a31,#101c26)}
+body[data-anomalies=on][data-umbra-tab=home] .umbra-specimen .umbra-scan{color:#a0e4c3;font-size:14px;letter-spacing:.04em}
+body[data-anomalies=on][data-umbra-tab=home] .umbra-specimen .wy-panel-tag{display:inline-block;font:9px Consolas,monospace;letter-spacing:.17em;color:#bda76c;border-bottom:1px solid #695e41;padding-bottom:4px;margin-bottom:7px}
+body[data-anomalies=on][data-umbra-tab=home] .umbra-specimen .wy-hazard{height:5px;background:repeating-linear-gradient(115deg,#b39a53 0 10px,#1c2426 10px 20px);opacity:.75;margin-top:14px;max-width:220px}
+/* Arcade GIF/PNG images retain their embedded per-asset palettes; do not recolor them. */
+#umbra-arcade-gallery img,#umbra-arcade-preview,#umbra-auto-image{filter:none;mix-blend-mode:normal;opacity:1}

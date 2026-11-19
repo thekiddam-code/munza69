@@ -5,6 +5,7 @@ from windows_monitor import MonitorService
 from windows_control import WindowsControl
 from sound_service import SoundService
 from sound_library import SoundError
+from audio_service import AudioService
 import http.server, json, os, secrets, socket, threading, time, urllib.parse, hashlib, ipaddress, ssl, base64
 from pathlib import Path
 
@@ -52,6 +53,9 @@ pg.PAUSE=.07
 WINDOWS_MONITOR=MonitorService()
 WINDOWS_CONTROL=WindowsControl(pg)
 SOUND_SERVICE=SoundService(ROOT/'soundboard_data')
+AUDIO_SERVICE=AudioService(SOUND_SERVICE)
+SOUND_SERVICE.player.processor=AUDIO_SERVICE.processed
+SOUND_SERVICE.player.profile_reader=AUDIO_SERVICE.profile
 
 def cfg(): return json.loads(CONFIG.read_text(encoding='utf8'))
 def save_custom_messages(messages):
@@ -320,6 +324,29 @@ class Handler(http.server.SimpleHTTPRequestHandler):
   if self.path=='/api/tv/status':
    if not self.authorized(): return self.respond(401,{'error':'Pair first'})
    return self.respond(200,TV_SERVICE.status())
+  if self.path=='/api/audio/status' or self.path.startswith('/api/audio/processed?'):
+   if not self.authorized():return self.respond(401,{'error':'Pair first'})
+   try:
+    if self.path=='/api/audio/status':return self.respond(200,AUDIO_SERVICE.view())
+    params=urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query);ident=params.get('id',[''])[0];raw,item=SOUND_SERVICE.library.get(ident)
+    try:preview_volume=float(params.get('volume',[str(item['volume'])])[0])
+    except ValueError:raise SoundError('Invalid preview volume')
+    if not 0<=preview_volume<=1:raise SoundError('Invalid preview volume')
+    processed,preview_gain,metrics=AUDIO_SERVICE.processed(raw,item,preview_volume)
+    self.send_response(200);self.send_header('Content-Type','audio/wav');self.send_header('Cache-Control','no-store');self.send_header('X-Umbra-Preview-Gain',str(preview_gain));self.send_header('Content-Length',str(len(processed)));self.end_headers();self.wfile.write(processed);return
+   except SoundError as e:return self.respond(e.status,{'error':str(e)})
+  if self.path.startswith('/api/sounds/backup?'):
+   if not self.authorized():return self.respond(401,{'error':'Pair first'})
+   ident=urllib.parse.parse_qs(urllib.parse.urlsplit(self.path).query).get('id',[''])[0]
+   if not re.fullmatch(r'[0-9]{8}T[0-9]{6}Z_[a-f0-9]{12}',ident):return self.respond(404,{'error':'Unknown backup'})
+   path=SOUND_SERVICE.library.root.parent/'soundboard_backups'/(ident+'.zip')
+   if not path.is_file():return self.respond(404,{'error':'Backup not available on this host'})
+   self.send_response(200);self.send_header('Content-Type','application/zip');self.send_header('Cache-Control','no-store');self.send_header('Content-Length',str(path.stat().st_size));self.end_headers()
+   try:
+    with path.open('rb') as f:
+     for block in iter(lambda:f.read(65536),b''):self.wfile.write(block)
+   except (BrokenPipeError,ConnectionResetError):pass
+   return
   if self.path=='/api/sounds/library' or self.path.startswith('/api/sounds/audio?'):
    if not self.authorized():return self.respond(401,{'error':'Pair first'})
    try:
@@ -391,6 +418,17 @@ class Handler(http.server.SimpleHTTPRequestHandler):
      ICARUS_BRIDGE['updated']=time.time()
     return self.respond(200,{'ok':True})
    if not self.authorized(): return self.respond(401,{'error':'Pair first'})
+   if self.path.startswith('/api/audio/'):
+    try:
+     if not isinstance(data,dict):raise SoundError('Audio object required')
+     if self.path=='/api/audio/profile':return self.respond(200,AUDIO_SERVICE.update(data))
+     if self.path=='/api/audio/reset' and not data:return self.respond(200,AUDIO_SERVICE.reset())
+     if self.path=='/api/audio/calibrate':
+      if not self.local_host():return self.respond(403,{'error':'Run microphone measurement on the Windows PC for explicit local consent; remote recording is not enabled'})
+      if set(data)!={'device','consent'}:raise SoundError('Unknown calibration fields')
+      return self.respond(200,AUDIO_SERVICE.calibrate(data['device'],data['consent']))
+     raise SoundError('Unknown audio command')
+    except SoundError as e:return self.respond(e.status,{'error':str(e)})
    if self.path.startswith('/api/sounds/'):
     try:return self.respond(200,SOUND_SERVICE.post(self.path.removeprefix('/api/sounds/'),data,token_hash(self.headers.get('Authorization',''))))
     except SoundError as e:return self.respond(e.status,{'error':str(e)})
@@ -467,4 +505,4 @@ if __name__=='__main__':
  print('Keep this window running. Ctrl+C stops the receiver.')
  try: http.server.ThreadingHTTPServer(('0.0.0.0',PORT),Handler).serve_forever()
  except KeyboardInterrupt: pass
- finally: release();TV_SERVICE.close();SOUND_SERVICE.player.stop()
+ finally: release();TV_SERVICE.close();AUDIO_SERVICE.close()

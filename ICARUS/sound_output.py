@@ -53,7 +53,7 @@ class WaveOutput:
    code=api.waveOutClose(handle)
    if code:self.leaked=(api,handle,header,buffer);raise SoundError('Audio output did not close; restart server',503)
 class SoundPlayer:
- def __init__(self,library,backend=None):self.library=library;self.backend=backend or WaveOutput();self.lock=threading.RLock();self.thread=None;self.cancel=threading.Event();self.status={'state':'idle','error':None};self.receipts={}
+ def __init__(self,library,backend=None):self.library=library;self.backend=backend or WaveOutput();self.lock=threading.RLock();self.thread=None;self.cancel=threading.Event();self.status={'state':'idle','error':None};self.receipts={};self.processor=None
  def view(self):
   with self.lock:return dict(self.status)
  def stop(self):
@@ -72,6 +72,8 @@ class SoundPlayer:
   raw,item=self.library.get(ident);device=self.library.view()['output']
   if not device:raise SoundError('Select an explicit Windows render output first. Game-chat injection is not configured in Phase 4.8B.',409)
   if device not in self.backend.devices():raise SoundError('Selected output is unavailable; select again',409)
+  volume=item['volume']
+  if self.processor is not None:raw,volume,_=self.processor(raw,item)
   self.stop();ready=threading.Event()
   with self.lock:
    self.cancel=threading.Event();cancel=self.cancel;self.status={'state':'starting','id':ident,'output':device,'error':None}
@@ -80,7 +82,7 @@ class SoundPlayer:
     ready.set()
    def run():
     try:
-     self.backend.play(raw,device,item['volume'],cancel,started)
+     self.backend.play(raw,device,volume,cancel,started)
      with self.lock:self.status['state']='idle'
     except Exception as e:
      with self.lock:self.status.update(state='error',error=str(e)[:220])

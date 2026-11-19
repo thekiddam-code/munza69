@@ -3,17 +3,41 @@ import base64,threading,time
 from sound_library import SoundLibrary,SoundError
 from sound_output import SoundPlayer
 from sound_import import import_page
+from sound_backup import backup,inventory
 class SoundService:
- def __init__(self,root,backend=None):self.library=SoundLibrary(root);self.player=SoundPlayer(self.library,backend);self.commands=threading.Lock();self.imports=threading.BoundedSemaphore(2);self.rates={};self.rate_lock=threading.Lock()
+ def __init__(self,root,backend=None):self.library=SoundLibrary(root);self.player=SoundPlayer(self.library,backend);self.commands=threading.Lock();self.imports=threading.BoundedSemaphore(2);self.rates={};self.rate_lock=threading.Lock();self.preservation_lock=threading.RLock();self.preservation=None
+ def preserve_existing(self):
+  with self.preservation_lock:
+   if self.preservation is None:
+    try:
+     result=backup(self.library.root)
+     if result['source']['errors']:raise ValueError('; '.join(result['source']['errors']))
+     self.preservation=result if result['created'] else None
+    except Exception as e:raise SoundError('Verified backup required before changes: '+str(e),409)
+   return self.preservation
+ def make_backup(self):
+  with self.commands,self.library.lock:
+   try:
+    result=backup(self.library.root)
+    if not result['source']['errors']:self.preservation=result if result['created'] else None
+    return result
+   except Exception as e:raise SoundError('Backup failed; originals kept: '+str(e),409)
  def view(self):
   try:devices=self.player.backend.devices();error=None
   except Exception as e:devices=[];error=str(e)[:160]
-  return {**self.library.view(),'devices':devices,'player':self.player.view(),'deviceError':error,'routing':'Normal playback: explicit Windows render output. Private preview: current terminal only. Game-chat injection pending 4.8C.'}
+  extra={}
+  if getattr(self.player,'profile_reader',None):
+   try:extra={'audio_profile':self.player.profile_reader()}
+   except SoundError as e:extra={'audio_profile':{'enabled':False,'invalid':True},'audio_error':str(e)}
+  return {**extra,**self.library.view(),'devices':devices,'player':self.player.view(),'deviceError':error,'storage':{'authority':'Windows companion server','folder':'soundboard_data','metadata':'library.json','library_present':(self.library.root/'library.json').is_file(),'audio':'<sound-id>.wav','browser':'cache only','backup':self.preservation},'routing':'Normal playback: explicit Windows render output. Private preview: current terminal only. Game-chat injection pending 4.8C.'}
  def post(self,operation,data,owner):
   if not isinstance(data,dict):raise SoundError('Sound request object required')
-  fields={'import':{'fields','audio','revision','permission','source'},'edit':{'id','fields','revision'},'delete':{'id','revision'},'reorder':{'ids','revision'},'output':{'device','revision'},'play':{'id','requestId'},'stop':set(),'link':{'url','permission'}}
+  fields={'backup':set(),'import':{'fields','audio','revision','permission','source'},'edit':{'id','fields','revision'},'delete':{'id','revision'},'reorder':{'ids','revision'},'output':{'device','revision'},'play':{'id','requestId'},'stop':set(),'link':{'url','permission'}}
   if operation not in fields or set(data)!=fields[operation]:raise SoundError('Unknown operation or unsupported sound fields')
   lib=self.library
+  if operation=='backup':return self.make_backup()
+  if operation in ('import','edit','delete','reorder','output'):
+   with self.library.lock:self.preserve_existing()
   if operation=='import':
    if not isinstance(data['audio'],str) or len(data['audio'])>1920060:raise SoundError('Audio import too large',413)
    try:raw=base64.b64decode(data['audio'],validate=True)
