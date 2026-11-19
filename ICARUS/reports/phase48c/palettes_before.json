@@ -1,0 +1,16 @@
+{
+  "passed": false,
+  "tests_run": 2,
+  "passed_cases": [],
+  "failures": [
+    {
+      "test": "test_palette_original_component_colors_are_distinct_and_scoped (__main__.EasterPalettes.test_palette_original_component_colors_are_distinct_and_scoped)",
+      "detail": "Traceback (most recent call last):\n  File \"/workspace/work/munza69/ICARUS/test_easter_palettes.py\", line 13, in test_palette_original_component_colors_are_distinct_and_scoped\n    p=self.themed();self.assertEqual(p.locator('.umbra-specimen').evaluate('(e)=>getComputedStyle(e).opacity'),'1');self.assertEqual(p.locator('.umbra-scan').evaluate('(e)=>getComputedStyle(e).color'),'rgb(160, 228, 195)');self.assertEqual(p.locator('.wy-panel-tag').evaluate('(e)=>getComputedStyle(e).color'),'rgb(189, 167, 108)');self.assertEqual(p.locator('.wy-hazard').evaluate('(e)=>getComputedStyle(e).height'),'5px');self.assertIn('rgb(179, 154, 83)',p.locator('.wy-hazard').evaluate('(e)=>getComputedStyle(e).backgroundImage'));self.assertEqual(p.locator('body').evaluate('(e)=>getComputedStyle(e).backgroundColor'),'rgb(8, 15, 27)')\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: '0.8' != '1'\n- 0.8\n+ 1\n\n"
+    },
+    {
+      "test": "test_palette_survives_theme_media_reduced_motion_and_phone_layout (__main__.EasterPalettes.test_palette_survives_theme_media_reduced_motion_and_phone_layout)",
+      "detail": "Traceback (most recent call last):\n  File \"/workspace/work/munza69/ICARUS/test_easter_palettes.py\", line 17, in test_palette_survives_theme_media_reduced_motion_and_phone_layout\n    p.emulate_media(color_scheme=scheme,reduced_motion='reduce');p.set_viewport_size({'width':393,'height':851});self.assertEqual(p.locator('.wy-panel-tag').evaluate('(e)=>getComputedStyle(e).color'),'rgb(189, 167, 108)');self.assertEqual(p.locator('.umbra-scan').evaluate('(e)=>getComputedStyle(e).color'),'rgb(160, 228, 195)');self.assertLessEqual(p.evaluate('document.documentElement.scrollWidth'),393)\n                                                                                                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 'rgb(220, 229, 241)' != 'rgb(189, 167, 108)'\n- rgb(220, 229, 241)\n+ rgb(189, 167, 108)\n\n"
+    }
+  ],
+  "errors": []
+}

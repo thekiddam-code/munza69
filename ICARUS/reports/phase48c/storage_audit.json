@@ -1,0 +1,13 @@
+{
+  "actual_windows_library_accessible": false,
+  "actual_user_backup_created_or_verified": false,
+  "cloud_repository_library_present": false,
+  "authority": "Windows companion server",
+  "audio": "<folder containing server.py>/soundboard_data/<sound-id>.wav",
+  "assignments_and_settings": "soundboard_data/library.json, schema 1",
+  "new_processing_only": "soundboard_data/audio_profile.json",
+  "browser": "umbra-sound-library-v1 IndexedDB cache, not authority",
+  "migration_required_for_4_8b_schema": false,
+  "original_data_removal_performed": false,
+  "safety": "Run the standalone --require-existing backup helper in the original installation before upgrade. Actual sound count/hash audit is pending on the user PC."
+}

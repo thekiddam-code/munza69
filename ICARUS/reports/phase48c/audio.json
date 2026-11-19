@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "tests_run": 6,
+  "passed_cases": [
+    "test_audio_emergency_during_backup_does_not_start_a_late_capture (__main__.AudioIntegration.test_audio_emergency_during_backup_does_not_start_a_late_capture)",
+    "test_audio_existing_library_is_shared_between_pc_tablet_phone_without_migration (__main__.AudioIntegration.test_audio_existing_library_is_shared_between_pc_tablet_phone_without_migration)",
+    "test_audio_input_sampling_is_local_consent_only_and_status_is_not_capture (__main__.AudioIntegration.test_audio_input_sampling_is_local_consent_only_and_status_is_not_capture)",
+    "test_audio_missing_server_folder_never_prunes_existing_browser_library (__main__.AudioIntegration.test_audio_missing_server_folder_never_prunes_existing_browser_library)",
+    "test_audio_normalized_private_preview_and_public_output_use_same_pcm (__main__.AudioIntegration.test_audio_normalized_private_preview_and_public_output_use_same_pcm)",
+    "test_audio_verified_backup_download_is_authenticated_and_exact (__main__.AudioIntegration.test_audio_verified_backup_download_is_authenticated_and_exact)"
+  ],
+  "failures": [],
+  "errors": []
+}

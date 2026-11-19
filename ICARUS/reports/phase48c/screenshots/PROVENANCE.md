@@ -1,0 +1,1 @@
+Actual Chromium UI. Palette before suppresses only the new scoped stylesheet; after uses the historical component rules. The audio controls use explicitly named synthetic input/output fixtures and a populated schema-1 test library, not the user's actual Windows/Sonar devices or sounds. These are interface captures, not ship footage or physical audio verification.

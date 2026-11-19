@@ -1,0 +1,83 @@
+{
+  "original_commit": "65e68f1",
+  "assets": [
+    {
+      "file": "ICARUS/web/umbra/arcade/corporate-cleanup.gif",
+      "present": true,
+      "matches_original": true,
+      "sha256": "0b405fa8a95526b21da9d482d7d4e9880fb0b9d89e57eed0e2c74fbe560689d2"
+    },
+    {
+      "file": "ICARUS/web/umbra/arcade/corporate-cleanup.png",
+      "present": true,
+      "matches_original": true,
+      "sha256": "442b901108a1a96f74e97a0518b7e23bbad2742e6b29ebd1f30a9974fcd4238f"
+    },
+    {
+      "file": "ICARUS/web/umbra/arcade/corridor-chase.gif",
+      "present": true,
+      "matches_original": true,
+      "sha256": "520e5e8028fac8a29abaac59f61d9be10cba6057ef6fed1775b773e60049651c"
+    },
+    {
+      "file": "ICARUS/web/umbra/arcade/corridor-chase.png",
+      "present": true,
+      "matches_original": true,
+      "sha256": "06933bd34dec81e3599edd937e7785648066b548128c2fdcc20b89dcd02a7894"
+    },
+    {
+      "file": "ICARUS/web/umbra/arcade/facehugger-surprise.gif",
+      "present": true,
+      "matches_original": true,
+      "sha256": "fa579aea196eeaa87f32d2c2e965298c3c495b47b127266e60e684d9e6037566"
+    },
+    {
+      "file": "ICARUS/web/umbra/arcade/facehugger-surprise.png",
+      "present": true,
+      "matches_original": true,
+      "sha256": "ef878e6fc47aa7f9a3baaddaa535a716c6b262ae9c959ffbf4c2cacbfff19a41"
+    },
+    {
+      "file": "ICARUS/web/umbra/arcade/manifest.json",
+      "present": true,
+      "matches_original": true,
+      "sha256": "a0f84c3277da36d0dbc2d90a780acee8da75059e341509d1054affc1f370c6b4"
+    },
+    {
+      "file": "ICARUS/web/umbra/arcade/motion-tracker.gif",
+      "present": true,
+      "matches_original": true,
+      "sha256": "35a6cb95da204feae26abed11f839ee441ff1cfd5e04ada0d05bbe21b2812ec7"
+    },
+    {
+      "file": "ICARUS/web/umbra/arcade/motion-tracker.png",
+      "present": true,
+      "matches_original": true,
+      "sha256": "50beb6bf39c3d816bb05751cc47aeb45ffc11b31efa2f18a59317a17525e3202"
+    },
+    {
+      "file": "ICARUS/web/umbra/arcade/tail-strike.gif",
+      "present": true,
+      "matches_original": true,
+      "sha256": "c93708093cfcbf2b7643cba638e56b5600f9d097dbbcff8855834dcb2eea0aa8"
+    },
+    {
+      "file": "ICARUS/web/umbra/arcade/tail-strike.png",
+      "present": true,
+      "matches_original": true,
+      "sha256": "03cb6732da92beb25085ba079a2da039af252fbfcc8a55528646350d79c6a6aa"
+    },
+    {
+      "file": "ICARUS/web/umbra/arcade/vent-ambush.gif",
+      "present": true,
+      "matches_original": true,
+      "sha256": "cc43ce5acb51c5bee5c302b2e394de4537f5f5f329cc09c3a2ee28ea4a48d189"
+    },
+    {
+      "file": "ICARUS/web/umbra/arcade/vent-ambush.png",
+      "present": true,
+      "matches_original": true,
+      "sha256": "c70de7aed43e243e16f4565f30d21f8fd39de56aff82867d90b2d942dc0fbb70"
+    }
+  ]
+}

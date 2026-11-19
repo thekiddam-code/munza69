@@ -1,0 +1,80 @@
+{
+  "passed": true,
+  "case_executions": 627,
+  "node_cases": 460,
+  "suites": {
+    "easter": {
+      "tests_run": 3,
+      "passed": true
+    },
+    "voyage": {
+      "tests_run": 4,
+      "passed": true
+    },
+    "remote": {
+      "tests_run": 49,
+      "passed": true
+    },
+    "dispatch": {
+      "tests_run": 3,
+      "passed": true
+    },
+    "audio": {
+      "tests_run": 6,
+      "passed": true
+    },
+    "windows": {
+      "tests_run": 5,
+      "passed": true
+    },
+    "boot": {
+      "tests_run": 8,
+      "passed": true
+    },
+    "services": {
+      "tests_run": 79,
+      "passed": true
+    },
+    "palettes": {
+      "tests_run": 2,
+      "passed": true
+    },
+    "archive_http": {
+      "tests_run": 1,
+      "passed": true
+    },
+    "soundboard": {
+      "tests_run": 7,
+      "passed": true
+    }
+  },
+  "runtime_commit": "12988bcc080ea50b7f7598d486ad41b6a83dd807",
+  "broad_suite_runtime_commit": "20b36ac5bcc7690471785e3221e6cd81eeff8969",
+  "post_broad_changed_files": [
+    "Backup_Existing_Soundboard.bat",
+    "audio_capture.py",
+    "audio_service.py",
+    "server.py",
+    "sound_backup.py",
+    "web/umbra/audio-controls.js"
+  ],
+  "lineage": "Broad regressions started at 20b36ac. Final six-file CLI/capture-cancellation/level-meter hardening was verified by the final 79 service cases and six audio HTTP/browser cases; 163 other runtime hashes unchanged. Extracted-package checks are additional.",
+  "actual_user_library_backup_verified": false,
+  "actual_user_library_accessible": false,
+  "schema_migration_required": false,
+  "original_data_removal_performed": false,
+  "phase48c_complete": false,
+  "game_chat_injection_verified": false,
+  "physical_audio_acceptance_verified": false,
+  "overlap": "Selected case executions, inherited overlap; expected pre-patch palette failures excluded.",
+  "pending": [
+    "Actual installed library count/hash audit and verified local backup",
+    "Actual Windows/Sonar endpoints, user decisions about persistent external Stream Mix/chat input changes",
+    "Two physical microphones, combined game-chat/private-isolation/normal-close/force-kill voice tests",
+    "Native Android source recovery/rebuild, Samsung/TV/Tailscale/antivirus/manual gaming performance"
+  ],
+  "not_run": [
+    "Full historical Python matrix",
+    "Long-duration campaigns"
+  ]
+}

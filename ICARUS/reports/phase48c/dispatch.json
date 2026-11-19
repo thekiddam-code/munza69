@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "tests_run": 3,
+  "skipped": [],
+  "duration_seconds": 29.16560353399973,
+  "passed_cases": [
+    "test_c_actual_live_event_clip_and_rover_render_preserve_world (test_phase47c.Phase47C.test_c_actual_live_event_clip_and_rover_render_preserve_world)",
+    "test_c_dispatch_rejection_is_explicit_and_does_not_allocate_resources (test_phase47c.Phase47C.test_c_dispatch_rejection_is_explicit_and_does_not_allocate_resources)",
+    "test_c_dispatch_selection_persistence_and_physical_departure (test_phase47c.Phase47C.test_c_dispatch_selection_persistence_and_physical_departure)"
+  ],
+  "failures": [],
+  "errors": []
+}
