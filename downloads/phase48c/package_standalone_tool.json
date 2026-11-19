@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "tests_run": 2,
+  "checks": [
+    "Extracted standalone tool backs up a populated fixture without source changes",
+    "Extracted standalone tool refuses missing/empty source"
+  ],
+  "actual_user_library_verified": false
+}
