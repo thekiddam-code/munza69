@@ -1,0 +1,38 @@
+{
+  "verified": true,
+  "zip": "ICARUS_Phase4_9_Living_Specimens_Lite.zip",
+  "sha256": "53325bc8ac5e62e9cb06d45806793546cae07f313d14d96228792c07fbce84bb",
+  "bytes": 1156598,
+  "source_commit": "1b4319e0b16f2aa738981f454520361ca91dd9f4",
+  "runtime_commit": "bb49916cea1202f9b5f1e6e7004529d450792971",
+  "harness_commit": "5cb1fd43cd53bb8f9ad9aae72f765466d7480d68",
+  "runtime_files": 172,
+  "archive_entries": 289,
+  "local_entry_point_asset_references": 153,
+  "missing_assets": [],
+  "source_hashes_match": true,
+  "runtime_matches_executed_campaigns_and_candidate": true,
+  "reproducible_zip": true,
+  "final_archive_smoke_cases_passed": 3,
+  "static_cache_revalidation_cases_passed": 2,
+  "node_cases_passed": 490,
+  "extracted_browser_cases_passed": 50,
+  "compatibility_browser_cases_passed": 22,
+  "service_cases_passed": 79,
+  "historical_startup_cases_passed": 4,
+  "campaign_checkpoints_passed": 9,
+  "normal_campaign_seeds": [
+    10101,
+    4242,
+    2026
+  ],
+  "normal_campaign_days": [
+    7,
+    30,
+    90
+  ],
+  "physical_hardware_or_antivirus_tested": false,
+  "private_current_voyage_or_sound_library_available": false,
+  "private_inputs_packaged": false,
+  "initial_smoke_failures": "Preserved in diagnostics. Technical ticks outran the asynchronous UI. The first wait matched hidden history; the final harness awaits the actual current tick and visible enclosure before unchanged assertions. No runtime/world/resource change."
+}

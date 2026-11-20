@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "tests_run": 3,
+  "passed_cases": [
+    "test_bio_natural_acquisition_camera_research_and_restart (test_specimen_integration.SpecimenIntegration.test_bio_natural_acquisition_camera_research_and_restart)",
+    "test_bio_actual_host_payload_counts_recovered_chassis (test_specimen_integration.SpecimenIntegration.test_bio_actual_host_payload_counts_recovered_chassis)",
+    "test_bio_remote_actual_shared_camera_and_inspection_request (test_specimen_remote.SpecimenRemote.test_bio_remote_actual_shared_camera_and_inspection_request)"
+  ],
+  "failures": [],
+  "errors": [],
+  "skipped": [],
+  "zip_sha256": "53325bc8ac5e62e9cb06d45806793546cae07f313d14d96228792c07fbce84bb",
+  "source_commit": "1b4319e0b16f2aa738981f454520361ca91dd9f4",
+  "runtime_commit": "bb49916cea1202f9b5f1e6e7004529d450792971",
+  "scope": "Post-build actual final ZIP extraction, physical acquisition/camera/exact restart, actual-host payload callback and paired phone/host camera/inspection. Emulated browser/software protocols; hardware unavailable."
+}

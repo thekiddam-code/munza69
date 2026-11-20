@@ -1,0 +1,15 @@
+{
+  "zip": "ICARUS_Phase4_9_Living_Specimens_Lite.zip",
+  "sha256": "53325bc8ac5e62e9cb06d45806793546cae07f313d14d96228792c07fbce84bb",
+  "bytes": 1156598,
+  "source_commit": "1b4319e0b16f2aa738981f454520361ca91dd9f4",
+  "runtime_commit": "bb49916cea1202f9b5f1e6e7004529d450792971",
+  "archive_timestamp_source": "Source commit UTC; preserves revalidation ordering across normal upgrades",
+  "runtime_files": 172,
+  "files_including_manifest": 289,
+  "crc_and_source_hashes_passed": true,
+  "deterministic_zip_metadata": true,
+  "zip_timestamp_utc": "2026-11-20T10:52:44+00:00",
+  "audio_unchanged": true,
+  "private_inputs_packaged": false
+}

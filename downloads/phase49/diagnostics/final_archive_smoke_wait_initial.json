@@ -1,0 +1,20 @@
+{
+  "passed": false,
+  "tests_run": 3,
+  "passed_cases": [
+    "test_bio_actual_host_payload_counts_recovered_chassis (test_specimen_integration.SpecimenIntegration.test_bio_actual_host_payload_counts_recovered_chassis)",
+    "test_bio_remote_actual_shared_camera_and_inspection_request (test_specimen_remote.SpecimenRemote.test_bio_remote_actual_shared_camera_and_inspection_request)"
+  ],
+  "failures": [
+    [
+      "test_bio_natural_acquisition_camera_research_and_restart (test_specimen_integration.SpecimenIntegration.test_bio_natural_acquisition_camera_research_and_restart)",
+      "Traceback (most recent call last):\n  File \"/workspace/work/munza69/ICARUS/test_specimen_integration.py\", line 22, in test_bio_natural_acquisition_camera_research_and_restart\n    self.deck(p,'ship','systems');p.wait_for_function('document.querySelector(\".specimen-ops\").textContent.includes(\"BIO49-\")');self.assertIn('BIO49-',p.locator('.specimen-ops').inner_text());p.locator('.bio-camera').click();p.wait_for_function('ICARUSObservationLive.camera.selected===\"B03\"');p.evaluate('ICARUSObservationLive.camera.draw(true)');p.locator('#observation-primary').screenshot(path=str(OUT/'living_containment.png'));p.screenshot(path=str(OUT/'bridge_containment.png'));before=self.snap(p);p.evaluate('__icarusSoak.save()');p.reload();self.assertEqual(self.snap(p),before);self.assertEqual(p.evaluate('__icarusSoak.observation().rooms.find(r=>r.id===\"B03\").specimens'),view['specimens']);(OUT/'natural_acquisition.json').write_text(json.dumps({'scope':'Isolated real browser campaign; explicit captain expedition dispatch, no organisms or findings injected','tick':s['tick'],'stats':bio['stats'],'view':view,'audits':{'biology':s['biologyAudit'],'resources':s['resourceAudit']},'save_reload_exact':True},indent=2))\n                                                                                                                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: 'BIO49-' not found in 'LIVING SPECIMENS / CONTAINMENT\\n\\nB03 installed camera / observed state \u00b7 tick 420\\n\\nView containment camera\\n\\nBIO-1 \u00b7 empty \u00b7 enclosure 100% \u00b7 latched\\n\\nRequest inspection\\n\\nBIO-2 \u00b7 empty \u00b7 enclosure 100% \u00b7 latched\\n\\nRequest inspection\\n\\nBIO-3 \u00b7 empty \u00b7 enclosure 100% \u00b7 latched\\n\\nRequest inspection\\n\\nBIO-4 \u00b7 empty \u00b7 enclosure 100% \u00b7 latched\\n\\nRequest inspection\\n\\nPriya Shah \u00b7 deliver / work at A04\\n\\nReceived biological history'\n"
+    ]
+  ],
+  "errors": [],
+  "skipped": [],
+  "zip_sha256": "53325bc8ac5e62e9cb06d45806793546cae07f313d14d96228792c07fbce84bb",
+  "source_commit": "1b4319e0b16f2aa738981f454520361ca91dd9f4",
+  "runtime_commit": "bb49916cea1202f9b5f1e6e7004529d450792971",
+  "scope": "Post-build actual final ZIP extraction, physical acquisition/camera/exact restart, actual-host payload callback and paired phone/host camera/inspection. Emulated browser/software protocols; hardware unavailable."
+}

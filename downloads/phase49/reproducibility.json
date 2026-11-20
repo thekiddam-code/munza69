@@ -1,0 +1,5 @@
+{
+  "passed": true,
+  "sha256": "53325bc8ac5e62e9cb06d45806793546cae07f313d14d96228792c07fbce84bb",
+  "scope": "Two independent builds from the same committed source produced byte-identical ZIPs"
+}

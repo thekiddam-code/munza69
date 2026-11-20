@@ -1,0 +1,25 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "file": "web/icarus.html",
+      "old_cache_revalidation_status": 200,
+      "same_version_revalidation_status": 304,
+      "source_hash_matches": true,
+      "previous_zip_timestamp_utc": "2026-11-20T05:40:08+00:00",
+      "new_zip_timestamp_utc": "2026-11-20T10:52:44+00:00"
+    },
+    {
+      "file": "web/creatures.js",
+      "old_cache_revalidation_status": 200,
+      "same_version_revalidation_status": 304,
+      "source_hash_matches": true,
+      "previous_zip_timestamp_utc": "2026-11-20T05:40:08+00:00",
+      "new_zip_timestamp_utc": "2026-11-20T10:52:44+00:00"
+    }
+  ],
+  "source_commit": "1b4319e0b16f2aa738981f454520361ca91dd9f4",
+  "runtime_commit": "bb49916cea1202f9b5f1e6e7004529d450792971",
+  "scope": "Actual companion HTTP Handler serving timestamp-aware extracted ZIP assets; old-version and same-version conditional requests. Windows input/TV mocked; no physical Windows extraction/device certification.",
+  "physical_device_tested": false
+}
