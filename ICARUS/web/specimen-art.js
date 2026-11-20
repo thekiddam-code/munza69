@@ -1,7 +1,7 @@
 /* Original small pixel organisms. Presentation is read-only; positions come from the world. */
 (function(root){'use strict';
 const colors={grazer:'#a6c89a',colony:'#88d5c6',defender:'#ce9a7b'};
-function organism(c,o,x,y,time){const living=o.health>0,active=living&&!/rest|dead|awaiting/.test(o.pose),step=active?Math.floor(time/220)%2:0;const color=colors[o.family]||'#9ba5ac';
+function organism(c,o,x,y,time){const living=o.alive!==undefined?o.alive:o.health>0,active=living&&!/rest|dead|awaiting/.test(o.pose),step=active?Math.floor(time/220)%2:0;const color=colors[o.family]||'#9ba5ac';
  c.save();c.translate(Math.round(x),Math.round(y));c.fillStyle='#06181b';c.fillRect(-10,0,22,3);c.fillStyle=living?color:'#687578';
  if(o.family==='colony'){for(let i=0;i<5;i++){const h=5+(i*7)%12;c.fillRect(i*4-9,-h,3,h);c.fillStyle=living?(i%2?'#a6e2cf':'#7bafc2'):'#687578';c.fillRect(i*4-10,-h-2,5,3);}if(living&&active){c.globalAlpha=.18+step*.1;c.fillStyle='#8ee9cc';c.fillRect(-12,-17,25,20);}}
  else {c.fillRect(-9,-7,17,6);for(let i=0;i<4;i++){c.fillRect(i*4-8,-9,3,3);c.fillRect(i*5-9,step?-1:-2,2,3);}c.fillStyle=o.family==='defender'?'#875b62':'#668479';c.fillRect(-7,-6,12,2);c.fillStyle=living?'#e6e6a7':'#273b40';c.fillRect(7,-6,2,2);if(o.family==='defender'){c.fillStyle='#c7b29a';c.fillRect(-5,-12,2,4);c.fillRect(1,-12,2,4);}}

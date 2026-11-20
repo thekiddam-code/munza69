@@ -2467,7 +2467,7 @@ function renderAtmospherePanelFor(id){
  if(b){b.textContent='Patch breach';b.hidden=!a.breach;}
  if(f){f.textContent='Extinguish fire';f.hidden=!a.fire;}
 }
-function step(){if(!canWriteWorld()||ICARUSBackupUI.busy())return;ICARUSVoyage.advance(state);if(ICARUSEdition.core){ICARUSSpecimenLife.tick(state,biologyEnvironment());ICARUSUnifiedWorld.tick(state,{...unifiedEnvironment(),...biologyEnvironment()});}dockingTick();
+function step(){if(!canWriteWorld()||ICARUSBackupUI.busy())return;ICARUSVoyage.advance(state);if(ICARUSEdition.core){const biologyEnv=biologyEnvironment();ICARUSSpecimenLife.tick(state,biologyEnv);ICARUSUnifiedWorld.tick(state,biologyEnv);}dockingTick();
  if(!state.navSystem)state.navSystem={elevator:'online',lastChange:0};
  if(state.tick-state.navSystem.lastChange>320&&simRandom()<.0006){
   state.navSystem.elevator=state.navSystem.elevator==='online'?'offline':'online';
@@ -3622,7 +3622,7 @@ function scienceTick(){
   const item=specimenState().items.find(x=>x.id===c.specimenId);
   if(!item||item.status==='field secured'){c.status='awaiting_transfer';continue;}
   if(item.concealed){c.status='held';c.assessment='Chain of custody missing; laboratory cannot certify specimen.';log('SOL flagged custody exception for '+c.id+'.','system');continue;}
-  const candidates=state.crew.filter(p=>ICARUSLife.ready(p)&&!p.researchAssignment&&!p.expeditionId&&!p.expeditionAway&&p.energy>=35&&p.stress<85&&/scient|research|biolog|medic|doctor|technician/i.test(p.job||''));
+  const candidates=state.crew.filter(p=>ICARUSLife.ready(p)&&!p.bioAssignment&&!p.researchAssignment&&!p.expeditionId&&!p.expeditionAway&&p.energy>=35&&p.stress<85&&/scient|research|biolog|medic|doctor|technician/i.test(p.job||''));
   const analyst=candidates.sort((a,b)=>b.energy-a.energy)[0];
   if(!analyst){c.status='waiting_for_analyst';continue;}
   c.status='analyzing';c.analyst=analyst.name;c.progress=Math.min(100,c.progress+1);
@@ -4190,6 +4190,7 @@ function biologyEnvironment(){const base=unifiedEnvironment(),S=ICARUSSpecimenLi
  air:q=>q?.domain==='ship'&&String(q.node).startsWith('R:')?atmosphereRoom(q.node.slice(2)):q?.domain==='asteroid'?state.asteroidExploration?.rooms[q.node]?.field:null,
  visible:q=>q?.domain==='ship'&&String(q.node).startsWith('R:')&&ICARUSCinema.visible(state,q.node.slice(2)),
  knownSource:id=>!!id&&Object.values(state.knowledge?.facts||{}).some(f=>f.sourceId===id&&ICARUSKnowledge.known(state,'SOL',f.id)),
+ informed:(p,o)=>!!o.life49.lastReport?.sourceId&&Object.values(state.knowledge?.facts||{}).some(f=>f.sourceId===o.life49.lastReport?.sourceId&&ICARUSKnowledge.known(state,p.name,f.id)),brief:(p,o)=>{if(!o.life49.lastReport?.sourceId)return;const f=Object.values(state.knowledge?.facts||{}).find(f=>f.sourceId===o.life49.lastReport?.sourceId&&ICARUSKnowledge.known(state,'SOL',f.id));if(f)ICARUSKnowledge.queue(state,'SOL',p.name,f.id,'radio');},
  record:(kind,text,people,data)=>{const q=ICARUSCreatures.parse(data.location);if(!people.length&&q?.domain==='ship'&&String(q.node).startsWith('R:')&&ICARUSCinema.visible(state,q.node.slice(2))){const r=log(text,'system',null,{...data,storyKind:kind,sourceMethod:'installed containment camera'});if(r)ICARUSKnowledge.observe(state,r,['SOL'],{method:'recorded-evidence',location:q,data});return r;}return unifiedRecord(kind,text,people,data);},
  hurt:(p,n,cause)=>ICARUSLife.hurt(state,p,n,cause,(k,msg,people,data)=>unifiedRecord(k,msg,people||[p.name],data||{})),pay,
  travel:(p,room,task)=>{p.target=room;p.route=path(p.room,room);p.task=p.goal=task;p.taskMinutes=120;p.interaction=null;},
