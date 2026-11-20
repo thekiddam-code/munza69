@@ -1,0 +1,18 @@
+{
+  "verified_at_utc": "2026-11-20T11:02:50.505689+00:00",
+  "branch": "codex/living-specimens-phase4-9",
+  "published_artifact_commit": "0a00e39533612ff7acad7a1f919a8da9937c70ab",
+  "download_url": "https://raw.githubusercontent.com/thekiddam-code/munza69/refs/heads/codex/living-specimens-phase4-9/downloads/phase49/ICARUS_Phase4_9_Living_Specimens_Lite.zip",
+  "http_status": 200,
+  "downloaded_bytes": 1156598,
+  "downloaded_sha256": "53325bc8ac5e62e9cb06d45806793546cae07f313d14d96228792c07fbce84bb",
+  "expected_sha256": "53325bc8ac5e62e9cb06d45806793546cae07f313d14d96228792c07fbce84bb",
+  "download_matches_local_verified_zip": true,
+  "public_checksum_sidecar_matches": true,
+  "public_installation_instructions_match": true,
+  "main_and_original_lite_download_branch_unchanged": true,
+  "protected_refs_before_and_after": [
+    "46495d48ee8ff587929863e1dba8febedcfb3c22\trefs/heads/downloads/unified-phase1-lite",
+    "110ff857ed4db70a98bebaec642c8339b0a06b12\trefs/heads/main"
+  ]
+}
