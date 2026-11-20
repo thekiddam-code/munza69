@@ -1,9 +1,9 @@
 """Actual engine/cameras. Adverse changes affect isolated test worlds only."""
-import argparse,json,unittest,sys
+import argparse,json,unittest,sys,os,tempfile
 from pathlib import Path
 from test_expedition_integration import ExpeditionIntegration
 from test_continuity import RecordedResult
-OUT=Path('/workspace/work/phase49');OUT.mkdir(exist_ok=True)
+OUT=Path(os.environ.get('ICARUS_SPECIMEN_ARTIFACTS',str(Path(tempfile.gettempdir())/'icarus-specimens')));OUT.mkdir(parents=True,exist_ok=True)
 class SpecimenIntegration(ExpeditionIntegration):
  def live(self,p):
   self.start_field(p)
