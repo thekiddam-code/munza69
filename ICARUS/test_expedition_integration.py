@@ -4,6 +4,15 @@ class ExpeditionIntegration(OperationsIntegration):
  def start_field(self,p):
   self.configure(p,"s.remoteCore.autonomyEnabled=false;s.frontier.enabled=false;")
   self.deck(p,'missions','active');p.locator('.field-request').click();self.assertTrue(self.snap(p)['missions']['asteroid'].get('ops44'))
+ def dispatch_when_ready(self,p):
+  # Real additional collection costs can temporarily put the ship into conservation.
+  # Retry only after simulated recovery; never grant resources or bypass dispatch safety.
+  for _ in range(48):
+   self.deck(p,'missions','active');p.locator('.field-request').click()
+   if self.snap(p)['missions']['asteroid']:return
+   self.assertRegex(p.locator('.field-feedback').inner_text(),'resource priority|availability|readiness|specialist|reserve|crew|team|suit|capacity|unavailable')
+   self.advance(p,10)
+  self.fail('No feasible subsequent dispatch after eight simulated hours of actual recovery')
  def test_field_physical_preparation_route_return_and_source_records(self):
   p=self.page();self.start_field(p);seen=set();ship_nodes=set();first_id=self.snap(p)['missions']['asteroid']['id'];observed=False
   for i in range(1000):
@@ -27,7 +36,7 @@ class ExpeditionIntegration(OperationsIntegration):
     self.advance(p,20);s=self.snap(p)
     if len(s['expeditionOperations']['history'])>=sortie+1:break
    self.assertGreaterEqual(len(s['expeditionOperations']['history']),sortie+1)
-   if sortie==0:self.deck(p,'missions','active');p.locator('.field-request').click();self.assertIsNotNone(self.snap(p)['missions']['asteroid'])
+   if sortie==0:self.dispatch_when_ready(p);self.assertIsNotNone(self.snap(p)['missions']['asteroid'])
   visited=[r for r in s['world']['asteroidExploration']['rooms'] if r['visited']];self.assertIn('industrial',[r['field']['kind'] for r in visited]);self.assertIn('cavern',[r['field']['kind'] for r in visited]);self.assertEqual(s['unifiedWorld']['military']['doors']['23'],'sealed');self.assertEqual(s['resourceAudit'],[]);self.assertEqual(len(s['fieldEvidence']['devices']),2,'Returned physical cameras should be reused, not conjured/rebuilt')
  def test_field_powered_receiver_loss_hides_live_views_and_local_records(self):
   p=self.page();self.start_field(p)
@@ -48,7 +57,7 @@ class ExpeditionIntegration(OperationsIntegration):
     self.advance(p,20);s=self.snap(p)
     if len(s['expeditionOperations']['history'])>=sortie+1:break
    self.assertGreaterEqual(len(s['expeditionOperations']['history']),sortie+1)
-   if sortie==0:self.deck(p,'missions','active');p.locator('.field-request').click()
+   if sortie==0:self.dispatch_when_ready(p)
   before=s['world']['asteroidExploration']['rooms'][5]['field']['utility'];self.assertLess(before['condition'],60);self.deck(p,'missions','active');p.locator('.field-category').select_option('repair');p.locator('.field-target').select_option('5');p.locator('.field-request').click()
   for wait in range(60):
    if self.snap(p)['missions']['asteroid']:break
