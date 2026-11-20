@@ -1,0 +1,83 @@
+{
+  "scope": "Isolated real browser campaign; explicit captain expedition dispatch, no organisms or findings injected",
+  "tick": 450,
+  "stats": {
+    "observed": 2,
+    "collected": 1,
+    "escapes": 0,
+    "care": 0,
+    "repairs": 0,
+    "recaptured": 0,
+    "injuries": 0,
+    "deaths": 0
+  },
+  "view": {
+    "id": "B03",
+    "name": "Specimen Containment",
+    "enclosures": [
+      {
+        "id": "BIO-1",
+        "integrity": 99.99879999999996,
+        "latched": true,
+        "occupant": "BIO49-7"
+      },
+      {
+        "id": "BIO-2",
+        "integrity": 100,
+        "latched": true,
+        "occupant": null
+      },
+      {
+        "id": "BIO-3",
+        "integrity": 100,
+        "latched": true,
+        "occupant": null
+      },
+      {
+        "id": "BIO-4",
+        "integrity": 100,
+        "latched": true,
+        "occupant": null
+      }
+    ],
+    "specimens": [
+      {
+        "id": "BIO49-7",
+        "family": "colony",
+        "pose": "resting",
+        "alive": true,
+        "x": 0.20468678169418125,
+        "enclosure": "BIO-1",
+        "sealed": true
+      }
+    ],
+    "kind": "science",
+    "components": [],
+    "gravity": 1,
+    "zone": "science",
+    "objects": [],
+    "private": false,
+    "camera": true,
+    "available": true,
+    "actors": [],
+    "lighting": 1,
+    "temperature": 21,
+    "pressure": 100,
+    "oxygen": 21,
+    "visibility": 100,
+    "door": "open",
+    "privacyMarker": null,
+    "equipment": null,
+    "hazard": null,
+    "registeredCrew": 0,
+    "biologicalReturns": null,
+    "bioSource": "No biological sensor model installed",
+    "source": "Existing engineering/atmospheric instrumentation",
+    "recording": false
+  },
+  "audits": {
+    "biology": [],
+    "resources": []
+  },
+  "save_reload_exact": true
+}
