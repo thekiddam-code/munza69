@@ -1,5 +1,7 @@
 # Sonar routing review — no automatic configuration change
 
+See **PHASE48C_ROUTING_CORRECTION.md** for the November 20 (UTC) review, the confirmed Arctis input chain, the new explicit local headphone playback control, and the distinction between Sonar-only Stream Mix and an additional downstream virtual mixer. A cable alone cannot inject into unchanged Sonar - Microphone. No workaround has been installed or implemented; choosing games' combined input remains a consequential user decision.
+
 ## Evidence and design boundary
 
 SteelSeries documents Game/Chat/Media/Aux as playback channels and Mic as input. Streamer mode mixes selected channels, including microphone, to the separate Sonar Stream endpoint. Its Discord guidance uses Stream as the application input. These documents do not demonstrate a supported injection API into the user's currently reported Sonar Microphone endpoint while leaving all mixer/app configuration unchanged.

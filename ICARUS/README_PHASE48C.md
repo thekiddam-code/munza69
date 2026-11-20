@@ -1,5 +1,7 @@
 # UMBRA 4.8C — Preservation and safe audio foundation
 
+**Routing correction:** read PHASE48C_ROUTING_CORRECTION.md first. The confirmed voice chain is Arctis Nova microphone → existing Sonar processing → Sonar - Microphone → game. The new **Restore PC headphone playback** selector changes only UMBRA's clip render output after a verified backup. Aux output is explicitly labeled as playback, not injection. A documented Sonar-only combined route requires games to use **Sonar - Stream**; direct injection into the unchanged Sonar - Microphone endpoint is not implemented. No external mixer, driver or Sonar/game setting is changed. Actual audible Windows playback and game-chat injection remain unverified.
+
 This build preserves the 4.8B server library and adds verified backups, opt-in input measurement/clip normalization, Sonar endpoint diagnostics/Aux clip-output selection, and historical Easter egg component palettes. **Full 4.8C acceptance remains pending actual Windows/Sonar testing and review of any external routing changes.** It does not automatically change your current Sonar Microphone chat input or your Sonar mixer.
 
 ## First: protect the sounds already imported

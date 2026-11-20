@@ -1,0 +1,12 @@
+✔ sound normal pointer tap is exactly one host action despite duplicate click (2.927106ms)
+✔ sound long hold and two ghost clicks never become public playback (25.741029ms)
+✔ sound touch scroll and cancellation stop preview and suppress release clicks (51.530591ms)
+✔ sound keyboard activation remains available after a cancelled gesture (25.512155ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 185.939892
