@@ -1,6 +1,6 @@
 # Phase 4.9 validation
 
-Validation is in progress. This document will be finalized with the actual completed test/campaign reports before publication. Runtime freeze: d2bf219e9bbbedf22c145fd38b7129c9e4bfc410; later commits currently change documentation/test tooling only. All 172 runtime hashes are in reports/phase49/runtime_scope.json.
+Validation is in progress. This document will be finalized with the actual completed test/campaign reports before publication. Runtime freeze: bb49916cea1202f9b5f1e6e7004529d450792971; later commits currently change documentation/test tooling only. All 172 runtime hashes are in reports/phase49/runtime_scope.json.
 
 Executed so far: 489 Node tests passed with zero failures/skips. The eight focused source-browser tests passed (four specimen/camera/migration, two paired remote/protocol, two interrupted-care/source-state acceptance). Broader regression execution and extracted-package testing are ongoing. Two old repeat-expedition timing assertions failed initially and are under investigation; a historical-voyage startup attempt timed out and is being checked. These are not counted as passing.
 

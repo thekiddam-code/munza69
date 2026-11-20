@@ -3,7 +3,7 @@ import argparse, hashlib, io, json, subprocess, tarfile, zipfile
 from pathlib import Path
 
 EDITION = 'ICARUS_Phase4_9_Living_Specimens_Lite'
-RUNTIME_COMMIT = 'd2bf219e9bbbedf22c145fd38b7129c9e4bfc410'
+RUNTIME_COMMIT = 'bb49916cea1202f9b5f1e6e7004529d450792971'
 NEW = ['web/specimen-life.js', 'web/specimen-art.js', 'web/specimen-ui.js']
 DOCS = ['README_PHASE49.md', 'PHASE49_ARCHITECTURE.md', 'PHASE49_VALIDATION.md',
         'PHASE49_SECURITY_REVIEW.md', 'PHASE49_LIVING_SPECIMENS_PLAN.md']
