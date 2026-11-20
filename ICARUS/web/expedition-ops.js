@@ -59,6 +59,7 @@ function tick(s,m,env){init(s);const o=m.ops44;if(!o||o.lastTick===s.tick)return
  const r=s.asteroidExploration.rooms[o.node];if(!instrumented(s,m)){returning(s,m,env,'field_equipment_unavailable');observe(s,m,env);}if(r.field.radiation>0){o.dose=(o.dose||0)+r.field.radiation*.002;if(o.dose>1)for(const p of [...members(s,m)])env.hurt(p,.05,'Accumulated actual radiation exposure');if(o.dose>.25&&instrumented(s,m))returning(s,m,env,'measured_radiation_exposure');}
  if(r.field.stability<.4&&!o.actions['secured:'+o.node]){if((m.cargo.tools||0)>=.1){env.economy.cargoUse(s,m,'tools',.1);o.actions['secured:'+o.node]=true;event(s,m,env,'secured:'+o.node,'Used carried safety-line material to secure an observed unstable passage.',3);}else returning(s,m,env,'unstable_terrain_without_line');}
  if(o.returning){if(o.node===0){if(o.freight&&!root.ICARUSForwardDeployment.prepareReturn(s,m,env))return;o.stage='homebound';o.flight=0;m.phase='returning';return;}if(!back?.length){o.stage='stranded';o.blocker='No known accessible return route; no teleport';return;}o.stage='field';o.blocker=null;beginEdge(s,m,back[0],env);return;}
+ if(env.biologicalField?.(m))return;
  if(action(s,m,env))return;
  if(o.newCells.filter(id=>id!==0).length>=6&&env.job(m).status!=='direct'){returning(s,m,env,'objective_met');return;}
  const path=o.target!==null?W().route(s,o.node,o.target,known):W().next(s,o.node,known);if(!path?.length){returning(s,m,env,'observed_frontier_exhausted');return;}o.action=null;beginEdge(s,m,path[0],env);

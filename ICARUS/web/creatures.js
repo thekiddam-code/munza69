@@ -4,6 +4,7 @@ const clamp=(n,a=0,b=100)=>Math.max(a,Math.min(b,n));
 function init(o){if(!o.behavior)o.behavior={version:1,state:o.dormant?'dormant':'sensing',energy:100,stamina:100,health:100,lastTick:-1,lastAttack:-100,steps:0,meals:0,trace:[]};return o.behavior;}
 function note(s,o,state,data={}){const b=init(o);if(b.state!==state){b.trace.push({at:s.tick,from:b.state,to:state,location:o.location,...data});b.trace=b.trace.slice(-64);}b.state=state;}
 function tick(s,env){const w=s.unifiedWorld;if(!w)return;for(const o of Object.values(w.organisms)){
+ if(o.life49&&root.ICARUSSpecimenLife){root.ICARUSSpecimenLife.behave(s,o,env);continue;}
  if(!['adult','juvenile'].includes(o.stage))continue;const b=init(o);if(b.lastTick===s.tick||s.tick%5!==0)continue;b.lastTick=s.tick;
  if(b.health<=0){note(s,o,'dead');continue;}
  if(o.sealed){note(s,o,'contained');continue;}if(o.dormant){note(s,o,'dormant');continue;}
@@ -37,5 +38,5 @@ function parse(location){if(typeof location!=='string')return null;const i=locat
 function format(q){return q?q.domain+':'+q.node:'legacy-unlocated:unknown';}
 function same(a,b){return !!a&&!!b&&a.domain===b.domain&&a.node===b.node;}
 function audit(s){const errors=[];for(const o of Object.values(s.unifiedWorld?.organisms||{})){const b=o.behavior;if(!b)continue;for(const k of ['health','energy','stamina'])if(!Number.isFinite(b[k])||b[k]<0||b[k]>100)errors.push(o.id+': invalid '+k);if(b.trace.length>64)errors.push(o.id+': unbounded trace');}for(const d of s.living?.deceased||[])if((d.biomassConsumed||0)>1+1e-9)errors.push('Body biomass duplication '+d.name);return errors;}
-const api={init,tick,parse,format,same,audit};if(typeof module==='object'&&module.exports)module.exports=api;else root.ICARUSCreatures=api;
+const api={init,tick,parse,format,same,audit};if(typeof module==='object'&&module.exports){root.ICARUSSpecimenLife=require('./specimen-life');module.exports=api;}else root.ICARUSCreatures=api;
 })(globalThis);

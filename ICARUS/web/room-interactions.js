@@ -1,6 +1,6 @@
 /* Existing ordinary-task clock: approach a real lounge/table/bunk before using it. No camera-driven work. */
 (function(root){'use strict';
-function tick(s,p){const old=p.roomInteraction,at=root.ICARUSSpatial.position(p),blocked=p.expeditionId||p.expeditionAway||p.expeditionPreparing||p.emergencyId||p.systemAssignment||p.maintenanceRoom||p.researchAssignment||p.medicalTreatment||p.survivalIncapacitated||p.rescuePatient||p.rescueMedic||p.privateEventId||p.responseAssignment||p.route?.length||p.liftRide||at.kind!=='room'||p.room!==p.target||(p.vitals?.health??100)<60||(p.energy??100)<28||(p.vitals?.fatigue??0)>75||(root.ICARUSShipSystems?.gravity(s,p.room)??1)<.8;
+function tick(s,p){const old=p.roomInteraction,at=root.ICARUSSpatial.position(p),blocked=p.bioAssignment||p.expeditionId||p.expeditionAway||p.expeditionPreparing||p.emergencyId||p.systemAssignment||p.maintenanceRoom||p.researchAssignment||p.medicalTreatment||p.survivalIncapacitated||p.rescuePatient||p.rescueMedic||p.privateEventId||p.responseAssignment||p.route?.length||p.liftRide||at.kind!=='room'||p.room!==p.target||(p.vitals?.health??100)<60||(p.energy??100)<28||(p.vitals?.fatigue??0)>75||(root.ICARUSShipSystems?.gravity(s,p.room)??1)<.8;
  if(blocked){delete p.roomInteraction;return false;}
  const pose=root.ICARUSEmbodiment.pose(p,at,false,s.tick),eligible=['recreation','rest','eat'].includes(pose.kind)&&p.interaction==='working',station=root.ICARUSRoomDesign.station(p.room,pose.kind,p);
  if(!eligible||!station){delete p.roomInteraction;return false;}
