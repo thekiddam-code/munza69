@@ -1,5 +1,5 @@
 """Build reproducible Phase4.9 Lite from committed source; never package private data."""
-import argparse, hashlib, io, json, subprocess, tarfile, zipfile
+import argparse, datetime, hashlib, io, json, subprocess, tarfile, zipfile
 from pathlib import Path
 
 EDITION = 'ICARUS_Phase4_9_Living_Specimens_Lite'
@@ -19,6 +19,9 @@ def main():
     repo = project.parent
     git = lambda *args: subprocess.check_output(['git', *args], cwd=repo)
     commit = git('rev-parse', 'HEAD').decode().strip()
+    epoch = int(git('show', '-s', '--format=%ct', commit).decode().strip())
+    stamp = datetime.datetime.fromtimestamp(epoch, datetime.timezone.utc)
+    zip_time = (stamp.year, stamp.month, stamp.day, stamp.hour, stamp.minute, stamp.second // 2 * 2)
     baseline = repo / 'downloads/phase48c-routing/UMBRA_Phase4_8C_Headphone_Routing_Checkpoint_Lite.zip'
     with zipfile.ZipFile(baseline) as z:
         old = json.loads(z.read(next(n for n in z.namelist() if n.endswith('/BUILD_MANIFEST.json'))))
@@ -38,6 +41,7 @@ def main():
             assert runtime_hashes[n] == old['runtime_files'][n], 'Protected existing subsystem changed'
     manifest = {'edition': EDITION, 'source_repository': 'thekiddam-code/munza69',
                 'source_commit': commit, 'runtime_commit': RUNTIME_COMMIT,
+                'archive_timestamp_source': 'Source commit UTC; preserves revalidation ordering across normal upgrades',
                 'runtime_files': runtime_hashes, 'files': hashes,
                 'audio_runtime_unchanged': True, 'physical_devices_tested': False,
                 'actual_current_user_voyage_available': False, 'final_release_ready': False,
@@ -47,7 +51,7 @@ def main():
     out = a.output / (EDITION + '.zip')
     with zipfile.ZipFile(out, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=9) as z:
         for n in sorted(payloads):
-            info = zipfile.ZipInfo(EDITION + '/' + n, date_time=(1980, 1, 1, 0, 0, 0))
+            info = zipfile.ZipInfo(EDITION + '/' + n, date_time=zip_time)
             info.compress_type = zipfile.ZIP_DEFLATED
             info.external_attr = 0o100644 << 16
             z.writestr(info, payloads[n], compresslevel=9)
@@ -59,8 +63,9 @@ def main():
     (a.output / 'SHA256SUMS.txt').write_text(sha + '  ' + out.name + '\n')
     result = {'zip': out.name, 'sha256': sha, 'bytes': out.stat().st_size,
               'source_commit': commit, 'runtime_commit': RUNTIME_COMMIT,
+                'archive_timestamp_source': 'Source commit UTC; preserves revalidation ordering across normal upgrades',
               'runtime_files': len(runtime), 'files_including_manifest': len(payloads),
-              'crc_and_source_hashes_passed': True, 'deterministic_zip_metadata': True,
+              'crc_and_source_hashes_passed': True, 'deterministic_zip_metadata': True, 'zip_timestamp_utc': datetime.datetime(*zip_time, tzinfo=datetime.timezone.utc).isoformat(),
               'audio_unchanged': True, 'private_inputs_packaged': False}
     (a.output / 'package_verification.json').write_text(json.dumps(result, indent=2) + '\n')
     print(json.dumps(result, indent=2))

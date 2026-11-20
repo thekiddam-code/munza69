@@ -9,6 +9,8 @@ This is an integrated, bounded biological-life release over the existing voyage.
 3. Stop the previous companion server and close all old authoritative simulation tabs. Extract this Lite separately. Copy your private companion configuration/pairing/TV files and the entire soundboard_data directory while stopped. Keep the same browser profile, hostname and port for forward upgrade.
 4. Use Start_Remote_Deck.bat, then open `http://127.0.0.1:8765/icarus.html` on the host PC (retain your existing hostname/profile if it differs). If Python dependencies are missing, install the retained requirements with `py -m pip install -r requirements.txt`; this does not install or configure audio drivers. The Windows host remains authoritative; phones/tablets use the same server’s UMBRA home URL through the existing LAN/Tailscale pairing. Do not open a copied icarus.html on a remote device. Boot waits for genuine restoration and writer ownership, then requires explicit ENTER. Do not bypass writer protections.
 
+If the original roster/history is missing, stop and check that you are using the same browser profile and origin. Import the complete backup through the existing UI if intentionally changing origins; do not continue a fresh voyage or overwrite the original backup. A hard refresh can reload interface assets without clearing IndexedDB; do not use Clear site data.
+
 Old saves migrate additively. Existing crew, items, research, discoveries, calendar, histories and recordings remain. New habitat records do not overwrite old surveys. The existing four B03 fixtures are registered without invented occupants. Legacy organic samples remain legacy samples; they are not automatically declared alive. No database namespace/version reset or timing change.
 
 ## What to watch
