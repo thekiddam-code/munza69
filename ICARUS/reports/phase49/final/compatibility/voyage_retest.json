@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "tests_run": 1,
+  "passed_cases": [
+    "test_size_existing_user_world_restart_keeps_crew_maps_history_and_every_recording (test_startup_size.StartupSize.test_size_existing_user_world_restart_keeps_crew_maps_history_and_every_recording)"
+  ],
+  "failures": [],
+  "errors": [],
+  "skipped": [],
+  "backup_sha256_unchanged": "888ea1574d2b24ae6e4f7911b29dbf2c22079fbbaa4f34cd64f350afbbff7d75",
+  "raw_backup_packaged": false,
+  "scope": "Rerun of import/restart/history/media preservation after initial120s import timeout during concurrent campaigns; same timeout and assertions, no storage cleared"
+}

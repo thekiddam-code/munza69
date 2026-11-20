@@ -1,0 +1,68 @@
+{
+  "scope": "Full existing browser engine; autonomous production logic in accelerated isolated technical voyage. No specimens/findings/incidents injected. 7/30/90 are prefixes of the same seeded run.",
+  "seed": 10101,
+  "days": 90,
+  "tick": 129600,
+  "wall_seconds": 1316.1125836089996,
+  "presentation": "Host page backgrounded; non-displayed UI suppressed by existing visibility guards; every causal minute still executed",
+  "effective_simulated_seconds_per_real_second": 5908.309134676697,
+  "crew_alive": 20,
+  "crew_deceased": 0,
+  "biological_stats": {
+    "observed": 1,
+    "collected": 0,
+    "escapes": 0,
+    "care": 0,
+    "repairs": 0,
+    "recaptured": 0,
+    "injuries": 0,
+    "deaths": 0
+  },
+  "habitats_examined": 3,
+  "enclosures_occupied": 0,
+  "organisms_registered": 12,
+  "organism_conditions": [],
+  "mission_launches": 12,
+  "mission_statuses": {
+    "cancelled": 1,
+    "completed": 6,
+    "proposed": 1,
+    "aborted": 1
+  },
+  "asteroid_locations_visited": 20,
+  "science_cases": 19,
+  "experiments_complete": 65,
+  "event_kinds": [
+    "anthology",
+    "little",
+    "maintenance",
+    "observation",
+    "operation",
+    "relationship",
+    "social",
+    "system"
+  ],
+  "biological_state_bytes": 5192,
+  "diagnostic_snapshot_bytes": 24895722,
+  "resource_stock": {
+    "water": 152.86600000000016,
+    "oxygen": 110.55800000000072,
+    "energy": 179.85558046800003
+  },
+  "audits": {
+    "biologyAudit": [],
+    "resourceAudit": [],
+    "creatureAudit": [],
+    "systemsAudit": [],
+    "expeditionAudit": [],
+    "droneAudit": [],
+    "knowledgeAudit": [],
+    "transitAudit": []
+  },
+  "save_reload_exact": true,
+  "passed": true,
+  "initial_canonical_adult_dormant": true,
+  "runtime_fingerprint_sha256": "fdc239140c8ae786333f4e5997c00aa328a94d07604cbca5142bcac135b31342",
+  "runtime_unchanged_during_campaign": true,
+  "simulation_errors": []
+}

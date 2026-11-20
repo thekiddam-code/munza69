@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "tests_run": 2,
+  "passed_cases": [
+    "test_field_two_sorties_physically_link_industrial_and_cavern_terrain (test_expedition_integration.ExpeditionIntegration.test_field_two_sorties_physically_link_industrial_and_cavern_terrain)",
+    "test_field_paid_repair_tests_actual_lift_power_without_creating_energy (test_expedition_integration.ExpeditionIntegration.test_field_paid_repair_tests_actual_lift_power_without_creating_energy)"
+  ],
+  "failures": [],
+  "errors": [],
+  "skipped": []
+}

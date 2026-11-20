@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "tests_run": 2,
+  "seconds": 163.09965054500208,
+  "passed_cases": [
+    "test_accept_midcare_save_reload_resumes_physical_paid_work (test_specimen_acceptance.SpecimenAcceptance.test_accept_midcare_save_reload_resumes_physical_paid_work)",
+    "test_accept_saved_camera_specimen_frame_has_sources_and_renders_without_world_mutation (test_specimen_acceptance.SpecimenAcceptance.test_accept_saved_camera_specimen_frame_has_sources_and_renders_without_world_mutation)"
+  ],
+  "failures": [],
+  "errors": [],
+  "skipped": []
+}

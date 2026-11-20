@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "tests_run": 6,
+  "seconds": 36.10100819099898,
+  "passed_cases": [
+    "test_isolated_observer_pending_report_and_private_recap (test_knowledge_integration.KnowledgeIntegration.test_isolated_observer_pending_report_and_private_recap)",
+    "test_actual_relay_chain_restoration_delivers_once_and_survives_reload (test_knowledge_integration.KnowledgeIntegration.test_actual_relay_chain_restoration_delivers_once_and_survives_reload)",
+    "test_sender_death_before_restored_radio_does_not_deliver_or_repopulate (test_knowledge_integration.KnowledgeIntegration.test_sender_death_before_restored_radio_does_not_deliver_or_repopulate)",
+    "test_broken_ship_receiver_blocks_good_field_relays (test_knowledge_integration.KnowledgeIntegration.test_broken_ship_receiver_blocks_good_field_relays)",
+    "test_military_archive_is_not_shared_until_report_received (test_knowledge_integration.KnowledgeIntegration.test_military_archive_is_not_shared_until_report_received)",
+    "test_legacy_save_without_ledger_migrates_once_without_changing_existing_world (test_knowledge_integration.KnowledgeIntegration.test_legacy_save_without_ledger_migrates_once_without_changing_existing_world)"
+  ],
+  "failures": [],
+  "errors": [],
+  "skipped": []
+}

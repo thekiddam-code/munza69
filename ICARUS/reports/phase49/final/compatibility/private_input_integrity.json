@@ -1,0 +1,9 @@
+{
+  "supplied_historical_backup_present": true,
+  "before_sha256": "888ea1574d2b24ae6e4f7911b29dbf2c22079fbbaa4f34cd64f350afbbff7d75",
+  "after_sha256": "888ea1574d2b24ae6e4f7911b29dbf2c22079fbbaa4f34cd64f350afbbff7d75",
+  "private_input_packaged": false,
+  "actual_current_user_voyage_available": false,
+  "after_final_tests_sha256": "888ea1574d2b24ae6e4f7911b29dbf2c22079fbbaa4f34cd64f350afbbff7d75",
+  "final_source_startup_cases_passed": 4
+}

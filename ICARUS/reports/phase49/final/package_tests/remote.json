@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "tests_run": 2,
+  "seconds": 24.58081218100415,
+  "passed_cases": [
+    "test_bio_remote_actual_shared_camera_and_inspection_request (test_specimen_remote.SpecimenRemote.test_bio_remote_actual_shared_camera_and_inspection_request)",
+    "test_bio_remote_command_allowlist_authentication_and_deduplication (test_specimen_remote.SpecimenRemote.test_bio_remote_command_allowlist_authentication_and_deduplication)"
+  ],
+  "failures": [],
+  "errors": [],
+  "skipped": []
+}

@@ -1,6 +1,6 @@
 # ICARUS — Final Release Roadmap
 
-Phase 4.9 living specimens is **implemented, final validation in progress**: finite local habitats, real paid acquisition and carrier/B03 delivery, species-specific visible life, physical care/repair/recovery and observation-limited UMBRA. See README_PHASE49.md and PHASE49_VALIDATION.md for exact campaign results and limits. This does not complete invasive experiment choreography, continuous corridor interception, full ecology, native hardware or final human art/story readiness. No galaxy expansion or audio-route change.
+Phase 4.9 living specimens is **implemented and software-verified within documented bounds; final hardware/human refinement remains**: finite local habitats, real paid acquisition and carrier/B03 delivery, species-specific visible life, physical care/repair/recovery and observation-limited UMBRA. See README_PHASE49.md and PHASE49_VALIDATION.md for exact campaign results and limits. This does not complete invasive experiment choreography, continuous corridor interception, full ecology, native hardware or final human art/story readiness. No galaxy expansion or audio-route change.
 
 This roadmap follows FINAL_DESIGN.md. Status is about demonstrated behavior, not aspiration. v1.4.1 is a focused stabilization batch, not a declaration of final release.
 

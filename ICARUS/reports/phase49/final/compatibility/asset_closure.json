@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "html_pages": 2,
+  "local_script_and_link_references": 153,
+  "missing": [],
+  "scope": "Static script/stylesheet/icon references in delivered host and UMBRA entry points; dynamic private media excluded"
+}

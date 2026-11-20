@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "tests_run": 6,
+  "seconds": 185.37946633499814,
+  "passed_cases": [
+    "test_ops_engineer_real_diagnose_collect_repair_test (test_operations_integration.OperationsIntegration.test_ops_engineer_real_diagnose_collect_repair_test)",
+    "test_ops_float_actual_loose_objects_and_local_power (test_operations_integration.OperationsIntegration.test_ops_float_actual_loose_objects_and_local_power)",
+    "test_ops_independent_gravity_and_saved_controls (test_operations_integration.OperationsIntegration.test_ops_independent_gravity_and_saved_controls)",
+    "test_ops_power_loss_waits_and_recovery_preserves_world_without_sol_gate (test_operations_integration.OperationsIntegration.test_ops_power_loss_waits_and_recovery_preserves_world_without_sol_gate)",
+    "test_ops_repair_and_float_survive_mid_activity_reload (test_operations_integration.OperationsIntegration.test_ops_repair_and_float_survive_mid_activity_reload)",
+    "test_ops_zero_g_recovery_timer_finishes_instead_of_permanent_rest (test_operations_integration.OperationsIntegration.test_ops_zero_g_recovery_timer_finishes_instead_of_permanent_rest)"
+  ],
+  "failures": [],
+  "errors": [],
+  "skipped": []
+}

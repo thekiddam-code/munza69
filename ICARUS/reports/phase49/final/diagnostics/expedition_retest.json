@@ -1,0 +1,17 @@
+{
+  "passed": false,
+  "tests_run": 2,
+  "passed_cases": [],
+  "failures": [
+    [
+      "test_field_paid_repair_tests_actual_lift_power_without_creating_energy (test_expedition_integration.ExpeditionIntegration.test_field_paid_repair_tests_actual_lift_power_without_creating_energy)",
+      "Traceback (most recent call last):\n  File \"/workspace/work/munza69/ICARUS/test_expedition_integration.py\", line 59, in test_field_paid_repair_tests_actual_lift_power_without_creating_energy\n    self.assertGreaterEqual(len(s['expeditionOperations']['history']),sortie+1)\nAssertionError: 1 not greater than or equal to 2\n"
+    ],
+    [
+      "test_field_two_sorties_physically_link_industrial_and_cavern_terrain (test_expedition_integration.ExpeditionIntegration.test_field_two_sorties_physically_link_industrial_and_cavern_terrain)",
+      "Traceback (most recent call last):\n  File \"/workspace/work/munza69/ICARUS/test_expedition_integration.py\", line 38, in test_field_two_sorties_physically_link_industrial_and_cavern_terrain\n    self.assertGreaterEqual(len(s['expeditionOperations']['history']),sortie+1)\nAssertionError: 1 not greater than or equal to 2\n"
+    ]
+  ],
+  "errors": [],
+  "skipped": []
+}
