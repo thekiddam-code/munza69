@@ -1,0 +1,59 @@
+{
+  "zip": "downloads/phase48c/UMBRA_Phase4_8C_Audio_Foundation_Checkpoint_Lite.zip",
+  "sha256": "e0a6b0abf4a0ee877a5659d09ec2799ed872b24855a1f3f5716530953f4e47ea",
+  "bytes": 1125774,
+  "backup_tool": "downloads/phase48c/Backup_Existing_Soundboard_Tool.zip",
+  "backup_tool_sha256": "da5860f23c5dac0ad95cf0522187516ec53a5c123bf93dbc57a58e775edd19a5",
+  "source_files": 278,
+  "runtime_files": 169,
+  "source_commit": "93064e50783786e7630e003c64fdeedda46801da",
+  "tested_runtime_commit": "12988bcc080ea50b7f7598d486ad41b6a83dd807",
+  "all_source_hashes_match": true,
+  "zip_crc_ok": true,
+  "package_checks": {
+    "easter": {
+      "passed": true,
+      "tests_run": 3
+    },
+    "dispatch": {
+      "passed": true,
+      "tests_run": 3
+    },
+    "audio": {
+      "passed": true,
+      "tests_run": 6
+    },
+    "windows": {
+      "passed": true,
+      "tests_run": 5
+    },
+    "archive": {
+      "passed": true,
+      "tests_run": 1
+    },
+    "standalone_tool": {
+      "passed": true,
+      "tests_run": 2
+    },
+    "boot": {
+      "passed": true,
+      "tests_run": 8
+    },
+    "palettes": {
+      "passed": true,
+      "tests_run": 2
+    },
+    "soundboard": {
+      "passed": true,
+      "tests_run": 7
+    }
+  },
+  "package_case_executions": 37,
+  "source_case_executions": 627,
+  "combined_case_executions": 664,
+  "actual_user_library_backup_verified": false,
+  "actual_user_library_accessible": false,
+  "phase48c_complete": false,
+  "game_chat_injection_verified": false,
+  "physical_audio_acceptance_verified": false
+}

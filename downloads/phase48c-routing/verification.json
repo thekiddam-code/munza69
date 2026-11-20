@@ -1,0 +1,23 @@
+{
+  "source_commit": "4d0be2d9cbdba5ddb2a2030ecf83ee69f2a69a6d",
+  "zip": "downloads/phase48c-routing/UMBRA_Phase4_8C_Headphone_Routing_Checkpoint_Lite.zip",
+  "sha256": "351f0f0f9ae163aa10f6bb110acd931e7a04ffdd0d8b9ff0aaaafe6d1054a7ed",
+  "bytes": 1133115,
+  "source_files": 280,
+  "runtime_files": 169,
+  "unchanged_runtime_files": 167,
+  "runtime_changes": [
+    "web/umbra/audio-controls.js",
+    "web/umbra/soundboard.js"
+  ],
+  "crc_passed": true,
+  "all_source_hashes_match": true,
+  "source_case_executions": 56,
+  "gesture_case_executions": 4,
+  "extracted_package_case_executions": 22,
+  "selected_case_executions_total": 82,
+  "actual_windows_playback_verified": false,
+  "actual_user_library_backup_verified": false,
+  "microphone_injection_implemented": false,
+  "external_routing_changed": false
+}

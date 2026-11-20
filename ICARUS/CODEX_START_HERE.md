@@ -1,3 +1,11 @@
+# Current routing correction
+
+Read PHASE48C_ROUTING_CORRECTION.md before continuing audio work. Preserve Arctis Nova → Sonar processing → Sonar - Microphone → games. New explicit headphone output is a render-only local playback control; Aux is not injection. No cable/mixer or Sonar/game change was implemented. Sonar-only Stream Mix requires a different game input; resolve that decision first. Tests of software paths are not proof of actual installed library backup, audible Windows playback, receiving-game injection or physical private isolation. Earlier foundation handoff follows.
+
+# Current handoff: UMBRA 4.8C preservation/audio foundation — NOT COMPLETE
+
+Use codex/umbra-sonar-phase4-8c. Read README_PHASE48C.md, PHASE48C_ARCHITECTURE.md, PHASE48C_VALIDATION.md, SONAR_ROUTING_AND_VALIDATION.md and EASTER_PALETTE_RESTORATION.md. Actual Windows soundboard_data was unavailable; never claim its backup/count was verified. Run the standalone --require-existing helper in the original installation before upgrade. Preserve schema-1 WAVs/IDs/metadata; no migration or original deletion. Keep cache conflict guards and verified pre-write backup gate. Capture is host-local, consent-only, five seconds; cancel before open and after slow backup. DSP stays opt-in. Sonar Aux selection changes only UMBRA clip output; external Stream Mix/per-app input choices are manual and unverified. Do not claim full game-chat/private-isolation/voice-survival or hardware acceptance. No Windows/Sonar defaults/serial mic route/driver changes. Historical component palettes are scoped; triggers/assets/world state unchanged. Earlier handoffs are historical.
+
 # Current handoff: UMBRA 4.8B soundboard and separate Easter egg restoration
 
 Use codex/umbra-soundboard-phase4-8b. Read README_PHASE48B.md, PHASE48B_ARCHITECTURE.md, PHASE48B_VALIDATION.md and EASTER_EGG_VISUAL_INVESTIGATION.md. Keep soundboard_data private and back it up separately while stopped; never clear/reset ICARUS. Normal taps use an explicit Windows render identity; private holds use terminal-only Web Audio and no host-play request. No microphone/Sonar/default-device changes; 4.8C not started. Native/Windows/physical private-isolation/voice-survival checks remain pending. Keep existing master OFF/reduced-motion/Bridge-only fictional-motif gates; original assets unchanged. Earlier handoffs are historical.

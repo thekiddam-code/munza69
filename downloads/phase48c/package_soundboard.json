@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "tests_run": 7,
+  "skipped": [],
+  "passed_cases": [
+    "test_sound_auth_limits_unknown_routes_and_missing_output_are_explicit (test_soundboard_browser.SoundboardBrowser.test_sound_auth_limits_unknown_routes_and_missing_output_are_explicit)",
+    "test_sound_available_all_simulation_tabs_and_responsive_no_overlay_elsewhere (test_soundboard_browser.SoundboardBrowser.test_sound_available_all_simulation_tabs_and_responsive_no_overlay_elsewhere)",
+    "test_sound_cached_private_preview_works_offline_and_no_mic_api_is_used (test_soundboard_browser.SoundboardBrowser.test_sound_cached_private_preview_works_offline_and_no_mic_api_is_used)",
+    "test_sound_import_memory_cache_is_bounded_without_evicting_the_library (test_soundboard_browser.SoundboardBrowser.test_sound_import_memory_cache_is_bounded_without_evicting_the_library)",
+    "test_sound_supported_link_import_and_delayed_preview_release_are_safe (test_soundboard_browser.SoundboardBrowser.test_sound_supported_link_import_and_delayed_preview_release_are_safe)",
+    "test_sound_tap_plays_host_hold_previews_local_only_and_cancellation_stops (test_soundboard_browser.SoundboardBrowser.test_sound_tap_plays_host_hold_previews_local_only_and_cancellation_stops)",
+    "test_sound_upload_edit_move_delete_and_restart_without_chrome_dependency (test_soundboard_browser.SoundboardBrowser.test_sound_upload_edit_move_delete_and_restart_without_chrome_dependency)"
+  ],
+  "failures": [],
+  "errors": []
+}

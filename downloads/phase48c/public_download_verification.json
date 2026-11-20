@@ -1,0 +1,21 @@
+{
+  "downloads": [
+    {
+      "url": "https://raw.githubusercontent.com/thekiddam-code/munza69/codex/umbra-sonar-phase4-8c/downloads/phase48c/Backup_Existing_Soundboard_Tool.zip",
+      "http_status": 200,
+      "bytes": 2941,
+      "sha256": "da5860f23c5dac0ad95cf0522187516ec53a5c123bf93dbc57a58e775edd19a5",
+      "matches_tested_zip": true
+    },
+    {
+      "url": "https://raw.githubusercontent.com/thekiddam-code/munza69/codex/umbra-sonar-phase4-8c/downloads/phase48c/UMBRA_Phase4_8C_Audio_Foundation_Checkpoint_Lite.zip",
+      "http_status": 200,
+      "bytes": 1125774,
+      "sha256": "e0a6b0abf4a0ee877a5659d09ec2799ed872b24855a1f3f5716530953f4e47ea",
+      "matches_tested_zip": true
+    }
+  ],
+  "pull_request": "https://github.com/thekiddam-code/munza69/pull/19",
+  "draft": true,
+  "actual_user_backup_verified": false
+}

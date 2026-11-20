@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "tests_run": 3,
+  "skipped": [],
+  "duration_seconds": 19.773785805999978,
+  "passed_cases": [
+    "test_egg_master_and_reduced_motion_preserve_safety (test_easter_visuals.EasterVisuals.test_egg_master_and_reduced_motion_preserve_safety)",
+    "test_egg_original_acid_growth_radar_and_persistence (test_easter_visuals.EasterVisuals.test_egg_original_acid_growth_radar_and_persistence)",
+    "test_egg_recovered_timers_are_client_only_and_asset_archive_still_works (test_easter_visuals.EasterVisuals.test_egg_recovered_timers_are_client_only_and_asset_archive_still_works)"
+  ],
+  "failures": [],
+  "errors": []
+}
