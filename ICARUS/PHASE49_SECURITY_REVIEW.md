@@ -1,0 +1,13 @@
+# Phase 4.9 static security review
+
+Scope: 19 runtime paths changed from ca2fcff (16 existing, three new). This is source inspection and automated protocol coverage, not an antivirus certification or penetration test. The exact delivered hashes are in BUILD_MANIFEST.json and reports/phase49/runtime_scope.json.
+
+The new biological model, art and shared panel perform no network requests, OS commands, driver changes, installations or database deletion. They use the existing world snapshot/IndexedDB writer and clock. Dynamic organism/history text uses textContent; the new panel's innerHTML is fixed authored markup. There is no new eval, Function constructor, remote script, external asset URL or random wall-clock biological update.
+
+server.py adds only the fixed `biology:inspect:BIO-[1-4]` command to the existing ICARUS allowlist. Existing pairing, active-host lease, command deduplication and authoritative validation remain. This is a physical inspection request, not arbitrary code or a setter for resources/health/position. The phone loads the shared art/UI projection without specimen-life.js or an autonomous simulation. Private habitats, exact hidden vitals, private rooms and unavailable camera feeds are not published by the new projection.
+
+Inherited capabilities remain potentially sensitive: the companion server listens for LAN/Tailscale connections, pairing enables approved Windows input/application/TV commands, Myinstants import downloads validated audio through the existing service, and Windows playback/capture use existing explicitly selected audio devices. Start_Remote_Deck.bat runs local Python server.py; requirements.txt retains pyautogui, psutil and websocket-client. Those paths are unchanged. Read the retained Windows/audio/TV security notes, use trusted paired devices and avoid exposing the companion port directly to the public Internet. No microphone, Sonar/VoiceMeeter, Windows default device, firewall, registry, service, antivirus or startup setting was modified by this batch.
+
+The package contains source and existing runtime dependencies/assets, not private voyage data, recordings, imported sounds, pairing credentials, test fixtures or packaging programs. Copy private installation data while stopped according to README_PHASE49.md. Preserve original backups. Forward migration is additive; old runtimes cannot safely advance the new organisms, so downgrade requires a pre-upgrade backup in a separate browser profile. No automatic destructive cleanup or downgrade converter is supplied.
+
+No physical Windows, driver, Samsung, TV, game-chat or antivirus execution was available. This review does not disable or circumvent protection and does not claim the absence of all vulnerabilities.

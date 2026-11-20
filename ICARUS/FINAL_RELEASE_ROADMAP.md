@@ -1,5 +1,7 @@
 # ICARUS — Final Release Roadmap
 
+Phase 4.9 living specimens is **implemented, final validation in progress**: finite local habitats, real paid acquisition and carrier/B03 delivery, species-specific visible life, physical care/repair/recovery and observation-limited UMBRA. See README_PHASE49.md and PHASE49_VALIDATION.md for exact campaign results and limits. This does not complete invasive experiment choreography, continuous corridor interception, full ecology, native hardware or final human art/story readiness. No galaxy expansion or audio-route change.
+
 This roadmap follows FINAL_DESIGN.md. Status is about demonstrated behavior, not aspiration. v1.4.1 is a focused stabilization batch, not a declaration of final release.
 
 UMBRA Phase 4.8C is **partially implemented**: verified-library backup/preflight and cache-loss guards; opt-in parallel input measurement, K-weighted clip normalization/peak protection, explicit Sonar Aux output and historical component palettes. See PHASE48C_VALIDATION.md. The subsequent routing correction adds explicit local headphone-output recovery and clarifies that Aux is not injection into Sonar - Microphone; see PHASE48C_ROUTING_CORRECTION.md. Actual installed-library backup verification, real Windows/Sonar mix/per-app routing decisions, two-mic/private-isolation/shutdown/crash tests and hardware/native validation remain gates. No automatic external route or serial mic mixer; full Phase4.8C is not complete.

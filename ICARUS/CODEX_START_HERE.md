@@ -1,3 +1,7 @@
+# Current handoff: Phase 4.9 living specimens and frontier encounters
+
+Use codex/living-specimens-phase4-9. Read PHASE49_LIVING_SPECIMENS_PLAN.md, README_PHASE49.md, PHASE49_ARCHITECTURE.md and PHASE49_VALIDATION.md. Preserve one clock/authority, source-backed knowledge, paid physical collection/care, canonical dormant Xenomorphs, existing25 cells and four B03 fixtures. New life uses unifiedWorld.organisms with species policies; do not send harmless families through predator logic. No forced incidents or fake vital sensors/footage. Empty-fixture repair cannot reveal a hidden former occupant. Keep runtime hashes/test lineage and actual hardware limits explicit. Older builds must not advance post4.9 worlds: rollback needs pre-upgrade backup in a separate browser profile. UMBRA audio is unchanged; user reports Fortnite voice through independent VoiceMeeter/Sonar Microphone, while combined effects/private/shutdown testing is pending. Earlier handoffs are historical.
+
 # Current routing correction
 
 Read PHASE48C_ROUTING_CORRECTION.md before continuing audio work. Preserve Arctis Nova → Sonar processing → Sonar - Microphone → games. New explicit headphone output is a render-only local playback control; Aux is not injection. No cable/mixer or Sonar/game change was implemented. Sonar-only Stream Mix requires a different game input; resolve that decision first. Tests of software paths are not proof of actual installed library backup, audible Windows playback, receiving-game injection or physical private isolation. Earlier foundation handoff follows.
