@@ -1,0 +1,48 @@
+✔ sealed adult cannot sense, move or attack even with co-located prey (12.11436ms)
+✔ dormant quiet organism produces no invented signal, activity or encounters (0.923647ms)
+✔ inaccessible route prevents pursuit across a closed barrier (2.530169ms)
+✔ local pursuit follows one actual edge; distant prey does not supply omniscient target (1.155876ms)
+✔ attack has local source and injury causality; dead crew follows existing memorial path (1.024288ms)
+✔ seeded behavior roundtrips mid-pursuit and remains identical after reload (23.617341ms)
+✔ rest transfers finite metabolic energy, biomass can be consumed at most once (8.888306ms)
+✔ active organism suffers vacuum/fire and stops permanently at zero health (0.587662ms)
+✔ legacy ambiguous field location is preserved rather than teleporting onto a team (0.511198ms)
+✔ birth aboard transport stays physically contained until its actual vehicle arrives (0.408003ms)
+✔ starvation recovery requires and debits a real co-located body, never free rest energy (0.387341ms)
+✔ field sampling is seeded, bounded, recorded once and influenced by equipment and depth (1.474844ms)
+✔ natural sample has field provenance and measurable properties, not confirmed discoveries (0.218968ms)
+✔ matching results require independent field sources; contradiction is not independent support (0.561033ms)
+✔ nearest unvisited routing traverses visited junctions rather than looping (0.233691ms)
+✔ contradictory replication revises an earlier conclusion rather than silently confirming it (4.451905ms)
+✔ legacy saves initialize and related cases group with traceable hypotheses (1.933482ms)
+✔ autonomous selection consumes supplies once; one shared experiment and idempotent clock (4.375981ms)
+✔ custody gate prevents experiment and resource use (0.191738ms)
+✔ field transfer gate prevents experiment and resource use (0.396896ms)
+✔ containment gate prevents experiment and resource use (0.262274ms)
+✔ contamination gate prevents experiment and resource use (0.214131ms)
+✔ lab power gate prevents experiment and resource use (0.188814ms)
+✔ analyst gate prevents experiment and resource use (0.287852ms)
+✔ supplies gate prevents experiment and resource use (0.347522ms)
+✔ active experiment pauses safely and resumes without double payment (0.598519ms)
+✔ save/reload during experiment preserves completion and evidence (3.740887ms)
+✔ finite failure and no-result states never become breakthroughs (3.321868ms)
+✔ missing specimen invalidates old support and blocks new work (1.328615ms)
+✔ mission command and release preserve autonomous authority with player intervention (2.378251ms)
+✔ recall and abort return transit crew without teleporting (1.710158ms)
+✔ initial adult is unique, concealed and dormant; all other initial organisms are eggs (1.117408ms)
+✔ creator canon is editable without promoting notes into acquired evidence (0.443616ms)
+✔ items require physical owner presence and co-located recipients (1.492691ms)
+✔ additional adults require documented host exposure, incubation and juvenile growth (0.534233ms)
+✔ android hosts cannot generate a biological offspring and variants do not inherit prostheses (0.33967ms)
+✔ military discovery reuses actual asteroid region and finite battery once (0.578288ms)
+✔ memorial ownership survives while no crew is resurrected (0.310947ms)
+✔ personal observances never change global pacing or invent paid meals (47.298223ms)
+✔ unknown source cannot promote creator truth to acquired knowledge (0.307662ms)
+ℹ tests 40
+ℹ suites 0
+ℹ pass 40
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 502.78461
