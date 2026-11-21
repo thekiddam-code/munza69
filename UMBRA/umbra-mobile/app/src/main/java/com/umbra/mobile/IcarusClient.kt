@@ -14,14 +14,22 @@ import kotlin.coroutines.resumeWithException
 
 class RemoteFailure(val status: Int? = null, message: String = "Unreachable. Check Tailscale and the server.") : IOException(message)
 data class GameEmote(val index: Int,val label: String)
-data class PcStatus(val cpu: Double?,val ram: Double?,val tvConfigured: Boolean,val macros: List<String>,val quick: List<String>,val emotes: List<GameEmote>)
+data class PcStatus(val cpu: Double?,val ram: Double?,val tvConfigured: Boolean,val macros: List<String>,val quick: List<String>,val emotes: List<GameEmote>,val messages: List<SavedMessage> = emptyList())
 data class ShipStatus(val online: Boolean,val data: JsonObject?,val age: Double?)
 fun JsonObject.number(key: String): Double? = (get(key) as? JsonPrimitive)?.takeUnless { it.isString }?.doubleOrNull?.takeIf { it.isFinite() }
 fun JsonObject.literal(key: String): String? = (get(key) as? JsonPrimitive)?.takeIf { it.isString }?.content?.take(120)
 fun JsonObject.truth(key: String): Boolean = (get(key) as? JsonPrimitive)?.takeUnless { it.isString }?.booleanOrNull == true
 private fun JsonObject.names(key: String): List<String> = (get(key) as? JsonArray)?.take(100)?.mapNotNull { (it as? JsonPrimitive)?.takeIf { p -> p.isString }?.content?.takeIf { name -> name.length in 1..120 && name.none(Char::isISOControl) } } ?: emptyList()
 fun parsePcStatus(j: JsonObject): PcStatus = PcStatus(j.number("cpu")?.takeIf { it in 0.0..100.0 },j.number("ram")?.takeIf { it in 0.0..100.0 },j.truth("tv_configured"),j.names("macros"),j.names("quick"),
-    (j["fortnite_emotes"] as? JsonArray)?.take(9)?.mapIndexedNotNull { i,value -> (value as? JsonObject)?.literal("label")?.takeIf { it.isNotBlank() }?.let { GameEmote(i,it) } } ?: emptyList())
+    (j["fortnite_emotes"] as? JsonArray)?.take(9)?.mapIndexedNotNull { i,value -> (value as? JsonObject)?.literal("label")?.takeIf { it.isNotBlank() }?.let { GameEmote(i,it) } } ?: emptyList(),
+    (j["custom_messages"] as? JsonArray)?.take(40)?.mapNotNull {value->
+        val m=value as? JsonObject ?: return@mapNotNull null
+        fun exactText(key: String,max: Int)=(m[key] as? JsonPrimitive)?.takeIf {it.isString}?.content?.takeIf {it.length in 1..max && it.isNotBlank() && it.none(Char::isISOControl)}
+        val label=exactText("label",32) ?: return@mapNotNull null
+        val text=exactText("text",120) ?: return@mapNotNull null
+        val channel=exactText("channel",5)?.takeIf {it in listOf("team","match")} ?: return@mapNotNull null
+        SavedMessage(label,text,channel)
+    } ?: emptyList())
 class IcarusClient {
     private val shared = OkHttpClient.Builder().followRedirects(false).followSslRedirects(false).build()
     suspend fun request(base: String,path: String,timeout: Int,token: String? = null,body: JsonObject? = null): JsonObject {

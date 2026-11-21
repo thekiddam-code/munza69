@@ -1,0 +1,8 @@
+Package: com.umbra.mobile
+Version: 2.1 (3)
+Min SDK: 29
+Target SDK: 35
+Debug APK bytes: 29951047
+Debug APK SHA-256: ec6597a7a94d9cb47806a7221414657c6419d8c5cb5f3b9acfdd399bdc9fca1b
+Signing certificate compared with previously published Phase 2 APK: MATCH
+Native ABIs include arm64-v8a (Galaxy S24+)

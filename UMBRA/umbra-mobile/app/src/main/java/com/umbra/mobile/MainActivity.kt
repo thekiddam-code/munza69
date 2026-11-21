@@ -23,6 +23,7 @@ import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.saveable.rememberSaveableStateHolder
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
@@ -31,6 +32,7 @@ import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.*
@@ -71,8 +73,34 @@ class MainActivity : ComponentActivity() {
     private val model: LauncherModel by viewModels()
     private val homeEvents = mutableIntStateOf(0)
     private var awaitingAttach = false
+    private val widgetBinding=registerForActivityResult(androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult()) {result->
+        if(result.resultCode==android.app.Activity.RESULT_OK)configurePendingWidget() else model.widgetHost.cancel()
+    }
+    fun beginWidgetBinding(provider: ComponentName,page: String,replace: String?=null) {
+        val pending=model.widgetHost.allocate(provider,page,replace)
+        try {if(model.widgetHost.tryBind(pending))configurePendingWidget() else widgetBinding.launch(model.widgetHost.bindIntent(pending))}
+        catch(_:Exception){model.widgetHost.cancel();Toast.makeText(this,"Android could not bind this widget.",Toast.LENGTH_SHORT).show()}
+    }
+    private fun configurePendingWidget() {
+        val pending=model.widgetHost.pending.value ?: return
+        val info=model.widgetHost.manager.getAppWidgetInfo(pending.id)
+        if(info==null || !model.widgetHost.validBinding(pending.id,pending.provider)){model.widgetHost.cancel();return}
+        try {if(info.configure!=null)model.widgetHost.host.startAppWidgetConfigureActivityForResult(this,pending.id,0,WidgetHostController.CONFIGURE_REQUEST,null) else model.completePendingWidget()}
+        catch(_:Exception){model.widgetHost.cancel();Toast.makeText(this,"Provider configuration is unavailable.",Toast.LENGTH_SHORT).show()}
+    }
+    @Suppress("DEPRECATION")
+    override fun onActivityResult(requestCode: Int,resultCode: Int,data: Intent?) {
+        if(requestCode==WidgetHostController.CONFIGURE_REQUEST){if(resultCode==android.app.Activity.RESULT_OK)model.completePendingWidget() else model.widgetHost.cancel()}
+        else super.onActivityResult(requestCode,resultCode,data)
+    }
+    fun setAndroidBarsVisible(show: Boolean) {
+        val updated=model.config.value.copy(immersive=!show,hideTopBar=!show,hideBottomBar=!show)
+        applyDisplay(updated)
+        model.change {it.copy(immersive=!show,hideTopBar=!show,hideBottomBar=!show)}
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        homeEvents.intValue=savedInstanceState?.getInt("umbra_home_events") ?: 0
         enableEdgeToEdge()
         window.attributes = window.attributes.apply { layoutInDisplayCutoutMode = android.view.WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES }
         lifecycleScope.launch {
@@ -91,6 +119,7 @@ class MainActivity : ComponentActivity() {
         if(c.immersive && c.hideBottomBar) controller.hide(WindowInsetsCompat.Type.navigationBars()) else controller.show(WindowInsetsCompat.Type.navigationBars())
         window.attributes = window.attributes.apply { screenBrightness = c.windowBrightness }
     }
+    override fun onSaveInstanceState(outState: Bundle){outState.putInt("umbra_home_events",homeEvents.intValue);super.onSaveInstanceState(outState)}
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         super.onWindowFocusChanged(hasFocus)
         if(hasFocus) applyDisplay(model.config.value)
@@ -102,6 +131,7 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable private fun Umbra(model: LauncherModel, homeEvent: Int) {
     val context = LocalContext.current
     val lifecycle = androidx.lifecycle.compose.LocalLifecycleOwner.current.lifecycle
@@ -138,7 +168,13 @@ class MainActivity : ComponentActivity() {
             model.refreshApps()
         } catch (_: SecurityException) { Toast.makeText(context,"Android restricted this action.",Toast.LENGTH_SHORT).show() }
     }
-    fun launch(app: LaunchApp) = open(Intent.makeMainActivity(ComponentName.unflattenFromString(app.id)))
+    val launchView=LocalView.current
+    fun launchAt(app: LaunchApp,bounds: androidx.compose.ui.geometry.Rect?) {
+        try { startLauncherApp(context,app,launchView,bounds,c,policy) }
+        catch(_: ActivityNotFoundException){Toast.makeText(context,"Application is unavailable. Refreshing apps.",Toast.LENGTH_SHORT).show();model.refreshApps()}
+        catch(_: SecurityException){Toast.makeText(context,"Android restricted this activity.",Toast.LENGTH_SHORT).show()}
+    }
+    fun launch(app: LaunchApp) = launchAt(app,null)
     LaunchedEffect(homeEvent) { screen = "HOME"; query = "" }
     BackHandler(screen != "HOME") { screen = "HOME"; query = "" }
     LifecycleStartEffect(Unit) {
@@ -165,6 +201,7 @@ class MainActivity : ComponentActivity() {
         }
     }
     val homePull=rememberPullNavigation(c.swipeDown,{screen="COMMAND"},{})
+    val pageStateHolder=rememberSaveableStateHolder()
     val startup = remember { Animatable(1f) }
     LaunchedEffect(active,policy.enabled,c.startup) {
         if(active && policy.enabled && c.startup) { startup.snapTo(1f-.06f*c.intensity/100f); startup.animateTo(1f,tween(policy.duration)) } else startup.snapTo(1f)
@@ -181,6 +218,7 @@ class MainActivity : ComponentActivity() {
         bodyLarge=baseTypography.bodyLarge.copy(fontFamily=font),bodyMedium=baseTypography.bodyMedium.copy(fontFamily=font),bodySmall=baseTypography.bodySmall.copy(fontFamily=font),
         titleLarge=baseTypography.titleLarge.copy(fontFamily=font),titleMedium=baseTypography.titleMedium.copy(fontFamily=font),
         labelLarge=baseTypography.labelLarge.copy(fontFamily=if(c.typography=="Technical")FontFamily.Monospace else font),labelSmall=baseTypography.labelSmall.copy(fontFamily=font))
+    CompositionLocalProvider(LocalLauncherConfig provides c,LocalVisualDetail provides c.visualDetail,LocalIconLaunch provides {app,bounds->launchAt(app,bounds)},LocalWeatherSettings provides {settingsCategory="Weather";screen="CONFIG"}) {
     MaterialTheme(colorScheme=colors,typography=typography,shapes=Shapes(extraSmall=CutCornerShape(2.dp),small=CutCornerShape(4.dp),medium=CutCornerShape(6.dp),large=CutCornerShape(8.dp),extraLarge=CutCornerShape(12.dp))) {
     if(shadeDialog) AlertDialog(onDismissRequest={shadeDialog=false},title={Text("Native Android notifications")},text={Text("Swipe from the very top edge of the display to reveal Android's notification shade. Android does not provide ordinary HOME apps a public API to expand it. UMBRA leaves this system gesture available.")},
         confirmButton={TextButton(onClick={model.change { it.copy(immersive=false,hideTopBar=false,hideBottomBar=false) };shadeDialog=false}){Text("Restore Android bars")}},
@@ -190,29 +228,32 @@ class MainActivity : ComponentActivity() {
             Box(Modifier.fillMaxSize().pointerInput(Unit) {
                 awaitPointerEventScope { while(true) { val event = awaitPointerEvent(); if (event.changes.any { it.pressed }) { lastInteraction = SystemClock.elapsedRealtime();if(parallaxAllowed) { val position=event.changes.first().position;pointer.value=androidx.compose.ui.geometry.Offset(position.x/size.width.coerceAtLeast(1),position.y/size.height.coerceAtLeast(1)) } } } }
             }) {
+                StaticTerminalBackground(c.visualDetail,accent)
                 if (active && policy.continuous && (c.ambient || c.environment || c.wallpaper || c.parallax || c.statusEffects)) Atmosphere(c,accent,pointer)
                 Column(Modifier.fillMaxSize().alpha(if(policy.enabled && c.startup) startup.value else 1f).safeDrawingPadding().imePadding().padding(horizontal=20.dp,vertical=10.dp)) {
                     Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.SpaceBetween,verticalAlignment=Alignment.CenterVertically) {
                         Column(Modifier.weight(1f)) { Text("UMBRA",color=accent,fontSize=27.sp,fontWeight=FontWeight.Black,letterSpacing=5.sp,maxLines=1,overflow=TextOverflow.Ellipsis); Readout("MOBILE OS / TERMINAL 01",Muted) }
-                        TextButton(onClick={model.change { it.copy(immersive=false,hideTopBar=false,hideBottomBar=false) }}) { Text("Android bars",fontSize=12.sp,color=accent) }
+                        val barsVisible=WindowInsets.areStatusBarsVisible || WindowInsets.areNavigationBarsVisible
+                        TextButton(onClick={context.umbraActivity()?.setAndroidBarsVisible(!barsVisible)},modifier=Modifier.testTag("bars-toggle")) { Text(if(barsVisible)"Hide bars" else "Show bars",fontSize=12.sp,color=accent) }
                     }
                     HorizontalDivider(Modifier.padding(vertical=12.dp),color=accent.copy(alpha=.45f))
                     if(settingsError) Text("Settings could not be saved. Check values and available storage, then try again.",color=Color(0xFFEF8B82),modifier=Modifier.semantics { liveRegion=LiveRegionMode.Polite })
                     if(c.statusPanel) StatusPanel(c,device,now,deckStatus,accent,notificationCount)
                     val pageContent: @Composable (String)->Unit = { page ->
+                        pageStateHolder.SaveableStateProvider(page) {
                         when(page) {
                             "APPS" -> Column(Modifier.fillMaxSize()) {
                                 Text("APPLICATION INDEX",color=accent,fontFamily=FontFamily.Monospace,fontSize=18.sp)
                                 OutlinedTextField(query,{query=it},label={Text("Search applications")},singleLine=true,modifier=Modifier.fillMaxWidth().padding(top=10.dp))
                                 Row(verticalAlignment=Alignment.CenterVertically) { Checkbox(favoritesOnly,{favoritesOnly=it}); Text("Favorites only"); Spacer(Modifier.weight(1f)); TextButton(onClick=model::refreshApps){Text("Refresh")} }
-                                val filtered = apps.filter { it.label.contains(query,true) && (!favoritesOnly || it.id in c.favorites) }
+                                val filtered = apps.filter { it.id !in c.hiddenApps && it.label.contains(query,true) && (!favoritesOnly || it.id in c.favorites) }.sortedBy { c.drawerOrder.indexOf(it.id).takeIf { n->n>=0 } ?: Int.MAX_VALUE }
                                 if(appError) Text("Unable to read applications. Tap Refresh.",color=Color(0xFFEF8B82))
                                 if(filtered.isEmpty()) Text("No applications match.",color=Muted,modifier=Modifier.padding(16.dp))
                                 LazyVerticalGrid(columns=GridCells.Fixed(c.gridColumns),contentPadding=PaddingValues(bottom=16.dp),horizontalArrangement=Arrangement.spacedBy(8.dp),verticalArrangement=Arrangement.spacedBy(8.dp)) {
                                     items(filtered,key={it.id}) { app -> AppTile(app,model,app.id in c.favorites,{launch(app)},{model.favorite(app.id)},accent) }
                                 }
                             }
-                            "COMMAND" -> CommandCenter(c,device,model,apps,deckStatus,accent,::open,::launch,{screen="HOME"},{shadeDialog=true},
+                            "COMMAND" -> CommandCenter(c,device,model,apps,deckStatus,accent,::open,{app->launch(app)},{screen="HOME"},{shadeDialog=true},
                                 { if(it=="Deck") { if(validDeckUrl(c.url))open(Intent(Intent.ACTION_VIEW,android.net.Uri.parse(c.url))) else screen="CONFIG" } else {remoteModule=it; screen="ICARUS"} },{screen="DEVICE"},{deviceRefresh++},notificationCount)
                             "DEVICE" -> Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(16.dp)) {
                                 Readout("DEVICE / SYSTEM DASHBOARD",accent)
@@ -222,7 +263,7 @@ class MainActivity : ComponentActivity() {
                             }
                             "ICARUS" -> IcarusScreen(c,model,accent,remoteModule,::open,{settingsCategory="ICARUS";screen="CONFIG"},device.powerSave || device.battery in 0..20 || device.thermal>=2 || !device.screenOn,device.networkGeneration)
                             "CONFIG" -> Configuration(c,model,accent,{open(Intent(Settings.ACTION_HOME_SETTINGS))},apps,::open,settingsCategory)
-                            else -> Column(Modifier.fillMaxSize().nestedScroll(homePull).verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy((5+c.density*4).dp)) {
+                            else -> HomeWorkspace(c,model,apps,device,now,policy,active,homeEvent,accent,homePull,terminal={
                                 Row(Modifier.fillMaxWidth().heightIn(min=64.dp).testTag("home-swipe-handle").terminalSwipe(c.swipeDown,{screen="COMMAND"},{}),horizontalArrangement=Arrangement.SpaceBetween) { Readout("↓ COMMAND ACCESS",accent);Readout("SWIPE DOWN",Muted) }
                                 Spacer(Modifier.height(12.dp))
                                 BoxWithConstraints(Modifier.fillMaxWidth()) {
@@ -241,24 +282,17 @@ class MainActivity : ComponentActivity() {
                                     }
                                 }
                                 Readout("02 / QUICK ACCESS",accent)
-                                val favorites = orderedFavorites(c,apps)
-                                if(favorites.isEmpty()) Text("Star applications in the drawer to pin shortcuts here.",color=Muted)
-                                favorites.chunked(3).forEach { row ->
-                                    Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(8.dp)) {
-                                        row.forEach { app -> Box(Modifier.weight(1f)) { AppTile(app.copy(label=c.quickLabels[app.id] ?: app.label),model,true,{launch(app)},{model.favorite(app.id)},accent) } }
-                                        repeat(3-row.size) { Spacer(Modifier.weight(1f)) }
-                                    }
-                                }
+                            },footer={
                                 OutlinedButton(onClick={screen="DEVICE"},modifier=Modifier.fillMaxWidth(),shape=Chamfer){Text("Device dashboard")}
                                 OutlinedButton(onClick={open(Intent(Settings.ACTION_SETTINGS))},modifier=Modifier.fillMaxWidth(),shape=Chamfer) { Text("Android system settings") }
                                 Spacer(Modifier.height(4.dp))
-                            }
+                            })
                         }
+                    }
                     }
                     if(active && policy.enabled) {
                     AnimatedContent(targetState=screen,modifier=Modifier.weight(1f),transitionSpec={
-                        if (active && policy.enabled && pageAnimationAllowed(initialState,targetState,c)) (fadeIn(tween(policy.duration)) + slideInHorizontally { it/12 }) togetherWith fadeOut(tween(policy.duration))
-                        else EnterTransition.None togetherWith ExitTransition.None
+                        if(active)panelTransition(initialState,targetState,c,policy) else EnterTransition.None togetherWith ExitTransition.None
                     },label="terminal navigation") { page -> pageContent(page) }
                     } else Box(Modifier.weight(1f)) { pageContent(screen) }
                     HorizontalDivider(Modifier.padding(top=8.dp),color=accent.copy(alpha=.3f))
@@ -272,24 +306,12 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+}
 
 @Composable fun Readout(value: String,color: Color) { Text(value,color=color,fontFamily=FontFamily.Monospace,fontSize=12.sp,letterSpacing=1.sp) }
 @Composable fun Frame(accent: Color, content: @Composable ColumnScope.()->Unit) {
     Surface(shape=Chamfer,color=Panel,border=BorderStroke(1.dp,accent),modifier=Modifier.fillMaxWidth()) {
-        Column(Modifier.padding(16.dp),verticalArrangement=Arrangement.spacedBy(10.dp),content=content)
-    }
-}
-@Composable fun AppTile(app: LaunchApp,model: LauncherModel,favorite: Boolean,launch: ()->Unit,toggle: ()->Unit,accent: Color) {
-    var bitmap by remember(app.id) { mutableStateOf<android.graphics.Bitmap?>(null) }
-    LaunchedEffect(app.id) { bitmap = model.icon(app.id) }
-    Surface(shape=Chamfer,color=Panel,border=BorderStroke(1.dp,accent.copy(alpha=.25f))) {
-        Column(horizontalAlignment=Alignment.CenterHorizontally,modifier=Modifier.fillMaxWidth()) {
-            Column(Modifier.fillMaxWidth().clickable(onClick=launch).padding(top=12.dp,start=6.dp,end=6.dp),horizontalAlignment=Alignment.CenterHorizontally) {
-                if(bitmap!=null) Image(bitmap!!.asImageBitmap(),contentDescription=null,modifier=Modifier.size(40.dp)) else Text("◇",fontSize=32.sp,color=accent,modifier=Modifier.size(40.dp))
-                Text(app.label,color=White,fontSize=13.sp,maxLines=2,overflow=TextOverflow.Ellipsis,modifier=Modifier.heightIn(min=40.dp).padding(top=6.dp),textAlign=androidx.compose.ui.text.style.TextAlign.Center)
-            }
-            TextButton(onClick=toggle,modifier=Modifier.heightIn(min=48.dp).semantics { contentDescription = if(favorite) "Remove ${app.label} from favorites" else "Add ${app.label} to favorites" }) { Text(if(favorite) "★" else "☆",color=accent,fontSize=20.sp) }
-        }
+        Column(Modifier.panelDetail(LocalVisualDetail.current,accent).padding(16.dp),verticalArrangement=Arrangement.spacedBy(10.dp),content=content)
     }
 }
 @Composable private fun AlertReadout(status: String,animate: Boolean,accent: Color,intensity: Int) {

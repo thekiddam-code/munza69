@@ -8,7 +8,7 @@ android {
     namespace = "com.umbra.mobile"
     compileSdk = 35
     buildToolsVersion = "35.0.0"
-    defaultConfig { applicationId = "com.umbra.mobile"; minSdk = 29; targetSdk = 35; versionCode = 2; versionName = "2.0"; testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner" }
+    defaultConfig { applicationId = "com.umbra.mobile"; minSdk = 29; targetSdk = 35; versionCode = 3; versionName = "2.1"; testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner" }
     buildFeatures { compose = true }
     testOptions { unitTests.isIncludeAndroidResources = true }
     compileOptions { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }
@@ -38,6 +38,7 @@ dependencies {
     testImplementation("org.robolectric:robolectric:4.14.1")
     testImplementation("androidx.compose.ui:ui-test-junit4")
     testImplementation("androidx.test:core-ktx:1.6.1")
+    testImplementation("androidx.test.espresso:espresso-core:3.5.0")
     testImplementation("com.squareup.okhttp3:mockwebserver:4.12.0")
 }
 

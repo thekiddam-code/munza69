@@ -1,4 +1,4 @@
-# UMBRA Phase 2 verification
+# UMBRA Phase 2.1 verification
 
 ## Automated commands
 
@@ -20,11 +20,21 @@ For a working emulator or dedicated device:
 
 Device tests include launcher navigation/settings recreation and a Keystore AES/GCM pairing test. The Keystore test uses an isolated temporary private directory. Launcher UI tests change the test installation's preferences, so use a dedicated test installation/device. Compiling a device-test APK is not proof those tests ran.
 
+## Phase 2.1 regression coverage
+
+The final suite adds strict schema 3 / legacy schema 2 compatibility; independent Visual Detail and transitions; per-category and master transition gating; folder creation/moves/page removal with stable IDs; on-disk workspace and native widget ID survival; portable export/import stripping host IDs; actual `ActivityOptions` bundle bounds and immediate native launch intents; zero-resource launch fallback with master off; Open-Meteo HTTP formats, units, provider failures, private-cache recreation/TTL/offline expiry; authenticated instant catalog/action requests, feedback, server binding, and concurrent-tap suppression.
+
+Final executed result: **48 tests passed, zero failures/errors/skips; lint zero errors (13 warnings); app and device-test APKs built**. See `verification/phase21/RESULTS.txt` and `final-checks.log`.
+
+Additional SDK 30/34 Activity/Compose regression verifies real touch drag-to-folder, adding a page and an Analog widget, and opens/closes folders and clock details with master off, swipes home pages, returns from Apps without losing the selected page, changes widget settings, recreates the Activity, renames a folder, and exercises both system-bar requests with persisted preferences. Clock seconds are functional updates, independent of optional motion. Host tests do not prove Samsung’s cross-activity compositor behavior or compatibility with any third-party widget provider.
+
+Executed logs, JUnit summaries, lint output, artifact inspection, and fresh host renders are in `verification/phase21/`. `verification/phase2/` remains the historical baseline. Intermediate failed regression logs are retained alongside the final successful run so fixes remain reviewable.
+
 ## Physical Galaxy S24+ acceptance
 
 Record Android/One UI version, display resolution, text/display scaling, navigation mode, battery state, and outcome. Do not share pairing PINs, tokens, private connection URLs, or authenticated browser state in logs/screenshots.
 
-- [ ] Install Phase 2 over Phase 1 with the same key. Verify favorites, URL, profile, and individual effects migrate. Select UMBRA as default Home; press Home from other apps and Studio. Restore One UI Home and confirm recovery.
+- [ ] Install Phase 2.1 over Phase 1/2 with the same key. Verify favorites, URL, profile, and individual effects migrate. Select UMBRA as default Home; press Home from other apps and Studio. Restore One UI Home and confirm recovery.
 - [ ] Discover/launch Phone, Messages, Camera, Settings, and third-party apps. Search, favorite/unfavorite, filter, install/uninstall while visible/backgrounded, and use customized quick labels/order.
 - [ ] Verify immersive defaults, cutout and corner safe areas, transient bar reveal/auto-hide, keyboard entry, protected edge gestures, Back, Recents, and the header's Android bars emergency escape. Check actual bar visibility feedback where Android retains them.
 - [ ] Swipe down on Home/overscroll at its top, swipe up on Command Center header/overscroll at its bottom, second swipe native-notification fallback, and all corresponding buttons with animation off. Body scrolling must remain usable.
@@ -40,6 +50,18 @@ Record Android/One UI version, display resolution, text/display scaling, navigat
 - [ ] Export/apply the coordinated lock wallpaper, configure Samsung's native clock/Good Lock manually, and confirm secure keyguard/fingerprint behavior is unchanged. Test OEM wallpaper restrictions/fallback.
 - [ ] Test TalkBack, large fonts/display scaling, rotation, keyboard, calls, notifications, Samsung edge panels, biometric unlock, gesture/three-button navigation, and One UI fallback.
 
+## Phase 2.1 physical acceptance additions
+
+- [ ] Confirm Enhanced default on migration; select all detail/motion combinations and recreate/reboot. Master off must retain Cinematic detail and every individual transition choice.
+- [ ] Launch apps from Home, drawer, folder, and Command Center. Check supported icon-origin scale-up/clip reveal, fallback, reduced motion, power saving, native return gestures, cold/warm tasks, portrait/landscape, and animation interruption. Record One UI version; do not label the result exact Samsung parity.
+- [ ] Open/close folders from measured icon positions, move them across pages, rotate, and close using Back. Open/close UMBRA widget details from actual bounds. Rapidly open/close Command Center and settings; ensure inputs are not delayed or lost.
+- [ ] Drag app-to-app and app-to-folder; reorder, move at page edges or through explicit management, rename folders, reorder/remove members, delete folders, hide/unhide apps, customize drawer order, delete/reorder pages, and confirm all saved positions after reboot.
+- [ ] Test five clock styles, 12/24-hour, AM/PM, seconds, accent, transparent panels, dimensions, screen-off/locked states, master off, and large fonts. Verify date/time changes and timezone updates.
+- [ ] Choose a real weather city; verify current/high-low/hourly/daily values with Open-Meteo, C/F and last-updated time. Test permission denial, approximate location timeout, offline cache ages, malformed response, location/unit changes, visible refresh, and no stopped/background polling.
+- [ ] Add a compatible third-party widget through Android binding, including a provider configuration Activity. Cancel/deny/rotate/restart mid-flow, resize with provider restrictions, remove, recreate/reboot, uninstall provider, and import/rebind. Confirm native clicks, embedded scrolling, and PendingIntent actions are not intercepted by UMBRA.
+- [ ] Toggle header bars in both directions including during transient visibility, keyboard use, calls, and three-button/gesture navigation. Confirm settings values and Home fallback remain accessible even when One UI retains protected bars.
+- [ ] Pair the actual server, Sync controls, compare four configured Rocket League names/mappings and ten saved messages with current PC config, change a PC mapping then invoke by name, refresh changed text/labels, favorite/reorder/relabel locally, and confirm repeated in-flight taps are dropped. Test missing actions, auth expiry, server switch, cancellation, and game focus. No server files should change.
+
 ## Performance and limitations
 
-Measure real S24+ drawer frame timing with ≥100 launchable apps and idle/interaction/background battery behavior across profiles. This environment has no KVM; stable and current emulator versions could not allocate their required data partition. Host Android UI tests provide useful regression coverage but do not establish Samsung gesture policy, special-access grants, real Keystore behavior, actual wallpaper application, live ICARUS/Tailscale compatibility, battery savings, or measured frame rates. See PHASE2_REPORT.md for the final executed results and outstanding acceptance items.
+Measure real S24+ drawer frame timing with ≥100 launchable apps and idle/interaction/background battery behavior across profiles. This environment has no KVM; stable and current emulator versions could not allocate their required data partition. Host Android UI tests provide useful regression coverage but do not establish Samsung gesture policy, special-access grants, real Keystore behavior, actual wallpaper application, live ICARUS/Tailscale compatibility, battery savings, or measured frame rates. See PHASE21_REPORT.md for the final executed results and outstanding acceptance items.

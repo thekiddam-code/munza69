@@ -53,7 +53,7 @@ import java.io.IOException
                     } ?: throw IOException()
                     importConfig(bytes.decodeToString(throwOnInvalidSequence=true))
                 }
-            } catch(e: CancellationException){throw e} catch(_:Exception){notice="Import rejected. Use a valid schema 2 UMBRA configuration under 64 KiB. Existing settings were preserved."}
+            } catch(e: CancellationException){throw e} catch(_:Exception){notice="Import rejected. Use a valid schema 2 or 3 UMBRA configuration under 256 KiB. Existing settings were preserved."}
         }
     }
     val wallpaperExport=rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument("image/png")) { uri ->
@@ -62,7 +62,7 @@ import java.io.IOException
             catch(e: CancellationException){throw e} catch(_:Exception){notice="Could not export the wallpaper."}
         }
     }
-    if(pendingImport!=null) AlertDialog(onDismissRequest={pendingImport=null},title={Text("Import validated settings?")},text={Text("This replaces appearance, animation, display, layout, connection preferences, and favorites. Native pairing credentials are never imported.\n${pendingImport!!.favorites.size} favorites · ${pendingImport!!.profile} · ${pendingImport!!.intensity}% intensity")},
+    if(pendingImport!=null) AlertDialog(onDismissRequest={pendingImport=null},title={Text("Import validated settings?")},text={Text("This replaces appearance, animation, display, layout, connection preferences, and favorites. Native pairing credentials are never imported. Android widgets require rebinding after import. Weather location in the file is used with Open-Meteo when its widget is visible.\n${pendingImport!!.favorites.size} favorites · ${pendingImport!!.profile} · ${pendingImport!!.intensity}% intensity")},
         confirmButton={TextButton(onClick={model.replace(pendingImport!!);pendingImport=null;notice="Import submitted. Check any save error above."}){Text("Apply settings")}},dismissButton={TextButton(onClick={pendingImport=null}){Text("Cancel")}})
     if(resetAll) AlertDialog(onDismissRequest={resetAll=false},title={Text("Restore all UMBRA defaults?")},text={Text("This clears favorites and local native pairing, and restores UMBRA settings. It does not modify Android or the ICARUS server.")},
         confirmButton={TextButton(onClick={model.reset();resetAll=false;notice="Defaults submitted. Android notification access can be revoked separately in system settings."}){Text("Restore defaults")}},dismissButton={TextButton(onClick={resetAll=false}){Text("Cancel")}})
@@ -71,13 +71,18 @@ import java.io.IOException
     Column(Modifier.fillMaxSize()) {
         Readout("UMBRA / CUSTOMIZATION STUDIO",accent)
         Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState())) {
-            listOf("Appearance","Animation","Display","Command Center","ICARUS","Configuration","Lock screen").forEach { item -> TextButton(onClick={category=item}){Text(item,color=if(category==item)accent else Muted)} }
+            listOf("Appearance","Animation","Display","Command Center","ICARUS","Organization","Weather","Configuration","Lock screen").forEach { item -> TextButton(onClick={category=item}){Text(item,color=if(category==item)accent else Muted)} }
         }
         if(notice.isNotEmpty()) Text(notice,color=accent,style=MaterialTheme.typography.bodySmall,modifier=Modifier.semantics { liveRegion=LiveRegionMode.Polite })
         Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(12.dp)) {
             Text(category,style=MaterialTheme.typography.titleLarge)
             when(category) {
                 "Appearance" -> {
+                    Choice("Visual Detail",VisualDetail.entries.map {it.name},c.visualDetail.name){detail->model.change {it.copy(visualDetail=VisualDetail.valueOf(detail))}}
+                    Text("Enhanced is the default. Visual Detail controls cached static structure and panel detail; changing it never enables animations. Master off and Minimal motion do not reduce visual detail.",style=MaterialTheme.typography.bodySmall)
+                    Toggle("Show app labels",c.showAppLabels){v->model.change {it.copy(showAppLabels=v)}}
+                    Choice("Application icon size",listOf("32","40","48","56","64","72"),c.iconSize.toString()){v->model.change {it.copy(iconSize=v.toInt())}}
+                    TransitionSettings(c,model)
                     var hex by remember(c.accent) { mutableStateOf(c.accent) }
                     OutlinedTextField(hex,{hex=it.take(7)},label={Text("Custom accent #RRGGBB")},singleLine=true,isError=!validAccent(hex),supportingText={Text("Bright, high-contrast colors only. Empty uses the selected preset.")},modifier=Modifier.fillMaxWidth())
                     Button(onClick={model.change { it.copy(accent=hex) }},enabled=validAccent(hex),shape=Chamfer){Text("Save accent")}
@@ -152,10 +157,12 @@ import java.io.IOException
                     Text("Automatic intervals apply only while the ICARUS screen is visible and battery saver is off. All requests cancel when hidden. Pairing tokens stay encrypted on this phone and are bound to the exact server base. Configure Tailscale separately.",style=MaterialTheme.typography.bodySmall)
                     TextButton(onClick={scope.launch { model.vault.clear();notice="Local native pairing removed. Browser pairing is separate." }}){Text("Clear local native pairing")}
                 }
+                "Organization" -> OrganizationSettings(c,model,apps)
+                "Weather" -> WeatherSettings(c,model)
                 "Configuration" -> {
                     Button(onClick={exported=c;export.launch("umbra-settings-v2.json")},shape=Chamfer,modifier=Modifier.fillMaxWidth()){Text("Export settings")}
                     OutlinedButton(onClick={importLauncher.launch(arrayOf("application/json","text/plain","application/octet-stream"))},shape=Chamfer,modifier=Modifier.fillMaxWidth()){Text("Import settings")}
-                    Text("Schema version 2. Imports are validated before atomic replacement. Maximum 64 KiB. Exports contain preferences and configured URLs, but no PIN, pairing token, notification content, or device telemetry.",style=MaterialTheme.typography.bodySmall)
+                    Text("Schema version 3 (schema 2 accepted). Imports are validated before atomic replacement. Maximum 256 KiB. Exports contain preferences and configured URLs, but no PIN, pairing token, notification content, or device telemetry.",style=MaterialTheme.typography.bodySmall)
                     Button(onClick={resetAll=true},shape=Chamfer){Text("Restore all defaults")}
                     Text("To restore Samsung: Settings → Apps → Choose default apps → Home app → One UI Home.",style=MaterialTheme.typography.bodyMedium)
                     Button(onClick=homeSettings,shape=Chamfer){Text("Open Android Home settings")}
@@ -172,7 +179,7 @@ import java.io.IOException
                 }
             }
             if(category in listOf("Appearance","Animation","Display","Command Center","ICARUS")) TextButton(onClick={model.change { resetCategory(it,category) };notice="$category reset submitted."}){Text("Reset $category")}
-            Text("UMBRA MOBILE 2.0 / LOCAL CONFIGURATION",fontFamily=FontFamily.Monospace,fontSize=11.sp,color=accent,modifier=Modifier.padding(vertical=16.dp))
+            Text("UMBRA MOBILE 2.1 / LOCAL CONFIGURATION",fontFamily=FontFamily.Monospace,fontSize=11.sp,color=accent,modifier=Modifier.padding(vertical=16.dp))
         }
     }
 }

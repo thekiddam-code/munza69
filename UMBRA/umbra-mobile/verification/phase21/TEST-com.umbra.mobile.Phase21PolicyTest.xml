@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.umbra.mobile.Phase21PolicyTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-11-21T02:00:19" hostname="06cc3d069f3a" time="0.008">
+  <properties/>
+  <testcase name="legacySchemaImportsUpgradeToEnhancedWithoutResettingSelections" classname="com.umbra.mobile.Phase21PolicyTest" time="0.001"/>
+  <testcase name="portableWidgetsRequireRebindingAndMalformedNestedTypesFail" classname="com.umbra.mobile.Phase21PolicyTest" time="0.001"/>
+  <testcase name="detailAndTransitionsAreIndependentOfMotion" classname="com.umbra.mobile.Phase21PolicyTest" time="0.004"/>
+  <testcase name="pagesFoldersMovesAndDeletionKeepStableReferences" classname="com.umbra.mobile.Phase21PolicyTest" time="0.0"/>
+  <testcase name="allTransitionCategoriesDisableSeparately" classname="com.umbra.mobile.Phase21PolicyTest" time="0.001"/>
+  <testcase name="folderWidgetAndPagePreferencesPersistThroughCodec" classname="com.umbra.mobile.Phase21PolicyTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

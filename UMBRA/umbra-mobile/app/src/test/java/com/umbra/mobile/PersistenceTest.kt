@@ -39,4 +39,25 @@ class PersistenceTest {
             }
         } finally { dir.deleteRecursively() }
     }
+    @Test fun nativeWidgetIdsAndWorkspaceSurviveDataStoreRecreation() = runBlocking {
+        val dir=Files.createTempDirectory("umbra-layout").toFile();val file=dir.resolve("settings.preferences_pb")
+        val layout=DesktopLayout(pages=listOf(DesktopPage("main",items=listOf(
+            DesktopItem("daily","folder",folder=DesktopFolder("Daily",listOf("example/App"))),
+            DesktopItem("native","widget",widget=DesktopWidget(kind="android",appWidgetId=42,provider="example/Provider"))))))
+        suspend fun useStore(block: suspend (ConfigStore)->Unit) {
+            val scope=CoroutineScope(SupervisorJob()+Dispatchers.IO)
+            val data=PreferenceDataStoreFactory.create(scope=scope,produceFile={file})
+            try {block(ConfigStore(data))} finally {scope.coroutineContext[Job]!!.cancelAndJoin()}
+        }
+        try {
+            useStore {it.replace(Config(desktop=layout,transitionStyle=TransitionStyle.UmbraCinematic,folderTransitions=false,visualDetail=VisualDetail.Cinematic))}
+            useStore {store->val c=store.config.first()
+                assertEquals(layout,c.desktop);assertEquals(42,c.desktop!!.item("native")!!.widget!!.appWidgetId)
+                assertEquals(0,importConfig(exportConfig(c)).desktop!!.item("native")!!.widget!!.appWidgetId)
+                assertFalse(c.folderTransitions);assertEquals(TransitionStyle.UmbraCinematic,c.transitionStyle)
+                store.update {it.copy(master=false)}
+            }
+            useStore {store->val c=store.config.first();assertFalse(c.master);assertFalse(c.folderTransitions);assertEquals(VisualDetail.Cinematic,c.visualDetail);assertEquals(layout,c.desktop)}
+        } finally {dir.deleteRecursively()}
+    }
 }

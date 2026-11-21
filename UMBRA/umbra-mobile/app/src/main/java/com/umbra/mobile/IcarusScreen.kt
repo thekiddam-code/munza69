@@ -60,6 +60,7 @@ import kotlinx.serialization.json.*
                 try {
                     pc=model.remote.status(base,token,c.timeout)
                     ship=try { model.remote.ship(base,token,c.timeout) } catch(e: RemoteFailure) { if(e.status==404) null else throw e }
+                    model.instant.publish(base,pc!!)
                     refreshed=java.time.LocalTime.now().withNano(0).toString()
                     status="Authenticated server response · HTTP 200"
                 } catch(e: RemoteFailure) {
@@ -138,7 +139,10 @@ import kotlinx.serialization.json.*
                 }
                 Text("Direct TV app launching is not exposed by the inspected server. No fake Stremio or TV Plus launch controls are shown.",style=MaterialTheme.typography.bodySmall)
             }
-            else -> Frame(accent) {
+            else -> Column {
+                // Parent status refresh publishes the shared catalog; avoid a duplicate GET.
+                InstantControls(c,model,false,compact=false)
+                Frame(accent) {
                 Readout("SIMULATOR / CONFIGURED ACTIONS",accent)
                 if(pc==null) Text("Refresh an authenticated server snapshot to discover configured game controls.")
                 else {
@@ -152,6 +156,7 @@ import kotlinx.serialization.json.*
                     Text("These actions require the intended game/application to be focused on the PC. Only server-configured shortcuts are offered.",style=MaterialTheme.typography.bodySmall)
                 }
             }
+        }
         }
         Spacer(Modifier.height(16.dp))
     }

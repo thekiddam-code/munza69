@@ -19,7 +19,7 @@ val Context.umbraStore by preferencesDataStore("umbra_settings", corruptionHandl
 @Serializable enum class Profile { Adaptive, Cinematic, Minimal }
 val MODULES = listOf("Device", "System", "ICARUS", "Notifications", "Applications")
 val INDICATORS = setOf("Time", "Date", "Battery", "Network", "ICARUS", "Notifications")
-const val MAX_CONFIG_BYTES = 65536
+const val MAX_CONFIG_BYTES = 262144
 @Serializable data class Config(
     val profile: Profile = Profile.Adaptive, val master: Boolean = true,
     val ambient: Boolean = true, val transitions: Boolean = true,
@@ -40,9 +40,18 @@ const val MAX_CONFIG_BYTES = 65536
     val windowBrightness: Float = -1f,
     val serverUrl: String = "", val engineeringUrl: String = "", val loungeUrl: String = "", val simulatorUrl: String = "",
     val refreshOnResume: Boolean = true, val refreshOnNetwork: Boolean = true, val foregroundRefreshSeconds: Int = 0,
-    val notificationsEnabled: Boolean = false
+    val notificationsEnabled: Boolean = false,
+    val visualDetail: VisualDetail = VisualDetail.Enhanced,
+    val transitionStyle: TransitionStyle = TransitionStyle.SamsungInspired,
+    val appLaunchTransitions: Boolean = true, val folderTransitions: Boolean = true, val widgetTransitions: Boolean = true,
+    val showAppLabels: Boolean = true, val iconSize: Int = 48,
+    val hiddenApps: Set<String> = emptySet(), val drawerOrder: List<String> = emptyList(),
+    val desktop: DesktopLayout? = null,
+    val weatherPlace: String = "", val weatherLatitude: Double? = null, val weatherLongitude: Double? = null,
+    val weatherFahrenheit: Boolean = false,
+    val instantOrder: List<String> = emptyList(), val instantLabels: Map<String,String> = emptyMap(), val instantFavorites: Set<String> = emptySet()
 )
-@Serializable private data class ConfigEnvelope(val schemaVersion: Int = 2, val settings: Config)
+@Serializable private data class ConfigEnvelope(val schemaVersion: Int = 3, val settings: Config)
 private val configJson = Json { encodeDefaults = true; ignoreUnknownKeys = false }
 private val componentPattern = Regex("[A-Za-z0-9_.$]+/[A-Za-z0-9_.$]+")
 fun validComponent(value: String) = value.length in 3..512 && componentPattern.matches(value)
@@ -63,6 +72,16 @@ fun validAccent(value: String): Boolean {
 }
 fun validateConfig(c: Config): Config {
     require(c.intensity in 0..100 && c.timeout in 1..30)
+    require(c.iconSize in 32..72 && c.hiddenApps.size<=256 && c.hiddenApps.all(::validComponent))
+    require(c.drawerOrder.size<=512 && c.drawerOrder.distinct().size==c.drawerOrder.size && c.drawerOrder.all(::validComponent))
+    c.desktop?.let(::validateDesktop)
+    require(c.weatherPlace.length<=120 && c.weatherPlace.none(Char::isISOControl))
+    require((c.weatherLatitude==null)==(c.weatherLongitude==null))
+    c.weatherLatitude?.let { require(it.isFinite() && it in -90.0..90.0) }
+    c.weatherLongitude?.let { require(it.isFinite() && it in -180.0..180.0) }
+    require(c.instantOrder.size<=256 && c.instantOrder.distinct().size==c.instantOrder.size && c.instantOrder.all { it.length in 1..160 && it.none(Char::isISOControl) })
+    require(c.instantFavorites.size<=256 && c.instantFavorites.all { it.length in 1..160 && it.none(Char::isISOControl) })
+    require(c.instantLabels.size<=256 && c.instantLabels.all { (key,value)->key.length in 1..160 && key.none(Char::isISOControl) && value.length in 1..48 && value.none(Char::isISOControl) })
     require(c.density in 1..3 && c.gridColumns in 3..5 && c.tileSize in 1..3)
     require(c.background in listOf("Void", "Graphite", "Blueprint"))
     require(c.typography in listOf("Technical", "Mono", "System"))
@@ -78,21 +97,24 @@ fun validateConfig(c: Config): Config {
     require(listOf(c.url,c.serverUrl,c.engineeringUrl,c.loungeUrl,c.simulatorUrl).all { it.isEmpty() || validDeckUrl(it) })
     return c
 }
-fun exportConfig(c: Config): String {
+private fun encodeConfig(c: Config): String {
     val text = configJson.encodeToString(ConfigEnvelope(settings = validateConfig(c)))
     require(text.toByteArray(Charsets.UTF_8).size <= MAX_CONFIG_BYTES)
     return text
 }
-fun importConfig(text: String): Config {
-    require(text.toByteArray(Charsets.UTF_8).size <= MAX_CONFIG_BYTES) { "Configuration exceeds 64 KiB" }
+fun exportConfig(c: Config): String = encodeConfig(c.copy(desktop=c.desktop?.let(::portableDesktop)))
+private fun decodeConfig(text: String,portable: Boolean): Config {
+    require(text.toByteArray(Charsets.UTF_8).size <= MAX_CONFIG_BYTES) { "Configuration exceeds 256 KiB" }
     val root = configJson.parseToJsonElement(text) as? JsonObject ?: error("Expected configuration object")
     require(root.keys == setOf("schemaVersion", "settings"))
     val version = root["schemaVersion"] as? JsonPrimitive ?: error("Missing version")
-    require(!version.isString && version.intOrNull == 2)
+    require(!version.isString && version.intOrNull in setOf(2,3))
     val fields = root["settings"] as? JsonObject ?: error("Missing settings")
     val defaults = configJson.encodeToJsonElement(Config()).jsonObject
     fields.forEach { (key, value) ->
         val sample = defaults[key] ?: error("Unknown setting")
+        if(key=="desktop") { if(value !is JsonNull)validateDesktopJson(value);return@forEach }
+        if(key=="weatherLatitude" || key=="weatherLongitude") { require(value is JsonNull || (value is JsonPrimitive && !value.isString && value.doubleOrNull?.isFinite()==true));return@forEach }
         when(sample) {
             is JsonPrimitive -> {
                 require(value is JsonPrimitive && value !is JsonNull)
@@ -106,9 +128,11 @@ fun importConfig(text: String): Config {
         }
     }
     val envelope = configJson.decodeFromString<ConfigEnvelope>(text)
-    require(envelope.schemaVersion == 2) { "Unsupported configuration version" }
-    return validateConfig(envelope.settings)
+    require(envelope.schemaVersion in setOf(2,3)) { "Unsupported configuration version" }
+    val valid=validateConfig(envelope.settings)
+    return if(portable)valid.copy(desktop=valid.desktop?.let(::portableDesktop)) else valid
 }
+fun importConfig(text: String): Config = decodeConfig(text,true)
 fun serverBase(c: Config): String {
     if(c.serverUrl.isNotEmpty()) return c.serverUrl.trimEnd('/') + "/"
     return c.url.toHttpUrlOrNull()?.newBuilder()?.encodedPath("/")?.query(null)?.fragment(null)?.build()?.toString() ?: ""
@@ -117,7 +141,7 @@ fun remoteDestination(c: Config, module: String): String = when(module) {
     "Engineering" -> c.engineeringUrl; "Lounge" -> c.loungeUrl; "Simulator" -> c.simulatorUrl; else -> c.url
 }.ifEmpty { c.url }
 fun orderedFavorites(c: Config, apps: List<LaunchApp>): List<LaunchApp> {
-    val pinned = apps.filter { it.id in c.favorites }
+    val pinned = apps.filter { it.id in c.favorites && it.id !in c.hiddenApps }
     val byId = pinned.associateBy { it.id }
     return c.quickOrder.mapNotNull { byId[it] } + pinned.filter { it.id !in c.quickOrder }
 }
@@ -130,7 +154,7 @@ fun moveItem(items: List<String>, value: String, delta: Int): List<String> {
 fun resetCategory(c: Config, category: String): Config {
     val d = Config()
     return when(category) {
-        "Appearance" -> c.copy(accent=d.accent,greenAccent=d.greenAccent,background=d.background,typography=d.typography,density=d.density,gridColumns=d.gridColumns)
+        "Appearance" -> c.copy(visualDetail=d.visualDetail,showAppLabels=d.showAppLabels,iconSize=d.iconSize,accent=d.accent,greenAccent=d.greenAccent,background=d.background,typography=d.typography,density=d.density,gridColumns=d.gridColumns)
         "Animation" -> c.copy(profile=d.profile,master=d.master,ambient=d.ambient,transitions=d.transitions,environment=d.environment,alerts=d.alerts,wallpaper=d.wallpaper,startup=d.startup,parallax=d.parallax,statusEffects=d.statusEffects,commandAnimations=d.commandAnimations,intensity=d.intensity)
         "Display" -> c.copy(immersive=d.immersive,hideTopBar=d.hideTopBar,hideBottomBar=d.hideBottomBar,statusPanel=d.statusPanel,indicators=d.indicators,windowBrightness=d.windowBrightness)
         "Command Center" -> c.copy(moduleOrder=d.moduleOrder,hiddenModules=d.hiddenModules,tileSize=d.tileSize,quickOrder=d.quickOrder,quickLabels=d.quickLabels,swipeDown=d.swipeDown,secondSwipe=d.secondSwipe)
@@ -148,7 +172,7 @@ class ConfigStore(private val store: DataStore<Preferences>) {
     constructor(context: Context) : this(context.applicationContext.umbraStore)
     private val key = stringPreferencesKey("config_v2")
     private fun read(p: Preferences): Config {
-        p[key]?.let { return runCatching { importConfig(it) }.getOrDefault(Config()) }
+        p[key]?.let { return runCatching { decodeConfig(it,false) }.getOrDefault(Config()) }
         // Phase 1 migration. Preserve the former combined startup/transition preference.
         fun flag(name: String, default: Boolean) = p[booleanPreferencesKey(name)] ?: default
         return Config(
@@ -161,8 +185,8 @@ class ConfigStore(private val store: DataStore<Preferences>) {
         )
     }
     val config = store.data.catch { if(it is IOException) emit(emptyPreferences()) else throw it }.map(::read)
-    suspend fun update(transform: (Config) -> Config) { store.edit { p -> p[key] = exportConfig(transform(read(p))) } }
-    suspend fun replace(c: Config) { val encoded = exportConfig(c); store.edit { it[key] = encoded } }
+    suspend fun update(transform: (Config) -> Config) { store.edit { p -> p[key] = encodeConfig(transform(read(p))) } }
+    suspend fun replace(c: Config) { val encoded = encodeConfig(c); store.edit { it[key] = encoded } }
     suspend fun flag(key: String, value: Boolean) = update { c -> when(key) {
         "master" -> c.copy(master=value); "ambient" -> c.copy(ambient=value); "transitions" -> c.copy(transitions=value)
         "environment" -> c.copy(environment=value); "alerts" -> c.copy(alerts=value); "wallpaper" -> c.copy(wallpaper=value)
@@ -173,7 +197,11 @@ class ConfigStore(private val store: DataStore<Preferences>) {
     suspend fun deck(url: String, timeout: Int) { require(url.isEmpty() || validDeckUrl(url)); update { it.copy(url=url,timeout=timeout.coerceIn(1,30)) } }
     suspend fun favorite(id: String) = update { c ->
         require(validComponent(id))
-        if(id in c.favorites) c.copy(favorites=c.favorites-id,quickOrder=c.quickOrder-id,quickLabels=c.quickLabels-id)
-        else c.copy(favorites=c.favorites+id,quickOrder=(c.quickOrder+id).distinct())
+        if(id in c.favorites) c.copy(favorites=c.favorites-id,quickOrder=c.quickOrder-id,quickLabels=c.quickLabels-id,
+            desktop=c.desktop?.copy(pages=c.desktop.pages.map { p->p.copy(items=p.items.filterNot { it.kind=="app" && it.component==id }) }))
+        else c.copy(favorites=c.favorites+id,quickOrder=(c.quickOrder+id).distinct(),desktop=c.desktop?.let { layout ->
+            if(layout.pages.any { p->p.items.any { it.kind=="app" && it.component==id } })layout
+            else layout.updatePage(layout.homePageId) { it.copy(items=it.items+DesktopItem(desktopId(),component=id)) }
+        })
     }
 }

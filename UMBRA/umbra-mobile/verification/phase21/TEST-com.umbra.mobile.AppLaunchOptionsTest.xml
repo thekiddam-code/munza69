@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.umbra.mobile.AppLaunchOptionsTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-11-21T01:59:59" hostname="06cc3d069f3a" time="3.905">
+  <properties/>
+  <testcase name="nativeModeAndMasterOffFallbackHonorMotionGates[30]" classname="com.umbra.mobile.AppLaunchOptionsTest" time="2.014"/>
+  <testcase name="nativeModeAndMasterOffFallbackHonorMotionGates" classname="com.umbra.mobile.AppLaunchOptionsTest" time="1.786"/>
+  <testcase name="activityLaunchUsesMeasuredIconBoundsImmediatelyAndNativeMainIntent[30]" classname="com.umbra.mobile.AppLaunchOptionsTest" time="0.03"/>
+  <testcase name="activityLaunchUsesMeasuredIconBoundsImmediatelyAndNativeMainIntent" classname="com.umbra.mobile.AppLaunchOptionsTest" time="0.071"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

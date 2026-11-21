@@ -17,7 +17,7 @@ class ConfigurationV2Test {
         assertEquals(c,importConfig(exportConfig(c.copy(master=false))).copy(master=true))
     }
     @Test fun malformedUnknownAndOversizedImportsFail() {
-        val examples=listOf("{}", "[]", "{broken",exportConfig(Config()).replace("\"schemaVersion\":2","\"schemaVersion\":99"),
+        val examples=listOf("{}", "[]", "{broken",exportConfig(Config()).replace("\"schemaVersion\":3","\"schemaVersion\":99"),
             exportConfig(Config()).replace("\"intensity\":65","\"intensity\":101"),exportConfig(Config()).replace("\"master\":true","\"master\":\"true\""),
             exportConfig(Config()).replace("\"Void\"","\"unsupported\"")," ".repeat(MAX_CONFIG_BYTES+1))
         examples.forEach { assertTrue(it.take(120),runCatching { importConfig(it) }.isFailure) }

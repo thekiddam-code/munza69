@@ -21,6 +21,9 @@ class LauncherModel(app: Application) : AndroidViewModel(app) {
     val store = ConfigStore(app)
     val vault = CredentialVault(app)
     val remote = IcarusClient()
+    val instant = InstantController(remote,vault)
+    val weather = WeatherRepository(app)
+    val widgetHost = WidgetHostController(app)
     val config = store.config.stateIn(viewModelScope, SharingStarted.Eagerly, Config())
     val apps = MutableStateFlow<List<LaunchApp>>(emptyList())
     val appError = MutableStateFlow(false)
@@ -40,22 +43,48 @@ class LauncherModel(app: Application) : AndroidViewModel(app) {
             }.onSuccess { currentCoroutineContext().ensureActive(); icons.evictAll(); apps.value = it; appError.value = false }.onFailure { appError.value = true }
         }
     }
-    suspend fun icon(id: String): Bitmap? = withContext(Dispatchers.IO) {
-        icons.get(id) ?: runCatching {
-            getApplication<Application>().packageManager.getActivityIcon(ComponentName.unflattenFromString(id)!!).toBitmap(96,96).also { icons.put(id,it) }
+    suspend fun icon(id: String,size: Int=128): Bitmap? = withContext(Dispatchers.IO) {
+        icons.get("$id|$size") ?: runCatching {
+            getApplication<Application>().packageManager.getActivityIcon(ComponentName.unflattenFromString(id)!!).toBitmap(size,size).also { icons.put("$id|$size",it) }
         }.getOrNull()
     }
     private fun save(action: suspend () -> Unit) = viewModelScope.launch {
         try { action(); settingsError.value = false } catch (_: IOException) { settingsError.value = true } catch (_: IllegalArgumentException) { settingsError.value = true }
     }
     fun change(transform: (Config) -> Config) = save { store.update(transform) }
-    fun replace(c: Config) = save { store.replace(c) }
-    fun reset() = save { vault.clear();store.replace(Config()) }
+    fun removeDesktopItem(id: String) = save {
+        store.update { c->c.copy(desktop=validateDesktop(resolvedDesktop(c,apps.value).removeItem(id))) }
+        val latest=store.config.first();widgetHost.releaseUnused(latest.desktop?.pages?.flatMap {it.items}?.mapNotNull {it.widget?.appWidgetId?.takeIf {n->n>0}}?.toSet() ?: emptySet())
+    }
+    fun completePendingWidget() = save {
+        val pending=widgetHost.pending.value ?: return@save
+        try {
+        require(widgetHost.validBinding(pending.id,pending.provider))
+        store.update {c->val layout=resolvedDesktop(c,apps.value);val page=pending.page.takeIf {id->layout.pages.any {it.id==id}} ?: layout.homePageId
+            val existing=pending.replaceItem?.let {layout.item(it)}
+            val spec=(existing?.widget ?: DesktopWidget(kind="android",span=layout.page(page).columns,rows=kotlin.math.ceil((widgetHost.manager.getAppWidgetInfo(pending.id)?.minHeight ?: 0).toFloat()/getApplication<Application>().resources.displayMetrics.density/64f).toInt().coerceIn(2,6),provider=pending.provider)).copy(appWidgetId=pending.id,provider=pending.provider)
+            c.copy(desktop=validateDesktop(if(existing!=null)layout.updateItem(existing.id){it.copy(widget=spec)} else layout.updatePage(page){it.copy(items=it.items+DesktopItem(desktopId(),"widget",widget=spec))}))
+        }
+        widgetHost.finish()
+        widgetHost.releaseUnused(store.config.first().desktop?.pages?.flatMap {it.items}?.mapNotNull {it.widget?.appWidgetId?.takeIf {id->id>0}}?.toSet() ?: emptySet())
+        } catch(e: Exception) {widgetHost.cancel();throw e}
+    }
+    fun editDesktop(change: (DesktopLayout)->DesktopLayout) = save { store.update { c->c.copy(desktop=validateDesktop(change(resolvedDesktop(c,apps.value)))) } }
+    fun placeShortcut(component: String,pageId: String?=null) = save {
+        store.update { c->
+            require(validComponent(component))
+            val layout=resolvedDesktop(c,apps.value);val destination=pageId?.takeIf { id->layout.pages.any { it.id==id } } ?: layout.homePageId
+            val next=if(layout.page(destination).items.any { it.kind=="app" && it.component==component })layout else layout.updatePage(destination){it.copy(items=it.items+DesktopItem(desktopId(),component=component))}
+            c.copy(desktop=validateDesktop(next),favorites=c.favorites+component)
+        }
+    }
+    fun replace(c: Config) = save { store.replace(c);widgetHost.cancel();widgetHost.releaseUnused(c.desktop?.pages?.flatMap {it.items}?.mapNotNull {it.widget?.appWidgetId?.takeIf {id->id>0}}?.toSet() ?: emptySet()) }
+    fun reset() = save { vault.clear();store.replace(Config());widgetHost.cancel();widgetHost.releaseUnused(emptySet()) }
     fun flag(key: String, value: Boolean) = save { store.flag(key,value) }
     fun profile(value: Profile) = save { store.profile(value) }
     fun favorite(id: String) = save { store.favorite(id) }
     fun deck(url: String, timeout: Int) = save { store.deck(url,timeout) }
-    override fun onCleared() { remote.close();super.onCleared() }
+    override fun onCleared() { remote.close();weather.client.close();widgetHost.host.stopListening();super.onCleared() }
 }
 // An HTTP response proves reachability, not ICARUS identity or authenticated health.
 // No redirects, credentials, cookies, analytics, or response body downloads.

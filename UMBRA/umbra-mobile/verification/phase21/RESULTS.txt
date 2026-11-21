@@ -1,0 +1,22 @@
+Final Gradle result: BUILD SUCCESSFUL in 2m 22s
+Tests: 48; failures: 0; errors: 0; skipped: 0
+Lint: 0 errors; 13 warnings (11 dependency-update notices, 2 durable pending-widget SharedPreferences commit notices)
+App APK and Android device-test APK: assembled successfully
+Device instrumentation/emulator execution: not performed
+Published Phase 2 signing certificate: matches
+
+com.umbra.mobile.AnimationEngineTest: 2 tests, 0 failures, 0 errors
+com.umbra.mobile.AppLaunchOptionsTest: 4 tests, 0 failures, 0 errors
+com.umbra.mobile.ConfigurationV2Test: 6 tests, 0 failures, 0 errors
+com.umbra.mobile.DeckTest: 2 tests, 0 failures, 0 errors
+com.umbra.mobile.IcarusClientTest: 4 tests, 0 failures, 0 errors
+com.umbra.mobile.InstantActionsTest: 2 tests, 0 failures, 0 errors
+com.umbra.mobile.InstantControllerTest: 2 tests, 0 failures, 0 errors
+com.umbra.mobile.LauncherHostUiTest: 2 tests, 0 failures, 0 errors
+com.umbra.mobile.PersistenceTest: 2 tests, 0 failures, 0 errors
+com.umbra.mobile.Phase21HostUiTest: 6 tests, 0 failures, 0 errors
+com.umbra.mobile.Phase21PolicyTest: 6 tests, 0 failures, 0 errors
+com.umbra.mobile.PolicyTest: 5 tests, 0 failures, 0 errors
+com.umbra.mobile.RefreshGateTest: 2 tests, 0 failures, 0 errors
+com.umbra.mobile.WeatherCacheTest: 1 tests, 0 failures, 0 errors
+com.umbra.mobile.WeatherClientTest: 2 tests, 0 failures, 0 errors
