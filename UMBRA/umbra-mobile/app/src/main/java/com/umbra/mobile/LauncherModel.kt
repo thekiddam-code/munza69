@@ -51,6 +51,22 @@ class LauncherModel(app: Application) : AndroidViewModel(app) {
     private fun save(action: suspend () -> Unit) = viewModelScope.launch {
         try { action(); settingsError.value = false } catch (_: IOException) { settingsError.value = true } catch (_: IllegalArgumentException) { settingsError.value = true }
     }
+    private var arrangementBackup: Config?=null
+    val hasLayoutUndo=MutableStateFlow(false)
+    fun arrange(transform: (Config)->Config)=save {
+        store.update {old->val next=transform(old);arrangementBackup=old;hasLayoutUndo.value=true;next}
+    }
+    fun undoArrangement()=save {
+        val old=arrangementBackup ?: return@save
+        store.update {it.copy(gridLayouts=old.gridLayouts,desktop=old.desktop,moduleOrder=old.moduleOrder,hiddenModules=old.hiddenModules,instantOrder=old.instantOrder)}
+        arrangementBackup=null;hasLayoutUndo.value=false
+    }
+    fun saveGrid(surface: String,grid: GridLayout)=arrange {c->
+        val ids=grid.cells.map {it.id}.toSet()
+        val unknown=c.gridLayouts[surface]?.cells?.filterNot {it.id in ids} ?: emptyList()
+        c.copy(gridLayouts=c.gridLayouts+(surface to validateGrid(grid.copy(cells=grid.cells+unknown))))
+    }
+    fun restoreGridItems(surface: String)=arrange {c->c.copy(gridLayouts=c.gridLayouts+(surface to (c.gridLayouts[surface] ?: GridLayout()).let {it.copy(cells=it.cells.map {cell->cell.copy(hidden=false)})}))}
     fun change(transform: (Config) -> Config) = save { store.update(transform) }
     fun removeDesktopItem(id: String) = save {
         store.update { c->c.copy(desktop=validateDesktop(resolvedDesktop(c,apps.value).removeItem(id))) }

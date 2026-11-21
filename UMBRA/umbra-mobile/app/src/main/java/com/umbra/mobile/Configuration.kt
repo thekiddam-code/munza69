@@ -19,7 +19,7 @@ val Context.umbraStore by preferencesDataStore("umbra_settings", corruptionHandl
 @Serializable enum class Profile { Adaptive, Cinematic, Minimal }
 val MODULES = listOf("Device", "System", "ICARUS", "Notifications", "Applications")
 val INDICATORS = setOf("Time", "Date", "Battery", "Network", "ICARUS", "Notifications")
-const val MAX_CONFIG_BYTES = 262144
+const val MAX_CONFIG_BYTES = 1048576
 @Serializable data class Config(
     val profile: Profile = Profile.Adaptive, val master: Boolean = true,
     val ambient: Boolean = true, val transitions: Boolean = true,
@@ -49,9 +49,12 @@ const val MAX_CONFIG_BYTES = 262144
     val desktop: DesktopLayout? = null,
     val weatherPlace: String = "", val weatherLatitude: Double? = null, val weatherLongitude: Double? = null,
     val weatherFahrenheit: Boolean = false,
-    val instantOrder: List<String> = emptyList(), val instantLabels: Map<String,String> = emptyMap(), val instantFavorites: Set<String> = emptySet()
+    val instantOrder: List<String> = emptyList(), val instantLabels: Map<String,String> = emptyMap(), val instantFavorites: Set<String> = emptySet(),
+    val gridLayouts: Map<String,GridLayout> = emptyMap(), val editHaptics: Boolean=false, val deckColumns: Int=2,
+    val commandExpanded: Boolean=true, val statusTabs: Map<String,Boolean> = DEFAULT_STATUS_TABS,
+    val instantSelection: Set<String>?=null, val widgetButtonSelections: Map<String,List<String>> = emptyMap(), val customButtons: List<CustomButton> = emptyList()
 )
-@Serializable private data class ConfigEnvelope(val schemaVersion: Int = 3, val settings: Config)
+@Serializable private data class ConfigEnvelope(val schemaVersion: Int = 4, val settings: Config)
 private val configJson = Json { encodeDefaults = true; ignoreUnknownKeys = false }
 private val componentPattern = Regex("[A-Za-z0-9_.$]+/[A-Za-z0-9_.$]+")
 fun validComponent(value: String) = value.length in 3..512 && componentPattern.matches(value)
@@ -71,6 +74,13 @@ fun validAccent(value: String): Boolean {
     return .2126*channel(16)+.7152*channel(8)+.0722*channel(0) >= .25
 }
 fun validateConfig(c: Config): Config {
+    require(c.gridLayouts.size<=128 && c.gridLayouts.keys.all {it.length in 1..120 && it.none(Char::isISOControl)})
+    c.gridLayouts.values.forEach(::validateGrid)
+    require(c.deckColumns in 2..4 && c.statusTabs.keys.all {it in STATUS_TABS})
+    require(c.instantSelection==null || (c.instantSelection.size<=2048 && c.instantSelection.all {it.length in 1..180 && it.none(Char::isISOControl)}))
+    require(c.widgetButtonSelections.size<=256 && c.widgetButtonSelections.values.all {v->v.size<=2048 && v.distinct().size==v.size && v.all {it.length in 1..180 && it.none(Char::isISOControl)}})
+    require(c.customButtons.size<=512 && c.customButtons.map {it.id}.distinct().size==c.customButtons.size)
+    c.customButtons.forEach(::validateButton)
     require(c.intensity in 0..100 && c.timeout in 1..30)
     require(c.iconSize in 32..72 && c.hiddenApps.size<=256 && c.hiddenApps.all(::validComponent))
     require(c.drawerOrder.size<=512 && c.drawerOrder.distinct().size==c.drawerOrder.size && c.drawerOrder.all(::validComponent))
@@ -79,9 +89,9 @@ fun validateConfig(c: Config): Config {
     require((c.weatherLatitude==null)==(c.weatherLongitude==null))
     c.weatherLatitude?.let { require(it.isFinite() && it in -90.0..90.0) }
     c.weatherLongitude?.let { require(it.isFinite() && it in -180.0..180.0) }
-    require(c.instantOrder.size<=256 && c.instantOrder.distinct().size==c.instantOrder.size && c.instantOrder.all { it.length in 1..160 && it.none(Char::isISOControl) })
-    require(c.instantFavorites.size<=256 && c.instantFavorites.all { it.length in 1..160 && it.none(Char::isISOControl) })
-    require(c.instantLabels.size<=256 && c.instantLabels.all { (key,value)->key.length in 1..160 && key.none(Char::isISOControl) && value.length in 1..48 && value.none(Char::isISOControl) })
+    require(c.instantOrder.size<=2048 && c.instantOrder.distinct().size==c.instantOrder.size && c.instantOrder.all { it.length in 1..160 && it.none(Char::isISOControl) })
+    require(c.instantFavorites.size<=2048 && c.instantFavorites.all { it.length in 1..160 && it.none(Char::isISOControl) })
+    require(c.instantLabels.size<=2048 && c.instantLabels.all { (key,value)->key.length in 1..160 && key.none(Char::isISOControl) && value.length in 1..48 && value.none(Char::isISOControl) })
     require(c.density in 1..3 && c.gridColumns in 3..5 && c.tileSize in 1..3)
     require(c.background in listOf("Void", "Graphite", "Blueprint"))
     require(c.typography in listOf("Technical", "Mono", "System"))
@@ -104,15 +114,20 @@ private fun encodeConfig(c: Config): String {
 }
 fun exportConfig(c: Config): String = encodeConfig(c.copy(desktop=c.desktop?.let(::portableDesktop)))
 private fun decodeConfig(text: String,portable: Boolean): Config {
-    require(text.toByteArray(Charsets.UTF_8).size <= MAX_CONFIG_BYTES) { "Configuration exceeds 256 KiB" }
+    require(text.toByteArray(Charsets.UTF_8).size <= MAX_CONFIG_BYTES) { "Configuration exceeds 1 MiB" }
     val root = configJson.parseToJsonElement(text) as? JsonObject ?: error("Expected configuration object")
     require(root.keys == setOf("schemaVersion", "settings"))
     val version = root["schemaVersion"] as? JsonPrimitive ?: error("Missing version")
-    require(!version.isString && version.intOrNull in setOf(2,3))
+    require(!version.isString && version.intOrNull in setOf(2,3,4))
     val fields = root["settings"] as? JsonObject ?: error("Missing settings")
     val defaults = configJson.encodeToJsonElement(Config()).jsonObject
     fields.forEach { (key, value) ->
         val sample = defaults[key] ?: error("Unknown setting")
+        if(key=="widgetButtonSelections"){require(value is JsonObject && value.values.all {it is JsonArray && it.all {v->v is JsonPrimitive && v.isString}});return@forEach}
+        if(key=="gridLayouts"){validateGridsJson(value);return@forEach}
+        if(key=="customButtons"){validateButtonsJson(value);return@forEach}
+        if(key=="statusTabs"){require(value is JsonObject && value.values.all {it is JsonPrimitive && !it.isString && it.booleanOrNull!=null});return@forEach}
+        if(key=="instantSelection"){require(value is JsonNull || (value is JsonArray && value.all {it is JsonPrimitive && it.isString}));return@forEach}
         if(key=="desktop") { if(value !is JsonNull)validateDesktopJson(value);return@forEach }
         if(key=="weatherLatitude" || key=="weatherLongitude") { require(value is JsonNull || (value is JsonPrimitive && !value.isString && value.doubleOrNull?.isFinite()==true));return@forEach }
         when(sample) {
@@ -128,7 +143,7 @@ private fun decodeConfig(text: String,portable: Boolean): Config {
         }
     }
     val envelope = configJson.decodeFromString<ConfigEnvelope>(text)
-    require(envelope.schemaVersion in setOf(2,3)) { "Unsupported configuration version" }
+    require(envelope.schemaVersion in setOf(2,3,4)) { "Unsupported configuration version" }
     val valid=validateConfig(envelope.settings)
     return if(portable)valid.copy(desktop=valid.desktop?.let(::portableDesktop)) else valid
 }

@@ -145,6 +145,8 @@ class MainActivity : ComponentActivity() {
     val granted = rememberNotificationAccess()
     val notificationCount = count.takeIf { c.notificationsEnabled && granted }
     var shadeDialog by remember { mutableStateOf(false) }
+    val gridEditing=remember {GridEditSession()}
+    var homeStatusContext by rememberSaveable {mutableStateOf("Main Home")}
     var remoteModule by rememberSaveable { mutableStateOf("Engineering") }
     var settingsCategory by rememberSaveable { mutableStateOf("Animation") }
     var screen by rememberSaveable { mutableStateOf("HOME") }
@@ -176,6 +178,7 @@ class MainActivity : ComponentActivity() {
     }
     fun launch(app: LaunchApp) = launchAt(app,null)
     LaunchedEffect(homeEvent) { screen = "HOME"; query = "" }
+    LaunchedEffect(screen){gridEditing.finish()}
     BackHandler(screen != "HOME") { screen = "HOME"; query = "" }
     LifecycleStartEffect(Unit) {
         active = true; model.refreshApps()
@@ -218,7 +221,7 @@ class MainActivity : ComponentActivity() {
         bodyLarge=baseTypography.bodyLarge.copy(fontFamily=font),bodyMedium=baseTypography.bodyMedium.copy(fontFamily=font),bodySmall=baseTypography.bodySmall.copy(fontFamily=font),
         titleLarge=baseTypography.titleLarge.copy(fontFamily=font),titleMedium=baseTypography.titleMedium.copy(fontFamily=font),
         labelLarge=baseTypography.labelLarge.copy(fontFamily=if(c.typography=="Technical")FontFamily.Monospace else font),labelSmall=baseTypography.labelSmall.copy(fontFamily=font))
-    CompositionLocalProvider(LocalLauncherConfig provides c,LocalVisualDetail provides c.visualDetail,LocalIconLaunch provides {app,bounds->launchAt(app,bounds)},LocalWeatherSettings provides {settingsCategory="Weather";screen="CONFIG"}) {
+    CompositionLocalProvider(LocalGridEditing provides gridEditing,LocalMotionPolicy provides policy,LocalLauncherConfig provides c,LocalVisualDetail provides c.visualDetail,LocalIconLaunch provides {app,bounds->launchAt(app,bounds)},LocalWeatherSettings provides {settingsCategory="Weather";screen="CONFIG"}) {
     MaterialTheme(colorScheme=colors,typography=typography,shapes=Shapes(extraSmall=CutCornerShape(2.dp),small=CutCornerShape(4.dp),medium=CutCornerShape(6.dp),large=CutCornerShape(8.dp),extraLarge=CutCornerShape(12.dp))) {
     if(shadeDialog) AlertDialog(onDismissRequest={shadeDialog=false},title={Text("Native Android notifications")},text={Text("Swipe from the very top edge of the display to reveal Android's notification shade. Android does not provide ordinary HOME apps a public API to expand it. UMBRA leaves this system gesture available.")},
         confirmButton={TextButton(onClick={model.change { it.copy(immersive=false,hideTopBar=false,hideBottomBar=false) };shadeDialog=false}){Text("Restore Android bars")}},
@@ -232,13 +235,13 @@ class MainActivity : ComponentActivity() {
                 if (active && policy.continuous && (c.ambient || c.environment || c.wallpaper || c.parallax || c.statusEffects)) Atmosphere(c,accent,pointer)
                 Column(Modifier.fillMaxSize().alpha(if(policy.enabled && c.startup) startup.value else 1f).safeDrawingPadding().imePadding().padding(horizontal=20.dp,vertical=10.dp)) {
                     Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.SpaceBetween,verticalAlignment=Alignment.CenterVertically) {
-                        Column(Modifier.weight(1f)) { Text("UMBRA",color=accent,fontSize=27.sp,fontWeight=FontWeight.Black,letterSpacing=5.sp,maxLines=1,overflow=TextOverflow.Ellipsis); Readout("MOBILE OS / TERMINAL 01",Muted) }
+                        if(screen=="CONFIG")Text("Settings",fontSize=22.sp,modifier=Modifier.weight(1f)) else Column(Modifier.weight(1f)) { Text("UMBRA",color=accent,fontSize=27.sp,fontWeight=FontWeight.Black,letterSpacing=5.sp,maxLines=1,overflow=TextOverflow.Ellipsis); Readout("MOBILE OS / TERMINAL 01",Muted) }
                         val barsVisible=WindowInsets.areStatusBarsVisible || WindowInsets.areNavigationBarsVisible
                         TextButton(onClick={context.umbraActivity()?.setAndroidBarsVisible(!barsVisible)},modifier=Modifier.testTag("bars-toggle")) { Text(if(barsVisible)"Hide bars" else "Show bars",fontSize=12.sp,color=accent) }
                     }
                     HorizontalDivider(Modifier.padding(vertical=12.dp),color=accent.copy(alpha=.45f))
                     if(settingsError) Text("Settings could not be saved. Check values and available storage, then try again.",color=Color(0xFFEF8B82),modifier=Modifier.semantics { liveRegion=LiveRegionMode.Polite })
-                    if(c.statusPanel) StatusPanel(c,device,now,deckStatus,accent,notificationCount)
+                    if(showStatusPanel(c,when(screen){"HOME"->homeStatusContext;"APPS"->"Applications";"CONFIG"->"Settings";"COMMAND"->"Command Center";"ICARUS"->remoteModule;else->"ICARUS"})) StatusPanel(c,device,now,deckStatus,accent,notificationCount)
                     val pageContent: @Composable (String)->Unit = { page ->
                         pageStateHolder.SaveableStateProvider(page) {
                         when(page) {
@@ -257,13 +260,12 @@ class MainActivity : ComponentActivity() {
                                 { if(it=="Deck") { if(validDeckUrl(c.url))open(Intent(Intent.ACTION_VIEW,android.net.Uri.parse(c.url))) else screen="CONFIG" } else {remoteModule=it; screen="ICARUS"} },{screen="DEVICE"},{deviceRefresh++},notificationCount)
                             "DEVICE" -> Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(16.dp)) {
                                 Readout("DEVICE / SYSTEM DASHBOARD",accent)
-                                TelemetryReadouts(device)
-                                Button(onClick={deviceRefresh++},shape=Chamfer){Text("Refresh telemetry")}
+                                ModularDeck("device-dashboard",listOf("Device Status"),c,model){TelemetryReadouts(device);Button(onClick={deviceRefresh++},shape=Chamfer){Text("Refresh telemetry")}}
                                 Text("Readings are snapshots from Android APIs, refreshed on visibility entry and request. No invented CPU temperature or utilization.",color=Muted)
                             }
-                            "ICARUS" -> IcarusScreen(c,model,accent,remoteModule,::open,{settingsCategory="ICARUS";screen="CONFIG"},device.powerSave || device.battery in 0..20 || device.thermal>=2 || !device.screenOn,device.networkGeneration)
+                            "ICARUS" -> IcarusScreen(c,model,accent,remoteModule,::open,{settingsCategory="ICARUS";screen="CONFIG"},device.powerSave || device.battery in 0..20 || device.thermal>=2 || !device.screenOn,device.networkGeneration,{remoteModule=it})
                             "CONFIG" -> Configuration(c,model,accent,{open(Intent(Settings.ACTION_HOME_SETTINGS))},apps,::open,settingsCategory)
-                            else -> HomeWorkspace(c,model,apps,device,now,policy,active,homeEvent,accent,homePull,terminal={
+                            else -> HomeWorkspace(c,model,apps,device,now,policy,active,homeEvent,accent,homePull,onPageContext={homeStatusContext=it},terminal={
                                 Row(Modifier.fillMaxWidth().heightIn(min=64.dp).testTag("home-swipe-handle").terminalSwipe(c.swipeDown,{screen="COMMAND"},{}),horizontalArrangement=Arrangement.SpaceBetween) { Readout("↓ COMMAND ACCESS",accent);Readout("SWIPE DOWN",Muted) }
                                 Spacer(Modifier.height(12.dp))
                                 BoxWithConstraints(Modifier.fillMaxWidth()) {
@@ -295,6 +297,7 @@ class MainActivity : ComponentActivity() {
                         if(active)panelTransition(initialState,targetState,c,policy) else EnterTransition.None togetherWith ExitTransition.None
                     },label="terminal navigation") { page -> pageContent(page) }
                     } else Box(Modifier.weight(1f)) { pageContent(screen) }
+                    GridEditingToolbar(gridEditing,model)
                     HorizontalDivider(Modifier.padding(top=8.dp),color=accent.copy(alpha=.3f))
                     Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.SpaceEvenly) {
                         listOf("HOME" to "Home","APPS" to "Apps","COMMAND" to "Deck","ICARUS" to "Icarus","CONFIG" to "Config").forEach { (id,label) ->

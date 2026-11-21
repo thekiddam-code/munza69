@@ -60,6 +60,8 @@ fun Modifier.terminalSwipe(enabled: Boolean, down: () -> Unit, up: () -> Unit): 
     open: (Intent)->Unit, launch: (LaunchApp)->Unit, close: ()->Unit, nativeNotifications: ()->Unit,
     icarus: (String)->Unit, dashboard: ()->Unit, refreshDevice: ()->Unit, notificationCount: Int?) {
     val granted=rememberNotificationAccess()
+    val editSession=LocalGridEditing.current
+    var restore by remember {mutableStateOf(false)}
     val pull=rememberPullNavigation(true,{if(c.secondSwipe)nativeNotifications()},close)
     Column(Modifier.fillMaxSize()) {
         Row(Modifier.fillMaxWidth().heightIn(min=64.dp).testTag("command-swipe-handle").terminalSwipe(true,
@@ -67,10 +69,13 @@ fun Modifier.terminalSwipe(enabled: Boolean, down: () -> Unit, up: () -> Unit): 
             Column(Modifier.weight(1f)) { Readout("UMBRA / COMMAND CENTER",accent);Text("Swipe up here to close",style=MaterialTheme.typography.bodySmall,color=Muted) }
             TextButton(onClick=close) { Text("Close") }
         }
+        Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.End) {
+            FilterChip(selected=!c.commandExpanded,onClick={model.change {it.copy(commandExpanded=false)}},label={Text("Compact")},modifier=Modifier.testTag("command-compact"))
+            Spacer(Modifier.width(8.dp))
+            FilterChip(selected=c.commandExpanded,onClick={model.change {it.copy(commandExpanded=true)}},label={Text("Expanded")},modifier=Modifier.testTag("command-expanded"))
+        }
         Column(Modifier.fillMaxWidth().weight(1f).nestedScroll(pull).verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy((6+c.density*3).dp)) {
-            c.moduleOrder.filterNot { it in c.hiddenModules }.forEach { module ->
-                Frame(accent.copy(alpha=.55f)) {
-                    Readout(module.uppercase(),accent)
+            ModularDeck("command",c.moduleOrder,c,model,compactMode=!c.commandExpanded,status={if(it=="Device")d.network else if(it=="ICARUS")deck else ""}) {module->
                     when(module) {
                         "Device" -> {
                             TelemetryReadouts(d)
@@ -83,12 +88,12 @@ fun Modifier.terminalSwipe(enabled: Boolean, down: () -> Unit, up: () -> Unit): 
                             Slider(draft,{draft=it},onValueChangeFinished={model.change { it.copy(windowBrightness=draft) }},valueRange=.1f..1f)
                             Text("${if(c.windowBrightness<0) "System brightness" else "${(c.windowBrightness*100).toInt()}% for UMBRA only"}",style=MaterialTheme.typography.bodySmall)
                             TextButton(onClick={model.change { it.copy(windowBrightness=-1f) }}){Text("Use system brightness")}
-                            ActionGrid(listOf("Sound" to Settings.ACTION_SOUND_SETTINGS,"Wi-Fi" to Settings.Panel.ACTION_WIFI,"Bluetooth" to Settings.ACTION_BLUETOOTH_SETTINGS,"Display" to Settings.ACTION_DISPLAY_SETTINGS,"Battery" to Settings.ACTION_BATTERY_SAVER_SETTINGS),c.tileSize) { open(Intent(it)) }
+                            SystemControlGrid(c,model,listOf("Sound" to Settings.ACTION_SOUND_SETTINGS,"Wi-Fi" to Settings.Panel.ACTION_WIFI,"Bluetooth" to Settings.ACTION_BLUETOOTH_SETTINGS,"Display" to Settings.ACTION_DISPLAY_SETTINGS,"Battery" to Settings.ACTION_BATTERY_SAVER_SETTINGS,"Media app" to "__MEDIA__")) { if(it=="__MEDIA__")open(Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_APP_MUSIC)) else open(Intent(it)) }
                             OutlinedButton(onClick=nativeNotifications,modifier=Modifier.fillMaxWidth(),shape=Chamfer){Text("Android notifications")}
                         }
                         "ICARUS" -> {
                             Text(deck)
-                            ActionGrid(listOf("Engineering" to "Engineering","Lounge" to "Lounge","Simulator" to "Simulator","Open Remote Deck" to "Deck"),c.tileSize,icarus)
+                            NamedControlGrid("icarus-shortcuts",c,model,listOf("Engineering" to "Engineering","Lounge" to "Lounge","Simulator" to "Simulator","Open Remote Deck" to "Deck"),icarus)
                         }
                         "Notifications" -> {
                             Text(when { !c.notificationsEnabled->"Notification summary is off."; !granted->"Android notification access is required.";notificationCount==null->"Waiting for the Android notification listener.";else->"$notificationCount active notifications (group summaries excluded)." })
@@ -99,15 +104,14 @@ fun Modifier.terminalSwipe(enabled: Boolean, down: () -> Unit, up: () -> Unit): 
                         }
                         "Applications" -> {
                             val favorites=orderedFavorites(c,apps)
-                            if(favorites.isEmpty()) Text("Star applications in Apps to choose quick tiles.",color=Muted)
+                            if(favorites.isEmpty()) Text("Long-press applications in Apps to choose favorites.",color=Muted)
                             val columns=when(c.tileSize){1->4;3->2;else->3}
-                            favorites.chunked(columns).forEach { row -> Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(6.dp)) {
-                                row.forEach { app -> Box(Modifier.weight(1f)) { AppTile(app.copy(label=c.quickLabels[app.id] ?: app.label),model,true,{launch(app)},{model.favorite(app.id)},accent) } }
-                                repeat(columns-row.size){Spacer(Modifier.weight(1f))}
-                            } }
+                            GridBoard("command-apps",favorites.map {GridItem(it.id,c.quickLabels[it.id] ?: it.label,height=2)},c,model,columns=columns,onRemove={model.favorite(it)}) {item,_->
+                                val app=favorites.first {it.id==item.id}
+                                AppTile(app.copy(label=c.quickLabels[app.id] ?: app.label),model,true,{launch(app)},{model.favorite(app.id)},accent,desktopGesture=true)
+                            }
                         }
                     }
-                }
             }
             TextButton(onClick=nativeNotifications,modifier=Modifier.fillMaxWidth()){Text("Native shade: swipe from the screen's top edge")}
             Spacer(Modifier.height(12.dp))
@@ -122,4 +126,14 @@ fun Modifier.terminalSwipe(enabled: Boolean, down: () -> Unit, up: () -> Unit): 
             repeat(columns-row.size){Spacer(Modifier.weight(1f))}
         }
     }
+}
+
+@Composable fun SystemControlGrid(c: Config,model: LauncherModel,actions: List<Pair<String,String>>,action: (String)->Unit) {
+    GridBoard("system-controls",actions.map {GridItem(it.second,it.first)},c,model,cellHeight=64.dp) {item,_->
+        OutlinedButton(onClick={action(item.id)},modifier=Modifier.fillMaxSize(),shape=Chamfer){Text(item.title)}
+    }
+}
+
+@Composable fun NamedControlGrid(surface: String,c: Config,model: LauncherModel,actions: List<Pair<String,String>>,action: (String)->Unit) {
+    GridBoard(surface,actions.map {GridItem(it.second,it.first)},c,model,cellHeight=64.dp) {item,_->OutlinedButton(onClick={action(item.id)},modifier=Modifier.fillMaxSize(),shape=Chamfer){Text(item.title)}}
 }

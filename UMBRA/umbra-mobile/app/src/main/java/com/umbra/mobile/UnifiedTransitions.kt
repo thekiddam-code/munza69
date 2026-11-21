@@ -32,6 +32,7 @@ fun panelTransition(from: String,to: String,c: Config,motion: MotionPolicy): Con
     val exit=if(command && from=="COMMAND") slideOutVertically(tween(plan.duration)){-it/12} else ExitTransition.None
     return (fadeIn(tween(plan.duration))+reveal) togetherWith (fadeOut(tween(plan.duration))+exit)
 }
+val LocalMotionPolicy=staticCompositionLocalOf {MotionPolicy(false,false,0)}
 val LocalIconLaunch=staticCompositionLocalOf<((LaunchApp,Rect?)->Unit)?> { null }
 val LocalLauncherConfig=staticCompositionLocalOf { Config() }
 fun appLaunchOptions(context: Context,anchor: View,bounds: Rect?,c: Config,motion: MotionPolicy): Bundle? {

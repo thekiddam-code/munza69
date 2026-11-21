@@ -60,6 +60,7 @@ import androidx.compose.ui.unit.dp
     val available=androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp-40f
     val minimumColumns=provider?.let {info->kotlin.math.ceil(with(density){(info.minResizeWidth.takeIf {it>0} ?: info.minWidth).toDp().value}/(available/columns)).toInt().coerceIn(1,columns)} ?: 1
     DesktopEditorDialog("Widget configuration",close,confirm={TextButton(onClick={save(widget)},enabled=validAccent(widget.accent)){Text("Save widget")}}) {
+        if(widget.kind=="icarus")ButtonSelection(LocalLauncherConfig.current,androidx.lifecycle.viewmodel.compose.viewModel(),item.id)
         if(widget.kind=="clock") {
             Choice("Clock style",CLOCK_STYLES,widget.style){widget=widget.copy(style=it)}
             Toggle("24-hour clock",widget.clock24){widget=widget.copy(clock24=it)}

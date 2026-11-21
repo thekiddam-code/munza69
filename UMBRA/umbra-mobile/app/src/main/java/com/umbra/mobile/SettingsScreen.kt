@@ -29,6 +29,8 @@ import java.io.IOException
 @Composable fun Configuration(c: Config,model: LauncherModel,accent: Color,homeSettings: ()->Unit,apps: List<LaunchApp> = emptyList(),open: (Intent)->Unit = {},initialCategory: String = "Animation") {
     val context=LocalContext.current
     val scope=rememberCoroutineScope()
+    val installedVersion=remember {runCatching {context.packageManager.getPackageInfo(context.packageName,0).let {"${it.versionName} (${it.longVersionCode})"}}.getOrDefault("Version unavailable")}
+    val buildLabel=if(context.applicationInfo.flags and android.content.pm.ApplicationInfo.FLAG_DEBUGGABLE!=0)"debug" else "release"
     var category by rememberSaveable(initialCategory) { mutableStateOf(initialCategory) }
     var notice by remember { mutableStateOf("") }
     var pendingImport by remember { mutableStateOf<Config?>(null) }
@@ -53,7 +55,7 @@ import java.io.IOException
                     } ?: throw IOException()
                     importConfig(bytes.decodeToString(throwOnInvalidSequence=true))
                 }
-            } catch(e: CancellationException){throw e} catch(_:Exception){notice="Import rejected. Use a valid schema 2 or 3 UMBRA configuration under 256 KiB. Existing settings were preserved."}
+            } catch(e: CancellationException){throw e} catch(_:Exception){notice="Import rejected. Use a valid schema 2, 3, or 4 UMBRA configuration under 1 MiB. Existing settings were preserved."}
         }
     }
     val wallpaperExport=rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument("image/png")) { uri ->
@@ -69,7 +71,7 @@ import java.io.IOException
     if(labelApp!=null) AlertDialog(onDismissRequest={labelApp=null},title={Text("Quick tile label")},text={OutlinedTextField(label,{label=it.take(48)},singleLine=true,label={Text("Label (1–48 characters)")})},
         confirmButton={TextButton(onClick={val id=labelApp!!.id;model.change { it.copy(quickLabels=it.quickLabels+(id to label.trim())) };labelApp=null},enabled=label.isNotBlank() && label.none { it.isISOControl() }){Text("Save label")}},dismissButton={TextButton(onClick={labelApp=null}){Text("Cancel")}})
     Column(Modifier.fillMaxSize()) {
-        Readout("UMBRA / CUSTOMIZATION STUDIO",accent)
+        // Compact Settings title is provided by the activity header.
         Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState())) {
             listOf("Appearance","Animation","Display","Command Center","ICARUS","Organization","Weather","Configuration","Lock screen").forEach { item -> TextButton(onClick={category=item}){Text(item,color=if(category==item)accent else Muted)} }
         }
@@ -113,6 +115,8 @@ import java.io.IOException
                     Toggle("Hide Top Status Bar",c.hideTopBar){v->model.change { it.copy(hideTopBar=v) }}
                     Toggle("Hide Bottom Navigation Bar",c.hideBottomBar){v->model.change { it.copy(hideBottomBar=v) }}
                     Toggle("Show UMBRA Status Panel",c.statusPanel){model.flag("statusPanel",it)}
+                    Text("Status Panel · per tab",style=MaterialTheme.typography.titleMedium)
+                    STATUS_TABS.forEach {tab->Toggle("Status Panel on $tab",c.statusTabs[tab] ?: DEFAULT_STATUS_TABS.getValue(tab)){value->model.change {it.copy(statusTabs=it.statusTabs+(tab to value))}}}
                     Button(onClick={model.change { it.copy(immersive=false,hideTopBar=false,hideBottomBar=false) }},shape=Chamfer,modifier=Modifier.fillMaxWidth()){Text("Restore Standard Android Bars")}
                     Text("Android bars is always accessible in the header. System gestures can reveal transient bars. Samsung/Android may keep protected system UI visible for HOME, keyboard, calls, accessibility, or security.",style=MaterialTheme.typography.bodySmall)
                     Text("Status panel indicators",style=MaterialTheme.typography.titleMedium)
@@ -126,15 +130,20 @@ import java.io.IOException
                     Toggle("Second swipe offers native notifications",c.secondSwipe){v->model.change { it.copy(secondSwipe=v) }}
                     Toggle("Command Center animations",c.commandAnimations){v->model.change { it.copy(commandAnimations=v) }}
                     Choice("Tile size",listOf("Small","Standard","Large"),listOf("Small","Standard","Large")[c.tileSize-1]){v->model.change { it.copy(tileSize=listOf("Small","Standard","Large").indexOf(v)+1) }}
+                    Toggle("Editing haptics",c.editHaptics){value->model.change {it.copy(editHaptics=value)}}
+                    Choice("Deck grid density",listOf("2","3","4"),c.deckColumns.toString()){value->model.arrange {it.copy(deckColumns=value.toInt())}}
+                    TextButton(onClick={model.arrange {it.copy(gridLayouts=it.gridLayouts.mapValues {(_,grid)->grid.copy(cells=grid.cells.map {cell->cell.copy(hidden=false)})},hiddenModules=emptySet())}}){Text("Restore all hidden modules and controls")}
                     Text("Module arrangement",style=MaterialTheme.typography.titleMedium)
-                    c.moduleOrder.forEachIndexed { i,name ->
-                        Frame(accent.copy(alpha=.4f)) {
-                            Toggle("Show $name module",name !in c.hiddenModules){show->model.change { it.copy(hiddenModules=if(show)it.hiddenModules-name else it.hiddenModules+name) }}
-                            Row { TextButton(onClick={model.change { it.copy(moduleOrder=moveItem(it.moduleOrder,name,-1)) }},enabled=i>0){Text("Move up")};TextButton(onClick={model.change { it.copy(moduleOrder=moveItem(it.moduleOrder,name,1)) }},enabled=i<c.moduleOrder.lastIndex){Text("Move down")} }
-                        }
+                    Text("Long-press deck headers to move, resize, hide, or collapse them. TalkBack also exposes Move earlier / Move later without visible arrangement buttons.",style=MaterialTheme.typography.bodySmall)
+                    c.moduleOrder.forEach {name->
+                        val hidden=name in c.hiddenModules || c.gridLayouts["command"]?.cells?.firstOrNull {it.id==name}?.hidden==true
+                        Toggle("Show $name module",!hidden){show->model.arrange {old->
+                            val grid=old.gridLayouts["command"]
+                            old.copy(hiddenModules=if(show)old.hiddenModules-name else old.hiddenModules+name,gridLayouts=if(grid==null)old.gridLayouts else old.gridLayouts+("command" to grid.copy(cells=grid.cells.map {if(it.id==name)it.copy(hidden=!show) else it})))
+                        }}
                     }
                     Text("Quick applications",style=MaterialTheme.typography.titleMedium)
-                    Text("Star apps in the drawer to select tiles. These labels and this order also apply on Home.",style=MaterialTheme.typography.bodySmall)
+                    Text("Long-press apps in the drawer to select favorites. Drag shortcuts directly to arrange them; labels also apply on Home.",style=MaterialTheme.typography.bodySmall)
                     val favorites=orderedFavorites(c,apps)
                     favorites.forEachIndexed { i,app ->
                         Frame(accent.copy(alpha=.4f)) {
@@ -179,7 +188,11 @@ import java.io.IOException
                 }
             }
             if(category in listOf("Appearance","Animation","Display","Command Center","ICARUS")) TextButton(onClick={model.change { resetCategory(it,category) };notice="$category reset submitted."}){Text("Reset $category")}
-            Text("UMBRA MOBILE 2.1 / LOCAL CONFIGURATION",fontFamily=FontFamily.Monospace,fontSize=11.sp,color=accent,modifier=Modifier.padding(vertical=16.dp))
+            HorizontalDivider()
+            Row(verticalAlignment=Alignment.CenterVertically) {
+                Icon(androidx.compose.ui.res.painterResource(R.drawable.ic_umbra),contentDescription="UMBRA logo",tint=accent,modifier=Modifier.size(20.dp))
+                Text("◆ UMBRA · $installedVersion · $buildLabel · native Android launcher",style=MaterialTheme.typography.bodySmall,color=Muted)
+            }
         }
     }
 }

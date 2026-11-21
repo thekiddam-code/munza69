@@ -1,0 +1,65 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.9/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+
+> Task :app:compileDebugKotlin
+e: file:///workspace/umbra-github-delivery/UMBRA/umbra-mobile/app/src/main/java/com/umbra/mobile/HomeWorkspace.kt:77:39 Unresolved reference 'FolderTile'.
+e: file:///workspace/umbra-github-delivery/UMBRA/umbra-mobile/app/src/main/java/com/umbra/mobile/HomeWorkspace.kt:77:74 Cannot infer type for this parameter. Please specify it explicitly.
+e: file:///workspace/umbra-github-delivery/UMBRA/umbra-mobile/app/src/main/java/com/umbra/mobile/HomeWorkspace.kt:90:34 Unresolved reference 'FolderContents'.
+e: file:///workspace/umbra-github-delivery/UMBRA/umbra-mobile/app/src/main/java/com/umbra/mobile/HomeWorkspace.kt:102:65 Inapplicable candidate(s): fun copy(profile: Profile = ..., master: Boolean = ..., ambient: Boolean = ..., transitions: Boolean = ..., environment: Boolean = ..., alerts: Boolean = ..., wallpaper: Boolean = ..., statusPanel: Boolean = ..., greenAccent: Boolean = ..., url: String = ..., timeout: Int = ..., favorites: Set<String> = ..., startup: Boolean = ..., parallax: Boolean = ..., statusEffects: Boolean = ..., commandAnimations: Boolean = ..., intensity: Int = ..., immersive: Boolean = ..., hideTopBar: Boolean = ..., hideBottomBar: Boolean = ..., indicators: Set<String> = ..., accent: String = ..., background: String = ..., typography: String = ..., density: Int = ..., gridColumns: Int = ..., tileSize: Int = ..., moduleOrder: List<String> = ..., hiddenModules: Set<String> = ..., quickOrder: List<String> = ..., quickLabels: Map<String, String> = ..., swipeDown: Boolean = ..., secondSwipe: Boolean = ..., windowBrightness: Float = ..., serverUrl: String = ..., engineeringUrl: String = ..., loungeUrl: String = ..., simulatorUrl: String = ..., refreshOnResume: Boolean = ..., refreshOnNetwork: Boolean = ..., foregroundRefreshSeconds: Int = ..., notificationsEnabled: Boolean = ..., visualDetail: VisualDetail = ..., transitionStyle: TransitionStyle = ..., appLaunchTransitions: Boolean = ..., folderTransitions: Boolean = ..., widgetTransitions: Boolean = ..., showAppLabels: Boolean = ..., iconSize: Int = ..., hiddenApps: Set<String> = ..., drawerOrder: List<String> = ..., desktop: DesktopLayout? = ..., weatherPlace: String = ..., weatherLatitude: Double? = ..., weatherLongitude: Double? = ..., weatherFahrenheit: Boolean = ..., instantOrder: List<String> = ..., instantLabels: Map<String, String> = ..., instantFavorites: Set<String> = ..., gridLayouts: Map<String, GridLayout> = ..., editHaptics: Boolean = ..., deckColumns: Int = ..., commandExpanded: Boolean = ..., statusTabs: Map<String, Boolean> = ..., instantSelection: Set<String>? = ..., customButtons: List<CustomButton> = ...): Config
+e: file:///workspace/umbra-github-delivery/UMBRA/umbra-mobile/app/src/main/java/com/umbra/mobile/HomeWorkspace.kt:102:333 Syntax error: Unexpected tokens (use ';' to separate expressions on the same line).
+e: file:///workspace/umbra-github-delivery/UMBRA/umbra-mobile/app/src/main/java/com/umbra/mobile/HomeWorkspace.kt:103:9 Unresolved reference 'folderEditor'.
+e: file:///workspace/umbra-github-delivery/UMBRA/umbra-mobile/app/src/main/java/com/umbra/mobile/HomeWorkspace.kt:103:21 Syntax error: Expecting an element.
+e: file:///workspace/umbra-github-delivery/UMBRA/umbra-mobile/app/src/main/java/com/umbra/mobile/HomeWorkspace.kt:103:22 Syntax error: Expecting ','.
+e: file:///workspace/umbra-github-delivery/UMBRA/umbra-mobile/app/src/main/java/com/umbra/mobile/HomeWorkspace.kt:103:26 Syntax error: Expecting ')'.
+e: file:///workspace/umbra-github-delivery/UMBRA/umbra-mobile/app/src/main/java/com/umbra/mobile/HomeWorkspace.kt:103:27 Argument type mismatch: actual type is 'kotlin.Unit', but 'com.umbra.mobile.Config' was expected.
+e: file:///workspace/umbra-github-delivery/UMBRA/umbra-mobile/app/src/main/java/com/umbra/mobile/HomeWorkspace.kt:104:6 Syntax error: Unexpected tokens (use ';' to separate expressions on the same line).
+e: file:///workspace/umbra-github-delivery/UMBRA/umbra-mobile/app/src/main/java/com/umbra/mobile/HomeWorkspace.kt:104:42 Syntax error: Unexpected tokens (use ';' to separate expressions on the same line).
+e: file:///workspace/umbra-github-delivery/UMBRA/umbra-mobile/app/src/main/java/com/umbra/mobile/HomeWorkspace.kt:105:35 @Composable invocations can only happen from the context of a @Composable function
+e: file:///workspace/umbra-github-delivery/UMBRA/umbra-mobile/app/src/main/java/com/umbra/mobile/HomeWorkspace.kt:106:32 @Composable invocations can only happen from the context of a @Composable function
+e: file:///workspace/umbra-github-delivery/UMBRA/umbra-mobile/app/src/main/java/com/umbra/mobile/HomeWorkspace.kt:107:27 @Composable invocations can only happen from the context of a @Composable function
+e: file:///workspace/umbra-github-delivery/UMBRA/umbra-mobile/app/src/main/java/com/umbra/mobile/HomeWorkspace.kt:113:28 @Composable invocations can only happen from the context of a @Composable function
+e: file:///workspace/umbra-github-delivery/UMBRA/umbra-mobile/app/src/main/java/com/umbra/mobile/HomeWorkspace.kt:114:2 Syntax error: Expecting ','.
+e: file:///workspace/umbra-github-delivery/UMBRA/umbra-mobile/app/src/main/java/com/umbra/mobile/HomeWorkspace.kt:115:1 Anonymous functions with names are prohibited.
+e: file:///workspace/umbra-github-delivery/UMBRA/umbra-mobile/app/src/main/java/com/umbra/mobile/HomeWorkspace.kt:121:2 Syntax error: Expecting ','.
+e: file:///workspace/umbra-github-delivery/UMBRA/umbra-mobile/app/src/main/java/com/umbra/mobile/HomeWorkspace.kt:122:1 Anonymous functions with names are prohibited.
+e: file:///workspace/umbra-github-delivery/UMBRA/umbra-mobile/app/src/main/java/com/umbra/mobile/HomeWorkspace.kt:122:1 Too many arguments for 'fun FolderEditor(item: DesktopItem?, apps: List<LaunchApp>, c: Config, save: (String, List<String>) -> Unit, close: () -> Unit): Unit'.
+e: file:///workspace/umbra-github-delivery/UMBRA/umbra-mobile/app/src/main/java/com/umbra/mobile/HomeWorkspace.kt:122:13 Modifier 'private' is not applicable to 'local function'.
+e: file:///workspace/umbra-github-delivery/UMBRA/umbra-mobile/app/src/main/java/com/umbra/mobile/HomeWorkspace.kt:130:2 Syntax error: Expecting ','.
+e: file:///workspace/umbra-github-delivery/UMBRA/umbra-mobile/app/src/main/java/com/umbra/mobile/HomeWorkspace.kt:131:1 Anonymous functions with names are prohibited.
+e: file:///workspace/umbra-github-delivery/UMBRA/umbra-mobile/app/src/main/java/com/umbra/mobile/HomeWorkspace.kt:131:1 Too many arguments for 'fun FolderEditor(item: DesktopItem?, apps: List<LaunchApp>, c: Config, save: (String, List<String>) -> Unit, close: () -> Unit): Unit'.
+e: file:///workspace/umbra-github-delivery/UMBRA/umbra-mobile/app/src/main/java/com/umbra/mobile/HomeWorkspace.kt:131:13 Modifier 'private' is not applicable to 'local function'.
+e: file:///workspace/umbra-github-delivery/UMBRA/umbra-mobile/app/src/main/java/com/umbra/mobile/HomeWorkspace.kt:139:2 Syntax error: Expecting ')'.
+
+> Task :app:compileDebugKotlin FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:compileDebugKotlin'.
+> A failure occurred while executing org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 24s
+14 actionable tasks: 1 executed, 13 up-to-date

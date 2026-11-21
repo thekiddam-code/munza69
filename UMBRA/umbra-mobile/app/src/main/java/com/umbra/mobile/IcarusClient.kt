@@ -19,7 +19,7 @@ data class ShipStatus(val online: Boolean,val data: JsonObject?,val age: Double?
 fun JsonObject.number(key: String): Double? = (get(key) as? JsonPrimitive)?.takeUnless { it.isString }?.doubleOrNull?.takeIf { it.isFinite() }
 fun JsonObject.literal(key: String): String? = (get(key) as? JsonPrimitive)?.takeIf { it.isString }?.content?.take(120)
 fun JsonObject.truth(key: String): Boolean = (get(key) as? JsonPrimitive)?.takeUnless { it.isString }?.booleanOrNull == true
-private fun JsonObject.names(key: String): List<String> = (get(key) as? JsonArray)?.take(100)?.mapNotNull { (it as? JsonPrimitive)?.takeIf { p -> p.isString }?.content?.takeIf { name -> name.length in 1..120 && name.none(Char::isISOControl) } } ?: emptyList()
+private fun JsonObject.names(key: String): List<String> = (get(key) as? JsonArray)?.mapNotNull { (it as? JsonPrimitive)?.takeIf { p -> p.isString }?.content?.takeIf { name -> name.length in 1..120 && name.none(Char::isISOControl) } } ?: emptyList()
 fun parsePcStatus(j: JsonObject): PcStatus = PcStatus(j.number("cpu")?.takeIf { it in 0.0..100.0 },j.number("ram")?.takeIf { it in 0.0..100.0 },j.truth("tv_configured"),j.names("macros"),j.names("quick"),
     (j["fortnite_emotes"] as? JsonArray)?.take(9)?.mapIndexedNotNull { i,value -> (value as? JsonObject)?.literal("label")?.takeIf { it.isNotBlank() }?.let { GameEmote(i,it) } } ?: emptyList(),
     (j["custom_messages"] as? JsonArray)?.take(40)?.mapNotNull {value->

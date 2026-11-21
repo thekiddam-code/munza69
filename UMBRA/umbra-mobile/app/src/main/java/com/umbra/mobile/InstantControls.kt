@@ -61,51 +61,14 @@ class InstantController(private val remote: IcarusClient,private val tokenFor: s
             val base=serverBase(c)
             val snapshot=state.value
             if(snapshot.base!=base || snapshot.pc==null)throw RemoteFailure(message="Refresh the current server controls first.")
-            val action=instantActions(snapshot.pc).firstOrNull {it.id==id} ?: throw RemoteFailure(message="This command is no longer available. Refresh controls.")
+            val local=c.customButtons.firstOrNull {"local:${it.id}"==id}
+            if(local!=null)buttonSupport(local,snapshot.pc)?.let {throw RemoteFailure(message=it)}
+            val action=buttonCatalog(c,snapshot.pc).firstOrNull {it.id==id} ?: throw RemoteFailure(message="This command is no longer available. Refresh controls.")
             val token=tokenFor(base) ?: throw RemoteFailure(401,"Pair this phone in the ICARUS screen.")
             state.value=snapshot.copy(busy=true,status="Sending ${action.label}…")
             val response=remote.request(base,action.path,c.timeout,token,action.body)
-            state.value=state.value.copy(status=response.literal("message") ?: "Server acknowledged ${action.label}.")
+            state.value=state.value.copy(status=response.number("queued")?.let {"Queued #${it.toInt()} · PC execution pending."} ?: response.literal("message") ?: "Server acknowledged ${action.label}.")
         }catch(e:CancellationException){throw e}catch(e:Exception){state.value=state.value.copy(status=(e as? RemoteFailure)?.message ?: "Command failed.")}
         finally{state.value=state.value.copy(busy=false);mutex.unlock()}
-    }
-}
-@Composable fun InstantControls(c: Config,model: LauncherModel,visible: Boolean,compact: Boolean) {
-    val snapshot by model.instant.state.collectAsStateWithLifecycle()
-    val lifecycle=LocalLifecycleOwner.current.lifecycle
-    val scope=rememberCoroutineScope();var work by remember {mutableStateOf<Job?>(null)};var editing by remember {mutableStateOf(false)}
-    LifecycleStartEffect(Unit){onStopOrDispose {work?.cancel()}}
-    LaunchedEffect(lifecycle,visible,serverBase(c),c.refreshOnResume){if(visible && c.refreshOnResume)lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED){model.instant.refresh(c)}}
-    val current=snapshot.takeIf {it.base==serverBase(c)} ?: InstantSnapshot(status="Refresh controls for the configured server.")
-    val catalog=current.pc?.let(::instantActions) ?: emptyList()
-    val ordered=catalog.sortedBy {c.instantOrder.indexOf(it.id).takeIf {n->n>=0} ?: Int.MAX_VALUE}
-    val selected=if(c.instantFavorites.isEmpty())ordered else ordered.filter {it.id in c.instantFavorites}
-    Column(verticalArrangement=Arrangement.spacedBy(6.dp)) {
-        Readout("ICARUS / INSTANT ACTIONS",MaterialTheme.colorScheme.primary)
-        Text(current.status,style=MaterialTheme.typography.bodySmall,modifier=Modifier.semantics {liveRegion=androidx.compose.ui.semantics.LiveRegionMode.Polite})
-        if(current.synchronizedAt>0)Text("Last sync ${Instant.ofEpochMilli(current.synchronizedAt).atZone(ZoneId.systemDefault()).format(DateTimeFormatter.ofPattern("MMM d HH:mm:ss"))}",style=MaterialTheme.typography.bodySmall)
-        Row {TextButton(onClick={if(work?.isActive!=true)work=scope.launch {model.instant.refresh(c,true)}},enabled=!current.busy){Text("Sync controls")};TextButton(onClick={editing=true},enabled=catalog.isNotEmpty()){Text("Arrange")}}
-        if(current.pc==null)Text("Native pairing is separate from your browser. Open ICARUS to pair.",style=MaterialTheme.typography.bodySmall)
-        (if(compact)selected.take(6) else selected).chunked(2).forEach {row->Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(6.dp)) {
-            row.forEach {action->OutlinedButton(onClick={if(work?.isActive!=true)work=scope.launch {model.instant.execute(c,action.id)}},enabled=!current.busy,shape=Chamfer,modifier=Modifier.weight(1f)){Text(c.instantLabels[action.id] ?: action.label)}}
-        } }
-        if(c.instantFavorites.any {id->catalog.none {it.id==id}})Text("Some favorite actions are absent from the current server snapshot.",style=MaterialTheme.typography.bodySmall)
-        if(!compact)Text("Quick-chat names are synchronized; key mappings remain on the server and are resolved there for each command. The status API does not expose key arrays. Saved messages come from the latest sync. Keep the intended game focused.",style=MaterialTheme.typography.bodySmall)
-    }
-    if(editing)InstantEditor(c,model,ordered){editing=false}
-}
-@Composable private fun InstantEditor(c: Config,model: LauncherModel,actions: List<InstantAction>,close: ()->Unit) {
-    var labelAction by remember {mutableStateOf<InstantAction?>(null)};var label by remember {mutableStateOf("")}
-    if(labelAction!=null)AlertDialog(onDismissRequest={labelAction=null},title={Text("Local button label")},text={OutlinedTextField(label,{label=it.take(48)},singleLine=true)},confirmButton={TextButton(onClick={val id=labelAction!!.id;model.change {it.copy(instantLabels=it.instantLabels+(id to label.trim()))};labelAction=null},enabled=label.isNotBlank() && label.none(Char::isISOControl)){Text("Save")}})
-    DesktopEditorDialog("Instant buttons / current server",close,confirm={TextButton(onClick=close){Text("Done")}}) {
-        Text("No server mappings are overwritten. Select favorites, move buttons, or edit local labels.",style=MaterialTheme.typography.bodySmall)
-        actions.forEachIndexed {index,action->
-            Row {Checkbox(action.id in c.instantFavorites,{selected->model.change {it.copy(instantFavorites=if(selected)it.instantFavorites+action.id else it.instantFavorites-action.id)}});Text(c.instantLabels[action.id] ?: action.label,modifier=Modifier.weight(1f))}
-            Row {
-                TextButton(onClick={model.change {it.copy(instantOrder=moveItem(actions.map {a->a.id},action.id,-1))}},enabled=index>0){Text("↑")}
-                TextButton(onClick={model.change {it.copy(instantOrder=moveItem(actions.map {a->a.id},action.id,1))}},enabled=index<actions.lastIndex){Text("↓")}
-                TextButton(onClick={labelAction=action;label=c.instantLabels[action.id] ?: action.label}){Text("Label")}
-            }
-        }
     }
 }

@@ -49,7 +49,7 @@ import kotlin.math.sin
                 "battery" -> {Readout("BATTERY",color);Text(device.battery.takeIf {it>=0}?.let {"$it%"} ?: "Unavailable",fontSize=32.sp,color=color);Text(if(device.charging==true)"Charging" else if(device.charging==false)"Not charging" else "State unavailable")}
                 "calendar" -> {Readout("CALENDAR",color);Text(unusedTime.format(DateTimeFormatter.ofPattern("EEE, d MMM yyyy")),fontSize=20.sp);Text("Tap for month view",style=MaterialTheme.typography.bodySmall)}
                 "system" -> {Readout("DEVICE STATUS",color);Text(device.network);Text(if(device.powerSave)"Battery saver on" else "Battery saver off")}
-                "icarus" -> InstantControls(c,model,visible,compact=true)
+                "icarus" -> InstantControls(c,model,visible,compact=true,surface="instant-widget:${item.id}",widgetId=item.id)
             }
         }
     }
@@ -88,9 +88,9 @@ import kotlin.math.sin
     }
 }
 private fun Modifier.weightlessHeight()=height(72.dp)
+@OptIn(ExperimentalFoundationApi::class)
 @Composable fun WidgetDetails(item: DesktopItem,c: Config,model: LauncherModel,device: Device,time: LocalDateTime,accent: Color,configure: ()->Unit) {
-    Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(12.dp)) {
-        TextButton(onClick=configure){Text("Configure / resize")}
+    Column(Modifier.fillMaxSize().combinedClickable(onClick={},onLongClick=configure).verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(12.dp)) {
         when(item.widget!!.kind) {
             "weather" -> WeatherDetails(c,model)
             "system","battery" -> TelemetryReadouts(device)

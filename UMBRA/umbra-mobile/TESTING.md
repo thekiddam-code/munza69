@@ -1,4 +1,4 @@
-# UMBRA Phase 2.1 verification
+# UMBRA Phase 2.3 verification
 
 ## Automated commands
 
@@ -65,3 +65,21 @@ Record Android/One UI version, display resolution, text/display scaling, navigat
 ## Performance and limitations
 
 Measure real S24+ drawer frame timing with ≥100 launchable apps and idle/interaction/background battery behavior across profiles. This environment has no KVM; stable and current emulator versions could not allocate their required data partition. Host Android UI tests provide useful regression coverage but do not establish Samsung gesture policy, special-access grants, real Keystore behavior, actual wallpaper application, live ICARUS/Tailscale compatibility, battery savings, or measured frame rates. See PHASE21_REPORT.md for the final executed results and outstanding acceptance items.
+
+## Phase 2.3 execution and physical checklist
+
+Current executed results are in `verification/phase23/` and [PHASE23_REPORT.md](PHASE23_REPORT.md); earlier Phase 2.1 counts above describe historical coverage. New tests exercise mixed-span collision invariants across densities, collapsed header sizes/order, strict schema 4 imports, schema 3 native-widget ID migration, persistent module flags/mode/status choices, more-than-six/all/explicit-empty selections, all supported output payloads, local overrides preserving placement/widget references, button files rejecting unsupported protocols, and real authenticated command/queued/error responses.
+
+SDK 30/34 native UI tests physically hold and drag collapsed Command Center headers with motion enabled and disabled; assert no expansion, amber guides while dragging and none afterward, hidden normal-use arrangement controls, Undo, independent module expansion, and Compact mode after Activity recreation. They also verify per-tab status space, compact Settings/footer, selection of 14 buttons, and long-press editing without executing a command. Earlier Home/folder/widget tests use the new contextual entry points while retaining persistence and touch assertions. The paused host Android event loop is explicitly processed for asynchronous storage/network callbacks.
+
+Physical S24+ checks remain separate:
+
+- [ ] Upgrade the existing signed installation without uninstalling. Compare all pages, folder membership, widget IDs/binding/configuration, favorite/button assignments, URLs, motion/detail choices, and weather location before/after.
+- [ ] Drag collapsed headers, expand multiple modules, resize/hide/restore, switch Compact/Expanded, then rotate/restart/reboot. Test all combinations of master off/on, intensity zero, profiles, Android reduced motion, and power saving.
+- [ ] Confirm amber guides appear only for active editing, clear on release/cancel/Back/Done, and never remain after navigation. Test interrupted/rapid and two-finger gestures. Verify no command fires from long-press, drag, resize, or import.
+- [ ] Move apps/folders/widgets/controls across free and occupied cells, use adjacent-page dragging and direct page chooser, resize mixed spans, and Undo. Verify TalkBack alternatives, large fonts, landscape, and no overlapping interactive controls.
+- [ ] Create/edit/delete/rename/icon-select Instant Buttons, test each supported output against the actual paired server and target app/game, export/import, create local overrides, and confirm shared PC mappings never change. Distinguish acknowledgment/queued state from real execution.
+- [ ] Select a catalog larger than six, search/filter, Select all/Deselect all, customize each widget independently, scroll to the final selected entry, hide/restore, and synchronize removed/renamed server references without losing retained assignments.
+- [ ] Check compatible native widget short clicks, scrolls, long-press handling, bind/configuration cancellation, provider resize constraints, lifecycle stops, and rebinding after portable import. OEM-only/work-profile providers remain unverified.
+- [ ] Compare status preferences on every tab, confirm Settings has only a compact title and scroll footer, and verify native system bars/notifications, calls, keyguard, gestures, media/system interfaces, and One UI Home recovery.
+- [ ] Profile frame timing, large catalogs, real providers, idle/background/network activity, and battery behavior with Android Studio/Perfetto. Host tests do not establish performance measurements.

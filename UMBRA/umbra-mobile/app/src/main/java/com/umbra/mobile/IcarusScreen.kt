@@ -23,11 +23,12 @@ import kotlinx.coroutines.*
 import kotlinx.serialization.json.*
 
 @OptIn(ExperimentalLayoutApi::class)
-@Composable fun IcarusScreen(c: Config,model: LauncherModel,accent: Color,initialModule: String,open: (Intent)->Unit,configure: ()->Unit,powerSave: Boolean,networkVersion: Long) {
+@Composable fun IcarusScreen(c: Config,model: LauncherModel,accent: Color,initialModule: String,open: (Intent)->Unit,configure: ()->Unit,powerSave: Boolean,networkVersion: Long,onModuleChange: (String)->Unit={}) {
     val lifecycle=LocalLifecycleOwner.current.lifecycle
     val scope=rememberCoroutineScope()
     val base=serverBase(c)
-    var module by rememberSaveable(initialModule) { mutableStateOf(if(initialModule in listOf("Engineering","Lounge","Simulator")) initialModule else "Engineering") }
+    var module by rememberSaveable(initialModule) { mutableStateOf(if(initialModule in listOf("Engineering","Lounge","Simulator","Instant Buttons","Rocket League")) initialModule else "Engineering") }
+    LaunchedEffect(module){onModuleChange(module)}
     var pin by remember { mutableStateOf("") }
     var paired by remember(base) { mutableStateOf(false) }
     var pc by remember(base) { mutableStateOf<PcStatus?>(null) }
@@ -111,9 +112,10 @@ import kotlinx.serialization.json.*
             finally { model.vault.clear();paired=false;pc=null;ship=null;status="Local pairing removed. Re-pair if needed." }
         }},enabled=!busy){Text("Forget native pairing")}
         FlowRow(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(6.dp)) {
-            listOf("Engineering","Lounge","Simulator").forEach { tab -> FilterChip(selected=module==tab,onClick={module=tab},label={Text(tab,style=MaterialTheme.typography.labelSmall)}) }
+            listOf("Engineering","Lounge","Simulator","Instant Buttons","Rocket League").forEach { tab -> FilterChip(selected=module==tab,onClick={module=tab},label={Text(tab,style=MaterialTheme.typography.labelSmall)}) }
         }
-        when(module) {
+        if(module=="Instant Buttons")InstantControls(c,model,false,false,surface="instant-page")
+        else ModularDeck("icarus",listOf("Engineering","Lounge","Simulator","Instant Controls","Rocket League"),c,model,initialOpen=module,onFocus={module=it},status={if(pc!=null)"Snapshot available" else "Not synchronized"}) {section->when(section) {
             "Engineering" -> Frame(accent) {
                 Readout("PC / SERVER SNAPSHOT",accent)
                 Text("PC CPU: ${pc?.cpu?.let { "$it%" } ?: "Unavailable"}")
@@ -124,9 +126,7 @@ import kotlinx.serialization.json.*
                     Text("Episode: ${(data?.get("episode") as? JsonPrimitive)?.contentOrNull?.take(40) ?: "Unavailable"}")
                     Text("Simulation time: ${data?.literal("time") ?: "Unavailable"}")
                     Text("Speed: ${data?.number("speed") ?: "Unavailable"} · Crew: ${data?.number("crewTotal")?.toInt() ?: "Unavailable"}")
-                    listOf("Pause" to "pause","Resume" to "resume","1× speed" to "speed1","5× speed" to "speed5","20× speed" to "speed20","Save simulation" to "save").forEach { (label,value) ->
-                        OutlinedButton(onClick={requestCommand(label,"api/icarus/command",buildJsonObject { put("command",value) })},enabled=!busy,shape=Chamfer,modifier=Modifier.fillMaxWidth()){Text(label)}
-                    }
+                    NamedControlGrid("engineering-actions",c,model,listOf("Pause" to "pause","Resume" to "resume","1× speed" to "speed1","5× speed" to "speed5","20× speed" to "speed20","Save simulation" to "save")) {value->requestCommand(value,"api/icarus/command",buildJsonObject {put("command",value)})}
                 }
                 Text("Diagnostics use actual HTTP responses. No host key or privileged telemetry publisher endpoint is used.",style=MaterialTheme.typography.bodySmall)
             }
@@ -134,30 +134,14 @@ import kotlinx.serialization.json.*
                 Readout("SAMSUNG TV / EXISTING SERVER",accent)
                 Text(if(pc?.tvConfigured==true) "TV configured on the server. Key delivery is acknowledged by the server." else "TV configuration is unavailable. Configure and pair the TV in Remote Deck first.")
                 if(pc?.tvConfigured==true) {
-                    val keys=listOf("Home" to "home","Back" to "back","Up" to "up","Left" to "left","OK" to "ok","Right" to "right","Down" to "down","Volume +" to "vol_up","Volume −" to "vol_down","Mute" to "mute","Play / pause" to "play_pause","Source" to "source","Power off" to "power_off")
-                    keys.chunked(2).forEach { row -> Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(6.dp)) { row.forEach { (label,key) -> OutlinedButton(onClick={requestCommand(label,"api/tv/key",buildJsonObject { put("key",key) })},enabled=!busy,shape=Chamfer,modifier=Modifier.weight(1f)){Text(label)} } } }
+                    NamedControlGrid("lounge-controls",c,model,TV_KEYS.map {it.replace('_',' ') to it}) {key->requestCommand(key,"api/tv/key",buildJsonObject {put("key",key)})}
                 }
                 Text("Direct TV app launching is not exposed by the inspected server. No fake Stremio or TV Plus launch controls are shown.",style=MaterialTheme.typography.bodySmall)
             }
-            else -> Column {
-                // Parent status refresh publishes the shared catalog; avoid a duplicate GET.
-                InstantControls(c,model,false,compact=false)
-                Frame(accent) {
-                Readout("SIMULATOR / CONFIGURED ACTIONS",accent)
-                if(pc==null) Text("Refresh an authenticated server snapshot to discover configured game controls.")
-                else {
-                    Text("Configured PC macros")
-                    pc!!.macros.forEach { label -> OutlinedButton(onClick={requestCommand(label,"api/action",buildJsonObject { put("action","macro");put("name",label) })},enabled=!busy,shape=Chamfer,modifier=Modifier.fillMaxWidth()){Text(label)} }
-                    Text("Rocket League quick chat")
-                    pc!!.quick.forEach { label -> OutlinedButton(onClick={requestCommand(label,"api/action",buildJsonObject { put("action","quick");put("name",label) })},enabled=!busy,shape=Chamfer,modifier=Modifier.fillMaxWidth()){Text(label)} }
-                    Text("Configured Fortnite emotes")
-                    pc!!.emotes.forEach { emote -> OutlinedButton(onClick={requestCommand(emote.label,"api/action",buildJsonObject { put("action","fortnite_emote");put("index",emote.index) })},enabled=!busy,shape=Chamfer,modifier=Modifier.fillMaxWidth()){Text(emote.label)} }
-                    OutlinedButton(onClick={requestCommand("Stop held game inputs","api/action",buildJsonObject { put("action","stop") })},enabled=!busy,shape=Chamfer){Text("Stop held inputs")}
-                    Text("These actions require the intended game/application to be focused on the PC. Only server-configured shortcuts are offered.",style=MaterialTheme.typography.bodySmall)
-                }
-            }
-        }
-        }
+            "Instant Controls" -> InstantControls(c,model,false,false,surface="icarus-instant")
+            "Rocket League" -> InstantControls(c,model,false,false,surface="rocket-controls",filter="rocket")
+            else -> InstantControls(c,model,false,false,surface="simulator-controls")
+        }}
         Spacer(Modifier.height(16.dp))
     }
 }

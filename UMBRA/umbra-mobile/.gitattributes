@@ -9,3 +9,4 @@ gradlew text eol=lf
 # Preserve raw tool output; generated logs may contain trailing spaces.
 verification/phase2/*.log -whitespace
 verification/phase21/*.log -whitespace
+verification/phase23/*.log -whitespace

@@ -34,22 +34,25 @@ class Phase21HostUiTest {
     }).around(rule)
     @Test fun folderWidgetPagerMasterOffAndBarsRemainFunctional() {
         rule.onNodeWithTag("folder-daily").performClick()
-        rule.onNodeWithText("Folder is empty. Add apps in Manage folder.").assertIsDisplayed()
+        rule.onNodeWithText("Folder is empty. Long-press its icon or this panel to configure.").assertIsDisplayed()
         capture("folder")
         rule.onNodeWithText("Close").performClick()
         rule.onNodeWithText("Manage folder").assertDoesNotExist()
         rule.onNodeWithTag("home-pages").performTouchInput { swipeLeft() }
         rule.onNodeWithTag("widget-clock").assertIsDisplayed().performClick()
-        rule.onNodeWithText("Configure / resize").assertIsDisplayed()
+        rule.onNodeWithText("Widget details").assertIsDisplayed()
         capture("clock-detail")
         rule.runOnUiThread {rule.activity.onBackPressedDispatcher.onBackPressed()}
-        rule.onNodeWithText("Configure / resize").assertDoesNotExist()
+        rule.onNodeWithText("Widget details").assertDoesNotExist()
         rule.onNodeWithTag("nav-APPS").performClick()
         rule.onNodeWithTag("nav-HOME").performClick()
         rule.onNodeWithTag("widget-clock").assertIsDisplayed()
-        rule.onNodeWithText("Widget options").performClick()
+        rule.onNodeWithText("Widget options").assertDoesNotExist()
+        rule.onNodeWithTag("grid-item-home:info-clock").performSemanticsAction(androidx.compose.ui.semantics.SemanticsActions.OnLongClick){it()}
+        rule.onNodeWithText("Configure").performClick()
         rule.onNodeWithContentDescription("24-hour clock").assertIsOff().performClick()
         rule.onNodeWithText("Save widget").performClick()
+        rule.onNodeWithText("Done").performClick()
         rule.waitUntil(5000) { runBlocking {ConfigStore(rule.activity).config.first().desktop!!.item("clock")!!.widget!!.clock24} }
         // Real WindowInsets behavior is OEM-dependent; exercise both public requests and persistence here.
         rule.runOnUiThread {rule.activity.setAndroidBarsVisible(false)}
@@ -62,12 +65,12 @@ class Phase21HostUiTest {
         assertFalse(saved.master);assertEquals(VisualDetail.Cinematic,saved.visualDetail)
         assertTrue(saved.desktop!!.item("clock")!!.widget!!.clock24)
         rule.onNodeWithTag("page-main").performClick()
-        rule.onNodeWithTag("folder-daily").performClick()
-        rule.onNodeWithText("Manage folder").performClick()
+        rule.onNodeWithTag("grid-item-home:main-daily").performSemanticsAction(androidx.compose.ui.semantics.SemanticsActions.OnLongClick){it()}
+        rule.onNodeWithText("Configure").performClick()
         rule.onNodeWithText("Folder name").performTextClearance()
         rule.onNodeWithText("Folder name").performTextInput("Navigation")
         rule.onNodeWithText("Save folder").performClick()
-        rule.onNodeWithText("Close").performClick()
+        rule.onNodeWithText("Done").performClick()
         rule.onNodeWithText("Navigation").assertIsDisplayed()
     }
     @Test fun dragApplicationsTogetherCreatesPersistentFolder() {
@@ -91,7 +94,8 @@ class Phase21HostUiTest {
         rule.onNodeWithContentDescription("Beta").assertIsDisplayed()
     }
     @Test fun pagesAndWidgetPickerRemainUsableWithMasterOff() {
-        rule.onNodeWithText("Pages").performClick()
+        rule.onNodeWithTag("home-edit-header").performSemanticsAction(androidx.compose.ui.semantics.SemanticsActions.OnLongClick){it()}
+        rule.onNodeWithText("Home pages").performClick()
         rule.onNodeWithText("New page name").performScrollTo().performTextClearance()
         rule.onNodeWithText("New page name").performTextInput("Auxiliary")
         rule.onNodeWithText("Add page").performScrollTo().performClick()
@@ -101,7 +105,8 @@ class Phase21HostUiTest {
         val page=runBlocking {store.config.first().desktop!!.pages.last()}
         assertEquals("Auxiliary",page.name)
         rule.onNodeWithTag("page-${page.id}").performClick()
-        rule.onNodeWithText("Widget").performClick()
+        rule.onNodeWithTag("home-edit-header").performSemanticsAction(androidx.compose.ui.semantics.SemanticsActions.OnLongClick){it()}
+        rule.onNodeWithText("Add widget").performClick()
         rule.onNodeWithText("Clock · Analog").performClick()
         rule.waitUntil(5000) {org.robolectric.Shadows.shadowOf(android.os.Looper.getMainLooper()).idle();runBlocking {store.config.first().desktop!!.page(page.id).items.size==1}}
         val widget=runBlocking {store.config.first().desktop!!.page(page.id).items.single()}

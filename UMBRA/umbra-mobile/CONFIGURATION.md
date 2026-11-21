@@ -1,16 +1,16 @@
-# UMBRA configuration schema 3
+# UMBRA configuration schema 4
 
 Preferences are private Jetpack Preferences DataStore (`datastore/umbra_settings.preferences_pb`), with a validated JSON envelope in `config_v2`. Existing Phase 1 scalar keys are read as a migration source until the first current write. Favorites, URL, timeout, profile, master, effects, panel, and accent choice are preserved; the old transitions selection also initializes the now-independent startup selection. Corrupt Preferences recover to defaults; invalid stored JSON also recovers to safe defaults. Disk-write errors remain visible in the launcher.
 
 ## Import/export
 
-Export and import use Android's Storage Access Framework, without broad storage permissions. Export is a schema 3 snapshot with portable Android-widget placeholders. Schema 2 imports are accepted and gain Phase 2.1 defaults; exports use schema 3. Import reads at most 256 KiB, requires valid UTF-8/JSON and exact types, rejects unknown fields/versions, validates everything before showing an Apply preview, then replaces preferences atomically. An import is **replacement, not merge**: omitted settings take schema defaults. No partial import is applied on failure. Exported URLs may be private/user-specific; choose your export destination accordingly. Credentials, PINs, device readings, notification contents/counts, and encryption keys are never serialized.
+Export and import use Android's Storage Access Framework, without broad storage permissions. Export is a schema 4 snapshot with portable Android-widget placeholders. Schema 2/3 imports are accepted and gain Phase 2.1 defaults; exports use schema 4. Import reads at most 1 MiB, requires valid UTF-8/JSON and exact types, rejects unknown fields/versions, validates everything before showing an Apply preview, then replaces preferences atomically. An import is **replacement, not merge**: omitted settings take schema defaults. No partial import is applied on failure. Exported URLs may be private/user-specific; choose your export destination accordingly. Credentials, PINs, device readings, notification contents/counts, and encryption keys are never serialized.
 
 Envelope:
 
 ```json
 {
-  "schemaVersion": 3,
+  "schemaVersion": 4,
   "settings": {
     "profile": "Adaptive",
     "master": true,
@@ -94,3 +94,9 @@ Null desktop preserves legacy favorite and quick-order migration until the first
 Master override, profile, effect selections, and transition categories are independently stored; toggling master never rewrites selections or `visualDetail`. Appearance reset restores Enhanced and app styling, preserving transition choices. Reset transitions restores category/style defaults without changing master/profile/detail. Animation reset restores existing motion settings without changing detail. Full defaults clears the workspace, weather choice, instant preferences, favorites, and native pairing. OS grants remain Android-managed.
 
 Weather cache is a separate bounded private file (`cache/umbra-weather-v1.json`), not part of exports, with location/unit binding and timestamps. Removing the weather location immediately prevents future weather-view fetches; the app’s cache can be cleared through Android App info. Forecasts and instant server snapshots are not configuration data and are not substituted with sample values.
+
+## Phase 2.3 shared layouts and controls
+
+The authoritative new storage guide is [LAYOUT_MIGRATION.md](LAYOUT_MIGRATION.md). Schema 4 adds `gridLayouts`, `deckColumns` (2–4 reference density, responsive up to 8), `editHaptics` (false), `commandExpanded` (true on migration), `statusTabs` (per-context booleans), `customButtons`, nullable `instantSelection`, and `widgetButtonSelections`. Existing fields and local native widget bindings are preserved. No movement or visibility setting depends on optional motion.
+
+Expanded module sizes remain stored while collapsed rendering uses a single compact header row. Placement is normalized without overlap after density/orientation changes. Changes use atomic DataStore writes; invalid imports or capacity violations preserve the prior stored layout and show an error. Button-only files are separately versioned and strictly typed; output payloads are specified in [ICARUS_OUTPUTS.md](ICARUS_OUTPUTS.md). Full exports include the shared grid, button definitions, selection, and per-tab status settings, while excluding credentials and portable widget bindings.

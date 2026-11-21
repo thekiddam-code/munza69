@@ -1,0 +1,8 @@
+Package: com.umbra.mobile
+Version: 2.3 (4)
+Min SDK: 29
+Target SDK: 35
+App APK bytes: 30625583
+App APK SHA-256: 64923705884bf1a459b389f51ad0ce433524f72052ee066df109234ebcdb5872
+Signature verification: PASS; certificate matches published Phase 2.1
+Native ABIs include arm64-v8a
