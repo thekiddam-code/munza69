@@ -22,10 +22,13 @@ class PersistenceTest {
                 store.flag("master",false); store.profile(Profile.Cinematic)
                 store.deck("http://icarus.tailnet.ts.net:8080/",12)
                 store.favorite("example/App")
+                store.update { it.copy(intensity=37,startup=false,commandAnimations=false,moduleOrder=MODULES.reversed(),accent="#94B59A",hideTopBar=false) }
             }
             createAndUse { store ->
                 val c=store.config.first()
                 assertFalse(c.master); assertTrue(c.environment); assertFalse(c.wallpaper)
+                assertEquals(37,c.intensity);assertFalse(c.startup);assertFalse(c.commandAnimations)
+                assertEquals(MODULES.reversed(),c.moduleOrder);assertEquals("#94B59A",c.accent);assertFalse(c.hideTopBar)
                 assertEquals(Profile.Cinematic,c.profile); assertEquals(12,c.timeout)
                 assertEquals("http://icarus.tailnet.ts.net:8080/",c.url)
                 assertTrue("example/App" in c.favorites)

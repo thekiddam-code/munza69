@@ -1,0 +1,16 @@
+INFO         | Android emulator version 35.4.9.0 (build_id 13025442) (CL:N/A)
+INFO         | Graphics backend: gfxstream
+INFO         | Found systemPath /workspace/.build-tools/sdk/system-images/android-30/aosp_atd/x86_64/
+INFO         | Changing default hw.initialOrientation to portrait
+
+WARNING      | Please update the emulator to one that supports the feature(s): Vulkan
+INFO         | Checking system compatibility:
+INFO         |   Checking: hasSufficientDiskSpace
+INFO         |      Ok: Disk space requirements to run avd: `umbra-phase2` are met
+INFO         |   Checking: hasSufficientHwGpu
+INFO         |      Ok: Hardware GPU requirements to run avd: `umbra-phase2` are passed
+INFO         |   Checking: hasSufficientSystem
+INFO         |      Warning: AVD 'umbra-phase2' will run more smoothly with 4 CPU cores (currently using 3)
+USER_WARNING | AVD 'umbra-phase2' will run more smoothly with 4 CPU cores (currently using 3).
+WARNING      | File System is not ext4, disable QuickbootFileBacked feature
+ERROR        | Not enough space to create userdata partition. Available: 2189.839844 MB at /workspace/.build-tools/phase2-avd/umbra-phase2.avd, need 7372.800000 MB.

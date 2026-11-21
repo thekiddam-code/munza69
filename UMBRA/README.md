@@ -1,28 +1,37 @@
-# UMBRA Mobile
+# UMBRA Mobile 2.0 — Phase 2
 
-Native Android launcher for Samsung Galaxy S24+, built with Kotlin and Jetpack Compose. This folder is separate from the existing ICARUS application.
+Native Kotlin / Jetpack Compose Android launcher for Samsung Galaxy S24+, alongside the existing ICARUS project.
 
-## Download
+## Download and install
 
-These links download files from GitHub rather than ChatGPT artifacts:
-
-- [Download debug APK](https://github.com/thekiddam-code/munza69/raw/refs/heads/main/UMBRA/downloads/umbra-mobile-debug.apk)
-- [Download APK as ZIP](https://github.com/thekiddam-code/munza69/raw/refs/heads/main/UMBRA/downloads/umbra-mobile-apk.zip) — extract the APK before installing.
-- [Download Android Studio source ZIP](https://github.com/thekiddam-code/munza69/raw/refs/heads/main/UMBRA/downloads/umbra-mobile-source.zip)
+- [Download Phase 2 debug APK](https://github.com/thekiddam-code/munza69/raw/refs/heads/main/UMBRA/downloads/umbra-mobile-debug.apk)
+- [Download APK ZIP](https://github.com/thekiddam-code/munza69/raw/refs/heads/main/UMBRA/downloads/umbra-mobile-apk.zip) — extract before installing.
+- [Download full Android Studio project](https://github.com/thekiddam-code/munza69/raw/refs/heads/main/UMBRA/downloads/umbra-mobile-source.zip)
+- [Download coordinated lock-screen wallpaper](https://github.com/thekiddam-code/munza69/raw/refs/heads/main/UMBRA/downloads/umbra-lock-screen.png)
 - [SHA-256 checksums](downloads/SHA256SUMS.txt)
 
-## Install
+Install over Phase 1 to preserve settings. Select **Settings → Apps → Choose default apps → Home app → UMBRA**. Choose **One UI Home** there to restore Samsung. The persistent **Android bars** header action exits immersive presentation.
 
-Transfer the APK to your phone and open it. Allow installation from the file manager when Android asks. Then choose **Settings → Apps → Choose default apps → Home app → UMBRA**. To restore Samsung, select **One UI Home** in that same screen.
+## Phase 2
 
-Keep Tailscale connected separately. Configure your own Remote Deck URL in UMBRA's Config screen. No ICARUS server change is required.
+Supported immersive fullscreen; real configurable status panel; native swipe Command Center and system dashboard; nine independently controlled motion categories, profiles, intensity and master override; native ICARUS pairing/Engineering/Lounge/Simulator controls; Customization Studio; validated versioned settings import/export; coordinated static lock wallpaper.
 
-## Build and documentation
+ICARUS native pairing uses your existing server PIN and Android Keystore-encrypted local credentials. Keep Tailscale connected separately. No ICARUS server/simulation change is required. Native notifications, system gestures, keyguard, biometrics, calls, settings, and One UI fallback remain Android-managed.
 
-Open [umbra-mobile](umbra-mobile/) in Android Studio. On Windows, run `umbra-mobile\build_umbra.bat` with JDK 17 or 21 and Android SDK 35 configured.
+## Source and documentation
 
-- [Installation, configuration, and build guide](umbra-mobile/README.md)
-- [Implementation and limitation report](umbra-mobile/PHASE1_REPORT.md)
-- [Device acceptance checklist](umbra-mobile/TESTING.md)
+Open [umbra-mobile](umbra-mobile/) in Android Studio. Windows: `umbra-mobile\build_umbra.bat` with JDK 17 or 21 and Android SDK 35.
 
-The debug APK was successfully built with Gradle. Eight host tests passed; Android lint passed with zero errors. The APK signature was verified. Native UI tests could not execute because the cloud emulator's Package Manager failed to initialize. Physical Galaxy S24+/One UI and live ICARUS/Tailscale acceptance testing remain required. This is a development-signed APK, not a store release.
+- [Install, build, and operation guide](umbra-mobile/README.md)
+- [Configuration schema and privacy](umbra-mobile/CONFIGURATION.md)
+- [Phase 2 feature checklist, results, limitations, and Phase 3](umbra-mobile/PHASE2_REPORT.md)
+- [Physical-device acceptance checklist](umbra-mobile/TESTING.md)
+
+The debug APK builds successfully. Host Android 11/14 UI testing is distinct from physical Samsung acceptance. Device notification access, actual Keystore/wallpaper/system gestures, live ICARUS/Tailscale behavior, and measured performance remain phone checks. This is a development-signed build, not a store release.
+
+## Host Android UI preview
+
+These images render the actual Activity/Compose UI in Robolectric's host Android runtime; they are not physical phone screenshots. Missing host telemetry is displayed as unavailable.
+
+<img src="umbra-mobile/verification/phase2/host-renders/home-sdk34.png" width="300" alt="UMBRA Home rendered by the host Android runtime">
+<img src="umbra-mobile/verification/phase2/host-renders/command-center-sdk34.png" width="300" alt="UMBRA Command Center rendered by the host Android runtime">

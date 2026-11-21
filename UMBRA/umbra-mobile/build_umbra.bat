@@ -14,7 +14,7 @@ if not exist "%JAVA_HOME%\bin\java.exe" (
   exit /b 1
 )
 :build
-call gradlew.bat --no-daemon :app:testDebugUnitTest :app:lintDebug :app:assembleDebug
+call gradlew.bat --no-daemon :app:testDebugUnitTest :app:lintDebug :app:assembleDebug :app:assembleDebugAndroidTest
 if errorlevel 1 (
   echo BUILD FAILED. Check Android SDK setup and the Gradle error above.
   exit /b 1

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.umbra.mobile.PersistenceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-11-21T00:23:55" hostname="06cc3d069f3a" time="0.025">
+  <properties/>
+  <testcase name="settingsSurviveStoreRecreationAndMasterPreservesFlags" classname="com.umbra.mobile.PersistenceTest" time="0.025"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

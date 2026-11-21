@@ -19,6 +19,8 @@ import kotlin.coroutines.resume
 data class LaunchApp(val id: String, val label: String)
 class LauncherModel(app: Application) : AndroidViewModel(app) {
     val store = ConfigStore(app)
+    val vault = CredentialVault(app)
+    val remote = IcarusClient()
     val config = store.config.stateIn(viewModelScope, SharingStarted.Eagerly, Config())
     val apps = MutableStateFlow<List<LaunchApp>>(emptyList())
     val appError = MutableStateFlow(false)
@@ -35,7 +37,7 @@ class LauncherModel(app: Application) : AndroidViewModel(app) {
                 pm.queryIntentActivities(intent, 0).filter { it.activityInfo.packageName != "com.umbra.mobile" }
                     .map { LaunchApp(ComponentName(it.activityInfo.packageName, it.activityInfo.name).flattenToString(), it.loadLabel(pm).toString()) }
                     .distinctBy { it.id }.sortedWith { a,b -> collator.compare(a.label,b.label) }
-            }.onSuccess { icons.evictAll(); apps.value = it; appError.value = false }.onFailure { appError.value = true }
+            }.onSuccess { currentCoroutineContext().ensureActive(); icons.evictAll(); apps.value = it; appError.value = false }.onFailure { appError.value = true }
         }
     }
     suspend fun icon(id: String): Bitmap? = withContext(Dispatchers.IO) {
@@ -44,12 +46,16 @@ class LauncherModel(app: Application) : AndroidViewModel(app) {
         }.getOrNull()
     }
     private fun save(action: suspend () -> Unit) = viewModelScope.launch {
-        try { action(); settingsError.value = false } catch (_: IOException) { settingsError.value = true }
+        try { action(); settingsError.value = false } catch (_: IOException) { settingsError.value = true } catch (_: IllegalArgumentException) { settingsError.value = true }
     }
+    fun change(transform: (Config) -> Config) = save { store.update(transform) }
+    fun replace(c: Config) = save { store.replace(c) }
+    fun reset() = save { vault.clear();store.replace(Config()) }
     fun flag(key: String, value: Boolean) = save { store.flag(key,value) }
     fun profile(value: Profile) = save { store.profile(value) }
     fun favorite(id: String) = save { store.favorite(id) }
     fun deck(url: String, timeout: Int) = save { store.deck(url,timeout) }
+    override fun onCleared() { remote.close();super.onCleared() }
 }
 // An HTTP response proves reachability, not ICARUS identity or authenticated health.
 // No redirects, credentials, cookies, analytics, or response body downloads.
