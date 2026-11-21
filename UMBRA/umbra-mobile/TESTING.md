@@ -83,3 +83,7 @@ Physical S24+ checks remain separate:
 - [ ] Check compatible native widget short clicks, scrolls, long-press handling, bind/configuration cancellation, provider resize constraints, lifecycle stops, and rebinding after portable import. OEM-only/work-profile providers remain unverified.
 - [ ] Compare status preferences on every tab, confirm Settings has only a compact title and scroll footer, and verify native system bars/notifications, calls, keyguard, gestures, media/system interfaces, and One UI Home recovery.
 - [ ] Profile frame timing, large catalogs, real providers, idle/background/network activity, and battery behavior with Android Studio/Perfetto. Host tests do not establish performance measurements.
+
+## 2.3.1 soundboard hotfix
+
+See [executed results](verification/soundboard/RESULTS.txt) and [integration / physical acceptance](SOUNDBOARD_INTEGRATION.md). `SoundboardTest` covers the real catalog/play/stop/edit/output contracts and server-only preferences; `SoundboardHostUiTest` runs native SDK 30/34 grid and Settings flows. The existing full suite still passes. ICARUS 4.8B service and Chromium/HTTP tests pass in an isolated reference checkout without modifying the main server or private library. Generated fixtures and mocked Windows rendering do not establish actual audible output or physical S24+ acceptance.

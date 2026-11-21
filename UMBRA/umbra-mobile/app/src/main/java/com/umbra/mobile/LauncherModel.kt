@@ -22,6 +22,12 @@ class LauncherModel(app: Application) : AndroidViewModel(app) {
     val vault = CredentialVault(app)
     val remote = IcarusClient()
     val instant = InstantController(remote,vault)
+    var soundboard = SoundboardController { c,path,body ->
+        val base=serverBase(c)
+        val token=vault.read(base) ?: throw RemoteFailure(401,"Pair this native client first.")
+        remote.request(base,path,c.timeout,token,body)
+    }
+        internal set
     val weather = WeatherRepository(app)
     val widgetHost = WidgetHostController(app)
     val config = store.config.stateIn(viewModelScope, SharingStarted.Eagerly, Config())

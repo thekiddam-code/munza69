@@ -27,7 +27,7 @@ import kotlinx.serialization.json.*
     val lifecycle=LocalLifecycleOwner.current.lifecycle
     val scope=rememberCoroutineScope()
     val base=serverBase(c)
-    var module by rememberSaveable(initialModule) { mutableStateOf(if(initialModule in listOf("Engineering","Lounge","Simulator","Instant Buttons","Rocket League")) initialModule else "Engineering") }
+    var module by rememberSaveable(initialModule) { mutableStateOf(if(initialModule in listOf("Engineering","Lounge","Simulator","Instant Buttons","Soundboard","Rocket League")) initialModule else "Engineering") }
     LaunchedEffect(module){onModuleChange(module)}
     var pin by remember { mutableStateOf("") }
     var paired by remember(base) { mutableStateOf(false) }
@@ -59,6 +59,7 @@ import kotlinx.serialization.json.*
                 val token=model.vault.read(base) ?: break
                 status="Checking configured server…"
                 try {
+                    launch {model.soundboard.sync(c)}
                     pc=model.remote.status(base,token,c.timeout)
                     ship=try { model.remote.ship(base,token,c.timeout) } catch(e: RemoteFailure) { if(e.status==404) null else throw e }
                     model.instant.publish(base,pc!!)
@@ -112,9 +113,10 @@ import kotlinx.serialization.json.*
             finally { model.vault.clear();paired=false;pc=null;ship=null;status="Local pairing removed. Re-pair if needed." }
         }},enabled=!busy){Text("Forget native pairing")}
         FlowRow(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(6.dp)) {
-            listOf("Engineering","Lounge","Simulator","Instant Buttons","Rocket League").forEach { tab -> FilterChip(selected=module==tab,onClick={module=tab},label={Text(tab,style=MaterialTheme.typography.labelSmall)}) }
+            listOf("Engineering","Lounge","Simulator","Instant Buttons","Soundboard","Rocket League").forEach { tab -> FilterChip(selected=module==tab,onClick={module=tab},label={Text(tab,style=MaterialTheme.typography.labelSmall)}) }
         }
-        if(module=="Instant Buttons")InstantControls(c,model,false,false,surface="instant-page")
+        if(module=="Soundboard")SoundboardScreen(c,model)
+        else if(module=="Instant Buttons")InstantControls(c,model,false,false,surface="instant-page")
         else ModularDeck("icarus",listOf("Engineering","Lounge","Simulator","Instant Controls","Rocket League"),c,model,initialOpen=module,onFocus={module=it},status={if(pc!=null)"Snapshot available" else "Not synchronized"}) {section->when(section) {
             "Engineering" -> Frame(accent) {
                 Readout("PC / SERVER SNAPSHOT",accent)

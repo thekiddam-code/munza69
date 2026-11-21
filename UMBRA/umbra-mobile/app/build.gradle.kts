@@ -8,7 +8,7 @@ android {
     namespace = "com.umbra.mobile"
     compileSdk = 35
     buildToolsVersion = "35.0.0"
-    defaultConfig { applicationId = "com.umbra.mobile"; minSdk = 29; targetSdk = 35; versionCode = 4; versionName = "2.3"; testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner" }
+    defaultConfig { applicationId = "com.umbra.mobile"; minSdk = 29; targetSdk = 35; versionCode = 5; versionName = "2.3.1"; testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner" }
     buildFeatures { compose = true }
     testOptions { unitTests.isIncludeAndroidResources = true }
     compileOptions { sourceCompatibility = JavaVersion.VERSION_17; targetCompatibility = JavaVersion.VERSION_17 }

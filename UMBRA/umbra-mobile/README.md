@@ -1,4 +1,4 @@
-# UMBRA Mobile 2.3
+# UMBRA Mobile 2.3.1
 
 A native Kotlin / Jetpack Compose Android HOME launcher for Samsung Galaxy S24+, package `com.umbra.mobile`. Android 10+ (API 29), target/compile API 35. This increment preserves the existing industrial terminal interface and native Android functions while moving arrangement controls out of normal use.
 
@@ -6,7 +6,7 @@ A native Kotlin / Jetpack Compose Android HOME launcher for Samsung Galaxy S24+,
 
 Download `umbra-mobile-debug.apk` from the sibling [GitHub downloads folder](https://github.com/thekiddam-code/munza69/tree/main/UMBRA/downloads), or extract the APK ZIP first. Open the APK on the phone and grant the opening file manager/browser installation permission when Android requests it. ADB alternative: `adb install -r umbra-mobile-debug.apk`.
 
-Version **2.3 (code 4)** updates the previous signed build without requiring an uninstall. Keep the same signing key when building future updates; a build signed on another computer may need your consistent key or an uninstall, which clears local data. The distributed debug build is for development, not store distribution.
+Version **2.3.1 (code 5)** updates the previous signed build without requiring an uninstall. Keep the same signing key when building future updates; a build signed on another computer may need your consistent key or an uninstall, which clears local data. The distributed debug build is for development, not store distribution.
 
 Select **Samsung Settings → Apps → Choose default apps → Home app → UMBRA**. Select **One UI Home** in that same screen to restore Samsung. UMBRA can open Android's Home settings from its Settings categories. No root, kiosk/device-owner mode, protected notification shade, secure lock-screen replacement, or firmware changes are used.
 
@@ -27,6 +27,10 @@ Command Center remembers **Compact / Expanded** independently from each module's
 Home, module headers, Instant Buttons, system controls, Engineering, Lounge TV keys, Simulator/Rocket League controls, ICARUS shortcuts, and Device Status use the same collision-aware grid. Reference density adapts to available width/orientation; mixed spans cannot paint across neighboring controls. Expanded sizes, positions, hidden flags, and collapsed flags persist. TalkBack exposes long-click and accessible reordering alternatives without permanent arrangement buttons.
 
 Wi-Fi, Bluetooth, sound, display, battery, media, and device controls open their supported Android interfaces. Brightness applies to **UMBRA's window only**, with Use system brightness recovery. No restricted system setting is reported changed merely because a shortcut was tapped. Android notifications remain native; optional notification counts require explicit OS listener authorization and exclude notification content.
+
+## ICARUS soundboard hotfix
+
+Open **ICARUS → Soundboard** for the existing server sound library. Output selection is now under **Settings → ICARUS → Soundboard → Audio Output**, saved on ICARUS and shared with Remote Deck. Keep using the working soundboard-capable 4.8B/C server; main’s older server has no soundboard API. See [integration, storage, exact APIs and verification](SOUNDBOARD_INTEGRATION.md).
 
 ## Instant Buttons / ICARUS
 
@@ -60,7 +64,7 @@ Open this `umbra-mobile/` folder in Android Studio. Install Android SDK Platform
 ./gradlew --no-daemon -Pkotlin.compiler.execution.strategy=in-process :app:testDebugUnitTest :app:lintDebug :app:assembleDebug :app:assembleDebugAndroidTest
 ```
 
-Verified result: **68 tests passed; lint zero errors (13 warnings); app and device-test APKs built**.
+Verified 2.3.1 result: **79 Android tests passed; lint zero errors (13 warnings); app and device-test APKs built**. Existing ICARUS sound service/browser checks: **19 + 7 pass**. The previous signing certificate and permissions are preserved. See [hotfix results and hardware limits](verification/soundboard/RESULTS.txt).
 
 Debug APK: `app/build/outputs/apk/debug/app-debug.apk`. Device instrumentation requires a real device/working emulator: `./gradlew :app:connectedDebugAndroidTest`. Compilation of its APK is not proof of execution.
 

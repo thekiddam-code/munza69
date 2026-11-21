@@ -100,3 +100,7 @@ Weather cache is a separate bounded private file (`cache/umbra-weather-v1.json`)
 The authoritative new storage guide is [LAYOUT_MIGRATION.md](LAYOUT_MIGRATION.md). Schema 4 adds `gridLayouts`, `deckColumns` (2–4 reference density, responsive up to 8), `editHaptics` (false), `commandExpanded` (true on migration), `statusTabs` (per-context booleans), `customButtons`, nullable `instantSelection`, and `widgetButtonSelections`. Existing fields and local native widget bindings are preserved. No movement or visibility setting depends on optional motion.
 
 Expanded module sizes remain stored while collapsed rendering uses a single compact header row. Placement is normalized without overlap after density/orientation changes. Changes use atomic DataStore writes; invalid imports or capacity violations preserve the prior stored layout and show an error. Button-only files are separately versioned and strictly typed; output payloads are specified in [ICARUS_OUTPUTS.md](ICARUS_OUTPUTS.md). Full exports include the shared grid, button definitions, selection, and per-tab status settings, while excluding credentials and portable widget bindings.
+
+## Soundboard 2.3.1
+
+`gridLayouts["soundboard"]` stores only local native button placement, size and visibility. The schema remains 4 and existing layouts are preserved. Sound definitions, favorites, output selection and optional normalization are loaded from and saved to ICARUS, never copied into local settings exports. See [SOUNDBOARD_INTEGRATION.md](SOUNDBOARD_INTEGRATION.md).

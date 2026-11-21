@@ -15,6 +15,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.*
 import androidx.compose.ui.text.font.FontFamily
@@ -73,7 +74,7 @@ import java.io.IOException
     Column(Modifier.fillMaxSize()) {
         // Compact Settings title is provided by the activity header.
         Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState())) {
-            listOf("Appearance","Animation","Display","Command Center","ICARUS","Organization","Weather","Configuration","Lock screen").forEach { item -> TextButton(onClick={category=item}){Text(item,color=if(category==item)accent else Muted)} }
+            listOf("Appearance","Animation","Display","Command Center","ICARUS","Organization","Weather","Configuration","Lock screen").forEach { item -> TextButton(onClick={category=item},modifier=Modifier.testTag("settings-category-$item")){Text(item,color=if(category==item)accent else Muted)} }
         }
         if(notice.isNotEmpty()) Text(notice,color=accent,style=MaterialTheme.typography.bodySmall,modifier=Modifier.semantics { liveRegion=LiveRegionMode.Polite })
         Column(Modifier.weight(1f).fillMaxWidth().verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(12.dp)) {
@@ -159,12 +160,17 @@ import java.io.IOException
                 }
                 "ICARUS" -> {
                     ConnectionFields(c,model)
+                    TextButton(onClick={category="Soundboard"}){Text("Soundboard → Audio Output")}
                     Toggle("Check status on resume",c.refreshOnResume){v->model.change { it.copy(refreshOnResume=v) }}
                     Toggle("Check status on network change",c.refreshOnNetwork){v->model.change { it.copy(refreshOnNetwork=v) }}
                     val refreshOptions=(listOf(0,30,60,300)+c.foregroundRefreshSeconds).distinct().sorted()
                     Choice("Foreground native ICARUS refresh",refreshOptions.map { if(it==0) "Manual" else "$it seconds" },if(c.foregroundRefreshSeconds==0) "Manual" else "${c.foregroundRefreshSeconds} seconds"){v->model.change { it.copy(foregroundRefreshSeconds=v.substringBefore(' ').toIntOrNull() ?: 0) }}
                     Text("Automatic intervals apply only while the ICARUS screen is visible and battery saver is off. All requests cancel when hidden. Pairing tokens stay encrypted on this phone and are bound to the exact server base. Configure Tailscale separately.",style=MaterialTheme.typography.bodySmall)
                     TextButton(onClick={scope.launch { model.vault.clear();notice="Local native pairing removed. Browser pairing is separate." }}){Text("Clear local native pairing")}
+                }
+                "Soundboard" -> {
+                    TextButton(onClick={category="ICARUS"}){Text("Back to ICARUS")}
+                    SoundboardOutputSettings(c,model)
                 }
                 "Organization" -> OrganizationSettings(c,model,apps)
                 "Weather" -> WeatherSettings(c,model)

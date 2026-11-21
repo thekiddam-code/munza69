@@ -1,0 +1,24 @@
+UMBRA Mobile 2.3.1 (versionCode 5) — soundboard hotfix
+
+Final Gradle: BUILD SUCCESSFUL
+:app:testDebugUnitTest :app:lintDebug :app:assembleDebug :app:assembleDebugAndroidTest
+79 Android test executions, 0 failures, 0 errors.
+Includes 7 soundboard unit/API tests and 4 soundboard UI cases (SDK 30 and 34).
+Lint severity counts: {'Warning': 13}
+Debug APK and device-test APK assembled. Device instrumentation was NOT executed.
+Debug APK SHA-256: 8f6f511b69a7470cfb025527aa45c879960013a1379c5f1d2d787b03c0e97656
+Signer #1 certificate SHA-256 digest: 79829531c75dd5ee41bf23951d6514bb2ecb21052c405a6230bfc8cbccdb7c6e
+Signing certificate matches the previous Phase 2.3 distributed APK.
+Package com.umbra.mobile / version 2.3.1 / code 5 verified with aapt.
+Packaged permissions match Phase 2.3 exactly; no new permission added.
+
+Existing ICARUS sound service: 19 tests pass.
+Existing ICARUS soundboard Chromium/HTTP: 7 tests pass.
+Server/browser source: codex/umbra-soundboard-phase4-8b @ 958f3efdb72e2998a1b741e7670703c69ada1569.
+4.8C API compatibility inspected at ca2fcffab513aec65f1ff626c85b481de4c8a2f9.
+No ICARUS source, server, simulation or web asset changed in this hotfix.
+
+New checks cover all 64 catalog entries, rejected partial/duplicate catalogs, no false sync success, base isolation, exact bearer-authenticated playback mapping, request IDs, unavailable output error, revision-checked server output/favorite persistence and readback across controller restart, cancellation and duplicate tap suppression, exact stop payload, optional advertised normalization profile fields, and native SDK 30/34 grid/settings flows.
+Native long-press drag with master motion OFF does not issue playback. The 14th button launches the existing sound endpoint and no quick-chat endpoint. Output changes are read back from the server and excluded from local config exports. Existing full-suite tests cover shared grid persistence/resize/master-on/off, launcher navigation, settings, lifecycle and migration.
+
+Host-renders use generated 14-sound fixtures, not the user's private library or physical S24+ screenshots. Original server tests use their existing explicit fake Windows render backend. Actual audible Windows output, Sonar/game delivery, microphone continuity, Tailscale/S24+ operation, physical Android default-home and Samsung gesture behavior remain pending hardware checks. Windows build_umbra.bat is supplied but not executed on this Linux host.

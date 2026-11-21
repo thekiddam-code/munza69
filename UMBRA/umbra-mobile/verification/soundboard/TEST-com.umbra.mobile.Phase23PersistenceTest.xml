@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.umbra.mobile.Phase23PersistenceTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-11-21T19:49:46" hostname="16c27ebe7140" time="0.031">
+  <properties/>
+  <testcase name="schemaThreeMigrationPreservesHostIdsAndPersistsAllModuleFlags" classname="com.umbra.mobile.Phase23PersistenceTest" time="0.031"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
