@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.umbra.mobile.LauncherHostUiTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-11-22T22:59:10" hostname="38be7f335680" time="16.498">
+  <properties/>
+  <testcase name="homeDrawerGestureCommandCenterAndPersistenceRegression[30]" classname="com.umbra.mobile.LauncherHostUiTest" time="8.357"/>
+  <testcase name="homeDrawerGestureCommandCenterAndPersistenceRegression" classname="com.umbra.mobile.LauncherHostUiTest" time="8.141"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Nov 22, 2026 10:59:18 PM okhttp3.mockwebserver.MockWebServer$SocketHandler handle
+WARNING: MockWebServer[51837] connection from /127.0.0.1 didn't make a request
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Nov 22, 2026 10:59:26 PM okhttp3.mockwebserver.MockWebServer$SocketHandler handle
+WARNING: MockWebServer[33609] connection from /127.0.0.1 didn't make a request
+]]></system-err>
+</testsuite>

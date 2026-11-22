@@ -40,7 +40,8 @@ import androidx.compose.ui.unit.dp
                 TextButton(onClick={editing=p;title=p.name}){Text("Rename")}
                 TextButton(onClick={update{it.copy(homePageId=p.id)}}){Text("Home")}
             }
-            Choice("Columns",listOf("2","3","4","5"),p.columns.toString()){v->update{it.updatePage(p.id){page->page.copy(columns=v.toInt())}}}
+            Choice("Columns",(2..8).map(Int::toString),p.columns.toString()){v->update{it.updatePage(p.id){page->page.copy(columns=v.toInt())}}}
+            Text("More columns fit on wider pages; buttons retain a usable touch size.",style=MaterialTheme.typography.bodySmall)
             Choice("Page header",listOf("terminal","information","icarus","blank"),p.kind){kind->update{it.updatePage(p.id){page->page.copy(kind=kind)}}}
             TextButton(onClick={update{it.removePage(p.id)}},enabled=layout.pages.size>1){Text("Remove page · move its items to first remaining page")}
             HorizontalDivider()
@@ -49,34 +50,57 @@ import androidx.compose.ui.unit.dp
         Button(onClick={update{it.copy(pages=it.pages+DesktopPage(desktopId(),newName.trim()))}},enabled=layout.pages.size<12 && newName.isNotBlank() && newName.none(Char::isISOControl),shape=Chamfer){Text("Add page")}
     }
 }
-@Composable fun WidgetEditor(item: DesktopItem,save: (DesktopWidget)->Unit,remove: ()->Unit,close: ()->Unit,columns: Int=3) {
-    var widget by remember(item.id){mutableStateOf(item.widget!!)}
+@Composable fun WidgetEditor(item: DesktopItem,save: (DesktopWidget,Set<String>?)->Unit,remove: ()->Unit,close: ()->Unit,columns: Int=3) {
+    var newButton by remember {mutableStateOf<CustomButton?>(null)}
+    var widget by remember(item.id){mutableStateOf(item.widget!!.let {if(it.kind in listOf("icarus","soundboard"))it.copy(rows=it.rows.coerceAtLeast(3)) else it})}
+    val config=LocalLauncherConfig.current
+    val model: LauncherModel=androidx.lifecycle.viewmodel.compose.viewModel()
+    var selected by remember(item.id){mutableStateOf(config.widgetButtonSelections[item.id]?.toSet())}
     val context=androidx.compose.ui.platform.LocalContext.current
     val density=androidx.compose.ui.platform.LocalDensity.current
     val provider=remember(item.widget?.appWidgetId){runCatching {android.appwidget.AppWidgetManager.getInstance(context).getAppWidgetInfo(item.widget!!.appWidgetId)}.getOrNull()}
-    val minimumRows=provider?.let {info->kotlin.math.ceil(with(density){(info.minResizeHeight.takeIf {it>0} ?: info.minHeight).toDp().value}/64f).toInt().coerceIn(1,6)} ?: 1
+    val minimumRows=provider?.let {info->kotlin.math.ceil(with(density){(info.minResizeHeight.takeIf {it>0} ?: info.minHeight).toDp().value}/64f).toInt().coerceIn(1,12)} ?: if(widget.kind in listOf("icarus","soundboard"))3 else 1
     val canResizeWidth=provider==null || provider.resizeMode and android.appwidget.AppWidgetProviderInfo.RESIZE_HORIZONTAL!=0
     val canResizeHeight=provider==null || provider.resizeMode and android.appwidget.AppWidgetProviderInfo.RESIZE_VERTICAL!=0
     val available=androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp-40f
     val minimumColumns=provider?.let {info->kotlin.math.ceil(with(density){(info.minResizeWidth.takeIf {it>0} ?: info.minWidth).toDp().value}/(available/columns)).toInt().coerceIn(1,columns)} ?: 1
-    DesktopEditorDialog("Widget configuration",close,confirm={TextButton(onClick={save(widget)},enabled=validAccent(widget.accent)){Text("Save widget")}}) {
+    DesktopEditorDialog("Widget configuration",close,confirm={TextButton(onClick={save(widget,selected)},enabled=validAccent(widget.accent)){Text("Save widget")}}) {
+        if(widget.kind in (ENGINEERING_KINDS+listOf("icarus","soundboard")))Toggle("Collapsed",widget.collapsed){widget=widget.copy(collapsed=it)}
         if(widget.kind in ENGINEERING_KINDS) {
-            Toggle("Collapsed",widget.collapsed){widget=widget.copy(collapsed=it)}
             Toggle("Show sensor details",widget.showDetails){widget=widget.copy(showDetails=it)}
         }
-        if(widget.kind=="icarus")ButtonSelection(LocalLauncherConfig.current,androidx.lifecycle.viewmodel.compose.viewModel(),item.id)
+        if(widget.kind in listOf("icarus","soundboard")) {
+            OutlinedTextField(widget.title,{widget=widget.copy(title=it.take(48))},label={Text("Widget title")},singleLine=true)
+            Choice("Button columns",(1..6).map(Int::toString),widget.buttonColumns.toString()){widget=widget.copy(buttonColumns=it.toInt())}
+            Choice("Button height",listOf("56","64","72","80","96"),widget.buttonHeight.toString()){widget=widget.copy(buttonHeight=it.toInt())}
+            if(widget.kind=="icarus") {
+                Choice("Button set",BUTTON_SETS.filterNot {it=="favorites"},widget.buttonSet){widget=widget.copy(buttonSet=it);selected=null}
+                ButtonSelection(config,model,item.id,widget.buttonSet,selected,{selected=it},widget)
+                Text("A game set filters by command type. Use All for a mixed widget.",style=MaterialTheme.typography.bodySmall)
+                TextButton(onClick={newButton=CustomButton(label="New widget button")}){Text("Add custom button")}
+            } else {Toggle("Favorites only",widget.buttonSet=="favorites"){widget=widget.copy(buttonSet=if(it)"favorites" else "all")};SoundSelection(config,model,item.id,selected,{selected=it})}
+        }
         if(widget.kind=="clock") {
             Choice("Clock style",CLOCK_STYLES,widget.style){widget=widget.copy(style=it)}
             Toggle("24-hour clock",widget.clock24){widget=widget.copy(clock24=it)}
             Toggle("Show seconds",widget.seconds){widget=widget.copy(seconds=it)}
         }
         Choice("Width in columns",(if(canResizeWidth)(minimumColumns..columns).toList() else listOf(widget.span)).map(Int::toString),widget.span.toString()){widget=widget.copy(span=it.toInt())}
-        Choice("Height in rows",(if(canResizeHeight)(minimumRows..6).toList() else listOf(widget.rows)).map(Int::toString),widget.rows.toString()){widget=widget.copy(rows=it.toInt())}
+        Choice("Height in rows",(if(canResizeHeight)(minimumRows..12).toList() else listOf(widget.rows)).map(Int::toString),widget.rows.toString()){widget=widget.copy(rows=it.toInt())}
         if(widget.kind!="android") {
             Toggle("Transparent background",widget.transparent){widget=widget.copy(transparent=it)}
             OutlinedTextField(widget.accent,{widget=widget.copy(accent=it.take(7))},label={Text("Accent #RRGGBB (empty uses theme)")},singleLine=true,isError=!validAccent(widget.accent))
         } else Text("Provider minimum size and resize support still apply. Native widget clicks are never intercepted for UMBRA expansion.",style=MaterialTheme.typography.bodySmall)
         TextButton(onClick=remove){Text("Remove widget")}
+    }
+    newButton?.let {button->
+        val snapshot by model.instant.state.collectAsState()
+        val connection by model.instant.pcConnection.collectAsState()
+        ButtonEditor(button,config,snapshot.pc,model,{newButton=null},saveDraft={saved->
+            val id="widget:${saved.id}"
+            selected=(selected ?: widgetCatalog(config,snapshot.pc,item.id,connection.catalog,widget).map {it.id}.toSet())+id
+            widget=widget.copy(buttonOverrides=widget.buttonOverrides+(id to saved));newButton=null
+        })
     }
 }
 

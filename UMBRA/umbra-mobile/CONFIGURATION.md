@@ -1,16 +1,16 @@
-# UMBRA configuration schema 4
+# UMBRA configuration schema 6
 
 Preferences are private Jetpack Preferences DataStore (`datastore/umbra_settings.preferences_pb`), with a validated JSON envelope in `config_v2`. Existing Phase 1 scalar keys are read as a migration source until the first current write. Favorites, URL, timeout, profile, master, effects, panel, and accent choice are preserved; the old transitions selection also initializes the now-independent startup selection. Corrupt Preferences recover to defaults; invalid stored JSON also recovers to safe defaults. Disk-write errors remain visible in the launcher.
 
 ## Import/export
 
-Export and import use Android's Storage Access Framework, without broad storage permissions. Export is a schema 4 snapshot with portable Android-widget placeholders. Schema 2/3 imports are accepted and gain Phase 2.1 defaults; exports use schema 4. Import reads at most 1 MiB, requires valid UTF-8/JSON and exact types, rejects unknown fields/versions, validates everything before showing an Apply preview, then replaces preferences atomically. An import is **replacement, not merge**: omitted settings take schema defaults. No partial import is applied on failure. Exported URLs may be private/user-specific; choose your export destination accordingly. Credentials, PINs, device readings, notification contents/counts, and encryption keys are never serialized.
+Export and import use Android's Storage Access Framework, without broad storage permissions. Export is a schema 6 snapshot with portable Android-widget placeholders. Schemas 2–6 are accepted with the corresponding migration defaults; exports use schema 6. Import reads at most 1 MiB, requires valid UTF-8/JSON and exact types, rejects unknown fields/versions, validates everything before showing an Apply preview, then replaces preferences atomically. An import is **replacement, not merge**: omitted settings take schema defaults. No partial import is applied on failure. Exported URLs may be private/user-specific; choose your export destination accordingly. Credentials, PINs, device readings, notification contents/counts, and encryption keys are never serialized.
 
 Envelope:
 
 ```json
 {
-  "schemaVersion": 4,
+  "schemaVersion": 6,
   "settings": {
     "profile": "Adaptive",
     "master": true,
@@ -44,7 +44,7 @@ Only the envelope keys `schemaVersion` and `settings` are accepted. Configuratio
 | `background` | `Void`; also `Graphite`, `Blueprint` |
 | `typography` | `Technical`; also `Mono`, `System` |
 | `density` | 2; integer 1–3 (Compact, Balanced, Spacious) |
-| `gridColumns` | 3; integer 3–5 |
+| `gridColumns` | 3; integer 3–8 |
 | `tileSize` | 2; integer 1–3 (Small, Standard, Large) |
 | `moduleOrder` | Device, System, ICARUS, Notifications, Applications; every module exactly once |
 | `hiddenModules` | empty; subset of known modules |
@@ -85,7 +85,7 @@ A native token lives in `noBackupFilesDir/icarus_pairing.enc`, AES/GCM encrypted
 | `weatherFahrenheit` | false (Celsius) |
 | `instantOrder`, `instantFavorites`, `instantLabels` | empty; local action ID order, favorite set, label map; each max 256 |
 
-Nested desktop schema version 1 stores `homePageId` and 1–12 ordered pages. Each page has a stable ID, name, header kind (`terminal`, `information`, `icarus`, `blank`), 2–5 columns, and ordered items. Limits: 96 items/page, 256 total, globally unique item IDs; folders up to 64 distinct launchable component references; no nested folders. Widget specifications store kind, one of five clock styles, 1–5 column span, 1–6 row height (64 dp/row), 12/24-hour/seconds, transparency/accent, Android provider and locally assigned host ID. Native hosting may increase the view height to its provider minimum. Actual provider support needs physical validation.
+Nested desktop schema version 1 stores `homePageId` and 1–12 ordered pages. Each page has a stable ID, name, header kind (`terminal`, `information`, `icarus`, `blank`), 2–8 columns, and ordered items. Limits: 256 items/page, 256 total, globally unique item IDs; folders up to 64 distinct launchable component references; no nested folders. Widget specifications store kind, one of five clock styles, 1–8 column span, 1–12 row height (64 dp/row), 12/24-hour/seconds, transparency/accent, Android provider and locally assigned host ID. Native hosting may increase the view height to its provider minimum. Actual provider support needs physical validation.
 
 Local DataStore serialization preserves Android widget IDs. Export **zeros those IDs**, and import strips IDs even from a hand-edited file, preventing reuse of another installation’s binding. Rebind imported providers through Android. Reset/import removes unused local host IDs after preferences commit. Pending provider allocation is private local state and is not exported. Layout names, IDs, collection sizes, numeric ranges, nested primitive types, and references are validated before application. Removing pages relocates contents; operations beyond limits fail without replacing the current layout and show a save error.
 
@@ -108,3 +108,11 @@ Expanded module sizes remain stored while collapsed rendering uses a single comp
 ## Phase 3 / schema 5
 
 Schema 5 reads 2/3/4/5 without resetting the existing desktop, grid arrangements, command mappings or server configuration. `pcIndicator` defaults true. `activeHomePreset` defaults `default`; `homePresets` holds named inactive/saved desktop and HOME-grid snapshots. The existing `desktop` and HOME grid entries remain the active preset's authoritative working layout. Preset switching snapshots before loading and preserves non-HOME grids. Per-widget `collapsed` and `showDetails`, plus existing `accent`/`transparent`/`span`/`rows`, persist independently. All inactive Android widget IDs remain owned locally; portable exports remove bindings in every preset. TV mappings/legacy Lounge settings are retained for round trips but hidden and blocked from execution. No audio-output preference is introduced or reset. See [Phase 3 details](PHASE3_REPORT.md).
+
+## 3.1 / schema 6: widget scope and Recents
+
+The DataStore key remains `config_v2`. Existing schemas 2–5 migrate without resetting layouts. `recentsShortcut` defaults true and only controls visibility of the footer icon; Android owns the actual Accessibility grant and it is not exported or enabled by that preference. Hiding the icon does not revoke the OS grant. Revoke optional access in Android Accessibility settings.
+
+Each `DesktopWidget` adds `title` (empty/default), `buttonSet` (`all`, `pc`, `rocket`, `fortnite`, `minecraft`, `simulation`, `favorites`), `buttonColumns` (1–6, default 2), `buttonHeight` (56–96, default 64), and `buttonOverrides` (source-ID → validated CustomButton, maximum 512). The picker offers favorites-only for sound widgets. `widgetButtonSelections` stores independent selected IDs; sound IDs are namespaced `sound:<server-id>`. No global selection rewrite occurs when editing one widget. Owned custom definitions use widget-prefixed IDs. Existing global definitions/labels remain available for migration; legacy global shared selections initialize only older button instances without an explicit selection. Inactive presets are migrated too.
+
+Page/widget size limits are documented in WIDGETS31_REPORT.md. Button widgets enforce at least 3 editing rows. Instance sound layouts use `sound-widget:<widget-id>`; the standalone SIMULATOR soundboard layout remains separate. Shared ICARUS favorite/output/profile data are not duplicated in DataStore. PIN is transient, masked, cleared, never exported; only the existing encrypted server-bound token is retained. The PC patch retains its authoritative schema-1 sound library and adds no launcher-side audio-output copy.

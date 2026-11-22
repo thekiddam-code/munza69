@@ -86,45 +86,48 @@ class Phase23HostUiTest {
         assertFalse(config().immersive)
         capture("settings")
     }
-    @Test fun instantPageSelectsAllFourteenAndLongPressDoesNotExecute() {
-        rule.onNodeWithTag("nav-COMMAND").performClick()
-        rule.onNodeWithTag("deck-section-Instant Buttons").performClick()
+    private fun setupButtonWidget() {
+        val items=listOf(DesktopItem("local-widget","widget",widget=DesktopWidget(kind="icarus",title="Local buttons",span=3,rows=8)))
+        runBlocking {ConfigStore(rule.activity).update {it.copy(desktop=DesktopLayout(pages=listOf(DesktopPage("main","Buttons",items=items))))}}
+        waitFor {it.desktop?.item("local-widget")!=null}
+    }
+    @Test fun widgetSelectsAllFourteenAndLongPressDoesNotExecute() {
+        setupButtonWidget()
         val model=androidx.lifecycle.ViewModelProvider(rule.activity)[LauncherModel::class.java]
-        rule.onNodeWithTag("instant-editor-header").performScrollTo().performSemanticsAction(SemanticsActions.OnLongClick){it()}
-        rule.onNodeWithText("Select buttons / widgets").performClick()
+        rule.onNodeWithTag("instant-editor-header").performSemanticsAction(SemanticsActions.OnLongClick){it()}
+        rule.onNodeWithText("Configure").performClick()
         rule.onNodeWithText("14 selected",substring=true).performScrollTo().assertIsDisplayed()
-        rule.onNodeWithText("Deselect all").performScrollTo().performClick();waitFor {it.instantSelection?.isEmpty()==true}
-        rule.onNodeWithText("Select all").performScrollTo().performClick();waitFor {it.instantSelection?.size==14}
+        rule.onNodeWithText("Deselect all").performScrollTo().performClick()
+        rule.onNodeWithText("0 selected",substring=true).assertIsDisplayed()
+        rule.onNodeWithText("Select all").performScrollTo().performClick()
+        rule.onNodeWithText("Save widget").performClick()
+        waitFor {it.widgetButtonSelections["local-widget"]?.size==14}
         rule.onNodeWithText("Done").performClick()
         val before=model.instant.state.value.status
         val button=rule.onNodeWithTag("instant-action-local:b0").performScrollTo()
         hold(button)
-        rule.onNodeWithTag("placement-highlights-instant-page").assertExists()
+        rule.onNodeWithTag("placement-highlights-instant-widget:local-widget").assertExists()
         button.performTouchInput {up()}
         rule.onNodeWithText("Configure").assertIsDisplayed()
-        rule.onNodeWithTag("placement-highlights-instant-page").assertDoesNotExist()
+        rule.onNodeWithTag("placement-highlights-instant-widget:local-widget").assertDoesNotExist()
         assertEquals(before,model.instant.state.value.status)
-        assertEquals(14,config().instantSelection!!.size)
+        assertNull(config().instantSelection)
     }
-    @Test fun nativeButtonEditorSavesTimedOutputWithoutExecuting() {
-        rule.onNodeWithTag("nav-COMMAND").performClick()
-        rule.onNodeWithTag("deck-section-Instant Buttons").performClick()
-        rule.onNodeWithTag("instant-editor-header").performScrollTo().performSemanticsAction(SemanticsActions.OnLongClick){it()}
-        rule.onNodeWithText("Create button").performClick()
-        rule.onNodeWithText("Button name").performTextClearance()
-        rule.onNodeWithText("Button name").performTextInput("Timed mining")
+    @Test fun widgetOverrideSavesTimedOutputWithoutExecutingOrChangingSharedButtons() {
+        setupButtonWidget()
+        rule.onNodeWithTag("grid-item-instant-widget:local-widget-local:b0").performScrollTo().performSemanticsAction(SemanticsActions.OnLongClick){it()}
+        rule.onNodeWithText("Configure").performClick()
+        rule.onNodeWithText("Button name").performTextClearance();rule.onNodeWithText("Button name").performTextInput("Timed mining")
         rule.onNodeWithText("ForwardMine").performScrollTo().performClick()
         rule.onNodeWithText("Hold duration · 0.2–10 seconds").performScrollTo().performTextClearance()
-        rule.onNodeWithText("Save button").assertIsNotEnabled()
+        rule.onNodeWithText("Save UMBRA override").assertIsNotEnabled()
         rule.onNodeWithText("Hold duration · 0.2–10 seconds").performTextInput("4.5")
         rule.onNodeWithText("Test command").performScrollTo().assertIsNotEnabled()
-        rule.onNodeWithText("Save button").performClick()
-        waitFor {it.customButtons.any {b->b.label=="Timed mining"}}
-        val b=config().customButtons.single {it.label=="Timed mining"}
+        rule.onNodeWithText("Save UMBRA override").performClick()
+        waitFor {it.desktop?.item("local-widget")?.widget?.buttonOverrides?.containsKey("local:b0")==true}
+        val b=config().desktop!!.item("local-widget")!!.widget!!.buttonOverrides.getValue("local:b0")
         assertEquals(OutputKind.ForwardMine,b.kind);assertEquals(4.5,b.seconds,0.0)
-        val model=androidx.lifecycle.ViewModelProvider(rule.activity)[LauncherModel::class.java]
-        assertFalse(model.instant.state.value.busy)
-        assertEquals(15,config().customButtons.size)
+        assertEquals(14,config().customButtons.size);assertEquals("Button 0",config().customButtons.first().label)
     }
     private fun capture(name: String) {
         val folder=System.getProperty("umbra.captureDir") ?: return

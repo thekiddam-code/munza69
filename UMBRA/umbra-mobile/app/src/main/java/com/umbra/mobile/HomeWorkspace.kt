@@ -63,9 +63,9 @@ import kotlin.math.roundToInt
                     if(page.kind=="terminal")terminal()
                     val visible=page.items.filterNot {it.kind=="app" && it.component in c.hiddenApps}
                     if(visible.isEmpty())Text("Long-press the page title to add widgets, folders, or pages. Long-press apps in Apps to pin them.",color=Muted)
-                    GridBoard("home:${page.id}",visible.map {GridItem(it.id,it.folder?.name ?: apps.firstOrNull {a->a.id==it.component}?.label ?: it.widget?.kind ?: "Application",it.widget?.span ?: 1,it.widget?.rows ?: 2)},c,model,page.columns,64.dp,forcedCollapsed=visible.filter {it.widget?.collapsed==true}.map {it.id}.toSet(),
-                        onCollapse={id->model.editDesktop {it.updateItem(id){item->item.copy(widget=item.widget?.copy(collapsed=!item.widget.collapsed))}}},canCollapse={id->layout.item(id)?.widget?.kind in ENGINEERING_KINDS},
-                        onConfigure={id->layout.item(id)?.let(::configure)},onMovePage={id->moveTarget=layout.item(id)},onResizeRequest={id->val native=layout.item(id)?.takeIf {it.widget?.kind=="android"};if(native!=null){widgetEditor=native;true} else false},onRemove={model.removeDesktopItem(it)},
+                    GridBoard("home:${page.id}",visible.map {GridItem(it.id,it.folder?.name ?: apps.firstOrNull {a->a.id==it.component}?.label ?: it.widget?.kind ?: "Application",it.widget?.span ?: 1,it.widget?.rows ?: 2,headerOnly=it.widget?.kind in listOf("icarus","soundboard"))},c,model,page.columns,64.dp,forcedCollapsed=visible.filter {it.widget?.collapsed==true}.map {it.id}.toSet(),
+                        onCollapse={id->model.editDesktop {it.updateItem(id){item->item.copy(widget=item.widget?.copy(collapsed=!item.widget.collapsed))}}},canCollapse={id->layout.item(id)?.widget?.kind in (ENGINEERING_KINDS+listOf("icarus","soundboard"))},
+                        onConfigure={id->layout.item(id)?.let(::configure)},onMovePage={id->moveTarget=layout.item(id)},onResizeRequest={id->val native=layout.item(id)?.takeIf {it.widget?.kind in listOf("android","icarus","soundboard")};if(native!=null){widgetEditor=native;true} else false},onRemove={model.removeDesktopItem(it)},
                         canDuplicate={layout.item(it)?.widget?.kind!="android"},onDuplicate={id->model.arrange {old->val l=resolvedDesktop(old,apps);val item=l.item(id)!!;require(item.widget?.kind!="android");val copyId=desktopId();old.copy(desktop=l.updatePage(page.id){it.copy(items=it.items+item.copy(id=copyId))},widgetButtonSelections=old.widgetButtonSelections[item.id]?.let {ids->old.widgetButtonSelections+(copyId to ids)} ?: old.widgetButtonSelections)}},
                         onDrop={id,target->
                             val moving=layout.item(id);val targetItem=target?.let {layout.item(it)}
@@ -73,12 +73,12 @@ import kotlin.math.roundToInt
                             else if(moving?.kind=="app" && targetItem?.kind in listOf("app","folder")){model.arrange {it.copy(desktop=resolvedDesktop(it,apps).groupApps(id,targetItem!!.id))};true}
                             else false
                         },onEdge={edge->scope.launch {pager.scrollToPage((pager.currentPage+edge).coerceIn(0,layout.pages.lastIndex))}},
-                        onResize={id,w,h->model.editDesktop {it.updateItem(id){item->if(item.widget!=null)item.copy(widget=item.widget.copy(span=w.coerceAtMost(5),rows=h.coerceAtMost(6))) else item}}}) {entry,_->
+                        onResize={id,w,h->model.editDesktop {it.updateItem(id){item->if(item.widget!=null)item.copy(widget=item.widget.copy(span=w.coerceAtMost(8),rows=h.coerceAtMost(12))) else item}}}) {entry,_->
                         val item=visible.first {it.id==entry.id}
                         when(item.kind) {
                             "app"->{val app=apps.firstOrNull {it.id==item.component};if(app!=null)AppTile(app.copy(label=c.quickLabels[app.id] ?: app.label),model,app.id in c.favorites,{}, {model.favorite(app.id)},accent,desktopGesture=true) else TextButton(onClick={configure(item)}){Text("Unavailable app")}}
                             "folder"->FolderTile(item,apps,model,accent,{rect->expansion.open(item.id,rect,TransitionCategory.Folder)})
-                            else->BuiltinWidget(item,c,model,device,now,accent,active && device.screenOn && index==pager.currentPage && expansion.selected==null && LocalGridEditing.current.surface==null && widgetEditor==null && folderEditor==null && !pagesEditor && !homeMenu,{rect->expansion.open(item.id,rect,TransitionCategory.Widget)})
+                            else->BuiltinWidget(item,c,model,device,now,accent,active && device.screenOn && index==pager.currentPage && expansion.selected==null && LocalGridEditing.current.surface==null && widgetEditor==null && folderEditor==null && !pagesEditor && !homeMenu,{rect->expansion.open(item.id,rect,TransitionCategory.Widget)},headerModifier)
                         }
                     }
                     if(page.kind=="terminal")footer()
@@ -111,7 +111,7 @@ import kotlin.math.roundToInt
         folderEditor=null;newFolder=false
     },{folderEditor=null;newFolder=false})
     widgetPage?.let {destination->WidgetPicker(c,model,destination,{widgetPage=null})}
-    widgetEditor?.let {edited->WidgetEditor(edited,{spec->model.editDesktop {it.updateItem(edited.id){old->old.copy(widget=spec)}};widgetEditor=null},{model.removeDesktopItem(edited.id);widgetEditor=null},{widgetEditor=null},layout.page(pageId).columns)}
+    widgetEditor?.let {edited->WidgetEditor(edited,{spec,selection->model.configureWidget(edited.id,spec,selection);widgetEditor=null},{model.removeDesktopItem(edited.id);widgetEditor=null},{widgetEditor=null},layout.page(pageId).columns)}
     appEditor?.let {item->DesktopEditorDialog("Application",{appEditor=null},confirm={TextButton(onClick={appEditor=null}){Text("Done")}}) {
         TextButton(onClick={model.favorite(item.component)}){Text("Toggle favorite")}
         TextButton(onClick={moveTarget=item;appEditor=null}){Text("Move to another page")}

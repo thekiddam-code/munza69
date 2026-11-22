@@ -1,20 +1,16 @@
-# UMBRA Mobile 3.0
+# UMBRA Mobile 3.1
 
-Native Kotlin / Jetpack Compose Android launcher for Galaxy S24+, beside the unchanged ICARUS project.
+Native Kotlin / Jetpack Compose launcher, alongside the preserved ICARUS project.
 
 **HOME | APPS | DECK | SIMULATOR | ICARUS | CONFIG**
 
-- HOME: named independent preset dashboards, pages, app shortcuts, folders and widgets.
-- DECK: Command library, Engineering, Soundboard, Instant Buttons and Android Device controls.
-- SIMULATOR: separate Rocket League, Fortnite, Minecraft and ship simulation controls.
-- ICARUS: native PC pairing/connection and access to the configured PC Remote Deck.
-- CONFIG: system, appearance, connection and server-owned soundboard audio settings.
+- HOME: independent presets and customizable Button/Soundboard widgets. Mix hotkeys and sounds on a page; keep Rocket League and Fortnite selections on separate pages. Each instance owns its selection, title, appearance, arrangement and command overrides. Denser responsive grids support up to eight page columns.
+- DECK: Engineering and Android Device controls. Command library and Instant Buttons navigation are removed while existing mappings remain available.
+- SIMULATOR: Rocket League, Fortnite, Minecraft, Soundboard and ship simulation.
+- ICARUS: existing PC remote view and shared connection manager.
+- CONFIG: server PIN entry and existing server-owned audio output settings. Optional small **||| Recent apps** footer shortcut requires manual Android Accessibility enablement; it cannot read screen content or control gestures.
 
-Engineering uses the existing Windows companion: CPU, GPU, RAM, power/battery, network and supported fixed PC actions. Add those modules through the HOME widget picker; drag, snap, resize, collapse, configure and place instances independently in any preset. Visible modules share one polling loop and the existing native connection controller. Missing or stale sensors remain unavailable.
-
-The compact **● PC** header indicator appears on all six tabs. Tap for reported PC name, actual authenticated connection status, conservative address-class detection, HTTP round-trip latency and Reconnect. Hide it in CONFIG → ICARUS. No widget arrangement or Android fullscreen setting changes when it is hidden.
-
-Samsung TV controls are removed from UMBRA. Old mappings are preserved as inert migration data; shared TV backend and Samsung's native remote are untouched. Existing soundboard audio output preferences stay on ICARUS.
+Engineering widgets, six-tab PC indicator, existing layouts, sound mappings/output preferences, native Android widgets, motion/detail controls and One UI recovery remain. Long-press HOME page title → Add widget; long-press a widget header → Configure. TV controls remain retired.
 
 ## Download / install
 
@@ -26,17 +22,20 @@ Samsung TV controls are removed from UMBRA. Old mappings are preserved as inert 
 
 Install over the previous signed UMBRA build to retain settings. Choose Samsung Settings → Apps → Choose default apps → Home app → UMBRA. Choose One UI Home there to restore Samsung's launcher. The Show bars / Hide bars header control remains available.
 
-Keep using the existing working Windows/soundboard-capable ICARUS companion and private soundboard library; configure its address in CONFIG → ICARUS and pair with its PIN. The older ICARUS tree on main lacks extended monitor/soundboard APIs and should not replace that working server. Native desktop video/input streaming is not exposed by the inspected companion; PC Remote Deck opens the configured existing browser interface. Older versions do not report a PC name, and the UI says so. Address classification does not verify the actual Tailscale route.
+Keep using the existing Phase 4.9 Windows/soundboard-capable ICARUS companion and private soundboard library; configure its address in CONFIG → ICARUS and pair with its PIN. The older ICARUS tree on main lacks extended monitor/soundboard APIs and should not replace that working server. Native desktop video/input streaming is not exposed by the inspected companion; PC Remote Deck opens the configured existing browser interface. Older versions do not report a PC name, and the UI says so. Address classification does not verify the actual Tailscale route.
+
+## Phase 4.9 PC bulk sound import
+
+[Download the PC update ZIP](https://github.com/thekiddam-code/munza69/raw/refs/heads/main/UMBRA/downloads/umbra-pc-phase49-bulk-update.zip). [Apply instructions / backup and compatibility checks](pc-update/phase49/README.md).
+
+Adds **Soundboard → Add many sounds** to the existing Phase 4.9 website on port 8765: multi-file/folder import, progress, cancellation, duplicate skipping and 512 sounds / 256 MiB library capacity. Reuses existing storage, authentication, conversion and playback. Preserves audio output/profile and simulation data. Save the voyage, stop the companion normally, and run the included installer against the original ICARUS folder. It verifies exact source and backs up original code and the actual library before applying. **The private PC site was unreachable from this environment and has not been deployed remotely.**
 
 ## Verification and documentation
 
-**Build verified:** 89 Android tests pass; lint has zero errors (13 warnings); app and device-test APKs assemble. Signing certificate and permissions match 2.3.1.
+**97 Android tests pass**, lint zero errors, application and device-test APKs assemble. Signing matches the previous distributed build. Top-level permissions remain unchanged; optional user-granted Recents Accessibility access is new. **42 PC service, 10 Chromium and 4 installer tests pass** using isolated generated audio and fake Windows output.
 
-See [executed Phase 3 results](umbra-mobile/verification/phase3/RESULTS.txt), [complete implementation/migration/limits report](umbra-mobile/PHASE3_REPORT.md), [installation/build instructions](umbra-mobile/README.md), and [configuration schema/privacy](umbra-mobile/CONFIGURATION.md).
+[Current setup/migration/limits report](umbra-mobile/WIDGETS31_REPORT.md) · [Exact executed evidence](umbra-mobile/verification/widgets31/RESULTS.txt) · [Build/install instructions](umbra-mobile/README.md) · [Configuration schema 6/privacy](umbra-mobile/CONFIGURATION.md).
 
-Native host renders below use explicit TEST-PC/Fixture GPU responses; they are not physical phone screenshots or measurements from the user's Windows PC. Physical S24+/Windows/Tailscale, audio/game delivery, gestures and battery performance remain device checks.
+<img src="umbra-mobile/verification/widgets31/host-renders/widget31-mixed-widgets-sdk34.png" width="300" alt="Native host render: independent Rocket League and soundboard widgets together on HOME">
 
-<img src="umbra-mobile/verification/phase3/host-renders/phase3-engineering-home-sdk34.png" width="300" alt="Native HOME host render with shared CPU and GPU Engineering widgets and compact PC indicator">
-<img src="umbra-mobile/verification/phase3/host-renders/phase3-six-tabs-sdk34.png" width="300" alt="Native host render showing six navigation destinations with the PC indicator hidden">
-
-Previous Phase 1/2/2.1/2.3 reports and verification artifacts remain historical evidence. The original Android launcher, adaptive animation profiles, independent effect switches, unified transitions, native widget hosting and One UI recovery remain.
+Host screenshots and HTTP fixtures are not physical phone/PC measurements. Actual S24+/Windows audio/game delivery, native Recents/gestures, Tailscale routing, special-access grants and measured battery/frame performance remain device checks. Historical reports remain evidence for earlier versions.

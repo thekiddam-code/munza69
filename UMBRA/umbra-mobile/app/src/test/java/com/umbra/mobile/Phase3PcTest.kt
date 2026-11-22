@@ -33,7 +33,7 @@ class Phase3PcTest {
         val again=switchHomePreset(returned,second.activeHomePreset);assertFalse(again.desktop!!.pages.single().items.single().widget!!.collapsed)
         assertEquals(setOf(42),allNativeWidgetIds(again))
         val exported=importConfig(exportConfig(again));assertTrue(allNativeWidgetIds(exported).isEmpty());assertEquals(again.activeHomePreset,exported.activeHomePreset)
-        for(version in listOf(2,3,4))assertFalse(importConfig(exportConfig(Config(master=false)).replace("\"schemaVersion\":5","\"schemaVersion\":$version")).master)
+        for(version in listOf(2,3,4))assertFalse(importConfig(exportConfig(Config(master=false)).replace("\"schemaVersion\":6","\"schemaVersion\":$version")).master)
     }
     @Test fun actualAuthenticatedStatusAndMonitorAreSharedWithoutDuplicateCollectors()=runBlocking {
         val server=MockWebServer();server.start();val remote=IcarusClient();val ctl=InstantController(remote){"fixture-token"};val c=Config(serverUrl=server.url("/").toString())

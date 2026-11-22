@@ -8,6 +8,8 @@ fun desktopId()=UUID.randomUUID().toString()
 @Serializable data class DesktopFolder(val name: String="Folder",val apps: List<String> = emptyList())
 @Serializable data class DesktopWidget(
     val collapsed: Boolean=false,val showDetails: Boolean=true,
+    val title: String="",val buttonSet: String="all",val buttonColumns: Int=2,val buttonHeight: Int=64,
+    val buttonOverrides: Map<String,CustomButton> = emptyMap(),
     val kind: String="clock",val style: String="Digital",val span: Int=3,val rows: Int=2,
     val clock24: Boolean=true,val seconds: Boolean=false,val transparent: Boolean=true,val accent: String="",
     val appWidgetId: Int=0,val provider: String=""
@@ -16,7 +18,7 @@ fun desktopId()=UUID.randomUUID().toString()
 @Serializable data class DesktopPage(val id: String="",val name: String="Deck",val kind: String="blank",val columns: Int=3,val items: List<DesktopItem> = emptyList())
 @Serializable data class DesktopLayout(val schemaVersion: Int=1,val homePageId: String="main",val pages: List<DesktopPage> = emptyList())
 val CLOCK_STYLES=listOf("Digital","Terminal","Analog","Segmented","Date and time")
-val WIDGET_KINDS=listOf("clock","weather","battery","calendar","system","icarus","android")+ENGINEERING_KINDS
+val WIDGET_KINDS=listOf("clock","weather","battery","calendar","system","icarus","soundboard","android")+ENGINEERING_KINDS
 private fun validDesktopId(value: String)=Regex("[A-Za-z0-9_-]{1,64}").matches(value)
 private fun validDesktopName(value: String)=value.length in 1..48 && value.none(Char::isISOControl)
 fun validateDesktop(layout: DesktopLayout): DesktopLayout {
@@ -25,7 +27,7 @@ fun validateDesktop(layout: DesktopLayout): DesktopLayout {
     val items=layout.pages.flatMap { it.items }
     require(items.size<=256 && items.map { it.id }.distinct().size==items.size)
     layout.pages.forEach { p ->
-        require(validDesktopId(p.id) && validDesktopName(p.name) && p.kind in listOf("terminal","information","icarus","blank") && p.columns in 2..5 && p.items.size<=96)
+        require(validDesktopId(p.id) && validDesktopName(p.name) && p.kind in listOf("terminal","information","icarus","blank") && p.columns in 2..8 && p.items.size<=256)
         p.items.forEach { item ->
             require(validDesktopId(item.id))
             when(item.kind) {
@@ -36,7 +38,10 @@ fun validateDesktop(layout: DesktopLayout): DesktopLayout {
                 }
                 "widget" -> {
                     val w=requireNotNull(item.widget)
-                    require(item.component.isEmpty() && item.folder==null && w.kind in WIDGET_KINDS && w.style in CLOCK_STYLES && w.span in 1..5 && w.rows in 1..6 && validAccent(w.accent))
+                    require(item.component.isEmpty() && item.folder==null && w.kind in WIDGET_KINDS && w.style in CLOCK_STYLES && w.span in 1..8 && w.rows in 1..12 && validAccent(w.accent))
+                    require(w.title.length<=48 && w.title.none(Char::isISOControl) && w.buttonSet in BUTTON_SETS && w.buttonColumns in 1..6 && w.buttonHeight in 56..96)
+                    require(w.buttonOverrides.size<=512 && w.buttonOverrides.keys.all {it.length in 1..180 && it.none(Char::isISOControl)})
+                    w.buttonOverrides.values.forEach {require(it.kind!=OutputKind.TvKey);validateButton(it)}
                     require(w.appWidgetId>=0 && (w.kind!="android" || validComponent(w.provider)))
                     if(w.kind!="android")require(w.appWidgetId==0 && w.provider.isEmpty())
                 }
@@ -109,14 +114,15 @@ fun validateDesktopJson(value: JsonElement) {
     val pages=root["pages"] as? JsonArray ?: error("Missing pages");require(pages.size in 1..12)
     pages.forEach { p ->
         val page=typed(p,setOf("id","name","kind"),setOf("columns"),emptySet(),arrays=setOf("items"))
-        val items=page["items"] as? JsonArray ?: JsonArray(emptyList());require(items.size<=96)
+        val items=page["items"] as? JsonArray ?: JsonArray(emptyList());require(items.size<=256)
         items.forEach { entry ->
             val item=typed(entry,setOf("id","kind","component"),emptySet(),emptySet(),objects=setOf("folder","widget"))
             item["folder"]?.takeUnless { it is JsonNull }?.let { folder ->
                 val f=typed(folder,setOf("name"),emptySet(),emptySet(),arrays=setOf("apps"))
                 val apps=f["apps"] as? JsonArray ?: JsonArray(emptyList());require(apps.size<=64 && apps.all { it is JsonPrimitive && it.isString })
             }
-            item["widget"]?.takeUnless { it is JsonNull }?.let { widget -> typed(widget,setOf("kind","style","accent","provider"),setOf("span","rows","appWidgetId"),setOf("clock24","seconds","transparent","collapsed","showDetails")) }
+            item["widget"]?.takeUnless { it is JsonNull }?.let { widget -> val obj=typed(widget,setOf("kind","style","accent","provider","title","buttonSet"),setOf("span","rows","appWidgetId","buttonColumns","buttonHeight"),setOf("clock24","seconds","transparent","collapsed","showDetails"),objects=setOf("buttonOverrides"))
+                (obj["buttonOverrides"] as? JsonObject)?.let {validateButtonsJson(JsonArray(it.values.toList()))} }
         }
     }
 }

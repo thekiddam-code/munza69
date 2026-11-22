@@ -1,0 +1,147 @@
+diff --git a/ICARUS/sound_backup.py b/ICARUS/sound_backup.py
+index b570c95..92fcdb3 100644
+--- a/ICARUS/sound_backup.py
++++ b/ICARUS/sound_backup.py
+@@ -4 +4 @@ from pathlib import Path
+-MAX_TOTAL=128*1024*1024
++MAX_TOTAL=384*1024*1024
+@@ -20 +20 @@ def inventory(root):
+-   if total>MAX_TOTAL:raise ValueError('Sound folder exceeds 128 MiB backup limit; no source was changed')
++   if total>MAX_TOTAL:raise ValueError('Sound folder exceeds 384 MiB backup limit; no source was changed')
+diff --git a/ICARUS/sound_library.py b/ICARUS/sound_library.py
+index 9b9a375..789f7be 100644
+--- a/ICARUS/sound_library.py
++++ b/ICARUS/sound_library.py
+@@ -6,0 +7,2 @@ MAX_BYTES=1440044
++MAX_SOUNDS=512
++MAX_LIBRARY_BYTES=256*1024*1024
+@@ -32 +34 @@ class SoundLibrary:
+-   if d.get('version')!=1 or not isinstance(d.get('sounds'),list) or len(d['sounds'])>64:raise ValueError('Unsupported library format')
++   if d.get('version')!=1 or not isinstance(d.get('sounds'),list) or len(d['sounds'])>MAX_SOUNDS:raise ValueError('Unsupported library format')
+@@ -58 +60 @@ class SoundLibrary:
+- def add(self,fields,raw,revision,permission,source):
++ def add(self,fields,raw,revision,permission,source,skip_duplicate=False):
+@@ -59,0 +62 @@ class SoundLibrary:
++  if type(skip_duplicate)!=bool:raise SoundError('Invalid duplicate option')
+@@ -64 +67,4 @@ class SoundLibrary:
+-   if len(data['sounds'])>=64 or sum(s['bytes'] for s in data['sounds'])+len(raw)>64*1024*1024:raise SoundError('Library limit: 64 sounds / 64 MiB',413)
++   if skip_duplicate:
++    existing=next((s for s in data['sounds'] if s['sha256']==info['sha256']),None)
++    if existing:return {**copy.deepcopy(data),'duplicate_id':existing['id']}
++   if len(data['sounds'])>=MAX_SOUNDS or sum(s['bytes'] for s in data['sounds'])+len(raw)>MAX_LIBRARY_BYTES:raise SoundError('Library limit: 512 sounds / 256 MiB',413)
+diff --git a/ICARUS/sound_service.py b/ICARUS/sound_service.py
+index 3e12eca..e412b95 100644
+--- a/ICARUS/sound_service.py
++++ b/ICARUS/sound_service.py
+@@ -3 +3 @@ import base64,threading,time
+-from sound_library import SoundLibrary,SoundError
++from sound_library import SoundLibrary,SoundError,MAX_SOUNDS,MAX_LIBRARY_BYTES
+@@ -32 +32 @@ class SoundService:
+-  return {**extra,**self.library.view(),'devices':devices,'player':self.player.view(),'deviceError':error,'storage':{'authority':'Windows companion server','folder':'soundboard_data','metadata':'library.json','library_present':(self.library.root/'library.json').is_file(),'audio':'<sound-id>.wav','browser':'cache only','backup':self.preservation},'routing':'Normal playback: explicit Windows render output. Private preview: current terminal only. Game-chat injection pending 4.8C.'}
++  return {'limits':{'max_sounds':MAX_SOUNDS,'max_audio_bytes':MAX_LIBRARY_BYTES},**extra,**self.library.view(),'devices':devices,'player':self.player.view(),'deviceError':error,'storage':{'authority':'Windows companion server','folder':'soundboard_data','metadata':'library.json','library_present':(self.library.root/'library.json').is_file(),'audio':'<sound-id>.wav','browser':'cache only','backup':self.preservation},'routing':'Normal playback: explicit Windows render output. Private preview: current terminal only. Game-chat injection pending 4.8C.'}
+@@ -36 +36,2 @@ class SoundService:
+-  if operation not in fields or set(data)!=fields[operation]:raise SoundError('Unknown operation or unsupported sound fields')
++  allowed=fields.get(operation,set())|({'skip_duplicate'} if operation=='import' and 'skip_duplicate' in data else set())
++  if operation not in fields or set(data)!=allowed:raise SoundError('Unknown operation or unsupported sound fields')
+@@ -45 +46 @@ class SoundService:
+-   return lib.add(data['fields'],raw,data['revision'],data['permission'],data['source'])
++   return lib.add(data['fields'],raw,data['revision'],data['permission'],data['source'],data.get('skip_duplicate',False))
+diff --git a/ICARUS/web/umbra/soundboard.js b/ICARUS/web/umbra/soundboard.js
+index b3316bb..b98645d 100644
+--- a/ICARUS/web/umbra/soundboard.js
++++ b/ICARUS/web/umbra/soundboard.js
+@@ -4,3 +4,3 @@ const blobs=new Map(),decoded=new Map();let syncTime=0;
+-const toggle=document.createElement('button');toggle.id='soundboard-toggle';toggle.textContent='Instant Buttons';toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-controls','soundboard');toggle.hidden=true;
+-const box=document.createElement('section');box.id='soundboard';box.hidden=true;box.setAttribute('aria-label','Instant Buttons soundboard');box.innerHTML=`<div class="sb-toolbar"><h2>UMBRA // INSTANT BUTTONS</h2><button id="sb-close" aria-label="Close soundboard">×</button></div>
+-<div class="sb-toolbar"><button id="sb-add">Add Sound</button><button id="sb-refresh">Refresh library</button><button id="sb-stop">Stop all soundboard audio</button><a href="https://www.myinstants.com/en/index/us/" target="_blank" rel="noopener noreferrer">Discover sounds ↗</a></div>
++const toggle=document.createElement('button');toggle.id='soundboard-toggle';toggle.textContent='Soundboard';toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-controls','soundboard');toggle.hidden=true;
++const box=document.createElement('section');box.id='soundboard';box.hidden=true;box.setAttribute('aria-label','Soundboard');box.innerHTML=`<div class="sb-toolbar"><h2>UMBRA // SOUNDBOARD</h2><button id="sb-close" aria-label="Close soundboard">×</button></div>
++<div class="sb-toolbar"><button id="sb-add">Add Sound</button><button id="sb-bulk-add">Add many sounds</button><button id="sb-refresh">Refresh library</button><button id="sb-stop">Stop all soundboard audio</button><a href="https://www.myinstants.com/en/index/us/" target="_blank" rel="noopener noreferrer">Discover sounds ↗</a></div>
+@@ -14 +14 @@ function status(message){$('sb-status').textContent=message;}
+-async function request(path,body){const token=localStorage.getItem('remoteDeckToken');if(!token)throw Error('Pair this terminal first');const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),path==='link'?25000:10000);try{const r=await fetch('/api/sounds/'+path,{method:body===undefined?'GET':'POST',headers:{Authorization:'Bearer '+token,...(body===undefined?{}:{'Content-Type':'application/json'})},body:body===undefined?undefined:JSON.stringify(body),signal:controller.signal});const d=await r.json();if(!r.ok)throw Error(d.error||'Sound request failed');return d;}finally{clearTimeout(timer);}}
++async function request(path,body){const token=localStorage.getItem('remoteDeckToken');if(!token)throw Error('Pair this terminal first');const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),path==='backup'?120000:path==='link'?25000:10000);try{const r=await fetch('/api/sounds/'+path,{method:body===undefined?'GET':'POST',headers:{Authorization:'Bearer '+token,...(body===undefined?{}:{'Content-Type':'application/json'})},body:body===undefined?undefined:JSON.stringify(body),signal:controller.signal});const d=await r.json();if(!r.ok){const error=Error(d.error||'Sound request failed');error.status=r.status;throw error;}return d;}finally{clearTimeout(timer);}}
+@@ -30 +30 @@ function render(){for(const binding of bindings)binding.destroy();bindings=[];co
+-async function sync(){if(busy||!box.hidden&&!$('sb-editor').hidden||box.querySelector('input:focus,select:focus,textarea:focus')||bindings.some(b=>b.active))return;busy=true;try{await initialCache;const d=await request('library');if(library.sounds.length&&((!d.storage?.library_present&&!d.sounds.length)||d.revision<library.revision)){for(const id of ['sb-add','sb-save','sb-output-save'])$(id).disabled=true;status('STORAGE CONFLICT · Server library is missing or older than this terminal cache. Existing cache retained. Back up and copy the original soundboard_data folder; do not reset or import a replacement.');return;}for(const id of ['sb-add','sb-save','sb-output-save'])$(id).disabled=false;online=true;syncTime=Date.now();library=d;root.UmbraAudioProfile=d.audio_profile||root.UmbraAudioProfile;await cache.set('library',d).catch(()=>{});await cache.prune(d.sounds.map(s=>s.id)).catch(()=>{});const keep=new Set(d.sounds.map(s=>s.id));for(const id of blobs.keys())if(!keep.has(id))blobs.delete(id);for(const id of decoded.keys())if(!keep.has(id))decoded.delete(id);render();status(d.audio_error?'Audio settings error (library preserved): '+d.audio_error:d.player?.error?'Windows playback error: '+d.player.error+' · Library files retained.':'Library synchronized · '+d.sounds.length+' sounds · '+d.routing);}catch(e){online=false;status('OFFLINE / '+e.message+' · Cached private previews remain available. Normal Windows playback requires the server.');}finally{busy=false;}}
++async function sync(){if(busy||!box.hidden&&!$('sb-editor').hidden||box.querySelector('input:focus,select:focus,textarea:focus')||bindings.some(b=>b.active))return;busy=true;try{await initialCache;const d=await request('library');if(library.sounds.length&&((!d.storage?.library_present&&!d.sounds.length)||d.revision<library.revision)){for(const id of ['sb-add','sb-bulk-add','sb-save','sb-output-save'])$(id).disabled=true;status('STORAGE CONFLICT · Server library is missing or older than this terminal cache. Existing cache retained. Back up and copy the original soundboard_data folder; do not reset or import a replacement.');return;}for(const id of ['sb-add','sb-bulk-add','sb-save','sb-output-save'])$(id).disabled=false;online=true;syncTime=Date.now();library=d;root.UmbraAudioProfile=d.audio_profile||root.UmbraAudioProfile;await cache.set('library',d).catch(()=>{});await cache.prune(d.sounds.map(s=>s.id)).catch(()=>{});const keep=new Set(d.sounds.map(s=>s.id));for(const id of blobs.keys())if(!keep.has(id))blobs.delete(id);for(const id of decoded.keys())if(!keep.has(id))decoded.delete(id);render();status(d.audio_error?'Audio settings error (library preserved): '+d.audio_error:d.player?.error?'Windows playback error: '+d.player.error+' · Library files retained.':'Library synchronized · '+d.sounds.length+' sounds · '+d.routing);}catch(e){online=false;status('OFFLINE / '+e.message+' · Cached private previews remain available. Normal Windows playback requires the server.');}finally{busy=false;}}
+@@ -51 +51 @@ $('sb-clear').onclick=async()=>{cancelGestures();blobs.clear();decoded.clear();t
+-function close(){box.hidden=true;toggle.setAttribute('aria-expanded','false');cancelGestures();}
++function close(){bulkCancel=true;box.hidden=true;toggle.setAttribute('aria-expanded','false');cancelGestures();}
+@@ -53,0 +54,78 @@ function department(){const allowed=!!localStorage.getItem('remoteDeckToken')&&[
++
++// Batch orchestration only: reuse the existing converter, authenticated import,
++// revision checks and verified backup. No second library, player or audio route.
++let bulkRunning=false,bulkCancel=false;
++const bulk=node('section');bulk.id='sb-bulk';bulk.className='sb-form';bulk.hidden=true;
++bulk.innerHTML=`<h3>Import many sounds</h3><p>Choose up to 512 files. Files are converted one at a time with the existing converter: 8 MiB source / 30 seconds per clip. The library supports 512 sounds / 256 MiB. No playback or output change occurs.</p>
++<label>Audio files<input id="sb-bulk-files" type="file" multiple accept="audio/*,.wav,.mp3,.ogg,.m4a,.flac"></label>
++<label>Or choose an audio folder<input id="sb-bulk-folder" type="file" multiple webkitdirectory></label>
++<label>Category<input id="sb-bulk-category" maxlength="32" value="General"></label>
++<label>Volume<input id="sb-bulk-volume" type="range" min="0" max="100" value="35"></label>
++<label><input id="sb-bulk-rights" type="checkbox"> I have permission to store and use these files.</label>
++<label><input id="sb-bulk-duplicates" type="checkbox"> Allow duplicates (otherwise matching stored audio is skipped)</label>
++<p id="sb-bulk-status" class="sb-notice" role="status">Select files. Existing sounds, output and audio settings are retained.</p>
++<div class="sb-toolbar"><button id="sb-bulk-start">Import selected files</button><button id="sb-bulk-cancel">Close</button></div><ol id="sb-bulk-results"></ol>`;
++box.insertBefore(bulk,$('sb-grid'));
++let bulkFiles=[];
++function selectBulk(files){if(bulkRunning)return;bulkFiles=Array.from(files);$('sb-bulk-status').textContent=bulkFiles.length+' files selected. Up to 512 per batch; unsupported files get individual errors.';}
++$('sb-bulk-files').onchange=()=>selectBulk($('sb-bulk-files').files);
++$('sb-bulk-folder').onchange=()=>selectBulk(Array.from($('sb-bulk-folder').files).filter(f=>/\.(wav|mp3|ogg|m4a|flac|aac|opus|webm)$/i.test(f.name)));
++$('sb-bulk-add').onclick=()=>{if(bulkRunning)return;showEditor(false);bulk.hidden=false;$('sb-bulk-start').focus();};
++function bulkResult(file,message){const row=node('li',file.name+' — '+message);$('sb-bulk-results').append(row);return row;}
++function setBulkBusy(value){
++ bulkRunning=value;busy=value;
++ for(const id of ['sb-bulk-start','sb-bulk-files','sb-bulk-folder','sb-bulk-category','sb-bulk-volume','sb-bulk-rights','sb-bulk-duplicates','sb-add','sb-refresh','sb-output-save','sb-bulk-add'])$(id).disabled=value;
++ for(const button of box.querySelectorAll('.sb-edit'))button.disabled=value;
++ $('sb-bulk-cancel').textContent=value?'Cancel remaining files':'Close';
++}
++$('sb-bulk-cancel').onclick=()=>{if(bulkRunning){bulkCancel=true;$('sb-bulk-status').textContent='Cancelling remaining files. A save already received by the server may complete; saved sounds are retained.';}else bulk.hidden=true;};
++async function runBulk(){
++ if(bulkRunning)return;
++ if(!$('sb-bulk-rights').checked){$('sb-bulk-status').textContent='Confirm permission to use these files first.';return;}
++ if(!bulkFiles.length||bulkFiles.length>512){$('sb-bulk-status').textContent='Select between 1 and 512 files; nothing was imported.';return;}
++ const category=$('sb-bulk-category').value.trim(),volume=Number($('sb-bulk-volume').value)/100,allowDuplicates=$('sb-bulk-duplicates').checked;
++ if(!category||!Number.isFinite(volume)||volume<0||volume>1){$('sb-bulk-status').textContent='Enter a category and valid volume.';return;}
++ const files=bulkFiles.slice();let saved=0,skipped=0,failed=0,processed=0;
++ bulkCancel=false;setBulkBusy(true);cancelGestures();$('sb-bulk-results').replaceChildren();
++ try {
++  await initialCache;const fresh=await request('library');
++  if(!Array.isArray(fresh.sounds)||!Number.isInteger(fresh.revision))throw Error('Invalid server library; no files imported.');
++  if(library.sounds.length&&((!fresh.storage?.library_present&&!fresh.sounds.length)||fresh.revision<library.revision))throw Error('STORAGE CONFLICT: preserve/copy the existing soundboard_data library before importing.');
++  library=fresh;
++  if(library.sounds.length){$('sb-bulk-status').textContent='Verifying a backup of the existing library before import…';const backup=await request('backup',{});if(!backup.created||backup.source?.errors?.length)throw Error('Verified existing-library backup was not created; import stopped.');}
++  const maxSounds=library.limits?.max_sounds||64,maxBytes=library.limits?.max_audio_bytes||64*1024*1024;
++  for(const file of files){
++   if(bulkCancel)break;
++   const row=bulkResult(file,'Converting…');let converted;
++   try {
++    const name=Array.from(file.name.replace(/\.[^.]+$/,'').replace(/[\x00-\x1f\x7f]/g,' ')).slice(0,48).join('').trim()||'Sound '+(processed+1);
++    const provenance='Local bulk upload: '+Array.from(file.name.replace(/[\x00-\x1f\x7f]/g,' ')).slice(0,200).join('');
++    converted=await convert(file,name,provenance);
++
++   }catch(e){failed++;processed++;row.textContent=file.name+' — Not imported: '+e.message;continue;}
++   if(bulkCancel){row.textContent=file.name+' — Cancelled before save';break;}
++
++   if(allowDuplicates&&(library.sounds.length>=maxSounds||library.sounds.reduce((n,s)=>n+s.bytes,0)+converted.candidate.blob.size>maxBytes)){row.textContent=file.name+' — Library capacity reached; remaining files were not imported.';break;}
++   try {
++    row.textContent=file.name+' — Saving…';
++    const prior=library.revision,d=await request('import',{fields:{name:converted.name,category,icon:'play',volume,favorite:false},audio:await base64(converted.candidate.blob),permission:true,source:converted.candidate.source,revision:prior,skip_duplicate:!allowDuplicates});
++    if(d.duplicate_id){
++     if(!Array.isArray(d.sounds)||d.revision!==prior||!d.sounds.some(s=>s.id===d.duplicate_id))throw Error('Invalid duplicate acknowledgement; refresh before continuing.');
++     library={...library,...d};skipped++;processed++;row.textContent=file.name+' — Duplicate audio skipped';
++    }else{
++     if(!Array.isArray(d.sounds)||d.revision!==prior+1||d.sounds.length!==library.sounds.length+1)throw Error('Unconfirmed save response; refresh before continuing.');
++     library={...library,...d};saved++;processed++;row.textContent=file.name+' — Saved';
++    }
++   }catch(e){failed++;processed++;row.textContent=file.name+' — Save not confirmed: '+e.message+'. Batch stopped; refresh before retrying (no automatic replay).';break;}
++   $('sb-bulk-status').textContent=saved+' saved · '+skipped+' duplicates skipped · '+failed+' failed · '+(files.length-processed)+' remaining';
++  }
++ }catch(e){status('Bulk import stopped: '+e.message);$('sb-bulk-results').append(node('li',e.message));}
++ finally {
++  setBulkBusy(false);render();await cache.set('library',library).catch(()=>{});
++  $('sb-bulk-status').textContent=saved+' saved · '+skipped+' duplicates skipped · '+failed+' failed · '+(files.length-processed)+' not imported'+(bulkCancel?' · Cancelled':'')+'. Saved sounds and output settings are retained.';
++  await sync();
++ }
++}
++$('sb-bulk-start').onclick=runBulk;
++root.addEventListener('pagehide',()=>{bulkCancel=true;});
++

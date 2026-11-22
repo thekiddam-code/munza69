@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.umbra.mobile.WeatherClientTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-11-22T22:59:46" hostname="38be7f335680" time="0.129">
+  <properties/>
+  <testcase name="providerErrorsAreNotDemonstrationData" classname="com.umbra.mobile.WeatherClientTest" time="0.055"/>
+  <testcase name="weatherUsesRealProviderContractUnitsAndNoAuthorization" classname="com.umbra.mobile.WeatherClientTest" time="0.073"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -52,7 +52,7 @@ class IcarusClient {
                             val output=ByteArrayOutputStream()
                             r.body?.byteStream()?.use { input ->
                                 val buffer=ByteArray(4096)
-                                while(true) { val n=input.read(buffer);if(n<0)break;if(output.size()+n>131072)throw RemoteFailure(message="Server response exceeds the supported size.");output.write(buffer,0,n) }
+                                while(true) { val n=input.read(buffer);if(n<0)break;if(output.size()+n>(if(path=="api/sounds/library")2097152 else 131072))throw RemoteFailure(message="Server response exceeds the supported size.");output.write(buffer,0,n) }
                             } ?: throw RemoteFailure(message="Empty server response.")
                             Json.parseToJsonElement(output.toByteArray().decodeToString(throwOnInvalidSequence=true)) as? JsonObject ?: throw RemoteFailure(message="Unsupported server response.")
                         }

@@ -110,15 +110,19 @@ class InstantController(private val remote: IcarusClient,private val tokenFor: s
         finally {state.value=state.value.copy(busy=false);mutex.unlock()}
     }
     fun publish(base: String,pc: PcStatus) {state.value=InstantSnapshot(base,pc,System.currentTimeMillis(),"Synchronized with the existing server.")}
-    suspend fun execute(c: Config,id: String) {
+    suspend fun execute(c: Config,id: String,widgetId: String?=null) {
         if(!mutex.tryLock())return
         try {
             val base=serverBase(c)
             val snapshot=state.value
             if(snapshot.base!=base || snapshot.pc==null)throw RemoteFailure(message="Refresh the current server controls first.")
-            val local=c.customButtons.firstOrNull {"local:${it.id}"==id}
+            val local=widgetId?.let {widgetSpec(c,it)?.buttonOverrides?.get(id)} ?: c.customButtons.firstOrNull {"local:${it.id}"==id}
             if(local!=null)buttonSupport(local,snapshot.pc)?.let {throw RemoteFailure(message=it)}
-            val action=buttonCatalog(c,snapshot.pc).firstOrNull {it.id==id} ?: throw RemoteFailure(message="This command is no longer available. Refresh controls.")
+            val action=widgetCatalog(c,snapshot.pc,widgetId,pcConnection.value.catalog).firstOrNull {it.id==id} ?: throw RemoteFailure(message="This command is no longer available. Refresh controls.")
+            if(action.path=="api/windows/command") {
+                val advertised=windowsButtonActions(pcConnection.value.catalog).map {it.body.literal("id")}
+                require(action.body.literal("id") in advertised && pcConnection.value.base==base && pcConnection.value.phase==PcPhase.Connected)
+            }
             val token=tokenFor(base) ?: throw RemoteFailure(401,"Pair this phone in the ICARUS screen.")
             state.value=snapshot.copy(busy=true,status="Sending ${action.label}…")
             val response=remote.request(base,action.path,c.timeout,token,action.body)

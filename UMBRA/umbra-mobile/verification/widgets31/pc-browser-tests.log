@@ -1,0 +1,15 @@
+test_bulk_cancel_before_save_and_permission_gate_preserve_library (__main__.BulkSoundboard.test_bulk_cancel_before_save_and_permission_gate_preserve_library) ... ok
+test_bulk_conflict_stops_without_replay_or_output_changes (__main__.BulkSoundboard.test_bulk_conflict_stops_without_replay_or_output_changes) ... ok
+test_bulk_many_files_duplicates_errors_and_existing_output_survive (__main__.BulkSoundboard.test_bulk_many_files_duplicates_errors_and_existing_output_survive) ... ok
+test_sound_auth_limits_unknown_routes_and_missing_output_are_explicit (__main__.BulkSoundboard.test_sound_auth_limits_unknown_routes_and_missing_output_are_explicit) ... ok
+test_sound_available_all_simulation_tabs_and_responsive_no_overlay_elsewhere (__main__.BulkSoundboard.test_sound_available_all_simulation_tabs_and_responsive_no_overlay_elsewhere) ... ok
+test_sound_cached_private_preview_works_offline_and_no_mic_api_is_used (__main__.BulkSoundboard.test_sound_cached_private_preview_works_offline_and_no_mic_api_is_used) ... ok
+test_sound_import_memory_cache_is_bounded_without_evicting_the_library (__main__.BulkSoundboard.test_sound_import_memory_cache_is_bounded_without_evicting_the_library) ... ok
+test_sound_supported_link_import_and_delayed_preview_release_are_safe (__main__.BulkSoundboard.test_sound_supported_link_import_and_delayed_preview_release_are_safe) ... ok
+test_sound_tap_plays_host_hold_previews_local_only_and_cancellation_stops (__main__.BulkSoundboard.test_sound_tap_plays_host_hold_previews_local_only_and_cancellation_stops) ... ok
+test_sound_upload_edit_move_delete_and_restart_without_chrome_dependency (__main__.BulkSoundboard.test_sound_upload_edit_move_delete_and_restart_without_chrome_dependency) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 94.974s
+
+OK

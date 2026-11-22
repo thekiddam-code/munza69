@@ -1,5 +1,7 @@
 # Native Instant Buttons and supported ICARUS outputs
 
+**3.1 navigation/storage update:** see [current report](WIDGETS31_REPORT.md). Soundboard is now in SIMULATOR; audio output is CONFIG → ICARUS → Soundboard. Dedicated Instant Buttons and Command library pages are removed. HOME Button/Soundboard widgets have independent configuration; schema 6 preserves existing data. The earlier contract and historical verification below remain applicable except where the current report supersedes navigation or limits.
+
 The inspected baseline is the existing repository's `ICARUS/server.py`, `ICARUS/config.json`, and Remote Deck `web/index.html` at commit `5c08c9e`. Phase 2.1 only embedded a read-only catalog and truncated compact widgets with `take(6)`; it had no dedicated native Instant Buttons route or full output editor. Phase 2.3 adds that native page and removes the truncation. It does not require a new server endpoint or modify the Windows server, simulation, TV integration, or web deck.
 
 Open **DECK → Instant Buttons**. Long-press its title for Create, Select buttons, Save, Load, and Restore. Long-press a button for configure/resize/duplicate/remove or drag to arrange. Each widget can select an independent catalog subset. The complete selected set wraps across grid rows and scrolls within the configured size. The selection editor supports search, Select all, and Deselect all; there is no six-button cap.

@@ -83,6 +83,7 @@ import java.io.IOException
                 "Appearance" -> {
                     Choice("Visual Detail",VisualDetail.entries.map {it.name},c.visualDetail.name){detail->model.change {it.copy(visualDetail=VisualDetail.valueOf(detail))}}
                     Text("Enhanced is the default. Visual Detail controls cached static structure and panel detail; changing it never enables animations. Master off and Minimal motion do not reduce visual detail.",style=MaterialTheme.typography.bodySmall)
+                    Toggle("Show Recents shortcut",c.recentsShortcut){v->model.change {it.copy(recentsShortcut=v)}}
                     Toggle("Show app labels",c.showAppLabels){v->model.change {it.copy(showAppLabels=v)}}
                     Choice("Application icon size",listOf("32","40","48","56","64","72"),c.iconSize.toString()){v->model.change {it.copy(iconSize=v.toInt())}}
                     TransitionSettings(c,model)
@@ -93,7 +94,7 @@ import java.io.IOException
                     Choice("Background",listOf("Void","Graphite","Blueprint"),c.background){v->model.change { it.copy(background=v) }}
                     Choice("Typography",listOf("Technical","Mono","System"),c.typography){v->model.change { it.copy(typography=v) }}
                     Choice("Panel density",listOf("Compact","Balanced","Spacious"),listOf("Compact","Balanced","Spacious")[c.density-1]){v->model.change { it.copy(density=listOf("Compact","Balanced","Spacious").indexOf(v)+1) }}
-                    Choice("Application columns",listOf("3","4","5"),c.gridColumns.toString()){v->model.change { it.copy(gridColumns=v.toInt()) }}
+                    Choice("Application columns",(3..8).map(Int::toString),c.gridColumns.toString()){v->model.change { it.copy(gridColumns=v.toInt()) }}
                 }
                 "Animation" -> {
                     Choice("Performance profile",Profile.entries.map { it.name },c.profile.name){model.profile(Profile.valueOf(it))}
@@ -117,7 +118,7 @@ import java.io.IOException
                     Toggle("Hide Bottom Navigation Bar",c.hideBottomBar){v->model.change { it.copy(hideBottomBar=v) }}
                     Toggle("Show UMBRA Status Panel",c.statusPanel){model.flag("statusPanel",it)}
                     Text("Status Panel · per tab",style=MaterialTheme.typography.titleMedium)
-                    STATUS_TABS.filterNot {it=="Lounge"}.forEach {tab->Toggle("Status Panel on $tab",c.statusTabs[tab] ?: DEFAULT_STATUS_TABS.getValue(tab)){value->model.change {it.copy(statusTabs=it.statusTabs+(tab to value))}}}
+                    STATUS_TABS.filterNot {it in listOf("Lounge","Instant Buttons")}.forEach {tab->Toggle("Status Panel on $tab",c.statusTabs[tab] ?: DEFAULT_STATUS_TABS.getValue(tab)){value->model.change {it.copy(statusTabs=it.statusTabs+(tab to value))}}}
                     Button(onClick={model.change { it.copy(immersive=false,hideTopBar=false,hideBottomBar=false) }},shape=Chamfer,modifier=Modifier.fillMaxWidth()){Text("Restore Standard Android Bars")}
                     Text("Android bars is always accessible in the header. System gestures can reveal transient bars. Samsung/Android may keep protected system UI visible for HOME, keyboard, calls, accessibility, or security.",style=MaterialTheme.typography.bodySmall)
                     Text("Status panel indicators",style=MaterialTheme.typography.titleMedium)
@@ -160,6 +161,7 @@ import java.io.IOException
                 }
                 "ICARUS" -> {
                     ConnectionFields(c,model)
+                    NativePairingSettings(c,model)
                     Toggle("Show PC connection indicator",c.pcIndicator){v->model.change {it.copy(pcIndicator=v)}}
                     TextButton(onClick={category="Soundboard"}){Text("Soundboard → Audio Output")}
                     Text("PC status is shared across the header and Engineering. Visible Engineering modules update every 3 seconds; the header checks every 30 seconds. Low battery or battery saver reduces checks to once a minute. Nothing polls while UMBRA is hidden.",style=MaterialTheme.typography.bodySmall)
@@ -174,7 +176,7 @@ import java.io.IOException
                 "Configuration" -> {
                     Button(onClick={exported=c;export.launch("umbra-settings-v2.json")},shape=Chamfer,modifier=Modifier.fillMaxWidth()){Text("Export settings")}
                     OutlinedButton(onClick={importLauncher.launch(arrayOf("application/json","text/plain","application/octet-stream"))},shape=Chamfer,modifier=Modifier.fillMaxWidth()){Text("Import settings")}
-                    Text("Schema version 3 (schema 2 accepted). Imports are validated before atomic replacement. Maximum 256 KiB. Exports contain preferences and configured URLs, but no PIN, pairing token, notification content, or device telemetry.",style=MaterialTheme.typography.bodySmall)
+                    Text("Schema 6; versions 2–6 accepted. Imports are validated before atomic replacement. Maximum 1 MiB. Exports contain preferences and configured URLs, but no PIN, pairing token, notification content, or device telemetry.",style=MaterialTheme.typography.bodySmall)
                     Button(onClick={resetAll=true},shape=Chamfer){Text("Restore all defaults")}
                     Text("To restore Samsung: Settings → Apps → Choose default apps → Home app → One UI Home.",style=MaterialTheme.typography.bodyMedium)
                     Button(onClick=homeSettings,shape=Chamfer){Text("Open Android Home settings")}

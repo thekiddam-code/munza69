@@ -1,5 +1,7 @@
 # Phase 2.3 layout and editing configuration
 
+**3.1 navigation/storage update:** see [current report](WIDGETS31_REPORT.md). Soundboard is now in SIMULATOR; audio output is CONFIG → ICARUS → Soundboard. Dedicated Instant Buttons and Command library pages are removed. HOME Button/Soundboard widgets have independent configuration; schema 6 preserves existing data. The earlier contract and historical verification below remain applicable except where the current report supersedes navigation or limits.
+
 UMBRA upgrades the existing private Preferences DataStore envelope from schema 2/3 to **schema 4** on the next successful write. It keeps the `config_v2` storage key and still reads Phase 1 scalar preferences. No destructive reset or eager rewrite is performed. Existing desktop schema 1 pages/items/folders/widgets, native widget IDs, favorites, custom labels, server URLs/timeouts, motion choices, weather location, and Keystore pairing are retained.
 
 ## Shared grids

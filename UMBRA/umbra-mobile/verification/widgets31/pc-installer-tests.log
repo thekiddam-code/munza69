@@ -1,0 +1,9 @@
+test_apply_preserves_audio_profiles_output_and_is_idempotent_then_restores_code (__main__.Installer.test_apply_preserves_audio_profiles_output_and_is_idempotent_then_restores_code) ... ok
+test_explicit_empty_library_keeps_output_metadata (__main__.Installer.test_explicit_empty_library_keeps_output_metadata) ... ok
+test_mismatch_running_server_and_missing_library_never_change_code (__main__.Installer.test_mismatch_running_server_and_missing_library_never_change_code) ... ok
+test_rollback_refuses_large_library (__main__.Installer.test_rollback_refuses_large_library) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.353s
+
+OK

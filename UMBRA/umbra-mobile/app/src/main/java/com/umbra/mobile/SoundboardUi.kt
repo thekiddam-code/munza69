@@ -20,24 +20,24 @@ import kotlinx.serialization.json.*
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
-@Composable private fun SoundboardSession(c: Config,model: LauncherModel,pollPlayback: Boolean,content: @Composable (SoundboardState,(suspend ()->Unit)->Unit)->Unit) {
+@Composable private fun SoundboardSession(c: Config,model: LauncherModel,pollPlayback: Boolean,visible: Boolean=true,content: @Composable (SoundboardState,(suspend ()->Unit)->Unit)->Unit) {
     val saved by model.soundboard.state.collectAsStateWithLifecycle()
     val state=saved.takeIf {it.base==serverBase(c)} ?: SoundboardState()
     val lifecycle=LocalLifecycleOwner.current.lifecycle
     val scope=rememberCoroutineScope()
     var work by remember {mutableStateOf<Job?>(null)}
-    LifecycleStartEffect(serverBase(c)) {onStopOrDispose {work?.cancel()}}
-    LaunchedEffect(lifecycle,serverBase(c),c.timeout) {
-        lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED){model.soundboard.sync(c)}
+    LifecycleStartEffect(serverBase(c),visible) {onStopOrDispose {work?.cancel()}}
+    LaunchedEffect(lifecycle,serverBase(c),c.timeout,visible) {
+        if(visible)lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED){model.soundboard.sync(c)}
     }
     val playing=state.playbackKnown && state.catalog?.player?.literal("state") in setOf("starting","playing")
-    LaunchedEffect(lifecycle,serverBase(c),c.timeout,pollPlayback,playing) {
-        if(pollPlayback && playing)lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+    LaunchedEffect(lifecycle,serverBase(c),c.timeout,pollPlayback,playing,visible) {
+        if(visible && pollPlayback && playing)lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
             while(isActive){delay(1000);model.soundboard.sync(c)}
         }
     }
     content(state) {action->
-        if(work?.isActive!=true && lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED))work=scope.launch {action()}
+        if(visible && work?.isActive!=true && lifecycle.currentState.isAtLeast(Lifecycle.State.STARTED))work=scope.launch {action()}
     }
 }
 @Composable private fun SoundboardSyncStatus(state: SoundboardState) {
@@ -47,39 +47,55 @@ import java.time.format.DateTimeFormatter
     if(state.busy)Text("Synchronizing / sending request…",style=MaterialTheme.typography.bodySmall)
 }
 @OptIn(ExperimentalFoundationApi::class)
-@Composable fun SoundboardScreen(c: Config,model: LauncherModel) {
-    var manage by remember {mutableStateOf(false)}
-    var favoritesOnly by rememberSaveable {mutableStateOf(false)}
-    var configured by remember {mutableStateOf<String?>(null)}
-    SoundboardSession(c,model,true) {state,run->
+@Composable fun SoundboardScreen(c: Config,model: LauncherModel,widgetId: String?=null,compact: Boolean=false,visible: Boolean=true,headingModifier: Modifier=Modifier) {
+    var manage by remember {mutableStateOf(false)};var favoritesOnly by rememberSaveable {mutableStateOf(false)};var configured by remember {mutableStateOf<String?>(null)}
+    val spec=widgetId?.let {widgetSpec(c,it)};val surface=widgetId?.let {"sound-widget:$it"} ?: "soundboard"
+    SoundboardSession(c,model,true,visible) {state,run->
         val catalog=state.catalog
-        Column(verticalArrangement=Arrangement.spacedBy(8.dp)) {
-            Box(Modifier.fillMaxWidth().heightIn(min=48.dp).combinedClickable(onClick={},onLongClick={manage=true}).testTag("soundboard-header")) {Readout("ICARUS / SOUNDBOARD",Amber)}
-            SoundboardSyncStatus(state)
-            Row {
-                TextButton(onClick={run {model.soundboard.sync(c)}},enabled=!state.busy){Text("Sync sounds")}
-                TextButton(onClick={run {model.soundboard.stop(c)}},enabled=catalog!=null && !state.busy){Text("Stop playback")}
+        Column(if(compact)Modifier.fillMaxSize() else Modifier.fillMaxWidth(),verticalArrangement=Arrangement.spacedBy(4.dp)) {
+            Row(Modifier.fillMaxWidth()) {
+                Box(Modifier.weight(1f).heightIn(min=48.dp).then(headingModifier).then(if(widgetId==null)Modifier.combinedClickable(onClick={},onLongClick={manage=true}) else Modifier).testTag("soundboard-header")) {
+                    Text(spec?.title?.takeIf {it.isNotBlank()} ?: "Soundboard",color=MaterialTheme.colorScheme.primary,style=MaterialTheme.typography.titleMedium)
+                }
+                TextButton(onClick={run {model.soundboard.sync(c)}},enabled=!state.busy){Text("Sync")}
+                TextButton(onClick={run {model.soundboard.stop(c)}},enabled=catalog!=null && !state.busy){Text("Stop")}
             }
-            val player=catalog?.player
-            Text(if(!state.playbackKnown)"Playback status unknown; refresh to verify." else "Server playback: ${player?.literal("state") ?: "unknown"}${player?.literal("id")?.let {id->catalog.sounds.firstOrNull {it.id==id}?.let {" · ${it.name}"}} ?: ""}",modifier=Modifier.semantics {liveRegion=LiveRegionMode.Polite})
-            if(player?.literal("state")=="error")Text("Server playback failed. Check the configured output device.",color=androidx.compose.ui.graphics.Color(0xFFD27970))
-            FilterChip(selected=favoritesOnly,onClick={favoritesOnly=!favoritesOnly},label={Text("Favorites only")})
-            val sounds=catalog?.sounds?.filter {!favoritesOnly || it.favorite} ?: emptyList()
-            if(catalog!=null && sounds.isEmpty())Text(if(favoritesOnly)"No favorite sounds. Long-press a sound to favorite it." else "The server library is empty. Add sounds in the existing ICARUS Remote Deck.")
-            Column(Modifier.heightIn(max=560.dp).fillMaxWidth().verticalScroll(rememberScrollState())) {
-                GridBoard("soundboard",sounds.map {GridItem(it.id,it.name)},c,model,columns=2,cellHeight=76.dp,onConfigure={configured=it}) {item,_->
+            if(!compact)SoundboardSyncStatus(state) else {
+                Text("${catalog?.sounds?.size ?: 0} sounds · "+(if(state.playbackKnown)catalog?.player?.literal("state") ?: "unknown" else "status unknown"),style=MaterialTheme.typography.labelSmall)
+                state.error?.let {Text(it,color=MaterialTheme.colorScheme.error,style=MaterialTheme.typography.labelSmall,modifier=Modifier.semantics {liveRegion=LiveRegionMode.Polite})}
+            }
+            if(!compact) {
+                Text(if(!state.playbackKnown)"Playback status unknown; refresh to verify." else "Server playback: ${catalog?.player?.literal("state") ?: "unknown"}",modifier=Modifier.semantics {liveRegion=LiveRegionMode.Polite})
+                FilterChip(selected=favoritesOnly,onClick={favoritesOnly=!favoritesOnly},label={Text("Favorites only")})
+            }
+            if(catalog?.player?.literal("state")=="error")Text("Server playback failed. Check Audio Output.",color=MaterialTheme.colorScheme.error)
+            val selected=widgetId?.let {c.widgetButtonSelections[it]?.toSet()}
+            val sounds=catalog?.sounds?.filter {(selected==null || "sound:${it.id}" in selected) && (!(favoritesOnly || spec?.buttonSet=="favorites") || it.favorite)} ?: emptyList()
+            if(catalog!=null && sounds.isEmpty())Text("No selected sounds. Configure this widget or add sounds on the PC.",style=MaterialTheme.typography.bodySmall)
+            Column((if(compact)Modifier.weight(1f) else Modifier.heightIn(max=560.dp)).fillMaxWidth().verticalScroll(rememberScrollState())) {
+                GridBoard(surface,sounds.map {GridItem(it.id,it.name)},c,model,columns=spec?.buttonColumns ?: 2,cellHeight=(spec?.buttonHeight ?: 76).dp,onConfigure={configured=it}) {item,_->
                     val sound=sounds.first {it.id==item.id}
-                    OutlinedButton(onClick={run {model.soundboard.play(c,sound.id)}},enabled=!state.busy,shape=Chamfer,modifier=Modifier.fillMaxSize().testTag("sound-${sound.id}")) {
-                        Text((if(sound.favorite)"★ " else "")+sound.name,maxLines=3)
-                    }
+                    OutlinedButton(onClick={run {model.soundboard.play(c,sound.id)}},enabled=!state.busy,shape=Chamfer,contentPadding=PaddingValues(horizontal=4.dp,vertical=4.dp),modifier=Modifier.fillMaxSize().testTag("sound-${sound.id}")) {Text((if(sound.favorite)"★ " else "")+sound.name,maxLines=3)}
                 }
             }
-            Text("Tap to play on the saved ICARUS output. Long-press to move, resize, or favorite. Audio Output is in Settings → ICARUS → Soundboard.",style=MaterialTheme.typography.bodySmall)
+            if(!compact)Text("Tap to play on the saved ICARUS output. Long-press to move, resize, or favorite. Audio Output is in Settings → ICARUS → Soundboard.",style=MaterialTheme.typography.bodySmall)
         }
-        if(manage)AlertDialog(onDismissRequest={manage=false},title={Text("Soundboard layout")},text={Text("Restore buttons hidden on this phone without changing ICARUS, existing positions, or sizes.")},confirmButton={TextButton(onClick={model.restoreGridItems("soundboard");manage=false}){Text("Restore hidden sounds")}},dismissButton={TextButton(onClick={manage=false}){Text("Close")}})
-        configured?.let {id->catalog?.sounds?.firstOrNull {it.id==id}?.let {sound->
-            AlertDialog(onDismissRequest={configured=null},title={Text(sound.name)},text={Text("Favorites are saved in ICARUS and shared with Remote Deck. Grid positions and button sizes remain local to UMBRA.")},confirmButton={TextButton(onClick={configured=null;run {model.soundboard.favorite(c,id)}},enabled=!state.busy){Text(if(sound.favorite)"Remove favorite" else "Favorite")}},dismissButton={TextButton(onClick={configured=null}){Text("Close")}})
-        }}
+        if(manage)AlertDialog(onDismissRequest={manage=false},title={Text("Soundboard layout")},text={Text("Restore hidden buttons without changing ICARUS output or sound mappings.")},confirmButton={TextButton(onClick={model.restoreGridItems(surface);manage=false}){Text("Restore hidden sounds")}},dismissButton={TextButton(onClick={manage=false}){Text("Close")}})
+        configured?.let {id->catalog?.sounds?.firstOrNull {it.id==id}?.let {sound->AlertDialog(onDismissRequest={configured=null},title={Text(sound.name)},text={Text("Favorites are shared with ICARUS. This widget's selection and grid are independent.")},confirmButton={TextButton(onClick={configured=null;run {model.soundboard.favorite(c,id)}},enabled=!state.busy){Text(if(sound.favorite)"Remove favorite" else "Favorite")}},dismissButton={TextButton(onClick={configured=null}){Text("Close")}})}}
+    }
+}
+@Composable fun SoundSelection(c: Config,model: LauncherModel,widgetId: String,draft: Set<String>?,set: (Set<String>)->Unit) {
+    val saved by model.soundboard.state.collectAsStateWithLifecycle();val scope=rememberCoroutineScope()
+    val state=saved.takeIf {it.base==serverBase(c)}
+    val sounds=state?.catalog?.sounds ?: emptyList();val selected=draft ?: sounds.map {"sound:${it.id}"}.toSet()
+    var query by remember {mutableStateOf("")};var job by remember {mutableStateOf<Job?>(null)}
+    LifecycleStartEffect(widgetId){onStopOrDispose {job?.cancel()}}
+    TextButton(onClick={if(job?.isActive!=true)job=scope.launch {model.soundboard.sync(c)}}){Text("Sync available sounds")}
+    state?.error?.let {Text(it,color=MaterialTheme.colorScheme.error)}
+    OutlinedTextField(query,{query=it},label={Text("Search sounds")},singleLine=true)
+    Row {TextButton(onClick={set(sounds.map {"sound:${it.id}"}.toSet())}){Text("Select all")};TextButton(onClick={set(emptySet())}){Text("Deselect all")}}
+    androidx.compose.foundation.lazy.LazyColumn(Modifier.fillMaxWidth().heightIn(max=320.dp)) {
+        items(sounds.size,key={sounds[it].id}) {i->val sound=sounds[i];if(sound.name.contains(query,true))Row {Checkbox("sound:${sound.id}" in selected,{checked->set(if(checked)selected+"sound:${sound.id}" else selected-"sound:${sound.id}")});Text(sound.name)}}
     }
 }
 @Composable fun SoundboardOutputSettings(c: Config,model: LauncherModel) {

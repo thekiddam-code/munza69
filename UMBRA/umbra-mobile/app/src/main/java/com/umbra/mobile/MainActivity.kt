@@ -148,7 +148,7 @@ class MainActivity : ComponentActivity() {
     val gridEditing=remember {GridEditSession()}
     var homeStatusContext by rememberSaveable {mutableStateOf("Main Home")}
     var remoteModule by rememberSaveable { mutableStateOf("PC Remote") }
-    var deckSection by rememberSaveable {mutableStateOf("Command library")}
+    var deckSection by rememberSaveable {mutableStateOf("Engineering")}
     var settingsCategory by rememberSaveable { mutableStateOf("Animation") }
     var screen by rememberSaveable { mutableStateOf("HOME") }
     var query by rememberSaveable { mutableStateOf("") }
@@ -301,8 +301,9 @@ class MainActivity : ComponentActivity() {
                     HorizontalDivider(Modifier.padding(top=8.dp),color=accent.copy(alpha=.3f))
                     Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.SpaceEvenly) {
                         listOf("HOME" to "Home","APPS" to "Apps","COMMAND" to "Deck","SIMULATOR" to "Simulator","ICARUS" to "Icarus","CONFIG" to "Config").forEach { (id,label) ->
-                            TextButton(onClick={screen=id},contentPadding=PaddingValues(horizontal=2.dp),modifier=Modifier.weight(1f).heightIn(min=56.dp).testTag("nav-$id")) { Text(label.uppercase(),color=if(screen==id) accent else Muted,fontFamily=FontFamily.Monospace,fontSize=10.sp,maxLines=1) }
+                            TextButton(onClick={screen=id},contentPadding=PaddingValues(horizontal=2.dp),modifier=Modifier.weight(1f).heightIn(min=56.dp).testTag("nav-$id")) { Text(label.uppercase(),color=if(screen==id) accent else Muted,fontFamily=FontFamily.Monospace,fontSize=if(c.recentsShortcut)9.sp else 10.sp,maxLines=1) }
                         }
+                        if(c.recentsShortcut)RecentsButton()
                     }
                 }
             }

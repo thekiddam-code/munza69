@@ -1,0 +1,2 @@
+<resources><string name="recents_description">Optional UMBRA button to open Android recent apps when tapped. Does not read screen contents, record events, or control gestures.</string>
+</resources>

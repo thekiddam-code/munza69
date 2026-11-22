@@ -36,8 +36,9 @@ import kotlin.math.sin
     }
     return now
 }
-@Composable fun BuiltinWidget(item: DesktopItem,c: Config,model: LauncherModel,device: Device,unusedTime: LocalDateTime,accent: Color,visible: Boolean,expand: (Rect)->Unit) {
+@Composable fun BuiltinWidget(item: DesktopItem,c: Config,model: LauncherModel,device: Device,unusedTime: LocalDateTime,accent: Color,visible: Boolean,expand: (Rect)->Unit,header: Modifier=Modifier) {
     val w=item.widget!!
+    if(w.kind in listOf("icarus","soundboard")) {ButtonWidget(item,c,model,visible,accent,header);return}
     if(w.kind in ENGINEERING_KINDS) {EngineeringWidget(item,c,model,visible,accent,expand);return}
     if(w.kind=="android") { HostedAndroidWidget(item,model,visible);return }
     var bounds by remember(item.id){mutableStateOf(Rect.Zero)}
@@ -106,7 +107,8 @@ private fun Modifier.weightlessHeight()=height(72.dp)
                 val context=LocalContext.current
                 TextButton(onClick={runCatching{context.startActivity(android.content.Intent(android.content.Intent.ACTION_MAIN).addCategory(android.content.Intent.CATEGORY_APP_CALENDAR))}}){Text("Open Android calendar")}
             }
-            "icarus" -> InstantControls(c,model,true,compact=false)
+            "icarus" -> InstantControls(c,model,true,compact=false,widgetId=item.id,surface="instant-widget:${item.id}")
+            "soundboard" -> SoundboardScreen(c,model,widgetId=item.id,compact=false)
             else -> Column(Modifier.fillMaxWidth().height(240.dp),horizontalAlignment=Alignment.CenterHorizontally){ClockFace(item.widget,rememberWidgetTime(device.screenOn,item.widget.seconds),accent)}
         }
     }

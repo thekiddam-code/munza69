@@ -65,7 +65,7 @@ class LauncherModel(app: Application) : AndroidViewModel(app) {
     }
     fun undoArrangement()=save {
         val old=arrangementBackup ?: return@save
-        store.update {it.copy(gridLayouts=old.gridLayouts,desktop=old.desktop,moduleOrder=old.moduleOrder,hiddenModules=old.hiddenModules,instantOrder=old.instantOrder)}
+        store.update {it.copy(gridLayouts=old.gridLayouts,desktop=old.desktop,moduleOrder=old.moduleOrder,hiddenModules=old.hiddenModules,instantOrder=old.instantOrder,widgetButtonSelections=old.widgetButtonSelections)}
         arrangementBackup=null;hasLayoutUndo.value=false
     }
     fun saveGrid(surface: String,grid: GridLayout)=arrange {c->
@@ -78,6 +78,16 @@ class LauncherModel(app: Application) : AndroidViewModel(app) {
     fun switchPreset(id: String)=save {widgetHost.cancel();arrangementBackup=null;hasLayoutUndo.value=false;store.update {switchHomePreset(it.copy(desktop=resolvedDesktop(it,apps.value)),id)}}
     fun addPreset(name: String)=save {widgetHost.cancel();arrangementBackup=null;hasLayoutUndo.value=false;store.update {addHomePreset(it.copy(desktop=resolvedDesktop(it,apps.value)),name)}}
     fun change(transform: (Config) -> Config) = save { store.update(transform) }
+    fun configureWidget(id: String,spec: DesktopWidget,selected: Set<String>?)=arrange {old->
+        val layout=resolvedDesktop(old,apps.value)
+        val page=layout.pages.first {p->p.items.any {it.id==id}}
+        val surface="home:${page.id}"
+        val grid=old.gridLayouts[surface]
+        val previous=grid?.cells?.firstOrNull {it.id==id}
+        val resized=if(grid!=null && previous!=null)relocateGrid(grid.copy(cells=grid.cells.map {if(it.id==id)it.copy(w=spec.span.coerceAtMost(grid.columns),h=spec.rows,collapsed=false) else it}),id,previous.x,previous.y) else grid
+        old.copy(desktop=layout.updateItem(id){it.copy(widget=spec)},gridLayouts=if(resized==null)old.gridLayouts else old.gridLayouts+(surface to resized),
+            widgetButtonSelections=if(spec.kind !in listOf("icarus","soundboard"))old.widgetButtonSelections else if(selected==null)old.widgetButtonSelections-id else old.widgetButtonSelections+(id to selected.toList()))
+    }
     fun removeDesktopItem(id: String) = save {
         store.update { c->c.copy(desktop=validateDesktop(resolvedDesktop(c,apps.value).removeItem(id))) }
         val latest=store.config.first();widgetHost.releaseUnused(allNativeWidgetIds(latest))

@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.*
 
-@Serializable enum class OutputKind { QuickChat, Macro, Text, FortniteEmote, MineToggle, ForwardMine, Stop, TvKey, Simulation }
+@Serializable enum class OutputKind { QuickChat, Macro, Text, FortniteEmote, MineToggle, ForwardMine, Stop, TvKey, Simulation, WindowsHotkey }
 @Serializable data class CustomButton(val id: String=desktopId(),val label: String="New button",val icon: String="◆",val kind: OutputKind=OutputKind.Stop,
     val name: String="",val text: String="",val channel: String="match",val speed: String="balanced",val seconds: Double=3.0,val index: Int=0,val key: String="home",val command: String="pause")
 val BUTTON_ICONS=listOf("◆","⚡","⌘","●","▣","▶","■","✦")
@@ -17,14 +17,16 @@ fun validateButton(button: CustomButton): CustomButton {
     require(button.channel in listOf("team","match") && button.speed in listOf("fast","balanced","safe"))
     require(button.seconds.isFinite() && button.seconds in .2..10.0 && button.index in 0..8 && button.key in TV_KEYS && button.command in SHIP_COMMANDS)
     if(button.kind in listOf(OutputKind.QuickChat,OutputKind.Macro))require(button.name.isNotBlank())
+    if(button.kind==OutputKind.WindowsHotkey)require(button.name.matches(Regex("[a-z0-9_]{1,64}")))
     if(button.kind==OutputKind.Text)require(button.text.isNotBlank())
     return button
 }
 fun buttonAction(b: CustomButton): InstantAction {
     validateButton(b)
     require(b.kind!=OutputKind.TvKey){"Retired output is retained for migration only."}
-    val path=when(b.kind){OutputKind.TvKey->"api/tv/key";OutputKind.Simulation->"api/icarus/command";else->"api/action"}
+    val path=when(b.kind){OutputKind.WindowsHotkey->"api/windows/command";OutputKind.TvKey->"api/tv/key";OutputKind.Simulation->"api/icarus/command";else->"api/action"}
     val body=buildJsonObject {when(b.kind) {
+        OutputKind.WindowsHotkey->{put("kind","hotkey");put("id",b.name);put("requestId",java.util.UUID.randomUUID().toString())}
         OutputKind.TvKey->put("key",b.key)
         OutputKind.Simulation->put("command",b.command)
         else->{put("action",when(b.kind){OutputKind.QuickChat->"quick";OutputKind.Macro->"macro";OutputKind.Text->"text";OutputKind.FortniteEmote->"fortnite_emote";OutputKind.MineToggle->"mine_toggle";OutputKind.ForwardMine->"forward_mine";else->"stop"})

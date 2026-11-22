@@ -21,7 +21,7 @@ val MODULES = listOf("Device", "System", "ICARUS", "Notifications", "Application
 val INDICATORS = setOf("Time", "Date", "Battery", "Network", "ICARUS", "Notifications")
 const val MAX_CONFIG_BYTES = 1048576
 @Serializable data class Config(
-    val pcIndicator: Boolean=true, val activeHomePreset: String="default", val homePresets: List<HomePreset> = emptyList(),
+    val recentsShortcut: Boolean=true, val pcIndicator: Boolean=true, val activeHomePreset: String="default", val homePresets: List<HomePreset> = emptyList(),
     val profile: Profile = Profile.Adaptive, val master: Boolean = true,
     val ambient: Boolean = true, val transitions: Boolean = true,
     val environment: Boolean = false, val alerts: Boolean = true,
@@ -55,7 +55,7 @@ const val MAX_CONFIG_BYTES = 1048576
     val commandExpanded: Boolean=true, val statusTabs: Map<String,Boolean> = DEFAULT_STATUS_TABS,
     val instantSelection: Set<String>?=null, val widgetButtonSelections: Map<String,List<String>> = emptyMap(), val customButtons: List<CustomButton> = emptyList()
 )
-@Serializable private data class ConfigEnvelope(val schemaVersion: Int = 5, val settings: Config)
+@Serializable private data class ConfigEnvelope(val schemaVersion: Int = 6, val settings: Config)
 private val configJson = Json { encodeDefaults = true; ignoreUnknownKeys = false }
 private val componentPattern = Regex("[A-Za-z0-9_.$]+/[A-Za-z0-9_.$]+")
 fun validComponent(value: String) = value.length in 3..512 && componentPattern.matches(value)
@@ -94,7 +94,7 @@ fun validateConfig(c: Config): Config {
     require(c.instantOrder.size<=2048 && c.instantOrder.distinct().size==c.instantOrder.size && c.instantOrder.all { it.length in 1..160 && it.none(Char::isISOControl) })
     require(c.instantFavorites.size<=2048 && c.instantFavorites.all { it.length in 1..160 && it.none(Char::isISOControl) })
     require(c.instantLabels.size<=2048 && c.instantLabels.all { (key,value)->key.length in 1..160 && key.none(Char::isISOControl) && value.length in 1..48 && value.none(Char::isISOControl) })
-    require(c.density in 1..3 && c.gridColumns in 3..5 && c.tileSize in 1..3)
+    require(c.density in 1..3 && c.gridColumns in 3..8 && c.tileSize in 1..3)
     require(c.background in listOf("Void", "Graphite", "Blueprint"))
     require(c.typography in listOf("Technical", "Mono", "System"))
     require(validAccent(c.accent))
@@ -120,7 +120,7 @@ private fun decodeConfig(text: String,portable: Boolean): Config {
     val root = configJson.parseToJsonElement(text) as? JsonObject ?: error("Expected configuration object")
     require(root.keys == setOf("schemaVersion", "settings"))
     val version = root["schemaVersion"] as? JsonPrimitive ?: error("Missing version")
-    require(!version.isString && version.intOrNull in setOf(2,3,4,5))
+    require(!version.isString && version.intOrNull in setOf(2,3,4,5,6))
     val fields = root["settings"] as? JsonObject ?: error("Missing settings")
     val defaults = configJson.encodeToJsonElement(Config()).jsonObject
     fields.forEach { (key, value) ->
@@ -146,8 +146,14 @@ private fun decodeConfig(text: String,portable: Boolean): Config {
         }
     }
     val envelope = configJson.decodeFromString<ConfigEnvelope>(text)
-    require(envelope.schemaVersion in setOf(2,3,4,5)) { "Unsupported configuration version" }
-    val valid=validateConfig(envelope.settings)
+    require(envelope.schemaVersion in setOf(2,3,4,5,6)) { "Unsupported configuration version" }
+    val old=envelope.settings
+    val inherited=old.instantSelection ?: old.instantFavorites.takeIf {it.isNotEmpty()}
+    val migrated=if(envelope.schemaVersion<6 && inherited!=null) {
+        val ids=(listOfNotNull(old.desktop)+old.homePresets.map {it.desktop}).flatMap {it.pages}.flatMap {it.items}.filter {it.widget?.kind=="icarus"}.map {it.id}
+        old.copy(widgetButtonSelections=ids.associateWith {inherited.toList()}+old.widgetButtonSelections)
+    } else old
+    val valid=validateConfig(migrated)
     return if(portable)valid.copy(desktop=valid.desktop?.let(::portableDesktop),homePresets=valid.homePresets.map {it.copy(desktop=portableDesktop(it.desktop))}) else valid
 }
 fun importConfig(text: String): Config = decodeConfig(text,true)

@@ -1,0 +1,16 @@
+UMBRA Mobile 3.1 (code 7), independent widgets / Phase 4.9 bulk sound upload
+Final Gradle BUILD SUCCESSFUL: :app:testDebugUnitTest :app:lintDebug :app:assembleDebug :app:assembleDebugAndroidTest
+97 Android test executions; zero failures/errors.
+Lint: {'Warning': 17} (zero errors).
+Debug APK and device-test APK assembled. Device instrumentation was NOT run.
+APK SHA-256: ae4f944b658e8b66b46c62255f406400c45cbd76b636a31d5650a3b9a5eda78a
+Signer #1 certificate SHA-256 digest: 79829531c75dd5ee41bf23951d6514bb2ecb21052c405a6230bfc8cbccdb7c6e
+Signing matches the prior distributed 3.0 APK. Top-level uses-permissions match; a new optional manually enabled BIND_ACCESSIBILITY_SERVICE declaration supports Recent apps. Its XML disallows window contents and gesture control; events are package-limited and ignored. No physical Recents/special-access test occurred.
+
+Android coverage includes independent Rocket League and Fortnite widgets on different pages, command and sound widgets together on one page, correct separate command/play endpoints, unchanged server audio output, independent overrides/custom definitions and selection migration from schema 5, explicit-empty selections, a 512-entry sound catalog over 128 KiB accepted only at the sound catalog endpoint, fixed advertised Windows commands with fresh request IDs, unchanged global mappings, persisted draft saves, PIN field and export exclusion, saved address requirement, Recents setup/privacy flags and removed navigation. Earlier full regression cases cover profiles/master/detail, migration/presets/native bindings, drag/grid collapse/Undo/guides, Engineering shared connection and stopped lifecycle, application discovery and soundboard >6 buttons.
+
+PC service tests: 42 pass. Chromium/authenticated-handler browser tests: 10 pass. Isolated installer tests: 4 pass. Browser import saves 70 distinct generated sounds, skips a duplicate and reports one invalid file. Tests verify cancel/conflict behavior, acknowledged progress, restart persistence and original audio bytes/ID/output/audio profile preservation, verified backups and safe installer refusal/restore. Mocked Windows rendering and generated fixture audio are used. User private backup/count, audible output, live PC deployment and voice/Sonar isolation are NOT verified.
+
+PC package targets Phase 4.9 baseline 780108d56646982c323b3a4b82c74a2268a0bd60. Its four-file manifest and CHANGES.patch are shipped under UMBRA/pc-update/phase49; no newer simulation tree is merged into main. The private LAN PC was unreachable (proxy 503; direct refused), so the installer must be applied locally. Existing sound data remains authoritative and private. The old 64-sound runtime requires a compatible verified pre-import library before downgrade. Windows BAT wrappers were not executed here.
+
+Main ICARUS tree unchanged: 0b65108fcabefb2a53f0ea4139a4d6cb6fba2f6c. Native host screenshots use TEST-PC fixtures, not physical S24+/Windows telemetry. Native HOME/default selection, Samsung gesture/Recents behavior, real Keystore/special grants, third-party widget compatibility, live Tailscale/game/audio output, dense/large-font readability and measured frame/battery performance remain physical acceptance checks. No exact One UI animation parity is claimed. PC remote view uses the existing browser endpoint.

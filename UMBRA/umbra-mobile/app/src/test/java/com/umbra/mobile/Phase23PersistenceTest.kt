@@ -12,7 +12,7 @@ class Phase23PersistenceTest {
         val dir=Files.createTempDirectory("umbra-23").toFile();val file=dir.resolve("settings.preferences_pb")
         val desktop=DesktopLayout(pages=listOf(DesktopPage("main",items=listOf(DesktopItem("native","widget",widget=DesktopWidget(kind="android",appWidgetId=0,provider="example/Widget")),DesktopItem("folder","folder",folder=DesktopFolder("Saved",listOf("example/App")))))))
         val initial=Config(desktop=desktop,master=false,environment=true,favorites=setOf("example/App"),url="https://deck.example/",instantFavorites=setOf("quick:Saved"))
-        val old=exportConfig(initial).replace("\"schemaVersion\":5","\"schemaVersion\":3").replace("\"appWidgetId\":0","\"appWidgetId\":42")
+        val old=exportConfig(initial).replace("\"schemaVersion\":6","\"schemaVersion\":3").replace("\"appWidgetId\":0","\"appWidgetId\":42")
         suspend fun useStore(block: suspend (androidx.datastore.core.DataStore<androidx.datastore.preferences.core.Preferences>,ConfigStore)->Unit) {
             val scope=CoroutineScope(SupervisorJob()+Dispatchers.IO);val data=PreferenceDataStoreFactory.create(scope=scope,produceFile={file})
             try {block(data,ConfigStore(data))} finally {scope.coroutineContext[Job]!!.cancelAndJoin()}

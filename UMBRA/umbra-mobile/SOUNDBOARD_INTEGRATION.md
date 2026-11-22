@@ -1,5 +1,7 @@
 # Existing ICARUS soundboard integration
 
+**3.1 navigation/storage update:** see [current report](WIDGETS31_REPORT.md). Soundboard is now in SIMULATOR; audio output is CONFIG → ICARUS → Soundboard. Dedicated Instant Buttons and Command library pages are removed. HOME Button/Soundboard widgets have independent configuration; schema 6 preserves existing data. The earlier contract and historical verification below remain applicable except where the current report supersedes navigation or limits.
+
 Phase 3 moves the native soundboard to **DECK → Soundboard** and retains these same server-owned configuration/playback APIs. See [current Phase 3 report](PHASE3_REPORT.md). The original 2.3.1 verification below remains historical.
 
 ## Finding and scope

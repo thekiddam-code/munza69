@@ -1,16 +1,18 @@
-# UMBRA Mobile 3.0
+# UMBRA Mobile 3.1
 
 A native Kotlin / Jetpack Compose Android HOME launcher for Samsung Galaxy S24+, package `com.umbra.mobile`. Android 10+ (API 29), target/compile API 35. This increment preserves the existing industrial terminal interface and native Android functions while moving arrangement controls out of normal use.
 
-## Phase 3
+## Current increment: independent widgets
 
-**HOME | APPS | DECK | SIMULATOR | ICARUS | CONFIG**. Engineering has its own DECK section and six HOME widget types, backed by the existing shared Windows companion. Named HOME presets retain independent layouts and widget settings. A compact, optional PC status indicator appears across all tabs; tap for status, reported PC name, detected address class, HTTP latency and Reconnect. CONFIG → ICARUS hides it. TV controls are retired; existing mappings are retained as inert migration data. Soundboard audio settings stay on ICARUS. See [Phase 3 setup, migration, APIs, verification and limits](PHASE3_REPORT.md).
+HOME | APPS | DECK | SIMULATOR | ICARUS | CONFIG. DECK contains Engineering and Device controls. SIMULATOR contains the game controls and Soundboard. Dedicated Command library and Instant Buttons pages are removed; existing mappings remain usable through independently configured HOME Button widgets. HOME Soundboard widgets can share a page with hotkeys. CONFIG → ICARUS includes a masked server PIN field. A small optional Recent apps footer icon requires manual Android Accessibility enablement; it reads no screen content.
+
+See [3.1 setup, migration, PC update, verification and limits](WIDGETS31_REPORT.md). The separate [Phase 4.9 PC bulk-import installer](../pc-update/phase49/README.md) has not been deployed to your private PC.
 
 ## Install / update / recover
 
 Download `umbra-mobile-debug.apk` from the sibling [GitHub downloads folder](https://github.com/thekiddam-code/munza69/tree/main/UMBRA/downloads), or extract the APK ZIP first. Open the APK on the phone and grant the opening file manager/browser installation permission when Android requests it. ADB alternative: `adb install -r umbra-mobile-debug.apk`.
 
-Version **3.0 (code 6)** updates the previous signed build without requiring an uninstall. Keep the same signing key when building future updates; a build signed on another computer may need your consistent key or an uninstall, which clears local data. The distributed debug build is for development, not store distribution.
+Version **3.1 (code 7)** updates the previous signed build without requiring an uninstall. Keep the same signing key when building future updates; a build signed on another computer may need your consistent key or an uninstall, which clears local data. The distributed debug build is for development, not store distribution.
 
 Select **Samsung Settings → Apps → Choose default apps → Home app → UMBRA**. Select **One UI Home** in that same screen to restore Samsung. UMBRA can open Android's Home settings from its Settings categories. No root, kiosk/device-owner mode, protected notification shade, secure lock-screen replacement, or firmware changes are used.
 
@@ -28,25 +30,25 @@ Select **Samsung Settings → Apps → Choose default apps → Home app → UMBR
 
 Command Center remembers **Compact / Expanded** independently from each module's expansion choice. Modules can expand simultaneously. Collapsed sections show an icon, title, relevant status where available, and affordance, without large empty panels. Long-press the header to move it while still collapsed. Contextual Configure exposes density, visibility, and restoration; Settings → Command Center can restore all hidden controls.
 
-Home, module headers, Instant Buttons, system controls, Engineering, Lounge TV keys, Simulator/Rocket League controls, ICARUS shortcuts, and Device Status use the same collision-aware grid. Reference density adapts to available width/orientation; mixed spans cannot paint across neighboring controls. Expanded sizes, positions, hidden flags, and collapsed flags persist. TalkBack exposes long-click and accessible reordering alternatives without permanent arrangement buttons.
+Home, module headers, button widgets, system controls, Engineering, Simulator/Rocket League controls, ICARUS shortcuts, and Device Status use the same collision-aware grid. Reference density adapts to available width/orientation; mixed spans cannot paint across neighboring controls. Expanded sizes, positions, hidden flags, and collapsed flags persist. TalkBack exposes long-click and accessible reordering alternatives without permanent arrangement buttons.
 
 Wi-Fi, Bluetooth, sound, display, battery, media, and device controls open their supported Android interfaces. Brightness applies to **UMBRA's window only**, with Use system brightness recovery. No restricted system setting is reported changed merely because a shortcut was tapped. Android notifications remain native; optional notification counts require explicit OS listener authorization and exclude notification content.
 
 ## ICARUS soundboard hotfix
 
-Open **DECK → Soundboard** for the existing server sound library. Output selection is now under **Settings → DECK → Soundboard → Audio Output**, saved on ICARUS and shared with Remote Deck. Keep using the working soundboard-capable 4.8B/C server; main’s older server has no soundboard API. See [integration, storage, exact APIs and verification](SOUNDBOARD_INTEGRATION.md).
+Open **SIMULATOR → Soundboard** for the existing server sound library. Output selection is now under **CONFIG → ICARUS → Soundboard → Audio Output**, saved on ICARUS and shared with Remote Deck. Keep using the working soundboard-capable Phase 4.9 server; main’s older server has no soundboard API. See [integration, storage, exact APIs and verification](SOUNDBOARD_INTEGRATION.md).
 
-## Instant Buttons / ICARUS
+## Button widgets / ICARUS
 
-Keep Tailscale connected separately. In **Settings → ICARUS**, configure the existing Remote Deck URL and optional server base, timeout, and refresh behavior. Native pairing uses the current server PIN via `POST /api/pair`. Browser authentication is separate. One server-bound token is AES/GCM encrypted with Android Keystore in private no-backup storage, excluded from exports. Changing servers never forwards the prior token to the new base.
+Keep Tailscale connected separately. Save the Remote Deck/server address in CONFIG → ICARUS, then enter its current server PIN and pair. Browser authentication is separate. One server-bound token is AES/GCM encrypted with Android Keystore in private no-backup storage, excluded from exports. Changing servers never forwards the prior token to the new base.
 
-Open **DECK → Instant Buttons**. Long-press its title to create buttons, select/search the catalog, Select all/Deselect all, save/load button definitions, and restore hidden entries. Long-press buttons to configure, rename, choose an icon, change supported output parameters, duplicate, remove, resize, or drag. Test command is explicit and shows actual response/error feedback. Configuring a discovered server reference creates a UMBRA override with preserved placement while leaving PC mappings unchanged.
+Long-press a HOME page title → Add widget → Button widget or Soundboard. Long-press the widget header → Configure for its own group, selected buttons, title, columns, button height, accent, transparency and dimensions. Save commits the draft; Cancel discards it. Add custom button and button overrides belong to that instance only. Put Rocket League on one page and Fortnite on another, or hotkeys and sounds together. Page columns support 2–8 with minimum touch-size adaptation; inner buttons 1–6 columns. Long-press header to move/resize, including while collapsed; long-press individual buttons to edit their inner arrangement. No six-button limit is imposed.
 
-Supported existing outputs are quick chat by current name, named macros, text/channel/timing, configured Fortnite slots, mining toggle, timed forward mining, Stop/release, and simulation commands. Generic arbitrary press/release/script protocols are unsupported. The complete selected set wraps and scrolls; there is **no six-button truncation**. Each ICARUS widget can have independent selected buttons. Missing catalog references remain retained and reported. Sync displays the actual snapshot time; PC key arrays stay server-resolved at execution.
+Existing outputs include quick chat, macros, text/channel/timing, Fortnite slots, mining, Stop/release, simulation and advertised fixed Windows hotkeys. Arbitrary scripts/paths are unsupported. Soundboard uses original ICARUS IDs and playback endpoints; output/favorite configuration remains on the server. [Current details](WIDGETS31_REPORT.md).
 
 Requests are authenticated, bounded, cancellable, timeout-limited, and never follow redirects carrying credentials. Repeated in-flight taps are dropped. HTTP acknowledgment is not proof of game execution; simulation reports its queue acknowledgment as pending PC execution. No local edit/import automatically executes a command or modifies server files. See [ICARUS_OUTPUTS.md](ICARUS_OUTPUTS.md).
 
-Home's Remote Deck HEAD check measures HTTP reachability only. Native PC/simulation telemetry uses real responses and labels unavailable data. Optional 30–300 second native refresh runs only while visible and stops under power/thermal restrictions. No inactive continuous polling, analytics, wake locks, or new persistent service is introduced.
+Home's Remote Deck HEAD check measures HTTP reachability only. Native PC/simulation telemetry uses real responses and labels unavailable data. Optional 30–300 second native refresh runs only while visible and stops under power/thermal restrictions. No inactive continuous polling, analytics or wake locks are introduced. The optional user-enabled Recents accessibility service only handles explicit taps.
 
 ## Widgets, appearance, motion, and status
 
@@ -68,10 +70,11 @@ Open this `umbra-mobile/` folder in Android Studio. Install Android SDK Platform
 ./gradlew --no-daemon -Pkotlin.compiler.execution.strategy=in-process :app:testDebugUnitTest :app:lintDebug :app:assembleDebug :app:assembleDebugAndroidTest
 ```
 
-Verified 3.0 result: **89 Android tests passed; lint zero errors (13 warnings); app and device-test APKs built**. The previous signing certificate, permissions and native-library list are preserved. See [Phase 3 results and hardware limits](verification/phase3/RESULTS.txt).
+Verified 3.1 result: **97 Android tests passed; lint zero errors; app and device-test APKs built**. The distributed signing certificate is preserved. Top-level requested permissions remain unchanged; an optional manually enabled Accessibility service is added for Recent apps. See [exact results](verification/widgets31/RESULTS.txt).
 
 Debug APK: `app/build/outputs/apk/debug/app-debug.apk`. Device instrumentation requires a real device/working emulator: `./gradlew :app:connectedDebugAndroidTest`. Compilation of its APK is not proof of execution.
 
+- [3.1 independent widgets, PIN, Recents and PC bulk upload](WIDGETS31_REPORT.md)
 - [Phase 3 Engineering / shared connection / migration](PHASE3_REPORT.md)
 - [Phase 2.3 implementation, executed verification, limits, next steps](PHASE23_REPORT.md)
 - [Layout migration, editing, Undo, backup, and storage limits](LAYOUT_MIGRATION.md)
@@ -79,6 +82,6 @@ Debug APK: `app/build/outputs/apk/debug/app-debug.apk`. Device instrumentation r
 - [Instant Buttons and exact server output contract](ICARUS_OUTPUTS.md)
 - [Regression / physical S24+ acceptance checklist](TESTING.md)
 
-Full configuration export uses Android's file picker and includes versioned layouts, selections, and preferences; credentials and portable widget bindings are excluded. Back up before large edits or imports. Weather locations/private URLs in an export should be shared deliberately. Corrupt/invalid storage recovers safely; failed writes remain visible. No QUERY_ALL_PACKAGES, precise/background location, storage, privileged status-bar, accessibility-service, or global-brightness permission is requested. Optional approximate location and notification listener access remain user-controlled.
+Full configuration export uses Android's file picker and includes versioned layouts, selections, and preferences; credentials and portable widget bindings are excluded. Back up before large edits or imports. Weather locations/private URLs in an export should be shared deliberately. Corrupt/invalid storage recovers safely; failed writes remain visible. No QUERY_ALL_PACKAGES, precise/background location, broad storage, privileged status-bar or global-brightness permission is requested. Optional approximate location, notification listener access and the narrowly scoped Recents Accessibility service remain user-controlled. The Recents service cannot retrieve screen content or perform gestures.
 
 Physical S24+/One UI behavior, native provider compatibility, live ICARUS/Tailscale/game execution, real Keystore, and measured performance remain device acceptance items. Historical reports/evidence for earlier phases are retained separately.

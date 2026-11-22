@@ -91,3 +91,9 @@ See [executed results](verification/soundboard/RESULTS.txt) and [integration / p
 ## Phase 3 acceptance
 
 See [Phase 3 report](PHASE3_REPORT.md) and [executed results](verification/phase3/RESULTS.txt). New native SDK 30/34 tests exercise six-tab/header presence, persisted indicator visibility, real HTTP fixture telemetry shared by two HOME widgets, independent resizing/collapse, preset restoration and cancellation while stopped. Pure tests cover inert legacy TV mappings, older schemas, native widget binding retention/export, exact Windows contracts, supported old-server fallback, request interruption, sample ages and conservative connection classification. Physical PC/S24+ sensors, Tailscale route, game/audio delivery, native HOME selection, gestures and battery consumption still need real-device acceptance.
+
+## 3.1 current verification
+
+See [executed results](verification/widgets31/RESULTS.txt) and [current setup/limits](WIDGETS31_REPORT.md). The final full run has 97 Android test executions. New tests cover independent widgets and schema-5 selection migration, owned command definitions/overrides, exact Windows hotkey and sound endpoints, a 512-entry catalog, PIN field without export leakage and the optional Recents setup/privacy declaration. SDK 30/34 host flows use generated HTTP fixtures, not the user's PC. PC update evidence records 42 service + 10 Chromium + 4 installer tests.
+
+Physical checks: upgrade without uninstalling; compare all existing presets; add independent Rocket/Fortnite and sound widgets; configure/save/cancel and resize; test scrolling at dense/large-font layouts; verify animations off; pair using the real PIN; manually enable optional Recents and verify native Samsung behavior/gestures; apply PC installer to the stopped exact Phase 4.9 installation after verified backups; import actual files and verify output, existing sounds and voyage preservation. No live PC deployment or device acceptance is implied by host tests.

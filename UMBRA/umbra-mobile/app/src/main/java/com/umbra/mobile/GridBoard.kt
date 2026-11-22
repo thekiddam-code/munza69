@@ -63,7 +63,8 @@ class GridItemScope(val headerModifier: Modifier)
     Column(Modifier.fillMaxWidth().testTag("grid-$surface")) {
         BoxWithConstraints(Modifier.fillMaxWidth().onGloballyPositioned {viewport=it.boundsInWindow()}) {
             val density=LocalDensity.current
-            val actualColumns=if(maxWidth>600.dp)(columns*2).coerceAtMost(8) else columns
+            val desiredColumns=if(maxWidth>600.dp)(columns*2).coerceAtMost(8) else columns
+            val actualColumns=desiredColumns.coerceAtMost((maxWidth.value/54f).toInt().coerceAtLeast(1))
             val layout=remember(items,c.gridLayouts[surface],actualColumns,compact,forcedCollapsed){resolveGrid(items,c.gridLayouts[surface],actualColumns,compact,forcedCollapsed)}
             val currentLayout by rememberUpdatedState(layout)
             val cellWidth=maxWidth/actualColumns
