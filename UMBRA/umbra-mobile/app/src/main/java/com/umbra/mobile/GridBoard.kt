@@ -33,7 +33,7 @@ class GridItemScope(val headerModifier: Modifier)
 @Composable fun GridBoard(surface: String,items: List<GridItem>,c: Config,model: LauncherModel,columns: Int=c.deckColumns,
     cellHeight: Dp=72.dp,compact: Boolean=false,forcedCollapsed: Set<String> = emptySet(),
     onConfigure: ((String)->Unit)?=null,onRemove: ((String)->Unit)?=null,onDuplicate: ((String)->Unit)?=null,
-    onDrop: ((String,String?)->Boolean)?=null,onEdge: ((Int)->Unit)?=null,onResize: ((String,Int,Int)->Unit)?=null,onResizeRequest: ((String)->Boolean)?=null,onMovePage: ((String)->Unit)?=null,onCollapse: ((String)->Unit)?=null,canDuplicate: (String)->Boolean={true},
+    onDrop: ((String,String?)->Boolean)?=null,onEdge: ((Int)->Unit)?=null,onResize: ((String,Int,Int)->Unit)?=null,onResizeRequest: ((String)->Boolean)?=null,onMovePage: ((String)->Unit)?=null,onCollapse: ((String)->Unit)?=null,canDuplicate: (String)->Boolean={true},canCollapse: (String)->Boolean={true},
     content: @Composable GridItemScope.(GridItem,GridCell)->Unit) {
     val session=LocalGridEditing.current
     val haptic=LocalHapticFeedback.current
@@ -74,7 +74,7 @@ class GridItemScope(val headerModifier: Modifier)
                 val old=c.gridLayouts[surface]
                 val cells=layout.cells.map {cell->
                     val previous=old?.cells?.firstOrNull {it.id==cell.id}
-                    if(cell.collapsed || cell.id in forcedCollapsed)cell.copy(h=previous?.h ?: items.first {it.id==cell.id}.height) else cell
+                    if((cell.collapsed || cell.id in forcedCollapsed) && cell.id!=resize)cell.copy(h=previous?.h ?: items.first {it.id==cell.id}.height) else cell
                 }
                 model.saveGrid(surface,layout.copy(cells=cells))
             }
@@ -156,7 +156,7 @@ class GridItemScope(val headerModifier: Modifier)
                     onConfigure?.let {TextButton(onClick={menu=null;it(id)}){Text("Configure")}}
                     TextButton(onClick={menu=null;if(onResizeRequest?.invoke(id)!=true)resize=id}){Text("Resize")}
                     onMovePage?.let {TextButton(onClick={menu=null;it(id)}){Text("Move to another page")}}
-                    onCollapse?.let {TextButton(onClick={menu=null;it(id)}){Text(if(cell.collapsed)"Expand module" else "Collapse module")}}
+                    onCollapse?.takeIf {canCollapse(id)}?.let {TextButton(onClick={menu=null;it(id)}){Text(if(cell.collapsed || id in forcedCollapsed)"Expand module" else "Collapse module")}}
                     onDuplicate?.takeIf {canDuplicate(id)}?.let {TextButton(onClick={menu=null;it(id)}){Text("Duplicate")}}
                     onRemove?.let {TextButton(onClick={menu=null;it(id)}){Text("Remove")}}
                     if(onRemove==null)TextButton(onClick={saveNow(layout.copy(cells=layout.cells.map {if(it.id==id)it.copy(hidden=true) else it}));menu=null;session.finish()}){Text("Hide")}
@@ -166,7 +166,7 @@ class GridItemScope(val headerModifier: Modifier)
             if(resize!=null) {
                 val id=resize!!;val cell=layout.cells.firstOrNull {it.id==id}
                 if(cell!=null) {
-                    var w by remember(id){mutableIntStateOf(cell.w)};var h by remember(id){mutableIntStateOf(cell.h)}
+                    var w by remember(id){mutableIntStateOf(cell.w)};var h by remember(id){mutableIntStateOf(if(cell.collapsed || id in forcedCollapsed)c.gridLayouts[surface]?.cells?.firstOrNull {it.id==id}?.h ?: items.first {it.id==id}.height else cell.h)}
                     DesktopEditorDialog("Resize · grid handles",{resize=null},confirm={TextButton(onClick={
                         val changed=layout.copy(cells=layout.cells.map {if(it.id==id)it.copy(w=w,h=h) else it})
                         saveNow(relocateGrid(changed,id,cell.x,cell.y));onResize?.invoke(id,w,h);resize=null

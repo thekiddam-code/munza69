@@ -42,6 +42,7 @@ class Phase23HostUiTest {
     @Test fun collapsedHeadersDragWithMotionOn()=dragCollapsed(true)
     private fun dragCollapsed(motion: Boolean) {
         rule.onNodeWithTag("nav-COMMAND").performClick()
+        rule.onNodeWithTag("deck-section-Device controls").performClick()
         runBlocking {ConfigStore(rule.activity).update {it.copy(master=motion)}};waitFor {it.master==motion}
         rule.onNodeWithTag("arrangement-toolbar").assertDoesNotExist()
         rule.onNodeWithTag("placement-highlights-command").assertDoesNotExist()
@@ -67,6 +68,7 @@ class Phase23HostUiTest {
         rule.activityRule.scenario.recreate()
         assertFalse(config().commandExpanded)
         rule.onNodeWithTag("nav-COMMAND").performClick()
+        rule.onNodeWithTag("deck-section-Device controls").performClick()
         rule.onNodeWithTag("command-compact").assertIsSelected()
         assertEquals(motion,config().master)
         capture("command-${if(motion)"motion" else "static"}")
@@ -85,8 +87,8 @@ class Phase23HostUiTest {
         capture("settings")
     }
     @Test fun instantPageSelectsAllFourteenAndLongPressDoesNotExecute() {
-        rule.onNodeWithTag("nav-ICARUS").performClick()
-        rule.onNodeWithText("Instant Buttons").performScrollTo().performClick()
+        rule.onNodeWithTag("nav-COMMAND").performClick()
+        rule.onNodeWithTag("deck-section-Instant Buttons").performClick()
         val model=androidx.lifecycle.ViewModelProvider(rule.activity)[LauncherModel::class.java]
         rule.onNodeWithTag("instant-editor-header").performScrollTo().performSemanticsAction(SemanticsActions.OnLongClick){it()}
         rule.onNodeWithText("Select buttons / widgets").performClick()
@@ -105,8 +107,8 @@ class Phase23HostUiTest {
         assertEquals(14,config().instantSelection!!.size)
     }
     @Test fun nativeButtonEditorSavesTimedOutputWithoutExecuting() {
-        rule.onNodeWithTag("nav-ICARUS").performClick()
-        rule.onNodeWithText("Instant Buttons").performScrollTo().performClick()
+        rule.onNodeWithTag("nav-COMMAND").performClick()
+        rule.onNodeWithTag("deck-section-Instant Buttons").performClick()
         rule.onNodeWithTag("instant-editor-header").performScrollTo().performSemanticsAction(SemanticsActions.OnLongClick){it()}
         rule.onNodeWithText("Create button").performClick()
         rule.onNodeWithText("Button name").performTextClearance()

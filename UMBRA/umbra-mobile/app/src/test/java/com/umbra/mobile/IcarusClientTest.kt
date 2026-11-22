@@ -12,9 +12,9 @@ class IcarusClientTest {
         val server=MockWebServer();server.start();val client=IcarusClient()
         try {
             server.enqueue(MockResponse().setBody("{\"token\":\"native_pairing_token_123456789\"}"))
-            val token=client.pair(server.url("/").toString(),"123456",2)
+            val token=client.pair(server.url("/").toString(),"Az_9-x2",2)
             val pair=server.takeRequest();assertEquals("/api/pair",pair.path);assertEquals("POST",pair.method)
-            assertEquals("123456",Json.parseToJsonElement(pair.body.readUtf8()).jsonObject.literal("pin"));assertNull(pair.getHeader("Authorization"))
+            assertEquals("Az_9-x2",Json.parseToJsonElement(pair.body.readUtf8()).jsonObject.literal("pin"));assertNull(pair.getHeader("Authorization"))
             server.enqueue(MockResponse().setBody("{\"cpu\":12.5,\"ram\":42,\"tv_configured\":true,\"macros\":[\"Copy\"],\"quick\":[\"Nice shot!\"],\"fortnite_emotes\":[{\"label\":\"Dance\"}]}"))
             val status=client.status(server.url("/").toString(),token,2)
             assertEquals(12.5,status.cpu!!,0.0);assertTrue(status.tvConfigured);assertEquals(listOf("Copy"),status.macros)

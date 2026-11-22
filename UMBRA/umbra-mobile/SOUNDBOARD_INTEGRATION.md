@@ -1,4 +1,6 @@
-# UMBRA 2.3.1 — existing ICARUS soundboard hotfix
+# Existing ICARUS soundboard integration
+
+Phase 3 moves the native soundboard to **DECK → Soundboard** and retains these same server-owned configuration/playback APIs. See [current Phase 3 report](PHASE3_REPORT.md). The original 2.3.1 verification below remains historical.
 
 ## Finding and scope
 
@@ -8,7 +10,7 @@ Keep using the existing soundboard-capable ICARUS server and its existing privat
 
 ## Native use
 
-Open **ICARUS → Soundboard**. Every parsed sound appears using its original ID and label; the scrollable grid has no six-button limit (ICARUS currently supports 64 clips). Tap to send the existing host-play command. Stop playback sends the existing host-stop command. The reported starting/playing/idle/error state comes from ICARUS, with one-second refresh only while playback is active and this panel is visible. This is driver/server feedback, not proof that another player heard it. No offline commands are queued or automatically replayed.
+Open **DECK → Soundboard**. Every parsed sound appears using its original ID and label; the scrollable grid has no six-button limit (ICARUS currently supports 64 clips). Tap to send the existing host-play command. Stop playback sends the existing host-stop command. The reported starting/playing/idle/error state comes from ICARUS, with one-second refresh only while playback is active and this panel is visible. This is driver/server feedback, not proof that another player heard it. No offline commands are queued or automatically replayed.
 
 Long-press and drag any button to arrange it. Release a stationary hold to open existing grid options; Resize changes its grid size and Configure changes its shared Favorite flag. Holds and drags suppress playback. Positions/sizes/visibility use the existing local `gridLayouts["soundboard"]` DataStore entry with the same Undo/Done workflow and temporary amber placement guides. Long-press the SOUNDBOARD heading to restore hidden sounds. Existing layouts and animation preferences are preserved; no configuration schema change is needed. Text/quick-chat remains on separate tabs and never substitutes for the sound catalog.
 

@@ -40,18 +40,73 @@ class InstantController(private val remote: IcarusClient,private val tokenFor: s
     constructor(remote: IcarusClient,vault: CredentialVault):this(remote,{base->vault.read(base)})
     val state=MutableStateFlow(InstantSnapshot())
     private val mutex=Mutex()
-    suspend fun refresh(c: Config,force: Boolean=false) {
+    val pcConnection=MutableStateFlow(PcConnectionState())
+    val engineeringConsumers=MutableStateFlow<Set<String>>(emptySet())
+    val reconnect=MutableStateFlow(0)
+    private var monitorAttempt=0L
+    private var catalogAttempt=0L
+    fun reconnectNow(){reconnect.value++}
+    fun markInactive(){pcConnection.value=pcConnection.value.copy(phase=PcPhase.Offline,latencyMs=null,error="Connection will be checked when visible.")}
+    suspend fun refresh(c: Config,force: Boolean=false,engineering: Boolean=false) {
         if(!mutex.tryLock())return
         val base=serverBase(c)
         try {
-            if(base.isEmpty()){state.value=InstantSnapshot(status="Configure ICARUS first.");return}
+            if(pcConnection.value.base!=base){pcConnection.value=PcConnectionState(base);monitorAttempt=0;catalogAttempt=0}
+            if(base.isEmpty()){state.value=InstantSnapshot(status="Configure ICARUS first.");pcConnection.value=PcConnectionState(base,error="Configure the companion address.");return}
             val token=tokenFor(base)
-            if(token==null){state.value=InstantSnapshot(base,status="Pair this phone in the ICARUS screen.");return}
-            if(!force && state.value.base==base && state.value.pc!=null && System.currentTimeMillis()-state.value.synchronizedAt<30000)return
-            state.value=state.value.takeIf {it.base==base}?.copy(busy=true,status="Synchronizing server controls…") ?: InstantSnapshot(base,busy=true)
-            val pc=remote.status(base,token,c.timeout)
-            state.value=InstantSnapshot(base,pc,System.currentTimeMillis(),"Synchronized with the existing server.")
-        }catch(e:CancellationException){throw e}catch(e:Exception){state.value=state.value.copy(status=(e as? RemoteFailure)?.message ?: "Synchronization unavailable.")}
+            if(token==null){state.value=InstantSnapshot(base,status="Pair this phone in the ICARUS screen.");pcConnection.value=PcConnectionState(base,error="Native pairing required.");return}
+            val now=System.currentTimeMillis()
+            val cached=state.value.base==base && state.value.pc!=null && now-state.value.synchronizedAt<30000
+            if(!force && cached && !engineering && pcConnection.value.phase==PcPhase.Connected)return
+            val needsStatus=force || !cached || pcConnection.value.phase!=PcPhase.Connected || engineering && pcConnection.value.monitorUnsupported
+            if(pcConnection.value.phase!=PcPhase.Connected)pcConnection.value=pcConnection.value.copy(phase=PcPhase.Connecting,error=null)
+            state.value=state.value.takeIf {it.base==base}?.copy(busy=true) ?: InstantSnapshot(base,busy=true)
+            suspend fun read(path: String): JsonObject {
+                val started=System.nanoTime();val response=remote.request(base,path,c.timeout,token)
+                pcConnection.value=pcConnection.value.copy(phase=PcPhase.Connected,checkedAt=System.currentTimeMillis(),latencyMs=((System.nanoTime()-started)/1000000).coerceAtLeast(0),error=null)
+                return response
+            }
+            if(needsStatus) {
+                val response=read("api/status")
+                state.value=InstantSnapshot(base,parsePcStatus(response),System.currentTimeMillis(),"Synchronized with the existing server.",true)
+                pcConnection.value=pcConnection.value.copy(name=response.literal("hostname") ?: response.literal("computer_name") ?: pcConnection.value.name)
+            }
+            if(engineering) {
+                if(!pcConnection.value.monitorUnsupported || force || now-monitorAttempt>=60000) {
+                    monitorAttempt=now
+                    try {
+                        val response=read("api/windows/monitor")
+                        require(response.keys.containsAll(listOf("sample","age_seconds"))) {"Invalid monitor response"}
+                        val sample=response["sample"]
+                        require(sample==JsonNull || sample is JsonObject)
+                        pcConnection.value=pcConnection.value.copy(monitor=response,monitorAt=System.currentTimeMillis(),monitorUnsupported=false,name=(sample as? JsonObject)?.literal("hostname") ?: pcConnection.value.name)
+                    } catch(e: RemoteFailure) {if(e.status==404)pcConnection.value=pcConnection.value.copy(monitorUnsupported=true,monitor=null) else throw e}
+                }
+                if(force || now-catalogAttempt>=60000) {
+                    catalogAttempt=now
+                    try {
+                        val response=read("api/windows/catalog")
+                        require(response["hotkeys"] is JsonArray && response["supported"] is JsonPrimitive)
+                        pcConnection.value=pcConnection.value.copy(catalog=response)
+                    }catch(e: RemoteFailure){if(e.status!=404)throw e else pcConnection.value=pcConnection.value.copy(catalog=null)}
+                }
+            }
+        }catch(e: CancellationException){pcConnection.value=pcConnection.value.copy(phase=PcPhase.Offline,latencyMs=null);throw e}
+        catch(e: Exception){val message=(e as? RemoteFailure)?.message ?: "Companion response unavailable.";state.value=state.value.copy(status=message);pcConnection.value=pcConnection.value.copy(phase=PcPhase.Offline,latencyMs=null,error=message)}
+        finally {state.value=state.value.copy(busy=false);mutex.unlock()}
+    }
+    suspend fun executeWindows(c: Config,id: String) {
+        if(!mutex.tryLock())return
+        try {
+            val connection=pcConnection.value
+            require(connection.base==serverBase(c) && connection.phase==PcPhase.Connected && connection.catalog?.truth("supported")==true)
+            val spec=(connection.catalog["hotkeys"] as? JsonArray)?.mapNotNull {it as? JsonObject}?.firstOrNull {it.literal("id")==id} ?: error("Unavailable action")
+            require(Regex("[a-z0-9_]{1,64}").matches(id))
+            val token=tokenFor(connection.base) ?: throw RemoteFailure(401,"Pair native controls first.")
+            state.value=state.value.copy(busy=true)
+            val result=remote.request(connection.base,"api/windows/command",c.timeout,token,buildJsonObject {put("kind","hotkey");put("id",id);put("requestId",java.util.UUID.randomUUID().toString())})
+            state.value=state.value.copy(status=result.literal("message") ?: (spec.literal("name") ?: "Action")+" · server acknowledged.")
+        }catch(e: CancellationException){throw e}catch(e: Exception){state.value=state.value.copy(status=(e as? RemoteFailure)?.message ?: "PC action unavailable. Refresh Engineering first.")}
         finally {state.value=state.value.copy(busy=false);mutex.unlock()}
     }
     fun publish(base: String,pc: PcStatus) {state.value=InstantSnapshot(base,pc,System.currentTimeMillis(),"Synchronized with the existing server.")}

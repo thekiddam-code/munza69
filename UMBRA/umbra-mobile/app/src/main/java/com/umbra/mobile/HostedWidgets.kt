@@ -82,6 +82,7 @@ fun Context.umbraActivity(): MainActivity? {var current: Context=this;while(curr
         } else {
             CLOCK_STYLES.forEach {style->TextButton(onClick={model.editDesktop {layout->layout.updatePage(page){it.copy(items=it.items+DesktopItem(desktopId(),"widget",widget=DesktopWidget(style=style,span=it.columns,rows=if(style=="Analog")3 else 2)))}};close()}){Text("Clock · $style")}}
             listOf("weather","battery","calendar","system","icarus").forEach {kind->TextButton(onClick={model.editDesktop {layout->layout.updatePage(page){it.copy(items=it.items+DesktopItem(desktopId(),"widget",widget=DesktopWidget(kind=kind,span=it.columns,rows=if(kind in listOf("icarus","calendar"))3 else 2)))}};close()}){Text(kind.replaceFirstChar(Char::uppercase))}}
+            ENGINEERING_KINDS.forEach {kind->TextButton(onClick={model.editDesktop {layout->layout.updatePage(page){it.copy(items=it.items+DesktopItem(desktopId(),"widget",widget=DesktopWidget(kind=kind,span=it.columns,rows=3)))}};close()}){Text("Engineering · "+kind.removePrefix("engineering_").uppercase())}}
             TextButton(onClick={androidPicker=true}){Text("Third-party Android widget…")}
         }
     }

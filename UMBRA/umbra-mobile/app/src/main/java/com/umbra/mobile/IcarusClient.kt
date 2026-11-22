@@ -34,7 +34,7 @@ class IcarusClient {
     private val shared = OkHttpClient.Builder().followRedirects(false).followSslRedirects(false).build()
     suspend fun request(base: String,path: String,timeout: Int,token: String? = null,body: JsonObject? = null): JsonObject {
         require(validDeckUrl(base) && timeout in 1..30)
-        require(path in setOf("api/pair","api/unpair","api/status","api/icarus/telemetry","api/icarus/command","api/tv/key","api/action","api/sounds/library","api/sounds/play","api/sounds/stop","api/sounds/output","api/sounds/edit","api/audio/profile"))
+        require(path in setOf("api/pair","api/unpair","api/status","api/icarus/telemetry","api/icarus/command","api/action","api/sounds/library","api/sounds/play","api/sounds/stop","api/sounds/output","api/sounds/edit","api/audio/profile","api/windows/monitor","api/windows/catalog","api/windows/command"))
         val client=shared.newBuilder().callTimeout(timeout.toLong(),TimeUnit.SECONDS).connectTimeout(timeout.toLong(),TimeUnit.SECONDS).readTimeout(timeout.toLong(),TimeUnit.SECONDS).build()
         val request=Request.Builder().url(base.toHttpUrl().resolve(path)!!).header("Accept","application/json").apply {
             if(!token.isNullOrEmpty()) header("Authorization","Bearer $token")

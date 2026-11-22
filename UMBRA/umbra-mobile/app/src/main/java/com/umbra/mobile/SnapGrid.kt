@@ -65,5 +65,5 @@ fun validateGridsJson(value: JsonElement) {
     map.values.forEach {v->val grid=strictFields(v,ints=setOf("version","columns"),nested=setOf("cells"));(grid["cells"] as? JsonArray ?: error("Missing cells")).forEach {strictFields(it,strings=setOf("id"),ints=setOf("x","y","w","h"),bools=setOf("hidden","collapsed"))}}
 }
 val STATUS_TABS=listOf("Main Home","Applications","Information Deck","ICARUS","Engineering","Lounge","Simulator","Instant Buttons","Settings","Command Center")
-val DEFAULT_STATUS_TABS=STATUS_TABS.associateWith {it !in listOf("Applications","Settings")}
+val DEFAULT_STATUS_TABS=STATUS_TABS.filterNot {it=="Lounge"}.associateWith {it !in listOf("Applications","Settings")}
 fun showStatusPanel(c: Config,tab: String)=c.statusPanel && (c.statusTabs[tab] ?: DEFAULT_STATUS_TABS[tab] ?: true)

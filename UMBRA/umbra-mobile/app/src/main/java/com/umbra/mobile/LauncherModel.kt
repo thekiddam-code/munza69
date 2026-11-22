@@ -21,7 +21,8 @@ class LauncherModel(app: Application) : AndroidViewModel(app) {
     val store = ConfigStore(app)
     val vault = CredentialVault(app)
     val remote = IcarusClient()
-    val instant = InstantController(remote,vault)
+    var instant = InstantController(remote,vault)
+        internal set
     var soundboard = SoundboardController { c,path,body ->
         val base=serverBase(c)
         val token=vault.read(base) ?: throw RemoteFailure(401,"Pair this native client first.")
@@ -68,15 +69,18 @@ class LauncherModel(app: Application) : AndroidViewModel(app) {
         arrangementBackup=null;hasLayoutUndo.value=false
     }
     fun saveGrid(surface: String,grid: GridLayout)=arrange {c->
-        val ids=grid.cells.map {it.id}.toSet()
+        val normalized=gridForStorage(c,surface,grid)
+        val ids=normalized.cells.map {it.id}.toSet()
         val unknown=c.gridLayouts[surface]?.cells?.filterNot {it.id in ids} ?: emptyList()
-        c.copy(gridLayouts=c.gridLayouts+(surface to validateGrid(grid.copy(cells=grid.cells+unknown))))
+        c.copy(gridLayouts=c.gridLayouts+(surface to validateGrid(normalized.copy(cells=normalized.cells+unknown))))
     }
     fun restoreGridItems(surface: String)=arrange {c->c.copy(gridLayouts=c.gridLayouts+(surface to (c.gridLayouts[surface] ?: GridLayout()).let {it.copy(cells=it.cells.map {cell->cell.copy(hidden=false)})}))}
+    fun switchPreset(id: String)=save {widgetHost.cancel();arrangementBackup=null;hasLayoutUndo.value=false;store.update {switchHomePreset(it.copy(desktop=resolvedDesktop(it,apps.value)),id)}}
+    fun addPreset(name: String)=save {widgetHost.cancel();arrangementBackup=null;hasLayoutUndo.value=false;store.update {addHomePreset(it.copy(desktop=resolvedDesktop(it,apps.value)),name)}}
     fun change(transform: (Config) -> Config) = save { store.update(transform) }
     fun removeDesktopItem(id: String) = save {
         store.update { c->c.copy(desktop=validateDesktop(resolvedDesktop(c,apps.value).removeItem(id))) }
-        val latest=store.config.first();widgetHost.releaseUnused(latest.desktop?.pages?.flatMap {it.items}?.mapNotNull {it.widget?.appWidgetId?.takeIf {n->n>0}}?.toSet() ?: emptySet())
+        val latest=store.config.first();widgetHost.releaseUnused(allNativeWidgetIds(latest))
     }
     fun completePendingWidget() = save {
         val pending=widgetHost.pending.value ?: return@save
@@ -88,7 +92,7 @@ class LauncherModel(app: Application) : AndroidViewModel(app) {
             c.copy(desktop=validateDesktop(if(existing!=null)layout.updateItem(existing.id){it.copy(widget=spec)} else layout.updatePage(page){it.copy(items=it.items+DesktopItem(desktopId(),"widget",widget=spec))}))
         }
         widgetHost.finish()
-        widgetHost.releaseUnused(store.config.first().desktop?.pages?.flatMap {it.items}?.mapNotNull {it.widget?.appWidgetId?.takeIf {id->id>0}}?.toSet() ?: emptySet())
+        widgetHost.releaseUnused(allNativeWidgetIds(store.config.first()))
         } catch(e: Exception) {widgetHost.cancel();throw e}
     }
     fun editDesktop(change: (DesktopLayout)->DesktopLayout) = save { store.update { c->c.copy(desktop=validateDesktop(change(resolvedDesktop(c,apps.value)))) } }
@@ -100,7 +104,7 @@ class LauncherModel(app: Application) : AndroidViewModel(app) {
             c.copy(desktop=validateDesktop(next),favorites=c.favorites+component)
         }
     }
-    fun replace(c: Config) = save { store.replace(c);widgetHost.cancel();widgetHost.releaseUnused(c.desktop?.pages?.flatMap {it.items}?.mapNotNull {it.widget?.appWidgetId?.takeIf {id->id>0}}?.toSet() ?: emptySet()) }
+    fun replace(c: Config) = save { store.replace(c);widgetHost.cancel();widgetHost.releaseUnused(allNativeWidgetIds(c)) }
     fun reset() = save { vault.clear();store.replace(Config());widgetHost.cancel();widgetHost.releaseUnused(emptySet()) }
     fun flag(key: String, value: Boolean) = save { store.flag(key,value) }
     fun profile(value: Profile) = save { store.profile(value) }

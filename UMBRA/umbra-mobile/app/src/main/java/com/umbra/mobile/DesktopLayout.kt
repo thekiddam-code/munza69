@@ -7,6 +7,7 @@ import java.util.UUID
 fun desktopId()=UUID.randomUUID().toString()
 @Serializable data class DesktopFolder(val name: String="Folder",val apps: List<String> = emptyList())
 @Serializable data class DesktopWidget(
+    val collapsed: Boolean=false,val showDetails: Boolean=true,
     val kind: String="clock",val style: String="Digital",val span: Int=3,val rows: Int=2,
     val clock24: Boolean=true,val seconds: Boolean=false,val transparent: Boolean=true,val accent: String="",
     val appWidgetId: Int=0,val provider: String=""
@@ -15,7 +16,7 @@ fun desktopId()=UUID.randomUUID().toString()
 @Serializable data class DesktopPage(val id: String="",val name: String="Deck",val kind: String="blank",val columns: Int=3,val items: List<DesktopItem> = emptyList())
 @Serializable data class DesktopLayout(val schemaVersion: Int=1,val homePageId: String="main",val pages: List<DesktopPage> = emptyList())
 val CLOCK_STYLES=listOf("Digital","Terminal","Analog","Segmented","Date and time")
-val WIDGET_KINDS=listOf("clock","weather","battery","calendar","system","icarus","android")
+val WIDGET_KINDS=listOf("clock","weather","battery","calendar","system","icarus","android")+ENGINEERING_KINDS
 private fun validDesktopId(value: String)=Regex("[A-Za-z0-9_-]{1,64}").matches(value)
 private fun validDesktopName(value: String)=value.length in 1..48 && value.none(Char::isISOControl)
 fun validateDesktop(layout: DesktopLayout): DesktopLayout {
@@ -115,7 +116,7 @@ fun validateDesktopJson(value: JsonElement) {
                 val f=typed(folder,setOf("name"),emptySet(),emptySet(),arrays=setOf("apps"))
                 val apps=f["apps"] as? JsonArray ?: JsonArray(emptyList());require(apps.size<=64 && apps.all { it is JsonPrimitive && it.isString })
             }
-            item["widget"]?.takeUnless { it is JsonNull }?.let { widget -> typed(widget,setOf("kind","style","accent","provider"),setOf("span","rows","appWidgetId"),setOf("clock24","seconds","transparent")) }
+            item["widget"]?.takeUnless { it is JsonNull }?.let { widget -> typed(widget,setOf("kind","style","accent","provider"),setOf("span","rows","appWidgetId"),setOf("clock24","seconds","transparent","collapsed","showDetails")) }
         }
     }
 }

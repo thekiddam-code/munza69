@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.umbra.mobile.ButtonOutputsTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-11-22T21:37:54" hostname="38be7f335680" time="0.878">
+  <properties/>
+  <testcase name="buttonFilesRoundTripRejectUnsupportedAndNeverContainCredentials" classname="com.umbra.mobile.ButtonOutputsTest" time="0.075"/>
+  <testcase name="selectionHasNoSixButtonTruncationAndExplicitEmptyPersists" classname="com.umbra.mobile.ButtonOutputsTest" time="0.03"/>
+  <testcase name="configuredButtonsReceiveRealFeedbackAndQueueAcknowledgments" classname="com.umbra.mobile.ButtonOutputsTest" time="0.726"/>
+  <testcase name="allImplementedOutputsUseExistingServerPayloads" classname="com.umbra.mobile.ButtonOutputsTest" time="0.002"/>
+  <testcase name="overridingServerReferencePreservesWidgetSelectionAndPlacement" classname="com.umbra.mobile.ButtonOutputsTest" time="0.008"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

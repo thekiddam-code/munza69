@@ -33,8 +33,8 @@ class SoundboardHostUiTest {
         val ctl=SoundboardController {_,path,_->calls+=path;if(path.endsWith("play"))kotlinx.serialization.json.buildJsonObject {put("state",kotlinx.serialization.json.JsonPrimitive("playing"))} else soundFixture()}
         val model=androidx.lifecycle.ViewModelProvider(rule.activity)[LauncherModel::class.java]
         rule.runOnUiThread {model.soundboard=ctl}
-        rule.onNodeWithTag("nav-ICARUS").performClick()
-        rule.onNodeWithText("Soundboard",useUnmergedTree=true).performScrollTo().performClick()
+        rule.onNodeWithTag("nav-COMMAND").performClick()
+        rule.onNodeWithTag("deck-section-Soundboard").performClick()
         waitFor {ctl.state.value.catalog?.sounds?.size==14}
         val id="0".repeat(32)
         rule.onNodeWithText("Tap to play on the saved ICARUS output.",substring=true).performScrollTo()

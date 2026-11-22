@@ -1,0 +1,16 @@
+UMBRA Mobile 3.0 (code 6), Phase 3 addenda
+Final Gradle BUILD SUCCESSFUL: :app:testDebugUnitTest :app:lintDebug :app:assembleDebug :app:assembleDebugAndroidTest
+89 Android test executions; zero failures/errors. Includes six new connection/migration tests and four new native UI cases on SDK 30/34.
+Lint: {'Warning': 13} (zero errors).
+Debug APK and device-test APK assembled. Device instrumentation was NOT run.
+APK SHA-256: de2b10379f2a6da13d2d0079f75ee7c432bdda0a1bdab0c74111b687b461db90
+Signer #1 certificate SHA-256 digest: 79829531c75dd5ee41bf23951d6514bb2ecb21052c405a6230bfc8cbccdb7c6e
+Certificate matches the prior distributed 2.3.1 APK. Permissions and packaged native-library list unchanged.
+
+Native host checks: HOME/APPS/DECK/SIMULATOR/ICARUS/CONFIG preserve the compact indicator; its hide preference survives recreation; two Engineering widgets share three initial authenticated status/monitor/catalog requests; fixture CPU/GPU/temperature/VRAM readings appear; actual server PC name and HTTP latency appear in the panel; resizing/collapse affects only the selected widget; inactive presets drop fast telemetry demand; returning restores each instance; stopped launcher issues no more requests and marks connection Offline. Existing Home gesture/notification guidance, app drawer, configuration, animations, soundboard, game commands, grids and widgets remain covered by the full suite.
+
+Pure/API checks: older schemas 2/3/4; preserved-but-inert TV mappings; independent preset grid/display/native-binding retention and portable exports; exact bearer-authenticated monitor and fixed-action contract with unique request ID; cached status/catalog reuse; no arbitrary command IDs; honest older-server CPU/RAM fallback; unavailable/stale sensors; interrupted requests, one-in-flight gate and inactive state; conservative network address classification and power-aware cadence. Audio output preferences are neither migrated locally nor reset.
+
+ICARUS tree unchanged: 0b65108fcabefb2a53f0ea4139a4d6cb6fba2f6c. No backend collector, TV, soundboard engine or simulation change. Existing monitor/action API inspected on soundboard branch 958f3efdb72e2998a1b741e7670703c69ada1569; original server suites from 2.3.1 remain historical, not re-counted as new hardware tests.
+
+Host renders use explicit TEST-PC/Fixture GPU HTTP fixtures. They are not S24+ screenshots or measurements from the user's PC. Actual Windows/S24+/Tailscale sensors, audio/game output, native HOME/gesture behavior, PC action effects and battery performance remain physical checks. Older companion APIs do not report a machine name; the UI says Not reported by companion. Address classification does not verify actual routing. The configured Remote Deck opens in the browser; this backend exposes no native desktop video/input stream. Windows build_umbra.bat is included but not executed on this Linux host.

@@ -22,6 +22,7 @@ fun validateButton(button: CustomButton): CustomButton {
 }
 fun buttonAction(b: CustomButton): InstantAction {
     validateButton(b)
+    require(b.kind!=OutputKind.TvKey){"Retired output is retained for migration only."}
     val path=when(b.kind){OutputKind.TvKey->"api/tv/key";OutputKind.Simulation->"api/icarus/command";else->"api/action"}
     val body=buildJsonObject {when(b.kind) {
         OutputKind.TvKey->put("key",b.key)
@@ -37,10 +38,10 @@ fun buttonSupport(b: CustomButton,pc: PcStatus?): String?=when {
     b.kind==OutputKind.QuickChat && b.name !in pc.quick->"Quick-chat name is absent from the current server."
     b.kind==OutputKind.Macro && b.name !in pc.macros->"Macro name is absent from the current server."
     b.kind==OutputKind.FortniteEmote && pc.emotes.none {it.index==b.index}->"Emote slot is unavailable."
-    b.kind==OutputKind.TvKey && !pc.tvConfigured->"Configure/pair the TV in the existing Remote Deck."
+    b.kind==OutputKind.TvKey->"Retired output is unavailable."
     else->null
 }
-fun buttonCatalog(c: Config,pc: PcStatus?): List<InstantAction> =(pc?.let(::instantActions) ?: emptyList())+c.customButtons.map(::buttonAction)
+fun buttonCatalog(c: Config,pc: PcStatus?): List<InstantAction> =(pc?.let(::instantActions) ?: emptyList())+c.customButtons.filter {it.kind!=OutputKind.TvKey}.map(::buttonAction)
 fun chosenButtonIds(c: Config,catalog: List<InstantAction>): Set<String> = c.instantSelection ?: c.instantFavorites.takeIf {it.isNotEmpty()} ?: catalog.map {it.id}.toSet()
 @Serializable private data class ButtonFile(val version: Int=1,val buttons: List<CustomButton>)
 private val buttonJson=Json {encodeDefaults=true;ignoreUnknownKeys=false}

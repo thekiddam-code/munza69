@@ -1,46 +1,42 @@
-# UMBRA Mobile 2.3.1
+# UMBRA Mobile 3.0
 
-Native Kotlin / Jetpack Compose Android launcher for Samsung Galaxy S24+, alongside the unchanged ICARUS project.
+Native Kotlin / Jetpack Compose Android launcher for Galaxy S24+, beside the unchanged ICARUS project.
+
+**HOME | APPS | DECK | SIMULATOR | ICARUS | CONFIG**
+
+- HOME: named independent preset dashboards, pages, app shortcuts, folders and widgets.
+- DECK: Command library, Engineering, Soundboard, Instant Buttons and Android Device controls.
+- SIMULATOR: separate Rocket League, Fortnite, Minecraft and ship simulation controls.
+- ICARUS: native PC pairing/connection and access to the configured PC Remote Deck.
+- CONFIG: system, appearance, connection and server-owned soundboard audio settings.
+
+Engineering uses the existing Windows companion: CPU, GPU, RAM, power/battery, network and supported fixed PC actions. Add those modules through the HOME widget picker; drag, snap, resize, collapse, configure and place instances independently in any preset. Visible modules share one polling loop and the existing native connection controller. Missing or stale sensors remain unavailable.
+
+The compact **● PC** header indicator appears on all six tabs. Tap for reported PC name, actual authenticated connection status, conservative address-class detection, HTTP round-trip latency and Reconnect. Hide it in CONFIG → ICARUS. No widget arrangement or Android fullscreen setting changes when it is hidden.
+
+Samsung TV controls are removed from UMBRA. Old mappings are preserved as inert migration data; shared TV backend and Samsung's native remote are untouched. Existing soundboard audio output preferences stay on ICARUS.
 
 ## Download / install
 
 - [Debug APK](https://github.com/thekiddam-code/munza69/raw/refs/heads/main/UMBRA/downloads/umbra-mobile-debug.apk)
-- [APK ZIP](https://github.com/thekiddam-code/munza69/raw/refs/heads/main/UMBRA/downloads/umbra-mobile-apk.zip) — extract before installing.
-- [Full Android Studio project / Windows build script](https://github.com/thekiddam-code/munza69/raw/refs/heads/main/UMBRA/downloads/umbra-mobile-source.zip)
+- [APK ZIP fallback](https://github.com/thekiddam-code/munza69/raw/refs/heads/main/UMBRA/downloads/umbra-mobile-apk.zip) — extract before installing.
+- [Complete Android Studio project and Windows build script](https://github.com/thekiddam-code/munza69/raw/refs/heads/main/UMBRA/downloads/umbra-mobile-source.zip)
 - [Coordinated lock-screen wallpaper](https://github.com/thekiddam-code/munza69/raw/refs/heads/main/UMBRA/downloads/umbra-lock-screen.png)
 - [SHA-256 checksums](downloads/SHA256SUMS.txt)
 
-Install over the previous signed build to preserve local settings. Choose **Samsung Settings → Apps → Choose default apps → Home app → UMBRA**. Choose **One UI Home** there to switch back. The persistent Show bars / Hide bars header control remains available.
+Install over the previous signed UMBRA build to retain settings. Choose Samsung Settings → Apps → Choose default apps → Home app → UMBRA. Choose One UI Home there to restore Samsung's launcher. The Show bars / Hide bars header control remains available.
 
-## Soundboard hotfix
+Keep using the existing working Windows/soundboard-capable ICARUS companion and private soundboard library; configure its address in CONFIG → ICARUS and pair with its PIN. The older ICARUS tree on main lacks extended monitor/soundboard APIs and should not replace that working server. Native desktop video/input streaming is not exposed by the inspected companion; PC Remote Deck opens the configured existing browser interface. Older versions do not report a PC name, and the UI says so. Address classification does not verify the actual Tailscale route.
 
-Open **ICARUS → Soundboard** for the original server library, with a scrollable grid, shared favorites, long-press arrangement and sizing, and actual server playback feedback. **Settings → ICARUS → Soundboard → Audio Output** saves output selection on ICARUS, shared with Remote Deck. No duplicate soundboard or independent audio settings store is added. Keep using your working soundboard-capable ICARUS 4.8B/C server; the older ICARUS tree on main has no soundboard API.
+## Verification and documentation
 
-See [integration, exact contracts, setup and limitations](umbra-mobile/SOUNDBOARD_INTEGRATION.md).
+**Build verified:** 89 Android tests pass; lint has zero errors (13 warnings); app and device-test APKs assemble. Signing certificate and permissions match 2.3.1.
 
-## Phase 2.3
+See [executed Phase 3 results](umbra-mobile/verification/phase3/RESULTS.txt), [complete implementation/migration/limits report](umbra-mobile/PHASE3_REPORT.md), [installation/build instructions](umbra-mobile/README.md), and [configuration schema/privacy](umbra-mobile/CONFIGURATION.md).
 
-Shared snap grids and contextual long-press editing; draggable collapsed module headers; persistent positions/sizes/visibility/expansion; remembered Compact/Expanded Command Center; temporary amber placement guides; no permanent Widget Options rows; full native Instant Buttons editor and supported output parameters; unlimited-by-six selected-button wrapping/scrolling; compact Settings and per-tab status preferences.
+Native host renders below use explicit TEST-PC/Fixture GPU responses; they are not physical phone screenshots or measurements from the user's Windows PC. Physical S24+/Windows/Tailscale, audio/game delivery, gestures and battery performance remain device checks.
 
-The existing Enhanced industrial appearance, Adaptive animation engine, unified transitions, native launcher/apps, pages/folders, clocks/weather, standard Android widget hosting, native ICARUS pairing/controls, and One UI recovery are preserved. Local layouts migrate without resetting widget IDs or PC settings. Physical Samsung animation parity and live device/server compatibility are not claimed from host tests.
+<img src="umbra-mobile/verification/phase3/host-renders/phase3-engineering-home-sdk34.png" width="300" alt="Native HOME host render with shared CPU and GPU Engineering widgets and compact PC indicator">
+<img src="umbra-mobile/verification/phase3/host-renders/phase3-six-tabs-sdk34.png" width="300" alt="Native host render showing six navigation destinations with the PC indicator hidden">
 
-**Build verified:** 79 Android tests pass; lint has zero errors (13 warnings); both APKs assemble and the signing certificate matches the previous build. The existing ICARUS sound service’s 19 tests and soundboard browser suite’s 7 tests also pass. See [hotfix verification](umbra-mobile/verification/soundboard/RESULTS.txt); physical Windows/Sonar/S24+ audio remains unverified.
-
-Native soundboard / Audio Output host renders below use generated test sounds and an explicit fixture output. They are not physical-device or audible-output verification.
-
-<img src="umbra-mobile/verification/soundboard/host-renders/soundboard-soundboard-sdk34.png" width="300" alt="Native soundboard host render with fourteen generated test entries">
-<img src="umbra-mobile/verification/soundboard/host-renders/soundboard-audio-output-sdk34.png" width="300" alt="Native Settings Audio Output host render after authoritative server readback">
-
-## Documentation
-
-- [Installation / operation / Windows build](umbra-mobile/README.md)
-- [Implementation, results, limitations, next steps](umbra-mobile/PHASE23_REPORT.md)
-- [Layout migration and recovery](umbra-mobile/LAYOUT_MIGRATION.md)
-- [Instant Buttons / exact ICARUS outputs](umbra-mobile/ICARUS_OUTPUTS.md)
-- [Configuration schema / privacy](umbra-mobile/CONFIGURATION.md)
-- [Host and physical acceptance testing](umbra-mobile/TESTING.md)
-
-Actual native Activity/Compose host renders are stored in `umbra-mobile/verification/phase23/host-renders/`; these are not physical phone screenshots or performance measurements. Earlier phase reports remain historical evidence.
-
-<img src="umbra-mobile/verification/phase23/host-renders/phase23-command-static-sdk34.png" width="300" alt="Native UMBRA Compact Command Center rendered on the host Android runtime">
-<img src="umbra-mobile/verification/phase23/host-renders/phase23-settings-sdk34.png" width="300" alt="Compact Settings title and scroll-content identity footer rendered on the host Android runtime">
+Previous Phase 1/2/2.1/2.3 reports and verification artifacts remain historical evidence. The original Android launcher, adaptive animation profiles, independent effect switches, unified transitions, native widget hosting and One UI recovery remain.

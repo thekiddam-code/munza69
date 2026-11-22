@@ -38,6 +38,7 @@ import kotlin.math.sin
 }
 @Composable fun BuiltinWidget(item: DesktopItem,c: Config,model: LauncherModel,device: Device,unusedTime: LocalDateTime,accent: Color,visible: Boolean,expand: (Rect)->Unit) {
     val w=item.widget!!
+    if(w.kind in ENGINEERING_KINDS) {EngineeringWidget(item,c,model,visible,accent,expand);return}
     if(w.kind=="android") { HostedAndroidWidget(item,model,visible);return }
     var bounds by remember(item.id){mutableStateOf(Rect.Zero)}
     val color=if(w.accent.isEmpty())accent else Color(android.graphics.Color.parseColor(w.accent))
@@ -92,6 +93,7 @@ private fun Modifier.weightlessHeight()=height(72.dp)
 @Composable fun WidgetDetails(item: DesktopItem,c: Config,model: LauncherModel,device: Device,time: LocalDateTime,accent: Color,configure: ()->Unit) {
     Column(Modifier.fillMaxSize().combinedClickable(onClick={},onLongClick=configure).verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(12.dp)) {
         when(item.widget!!.kind) {
+            in ENGINEERING_KINDS -> EngineeringModule(item.widget.kind.removePrefix("engineering_"),c,model,true,item.widget.showDetails)
             "weather" -> WeatherDetails(c,model)
             "system","battery" -> TelemetryReadouts(device)
             "calendar" -> {

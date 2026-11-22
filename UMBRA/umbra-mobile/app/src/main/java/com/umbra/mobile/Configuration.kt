@@ -21,6 +21,7 @@ val MODULES = listOf("Device", "System", "ICARUS", "Notifications", "Application
 val INDICATORS = setOf("Time", "Date", "Battery", "Network", "ICARUS", "Notifications")
 const val MAX_CONFIG_BYTES = 1048576
 @Serializable data class Config(
+    val pcIndicator: Boolean=true, val activeHomePreset: String="default", val homePresets: List<HomePreset> = emptyList(),
     val profile: Profile = Profile.Adaptive, val master: Boolean = true,
     val ambient: Boolean = true, val transitions: Boolean = true,
     val environment: Boolean = false, val alerts: Boolean = true,
@@ -54,7 +55,7 @@ const val MAX_CONFIG_BYTES = 1048576
     val commandExpanded: Boolean=true, val statusTabs: Map<String,Boolean> = DEFAULT_STATUS_TABS,
     val instantSelection: Set<String>?=null, val widgetButtonSelections: Map<String,List<String>> = emptyMap(), val customButtons: List<CustomButton> = emptyList()
 )
-@Serializable private data class ConfigEnvelope(val schemaVersion: Int = 4, val settings: Config)
+@Serializable private data class ConfigEnvelope(val schemaVersion: Int = 5, val settings: Config)
 private val configJson = Json { encodeDefaults = true; ignoreUnknownKeys = false }
 private val componentPattern = Regex("[A-Za-z0-9_.$]+/[A-Za-z0-9_.$]+")
 fun validComponent(value: String) = value.length in 3..512 && componentPattern.matches(value)
@@ -74,6 +75,7 @@ fun validAccent(value: String): Boolean {
     return .2126*channel(16)+.7152*channel(8)+.0722*channel(0) >= .25
 }
 fun validateConfig(c: Config): Config {
+    validatePresets(c)
     require(c.gridLayouts.size<=128 && c.gridLayouts.keys.all {it.length in 1..120 && it.none(Char::isISOControl)})
     c.gridLayouts.values.forEach(::validateGrid)
     require(c.deckColumns in 2..4 && c.statusTabs.keys.all {it in STATUS_TABS})
@@ -112,17 +114,18 @@ private fun encodeConfig(c: Config): String {
     require(text.toByteArray(Charsets.UTF_8).size <= MAX_CONFIG_BYTES)
     return text
 }
-fun exportConfig(c: Config): String = encodeConfig(c.copy(desktop=c.desktop?.let(::portableDesktop)))
+fun exportConfig(c: Config): String = encodeConfig(c.copy(desktop=c.desktop?.let(::portableDesktop),homePresets=c.homePresets.map {it.copy(desktop=portableDesktop(it.desktop))}))
 private fun decodeConfig(text: String,portable: Boolean): Config {
     require(text.toByteArray(Charsets.UTF_8).size <= MAX_CONFIG_BYTES) { "Configuration exceeds 1 MiB" }
     val root = configJson.parseToJsonElement(text) as? JsonObject ?: error("Expected configuration object")
     require(root.keys == setOf("schemaVersion", "settings"))
     val version = root["schemaVersion"] as? JsonPrimitive ?: error("Missing version")
-    require(!version.isString && version.intOrNull in setOf(2,3,4))
+    require(!version.isString && version.intOrNull in setOf(2,3,4,5))
     val fields = root["settings"] as? JsonObject ?: error("Missing settings")
     val defaults = configJson.encodeToJsonElement(Config()).jsonObject
     fields.forEach { (key, value) ->
         val sample = defaults[key] ?: error("Unknown setting")
+        if(key=="homePresets"){validatePresetsJson(value);return@forEach}
         if(key=="widgetButtonSelections"){require(value is JsonObject && value.values.all {it is JsonArray && it.all {v->v is JsonPrimitive && v.isString}});return@forEach}
         if(key=="gridLayouts"){validateGridsJson(value);return@forEach}
         if(key=="customButtons"){validateButtonsJson(value);return@forEach}
@@ -143,9 +146,9 @@ private fun decodeConfig(text: String,portable: Boolean): Config {
         }
     }
     val envelope = configJson.decodeFromString<ConfigEnvelope>(text)
-    require(envelope.schemaVersion in setOf(2,3,4)) { "Unsupported configuration version" }
+    require(envelope.schemaVersion in setOf(2,3,4,5)) { "Unsupported configuration version" }
     val valid=validateConfig(envelope.settings)
-    return if(portable)valid.copy(desktop=valid.desktop?.let(::portableDesktop)) else valid
+    return if(portable)valid.copy(desktop=valid.desktop?.let(::portableDesktop),homePresets=valid.homePresets.map {it.copy(desktop=portableDesktop(it.desktop))}) else valid
 }
 fun importConfig(text: String): Config = decodeConfig(text,true)
 fun serverBase(c: Config): String {
@@ -153,7 +156,7 @@ fun serverBase(c: Config): String {
     return c.url.toHttpUrlOrNull()?.newBuilder()?.encodedPath("/")?.query(null)?.fragment(null)?.build()?.toString() ?: ""
 }
 fun remoteDestination(c: Config, module: String): String = when(module) {
-    "Engineering" -> c.engineeringUrl; "Lounge" -> c.loungeUrl; "Simulator" -> c.simulatorUrl; else -> c.url
+    "Engineering" -> c.engineeringUrl; "Simulator" -> c.simulatorUrl; else -> c.url
 }.ifEmpty { c.url }
 fun orderedFavorites(c: Config, apps: List<LaunchApp>): List<LaunchApp> {
     val pinned = apps.filter { it.id in c.favorites && it.id !in c.hiddenApps }

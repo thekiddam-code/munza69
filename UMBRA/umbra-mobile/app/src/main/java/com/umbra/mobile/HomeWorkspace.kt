@@ -48,13 +48,14 @@ import kotlin.math.roundToInt
     val pageId=layout.pages.getOrNull(pager.currentPage)?.id ?: layout.homePageId
     val latestPages by rememberUpdatedState(layout.pages)
     LaunchedEffect(pager){snapshotFlow {pager.settledPage}.collectLatest {latestPages.getOrNull(it)?.let {p->selectedPage=p.id;onPageContext(when(p.kind){"terminal"->"Main Home";"icarus"->"ICARUS";else->"Information Deck"})}}}
-    LaunchedEffect(layout.pages.map {it.id},homeEvent) {
+    LaunchedEffect(c.activeHomePreset,layout.pages.map {it.id},homeEvent) {
         val target=if(homeEvent!=handledEvent)layout.homePageId else selectedPage.takeIf {id->layout.pages.any {it.id==id}} ?: layout.homePageId
         pager.scrollToPage(layout.pages.indexOfFirst {it.id==target}.coerceAtLeast(0));handledEvent=homeEvent;selectedPage=target;expansion.dismissImmediately()
     }
     fun configure(item: DesktopItem) {when(item.kind){"folder"->folderEditor=item;"widget"->widgetEditor=item;else->appEditor=item}}
     Box(Modifier.fillMaxSize().semantics {onLongClick("Edit Home"){homeMenu=true;true}}) {
         Column(Modifier.fillMaxSize()) {
+            HomePresetBar(c,model)
             Text(layout.page(pageId).name,style=MaterialTheme.typography.labelLarge,modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).combinedClickable(onClick={},onLongClick={homeMenu=true}).testTag("home-edit-header"))
             HorizontalPager(state=pager,key={layout.pages[it].id},modifier=Modifier.weight(1f).fillMaxWidth().testTag("home-pages"),beyondViewportPageCount=1) {index->
                 val page=layout.pages[index]
@@ -62,7 +63,8 @@ import kotlin.math.roundToInt
                     if(page.kind=="terminal")terminal()
                     val visible=page.items.filterNot {it.kind=="app" && it.component in c.hiddenApps}
                     if(visible.isEmpty())Text("Long-press the page title to add widgets, folders, or pages. Long-press apps in Apps to pin them.",color=Muted)
-                    GridBoard("home:${page.id}",visible.map {GridItem(it.id,it.folder?.name ?: apps.firstOrNull {a->a.id==it.component}?.label ?: it.widget?.kind ?: "Application",it.widget?.span ?: 1,it.widget?.rows ?: 2)},c,model,page.columns,64.dp,
+                    GridBoard("home:${page.id}",visible.map {GridItem(it.id,it.folder?.name ?: apps.firstOrNull {a->a.id==it.component}?.label ?: it.widget?.kind ?: "Application",it.widget?.span ?: 1,it.widget?.rows ?: 2)},c,model,page.columns,64.dp,forcedCollapsed=visible.filter {it.widget?.collapsed==true}.map {it.id}.toSet(),
+                        onCollapse={id->model.editDesktop {it.updateItem(id){item->item.copy(widget=item.widget?.copy(collapsed=!item.widget.collapsed))}}},canCollapse={id->layout.item(id)?.widget?.kind in ENGINEERING_KINDS},
                         onConfigure={id->layout.item(id)?.let(::configure)},onMovePage={id->moveTarget=layout.item(id)},onResizeRequest={id->val native=layout.item(id)?.takeIf {it.widget?.kind=="android"};if(native!=null){widgetEditor=native;true} else false},onRemove={model.removeDesktopItem(it)},
                         canDuplicate={layout.item(it)?.widget?.kind!="android"},onDuplicate={id->model.arrange {old->val l=resolvedDesktop(old,apps);val item=l.item(id)!!;require(item.widget?.kind!="android");val copyId=desktopId();old.copy(desktop=l.updatePage(page.id){it.copy(items=it.items+item.copy(id=copyId))},widgetButtonSelections=old.widgetButtonSelections[item.id]?.let {ids->old.widgetButtonSelections+(copyId to ids)} ?: old.widgetButtonSelections)}},
                         onDrop={id,target->

@@ -93,7 +93,7 @@ fun Modifier.terminalSwipe(enabled: Boolean, down: () -> Unit, up: () -> Unit): 
                         }
                         "ICARUS" -> {
                             Text(deck)
-                            NamedControlGrid("icarus-shortcuts",c,model,listOf("Engineering" to "Engineering","Lounge" to "Lounge","Simulator" to "Simulator","Open Remote Deck" to "Deck"),icarus)
+                            NamedControlGrid("icarus-shortcuts",c,model,listOf("Engineering" to "Engineering","Simulator" to "Simulator","Open Remote Deck" to "Deck"),icarus)
                         }
                         "Notifications" -> {
                             Text(when { !c.notificationsEnabled->"Notification summary is off."; !granted->"Android notification access is required.";notificationCount==null->"Waiting for the Android notification listener.";else->"$notificationCount active notifications (group summaries excluded)." })

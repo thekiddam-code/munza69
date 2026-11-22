@@ -66,6 +66,8 @@ class LauncherHostUiTest {
         val server=okhttp3.mockwebserver.MockWebServer()
         server.start()
         try {
+            val model=androidx.lifecycle.ViewModelProvider(rule.activity)[LauncherModel::class.java]
+            rule.runOnUiThread {model.instant=InstantController(model.remote){"test-token"}}
             server.enqueue(okhttp3.mockwebserver.MockResponse().setSocketPolicy(okhttp3.mockwebserver.SocketPolicy.NO_RESPONSE))
             runBlocking { ConfigStore(rule.activity).update { it.copy(url=server.url("/").toString(),refreshOnNetwork=false,refreshOnResume=true,timeout=10) } }
             rule.waitUntil(5000) { org.robolectric.Shadows.shadowOf(android.os.Looper.getMainLooper()).idle();server.requestCount>=1 }

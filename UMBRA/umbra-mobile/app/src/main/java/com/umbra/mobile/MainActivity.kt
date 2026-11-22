@@ -147,15 +147,14 @@ class MainActivity : ComponentActivity() {
     var shadeDialog by remember { mutableStateOf(false) }
     val gridEditing=remember {GridEditSession()}
     var homeStatusContext by rememberSaveable {mutableStateOf("Main Home")}
-    var remoteModule by rememberSaveable { mutableStateOf("Engineering") }
+    var remoteModule by rememberSaveable { mutableStateOf("PC Remote") }
+    var deckSection by rememberSaveable {mutableStateOf("Command library")}
     var settingsCategory by rememberSaveable { mutableStateOf("Animation") }
     var screen by rememberSaveable { mutableStateOf("HOME") }
     var query by rememberSaveable { mutableStateOf("") }
     var favoritesOnly by rememberSaveable { mutableStateOf(false) }
     var now by remember { mutableStateOf(LocalDateTime.now()) }
     var deckStatus by remember { mutableStateOf("NOT CHECKED") }
-    var checkId by remember { mutableIntStateOf(0) }
-    val headGate=remember { RefreshGate() }
     val pointer=remember { mutableStateOf(androidx.compose.ui.geometry.Offset(.5f,.5f)) }
     val parallaxAllowed by rememberUpdatedState(c.parallax && c.master && c.intensity>0)
     var active by remember { mutableStateOf(false) }
@@ -196,14 +195,11 @@ class MainActivity : ComponentActivity() {
     LaunchedEffect(lastInteraction) {
         interacting = true; delay(2500); interacting = false
     }
-    LaunchedEffect(lifecycle,c.url,c.timeout,checkId,if(c.refreshOnNetwork) device.networkGeneration else 0L,c.refreshOnResume) {
-        lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-            if(!headGate.shouldRefresh(c.refreshOnResume,c.refreshOnNetwork,checkId,device.networkGeneration,c.url+"|"+c.timeout)) return@repeatOnLifecycle
-            deckStatus = if (c.url.isEmpty()) "NOT CONFIGURED" else "CHECKING…"
-            deckStatus = checkDeck(c.url,c.timeout)
-        }
-    }
-    val homePull=rememberPullNavigation(c.swipeDown,{screen="COMMAND"},{})
+    SharedPcConnection(c,model,active && device.screenOn,device.powerSave || device.battery in 0..20,screen=="ICARUS",device.networkGeneration)
+    val pcSnapshot by model.instant.pcConnection.collectAsStateWithLifecycle()
+    LaunchedEffect(pcSnapshot){deckStatus=pcSnapshot.phase.name.uppercase()}
+
+    val homePull=rememberPullNavigation(c.swipeDown,{deckSection="Device controls";screen="COMMAND"},{})
     val pageStateHolder=rememberSaveableStateHolder()
     val startup = remember { Animatable(1f) }
     LaunchedEffect(active,policy.enabled,c.startup) {
@@ -236,12 +232,13 @@ class MainActivity : ComponentActivity() {
                 Column(Modifier.fillMaxSize().alpha(if(policy.enabled && c.startup) startup.value else 1f).safeDrawingPadding().imePadding().padding(horizontal=20.dp,vertical=10.dp)) {
                     Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.SpaceBetween,verticalAlignment=Alignment.CenterVertically) {
                         if(screen=="CONFIG")Text("Settings",fontSize=22.sp,modifier=Modifier.weight(1f)) else Column(Modifier.weight(1f)) { Text("UMBRA",color=accent,fontSize=27.sp,fontWeight=FontWeight.Black,letterSpacing=5.sp,maxLines=1,overflow=TextOverflow.Ellipsis); Readout("MOBILE OS / TERMINAL 01",Muted) }
+                        PcConnectionIndicator(c,model)
                         val barsVisible=WindowInsets.areStatusBarsVisible || WindowInsets.areNavigationBarsVisible
                         TextButton(onClick={context.umbraActivity()?.setAndroidBarsVisible(!barsVisible)},modifier=Modifier.testTag("bars-toggle")) { Text(if(barsVisible)"Hide bars" else "Show bars",fontSize=12.sp,color=accent) }
                     }
                     HorizontalDivider(Modifier.padding(vertical=12.dp),color=accent.copy(alpha=.45f))
                     if(settingsError) Text("Settings could not be saved. Check values and available storage, then try again.",color=Color(0xFFEF8B82),modifier=Modifier.semantics { liveRegion=LiveRegionMode.Polite })
-                    if(showStatusPanel(c,when(screen){"HOME"->homeStatusContext;"APPS"->"Applications";"CONFIG"->"Settings";"COMMAND"->"Command Center";"ICARUS"->remoteModule;else->"ICARUS"})) StatusPanel(c,device,now,deckStatus,accent,notificationCount)
+                    if(showStatusPanel(c,when(screen){"HOME"->homeStatusContext;"APPS"->"Applications";"CONFIG"->"Settings";"COMMAND"->if(deckSection=="Engineering")"Engineering" else "Command Center";"SIMULATOR"->"Simulator";"ICARUS"->"ICARUS";else->"ICARUS"})) StatusPanel(c,device,now,deckStatus,accent,notificationCount)
                     val pageContent: @Composable (String)->Unit = { page ->
                         pageStateHolder.SaveableStateProvider(page) {
                         when(page) {
@@ -256,8 +253,11 @@ class MainActivity : ComponentActivity() {
                                     items(filtered,key={it.id}) { app -> AppTile(app,model,app.id in c.favorites,{launch(app)},{model.favorite(app.id)},accent) }
                                 }
                             }
-                            "COMMAND" -> CommandCenter(c,device,model,apps,deckStatus,accent,::open,{app->launch(app)},{screen="HOME"},{shadeDialog=true},
-                                { if(it=="Deck") { if(validDeckUrl(c.url))open(Intent(Intent.ACTION_VIEW,android.net.Uri.parse(c.url))) else screen="CONFIG" } else {remoteModule=it; screen="ICARUS"} },{screen="DEVICE"},{deviceRefresh++},notificationCount)
+                            "COMMAND" -> DeckScreen(c,model,deckSection,{deckSection=it}) {
+                                CommandCenter(c,device,model,apps,deckStatus,accent,::open,{app->launch(app)},{screen="HOME"},{shadeDialog=true},
+                                    {target->when(target){"Engineering"->{deckSection="Engineering"};"Simulator"->screen="SIMULATOR";else->screen="ICARUS"}},{screen="DEVICE"},{deviceRefresh++},notificationCount)
+                            }
+                            "SIMULATOR" -> SimulatorScreen(c,model,::open)
                             "DEVICE" -> Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(16.dp)) {
                                 Readout("DEVICE / SYSTEM DASHBOARD",accent)
                                 ModularDeck("device-dashboard",listOf("Device Status"),c,model){TelemetryReadouts(device);Button(onClick={deviceRefresh++},shape=Chamfer){Text("Refresh telemetry")}}
@@ -266,7 +266,7 @@ class MainActivity : ComponentActivity() {
                             "ICARUS" -> IcarusScreen(c,model,accent,remoteModule,::open,{settingsCategory="ICARUS";screen="CONFIG"},device.powerSave || device.battery in 0..20 || device.thermal>=2 || !device.screenOn,device.networkGeneration,{remoteModule=it})
                             "CONFIG" -> Configuration(c,model,accent,{open(Intent(Settings.ACTION_HOME_SETTINGS))},apps,::open,settingsCategory)
                             else -> HomeWorkspace(c,model,apps,device,now,policy,active,homeEvent,accent,homePull,onPageContext={homeStatusContext=it},terminal={
-                                Row(Modifier.fillMaxWidth().heightIn(min=64.dp).testTag("home-swipe-handle").terminalSwipe(c.swipeDown,{screen="COMMAND"},{}),horizontalArrangement=Arrangement.SpaceBetween) { Readout("↓ COMMAND ACCESS",accent);Readout("SWIPE DOWN",Muted) }
+                                Row(Modifier.fillMaxWidth().heightIn(min=64.dp).testTag("home-swipe-handle").terminalSwipe(c.swipeDown,{deckSection="Device controls";screen="COMMAND"},{}),horizontalArrangement=Arrangement.SpaceBetween) { Readout("↓ COMMAND ACCESS",accent);Readout("SWIPE DOWN",Muted) }
                                 Spacer(Modifier.height(12.dp))
                                 BoxWithConstraints(Modifier.fillMaxWidth()) {
                                     val clockSize = minOf(64f,maxWidth.value/(3.2f*LocalDensity.current.fontScale))
@@ -274,13 +274,13 @@ class MainActivity : ComponentActivity() {
                                 }
                                 Readout(now.format(DateTimeFormatter.ofPattern("EEE / dd MMM yyyy")).uppercase(),Muted)
                                 Readout("01 / COMMAND DECK",accent)
-                                Button(onClick={screen="COMMAND"},shape=Chamfer,modifier=Modifier.fillMaxWidth()){Text("Command Center · swipe down above") }
+                                Button(onClick={deckSection="Device controls";screen="COMMAND"},shape=Chamfer,modifier=Modifier.fillMaxWidth()){Text("Command Center · swipe down above") }
                                 Frame(accent) {
                                     Text("ICARUS",fontSize=24.sp,fontWeight=FontWeight.Bold,color=accent,letterSpacing=3.sp)
                                     AlertReadout(deckStatus,active && policy.enabled && c.alerts,accent,c.intensity)
                                     Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(8.dp)) {
                                         Button(onClick={ if(validDeckUrl(c.url)) open(Intent(Intent.ACTION_VIEW,android.net.Uri.parse(c.url).normalizeScheme())) else {settingsCategory="ICARUS";screen="CONFIG"} },modifier=Modifier.weight(1f),shape=Chamfer) { Text(if(c.url.isEmpty()) "Configure deck" else "Open deck") }
-                                        OutlinedButton(onClick={checkId++},enabled=!deckStatus.startsWith("CHECKING"),shape=Chamfer) { Text("Check") }
+                                        OutlinedButton(onClick={model.instant.reconnectNow()},enabled=!deckStatus.startsWith("CHECKING"),shape=Chamfer) { Text("Check") }
                                     }
                                 }
                                 Readout("02 / QUICK ACCESS",accent)
@@ -300,8 +300,8 @@ class MainActivity : ComponentActivity() {
                     GridEditingToolbar(gridEditing,model)
                     HorizontalDivider(Modifier.padding(top=8.dp),color=accent.copy(alpha=.3f))
                     Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.SpaceEvenly) {
-                        listOf("HOME" to "Home","APPS" to "Apps","COMMAND" to "Deck","ICARUS" to "Icarus","CONFIG" to "Config").forEach { (id,label) ->
-                            TextButton(onClick={screen=id},contentPadding=PaddingValues(horizontal=2.dp),modifier=Modifier.weight(1f).heightIn(min=56.dp).testTag("nav-$id")) { Text(label.uppercase(),color=if(screen==id) accent else Muted,fontFamily=FontFamily.Monospace,fontSize=12.sp) }
+                        listOf("HOME" to "Home","APPS" to "Apps","COMMAND" to "Deck","SIMULATOR" to "Simulator","ICARUS" to "Icarus","CONFIG" to "Config").forEach { (id,label) ->
+                            TextButton(onClick={screen=id},contentPadding=PaddingValues(horizontal=2.dp),modifier=Modifier.weight(1f).heightIn(min=56.dp).testTag("nav-$id")) { Text(label.uppercase(),color=if(screen==id) accent else Muted,fontFamily=FontFamily.Monospace,fontSize=10.sp,maxLines=1) }
                         }
                     }
                 }

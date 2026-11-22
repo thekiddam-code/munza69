@@ -87,3 +87,7 @@ Physical S24+ checks remain separate:
 ## 2.3.1 soundboard hotfix
 
 See [executed results](verification/soundboard/RESULTS.txt) and [integration / physical acceptance](SOUNDBOARD_INTEGRATION.md). `SoundboardTest` covers the real catalog/play/stop/edit/output contracts and server-only preferences; `SoundboardHostUiTest` runs native SDK 30/34 grid and Settings flows. The existing full suite still passes. ICARUS 4.8B service and Chromium/HTTP tests pass in an isolated reference checkout without modifying the main server or private library. Generated fixtures and mocked Windows rendering do not establish actual audible output or physical S24+ acceptance.
+
+## Phase 3 acceptance
+
+See [Phase 3 report](PHASE3_REPORT.md) and [executed results](verification/phase3/RESULTS.txt). New native SDK 30/34 tests exercise six-tab/header presence, persisted indicator visibility, real HTTP fixture telemetry shared by two HOME widgets, independent resizing/collapse, preset restoration and cancellation while stopped. Pure tests cover inert legacy TV mappings, older schemas, native widget binding retention/export, exact Windows contracts, supported old-server fallback, request interruption, sample ages and conservative connection classification. Physical PC/S24+ sensors, Tailscale route, game/audio delivery, native HOME selection, gestures and battery consumption still need real-device acceptance.

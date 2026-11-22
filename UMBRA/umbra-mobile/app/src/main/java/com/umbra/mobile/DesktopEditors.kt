@@ -60,6 +60,10 @@ import androidx.compose.ui.unit.dp
     val available=androidx.compose.ui.platform.LocalConfiguration.current.screenWidthDp-40f
     val minimumColumns=provider?.let {info->kotlin.math.ceil(with(density){(info.minResizeWidth.takeIf {it>0} ?: info.minWidth).toDp().value}/(available/columns)).toInt().coerceIn(1,columns)} ?: 1
     DesktopEditorDialog("Widget configuration",close,confirm={TextButton(onClick={save(widget)},enabled=validAccent(widget.accent)){Text("Save widget")}}) {
+        if(widget.kind in ENGINEERING_KINDS) {
+            Toggle("Collapsed",widget.collapsed){widget=widget.copy(collapsed=it)}
+            Toggle("Show sensor details",widget.showDetails){widget=widget.copy(showDetails=it)}
+        }
         if(widget.kind=="icarus")ButtonSelection(LocalLauncherConfig.current,androidx.lifecycle.viewmodel.compose.viewModel(),item.id)
         if(widget.kind=="clock") {
             Choice("Clock style",CLOCK_STYLES,widget.style){widget=widget.copy(style=it)}

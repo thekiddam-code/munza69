@@ -30,7 +30,7 @@ import java.io.ByteArrayOutputStream
     val catalog=buttonCatalog(c,current.pc).sortedBy {c.instantOrder.indexOf(it.id).takeIf {i->i>=0} ?: Int.MAX_VALUE}
     val selected=widgetId?.let {c.widgetButtonSelections[it]?.toSet()} ?: chosenButtonIds(c,catalog)
     val missing=selected.count {id->catalog.none {it.id==id}}
-    val actions=catalog.filter {it.id in selected && (filter!="rocket" || it.id.startsWith("quick:") || it.id.startsWith("message:") || c.customButtons.any {b->"local:${b.id}"==it.id && b.kind in listOf(OutputKind.QuickChat,OutputKind.Text)})}
+    val actions=catalog.filter {action->action.id in selected && simulatorAllows(filter,action,c)}
     LifecycleStartEffect(Unit){onStopOrDispose {work?.cancel()}}
     LaunchedEffect(lifecycle,visible,serverBase(c),c.refreshOnResume){if(visible && c.refreshOnResume)lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED){model.instant.refresh(c)}}
     val export=rememberLauncherForActivityResult(ActivityResultContracts.CreateDocument("application/json")){uri->if(uri!=null)scope.launch {
@@ -111,7 +111,7 @@ fun actionCopy(action: InstantAction): CustomButton {
         if(replaceSource!=null)Text("This edits the UMBRA copy and preserves its placement. The PC mapping is unchanged.")
         OutlinedTextField(b.label,{b=b.copy(label=it.take(48))},label={Text("Button name")},singleLine=true)
         Choice("Icon",BUTTON_ICONS,b.icon){b=b.copy(icon=it)}
-        Choice("Output",OutputKind.entries.map {it.name},b.kind.name){b=b.copy(kind=OutputKind.valueOf(it))}
+        Choice("Output",OutputKind.entries.filter {it!=OutputKind.TvKey}.map {it.name},b.kind.name){b=b.copy(kind=OutputKind.valueOf(it))}
         when(b.kind) {
             OutputKind.QuickChat,OutputKind.Macro->{
                 val names=if(b.kind==OutputKind.QuickChat)pc?.quick ?: emptyList() else pc?.macros ?: emptyList()
@@ -123,7 +123,7 @@ fun actionCopy(action: InstantAction): CustomButton {
             OutputKind.ForwardMine->{OutlinedTextField(seconds,{seconds=it;it.toDoubleOrNull()?.let {value->b=b.copy(seconds=value)}},label={Text("Hold duration · 0.2–10 seconds")},singleLine=true,isError=seconds.toDoubleOrNull()?.let {it !in .2..10.0} ?: true);Text("Server holds forward + mining, then releases on its existing timer.")}
             OutputKind.MineToggle->Text("Toggle server-held mining input; server applies its 60-second safety release.")
             OutputKind.Stop->Text("Release inputs currently held by the server.")
-            OutputKind.TvKey->Choice("Supported TV key",TV_KEYS,b.key){b=b.copy(key=it)}
+            OutputKind.TvKey->Text("Retired output is unavailable.")
             OutputKind.Simulation->Choice("Supported simulation command",SHIP_COMMANDS,b.command){b=b.copy(command=it)}
         }
         val unsupported=buttonSupport(b,pc);if(unsupported!=null)Text(unsupported)
@@ -134,5 +134,16 @@ fun actionCopy(action: InstantAction): CustomButton {
         }},enabled=valid && unsupported==null){Text("Test command")}
         val response by model.instant.state.collectAsStateWithLifecycle();Text(response.status,modifier=Modifier.semantics {liveRegion=LiveRegionMode.Polite})
         if(c.customButtons.any {it.id==b.id})TextButton(onClick={val id=b.id;model.change {deleteButton(it,"local:$id")};close()}){Text("Delete button")}
+    }
+}
+
+fun simulatorAllows(filter: String,action: InstantAction,c: Config): Boolean {
+    val local=c.customButtons.firstOrNull {"local:${it.id}"==action.id}
+    return when(filter) {
+        "rocket"->action.id.startsWith("quick:") || action.id.startsWith("message:") || local?.kind in listOf(OutputKind.QuickChat,OutputKind.Text)
+        "fortnite"->action.id.startsWith("emote:") || local?.kind==OutputKind.FortniteEmote
+        "minecraft"->local?.kind in listOf(OutputKind.MineToggle,OutputKind.ForwardMine,OutputKind.Stop) || action.id=="action:stop"
+        "simulation"->local?.kind==OutputKind.Simulation
+        else->true
     }
 }

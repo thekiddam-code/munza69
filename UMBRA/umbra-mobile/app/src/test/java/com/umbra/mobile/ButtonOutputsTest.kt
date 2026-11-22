@@ -14,7 +14,7 @@ class ButtonOutputsTest {
             if(kind==OutputKind.ForwardMine)assertEquals(6.5,action.body.number("seconds")!!,0.0)
             if(kind==OutputKind.Text){assertEquals("Current message",action.body.literal("text"));assertEquals("balanced",action.body.literal("speed"))}
         }
-        assertEquals("api/tv/key",buttonAction(CustomButton(kind=OutputKind.TvKey,key="ch_up")).path)
+        assertTrue(runCatching {buttonAction(CustomButton(kind=OutputKind.TvKey,key="ch_up"))}.isFailure)
         assertEquals("api/icarus/command",buttonAction(CustomButton(kind=OutputKind.Simulation,command="speed20")).path)
         assertTrue(runCatching {validateButton(CustomButton(kind=OutputKind.ForwardMine,seconds=11.0))}.isFailure)
         assertTrue(runCatching {validateButton(CustomButton(kind=OutputKind.TvKey,key="invented"))}.isFailure)

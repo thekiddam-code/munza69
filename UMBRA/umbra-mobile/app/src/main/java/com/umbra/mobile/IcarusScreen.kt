@@ -8,142 +8,46 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.semantics.*
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.compose.LifecycleStartEffect
-import androidx.lifecycle.compose.LocalLifecycleOwner
-import androidx.lifecycle.repeatOnLifecycle
+import androidx.lifecycle.compose.*
 import kotlinx.coroutines.*
-import kotlinx.serialization.json.*
+import kotlinx.serialization.json.buildJsonObject
 
-@OptIn(ExperimentalLayoutApi::class)
+/** Dedicated PC companion/remote access. Engineering and games live in their own destinations. */
 @Composable fun IcarusScreen(c: Config,model: LauncherModel,accent: Color,initialModule: String,open: (Intent)->Unit,configure: ()->Unit,powerSave: Boolean,networkVersion: Long,onModuleChange: (String)->Unit={}) {
-    val lifecycle=LocalLifecycleOwner.current.lifecycle
-    val scope=rememberCoroutineScope()
-    val base=serverBase(c)
-    var module by rememberSaveable(initialModule) { mutableStateOf(if(initialModule in listOf("Engineering","Lounge","Simulator","Instant Buttons","Soundboard","Rocket League")) initialModule else "Engineering") }
-    LaunchedEffect(module){onModuleChange(module)}
-    var pin by remember { mutableStateOf("") }
-    var paired by remember(base) { mutableStateOf(false) }
-    var pc by remember(base) { mutableStateOf<PcStatus?>(null) }
-    var ship by remember(base) { mutableStateOf<ShipStatus?>(null) }
-    var status by remember(base) { mutableStateOf("Not checked") }
-    var refreshed by remember(base) { mutableStateOf<String?>(null) }
-    var refresh by remember { mutableIntStateOf(0) }
-    val refreshGate=remember(base) { RefreshGate() }
-    var actionJob by remember { mutableStateOf<Job?>(null) }
-    var busy by remember { mutableStateOf(false) }
-    var visible by remember { mutableStateOf(false) }
-    LifecycleStartEffect(Unit) {
-        visible=true
-        onStopOrDispose { visible=false;actionJob?.cancel();busy=false;pin="" }
-    }
-    val networkKey=if(c.refreshOnNetwork) networkVersion else 0L
-    LaunchedEffect(lifecycle,base,c.timeout,refresh,networkKey,c.foregroundRefreshSeconds,c.refreshOnResume,powerSave) {
-        lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-            paired=model.vault.read(base)!=null
-            if(base.isEmpty()) { status="Configure the server address or Remote Deck URL.";return@repeatOnLifecycle }
-            if(!paired) { status="Pair this native client using the server PIN. Browser authentication is separate.";return@repeatOnLifecycle }
-            val triggered=refreshGate.shouldRefresh(c.refreshOnResume,c.refreshOnNetwork,refresh,networkVersion,base+"|"+c.timeout)
-            if(!triggered) {
-                if(c.foregroundRefreshSeconds==0 || powerSave) return@repeatOnLifecycle
-                delay(c.foregroundRefreshSeconds*1000L)
-            }
-            do {
-                val token=model.vault.read(base) ?: break
-                status="Checking configured server…"
-                try {
-                    launch {model.soundboard.sync(c)}
-                    pc=model.remote.status(base,token,c.timeout)
-                    ship=try { model.remote.ship(base,token,c.timeout) } catch(e: RemoteFailure) { if(e.status==404) null else throw e }
-                    model.instant.publish(base,pc!!)
-                    refreshed=java.time.LocalTime.now().withNano(0).toString()
-                    status="Authenticated server response · HTTP 200"
-                } catch(e: RemoteFailure) {
-                    pc=null;ship=null;status=e.message ?: "Unreachable"
-                    if(e.status==401) { model.vault.clear();paired=false }
-                }
-                if(c.foregroundRefreshSeconds==0 || powerSave) break
-                delay(c.foregroundRefreshSeconds*1000L)
-            } while(isActive)
-        }
-    }
-    fun runAction(block: suspend ()->Unit) {
-        if(busy || !visible) return
-        busy=true
-        actionJob=scope.launch {
-            try { block() } catch(e: CancellationException) { throw e }
-            catch(e: Exception) { status=if(e is RemoteFailure || e is java.io.IOException) e.message ?: "Request failed" else "Unsupported server response." }
-            finally { busy=false }
-        }
-    }
-    fun requestCommand(label: String,path: String,body: JsonObject) {
-        runAction {
-            val token=model.vault.read(base) ?: throw RemoteFailure(401,"Pair this client first.")
-            val response=model.remote.request(base,path,c.timeout,token,body)
-            status=response.number("queued")?.let { "Queued #${it.toInt()} · waiting for PC execution" } ?: "$label · server acknowledged request."
-        }
-    }
+    val base=serverBase(c);val saved by model.instant.pcConnection.collectAsStateWithLifecycle()
+    val connection=saved.takeIf {it.base==base} ?: PcConnectionState()
+    val scope=rememberCoroutineScope();var paired by remember(base){mutableStateOf(false)}
+    var pin by remember {mutableStateOf("")};var error by remember {mutableStateOf<String?>(null)};var work by remember {mutableStateOf<Job?>(null)}
+    LaunchedEffect(base,connection.checkedAt,connection.error){paired=model.vault.read(base)!=null}
+    LifecycleStartEffect(base){onStopOrDispose {work?.cancel();pin=""}}
+    LaunchedEffect(Unit){onModuleChange("PC Remote")}
+    fun run(action: suspend ()->Unit) {if(work?.isActive!=true)work=scope.launch {try {error=null;action()}catch(e: CancellationException){throw e}catch(e: Exception){error=(e as? java.io.IOException)?.message ?: "Companion request unavailable."}}}
     Column(Modifier.fillMaxSize().verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(12.dp)) {
-        Readout("ICARUS / NATIVE REMOTE SYSTEMS",accent)
-        Row(Modifier.fillMaxWidth()) { TextButton(onClick=configure){Text("Connection settings")};TextButton(onClick={refresh++},enabled=!busy){Text("Refresh status")} }
-        Text(status,modifier=Modifier.fillMaxWidth().semantics { liveRegion=LiveRegionMode.Polite },color=if(pc!=null) Green else Muted)
-        Text(if(refreshed==null) "No authenticated snapshot yet." else "Snapshot at $refreshed · refresh to verify current state.",style=MaterialTheme.typography.bodySmall)
-        val destination=remoteDestination(c,module)
-        Button(onClick={if(validDeckUrl(destination))open(Intent(Intent.ACTION_VIEW,Uri.parse(destination).normalizeScheme())) else configure()},shape=Chamfer,modifier=Modifier.fillMaxWidth()){Text("Open $module Remote Deck")}
-        if(!paired) Frame(accent.copy(alpha=.5f)) {
-            Text("Pair native controls",style=MaterialTheme.typography.titleMedium)
-            Text("Use the PIN shown by your existing Remote Deck server. The token stays encrypted on this phone and is excluded from settings exports.",style=MaterialTheme.typography.bodySmall)
-            OutlinedTextField(pin,{pin=it.take(64)},label={Text("Server pairing PIN")},singleLine=true,visualTransformation=PasswordVisualTransformation(),keyboardOptions=KeyboardOptions(keyboardType=KeyboardType.NumberPassword),modifier=Modifier.fillMaxWidth())
-            Button(onClick={runAction {
-                val entered=pin.trim();pin=""
-                val token=model.remote.pair(base,entered,c.timeout)
-                if(serverBase(model.config.value)!=base) throw RemoteFailure(message="Server changed. Pair again with the current server.")
-                model.vault.remember(base,token);paired=true;refresh++;status="Pairing saved securely."
-            }},enabled=base.isNotEmpty() && pin.isNotBlank() && !busy,shape=Chamfer){Text("Pair phone")}
-        } else TextButton(onClick={runAction {
+        Readout("ICARUS / PC REMOTE",accent)
+        PcConnectionReadout(connection)
+        TextButton(onClick={model.instant.reconnectNow()}){Text("Reconnect PC")}
+        TextButton(onClick=configure){Text("Connection settings")}
+        error?.let {Text(it,color=MaterialTheme.colorScheme.error)}
+        if(!paired)Frame(accent) {
+            Text("Pair native controls")
+            OutlinedTextField(pin,{pin=it.take(64)},label={Text("Server pairing PIN")},singleLine=true,visualTransformation=PasswordVisualTransformation(),keyboardOptions=KeyboardOptions(keyboardType=KeyboardType.Password),modifier=Modifier.fillMaxWidth())
+            Button(onClick={run {
+                val entered=pin.trim();pin="";val token=model.remote.pair(base,entered,c.timeout)
+                if(serverBase(model.config.value)!=base)throw RemoteFailure(message="Server changed. Pair again.")
+                model.vault.remember(base,token);paired=true;model.instant.reconnectNow()
+            }},enabled=base.isNotEmpty() && pin.isNotBlank() && work?.isActive!=true,shape=Chamfer){Text("Pair phone")}
+            Text("Use the existing Windows companion PIN. Browser authentication remains separate.",style=MaterialTheme.typography.bodySmall)
+        } else TextButton(onClick={run {
             val token=model.vault.read(base)
-            try { if(token!=null)model.remote.request(base,"api/unpair",c.timeout,token,buildJsonObject{}) }
-            finally { model.vault.clear();paired=false;pc=null;ship=null;status="Local pairing removed. Re-pair if needed." }
-        }},enabled=!busy){Text("Forget native pairing")}
-        FlowRow(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.spacedBy(6.dp)) {
-            listOf("Engineering","Lounge","Simulator","Instant Buttons","Soundboard","Rocket League").forEach { tab -> FilterChip(selected=module==tab,onClick={module=tab},label={Text(tab,style=MaterialTheme.typography.labelSmall)}) }
-        }
-        if(module=="Soundboard")SoundboardScreen(c,model)
-        else if(module=="Instant Buttons")InstantControls(c,model,false,false,surface="instant-page")
-        else ModularDeck("icarus",listOf("Engineering","Lounge","Simulator","Instant Controls","Rocket League"),c,model,initialOpen=module,onFocus={module=it},status={if(pc!=null)"Snapshot available" else "Not synchronized"}) {section->when(section) {
-            "Engineering" -> Frame(accent) {
-                Readout("PC / SERVER SNAPSHOT",accent)
-                Text("PC CPU: ${pc?.cpu?.let { "$it%" } ?: "Unavailable"}")
-                Text("PC RAM: ${pc?.ram?.let { "$it%" } ?: "Unavailable"}")
-                Text(when { ship==null->"Simulation telemetry endpoint unavailable or not checked.";ship?.online==true->"Simulation online at last refresh";else->"Simulation offline at last refresh" })
-                if(ship?.online==true) {
-                    val data=ship?.data
-                    Text("Episode: ${(data?.get("episode") as? JsonPrimitive)?.contentOrNull?.take(40) ?: "Unavailable"}")
-                    Text("Simulation time: ${data?.literal("time") ?: "Unavailable"}")
-                    Text("Speed: ${data?.number("speed") ?: "Unavailable"} · Crew: ${data?.number("crewTotal")?.toInt() ?: "Unavailable"}")
-                    NamedControlGrid("engineering-actions",c,model,listOf("Pause" to "pause","Resume" to "resume","1× speed" to "speed1","5× speed" to "speed5","20× speed" to "speed20","Save simulation" to "save")) {value->requestCommand(value,"api/icarus/command",buildJsonObject {put("command",value)})}
-                }
-                Text("Diagnostics use actual HTTP responses. No host key or privileged telemetry publisher endpoint is used.",style=MaterialTheme.typography.bodySmall)
-            }
-            "Lounge" -> Frame(accent) {
-                Readout("SAMSUNG TV / EXISTING SERVER",accent)
-                Text(if(pc?.tvConfigured==true) "TV configured on the server. Key delivery is acknowledged by the server." else "TV configuration is unavailable. Configure and pair the TV in Remote Deck first.")
-                if(pc?.tvConfigured==true) {
-                    NamedControlGrid("lounge-controls",c,model,TV_KEYS.map {it.replace('_',' ') to it}) {key->requestCommand(key,"api/tv/key",buildJsonObject {put("key",key)})}
-                }
-                Text("Direct TV app launching is not exposed by the inspected server. No fake Stremio or TV Plus launch controls are shown.",style=MaterialTheme.typography.bodySmall)
-            }
-            "Instant Controls" -> InstantControls(c,model,false,false,surface="icarus-instant")
-            "Rocket League" -> InstantControls(c,model,false,false,surface="rocket-controls",filter="rocket")
-            else -> InstantControls(c,model,false,false,surface="simulator-controls")
-        }}
-        Spacer(Modifier.height(16.dp))
+            try {if(token!=null)model.remote.request(base,"api/unpair",c.timeout,token,buildJsonObject {})}
+            finally {model.vault.clear();paired=false;model.instant.markInactive();model.instant.reconnectNow()}
+        }}){Text("Forget native pairing")}
+        Button(onClick={if(validDeckUrl(c.url))open(Intent(Intent.ACTION_VIEW,Uri.parse(c.url).normalizeScheme())) else configure()},shape=Chamfer,modifier=Modifier.fillMaxWidth()){Text("Open PC Remote Deck")}
+        Text("Opens your existing PC remote interface. Native desktop video/input streaming is not exposed by this companion API.",style=MaterialTheme.typography.bodySmall)
     }
 }

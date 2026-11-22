@@ -104,3 +104,7 @@ Expanded module sizes remain stored while collapsed rendering uses a single comp
 ## Soundboard 2.3.1
 
 `gridLayouts["soundboard"]` stores only local native button placement, size and visibility. The schema remains 4 and existing layouts are preserved. Sound definitions, favorites, output selection and optional normalization are loaded from and saved to ICARUS, never copied into local settings exports. See [SOUNDBOARD_INTEGRATION.md](SOUNDBOARD_INTEGRATION.md).
+
+## Phase 3 / schema 5
+
+Schema 5 reads 2/3/4/5 without resetting the existing desktop, grid arrangements, command mappings or server configuration. `pcIndicator` defaults true. `activeHomePreset` defaults `default`; `homePresets` holds named inactive/saved desktop and HOME-grid snapshots. The existing `desktop` and HOME grid entries remain the active preset's authoritative working layout. Preset switching snapshots before loading and preserves non-HOME grids. Per-widget `collapsed` and `showDetails`, plus existing `accent`/`transparent`/`span`/`rows`, persist independently. All inactive Android widget IDs remain owned locally; portable exports remove bindings in every preset. TV mappings/legacy Lounge settings are retained for round trips but hidden and blocked from execution. No audio-output preference is introduced or reset. See [Phase 3 details](PHASE3_REPORT.md).

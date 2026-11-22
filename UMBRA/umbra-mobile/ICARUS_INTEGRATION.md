@@ -1,3 +1,5 @@
+> Phase 3: PC pairing/remote access stays in ICARUS; Engineering, Soundboard and Instant Buttons move to DECK, gaming to SIMULATOR. Native TV controls are retired. See [current architecture and limits](PHASE3_REPORT.md). Earlier endpoint descriptions below are historical compatibility notes.
+
 # Phase 2.1 ICARUS integration
 
 The existing repository was inspected read-only at baseline `71af46a8c6c3888b4f3514ac74c1fc999bf6fe18`. Relevant sources are sibling `ICARUS/server.py`, `ICARUS/config.json`, and the Remote Deck web client. No server, simulation, Windows, TV, or repository ICARUS files are modified by this delivery.
