@@ -1,0 +1,14 @@
+{
+  "passed": true,
+  "tests_run": 5,
+  "passed_cases": [
+    "test_failed_atomic_install_restores_original_script (test_volume_installer.VolumeInstaller.test_failed_atomic_install_restores_original_script)",
+    "test_install_real_verified_backup_repeat_and_rollback_with_65_sounds (test_volume_installer.VolumeInstaller.test_install_real_verified_backup_repeat_and_rollback_with_65_sounds)",
+    "test_linked_path_and_tampered_restore_refused (test_volume_installer.VolumeInstaller.test_linked_path_and_tampered_restore_refused)",
+    "test_missing_corrupt_and_failed_backup_never_replace_code (test_volume_installer.VolumeInstaller.test_missing_corrupt_and_failed_backup_never_replace_code)",
+    "test_preflight_read_only_running_server_and_unknown_code_refused (test_volume_installer.VolumeInstaller.test_preflight_read_only_running_server_and_unknown_code_refused)"
+  ],
+  "failures": [],
+  "errors": [],
+  "skipped": []
+}
