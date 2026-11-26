@@ -1,0 +1,13 @@
+{
+  "passed": false,
+  "tests_run": 1,
+  "passed_cases": [],
+  "failures": [
+    [
+      "test_volume_slow_verified_backup_confirms_one_bulk_sound_and_survives_devices_restart (test_volume_browser.VolumeBrowser.test_volume_slow_verified_backup_confirms_one_bulk_sound_and_survives_devices_restart)",
+      "Traceback (most recent call last):\n  File \"/workspace/work/umbra-volume-fix/UMBRA/pc-update/phase49-volume/test_volume_browser.py\", line 29, in test_volume_slow_verified_backup_confirms_one_bulk_sound_and_survives_devices_restart\n    self.assertTrue(p.locator('#sb-editor').is_hidden(),p.locator('#sb-import-status').inner_text())\nAssertionError: False is not true : signal is aborted without reason\n"
+    ]
+  ],
+  "errors": [],
+  "skipped": []
+}

@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "tests_run": 3,
+  "passed_cases": [
+    "test_volume_failed_backup_keeps_draft_library_audio_and_routing (test_volume_browser.VolumeBrowser.test_volume_failed_backup_keeps_draft_library_audio_and_routing)",
+    "test_volume_slow_verified_backup_confirms_one_bulk_sound_and_survives_devices_restart (test_volume_browser.VolumeBrowser.test_volume_slow_verified_backup_confirms_one_bulk_sound_and_survives_devices_restart)",
+    "test_volume_timeout_is_honest_preserves_draft_and_never_replays_write (test_volume_browser.VolumeBrowser.test_volume_timeout_is_honest_preserves_draft_and_never_replays_write)"
+  ],
+  "failures": [],
+  "errors": [],
+  "skipped": []
+}
