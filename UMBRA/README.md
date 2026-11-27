@@ -1,6 +1,8 @@
-# UMBRA Mobile 3.1
+# UMBRA Mobile 3.2
 
 Native Kotlin / Jetpack Compose launcher, alongside the preserved ICARUS project.
+
+**New in 3.2:** HOME → **Full screen** collapses header/footer to a compact recovery strip. Add **Mixed controls** or configure a Button widget with **mixed + Fill available page + up to 12 button columns** to combine Rocket League, Fortnite, PC hotkeys and sounds in one independently customizable grid. Category colors: game blues, Minecraft green, PCB green/static glow, soundboard cool white. Saved layouts and PC audio preferences remain.
 
 **HOME | APPS | DECK | SIMULATOR | ICARUS | CONFIG**
 
@@ -32,10 +34,10 @@ Adds **Soundboard → Add many sounds** to the existing Phase 4.9 website on por
 
 ## Verification and documentation
 
-**97 Android tests pass**, lint zero errors, application and device-test APKs assemble. Signing matches the previous distributed build. Top-level permissions remain unchanged; optional user-granted Recents Accessibility access is new. **42 PC service, 10 Chromium and 4 installer tests pass** using isolated generated audio and fake Windows output.
+The 3.2 Android host tests, lint and application/device-test APK assembly are recorded in [current executed results](umbra-mobile/verification/home32/RESULTS.txt). Signing matches the previous distributed build. Top-level permissions remain unchanged; the optional Recents shortcut still requires a manual Android Accessibility grant. The unchanged 3.1 PC package retains its historical 42 service, 10 Chromium and 4 installer checks using isolated generated audio and fake Windows output; these are not recounted as new 3.2 PC tests.
 
-[Current setup/migration/limits report](umbra-mobile/WIDGETS31_REPORT.md) · [Exact executed evidence](umbra-mobile/verification/widgets31/RESULTS.txt) · [Build/install instructions](umbra-mobile/README.md) · [Configuration schema 6/privacy](umbra-mobile/CONFIGURATION.md).
+[Current setup/migration/limits report](umbra-mobile/HOME32_REPORT.md) · [Exact executed evidence](umbra-mobile/verification/home32/RESULTS.txt) · [Build/install instructions](umbra-mobile/README.md) · [Configuration schema 7/privacy](umbra-mobile/CONFIGURATION.md).
 
-<img src="umbra-mobile/verification/widgets31/host-renders/widget31-mixed-widgets-sdk34.png" width="300" alt="Native host render: independent Rocket League and soundboard widgets together on HOME">
+<img src="umbra-mobile/verification/home32/host-renders/home32-mixed-full-page-sdk34.png" width="300" alt="Native host render: full-page mixed quick chat, Fortnite, PC and sound controls">
 
 Host screenshots and HTTP fixtures are not physical phone/PC measurements. Actual S24+/Windows audio/game delivery, native Recents/gestures, Tailscale routing, special-access grants and measured battery/frame performance remain device checks. Historical reports remain evidence for earlier versions.

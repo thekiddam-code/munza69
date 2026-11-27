@@ -21,6 +21,7 @@ val MODULES = listOf("Device", "System", "ICARUS", "Notifications", "Application
 val INDICATORS = setOf("Time", "Date", "Battery", "Network", "ICARUS", "Notifications")
 const val MAX_CONFIG_BYTES = 1048576
 @Serializable data class Config(
+    val homeHeaderCollapsed: Boolean=false, val homeFooterCollapsed: Boolean=false,
     val recentsShortcut: Boolean=true, val pcIndicator: Boolean=true, val activeHomePreset: String="default", val homePresets: List<HomePreset> = emptyList(),
     val profile: Profile = Profile.Adaptive, val master: Boolean = true,
     val ambient: Boolean = true, val transitions: Boolean = true,
@@ -55,7 +56,7 @@ const val MAX_CONFIG_BYTES = 1048576
     val commandExpanded: Boolean=true, val statusTabs: Map<String,Boolean> = DEFAULT_STATUS_TABS,
     val instantSelection: Set<String>?=null, val widgetButtonSelections: Map<String,List<String>> = emptyMap(), val customButtons: List<CustomButton> = emptyList()
 )
-@Serializable private data class ConfigEnvelope(val schemaVersion: Int = 6, val settings: Config)
+@Serializable private data class ConfigEnvelope(val schemaVersion: Int = 7, val settings: Config)
 private val configJson = Json { encodeDefaults = true; ignoreUnknownKeys = false }
 private val componentPattern = Regex("[A-Za-z0-9_.$]+/[A-Za-z0-9_.$]+")
 fun validComponent(value: String) = value.length in 3..512 && componentPattern.matches(value)
@@ -120,7 +121,7 @@ private fun decodeConfig(text: String,portable: Boolean): Config {
     val root = configJson.parseToJsonElement(text) as? JsonObject ?: error("Expected configuration object")
     require(root.keys == setOf("schemaVersion", "settings"))
     val version = root["schemaVersion"] as? JsonPrimitive ?: error("Missing version")
-    require(!version.isString && version.intOrNull in setOf(2,3,4,5,6))
+    require(!version.isString && version.intOrNull in setOf(2,3,4,5,6,7))
     val fields = root["settings"] as? JsonObject ?: error("Missing settings")
     val defaults = configJson.encodeToJsonElement(Config()).jsonObject
     fields.forEach { (key, value) ->
@@ -146,7 +147,7 @@ private fun decodeConfig(text: String,portable: Boolean): Config {
         }
     }
     val envelope = configJson.decodeFromString<ConfigEnvelope>(text)
-    require(envelope.schemaVersion in setOf(2,3,4,5,6)) { "Unsupported configuration version" }
+    require(envelope.schemaVersion in setOf(2,3,4,5,6,7)) { "Unsupported configuration version" }
     val old=envelope.settings
     val inherited=old.instantSelection ?: old.instantFavorites.takeIf {it.isNotEmpty()}
     val migrated=if(envelope.schemaVersion<6 && inherited!=null) {
@@ -178,7 +179,7 @@ fun moveItem(items: List<String>, value: String, delta: Int): List<String> {
 fun resetCategory(c: Config, category: String): Config {
     val d = Config()
     return when(category) {
-        "Appearance" -> c.copy(visualDetail=d.visualDetail,showAppLabels=d.showAppLabels,iconSize=d.iconSize,accent=d.accent,greenAccent=d.greenAccent,background=d.background,typography=d.typography,density=d.density,gridColumns=d.gridColumns)
+        "Appearance" -> c.copy(homeHeaderCollapsed=d.homeHeaderCollapsed,homeFooterCollapsed=d.homeFooterCollapsed,visualDetail=d.visualDetail,showAppLabels=d.showAppLabels,iconSize=d.iconSize,accent=d.accent,greenAccent=d.greenAccent,background=d.background,typography=d.typography,density=d.density,gridColumns=d.gridColumns)
         "Animation" -> c.copy(profile=d.profile,master=d.master,ambient=d.ambient,transitions=d.transitions,environment=d.environment,alerts=d.alerts,wallpaper=d.wallpaper,startup=d.startup,parallax=d.parallax,statusEffects=d.statusEffects,commandAnimations=d.commandAnimations,intensity=d.intensity)
         "Display" -> c.copy(immersive=d.immersive,hideTopBar=d.hideTopBar,hideBottomBar=d.hideBottomBar,statusPanel=d.statusPanel,indicators=d.indicators,windowBrightness=d.windowBrightness)
         "Command Center" -> c.copy(moduleOrder=d.moduleOrder,hiddenModules=d.hiddenModules,tileSize=d.tileSize,quickOrder=d.quickOrder,quickLabels=d.quickLabels,swipeDown=d.swipeDown,secondSwipe=d.secondSwipe)

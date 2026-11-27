@@ -20,9 +20,11 @@ import kotlinx.coroutines.*
 import java.io.ByteArrayOutputStream
 
 @OptIn(ExperimentalFoundationApi::class)
-@Composable fun InstantControls(c: Config,model: LauncherModel,visible: Boolean,compact: Boolean,surface: String="instant-controls",widgetId: String?=null,filter: String="",headingModifier: Modifier=Modifier) {
+@Composable fun InstantControls(c: Config,model: LauncherModel,visible: Boolean,compact: Boolean,surface: String="instant-controls",widgetId: String?=null,filter: String="",headingModifier: Modifier=Modifier,soundState: SoundboardState?=null,runSound: (((suspend ()->Unit))->Unit)?=null) {
     val snapshot by model.instant.state.collectAsStateWithLifecycle()
     val lifecycle=LocalLifecycleOwner.current.lifecycle;val scope=rememberCoroutineScope();val context=LocalContext.current
+    val editing=LocalGridEditing.current
+    var soundEdit by remember {mutableStateOf<String?>(null)}
     var work by remember {mutableStateOf<Job?>(null)};var manager by remember {mutableStateOf(false)}
     var edited by remember {mutableStateOf<CustomButton?>(null)};var editedSource by remember {mutableStateOf<String?>(null)};var picker by remember {mutableStateOf(false)}
     var imported by remember {mutableStateOf<List<CustomButton>?>(null)};var fileMessage by remember {mutableStateOf("")}
@@ -30,7 +32,9 @@ import java.io.ByteArrayOutputStream
     val connection by model.instant.pcConnection.collectAsStateWithLifecycle()
     val spec=widgetId?.let {widgetSpec(c,it)}
     val actualFilter=spec?.buttonSet ?: filter
-    val catalog=widgetCatalog(c,current.pc,widgetId,connection.catalog.takeIf {connection.base==serverBase(c)}).sortedBy {c.instantOrder.indexOf(it.id).takeIf {i->i>=0} ?: Int.MAX_VALUE}
+    val mixed=actualFilter=="mixed"
+    val soundCatalog=soundState?.catalog.takeIf {mixed}
+    val catalog=(widgetCatalog(c,current.pc,widgetId,connection.catalog.takeIf {connection.base==serverBase(c)})+soundButtonActions(soundCatalog)).sortedBy {c.instantOrder.indexOf(it.id).takeIf {i->i>=0} ?: Int.MAX_VALUE}
     val selected=widgetId?.let {c.widgetButtonSelections[it]?.toSet() ?: catalog.map {a->a.id}.toSet()} ?: catalog.map {it.id}.toSet()
     val missing=selected.count {id->catalog.none {it.id==id}}
     val actions=catalog.filter {action->action.id in selected && simulatorAllows(actualFilter,action,c)}
@@ -48,24 +52,35 @@ import java.io.ByteArrayOutputStream
                 Text(spec?.title?.takeIf {it.isNotBlank()} ?: if(widgetId!=null)"Button widget" else "Game controls",style=MaterialTheme.typography.titleMedium)
                 if(current.synchronizedAt>0)Text("Sync ${java.text.DateFormat.getTimeInstance().format(java.util.Date(current.synchronizedAt))}",style=MaterialTheme.typography.bodySmall)
             }
-            TextButton(onClick={if(work?.isActive!=true)work=scope.launch {model.instant.refresh(c,true,engineering=widgetId!=null)}},enabled=!current.busy){Text("Sync")}
+            TextButton(onClick={if(work?.isActive!=true)work=scope.launch {model.instant.refresh(c,true,engineering=widgetId!=null)};if(mixed)runSound?.invoke {model.soundboard.sync(c)}},enabled=!current.busy && soundState?.busy!=true){Text("Sync")}
+            if(mixed)TextButton(onClick={runSound?.invoke {model.soundboard.stop(c)}},enabled=soundCatalog!=null && soundState?.busy!=true){Text("Stop")}
         }
         Text(current.status+(if(missing>0)" · $missing selected buttons unavailable; selections retained." else ""),style=MaterialTheme.typography.bodySmall,maxLines=if(compact)2 else 4,modifier=Modifier.semantics {liveRegion=LiveRegionMode.Polite})
+        if(mixed)Text("Sounds: ${soundCatalog?.sounds?.size ?: 0} loaded · "+(if(soundState?.playbackKnown==true)soundCatalog?.player?.literal("state") ?: "unknown" else "status unknown"),style=MaterialTheme.typography.labelSmall)
+        if(mixed)soundState?.error?.let {Text(it,color=MaterialTheme.colorScheme.error,style=MaterialTheme.typography.labelSmall,modifier=Modifier.semantics {liveRegion=LiveRegionMode.Polite})}
         if(actions.isEmpty())Text("Configure a widget to choose or add buttons. Pair in ICARUS configuration to discover server controls.",style=MaterialTheme.typography.bodySmall)
         val boardModifier=if(compact)Modifier.weight(1f) else Modifier.heightIn(max=560.dp)
         Column(boardModifier.fillMaxWidth().verticalScroll(rememberScrollState())) {
-            GridBoard(surface,actions.map {GridItem(it.id,if(widgetId!=null)it.label else c.instantLabels[it.id] ?: it.label)},c,model,columns=spec?.buttonColumns ?: 2,cellHeight=(spec?.buttonHeight ?: 64).dp,
-                onConfigure=if(widgetId==null)null else {id->editedSource=id;edited=spec?.buttonOverrides?.get(id) ?: actionCopy(catalog.first {it.id==id})},
+            GridBoard(surface,actions.map {GridItem(it.id,if(widgetId!=null)it.label else c.instantLabels[it.id] ?: it.label)},c,model,columns=spec?.buttonColumns ?: 2,cellHeight=(spec?.buttonHeight ?: 64).dp,rowMajor=true,maxColumns=12,
+                onConfigure=if(widgetId==null)null else {id->editing.finish();if(id.startsWith("sound:"))soundEdit=id.removePrefix("sound:") else {editedSource=id;edited=spec?.buttonOverrides?.get(id) ?: actionCopy(catalog.first {it.id==id})}},
                 onRemove=if(widgetId==null)null else {id->model.change {old->old.copy(widgetButtonSelections=old.widgetButtonSelections+(widgetId to (selected-id).toList()))}}) {item,_->
                 val action=actions.first {it.id==item.id}
                 val local=spec?.buttonOverrides?.get(item.id) ?: c.customButtons.firstOrNull {"local:${it.id}"==item.id}
-                OutlinedButton(onClick={if(work?.isActive!=true)work=scope.launch {model.instant.execute(c,action.id,widgetId)}},enabled=!current.busy,shape=Chamfer,contentPadding=PaddingValues(horizontal=4.dp,vertical=4.dp),modifier=Modifier.fillMaxSize().testTag("instant-action-${item.id}")) {
-                    Text((local?.icon?.plus(" ") ?: "")+(if(widgetId!=null)action.label else c.instantLabels[item.id] ?: action.label),maxLines=3)
+                val isSound=action.path=="api/sounds/play"
+                CategoryControlButton((local?.icon?.plus(" ") ?: "")+(if(widgetId!=null)action.label else c.instantLabels[item.id] ?: action.label),buttonFamily(action),
+                    if(isSound)soundState?.busy==false else !current.busy,Modifier.fillMaxSize().testTag("instant-action-${item.id}")) {
+                    if(isSound)runSound?.invoke {model.soundboard.play(c,action.id.removePrefix("sound:"))}
+                    else if(work?.isActive!=true)work=scope.launch {model.instant.execute(c,action.id,widgetId)}
                 }
             }
         }
         if(fileMessage.isNotEmpty())Text(fileMessage,style=MaterialTheme.typography.bodySmall)
     }
+    soundEdit?.let {id->soundCatalog?.sounds?.firstOrNull {it.id==id}?.let {sound->
+        AlertDialog(onDismissRequest={soundEdit=null},title={Text(sound.name)},text={Text("Favorite flags are shared with ICARUS; this widget's grid and selection are independent.")},
+            confirmButton={TextButton(onClick={soundEdit=null;runSound?.invoke {model.soundboard.favorite(c,id)}},enabled=soundState?.busy!=true){Text(if(sound.favorite)"Remove favorite" else "Favorite")}},
+            dismissButton={TextButton(onClick={soundEdit=null}){Text("Close")}})
+    }}
     if(manager)DesktopEditorDialog("Button widget",{manager=false},confirm={TextButton(onClick={manager=false}){Text("Done")}}) {
         TextButton(onClick={editedSource=null;edited=CustomButton();manager=false}){Text("Create button")}
         TextButton(onClick={picker=true;manager=false}){Text("Select buttons")}
@@ -84,7 +99,13 @@ import java.io.ByteArrayOutputStream
 @Composable fun ButtonSelection(c: Config,model: LauncherModel,widgetId: String?=null,filter: String="all",draft: Set<String>?=null,onDraft: ((Set<String>)->Unit)?=null,specOverride: DesktopWidget?=null) {
     val snapshot by model.instant.state.collectAsStateWithLifecycle()
     val connection by model.instant.pcConnection.collectAsStateWithLifecycle()
-    val catalog=widgetCatalog(c,snapshot.pc.takeIf {snapshot.base==serverBase(c)},widgetId,connection.catalog.takeIf {connection.base==serverBase(c)},specOverride).filter {simulatorAllows(filter,it,c)}
+    val sounds by model.soundboard.state.collectAsStateWithLifecycle()
+    val catalog=widgetCatalog(c,snapshot.pc.takeIf {snapshot.base==serverBase(c)},widgetId,connection.catalog.takeIf {connection.base==serverBase(c)},specOverride).filter {simulatorAllows(filter,it,c)}+
+        (if(filter=="mixed")soundButtonActions(sounds.catalog.takeIf {sounds.base==serverBase(c)}) else emptyList())
+    val scope=rememberCoroutineScope();var sync by remember {mutableStateOf<Job?>(null)}
+    LifecycleStartEffect(widgetId,filter){onStopOrDispose {sync?.cancel()}}
+    if(filter=="mixed")TextButton(onClick={if(sync?.isActive!=true)sync=scope.launch {model.instant.refresh(c,true,true);model.soundboard.sync(c)}}){Text("Sync commands and sounds")}
+    if(filter=="mixed")sounds.error?.takeIf {sounds.base==serverBase(c)}?.let {Text(it,color=MaterialTheme.colorScheme.error)}
     var query by remember {mutableStateOf("")}
     val selected=if(onDraft!=null)draft ?: catalog.map {it.id}.toSet() else widgetId?.let {c.widgetButtonSelections[it]?.toSet() ?: catalog.map {a->a.id}.toSet()} ?: chosenButtonIds(c,catalog)
     fun set(ids: Set<String>) {if(onDraft!=null)onDraft(ids) else model.change {old->if(widgetId==null)old.copy(instantSelection=ids) else old.copy(widgetButtonSelections=old.widgetButtonSelections+(widgetId to ids.toList()))}}
@@ -92,7 +113,7 @@ import java.io.ByteArrayOutputStream
     Row {TextButton(onClick={set(catalog.map {it.id}.toSet())}){Text("Select all")};TextButton(onClick={set(emptySet())}){Text("Deselect all")}}
     Text("${selected.intersect(catalog.map {it.id}.toSet()).size} selected · ${catalog.size} available",style=MaterialTheme.typography.bodySmall)
     LazyColumn(Modifier.fillMaxWidth().heightIn(max=320.dp)) {items(catalog.filter {it.label.contains(query,true)},key={it.id}) {action->Row(verticalAlignment=androidx.compose.ui.Alignment.CenterVertically) {
-        Checkbox(action.id in selected,{checked->set(if(checked)selected+action.id else selected-action.id)});Text(action.label)
+        Checkbox(action.id in selected,{checked->set(if(checked)selected+action.id else selected-action.id)});Column {Text(action.label);Text(buttonFamily(action).label,color=buttonFamily(action).color,style=MaterialTheme.typography.labelSmall)}
     }}}
 }
 fun actionCopy(action: InstantAction): CustomButton {

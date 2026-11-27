@@ -1,0 +1,18 @@
+UMBRA Mobile 3.2 (code 8), full-page HOME / mixed controls
+Final Gradle BUILD SUCCESSFUL: :app:testDebugUnitTest :app:lintDebug :app:assembleDebug :app:assembleDebugAndroidTest
+105 Android test executions; zero failures/errors. Eight added executions: three pure, two native UI cases each on SDK30/34, and one SDK34 landscape-tablet case.
+Lint: {'Warning': 17} (zero errors).
+Debug APK and device-test APK assembled. Device instrumentation was NOT run.
+APK SHA-256: b3c1421647ed665c42a86d4f2bf3593aedc146ea1a394b6be46f1a190211efb4
+Signer #1 certificate SHA-256 digest: 79829531c75dd5ee41bf23951d6514bb2ecb21052c405a6230bfc8cbccdb7c6e
+Signing and top-level uses-permissions match the prior distributed 3.1 APK. Optional Recents service declaration/privacy flags are unchanged.
+
+New native checks: Full screen collapses HOME branding/status/headings/terminal chrome/page dots/navigation, genuinely expands measured viewport height, leaves Header/Tabs recovery outside widget content, persists through Activity recreation, restores each section independently and permits Apps navigation and return. Original desktop data is unchanged by collapse or navigation. A single fill-page mixed widget shows all 13 selected controls (six quick chats, Fortnite, Minecraft, PC hotkey and four sounds) at once with category labels, master optional animation off. Regular taps use distinct existing authenticated action/play routes, correct original sound ID and fresh request ID, with no audio-output writes. A 1000dp-wide SDK34 landscape tablet verifies 12 distinct buttons in the same row inside one full-width widget, with the preference retained. Activity stop starts no idle polling. Host screenshots use generated fixture responses, not real game/audio execution.
+
+New pure checks: schema6-to7 old-field defaults without layout/selection reset; strict boolean imports; round trips with motion off/Visual Detail Cinematic; adaptive sizing across heights without mutating saved cells; collision avoidance; collapsed sizing; disabling adaptive sizing retains saved manual dimensions; dense row-major new-button packing, 12-column collision boundaries, full tablet width and preservation of explicitly saved positions; separate sound IDs and static color-family mapping including Minecraft green and PCB glow identity. The earlier complete regression suite remains included: launcher/native widget hosting, grid/drag/Undo/persistence, independent widgets/presets, motion/master/detail, telemetry/header/lifecycle, soundboard and pairing/credential contracts.
+
+No PC backend files or bulk-import package changed. Prior 3.1 PC tests remain historical evidence, not re-counted as new 3.2 hardware or server checks. Main ICARUS tree remains 0b65108fcabefb2a53f0ea4139a4d6cb6fba2f6c. The private PC website was not deployed by this Android update.
+
+The 48 dp recovery strip and Android protected insets remain visible/usable. Full-page sizing is intended for a dedicated HOME page; other existing widgets are preserved and may require scrolling. Large catalogs scroll within the widget rather than guaranteeing all sounds fit onscreen. PC glow is static cached drawing, not an animation or timer. No duplicate sound player, output setting store or connection manager is introduced.
+
+Actual S24+/One UI HOME selection, gestures/native Recents/Accessibility grants, real Keystore, third-party providers, Windows/game/audio delivery, Tailscale routing, large fonts/landscape usability and measured battery/frame performance remain physical acceptance checks. Windows build_umbra.bat is included but not executed on this Linux host. No exact One UI animation parity is claimed.

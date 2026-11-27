@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.umbra.mobile.Phase23HostUiTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-11-27T17:47:10" hostname="bc50a105279e" time="6.139">
+  <properties/>
+  <testcase name="widgetSelectsAllFourteenAndLongPressDoesNotExecute[30]" classname="com.umbra.mobile.Phase23HostUiTest" time="0.823"/>
+  <testcase name="widgetSelectsAllFourteenAndLongPressDoesNotExecute" classname="com.umbra.mobile.Phase23HostUiTest" time="0.609"/>
+  <testcase name="widgetOverrideSavesTimedOutputWithoutExecutingOrChangingSharedButtons[30]" classname="com.umbra.mobile.Phase23HostUiTest" time="0.499"/>
+  <testcase name="widgetOverrideSavesTimedOutputWithoutExecutingOrChangingSharedButtons" classname="com.umbra.mobile.Phase23HostUiTest" time="0.404"/>
+  <testcase name="perTabStatusAndCompactSettingsHeaderPersist[30]" classname="com.umbra.mobile.Phase23HostUiTest" time="0.359"/>
+  <testcase name="perTabStatusAndCompactSettingsHeaderPersist" classname="com.umbra.mobile.Phase23HostUiTest" time="0.381"/>
+  <testcase name="collapsedHeadersDragWithMotionOff[30]" classname="com.umbra.mobile.Phase23HostUiTest" time="0.711"/>
+  <testcase name="collapsedHeadersDragWithMotionOff" classname="com.umbra.mobile.Phase23HostUiTest" time="0.937"/>
+  <testcase name="collapsedHeadersDragWithMotionOn[30]" classname="com.umbra.mobile.Phase23HostUiTest" time="0.721"/>
+  <testcase name="collapsedHeadersDragWithMotionOn" classname="com.umbra.mobile.Phase23HostUiTest" time="0.693"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+]]></system-err>
+</testsuite>

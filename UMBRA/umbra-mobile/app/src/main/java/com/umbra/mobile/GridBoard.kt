@@ -31,7 +31,7 @@ val LocalGridEditing=staticCompositionLocalOf {GridEditSession()}
 class GridItemScope(val headerModifier: Modifier)
 
 @Composable fun GridBoard(surface: String,items: List<GridItem>,c: Config,model: LauncherModel,columns: Int=c.deckColumns,
-    cellHeight: Dp=72.dp,compact: Boolean=false,forcedCollapsed: Set<String> = emptySet(),
+    cellHeight: Dp=72.dp,compact: Boolean=false,rowMajor: Boolean=false,maxColumns: Int=8,forcedCollapsed: Set<String> = emptySet(),
     onConfigure: ((String)->Unit)?=null,onRemove: ((String)->Unit)?=null,onDuplicate: ((String)->Unit)?=null,
     onDrop: ((String,String?)->Boolean)?=null,onEdge: ((Int)->Unit)?=null,onResize: ((String,Int,Int)->Unit)?=null,onResizeRequest: ((String)->Boolean)?=null,onMovePage: ((String)->Unit)?=null,onCollapse: ((String)->Unit)?=null,canDuplicate: (String)->Boolean={true},canCollapse: (String)->Boolean={true},
     content: @Composable GridItemScope.(GridItem,GridCell)->Unit) {
@@ -63,9 +63,9 @@ class GridItemScope(val headerModifier: Modifier)
     Column(Modifier.fillMaxWidth().testTag("grid-$surface")) {
         BoxWithConstraints(Modifier.fillMaxWidth().onGloballyPositioned {viewport=it.boundsInWindow()}) {
             val density=LocalDensity.current
-            val desiredColumns=if(maxWidth>600.dp)(columns*2).coerceAtMost(8) else columns
+            val desiredColumns=if(maxWidth>600.dp)(columns*2).coerceAtMost(maxColumns) else columns.coerceAtMost(maxColumns)
             val actualColumns=desiredColumns.coerceAtMost((maxWidth.value/54f).toInt().coerceAtLeast(1))
-            val layout=remember(items,c.gridLayouts[surface],actualColumns,compact,forcedCollapsed){resolveGrid(items,c.gridLayouts[surface],actualColumns,compact,forcedCollapsed)}
+            val layout=remember(items,c.gridLayouts[surface],actualColumns,compact,forcedCollapsed,rowMajor){resolveGrid(items,c.gridLayouts[surface],actualColumns,compact,forcedCollapsed,rowMajor)}
             val currentLayout by rememberUpdatedState(layout)
             val cellWidth=maxWidth/actualColumns
             val screenHeight=with(density){LocalConfiguration.current.screenHeightDp.dp.toPx()}

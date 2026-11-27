@@ -20,7 +20,7 @@ import kotlinx.serialization.json.*
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
-@Composable private fun SoundboardSession(c: Config,model: LauncherModel,pollPlayback: Boolean,visible: Boolean=true,content: @Composable (SoundboardState,(suspend ()->Unit)->Unit)->Unit) {
+@Composable fun SoundboardSession(c: Config,model: LauncherModel,pollPlayback: Boolean,visible: Boolean=true,content: @Composable (SoundboardState,(suspend ()->Unit)->Unit)->Unit) {
     val saved by model.soundboard.state.collectAsStateWithLifecycle()
     val state=saved.takeIf {it.base==serverBase(c)} ?: SoundboardState()
     val lifecycle=LocalLifecycleOwner.current.lifecycle
@@ -48,6 +48,7 @@ import java.time.format.DateTimeFormatter
 }
 @OptIn(ExperimentalFoundationApi::class)
 @Composable fun SoundboardScreen(c: Config,model: LauncherModel,widgetId: String?=null,compact: Boolean=false,visible: Boolean=true,headingModifier: Modifier=Modifier) {
+    val editing=LocalGridEditing.current
     var manage by remember {mutableStateOf(false)};var favoritesOnly by rememberSaveable {mutableStateOf(false)};var configured by remember {mutableStateOf<String?>(null)}
     val spec=widgetId?.let {widgetSpec(c,it)};val surface=widgetId?.let {"sound-widget:$it"} ?: "soundboard"
     SoundboardSession(c,model,true,visible) {state,run->
@@ -73,9 +74,9 @@ import java.time.format.DateTimeFormatter
             val sounds=catalog?.sounds?.filter {(selected==null || "sound:${it.id}" in selected) && (!(favoritesOnly || spec?.buttonSet=="favorites") || it.favorite)} ?: emptyList()
             if(catalog!=null && sounds.isEmpty())Text("No selected sounds. Configure this widget or add sounds on the PC.",style=MaterialTheme.typography.bodySmall)
             Column((if(compact)Modifier.weight(1f) else Modifier.heightIn(max=560.dp)).fillMaxWidth().verticalScroll(rememberScrollState())) {
-                GridBoard(surface,sounds.map {GridItem(it.id,it.name)},c,model,columns=spec?.buttonColumns ?: 2,cellHeight=(spec?.buttonHeight ?: 76).dp,onConfigure={configured=it}) {item,_->
+                GridBoard(surface,sounds.map {GridItem(it.id,it.name)},c,model,columns=spec?.buttonColumns ?: 2,cellHeight=(spec?.buttonHeight ?: 76).dp,rowMajor=true,maxColumns=12,onConfigure={editing.finish();configured=it}) {item,_->
                     val sound=sounds.first {it.id==item.id}
-                    OutlinedButton(onClick={run {model.soundboard.play(c,sound.id)}},enabled=!state.busy,shape=Chamfer,contentPadding=PaddingValues(horizontal=4.dp,vertical=4.dp),modifier=Modifier.fillMaxSize().testTag("sound-${sound.id}")) {Text((if(sound.favorite)"★ " else "")+sound.name,maxLines=3)}
+                    CategoryControlButton((if(sound.favorite)"★ " else "")+sound.name,ButtonFamily.Soundboard,!state.busy,Modifier.fillMaxSize().testTag("sound-${sound.id}")) {run {model.soundboard.play(c,sound.id)}}
                 }
             }
             if(!compact)Text("Tap to play on the saved ICARUS output. Long-press to move, resize, or favorite. Audio Output is in Settings → ICARUS → Soundboard.",style=MaterialTheme.typography.bodySmall)

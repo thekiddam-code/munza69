@@ -1,16 +1,16 @@
-# UMBRA configuration schema 6
+# UMBRA configuration schema 7
 
 Preferences are private Jetpack Preferences DataStore (`datastore/umbra_settings.preferences_pb`), with a validated JSON envelope in `config_v2`. Existing Phase 1 scalar keys are read as a migration source until the first current write. Favorites, URL, timeout, profile, master, effects, panel, and accent choice are preserved; the old transitions selection also initializes the now-independent startup selection. Corrupt Preferences recover to defaults; invalid stored JSON also recovers to safe defaults. Disk-write errors remain visible in the launcher.
 
 ## Import/export
 
-Export and import use Android's Storage Access Framework, without broad storage permissions. Export is a schema 6 snapshot with portable Android-widget placeholders. Schemas 2–6 are accepted with the corresponding migration defaults; exports use schema 6. Import reads at most 1 MiB, requires valid UTF-8/JSON and exact types, rejects unknown fields/versions, validates everything before showing an Apply preview, then replaces preferences atomically. An import is **replacement, not merge**: omitted settings take schema defaults. No partial import is applied on failure. Exported URLs may be private/user-specific; choose your export destination accordingly. Credentials, PINs, device readings, notification contents/counts, and encryption keys are never serialized.
+Export and import use Android's Storage Access Framework, without broad storage permissions. Export is a schema 7 snapshot with portable Android-widget placeholders. Schemas 2–7 are accepted with the corresponding migration defaults; exports use schema 7. Import reads at most 1 MiB, requires valid UTF-8/JSON and exact types, rejects unknown fields/versions, validates everything before showing an Apply preview, then replaces preferences atomically. An import is **replacement, not merge**: omitted settings take schema defaults. No partial import is applied on failure. Exported URLs may be private/user-specific; choose your export destination accordingly. Credentials, PINs, device readings, notification contents/counts, and encryption keys are never serialized.
 
 Envelope:
 
 ```json
 {
-  "schemaVersion": 6,
+  "schemaVersion": 7,
   "settings": {
     "profile": "Adaptive",
     "master": true,
@@ -116,3 +116,9 @@ The DataStore key remains `config_v2`. Existing schemas 2–5 migrate without re
 Each `DesktopWidget` adds `title` (empty/default), `buttonSet` (`all`, `pc`, `rocket`, `fortnite`, `minecraft`, `simulation`, `favorites`), `buttonColumns` (1–6, default 2), `buttonHeight` (56–96, default 64), and `buttonOverrides` (source-ID → validated CustomButton, maximum 512). The picker offers favorites-only for sound widgets. `widgetButtonSelections` stores independent selected IDs; sound IDs are namespaced `sound:<server-id>`. No global selection rewrite occurs when editing one widget. Owned custom definitions use widget-prefixed IDs. Existing global definitions/labels remain available for migration; legacy global shared selections initialize only older button instances without an explicit selection. Inactive presets are migrated too.
 
 Page/widget size limits are documented in WIDGETS31_REPORT.md. Button widgets enforce at least 3 editing rows. Instance sound layouts use `sound-widget:<widget-id>`; the standalone SIMULATOR soundboard layout remains separate. Shared ICARUS favorite/output/profile data are not duplicated in DataStore. PIN is transient, masked, cleared, never exported; only the existing encrypted server-bound token is retained. The PC patch retains its authoritative schema-1 sound library and adds no launcher-side audio-output copy.
+
+## 3.2 / schema 7: HOME chrome and mixed controls
+
+`homeHeaderCollapsed` and `homeFooterCollapsed` default false and persist global HOME chrome choices. Neither changes Android immersive/inset preferences or other screens. Appearance reset restores both false. Header collapse hides HOME status rendering without rewriting status settings. The single 48 dp recovery strip remains outside widget content, carrying the existing PC indicator and optional Recents when needed.
+
+`DesktopWidget.fillPage` defaults false and is allowed only for built-in Button/Soundboard widgets. It adapts rendered width/height to the viewport without writing grid positions merely on screen-size changes. `buttonColumns` now accepts 1–12. Inner grid storage supports up to 12 columns with a 12-column collision stride; outer HOME pages still use 2–8 logical columns. Narrow views adapt rendered button columns without changing the preference. `buttonSet` additionally accepts `mixed`; its selection combines stable command IDs and `sound:<original-id>` under the existing widget selection map. Sound references are presentation data only, never a second sound library or audio settings store. All fields use exact JSON types. [Current guide](HOME32_REPORT.md).

@@ -70,13 +70,15 @@ import androidx.compose.ui.unit.dp
             Toggle("Show sensor details",widget.showDetails){widget=widget.copy(showDetails=it)}
         }
         if(widget.kind in listOf("icarus","soundboard")) {
+            Toggle("Fill available page",widget.fillPage){widget=widget.copy(fillPage=it)}
             OutlinedTextField(widget.title,{widget=widget.copy(title=it.take(48))},label={Text("Widget title")},singleLine=true)
-            Choice("Button columns",(1..6).map(Int::toString),widget.buttonColumns.toString()){widget=widget.copy(buttonColumns=it.toInt())}
+            Choice("Button columns",(1..12).map(Int::toString),widget.buttonColumns.toString()){widget=widget.copy(buttonColumns=it.toInt())}
+            Text("Up to 12 columns on a wide tablet. Narrow views show fewer columns to keep usable touch targets.",style=MaterialTheme.typography.bodySmall)
             Choice("Button height",listOf("56","64","72","80","96"),widget.buttonHeight.toString()){widget=widget.copy(buttonHeight=it.toInt())}
             if(widget.kind=="icarus") {
                 Choice("Button set",BUTTON_SETS.filterNot {it=="favorites"},widget.buttonSet){widget=widget.copy(buttonSet=it);selected=null}
                 ButtonSelection(config,model,item.id,widget.buttonSet,selected,{selected=it},widget)
-                Text("A game set filters by command type. Use All for a mixed widget.",style=MaterialTheme.typography.bodySmall)
+                Text("Choose mixed to put sounds and game/hotkey controls in one grid. Fill available page adapts to the screen without removing other widgets.",style=MaterialTheme.typography.bodySmall)
                 TextButton(onClick={newButton=CustomButton(label="New widget button")}){Text("Add custom button")}
             } else {Toggle("Favorites only",widget.buttonSet=="favorites"){widget=widget.copy(buttonSet=if(it)"favorites" else "all")};SoundSelection(config,model,item.id,selected,{selected=it})}
         }

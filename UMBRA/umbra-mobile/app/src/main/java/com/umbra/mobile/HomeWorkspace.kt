@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.boundsInWindow
+import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.layout.positionInWindow
 import androidx.compose.ui.platform.LocalDensity
@@ -45,6 +46,9 @@ import kotlin.math.roundToInt
     var widgetPage by remember {mutableStateOf<String?>(null)};var widgetEditor by remember {mutableStateOf<DesktopItem?>(null)}
     var appEditor by remember {mutableStateOf<DesktopItem?>(null)};var moveTarget by remember {mutableStateOf<DesktopItem?>(null)}
     var handledEvent by rememberSaveable {mutableIntStateOf(homeEvent)}
+    var viewportHeight by remember {mutableIntStateOf(0)}
+    val density=LocalDensity.current
+    val fillRows=(with(density){viewportHeight.toDp().value}/64f).toInt().coerceIn(3,24)
     val pageId=layout.pages.getOrNull(pager.currentPage)?.id ?: layout.homePageId
     val latestPages by rememberUpdatedState(layout.pages)
     LaunchedEffect(pager){snapshotFlow {pager.settledPage}.collectLatest {latestPages.getOrNull(it)?.let {p->selectedPage=p.id;onPageContext(when(p.kind){"terminal"->"Main Home";"icarus"->"ICARUS";else->"Information Deck"})}}}
@@ -55,15 +59,17 @@ import kotlin.math.roundToInt
     fun configure(item: DesktopItem) {when(item.kind){"folder"->folderEditor=item;"widget"->widgetEditor=item;else->appEditor=item}}
     Box(Modifier.fillMaxSize().semantics {onLongClick("Edit Home"){homeMenu=true;true}}) {
         Column(Modifier.fillMaxSize()) {
+            if(!c.homeHeaderCollapsed) {
             HomePresetBar(c,model)
             Text(layout.page(pageId).name,style=MaterialTheme.typography.labelLarge,modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).combinedClickable(onClick={},onLongClick={homeMenu=true}).testTag("home-edit-header"))
-            HorizontalPager(state=pager,key={layout.pages[it].id},modifier=Modifier.weight(1f).fillMaxWidth().testTag("home-pages"),beyondViewportPageCount=1) {index->
+            }
+            HorizontalPager(state=pager,key={layout.pages[it].id},modifier=Modifier.weight(1f).fillMaxWidth().testTag("home-pages").onSizeChanged {viewportHeight=it.height},beyondViewportPageCount=1) {index->
                 val page=layout.pages[index]
                 Column(Modifier.fillMaxSize().then(if(page.kind=="terminal")Modifier.nestedScroll(homePull) else Modifier).verticalScroll(rememberScrollState()),verticalArrangement=Arrangement.spacedBy(10.dp)) {
-                    if(page.kind=="terminal")terminal()
+                    if(page.kind=="terminal" && !c.homeHeaderCollapsed)terminal()
                     val visible=page.items.filterNot {it.kind=="app" && it.component in c.hiddenApps}
                     if(visible.isEmpty())Text("Long-press the page title to add widgets, folders, or pages. Long-press apps in Apps to pin them.",color=Muted)
-                    GridBoard("home:${page.id}",visible.map {GridItem(it.id,it.folder?.name ?: apps.firstOrNull {a->a.id==it.component}?.label ?: it.widget?.kind ?: "Application",it.widget?.span ?: 1,it.widget?.rows ?: 2,headerOnly=it.widget?.kind in listOf("icarus","soundboard"))},c,model,page.columns,64.dp,forcedCollapsed=visible.filter {it.widget?.collapsed==true}.map {it.id}.toSet(),
+                    GridBoard("home:${page.id}",visible.map {GridItem(it.id,it.folder?.name ?: apps.firstOrNull {a->a.id==it.component}?.label ?: it.widget?.kind ?: "Application",if(it.widget?.fillPage==true)page.columns else it.widget?.span ?: 1,if(it.widget?.fillPage==true)fillRows else it.widget?.rows ?: 2,headerOnly=it.widget?.kind in listOf("icarus","soundboard"),adaptiveSize=it.widget?.fillPage==true)},c,model,page.columns,64.dp,forcedCollapsed=visible.filter {it.widget?.collapsed==true}.map {it.id}.toSet(),
                         onCollapse={id->model.editDesktop {it.updateItem(id){item->item.copy(widget=item.widget?.copy(collapsed=!item.widget.collapsed))}}},canCollapse={id->layout.item(id)?.widget?.kind in (ENGINEERING_KINDS+listOf("icarus","soundboard"))},
                         onConfigure={id->layout.item(id)?.let(::configure)},onMovePage={id->moveTarget=layout.item(id)},onResizeRequest={id->val native=layout.item(id)?.takeIf {it.widget?.kind in listOf("android","icarus","soundboard")};if(native!=null){widgetEditor=native;true} else false},onRemove={model.removeDesktopItem(it)},
                         canDuplicate={layout.item(it)?.widget?.kind!="android"},onDuplicate={id->model.arrange {old->val l=resolvedDesktop(old,apps);val item=l.item(id)!!;require(item.widget?.kind!="android");val copyId=desktopId();old.copy(desktop=l.updatePage(page.id){it.copy(items=it.items+item.copy(id=copyId))},widgetButtonSelections=old.widgetButtonSelections[item.id]?.let {ids->old.widgetButtonSelections+(copyId to ids)} ?: old.widgetButtonSelections)}},
@@ -81,10 +87,10 @@ import kotlin.math.roundToInt
                             else->BuiltinWidget(item,c,model,device,now,accent,active && device.screenOn && index==pager.currentPage && expansion.selected==null && LocalGridEditing.current.surface==null && widgetEditor==null && folderEditor==null && !pagesEditor && !homeMenu,{rect->expansion.open(item.id,rect,TransitionCategory.Widget)},headerModifier)
                         }
                     }
-                    if(page.kind=="terminal")footer()
+                    if(page.kind=="terminal" && !c.homeFooterCollapsed)footer()
                 }
             }
-            Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),horizontalArrangement=Arrangement.Center) {
+            if(!c.homeFooterCollapsed)Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()),horizontalArrangement=Arrangement.Center) {
                 layout.pages.forEachIndexed {i,p->TextButton(onClick={selectedPage=p.id;pager.requestScrollToPage(i)},modifier=Modifier.testTag("page-${p.id}").semantics {contentDescription="${p.name}, page ${i+1}"}){Text(if(i==pager.currentPage)"●" else "○",color=if(i==pager.currentPage)accent else Muted)}}
             }
         }
@@ -94,6 +100,8 @@ import kotlin.math.roundToInt
         }
     }
     if(homeMenu)DesktopEditorDialog("Edit Home",{homeMenu=false},confirm={TextButton(onClick={homeMenu=false}){Text("Done")}}) {
+        Toggle("Collapse HOME header",c.homeHeaderCollapsed){value->model.change {it.copy(homeHeaderCollapsed=value)}}
+        Toggle("Collapse HOME footer",c.homeFooterCollapsed){value->model.change {it.copy(homeFooterCollapsed=value)}}
         TextButton(onClick={homeMenu=false;newFolder=true}){Text("Add folder")}
         TextButton(onClick={homeMenu=false;widgetPage=pageId}){Text("Add widget")}
         TextButton(onClick={homeMenu=false;pagesEditor=true}){Text("Home pages")}

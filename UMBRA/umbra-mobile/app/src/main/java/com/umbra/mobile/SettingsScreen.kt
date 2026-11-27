@@ -83,6 +83,8 @@ import java.io.IOException
                 "Appearance" -> {
                     Choice("Visual Detail",VisualDetail.entries.map {it.name},c.visualDetail.name){detail->model.change {it.copy(visualDetail=VisualDetail.valueOf(detail))}}
                     Text("Enhanced is the default. Visual Detail controls cached static structure and panel detail; changing it never enables animations. Master off and Minimal motion do not reduce visual detail.",style=MaterialTheme.typography.bodySmall)
+                    Toggle("Collapse HOME header",c.homeHeaderCollapsed){v->model.change {it.copy(homeHeaderCollapsed=v)}}
+                    Toggle("Collapse HOME footer",c.homeFooterCollapsed){v->model.change {it.copy(homeFooterCollapsed=v)}}
                     Toggle("Show Recents shortcut",c.recentsShortcut){v->model.change {it.copy(recentsShortcut=v)}}
                     Toggle("Show app labels",c.showAppLabels){v->model.change {it.copy(showAppLabels=v)}}
                     Choice("Application icon size",listOf("32","40","48","56","64","72"),c.iconSize.toString()){v->model.change {it.copy(iconSize=v.toInt())}}
@@ -176,7 +178,7 @@ import java.io.IOException
                 "Configuration" -> {
                     Button(onClick={exported=c;export.launch("umbra-settings-v2.json")},shape=Chamfer,modifier=Modifier.fillMaxWidth()){Text("Export settings")}
                     OutlinedButton(onClick={importLauncher.launch(arrayOf("application/json","text/plain","application/octet-stream"))},shape=Chamfer,modifier=Modifier.fillMaxWidth()){Text("Import settings")}
-                    Text("Schema 6; versions 2–6 accepted. Imports are validated before atomic replacement. Maximum 1 MiB. Exports contain preferences and configured URLs, but no PIN, pairing token, notification content, or device telemetry.",style=MaterialTheme.typography.bodySmall)
+                    Text("Schema 7; versions 2–7 accepted. Imports are validated before atomic replacement. Maximum 1 MiB. Exports contain preferences and configured URLs, but no PIN, pairing token, notification content, or device telemetry.",style=MaterialTheme.typography.bodySmall)
                     Button(onClick={resetAll=true},shape=Chamfer){Text("Restore all defaults")}
                     Text("To restore Samsung: Settings → Apps → Choose default apps → Home app → One UI Home.",style=MaterialTheme.typography.bodyMedium)
                     Button(onClick=homeSettings,shape=Chamfer){Text("Open Android Home settings")}

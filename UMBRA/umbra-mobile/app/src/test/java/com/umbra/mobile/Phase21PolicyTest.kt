@@ -26,7 +26,7 @@ class Phase21PolicyTest {
         TransitionCategory.entries.forEach {assertFalse(transitionPlan(base.copy(transitionStyle=TransitionStyle.Minimal),motion,it).enabled)}
     }
     @Test fun legacySchemaImportsUpgradeToEnhancedWithoutResettingSelections() {
-        val old=exportConfig(Config(master=false,environment=true)).replace("\"schemaVersion\":6","\"schemaVersion\":2")
+        val old=exportConfig(Config(master=false,environment=true)).replace("\"schemaVersion\":7","\"schemaVersion\":2")
         val c=importConfig(old)
         assertFalse(c.master);assertTrue(c.environment);assertEquals(VisualDetail.Enhanced,c.visualDetail)
     }

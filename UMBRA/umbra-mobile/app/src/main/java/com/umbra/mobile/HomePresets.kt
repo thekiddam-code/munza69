@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.*
@@ -48,6 +49,7 @@ fun validatePresetsJson(value: JsonElement) {
     Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState())) {
         homePresetNames(c).forEach {(id,label)->FilterChip(selected=id==c.activeHomePreset,onClick={editing.finish();model.switchPreset(id)},label={Text(label)})}
         TextButton(onClick={manager=true}){Text("Presets")}
+        TextButton(onClick={editing.finish();model.change {it.copy(homeHeaderCollapsed=true,homeFooterCollapsed=true)}}){Text("Full screen")}
     }
     if(manager)DesktopEditorDialog("HOME presets",{manager=false},confirm={TextButton(onClick={manager=false}){Text("Done")}}) {
         Text("Each preset keeps its own pages, widget appearance and grid layout.")
@@ -62,4 +64,15 @@ fun gridForStorage(c: Config,surface: String,grid: GridLayout): GridLayout {
     if(!surface.startsWith("home:"))return grid
     val ids=resolvedDesktop(c).pages.flatMap {it.items}.filter {it.widget?.kind in ENGINEERING_KINDS}.map {it.id}.toSet()
     return grid.copy(cells=grid.cells.map {if(it.id in ids)it.copy(collapsed=false) else it})
+}
+
+/** Always reachable while HOME chrome is collapsed, including with Android bars hidden. */
+@Composable fun HomeChromeRecovery(c: Config,model: LauncherModel) {
+    Row(Modifier.fillMaxWidth().heightIn(min=48.dp),verticalAlignment=androidx.compose.ui.Alignment.CenterVertically) {
+        if(c.homeHeaderCollapsed)TextButton(onClick={model.change {it.copy(homeHeaderCollapsed=false)}},modifier=Modifier.heightIn(min=48.dp).testTag("restore-home-header")){Text("Header ⌃")}
+        if(c.homeFooterCollapsed)TextButton(onClick={model.change {it.copy(homeFooterCollapsed=false)}},modifier=Modifier.heightIn(min=48.dp).testTag("restore-home-footer")){Text("Tabs ⌃")}
+        Spacer(Modifier.weight(1f))
+        if(c.homeHeaderCollapsed)PcConnectionIndicator(c,model)
+        if(c.homeFooterCollapsed && c.recentsShortcut)RecentsButton()
+    }
 }

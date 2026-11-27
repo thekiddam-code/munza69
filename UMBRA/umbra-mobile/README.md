@@ -1,18 +1,20 @@
-# UMBRA Mobile 3.1
+# UMBRA Mobile 3.2
 
 A native Kotlin / Jetpack Compose Android HOME launcher for Samsung Galaxy S24+, package `com.umbra.mobile`. Android 10+ (API 29), target/compile API 35. This increment preserves the existing industrial terminal interface and native Android functions while moving arrangement controls out of normal use.
 
-## Current increment: independent widgets
+## Current increment: full-page HOME and mixed controls
 
-HOME | APPS | DECK | SIMULATOR | ICARUS | CONFIG. DECK contains Engineering and Device controls. SIMULATOR contains the game controls and Soundboard. Dedicated Command library and Instant Buttons pages are removed; existing mappings remain usable through independently configured HOME Button widgets. HOME Soundboard widgets can share a page with hotkeys. CONFIG → ICARUS includes a masked server PIN field. A small optional Recent apps footer icon requires manual Android Accessibility enablement; it reads no screen content.
+Tap **Full screen** in the HOME preset strip to collapse the header and footer. A 48 dp recovery strip keeps Header, Tabs, optional PC status and Recents accessible. Configure header/footer separately under Appearance; choices persist and apply only to HOME. All six destinations remain.
 
-See [3.1 setup, migration, PC update, verification and limits](WIDGETS31_REPORT.md). The separate [Phase 4.9 PC bulk-import installer](../pc-update/phase49/README.md) has not been deployed to your private PC.
+Add **Mixed controls · games, hotkeys & sounds** through the HOME widget picker, or configure an existing Button widget: **Button set = mixed**, **Fill available page**. On a wide tablet set **Button columns = 12**; phone views adapt without overwriting that choice. Sync commands and sounds, select both quick chat and sounds in one picker, then Save. Each widget remains independent. Buttons use blue for Rocket League/Fortnite, Minecraft green, PCB green with static glow for hotkeys/macros, and cool white for soundboard. Category labels supplement color. Existing presets and PC audio settings are preserved.
+
+[Current 3.2 setup/migration/limits](HOME32_REPORT.md) · [Previous 3.1 details](WIDGETS31_REPORT.md). The separate [Phase 4.9 PC bulk-import installer](../pc-update/phase49/README.md) is unchanged; the private PC website has not been deployed remotely.
 
 ## Install / update / recover
 
 Download `umbra-mobile-debug.apk` from the sibling [GitHub downloads folder](https://github.com/thekiddam-code/munza69/tree/main/UMBRA/downloads), or extract the APK ZIP first. Open the APK on the phone and grant the opening file manager/browser installation permission when Android requests it. ADB alternative: `adb install -r umbra-mobile-debug.apk`.
 
-Version **3.1 (code 7)** updates the previous signed build without requiring an uninstall. Keep the same signing key when building future updates; a build signed on another computer may need your consistent key or an uninstall, which clears local data. The distributed debug build is for development, not store distribution.
+Version **3.2 (code 8)** updates the previous signed build without requiring an uninstall. Keep the same signing key when building future updates; a build signed on another computer may need your consistent key or an uninstall, which clears local data. The distributed debug build is for development, not store distribution.
 
 Select **Samsung Settings → Apps → Choose default apps → Home app → UMBRA**. Select **One UI Home** in that same screen to restore Samsung. UMBRA can open Android's Home settings from its Settings categories. No root, kiosk/device-owner mode, protected notification shade, secure lock-screen replacement, or firmware changes are used.
 
@@ -70,10 +72,11 @@ Open this `umbra-mobile/` folder in Android Studio. Install Android SDK Platform
 ./gradlew --no-daemon -Pkotlin.compiler.execution.strategy=in-process :app:testDebugUnitTest :app:lintDebug :app:assembleDebug :app:assembleDebugAndroidTest
 ```
 
-Verified 3.1 result: **97 Android tests passed; lint zero errors; app and device-test APKs built**. The distributed signing certificate is preserved. Top-level requested permissions remain unchanged; an optional manually enabled Accessibility service is added for Recent apps. See [exact results](verification/widgets31/RESULTS.txt).
+Verified 3.2 results are recorded in [the executed evidence](verification/home32/RESULTS.txt): Android host tests, lint, app and device-test APK builds. The distributed signing certificate is preserved. Top-level requested permissions remain unchanged; an optional manually enabled Accessibility service is added for Recent apps. See [exact current results](verification/home32/RESULTS.txt).
 
 Debug APK: `app/build/outputs/apk/debug/app-debug.apk`. Device instrumentation requires a real device/working emulator: `./gradlew :app:connectedDebugAndroidTest`. Compilation of its APK is not proof of execution.
 
+- [3.2 full-page HOME, mixed controls and category colors](HOME32_REPORT.md)
 - [3.1 independent widgets, PIN, Recents and PC bulk upload](WIDGETS31_REPORT.md)
 - [Phase 3 Engineering / shared connection / migration](PHASE3_REPORT.md)
 - [Phase 2.3 implementation, executed verification, limits, next steps](PHASE23_REPORT.md)

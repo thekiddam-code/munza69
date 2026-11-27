@@ -29,7 +29,7 @@ class Widget31Test {
     }
     @Test fun olderSharedSelectionsMigrateIntoEachWidgetWithoutTouchingAudio() {
         val c=config().copy(instantSelection=setOf("quick:Nice shot!"),widgetButtonSelections=mapOf("fortnite" to listOf("emote:0:Dance")))
-        val old=exportConfig(c).replace("\"schemaVersion\":6","\"schemaVersion\":5")
+        val old=exportConfig(c).replace("\"schemaVersion\":7","\"schemaVersion\":5")
         val migrated=importConfig(old)
         assertEquals(listOf("quick:Nice shot!"),migrated.widgetButtonSelections["rocket"])
         assertEquals(listOf("emote:0:Dance"),migrated.widgetButtonSelections["fortnite"])

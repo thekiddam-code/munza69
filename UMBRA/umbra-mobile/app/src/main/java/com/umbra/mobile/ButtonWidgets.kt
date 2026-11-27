@@ -10,7 +10,7 @@ import androidx.compose.ui.layout.*
 import androidx.compose.ui.unit.dp
 import kotlinx.serialization.json.*
 
-val BUTTON_SETS=listOf("all","pc","rocket","fortnite","minecraft","simulation","favorites")
+val BUTTON_SETS=listOf("all","mixed","pc","rocket","fortnite","minecraft","simulation","favorites")
 fun widgetSpec(c: Config,id: String): DesktopWidget?=resolvedDesktop(c).item(id)?.widget
 fun windowsButtonActions(catalog: JsonObject?): List<InstantAction> {
     if(catalog?.truth("supported")!=true)return emptyList()
@@ -31,13 +31,20 @@ fun overrideWidgetButton(c: Config,id: String,source: String,button: CustomButto
 @Composable fun ButtonWidget(item: DesktopItem,c: Config,model: LauncherModel,visible: Boolean,accent: Color,header: Modifier) {
     val w=item.widget!!;var bounds by remember(item.id){mutableStateOf(Rect.Zero)}
     val color=if(w.accent.isBlank())accent else Color(android.graphics.Color.parseColor(w.accent))
-    Surface(color=if(w.transparent)Color.Transparent else Panel,shape=Chamfer,modifier=Modifier.fillMaxSize().onGloballyPositioned {bounds=it.boundsInWindow()}) {
+    Surface(color=if(w.transparent)Color.Transparent else Panel,shape=androidx.compose.foundation.shape.CutCornerShape(topStart=8.dp,bottomEnd=8.dp),modifier=Modifier.fillMaxSize().onGloballyPositioned {bounds=it.boundsInWindow()}) {
         androidx.compose.material3.MaterialTheme(colorScheme=androidx.compose.material3.MaterialTheme.colorScheme.copy(primary=color)) {
             Column(Modifier.fillMaxSize().padding(6.dp)) {
                 val active=visible && bounds.width>1 && bounds.height>1
                 if(w.kind=="soundboard")SoundboardScreen(c,model,widgetId=item.id,compact=true,visible=active,headingModifier=header)
-                else InstantControls(c,model,active,true,surface="instant-widget:${item.id}",widgetId=item.id,headingModifier=header)
+                else if(w.buttonSet=="mixed")SoundboardSession(c,model,true,active) {state,run->
+                    InstantControls(c,model,active,true,surface="instant-widget:${item.id}",widgetId=item.id,headingModifier=header,soundState=state,runSound=run)
+                } else InstantControls(c,model,active,true,surface="instant-widget:${item.id}",widgetId=item.id,headingModifier=header)
             }
         }
     }
 }
+
+/** Presentation references only: playback stays on the shared original soundboard controller. */
+fun soundButtonActions(catalog: SoundCatalog?): List<InstantAction> = catalog?.sounds?.map {sound->
+    InstantAction("sound:${sound.id}",sound.name,"api/sounds/play",buildJsonObject {put("id",sound.id)})
+} ?: emptyList()
