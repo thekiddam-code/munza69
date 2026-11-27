@@ -14,7 +14,7 @@ if not exist "%JAVA_HOME%\bin\java.exe" (
   exit /b 1
 )
 :build
-echo Building UMBRA Mobile 3.2 - host tests, lint, app and device-test APKs.
+echo Building UMBRA Mobile 3.3 - host tests, lint, app and device-test APKs.
 call gradlew.bat --no-daemon -Pkotlin.compiler.execution.strategy=in-process :app:testDebugUnitTest :app:lintDebug :app:assembleDebug :app:assembleDebugAndroidTest
 if errorlevel 1 (
   echo BUILD FAILED. Check Android SDK setup and the Gradle error above.

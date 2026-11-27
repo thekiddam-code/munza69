@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.umbra.mobile.AnimationEngineTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-11-27T23:31:41" hostname="bc50a105279e" time="0.068">
+  <properties/>
+  <testcase name="commandAndTerminalTransitionSwitchesAreIndependentInBothDirections" classname="com.umbra.mobile.AnimationEngineTest" time="0.042"/>
+  <testcase name="allNineSelectionsSurviveMasterOverrideAndZeroIntensity" classname="com.umbra.mobile.AnimationEngineTest" time="0.026"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

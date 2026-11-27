@@ -25,11 +25,11 @@ class LauncherHostUiTest {
         override fun before() {
             val app=org.robolectric.RuntimeEnvironment.getApplication()
             org.robolectric.Shadows.shadowOf(app).grantPermissions("com.umbra.mobile.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION")
-            runBlocking { ConfigStore(app).replace(Config(master=false,immersive=false)) }
+            runBlocking { ConfigStore(app).replace(Config(master=false,immersive=true)) }
         }
     }).around(rule)
     @Test fun homeDrawerGestureCommandCenterAndPersistenceRegression() {
-        runBlocking { ConfigStore(rule.activity).replace(Config(master=false,immersive=false)) }
+        runBlocking { ConfigStore(rule.activity).replace(Config(master=false,immersive=true)) }
         rule.onNodeWithText("APPS").performClick()
         rule.onNodeWithText("Search applications").performTextInput("umbra_no_such_app_123456")
         rule.onNodeWithText("No applications match.").assertIsDisplayed()
@@ -46,6 +46,7 @@ class LauncherHostUiTest {
         rule.waitUntil(5000) { runBlocking { !ConfigStore(rule.activity).config.first().immersive } }
         val restored=runBlocking { ConfigStore(rule.activity).config.first() }
         assertFalse(restored.hideTopBar);assertFalse(restored.hideBottomBar)
+        rule.onNodeWithTag("return-fullscreen").assertIsDisplayed().performClick()
         rule.onNodeWithTag("command-swipe-handle").performTouchInput { swipeUp() }
         rule.onNodeWithText("01 / COMMAND DECK").performScrollTo().assertIsDisplayed()
         rule.onNodeWithText("CONFIG").performClick()

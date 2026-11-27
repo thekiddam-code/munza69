@@ -20,7 +20,8 @@ fun windowsButtonActions(catalog: JsonObject?): List<InstantAction> {
     } ?: emptyList()
 }
 fun widgetCatalog(c: Config,pc: PcStatus?,widgetId: String?,windows: JsonObject?=null,specOverride: DesktopWidget?=null): List<InstantAction> {
-    val base=buttonCatalog(c,pc)+windowsButtonActions(windows)
+    val mixed=(specOverride ?: widgetId?.let {widgetSpec(c,it)})?.buttonSet=="mixed"
+    val base=buttonCatalog(c,pc)+windowsButtonActions(windows)+(if(mixed)hostButtonActions() else emptyList())
     val overrides=specOverride?.buttonOverrides ?: widgetId?.let {widgetSpec(c,it)?.buttonOverrides} ?: emptyMap()
     return base.map {action->overrides[action.id]?.let {buttonAction(it).copy(id=action.id)} ?: if(widgetId!=null)action.copy(label=c.instantLabels[action.id] ?: action.label) else action}+overrides.filterKeys {base.none {a->a.id==it}}.map {(id,b)->buttonAction(b).copy(id=id)}
 }
@@ -48,3 +49,10 @@ fun overrideWidgetButton(c: Config,id: String,source: String,button: CustomButto
 fun soundButtonActions(catalog: SoundCatalog?): List<InstantAction> = catalog?.sounds?.map {sound->
     InstantAction("sound:${sound.id}",sound.name,"api/sounds/play",buildJsonObject {put("id",sound.id)})
 } ?: emptyList()
+
+/** Optional stable references, never another macro binding or audio setting store. */
+fun hostButtonActions()=listOf(
+    InstantAction("host:arctis","Switch to Arctis","api/sonar/arctis",buildJsonObject {}),
+    InstantAction("host:save-clip","Save Clip","api/moments/save-clip",buildJsonObject {})
+)
+fun defaultWidgetButtonIds(catalog: List<InstantAction>)=catalog.filterNot {it.id.startsWith("host:")}.map {it.id}.toSet()

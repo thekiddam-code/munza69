@@ -26,7 +26,7 @@ class Phase3HostUiTest {
         override fun before() {
             val app=org.robolectric.RuntimeEnvironment.getApplication()
             org.robolectric.Shadows.shadowOf(app).grantPermissions("com.umbra.mobile.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION")
-            runBlocking {ConfigStore(app).replace(Config(master=false,immersive=false,statusPanel=false))}
+            runBlocking {ConfigStore(app).replace(Config(master=false,immersive=true,statusPanel=false))}
         }
     }).around(rule)
     private fun config()=runBlocking {ConfigStore(rule.activity).config.first()}
@@ -60,7 +60,7 @@ class Phase3HostUiTest {
         try {
             rule.runOnUiThread {model.instant=controller}
             val items=listOf("cpu","gpu").map {kind->DesktopItem(kind,"widget",widget=DesktopWidget(kind="engineering_$kind",span=3,rows=3))}
-            runBlocking {model.store.replace(Config(master=false,immersive=false,statusPanel=false,serverUrl=server.url("/").toString(),desktop=DesktopLayout(pages=listOf(DesktopPage("main","Engineering preset",items=items)))))}
+            runBlocking {model.store.replace(Config(master=false,immersive=true,statusPanel=false,serverUrl=server.url("/").toString(),desktop=DesktopLayout(pages=listOf(DesktopPage("main","Engineering preset",items=items)))))}
             waitFor {controller.pcConnection.value.monitor!=null && controller.pcConnection.value.catalog!=null && controller.engineeringConsumers.value.size==2}
             rule.onNodeWithText("CPU: 23.0%").assertIsDisplayed();rule.onNodeWithText("Fixture GPU").assertIsDisplayed()
             assertEquals(3,server.requestCount)

@@ -22,9 +22,11 @@ enum class ButtonFamily(val label: String,val color: Color,val glow: Boolean=fal
     Minecraft("Minecraft",Color(0xFF92DD71)),
     PcHotkey("PC hotkey",Color(0xFF70F0B2),true),
     Soundboard("Soundboard",Color(0xFFE3EEFF)),
+    HostAction("Host action",Color(0xFFC9CED8)),
     Simulation("Simulation",Amber)
 }
 fun buttonFamily(action: InstantAction): ButtonFamily = when {
+    action.id.startsWith("host:")->ButtonFamily.HostAction
     action.path=="api/sounds/play"->ButtonFamily.Soundboard
     action.path=="api/icarus/command"->ButtonFamily.Simulation
     action.body.literal("action") in listOf("quick","text")->ButtonFamily.RocketLeague
@@ -32,7 +34,7 @@ fun buttonFamily(action: InstantAction): ButtonFamily = when {
     action.body.literal("action") in listOf("mine_toggle","forward_mine")->ButtonFamily.Minecraft
     else->ButtonFamily.PcHotkey
 }
-@Composable fun CategoryControlButton(label: String,family: ButtonFamily,enabled: Boolean,modifier: Modifier=Modifier,onClick: ()->Unit) {
+@Composable fun CategoryControlButton(label: String,family: ButtonFamily,enabled: Boolean,modifier: Modifier=Modifier,actionId: String?=null,onClick: ()->Unit) {
     val color=family.color
     val glow=if(family.glow && enabled)Modifier.drawWithCache {
         val cut=6.dp.toPx();val path=Path().apply {moveTo(cut,0f);lineTo(size.width,0f);lineTo(size.width,size.height-cut);lineTo(size.width-cut,size.height);lineTo(0f,size.height);lineTo(0f,cut);close()}
@@ -43,7 +45,7 @@ fun buttonFamily(action: InstantAction): ButtonFamily = when {
         contentPadding=PaddingValues(horizontal=4.dp,vertical=3.dp),modifier=modifier.then(glow).semantics {stateDescription="${family.label} control"}) {
         Column(verticalArrangement=Arrangement.Center) {
             Text(label,maxLines=3,overflow=TextOverflow.Ellipsis,style=MaterialTheme.typography.labelLarge)
-            Text(family.label,fontSize=9.sp,lineHeight=11.sp,maxLines=1,overflow=TextOverflow.Ellipsis,color=color.copy(alpha=if(enabled).8f else .4f))
+            Icon(ControlIcons.category(family,actionId),contentDescription=null,tint=color.copy(alpha=if(enabled).8f else .4f),modifier=Modifier.size(16.dp))
         }
     }
 }

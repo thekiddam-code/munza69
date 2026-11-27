@@ -23,7 +23,7 @@ import java.time.format.DateTimeFormatter
 
 data class SavedMessage(val label: String,val text: String,val channel: String)
 data class InstantAction(val id: String,val label: String,val path: String,val body: JsonObject)
-data class InstantSnapshot(val base: String="",val pc: PcStatus?=null,val synchronizedAt: Long=0,val status: String="Native pairing required.",val busy: Boolean=false)
+data class InstantSnapshot(val base: String="",val pc: PcStatus?=null,val synchronizedAt: Long=0,val status: String="Native pairing required.",val busy: Boolean=false,val hostResult: JsonObject?=null,val hostWidgetId: String?=null)
 fun instantActions(pc: PcStatus): List<InstantAction> {
     val actions=mutableListOf<InstantAction>()
     pc.quick.forEach {name->actions+=InstantAction("quick:$name",name,"api/action",buildJsonObject {put("action","quick");put("name",name)})}
@@ -68,7 +68,7 @@ class InstantController(private val remote: IcarusClient,private val tokenFor: s
             }
             if(needsStatus) {
                 val response=read("api/status")
-                state.value=InstantSnapshot(base,parsePcStatus(response),System.currentTimeMillis(),"Synchronized with the existing server.",true)
+                state.value=state.value.copy(base=base,pc=parsePcStatus(response),synchronizedAt=System.currentTimeMillis(),status=if(state.value.hostResult?.literal("state")=="pending")state.value.status else "Synchronized with the existing server.",busy=true)
                 pcConnection.value=pcConnection.value.copy(name=response.literal("hostname") ?: response.literal("computer_name") ?: pcConnection.value.name)
             }
             if(engineering) {
@@ -111,6 +111,7 @@ class InstantController(private val remote: IcarusClient,private val tokenFor: s
     }
     fun publish(base: String,pc: PcStatus) {state.value=InstantSnapshot(base,pc,System.currentTimeMillis(),"Synchronized with the existing server.")}
     suspend fun execute(c: Config,id: String,widgetId: String?=null) {
+        if(id.startsWith("host:")){executeHost(c,id,widgetId);return}
         if(!mutex.tryLock())return
         try {
             val base=serverBase(c)
@@ -130,4 +131,56 @@ class InstantController(private val remote: IcarusClient,private val tokenFor: s
         }catch(e:CancellationException){throw e}catch(e:Exception){state.value=state.value.copy(status=(e as? RemoteFailure)?.message ?: "Command failed.")}
         finally{state.value=state.value.copy(busy=false);mutex.unlock()}
     }
+    fun dismissHostResult(widgetId: String?) {if(state.value.hostWidgetId==widgetId)state.value=state.value.copy(hostResult=null,hostWidgetId=null)}
+    suspend fun executeHost(c: Config,id: String,widgetId: String?,outputId: String?=null) {
+        if(!mutex.tryLock())return
+        try {
+            val base=serverBase(c);val snapshot=state.value
+            if(snapshot.base!=base || snapshot.pc==null)throw RemoteFailure(message="Synchronize the paired host first.")
+            require(id in setOf("host:arctis","host:save-clip"))
+            require(widgetId!=null && widgetSpec(c,widgetId)?.buttonSet=="mixed")
+            val token=tokenFor(base) ?: throw RemoteFailure(401,"Pair this phone in ICARUS configuration.")
+            state.value=snapshot.copy(busy=true,hostResult=null,hostWidgetId=widgetId,status="Sending host action…")
+            val path=if(id=="host:arctis")"api/sonar/arctis" else "api/moments/save-clip"
+            val body=buildJsonObject {put("requestId",java.util.UUID.randomUUID().toString());if(outputId!=null)put("output_id",outputId)}
+            val response=remote.request(base,path,c.timeout,token,body)
+            publishHost(response,widgetId,id,body.literal("requestId"))
+        }catch(e: CancellationException){state.value=state.value.copy(hostResult=null,status="Host request interrupted; outcome unconfirmed. No action was replayed.");throw e}
+        catch(e: Exception){state.value=state.value.copy(hostResult=null,status=(e as? RemoteFailure)?.message ?: "Host action unavailable.")}
+        finally {state.value=state.value.copy(busy=false);mutex.unlock()}
+    }
+    private fun publishHost(response: JsonObject,widgetId: String?,id: String,requestId: String?=null) {
+        val message=response.literal("message") ?: response.literal("error") ?: "Host outcome unavailable."
+        val status=if(id=="host:arctis" && response.literal("state")=="verified") {
+            val output=(response["output"] as? JsonObject)?.literal("id")
+            val routes=response["routes"] as? JsonObject
+            if(!response.truth("verified") || !response.truth("microphone_preserved") || output.isNullOrBlank() || listOf("game","chat","media","aux").any {routes?.literal(it)!=output})throw RemoteFailure(message="Host did not verify all four routes and microphone preservation.")
+            message
+        } else if(id=="host:save-clip") {
+            val stage=response.literal("state")
+            if(stage in setOf("pending","clip_detected")) {
+                if(response.literal("request_id")!=requestId || requestId==null)throw RemoteFailure(message="Clip response did not identify this request; creation is unconfirmed.")
+            }
+            when(stage) {
+                "clip_detected"->{val clip=response["clip"] as? JsonObject;if(!response.truth("clip_file_verified") || clip?.literal("name").isNullOrBlank() || (clip?.number("bytes") ?: 0.0)<=0)throw RemoteFailure(message="Host did not verify a new clip file.");"New clip file observed. Confirm in Moments. "+message}
+                "pending"->"Clip creation pending. "+message
+                else->"Clip creation unconfirmed. "+message
+            }
+        } else message
+        state.value=state.value.copy(status=status,hostResult=response,hostWidgetId=widgetId)
+    }
+    suspend fun pollClip(c: Config,requestId: String,widgetId: String?) {
+        if(!mutex.tryLock())return
+        try {
+            val base=serverBase(c);val current=state.value
+            if(current.base!=base || current.hostWidgetId!=widgetId || current.hostResult?.literal("request_id")!=requestId || current.hostResult?.literal("state")!="pending")return
+            require(runCatching {java.util.UUID.fromString(requestId)}.isSuccess)
+            val token=tokenFor(base) ?: throw RemoteFailure(401,"Pairing expired during clip verification.")
+            val response=remote.request(base,"api/moments/clip-status",c.timeout,token,buildJsonObject {put("requestId",requestId)})
+            publishHost(response,widgetId,"host:save-clip",requestId)
+        }catch(e: CancellationException){throw e}
+        catch(e: Exception){state.value=state.value.copy(status=((e as? RemoteFailure)?.message ?: "Clip verification unavailable.")+" Clip creation is unconfirmed; the shortcut was not replayed.",hostResult=null)}
+        finally {mutex.unlock()}
+    }
+
 }

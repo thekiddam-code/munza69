@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.umbra.mobile.InstantControllerTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-11-27T23:31:57" hostname="bc50a105279e" time="0.067">
+  <properties/>
+  <testcase name="syncedQuickCommandUsesAuthenticatedServerContractAndRejectsAnotherBase" classname="com.umbra.mobile.InstantControllerTest" time="0.052"/>
+  <testcase name="repeatedTapsCannotQueueDuplicateCommandsAndCancellationReleasesGate" classname="com.umbra.mobile.InstantControllerTest" time="0.015"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Nov 27, 2026 11:31:57 PM okhttp3.mockwebserver.MockWebServer$SocketHandler handle
+WARNING: MockWebServer[51761] connection from /127.0.0.1 didn't make a request
+]]></system-err>
+</testsuite>

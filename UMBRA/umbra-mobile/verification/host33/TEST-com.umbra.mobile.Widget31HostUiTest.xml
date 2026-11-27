@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.umbra.mobile.Widget31HostUiTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-11-27T23:32:13" hostname="bc50a105279e" time="2.089">
+  <properties/>
+  <testcase name="configurationPinAndRecentsOptInAreAvailableWithoutScreenReading[30]" classname="com.umbra.mobile.Widget31HostUiTest" time="0.417"/>
+  <testcase name="configurationPinAndRecentsOptInAreAvailableWithoutScreenReading" classname="com.umbra.mobile.Widget31HostUiTest" time="0.472"/>
+  <testcase name="rocketAndSoundboardSharePageWhileFortniteHasIndependentPage[30]" classname="com.umbra.mobile.Widget31HostUiTest" time="0.68"/>
+  <testcase name="rocketAndSoundboardSharePageWhileFortniteHasIndependentPage" classname="com.umbra.mobile.Widget31HostUiTest" time="0.52"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+]]></system-err>
+</testsuite>

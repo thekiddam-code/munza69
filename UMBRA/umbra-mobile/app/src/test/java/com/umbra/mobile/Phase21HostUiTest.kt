@@ -28,7 +28,7 @@ class Phase21HostUiTest {
                 DesktopPage("main",kind="blank",items=listOf(DesktopItem("daily","folder",folder=DesktopFolder("Daily")))),
                 DesktopPage("info",kind="information",items=listOf(DesktopItem("clock","widget",widget=DesktopWidget(span=3,style="Segmented",clock24=false,seconds=true)))),
                 DesktopPage("other",kind="blank")))
-            runBlocking { ConfigStore(app).replace(Config(master=false,immersive=false,statusPanel=false,visualDetail=VisualDetail.Cinematic,desktop=layout)) }
+            runBlocking { ConfigStore(app).replace(Config(master=false,immersive=true,statusPanel=false,visualDetail=VisualDetail.Cinematic,desktop=layout)) }
         }
         override fun after() {androidx.test.espresso.IdlingPolicies.setMasterPolicyTimeout(60,java.util.concurrent.TimeUnit.SECONDS)}
     }).around(rule)
@@ -64,6 +64,8 @@ class Phase21HostUiTest {
         val saved=runBlocking {ConfigStore(rule.activity).config.first()}
         assertFalse(saved.master);assertEquals(VisualDetail.Cinematic,saved.visualDetail)
         assertTrue(saved.desktop!!.item("clock")!!.widget!!.clock24)
+        rule.onNodeWithTag("return-fullscreen").assertIsDisplayed().performClick()
+        rule.waitUntil(5000) {org.robolectric.Shadows.shadowOf(android.os.Looper.getMainLooper()).idle();runBlocking {ConfigStore(rule.activity).config.first().immersive}}
         rule.onNodeWithTag("page-main").performClick()
         rule.onNodeWithTag("grid-item-home:main-daily").performSemanticsAction(androidx.compose.ui.semantics.SemanticsActions.OnLongClick){it()}
         rule.onNodeWithText("Configure").performClick()

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.umbra.mobile.SoundboardTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-11-27T23:32:13" hostname="bc50a105279e" time="0.077">
+  <properties/>
+  <testcase name="nativePlaybackUsesOriginalAuthenticatedSoundRouteAndUniqueRequestId" classname="com.umbra.mobile.SoundboardTest" time="0.063"/>
+  <testcase name="stopUsesExistingEmptyBodyAndReportsFreshPlayerState" classname="com.umbra.mobile.SoundboardTest" time="0.004"/>
+  <testcase name="outputAndFavoritesAreRevisionCheckedAndReadBackFromServer" classname="com.umbra.mobile.SoundboardTest" time="0.004"/>
+  <testcase name="rapidTapsDoNotQueueAndCancellationReleasesGate" classname="com.umbra.mobile.SoundboardTest" time="0.003"/>
+  <testcase name="optionalNormalizationUsesOnlyAdvertisedServerProfileAndExistingFields" classname="com.umbra.mobile.SoundboardTest" time="0.001"/>
+  <testcase name="parsesEveryExistingSoundAndRejectsPartialOrDuplicateCatalogs" classname="com.umbra.mobile.SoundboardTest" time="0.001"/>
+  <testcase name="failedSyncNeverUpdatesSuccessTimestampOrErasesPriorCatalog" classname="com.umbra.mobile.SoundboardTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

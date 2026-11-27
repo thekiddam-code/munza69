@@ -1,8 +1,10 @@
-# UMBRA Mobile 3.2
+# UMBRA Mobile 3.3
 
 Native Kotlin / Jetpack Compose launcher, alongside the preserved ICARUS project.
 
-**New in 3.2:** HOME → **Full screen** collapses header/footer to a compact recovery strip. Add **Mixed controls** or configure a Button widget with **mixed + Fill available page + up to 12 button columns** to combine Rocket League, Fortnite, PC hotkeys and sounds in one independently customizable grid. Category colors: game blues, Minecraft green, PCB green/static glow, soundboard cool white. Saved layouts and PC audio preferences remain.
+**New in 3.3:** windowed mode uses one Fullscreen recovery button; category footers use custom vector icons. Optional silver Arctis and Save Clip tiles reuse the mixed picker. The [separate PC API update/setup](pc-update/phase49-host-actions/README.md) is required; actual Windows routing/capture verification is still pending.
+
+**Retained from 3.2:** HOME → **Full screen** collapses header/footer to a compact recovery strip. Add **Mixed controls** or configure a Button widget with **mixed + Fill available page + up to 12 button columns** to combine Rocket League, Fortnite, PC hotkeys and sounds in one independently customizable grid. Category colors: game blues, Minecraft green, PCB green/static glow, soundboard cool white. Saved layouts and PC audio preferences remain.
 
 **HOME | APPS | DECK | SIMULATOR | ICARUS | CONFIG**
 
@@ -12,7 +14,7 @@ Native Kotlin / Jetpack Compose launcher, alongside the preserved ICARUS project
 - ICARUS: existing PC remote view and shared connection manager.
 - CONFIG: server PIN entry and existing server-owned audio output settings. Optional small **||| Recent apps** footer shortcut requires manual Android Accessibility enablement; it cannot read screen content or control gestures.
 
-Engineering widgets, six-tab PC indicator, existing layouts, sound mappings/output preferences, native Android widgets, motion/detail controls and One UI recovery remain. Long-press HOME page title → Add widget; long-press a widget header → Configure. TV controls remain retired.
+Engineering widgets, six-tab PC indicator in fullscreen, existing layouts, sound mappings/output preferences, native Android widgets, motion/detail controls and One UI recovery remain. Long-press HOME page title → Add widget; long-press a widget header → Configure. TV controls remain retired.
 
 ## Download / install
 
@@ -34,10 +36,12 @@ Adds **Soundboard → Add many sounds** to the existing Phase 4.9 website on por
 
 ## Verification and documentation
 
-The 3.2 Android host tests, lint and application/device-test APK assembly are recorded in [current executed results](umbra-mobile/verification/home32/RESULTS.txt). Signing matches the previous distributed build. Top-level permissions remain unchanged; the optional Recents shortcut still requires a manual Android Accessibility grant. The unchanged 3.1 PC package retains its historical 42 service, 10 Chromium and 4 installer checks using isolated generated audio and fake Windows output; these are not recounted as new 3.2 PC tests.
+The 3.3 Android build/tests/lint/signing and host-action fixture tests are recorded in [current executed results](umbra-mobile/verification/host33/RESULTS.txt). Signing matches the previous distributed build. Top-level permissions remain unchanged; the optional Recents shortcut still requires a manual Android Accessibility grant. The unchanged 3.1 PC package retains its historical 42 service, 10 Chromium and 4 installer checks using isolated generated audio and fake Windows output; these are not recounted as new 3.2 PC tests.
 
-[Current setup/migration/limits report](umbra-mobile/HOME32_REPORT.md) · [Exact executed evidence](umbra-mobile/verification/home32/RESULTS.txt) · [Build/install instructions](umbra-mobile/README.md) · [Configuration schema 7/privacy](umbra-mobile/CONFIGURATION.md).
+[Current setup/migration/limits report](umbra-mobile/HOST33_REPORT.md) · [Exact executed evidence](umbra-mobile/verification/host33/RESULTS.txt) · [Build/install instructions](umbra-mobile/README.md) · [Configuration schema 7/privacy](umbra-mobile/CONFIGURATION.md).
 
 <img src="umbra-mobile/verification/home32/host-renders/home32-mixed-full-page-sdk34.png" width="300" alt="Native host render: full-page mixed quick chat, Fortnite, PC and sound controls">
 
 Host screenshots and HTTP fixtures are not physical phone/PC measurements. Actual S24+/Windows audio/game delivery, native Recents/gestures, Tailscale routing, special-access grants and measured battery/frame performance remain device checks. Historical reports remain evidence for earlier versions.
+
+[Download the new Phase 4.9 Host Actions API/setup ZIP](https://github.com/thekiddam-code/munza69/raw/refs/heads/main/UMBRA/downloads/umbra-pc-phase49-host-actions.zip). Install on the original stopped companion, configure the existing Moments storage folder and saved macro, then restart normally. It has not been deployed from the cloud. Sonar uses an internal local API; Save Clip still requires actual GG acceptance and clip verification. [API, backup, rollback and physical test instructions](pc-update/phase49-host-actions/README.md).

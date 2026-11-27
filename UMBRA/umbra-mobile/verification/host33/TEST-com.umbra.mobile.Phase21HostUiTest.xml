@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.umbra.mobile.Phase21HostUiTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-11-27T23:31:35" hostname="bc50a105279e" time="5.64">
+  <properties/>
+  <testcase name="folderWidgetPagerMasterOffAndBarsRemainFunctional[30]" classname="com.umbra.mobile.Phase21HostUiTest" time="1.278"/>
+  <testcase name="folderWidgetPagerMasterOffAndBarsRemainFunctional" classname="com.umbra.mobile.Phase21HostUiTest" time="1.766"/>
+  <testcase name="pagesAndWidgetPickerRemainUsableWithMasterOff[30]" classname="com.umbra.mobile.Phase21HostUiTest" time="0.809"/>
+  <testcase name="pagesAndWidgetPickerRemainUsableWithMasterOff" classname="com.umbra.mobile.Phase21HostUiTest" time="0.901"/>
+  <testcase name="dragApplicationsTogetherCreatesPersistentFolder[30]" classname="com.umbra.mobile.Phase21HostUiTest" time="0.467"/>
+  <testcase name="dragApplicationsTogetherCreatesPersistentFolder" classname="com.umbra.mobile.Phase21HostUiTest" time="0.419"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+]]></system-err>
+</testsuite>

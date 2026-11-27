@@ -26,7 +26,7 @@ class Widget31HostUiTest {
         override fun before() {
             val app=org.robolectric.RuntimeEnvironment.getApplication()
             org.robolectric.Shadows.shadowOf(app).grantPermissions("com.umbra.mobile.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION")
-            runBlocking {ConfigStore(app).replace(Config(master=false,immersive=false,statusPanel=false,pcIndicator=false))}
+            runBlocking {ConfigStore(app).replace(Config(master=false,immersive=true,statusPanel=false,pcIndicator=false))}
         }
     }).around(rule)
     private fun config()=runBlocking {ConfigStore(rule.activity).config.first()}
@@ -49,7 +49,7 @@ class Widget31HostUiTest {
                 DesktopItem("rocket","widget",widget=DesktopWidget(kind="icarus",title="Rocket deck",buttonSet="rocket",span=4,rows=4,buttonColumns=3)),
                 DesktopItem("sounds","widget",widget=DesktopWidget(kind="soundboard",title="Sound deck",span=4,rows=4,buttonColumns=3))))
             val other=DesktopPage("fortnite","Fortnite",columns=4,items=listOf(DesktopItem("emotes","widget",widget=DesktopWidget(kind="icarus",title="Emote deck",buttonSet="fortnite",span=4,rows=4))))
-            runBlocking {model.store.replace(Config(master=false,immersive=false,statusPanel=false,pcIndicator=false,serverUrl=server.url("/").toString(),instantSelection=emptySet(),desktop=DesktopLayout(pages=listOf(main,other)),widgetButtonSelections=mapOf("sounds" to listOf("sound:$soundId"))))}
+            runBlocking {model.store.replace(Config(master=false,immersive=true,statusPanel=false,pcIndicator=false,serverUrl=server.url("/").toString(),instantSelection=emptySet(),desktop=DesktopLayout(pages=listOf(main,other)),widgetButtonSelections=mapOf("sounds" to listOf("sound:$soundId"))))}
             waitFor {model.instant.state.value.pc!=null && !model.instant.state.value.busy && model.instant.pcConnection.value.catalog!=null && model.soundboard.state.value.catalog!=null}
             rule.onNodeWithText("Rocket deck").assertIsDisplayed();rule.onNodeWithText("Sound deck").assertIsDisplayed()
             rule.onNodeWithTag("instant-action-quick:Nice shot!").assertIsDisplayed().assertIsEnabled().performClick()
@@ -73,6 +73,9 @@ class Widget31HostUiTest {
         rule.onNodeWithContentDescription("Recent apps").assertIsDisplayed().performClick()
         rule.onNodeWithText("Recent apps shortcut").assertIsDisplayed()
         rule.onNodeWithText("Use native bar").performClick()
+        waitFor {!config().immersive}
+        rule.onNodeWithTag("return-fullscreen").assertIsDisplayed().performClick()
+        waitFor {config().immersive}
         val xml=rule.activity.resources.getXml(com.umbra.mobile.R.xml.recents_accessibility)
         while(xml.eventType!=org.xmlpull.v1.XmlPullParser.START_TAG)xml.next()
         val ns="http://schemas.android.com/apk/res/android"

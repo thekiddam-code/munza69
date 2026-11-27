@@ -1,0 +1,13 @@
+{
+  "baseline_commit": "780108d56646982c323b3a4b82c74a2268a0bd60",
+  "files": {
+    "server.py": {
+      "before": "e03caaa463b0ac0f22fe848fefd11639c1891062fbb65417932a255223f33d64",
+      "after": "5a0ccde3aef3dd8a582975b9bfb7d4b7d7a89222b050970dbaa73005fec132f4"
+    },
+    "umbra_host_actions.py": {
+      "before": null,
+      "after": "baf9b0d4588ec263341f3df58465bb8bcfb926622332d813f7d6ef35d9800568"
+    }
+  }
+}

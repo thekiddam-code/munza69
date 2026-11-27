@@ -151,6 +151,7 @@ class MainActivity : ComponentActivity() {
     var deckSection by rememberSaveable {mutableStateOf("Engineering")}
     var settingsCategory by rememberSaveable { mutableStateOf("Animation") }
     var screen by rememberSaveable { mutableStateOf("HOME") }
+    val compactLauncher=!c.immersive
     val homeHeaderHidden=screen=="HOME" && c.homeHeaderCollapsed
     val homeFooterHidden=screen=="HOME" && c.homeFooterCollapsed
     var query by rememberSaveable { mutableStateOf("") }
@@ -231,8 +232,8 @@ class MainActivity : ComponentActivity() {
             }) {
                 StaticTerminalBackground(c.visualDetail,accent)
                 if (active && policy.continuous && (c.ambient || c.environment || c.wallpaper || c.parallax || c.statusEffects)) Atmosphere(c,accent,pointer)
-                Column(Modifier.fillMaxSize().alpha(if(policy.enabled && c.startup) startup.value else 1f).safeDrawingPadding().imePadding().padding(horizontal=if(homeHeaderHidden && homeFooterHidden)4.dp else 20.dp,vertical=if(homeHeaderHidden && homeFooterHidden)0.dp else 10.dp)) {
-                    if(!homeHeaderHidden) {
+                Column(Modifier.fillMaxSize().alpha(if(policy.enabled && c.startup) startup.value else 1f).safeDrawingPadding().imePadding().padding(horizontal=if(compactLauncher || homeHeaderHidden && homeFooterHidden)4.dp else 20.dp,vertical=if(compactLauncher || homeHeaderHidden && homeFooterHidden)0.dp else 10.dp)) {
+                    if(!compactLauncher && !homeHeaderHidden) {
                     Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.SpaceBetween,verticalAlignment=Alignment.CenterVertically) {
                         if(screen=="CONFIG")Text("Settings",fontSize=22.sp,modifier=Modifier.weight(1f)) else Column(Modifier.weight(1f)) { Text("UMBRA",color=accent,fontSize=27.sp,fontWeight=FontWeight.Black,letterSpacing=5.sp,maxLines=1,overflow=TextOverflow.Ellipsis); Readout("MOBILE OS / TERMINAL 01",Muted) }
                         PcConnectionIndicator(c,model)
@@ -242,7 +243,7 @@ class MainActivity : ComponentActivity() {
                     HorizontalDivider(Modifier.padding(vertical=12.dp),color=accent.copy(alpha=.45f))
                     }
                     if(settingsError) Text("Settings could not be saved. Check values and available storage, then try again.",color=Color(0xFFEF8B82),modifier=Modifier.semantics { liveRegion=LiveRegionMode.Polite })
-                    if(!homeHeaderHidden && showStatusPanel(c,when(screen){"HOME"->homeStatusContext;"APPS"->"Applications";"CONFIG"->"Settings";"COMMAND"->if(deckSection=="Engineering")"Engineering" else "Command Center";"SIMULATOR"->"Simulator";"ICARUS"->"ICARUS";else->"ICARUS"})) StatusPanel(c,device,now,deckStatus,accent,notificationCount)
+                    if(!compactLauncher && !homeHeaderHidden && showStatusPanel(c,when(screen){"HOME"->homeStatusContext;"APPS"->"Applications";"CONFIG"->"Settings";"COMMAND"->if(deckSection=="Engineering")"Engineering" else "Command Center";"SIMULATOR"->"Simulator";"ICARUS"->"ICARUS";else->"ICARUS"})) StatusPanel(c,device,now,deckStatus,accent,notificationCount)
                     val pageContent: @Composable (String)->Unit = { page ->
                         pageStateHolder.SaveableStateProvider(page) {
                         when(page) {
@@ -302,8 +303,9 @@ class MainActivity : ComponentActivity() {
                     },label="terminal navigation") { page -> pageContent(page) }
                     } else Box(Modifier.weight(1f)) { pageContent(screen) }
                     GridEditingToolbar(gridEditing,model)
-                    if(screen=="HOME" && (homeHeaderHidden || homeFooterHidden))HomeChromeRecovery(c,model)
-                    if(!homeFooterHidden) {
+                    if(compactLauncher)TextButton(onClick={context.umbraActivity()?.setAndroidBarsVisible(false)},modifier=Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("return-fullscreen")){Text("⛶ Fullscreen")}
+                    if(!compactLauncher && screen=="HOME" && (homeHeaderHidden || homeFooterHidden))HomeChromeRecovery(c,model)
+                    if(!compactLauncher && !homeFooterHidden) {
                     HorizontalDivider(Modifier.padding(top=8.dp),color=accent.copy(alpha=.3f))
                     Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.SpaceEvenly) {
                         listOf("HOME" to "Home","APPS" to "Apps","COMMAND" to "Deck","SIMULATOR" to "Simulator","ICARUS" to "Icarus","CONFIG" to "Config").forEach { (id,label) ->

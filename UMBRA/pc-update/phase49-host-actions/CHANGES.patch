@@ -1,0 +1,10 @@
+--- a/ICARUS/server.py
++++ b/ICARUS/server.py
+@@ -8,0 +9 @@
++from umbra_host_actions import HostActions,HostActionError
+@@ -60,0 +62 @@
++HOST_ACTIONS=HostActions(ROOT,cfg,LOCK)
+@@ -421,0 +424,3 @@
++   if self.path in ('/api/sonar/arctis','/api/moments/save-clip','/api/moments/clip-status','/api/host-actions/status'):
++    try:return self.respond(200,HOST_ACTIONS.post(self.path,data,token_hash(self.headers.get('Authorization',''))))
++    except HostActionError as e:return self.respond(e.status,{'error':str(e),**e.details})

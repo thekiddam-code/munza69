@@ -27,7 +27,7 @@ class Phase23HostUiTest {
             org.robolectric.Shadows.shadowOf(app).grantPermissions("com.umbra.mobile.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION")
             val cells=MODULES.mapIndexed {i,name->GridCell(name,y=i,w=2,h=7,collapsed=true)}
             val buttons=(0..13).map {CustomButton(id="b$it",label="Button $it")}
-            runBlocking {ConfigStore(app).replace(Config(master=false,immersive=false,statusPanel=false,customButtons=buttons,gridLayouts=mapOf("command" to GridLayout(columns=2,cells=cells))))}
+            runBlocking {ConfigStore(app).replace(Config(master=false,immersive=true,statusPanel=false,customButtons=buttons,gridLayouts=mapOf("command" to GridLayout(columns=2,cells=cells))))}
         }
         override fun after(){androidx.test.espresso.IdlingPolicies.setMasterPolicyTimeout(60,java.util.concurrent.TimeUnit.SECONDS)}
     }).around(rule)
@@ -74,6 +74,7 @@ class Phase23HostUiTest {
         capture("command-${if(motion)"motion" else "static"}")
     }
     @Test fun perTabStatusAndCompactSettingsHeaderPersist() {
+        val immersiveBefore=config().immersive
         runBlocking {ConfigStore(rule.activity).update {it.copy(statusPanel=true)}}
         rule.onNodeWithTag("umbra-status-panel").assertIsDisplayed()
         rule.onNodeWithTag("nav-APPS").performClick();rule.onNodeWithTag("umbra-status-panel").assertDoesNotExist()
@@ -83,7 +84,7 @@ class Phase23HostUiTest {
         rule.onNodeWithText("Settings").assertIsDisplayed();rule.onNodeWithText("UMBRA").assertDoesNotExist()
         rule.onNodeWithTag("umbra-status-panel").assertDoesNotExist()
         rule.onNodeWithText("◆ UMBRA",substring=true).performScrollTo().assertIsDisplayed()
-        assertFalse(config().immersive)
+        assertEquals(immersiveBefore,config().immersive)
         capture("settings")
     }
     private fun setupButtonWidget() {

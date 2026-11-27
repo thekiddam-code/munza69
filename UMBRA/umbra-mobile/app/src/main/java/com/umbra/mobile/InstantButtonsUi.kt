@@ -3,6 +3,7 @@ package com.umbra.mobile
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.*
+import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -24,6 +25,7 @@ import java.io.ByteArrayOutputStream
     val snapshot by model.instant.state.collectAsStateWithLifecycle()
     val lifecycle=LocalLifecycleOwner.current.lifecycle;val scope=rememberCoroutineScope();val context=LocalContext.current
     val editing=LocalGridEditing.current
+    var hostInfo by remember {mutableStateOf<String?>(null)}
     var soundEdit by remember {mutableStateOf<String?>(null)}
     var work by remember {mutableStateOf<Job?>(null)};var manager by remember {mutableStateOf(false)}
     var edited by remember {mutableStateOf<CustomButton?>(null)};var editedSource by remember {mutableStateOf<String?>(null)};var picker by remember {mutableStateOf(false)}
@@ -35,7 +37,7 @@ import java.io.ByteArrayOutputStream
     val mixed=actualFilter=="mixed"
     val soundCatalog=soundState?.catalog.takeIf {mixed}
     val catalog=(widgetCatalog(c,current.pc,widgetId,connection.catalog.takeIf {connection.base==serverBase(c)})+soundButtonActions(soundCatalog)).sortedBy {c.instantOrder.indexOf(it.id).takeIf {i->i>=0} ?: Int.MAX_VALUE}
-    val selected=widgetId?.let {c.widgetButtonSelections[it]?.toSet() ?: catalog.map {a->a.id}.toSet()} ?: catalog.map {it.id}.toSet()
+    val selected=widgetId?.let {c.widgetButtonSelections[it]?.toSet() ?: defaultWidgetButtonIds(catalog)} ?: catalog.map {it.id}.toSet()
     val missing=selected.count {id->catalog.none {it.id==id}}
     val actions=catalog.filter {action->action.id in selected && simulatorAllows(actualFilter,action,c)}
     LifecycleStartEffect(Unit){onStopOrDispose {work?.cancel()}}
@@ -62,13 +64,13 @@ import java.io.ByteArrayOutputStream
         val boardModifier=if(compact)Modifier.weight(1f) else Modifier.heightIn(max=560.dp)
         Column(boardModifier.fillMaxWidth().verticalScroll(rememberScrollState())) {
             GridBoard(surface,actions.map {GridItem(it.id,if(widgetId!=null)it.label else c.instantLabels[it.id] ?: it.label)},c,model,columns=spec?.buttonColumns ?: 2,cellHeight=(spec?.buttonHeight ?: 64).dp,rowMajor=true,maxColumns=12,
-                onConfigure=if(widgetId==null)null else {id->editing.finish();if(id.startsWith("sound:"))soundEdit=id.removePrefix("sound:") else {editedSource=id;edited=spec?.buttonOverrides?.get(id) ?: actionCopy(catalog.first {it.id==id})}},
+                onConfigure=if(widgetId==null)null else {id->editing.finish();if(id.startsWith("host:"))hostInfo=id else if(id.startsWith("sound:"))soundEdit=id.removePrefix("sound:") else {editedSource=id;edited=spec?.buttonOverrides?.get(id) ?: actionCopy(catalog.first {it.id==id})}},
                 onRemove=if(widgetId==null)null else {id->model.change {old->old.copy(widgetButtonSelections=old.widgetButtonSelections+(widgetId to (selected-id).toList()))}}) {item,_->
                 val action=actions.first {it.id==item.id}
                 val local=spec?.buttonOverrides?.get(item.id) ?: c.customButtons.firstOrNull {"local:${it.id}"==item.id}
                 val isSound=action.path=="api/sounds/play"
                 CategoryControlButton((local?.icon?.plus(" ") ?: "")+(if(widgetId!=null)action.label else c.instantLabels[item.id] ?: action.label),buttonFamily(action),
-                    if(isSound)soundState?.busy==false else !current.busy,Modifier.fillMaxSize().testTag("instant-action-${item.id}")) {
+                    if(isSound)soundState?.busy==false else !current.busy,Modifier.fillMaxSize().testTag("instant-action-${item.id}"),actionId=action.id) {
                     if(isSound)runSound?.invoke {model.soundboard.play(c,action.id.removePrefix("sound:"))}
                     else if(work?.isActive!=true)work=scope.launch {model.instant.execute(c,action.id,widgetId)}
                 }
@@ -81,6 +83,13 @@ import java.io.ByteArrayOutputStream
             confirmButton={TextButton(onClick={soundEdit=null;runSound?.invoke {model.soundboard.favorite(c,id)}},enabled=soundState?.busy!=true){Text(if(sound.favorite)"Remove favorite" else "Favorite")}},
             dismissButton={TextButton(onClick={soundEdit=null}){Text("Close")}})
     }}
+    HostActionDialogs(c,model,widgetId,current,hostInfo,{hostInfo=null})
+    LaunchedEffect(lifecycle,visible,serverBase(c),current.hostResult?.literal("request_id"),current.hostResult?.literal("state")) {
+        val id=current.hostResult?.literal("request_id")
+        if(visible && id!=null && current.hostWidgetId==widgetId && current.hostResult?.literal("state")=="pending")lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+            while(isActive){delay(1000);model.instant.pollClip(c,id,widgetId)}
+        }
+    }
     if(manager)DesktopEditorDialog("Button widget",{manager=false},confirm={TextButton(onClick={manager=false}){Text("Done")}}) {
         TextButton(onClick={editedSource=null;edited=CustomButton();manager=false}){Text("Create button")}
         TextButton(onClick={picker=true;manager=false}){Text("Select buttons")}
@@ -107,14 +116,16 @@ import java.io.ByteArrayOutputStream
     if(filter=="mixed")TextButton(onClick={if(sync?.isActive!=true)sync=scope.launch {model.instant.refresh(c,true,true);model.soundboard.sync(c)}}){Text("Sync commands and sounds")}
     if(filter=="mixed")sounds.error?.takeIf {sounds.base==serverBase(c)}?.let {Text(it,color=MaterialTheme.colorScheme.error)}
     var query by remember {mutableStateOf("")}
-    val selected=if(onDraft!=null)draft ?: catalog.map {it.id}.toSet() else widgetId?.let {c.widgetButtonSelections[it]?.toSet() ?: catalog.map {a->a.id}.toSet()} ?: chosenButtonIds(c,catalog)
+    val selected=if(onDraft!=null)draft ?: defaultWidgetButtonIds(catalog) else widgetId?.let {c.widgetButtonSelections[it]?.toSet() ?: defaultWidgetButtonIds(catalog)} ?: chosenButtonIds(c,catalog)
     fun set(ids: Set<String>) {if(onDraft!=null)onDraft(ids) else model.change {old->if(widgetId==null)old.copy(instantSelection=ids) else old.copy(widgetButtonSelections=old.widgetButtonSelections+(widgetId to ids.toList()))}}
     OutlinedTextField(query,{query=it},label={Text("Search available buttons")},singleLine=true,modifier=Modifier.fillMaxWidth())
     Row {TextButton(onClick={set(catalog.map {it.id}.toSet())}){Text("Select all")};TextButton(onClick={set(emptySet())}){Text("Deselect all")}}
     Text("${selected.intersect(catalog.map {it.id}.toSet()).size} selected · ${catalog.size} available",style=MaterialTheme.typography.bodySmall)
-    LazyColumn(Modifier.fillMaxWidth().heightIn(max=320.dp)) {items(catalog.filter {it.label.contains(query,true)},key={it.id}) {action->Row(verticalAlignment=androidx.compose.ui.Alignment.CenterVertically) {
-        Checkbox(action.id in selected,{checked->set(if(checked)selected+action.id else selected-action.id)});Column {Text(action.label);Text(buttonFamily(action).label,color=buttonFamily(action).color,style=MaterialTheme.typography.labelSmall)}
-    }}}
+    LazyColumn(Modifier.fillMaxWidth().heightIn(max=320.dp).testTag("available-button-list")) {items(catalog.filter {it.label.contains(query,true)},key={it.id}) {action->
+        Row(Modifier.fillMaxWidth().heightIn(min=48.dp).testTag("select-${action.id}").toggleable(value=action.id in selected,role=androidx.compose.ui.semantics.Role.Checkbox,onValueChange={checked->set(if(checked)selected+action.id else selected-action.id)}),verticalAlignment=androidx.compose.ui.Alignment.CenterVertically) {
+            Checkbox(action.id in selected,null);Column {Text(action.label);Text(buttonFamily(action).label,color=buttonFamily(action).color,style=MaterialTheme.typography.labelSmall)}
+        }
+    }}
 }
 fun actionCopy(action: InstantAction): CustomButton {
     val body=action.body

@@ -26,7 +26,7 @@ class Home32HostUiTest {
         override fun before() {
             val app=org.robolectric.RuntimeEnvironment.getApplication()
             org.robolectric.Shadows.shadowOf(app).grantPermissions("com.umbra.mobile.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION")
-            runBlocking {ConfigStore(app).replace(Config(master=false,immersive=false,statusPanel=false,pcIndicator=false))}
+            runBlocking {ConfigStore(app).replace(Config(master=false,immersive=true,statusPanel=false,pcIndicator=false))}
         }
     }).around(rule)
     private fun config()=runBlocking {ConfigStore(rule.activity).config.first()}

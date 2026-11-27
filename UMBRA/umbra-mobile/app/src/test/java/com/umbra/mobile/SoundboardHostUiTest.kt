@@ -23,7 +23,7 @@ class SoundboardHostUiTest {
         override fun before() {
             val app=org.robolectric.RuntimeEnvironment.getApplication()
             org.robolectric.Shadows.shadowOf(app).grantPermissions("com.umbra.mobile.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION")
-            runBlocking {ConfigStore(app).replace(Config(master=false,immersive=false,statusPanel=false,serverUrl="http://localhost:9000/"))}
+            runBlocking {ConfigStore(app).replace(Config(master=false,immersive=true,statusPanel=false,serverUrl="http://localhost:9000/"))}
         }
     }).around(rule)
     private fun config()=runBlocking {ConfigStore(rule.activity).config.first()}

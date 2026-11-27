@@ -34,7 +34,7 @@ class IcarusClient {
     private val shared = OkHttpClient.Builder().followRedirects(false).followSslRedirects(false).build()
     suspend fun request(base: String,path: String,timeout: Int,token: String? = null,body: JsonObject? = null): JsonObject {
         require(validDeckUrl(base) && timeout in 1..30)
-        require(path in setOf("api/pair","api/unpair","api/status","api/icarus/telemetry","api/icarus/command","api/action","api/sounds/library","api/sounds/play","api/sounds/stop","api/sounds/output","api/sounds/edit","api/audio/profile","api/windows/monitor","api/windows/catalog","api/windows/command"))
+        require(path in setOf("api/sonar/arctis","api/moments/save-clip","api/moments/clip-status","api/host-actions/status","api/pair","api/unpair","api/status","api/icarus/telemetry","api/icarus/command","api/action","api/sounds/library","api/sounds/play","api/sounds/stop","api/sounds/output","api/sounds/edit","api/audio/profile","api/windows/monitor","api/windows/catalog","api/windows/command"))
         val client=shared.newBuilder().callTimeout(timeout.toLong(),TimeUnit.SECONDS).connectTimeout(timeout.toLong(),TimeUnit.SECONDS).readTimeout(timeout.toLong(),TimeUnit.SECONDS).build()
         val request=Request.Builder().url(base.toHttpUrl().resolve(path)!!).header("Accept","application/json").apply {
             if(!token.isNullOrEmpty()) header("Authorization","Bearer $token")
@@ -48,6 +48,15 @@ class IcarusClient {
                 override fun onResponse(call: Call,response: Response) {
                     try {
                         val parsed=response.use { r ->
+                            if(!r.isSuccessful && path in setOf("api/sonar/arctis","api/moments/save-clip","api/moments/clip-status","api/host-actions/status")) {
+                                val bytes=r.body?.byteStream()?.use {input->
+                                    val output=ByteArrayOutputStream();val buffer=ByteArray(4096)
+                                    while(output.size()<=131072){val n=input.read(buffer);if(n<0)break;output.write(buffer,0,n)}
+                                    output.toByteArray()
+                                }
+                                val detail=if(bytes!=null && bytes.size<=131072)runCatching {(Json.parseToJsonElement(bytes.decodeToString()) as? JsonObject)?.literal("error")?.filterNot(Char::isISOControl)}.getOrNull() else null
+                                throw RemoteFailure(r.code,when(r.code){401->"Pairing required or expired.";403->"Authorization rejected.";404->"Install the host-actions update on the paired PC.";else->detail ?: "Host returned HTTP ${r.code}."})
+                            }
                             if(!r.isSuccessful) throw RemoteFailure(r.code,when(r.code){401->"Pairing required or expired.";403->"Pairing code or authorization rejected.";404->"This endpoint is unavailable on the configured server.";in 300..399->"Redirect refused. Configure the final server address.";409->"Configuration changed or output unavailable. Refresh and check Audio Output before retrying.";429->"Server busy. Wait before retrying.";else->"Server returned HTTP ${r.code}."})
                             val output=ByteArrayOutputStream()
                             r.body?.byteStream()?.use { input ->
