@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.umbra.mobile.ChatSound34UiTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-11-28T02:19:45" hostname="bc50a105279e" time="11.373">
+  <properties/>
+  <testcase name="editorSelectsExistingSoundAndSavedChoicePersistsInDataStore[30]" classname="com.umbra.mobile.ChatSound34UiTest" time="6.329"/>
+  <testcase name="editorSelectsExistingSoundAndSavedChoicePersistsInDataStore" classname="com.umbra.mobile.ChatSound34UiTest" time="5.044"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Invalid ID 0x00000000.
+Invalid ID 0x00000000.
+]]></system-err>
+</testsuite>

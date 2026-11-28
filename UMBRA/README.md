@@ -1,8 +1,10 @@
-# UMBRA Mobile 3.3
+# UMBRA Mobile 3.4
 
 Native Kotlin / Jetpack Compose launcher, alongside the preserved ICARUS project.
 
-**New in 3.3:** windowed mode uses one Fullscreen recovery button; category footers use custom vector icons. Optional silver Arctis and Save Clip tiles reuse the mixed picker. The [separate PC API update/setup](pc-update/phase49-host-actions/README.md) is required; actual Windows routing/capture verification is still pending.
+**New in 3.4:** optional sound after Rocket League quick/text chat, selected independently in each HOME widget button editor. [Setup and limits](umbra-mobile/CHAT_SOUND34_REPORT.md) · [Required incremental PC update](pc-update/phase49-chat-sounds/README.md).
+
+**Retained from 3.3:** windowed mode uses one Fullscreen recovery button; category footers use custom vector icons. Optional silver Arctis and Save Clip tiles reuse the mixed picker. The [separate PC API update/setup](pc-update/phase49-host-actions/README.md) is required; actual Windows routing/capture verification is still pending.
 
 **Retained from 3.2:** HOME → **Full screen** collapses header/footer to a compact recovery strip. Add **Mixed controls** or configure a Button widget with **mixed + Fill available page + up to 12 button columns** to combine Rocket League, Fortnite, PC hotkeys and sounds in one independently customizable grid. Category colors: game blues, Minecraft green, PCB green/static glow, soundboard cool white. Saved layouts and PC audio preferences remain.
 
@@ -36,9 +38,9 @@ Adds **Soundboard → Add many sounds** to the existing Phase 4.9 website on por
 
 ## Verification and documentation
 
-The 3.3 Android build/tests/lint/signing and host-action fixture tests are recorded in [current executed results](umbra-mobile/verification/host33/RESULTS.txt). Signing matches the previous distributed build. Top-level permissions remain unchanged; the optional Recents shortcut still requires a manual Android Accessibility grant. The unchanged 3.1 PC package retains its historical 42 service, 10 Chromium and 4 installer checks using isolated generated audio and fake Windows output; these are not recounted as new 3.2 PC tests.
+The 3.4 Android build/tests/lint/signing and chat/sound host fixture tests are recorded in [current executed results](umbra-mobile/verification/chat34/RESULTS.txt). The previous [3.3 host-action evidence](umbra-mobile/verification/host33/RESULTS.txt) is retained. Signing matches the previous distributed build. Top-level permissions remain unchanged; the optional Recents shortcut still requires a manual Android Accessibility grant. The unchanged 3.1 PC package retains its historical 42 service, 10 Chromium and 4 installer checks using isolated generated audio and fake Windows output; these are not recounted as new 3.2 PC tests.
 
-[Current setup/migration/limits report](umbra-mobile/HOST33_REPORT.md) · [Exact executed evidence](umbra-mobile/verification/host33/RESULTS.txt) · [Build/install instructions](umbra-mobile/README.md) · [Configuration schema 7/privacy](umbra-mobile/CONFIGURATION.md).
+[Current setup/migration/limits report](umbra-mobile/CHAT_SOUND34_REPORT.md) · [Exact executed evidence](umbra-mobile/verification/chat34/RESULTS.txt) · [Build/install instructions](umbra-mobile/README.md) · [Configuration schema 7/privacy](umbra-mobile/CONFIGURATION.md).
 
 <img src="umbra-mobile/verification/home32/host-renders/home32-mixed-full-page-sdk34.png" width="300" alt="Native host render: full-page mixed quick chat, Fortnite, PC and sound controls">
 

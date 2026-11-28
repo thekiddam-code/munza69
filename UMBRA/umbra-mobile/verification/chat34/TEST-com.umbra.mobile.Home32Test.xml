@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.umbra.mobile.Home32Test" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-11-28T02:20:08" hostname="bc50a105279e" time="0.01">
+  <properties/>
+  <testcase name="chromeAndFillPreferencesRoundTripWithoutResettingOldLayouts" classname="com.umbra.mobile.Home32Test" time="0.004"/>
+  <testcase name="mixedReferencesKeepSoundAndGameIdentityAndStaticColorFamilies" classname="com.umbra.mobile.Home32Test" time="0.004"/>
+  <testcase name="fillPageAdaptsAtRenderTimeWithoutMutatingSavedCells" classname="com.umbra.mobile.Home32Test" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

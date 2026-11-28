@@ -1,0 +1,10 @@
+UMBRA Mobile 3.4 / version code 10: optional sound after Rocket League chat.
+Gradle successfully ran unit tests, lint, assembleDebug and assembleDebugAndroidTest.
+119 Android test executions, zero failures/errors. Includes five new executions (three protocol/config cases plus native editor on SDK30/34).
+Lint: {'Warning': 17}; zero errors. Debug APK SHA256: 10b5ebaa34b359d2544cb5f23db801d080b95c07daa1e70ffbd0d967002e2bf9
+Signer #1 certificate SHA-256 digest: 79829531c75dd5ee41bf23951d6514bb2ecb21052c405a6230bfc8cbccdb7c6e
+Signing/permissions match distributed 3.3; no new permissions/services.
+Native editor tests select the 14th existing sound through scrolling, persist its ID in DataStore, and select None. Pure tests cover authenticated combined request, missing PC update without fallback/replay, stable optional defaults, fresh UUIDs, widget/preset independence and config/button export roundtrip.
+Host: 11 tests passed. Actual companion HTTP handler uses fake keyboard and SoundService adapters to verify opener/type/Enter precede playback; original quick endpoint unchanged. Auth/origin/invalid chat refusal, missing sound/no resend, partial-input failure/no sound/no replay, repeated IDs, changed-body refusal, and installer/source-hash/idempotence/code rollback/settings preservation are verified in isolated fixtures.
+The source patch only changes the matching server and adds a sequencing module; original SoundService/player/catalog/output remain authoritative. Main ICARUS and both previous PC patches remain unchanged.
+No actual Windows/Rocket League/physical audio test, PC deployment or Android hardware acceptance performed. Input completion is not proof of game message delivery. Playback acceptance is not proof of audibility. Device-test APK built but instrumentation not run. Host receipt protection is bounded/in-memory, not permanent delivery tracking. Long text plus playback can exceed a short configured network timeout; no automatic replay occurs.

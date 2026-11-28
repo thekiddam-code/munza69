@@ -128,7 +128,7 @@ class InstantController(private val remote: IcarusClient,private val tokenFor: s
             state.value=snapshot.copy(busy=true,status="Sending ${action.label}…")
             val response=remote.request(base,action.path,c.timeout,token,action.body)
             state.value=state.value.copy(status=response.number("queued")?.let {"Queued #${it.toInt()} · PC execution pending."} ?: response.literal("message") ?: "Server acknowledged ${action.label}.")
-        }catch(e:CancellationException){throw e}catch(e:Exception){state.value=state.value.copy(status=(e as? RemoteFailure)?.message ?: "Command failed.")}
+        }catch(e:CancellationException){throw e}catch(e:Exception){state.value=state.value.copy(status=((e as? RemoteFailure)?.message ?: "Command failed.")+" Delivery may be unconfirmed; no automatic retry.")}
         finally{state.value=state.value.copy(busy=false);mutex.unlock()}
     }
     fun dismissHostResult(widgetId: String?) {if(state.value.hostWidgetId==widgetId)state.value=state.value.copy(hostResult=null,hostWidgetId=null)}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.umbra.mobile.ConfigurationV2Test" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-11-28T02:19:57" hostname="bc50a105279e" time="0.169">
+  <properties/>
+  <testcase name="phaseOnePreferencesMigrateWithoutLosingSelections" classname="com.umbra.mobile.ConfigurationV2Test" time="0.121"/>
+  <testcase name="zeroIntensityThermalAndScreenOffStopEffects" classname="com.umbra.mobile.ConfigurationV2Test" time="0.0"/>
+  <testcase name="roundTripAllCategoriesAndIndependentEffects" classname="com.umbra.mobile.ConfigurationV2Test" time="0.004"/>
+  <testcase name="malformedUnknownAndOversizedImportsFail" classname="com.umbra.mobile.ConfigurationV2Test" time="0.042"/>
+  <testcase name="importsRejectUnsafeLayoutsUrlsAndColors" classname="com.umbra.mobile.ConfigurationV2Test" time="0.001"/>
+  <testcase name="categoryResetPreservesOtherSettingsAndOrderMovement" classname="com.umbra.mobile.ConfigurationV2Test" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,13 @@
+{
+  "baseline_commit": "c120d77f2523364df4117c1e0090ffc6014fa017",
+  "files": {
+    "server.py": {
+      "before": "5a0ccde3aef3dd8a582975b9bfb7d4b7d7a89222b050970dbaa73005fec132f4",
+      "after": "76ea75c347264d3057e1fdef8fc45968aa56bb70d91d72c1d17b8ade60f3075b"
+    },
+    "umbra_chat_sounds.py": {
+      "before": null,
+      "after": "f18c9514eaa7db4046566189fe7b7008546615bfb25941c946750ef921dffe07"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+--- a/ICARUS/server.py
++++ b/ICARUS/server.py
+@@ -7,6 +7,7 @@
+ from sound_library import SoundError
+ from audio_service import AudioService
+ from umbra_host_actions import HostActions,HostActionError
++from umbra_chat_sounds import ChatSounds
+ import http.server, json, os, secrets, socket, threading, time, urllib.parse, hashlib, ipaddress, ssl, base64
+ from pathlib import Path
+ 
+@@ -223,6 +224,8 @@
+    if len(seq)>4: raise ValueError('Macro too long')
+    pg.hotkey(*seq); return 'Hotkey sent'
+   raise ValueError('Unknown action')
++
++CHAT_SOUNDS=ChatSounds(action,SOUND_SERVICE,LOCK)
+ 
+ def valid_icarus_command(command):
+  if command in ('forward:inspect','forward:deploy','forward:recover','forward:hold','forward:release'):return True
+@@ -485,6 +488,7 @@
+     return self.respond(200,{'message':'TV address saved','ip':ip})
+    if self.path=='/api/tv/key':
+     return self.respond(200,{'message':tv_command(str(data.get('key','')))})
++   if self.path=='/api/rocket/chat-sound': return self.respond(200,CHAT_SOUNDS.run(token_hash(self.headers.get('Authorization','').removeprefix('Bearer ')),data))
+    if self.path=='/api/action': return self.respond(200,{'message':action(data)})
+    if self.path=='/api/fortnite_emotes':
+     items=validate_fortnite_buttons(data.get('buttons'))

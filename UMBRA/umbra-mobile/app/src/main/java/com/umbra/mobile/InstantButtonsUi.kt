@@ -129,9 +129,9 @@ import java.io.ByteArrayOutputStream
 }
 fun actionCopy(action: InstantAction): CustomButton {
     val body=action.body
-    require(action.path in listOf("api/action","api/tv/key","api/icarus/command","api/windows/command")){"Unsupported server output"}
+    require(action.path in listOf("api/rocket/chat-sound","api/action","api/tv/key","api/icarus/command","api/windows/command")){"Unsupported server output"}
     val kind=when(action.path){"api/windows/command"->OutputKind.WindowsHotkey;"api/tv/key"->OutputKind.TvKey;"api/icarus/command"->OutputKind.Simulation;else->when(body.literal("action")){"quick"->OutputKind.QuickChat;"macro"->OutputKind.Macro;"text"->OutputKind.Text;"fortnite_emote"->OutputKind.FortniteEmote;"mine_toggle"->OutputKind.MineToggle;"forward_mine"->OutputKind.ForwardMine;"stop"->OutputKind.Stop;else->error("Unsupported server output")}}
-    return CustomButton(label=action.label.take(48),kind=kind,name=body.literal("name") ?: body.literal("id") ?: "",text=body.literal("text") ?: "",channel=body.literal("channel") ?: "match",speed=body.literal("speed") ?: "balanced",index=body.number("index")?.toInt() ?: 0,seconds=body.number("seconds") ?: 3.0,key=body.literal("key") ?: "home",command=body.literal("command") ?: "pause")
+    return CustomButton(label=action.label.take(48),kind=kind,name=body.literal("name") ?: body.literal("id") ?: "",text=body.literal("text") ?: "",channel=body.literal("channel") ?: "match",speed=body.literal("speed") ?: "balanced",index=body.number("index")?.toInt() ?: 0,seconds=body.number("seconds") ?: 3.0,key=body.literal("key") ?: "home",command=body.literal("command") ?: "pause",afterSoundId=body.literal("sound_id") ?: "")
 }
 @Composable fun ButtonEditor(original: CustomButton,c: Config,pc: PcStatus?,model: LauncherModel,close: ()->Unit,replaceSource: String?=null,widgetId: String?=null,saveDraft: ((CustomButton)->Unit)?=null) {
     var b by remember(original.id){mutableStateOf(original)}
@@ -158,6 +158,25 @@ fun actionCopy(action: InstantAction): CustomButton {
             OutputKind.TvKey->Text("Retired output is unavailable.")
             OutputKind.WindowsHotkey->OutlinedTextField(b.name,{b=b.copy(name=it.take(64))},label={Text("Advertised Windows hotkey ID")},singleLine=true)
             OutputKind.Simulation->Choice("Supported simulation command",SHIP_COMMANDS,b.command){b=b.copy(command=it)}
+        }
+        if(b.kind in listOf(OutputKind.QuickChat,OutputKind.Text)) {
+            val soundSnapshot by model.soundboard.state.collectAsStateWithLifecycle()
+            val sameHost=soundSnapshot.base==serverBase(c)
+            val sounds=if(sameHost)soundSnapshot.catalog?.sounds.orEmpty() else emptyList()
+            var chooseSound by remember {mutableStateOf(false)}
+            Text("Sound after chat",style=MaterialTheme.typography.titleSmall)
+            TextButton(onClick={chooseSound=true},modifier=Modifier.testTag("choose-after-chat-sound")) {
+                Text(if(b.afterSoundId.isEmpty())"None" else sounds.firstOrNull {it.id==b.afterSoundId}?.name ?: "Selected sound unavailable — sync")
+            }
+            TextButton(onClick={if(job?.isActive!=true)job=scope.launch {model.soundboard.sync(c)}},enabled=!soundSnapshot.busy){Text("Sync sound choices")}
+            if(sameHost)soundSnapshot.error?.let {Text(it,color=MaterialTheme.colorScheme.error)}
+            Text("Plays on the PC's saved soundboard output after the input sequence finishes. Requires the chat-sound PC update. Game delivery is not confirmed.",style=MaterialTheme.typography.bodySmall)
+            if(chooseSound)AlertDialog(onDismissRequest={chooseSound=false},title={Text("Sound after chat")},text={
+                LazyColumn(Modifier.heightIn(max=360.dp).testTag("after-sound-list")) {
+                    item {TextButton(onClick={b=b.copy(afterSoundId="");chooseSound=false},modifier=Modifier.fillMaxWidth().testTag("after-sound-none")){Text("None")}}
+                    items(sounds,key={it.id}) {sound->TextButton(onClick={b=b.copy(afterSoundId=sound.id);chooseSound=false},modifier=Modifier.fillMaxWidth().testTag("after-sound-${sound.id}")){Text(sound.name)}}
+                }
+            },confirmButton={TextButton(onClick={chooseSound=false}){Text("Close")}})
         }
         val unsupported=buttonSupport(b,pc);if(unsupported!=null)Text(unsupported)
         Text("Arbitrary key-down/key-up, arbitrary scripts, and generic hold protocols are not exposed by this server and are unsupported. Existing timed mining and Stop are supported.",style=MaterialTheme.typography.bodySmall)

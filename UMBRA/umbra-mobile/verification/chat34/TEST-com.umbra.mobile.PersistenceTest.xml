@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.umbra.mobile.PersistenceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-11-28T02:20:21" hostname="bc50a105279e" time="0.058">
+  <properties/>
+  <testcase name="nativeWidgetIdsAndWorkspaceSurviveDataStoreRecreation" classname="com.umbra.mobile.PersistenceTest" time="0.027"/>
+  <testcase name="settingsSurviveStoreRecreationAndMasterPreservesFlags" classname="com.umbra.mobile.PersistenceTest" time="0.031"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

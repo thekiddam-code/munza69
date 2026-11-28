@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.umbra.mobile.Widget31Test" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-11-28T02:20:39" hostname="bc50a105279e" time="0.218">
+  <properties/>
+  <testcase name="largeSoundCatalogFitsBoundedNativeResponseAndAllEntriesParse" classname="com.umbra.mobile.Widget31Test" time="0.068"/>
+  <testcase name="windowsButtonsUseSupportedExistingBackendAndWidgetOverrideOnly" classname="com.umbra.mobile.Widget31Test" time="0.146"/>
+  <testcase name="olderSharedSelectionsMigrateIntoEachWidgetWithoutTouchingAudio" classname="com.umbra.mobile.Widget31Test" time="0.001"/>
+  <testcase name="widgetSetsSelectionsOverridesAndGeometryStayIndependent" classname="com.umbra.mobile.Widget31Test" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

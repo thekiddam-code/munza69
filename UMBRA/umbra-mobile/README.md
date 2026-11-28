@@ -1,4 +1,4 @@
-# UMBRA Mobile 3.3
+# UMBRA Mobile 3.4
 
 A native Kotlin / Jetpack Compose Android HOME launcher for Samsung Galaxy S24+, package `com.umbra.mobile`. Android 10+ (API 29), target/compile API 35. This increment preserves the existing industrial terminal interface and native Android functions while moving arrangement controls out of normal use.
 
@@ -14,7 +14,7 @@ In a mixed widget's existing picker, optionally select the silver **Switch to Ar
 
 Download `umbra-mobile-debug.apk` from the sibling [GitHub downloads folder](https://github.com/thekiddam-code/munza69/tree/main/UMBRA/downloads), or extract the APK ZIP first. Open the APK on the phone and grant the opening file manager/browser installation permission when Android requests it. ADB alternative: `adb install -r umbra-mobile-debug.apk`.
 
-Version **3.3 (code 9)** updates the previous signed build without requiring an uninstall. Keep the same signing key when building future updates; a build signed on another computer may need your consistent key or an uninstall, which clears local data. The distributed debug build is for development, not store distribution.
+Version **3.3 (code 10)** updates the previous signed build without requiring an uninstall. Keep the same signing key when building future updates; a build signed on another computer may need your consistent key or an uninstall, which clears local data. The distributed debug build is for development, not store distribution.
 
 Select **Samsung Settings → Apps → Choose default apps → Home app → UMBRA**. Select **One UI Home** in that same screen to restore Samsung. UMBRA can open Android's Home settings from its Settings categories. No root, kiosk/device-owner mode, protected notification shade, secure lock-screen replacement, or firmware changes are used.
 
@@ -89,3 +89,7 @@ Debug APK: `app/build/outputs/apk/debug/app-debug.apk`. Device instrumentation r
 Full configuration export uses Android's file picker and includes versioned layouts, selections, and preferences; credentials and portable widget bindings are excluded. Back up before large edits or imports. Weather locations/private URLs in an export should be shared deliberately. Corrupt/invalid storage recovers safely; failed writes remain visible. No QUERY_ALL_PACKAGES, precise/background location, broad storage, privileged status-bar or global-brightness permission is requested. Optional approximate location, notification listener access and the narrowly scoped Recents Accessibility service remain user-controlled. The Recents service cannot retrieve screen content or perform gestures.
 
 Physical S24+/One UI behavior, native provider compatibility, live ICARUS/Tailscale/game execution, real Keystore, and measured performance remain device acceptance items. Historical reports/evidence for earlier phases are retained separately.
+
+## Sound after Rocket League chat (3.4)
+
+Long-press a HOME Button/Mixed widget chat button → Configure → Sound after chat → Sync sound choices → choose a sound → Save UMBRA override. None disables it. [Current report](CHAT_SOUND34_REPORT.md) and [required incremental PC patch](../pc-update/phase49-chat-sounds/README.md) explain setup, sequencing, unchanged sound output and physical testing limits. Install the 3.3 host-actions PC patch first.

@@ -6,7 +6,7 @@ import kotlinx.serialization.json.*
 
 @Serializable enum class OutputKind { QuickChat, Macro, Text, FortniteEmote, MineToggle, ForwardMine, Stop, TvKey, Simulation, WindowsHotkey }
 @Serializable data class CustomButton(val id: String=desktopId(),val label: String="New button",val icon: String="◆",val kind: OutputKind=OutputKind.Stop,
-    val name: String="",val text: String="",val channel: String="match",val speed: String="balanced",val seconds: Double=3.0,val index: Int=0,val key: String="home",val command: String="pause")
+    val name: String="",val text: String="",val channel: String="match",val speed: String="balanced",val seconds: Double=3.0,val index: Int=0,val key: String="home",val command: String="pause",val afterSoundId: String="")
 val BUTTON_ICONS=listOf("◆","⚡","⌘","●","▣","▶","■","✦")
 val TV_KEYS=listOf("home","back","up","left","ok","right","down","vol_up","vol_down","mute","play_pause","source","power_off","ch_up","ch_down","play","pause","stop","rewind","forward","menu","info","exit")
 val SHIP_COMMANDS=listOf("pause","resume","speed1","speed5","speed20","save")
@@ -16,6 +16,7 @@ fun validateButton(button: CustomButton): CustomButton {
     require(button.name.length<=120 && button.name.none(Char::isISOControl) && button.text.length<=120 && button.text.none(Char::isISOControl))
     require(button.channel in listOf("team","match") && button.speed in listOf("fast","balanced","safe"))
     require(button.seconds.isFinite() && button.seconds in .2..10.0 && button.index in 0..8 && button.key in TV_KEYS && button.command in SHIP_COMMANDS)
+    require(button.afterSoundId.isEmpty() || button.afterSoundId.matches(Regex("[a-f0-9]{32}")))
     if(button.kind in listOf(OutputKind.QuickChat,OutputKind.Macro))require(button.name.isNotBlank())
     if(button.kind==OutputKind.WindowsHotkey)require(button.name.matches(Regex("[a-z0-9_]{1,64}")))
     if(button.kind==OutputKind.Text)require(button.text.isNotBlank())
@@ -24,8 +25,11 @@ fun validateButton(button: CustomButton): CustomButton {
 fun buttonAction(b: CustomButton): InstantAction {
     validateButton(b)
     require(b.kind!=OutputKind.TvKey){"Retired output is retained for migration only."}
-    val path=when(b.kind){OutputKind.WindowsHotkey->"api/windows/command";OutputKind.TvKey->"api/tv/key";OutputKind.Simulation->"api/icarus/command";else->"api/action"}
-    val body=buildJsonObject {when(b.kind) {
+    val followSound=b.afterSoundId.isNotEmpty() && b.kind in listOf(OutputKind.QuickChat,OutputKind.Text)
+    val path=if(followSound)"api/rocket/chat-sound" else when(b.kind){OutputKind.WindowsHotkey->"api/windows/command";OutputKind.TvKey->"api/tv/key";OutputKind.Simulation->"api/icarus/command";else->"api/action"}
+    val body=buildJsonObject {
+        if(followSound){put("sound_id",b.afterSoundId);put("requestId",java.util.UUID.randomUUID().toString())}
+        when(b.kind) {
         OutputKind.WindowsHotkey->{put("kind","hotkey");put("id",b.name);put("requestId",java.util.UUID.randomUUID().toString())}
         OutputKind.TvKey->put("key",b.key)
         OutputKind.Simulation->put("command",b.command)
@@ -50,7 +54,7 @@ private val buttonJson=Json {encodeDefaults=true;ignoreUnknownKeys=false}
 fun exportButtons(buttons: List<CustomButton>): String=buttonJson.encodeToString(ButtonFile(buttons=buttons.onEach(::validateButton)))
 fun validateButtonsJson(value: JsonElement) {
     val list=value as? JsonArray ?: error("Expected buttons");require(list.size<=512)
-    list.forEach {strictFields(it,strings=setOf("id","label","icon","kind","name","text","channel","speed","key","command"),ints=setOf("index"),numbers=setOf("seconds"))}
+    list.forEach {strictFields(it,strings=setOf("id","label","icon","kind","name","text","channel","speed","key","command","afterSoundId"),ints=setOf("index"),numbers=setOf("seconds"))}
 }
 fun importButtons(text: String): List<CustomButton> {
     require(text.toByteArray().size<=MAX_CONFIG_BYTES)

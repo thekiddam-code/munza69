@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.umbra.mobile.Phase3PcTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-11-28T02:20:35" hostname="bc50a105279e" time="0.287">
+  <properties/>
+  <testcase name="oldCompanionSupportsHonestCpuRamFallbackWithoutInventedSensors" classname="com.umbra.mobile.Phase3PcTest" time="0.064"/>
+  <testcase name="sensorAgesAndNetworkMethodsAreConservative" classname="com.umbra.mobile.Phase3PcTest" time="0.003"/>
+  <testcase name="presetsPreserveIndependentWidgetsGridBindingsAndMappings" classname="com.umbra.mobile.Phase3PcTest" time="0.009"/>
+  <testcase name="actualAuthenticatedStatusAndMonitorAreSharedWithoutDuplicateCollectors" classname="com.umbra.mobile.Phase3PcTest" time="0.195"/>
+  <testcase name="interruptedRequestsReleaseTheSingleGateAndDoNotRemainGreen" classname="com.umbra.mobile.Phase3PcTest" time="0.013"/>
+  <testcase name="televisionMappingsArePreservedButInvisibleAndInert" classname="com.umbra.mobile.Phase3PcTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[Nov 28, 2026 2:20:35 AM okhttp3.mockwebserver.MockWebServer$SocketHandler handle
+WARNING: MockWebServer[32923] connection from /127.0.0.1 didn't make a request
+]]></system-err>
+</testsuite>
